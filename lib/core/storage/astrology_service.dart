@@ -1,10 +1,9 @@
-/*
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/storage/storage.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 
 class AstrologyService extends GetxService {
   static AstrologyService get to => Get.find();
@@ -38,4 +37,3 @@ class AstrologyService extends GetxService {
     return data;
   }
 }
-*/

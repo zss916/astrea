@@ -1,11 +1,12 @@
+import 'package:astrea/core/storage/account_service.dart';
+import 'package:astrea/core/storage/app_service.dart';
+import 'package:astrea/core/storage/astrology_service.dart';
+import 'package:astrea/core/storage/storage.dart';
+import 'package:astrea/core/toast/app_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:astrea/core/storage/account_service.dart';
-import 'package:astrea/core/storage/app_service.dart';
-import 'package:astrea/core/storage/storage.dart';
-import 'package:astrea/core/toast/app_loading.dart';
 
 class AppCommonSetting {
   static Future<void> init() async {
@@ -16,7 +17,7 @@ class AppCommonSetting {
     ]).whenComplete(() async {
       await Get.putAsync<AccountService>(() => AccountService().init());
       Get.put<AppService>(AppService());
-      // Get.put<AstrologyService>(AstrologyService());
+      Get.put<AstrologyService>(AstrologyService());
       AppLoading();
     });
   }

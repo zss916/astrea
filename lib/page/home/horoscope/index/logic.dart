@@ -98,7 +98,6 @@ class HoroscopeLogic extends GetxController {
   Future<void> loadAccount() async {
     account = await AccountAPI.getAccount();
     update();
-    loadAstrologyReport();
   }
 
   Future<void> loadAstrologyReport() async {

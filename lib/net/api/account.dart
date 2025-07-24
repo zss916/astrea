@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/net/bean/account_entity.dart';
 import 'package:astrea/net/http/http.dart';
@@ -12,7 +13,14 @@ abstract class AccountAPI {
   static Future<AccountEntity> getAccount() async {
     try {
       var result = await Http.instance.get(ApiPath.getAccount);
-      return AccountEntity.fromJson(result["data"]);
+      if (result["code"] == 0) {
+        AccountEntity value = AccountEntity.fromJson(result["data"]);
+        AccountService.to.update(value);
+        return value;
+      } else {
+        AppLoading.toast("${result["msg"]}");
+        return AccountEntity();
+      }
     } catch (error) {
       return AccountEntity();
     }

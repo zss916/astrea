@@ -1,3 +1,4 @@
+import 'package:astrea/core/storage/astrology_service.dart';
 import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
 import 'package:astrea/net/http/http.dart';
@@ -16,6 +17,8 @@ abstract class AstrologyAPI {
       );
 
       if (response["code"] == 0) {
+        AstrologyService;
+
         return (true, NatalReportEntity.fromJson(response["data"]));
       } else {
         AppLoading.toast(response["msg"]);

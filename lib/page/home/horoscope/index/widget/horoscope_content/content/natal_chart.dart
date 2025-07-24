@@ -24,20 +24,15 @@ class NatalChart extends StatelessWidget {
             fontFamily: AppFonts.textFontFamily,
           ),
         ),
-        InkWell(
-          onTap: () {
-            logic.loadAccount();
-          },
-          child: Container(
-            margin: EdgeInsetsDirectional.only(top: 6, bottom: 15),
-            child: Text(
-              logic.showBirthday,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: const Color(0xFF6A676C),
-                fontSize: 12,
-                fontFamily: AppFonts.textFontFamily,
-              ),
+        Container(
+          margin: EdgeInsetsDirectional.only(top: 6, bottom: 15),
+          child: Text(
+            logic.showBirthday,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: const Color(0xFF6A676C),
+              fontSize: 12,
+              fontFamily: AppFonts.textFontFamily,
             ),
           ),
         ),

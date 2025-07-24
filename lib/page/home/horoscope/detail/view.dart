@@ -7,49 +7,50 @@ class AnalysisPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: ComAppBar(
-          title: LanKey.analysis.tr,
-          actions: [
-            //buildShareAction(),
-          ],
-        ),
-        backgroundColor: AppColor.pageBackground,
-        resizeToAvoidBottomInset: false,
-        body: Stack(
-          alignment: AlignmentDirectional.topCenter,
-          children: [
-            buildBody(),
-            if (isShowVip)
-              PositionedDirectional(
-                  bottom: 0,
-                  start: 0,
-                  end: 0,
-                  child: BottomStackBtn(
-                    title: LanKey.openVip.tr,
-                    padding:
-                        EdgeInsetsDirectional.only(bottom: 24.h, top: 70.h),
-                    onTap: () {
-                      //todo
-                    },
-                  ))
-          ],
-        ));
+      appBar: ComAppBar(
+        title: LanKey.analysis.tr,
+        actions: [
+          //buildShareAction(),
+        ],
+      ),
+      backgroundColor: AppColor.pageBackground,
+      resizeToAvoidBottomInset: false,
+      body: Stack(
+        alignment: AlignmentDirectional.topCenter,
+        children: [
+          buildBody(),
+          if (isShowVip)
+            PositionedDirectional(
+              bottom: 0,
+              start: 0,
+              end: 0,
+              child: BottomStackBtn(
+                title: LanKey.openVip.tr,
+                padding: EdgeInsetsDirectional.only(bottom: 24.h, top: 70.h),
+                onTap: () {
+                  //todo
+                },
+              ),
+            ),
+        ],
+      ),
+    );
   }
 
   Widget buildShareAction() => Container(
-        margin: const EdgeInsetsDirectional.only(end: 24),
-        child: GestureDetector(
-          onTap: () {
-            showShareSheet();
-          },
-          child: Image.asset(
-            Assets.imageShare,
-            matchTextDirection: true,
-            width: 24,
-            height: 24,
-          ),
-        ),
-      );
+    margin: const EdgeInsetsDirectional.only(end: 24),
+    child: GestureDetector(
+      onTap: () {
+        showShareSheet();
+      },
+      child: Image.asset(
+        Assets.imageShare,
+        matchTextDirection: true,
+        width: 24,
+        height: 24,
+      ),
+    ),
+  );
 
   Widget buildBody() {
     return SingleChildScrollView(
@@ -59,7 +60,11 @@ class AnalysisPage extends StatelessWidget {
             width: double.maxFinite,
             padding: EdgeInsetsDirectional.all(16),
             margin: EdgeInsetsDirectional.only(
-                start: 16, end: 16, top: 20, bottom: 12),
+              start: 16,
+              end: 16,
+              top: 20,
+              bottom: 12,
+            ),
             decoration: ShapeDecoration(
               color: Colors.white,
               shape: RoundedRectangleBorder(
@@ -71,25 +76,26 @@ class AnalysisPage extends StatelessWidget {
                   blurRadius: 20,
                   offset: Offset(0, 12),
                   spreadRadius: 0,
-                )
+                ),
               ],
             ),
             child: Stack(
               alignment: AlignmentDirectional.topCenter,
               children: [
                 PositionedDirectional(
-                    bottom: 0,
-                    start: 0,
-                    end: 0,
-                    child: Image.asset(
-                      Assets.imageBottomTexture3,
-                      matchTextDirection: true,
-                    )),
+                  bottom: 0,
+                  start: 0,
+                  end: 0,
+                  child: Image.asset(
+                    Assets.imageBottomTexture3,
+                    matchTextDirection: true,
+                  ),
+                ),
                 Column(
                   children: [
                     NatalChartWidget(),
                     //  FreeUnlockingCard(),
-                    KeywordsWidget(),
+                    // KeywordsWidget(),
                     Container(
                       width: double.maxFinite,
                       margin: EdgeInsetsDirectional.only(top: 16),
@@ -158,8 +164,10 @@ class AnalysisPage extends StatelessWidget {
                               //todo
                             },
                             child: Container(
-                              margin:
-                                  EdgeInsetsDirectional.only(top: 8, bottom: 8),
+                              margin: EdgeInsetsDirectional.only(
+                                top: 8,
+                                bottom: 8,
+                              ),
                               width: double.maxFinite,
                               child: Text.rich(
                                 textAlign: TextAlign.start,
@@ -187,21 +195,23 @@ class AnalysisPage extends StatelessWidget {
                                       ),
                                     ),
                                     WidgetSpan(
-                                        child: SizedBox(
-                                      width: 17,
-                                      height: 17,
-                                      child: Stack(
-                                        alignment: AlignmentDirectional.center,
-                                        children: [
-                                          Image.asset(
-                                            Assets.imageEndArrow,
-                                            matchTextDirection: true,
-                                            width: 17,
-                                            height: 7,
-                                          )
-                                        ],
+                                      child: SizedBox(
+                                        width: 17,
+                                        height: 17,
+                                        child: Stack(
+                                          alignment:
+                                              AlignmentDirectional.center,
+                                          children: [
+                                            Image.asset(
+                                              Assets.imageEndArrow,
+                                              matchTextDirection: true,
+                                              width: 17,
+                                              height: 7,
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    )),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -259,8 +269,10 @@ class AnalysisPage extends StatelessWidget {
                               //todo
                             },
                             child: Container(
-                              margin:
-                                  EdgeInsetsDirectional.only(top: 8, bottom: 8),
+                              margin: EdgeInsetsDirectional.only(
+                                top: 8,
+                                bottom: 8,
+                              ),
                               width: double.maxFinite,
                               child: Text.rich(
                                 textAlign: TextAlign.start,
@@ -277,21 +289,23 @@ class AnalysisPage extends StatelessWidget {
                                       ),
                                     ),
                                     WidgetSpan(
-                                        child: SizedBox(
-                                      width: 17,
-                                      height: 17,
-                                      child: Stack(
-                                        alignment: AlignmentDirectional.center,
-                                        children: [
-                                          Image.asset(
-                                            Assets.imageEndArrow,
-                                            matchTextDirection: true,
-                                            width: 17,
-                                            height: 7,
-                                          )
-                                        ],
+                                      child: SizedBox(
+                                        width: 17,
+                                        height: 17,
+                                        child: Stack(
+                                          alignment:
+                                              AlignmentDirectional.center,
+                                          children: [
+                                            Image.asset(
+                                              Assets.imageEndArrow,
+                                              matchTextDirection: true,
+                                              width: 17,
+                                              height: 7,
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    )),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -349,8 +363,10 @@ class AnalysisPage extends StatelessWidget {
                               //todo
                             },
                             child: Container(
-                              margin:
-                                  EdgeInsetsDirectional.only(top: 8, bottom: 8),
+                              margin: EdgeInsetsDirectional.only(
+                                top: 8,
+                                bottom: 8,
+                              ),
                               width: double.maxFinite,
                               child: Text.rich(
                                 textAlign: TextAlign.start,
@@ -368,21 +384,23 @@ class AnalysisPage extends StatelessWidget {
                                       ),
                                     ),
                                     WidgetSpan(
-                                        child: SizedBox(
-                                      width: 17,
-                                      height: 17,
-                                      child: Stack(
-                                        alignment: AlignmentDirectional.center,
-                                        children: [
-                                          Image.asset(
-                                            Assets.imageEndArrow,
-                                            matchTextDirection: true,
-                                            width: 17,
-                                            height: 7,
-                                          )
-                                        ],
+                                      child: SizedBox(
+                                        width: 17,
+                                        height: 17,
+                                        child: Stack(
+                                          alignment:
+                                              AlignmentDirectional.center,
+                                          children: [
+                                            Image.asset(
+                                              Assets.imageEndArrow,
+                                              matchTextDirection: true,
+                                              width: 17,
+                                              height: 7,
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    )),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -391,63 +409,62 @@ class AnalysisPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Divider(
-                      height: 30,
-                      color: Colors.transparent,
-                    )
+                    Divider(height: 30, color: Colors.transparent),
                   ],
                 ),
               ],
             ),
           ),
           Container(
-              width: double.maxFinite,
-              padding: EdgeInsetsDirectional.all(14),
-              margin: EdgeInsetsDirectional.only(
-                  start: 16, end: 16, top: 12, bottom: 20),
-              decoration: ShapeDecoration(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                shadows: [
-                  BoxShadow(
-                    color: Color(0x0A000000),
-                    blurRadius: 20,
-                    offset: Offset(0, 12),
-                    spreadRadius: 0,
-                  )
-                ],
+            width: double.maxFinite,
+            padding: EdgeInsetsDirectional.all(14),
+            margin: EdgeInsetsDirectional.only(
+              start: 16,
+              end: 16,
+              top: 12,
+              bottom: 20,
+            ),
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
               ),
-              child: Column(
-                children: [
-                  ListView.separated(
-                    shrinkWrap: true,
-                    itemCount: 12,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) => DetailItem(
-                      index: index,
-                    ),
-                    separatorBuilder: (context, index) => Container(
-                        width: double.maxFinite,
-                        margin: EdgeInsetsDirectional.only(top: 14, bottom: 14),
-                        child: SvgPicture.asset(
-                          Assets.svgItemLine,
-                        )),
+              shadows: [
+                BoxShadow(
+                  color: Color(0x0A000000),
+                  blurRadius: 20,
+                  offset: Offset(0, 12),
+                  spreadRadius: 0,
+                ),
+              ],
+            ),
+            child: Column(
+              children: [
+                ListView.separated(
+                  shrinkWrap: true,
+                  itemCount: 12,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) => DetailItem(index: index),
+                  separatorBuilder: (context, index) => Container(
+                    width: double.maxFinite,
+                    margin: EdgeInsetsDirectional.only(top: 14, bottom: 14),
+                    child: SvgPicture.asset(Assets.svgItemLine),
                   ),
-                  Container(
-                    margin: EdgeInsetsDirectional.only(top: 0.h),
-                    child: Image.asset(
-                      Assets.imageAnalysisBottom,
-                      matchTextDirection: true,
-                    ),
-                  )
+                ),
+                Container(
+                  margin: EdgeInsetsDirectional.only(top: 0.h),
+                  child: Image.asset(
+                    Assets.imageAnalysisBottom,
+                    matchTextDirection: true,
+                  ),
+                ),
 
-                  /*AstrologerChatBtn(
+                /*AstrologerChatBtn(
                     margin: EdgeInsetsDirectional.only(top: 28),
                   ),*/
-                ],
-              ))
+              ],
+            ),
+          ),
         ],
       ),
     );
