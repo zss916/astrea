@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:astrea/core/router/page_tools.dart';
+import 'package:astrea/core/setting/app_color.dart';
+import 'package:astrea/core/setting/app_common_setting.dart';
+import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/storage/account_service.dart';
+import 'package:astrea/core/storage/astrology_service.dart';
+import 'package:astrea/core/toast/app_loading.dart';
+import 'package:astrea/core/translations/en.dart';
+import 'package:astrea/generated/assets.dart';
+import 'package:astrea/net/api/account.dart';
+import 'package:astrea/net/api/astro.dart';
+import 'package:astrea/net/bean/account_entity.dart';
+import 'package:astrea/net/bean/natal_report_entity.dart';
+import 'package:astrea/page/login/guide/result/widget/slide_marquee.dart';
+
+part 'binding.dart';
+part 'logic.dart';
+part 'view.dart';

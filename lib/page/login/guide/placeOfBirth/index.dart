@@ -1,0 +1,25 @@
+import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:astrea/components/common_app_bar.dart';
+import 'package:astrea/components/step_indicator.dart';
+import 'package:astrea/core/router/page_tools.dart';
+import 'package:astrea/core/setting/app_color.dart';
+import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/storage/account_service.dart';
+import 'package:astrea/core/storage/app_service.dart';
+import 'package:astrea/core/toast/app_loading.dart';
+import 'package:astrea/core/translations/en.dart';
+import 'package:astrea/net/api/location.dart';
+import 'package:astrea/net/bean/city_entity.dart';
+import 'package:astrea/net/bean/country_entity.dart';
+import 'package:astrea/net/bean/state_entity.dart';
+import 'package:astrea/page/login/guide/placeOfBirth/place/city_list_widget.dart';
+import 'package:astrea/page/login/guide/placeOfBirth/place/country_list_widget.dart';
+import 'package:astrea/page/login/guide/placeOfBirth/place/state_list_widget.dart';
+import 'package:sprintf/sprintf.dart';
+
+part 'binding.dart';
+part 'logic.dart';
+part 'view.dart';

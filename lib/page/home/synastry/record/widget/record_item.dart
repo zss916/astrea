@@ -1,0 +1,168 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:astrea/core/router/page_tools.dart';
+import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/generated/assets.dart';
+import 'package:astrea/page/home/synastry/record/widget/radio_item.dart';
+
+class RecordItem extends StatefulWidget {
+  //late bool isSelected;
+  int index;
+  Function onDelete;
+  RecordItem({super.key, required this.index, required this.onDelete});
+
+  @override
+  _RecordItemState createState() => _RecordItemState();
+}
+
+class _RecordItemState extends State<RecordItem> {
+  bool isSelected = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          isSelected = !isSelected;
+          // widget.isSelected = !widget.isSelected;
+        });
+      },
+      child: Container(
+        clipBehavior: Clip.hardEdge,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadiusDirectional.circular(16),
+        ),
+        width: double.maxFinite,
+        constraints: BoxConstraints(minHeight: 84),
+        child: Slidable(
+          key: ValueKey("fileTag\$index"),
+          groupTag: "fileTags",
+          enabled: widget.index != 0,
+          useTextDirection: true,
+          endActionPane: ActionPane(
+            extentRatio: 0.28,
+            motion: const DrawerMotion(),
+            children: [
+              CustomSlidableAction(
+                onPressed: (context) {
+                  widget.onDelete.call();
+                },
+                borderRadius: const BorderRadius.all(Radius.circular(0)),
+                autoClose: true,
+                backgroundColor: const Color(0xFFF74E57),
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [Icon(Icons.delete_forever_rounded, size: 30)],
+                ),
+              ),
+            ],
+          ),
+          child: Container(
+            height: 90,
+            width: double.maxFinite,
+            padding: EdgeInsetsDirectional.symmetric(
+              horizontal: 16,
+              vertical: 16,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadiusDirectional.circular(0),
+            ),
+            child: Row(
+              children: [
+                RadioItem(isSelected: isSelected),
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsetsDirectional.only(start: 12, end: 5),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: double.maxFinite,
+                          child: Wrap(
+                            spacing: 8,
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              Text(
+                                widget.index == 0 ? "CC" : 'Nineteen',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  color: const Color(0xFF323133),
+                                  fontSize: 22,
+                                  fontFamily: AppFonts.textFontFamily,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              if (widget.index == 0)
+                                Container(
+                                  margin: EdgeInsetsDirectional.only(start: 0),
+                                  padding: EdgeInsetsDirectional.symmetric(
+                                    horizontal: 12,
+                                    vertical: 1,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadiusDirectional.circular(50),
+                                    color: Color(0xFFEDEDFE),
+                                  ),
+                                  child: Text(
+                                    'Me',
+                                    style: TextStyle(
+                                      color: const Color(0xFF585FC4),
+                                      fontSize: 14,
+                                      fontFamily: AppFonts.textFontFamily,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: double.maxFinite,
+                          child: Text(
+                            'June 6, 1995, 12:15 PM',
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              color: const Color(0xFF91929D),
+                              fontSize: 16,
+                              fontFamily: AppFonts.textFontFamily,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(10),
+                    onTap: () {
+                      PageTools.toAddFile(isEditFile: true);
+                    },
+                    child: Container(
+                      margin: EdgeInsetsDirectional.all(15),
+                      child: Image.asset(
+                        Assets.imageEditIcon,
+                        matchTextDirection: true,
+                        width: 28,
+                        height: 28,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

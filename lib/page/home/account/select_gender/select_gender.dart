@@ -1,0 +1,110 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:astrea/components/custom_tag.dart';
+import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/translations/en.dart';
+import 'package:astrea/generated/assets.dart';
+
+class SelectGender extends StatefulWidget {
+  final int sex;
+  final Function(int) onNext;
+  const SelectGender({super.key, required this.sex, required this.onNext});
+
+  @override
+  State<SelectGender> createState() => _SelectGenderState();
+}
+
+class _SelectGenderState extends State<SelectGender> {
+  int selectSex = 0;
+  // 0 - unknown, 1 - male, 2 - female, 3 - non-binary
+
+  @override
+  void initState() {
+    super.initState();
+    selectSex = widget.sex;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              selectSex = 2;
+              widget.onNext.call(selectSex);
+            });
+          },
+          child: CustomTag(
+            isSelected: selectSex == 2,
+            padding: EdgeInsetsDirectional.symmetric(
+              horizontal: 12,
+              vertical: 0,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  margin: EdgeInsetsDirectional.only(end: 2),
+                  child: Image.asset(
+                    Assets.imageFemale,
+                    width: 16,
+                    height: 15,
+                    matchTextDirection: true,
+                  ),
+                ),
+                Text(
+                  LanKey.female.tr,
+                  style: TextStyle(
+                    color: const Color(0xFF333333),
+                    fontSize: 16,
+                    fontFamily: AppFonts.textFontFamily,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              selectSex = 1;
+              widget.onNext.call(selectSex);
+            });
+          },
+          child: CustomTag(
+            isSelected: selectSex == 1,
+            padding: EdgeInsetsDirectional.symmetric(
+              horizontal: 12,
+              vertical: 0,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  margin: EdgeInsetsDirectional.only(end: 2),
+                  child: Image.asset(
+                    Assets.imageMale,
+                    width: 16,
+                    height: 15,
+                    matchTextDirection: true,
+                  ),
+                ),
+                Text(
+                  LanKey.male.tr,
+                  style: TextStyle(
+                    color: const Color(0xFF333333),
+                    fontSize: 16,
+                    fontFamily: AppFonts.textFontFamily,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}

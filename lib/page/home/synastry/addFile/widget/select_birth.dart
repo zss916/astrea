@@ -1,0 +1,91 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/translations/en.dart';
+import 'package:astrea/generated/assets.dart';
+import 'package:astrea/page/home/synastry/addFile/widget/sheet/select_time_sheet.dart';
+
+class SelectBirth extends StatefulWidget {
+  final String birth;
+  final Function(String, int, int) onNext;
+  const SelectBirth({super.key, required this.birth, required this.onNext});
+
+  @override
+  _SelectBirthState createState() => _SelectBirthState();
+}
+
+class _SelectBirthState extends State<SelectBirth> {
+  String birth = '';
+
+  @override
+  void initState() {
+    super.initState();
+    birth = widget.birth;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        showDatePickerSheet((value, dateBirth, hourBirth, minuteBirth) {
+          setState(() {
+            birth = value;
+          });
+          widget.onNext(dateBirth, hourBirth, minuteBirth);
+        });
+      },
+      child: SizedBox(
+        height: 72,
+        width: double.maxFinite,
+        child: Row(
+          children: [
+            Container(
+              margin: EdgeInsetsDirectional.only(end: 10),
+              child: Text(
+                LanKey.dateOfBirth.tr,
+                style: TextStyle(
+                  color: const Color(0xFF6A676C),
+                  fontSize: 18,
+                  fontFamily: AppFonts.textFontFamily,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            Spacer(),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                AutoSizeText(
+                  birth.isNotEmpty ? birth : LanKey.selectBirthTime.tr,
+                  textAlign: TextAlign.start,
+                  maxFontSize: 18,
+                  minFontSize: 18,
+                  style: TextStyle(
+                    color: (birth.isNotEmpty)
+                        ? const Color(0xFF323133)
+                        : const Color(0xFF91929D),
+                    fontSize: 18,
+                    fontFamily: AppFonts.textFontFamily,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                Image.asset(
+                  Assets.imageArrowEnd,
+                  width: 24,
+                  height: 24,
+                  matchTextDirection: true,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
