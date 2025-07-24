@@ -282,6 +282,7 @@ class LanKey {
   static const business = "business";
   static const friends = "friends";
   static const love = "love";
+  static const wealth = "wealth";
   static const family = "family";
   static const career = "career";
   static const constellationChart = "constellation_chart";
@@ -302,6 +303,8 @@ class LanKey {
   static const capricornIntroduction = "capricorn_introduction";
   static const aquariusIntroduction = "aquarius_introduction";
   static const piscesIntroduction = "pisces_introduction";
+  static const horoscopeSummary = "horoscope_summary";
+
   //
 }
 
@@ -336,6 +339,7 @@ const en = {
   "friends": "Friends",
   "love": "Love",
   "family": "Family",
+  "wealth": "Wealth",
   "career": "Career",
   "to_start": "To start",
   "camera": "Take photos",
@@ -638,5 +642,6 @@ const en = {
   "fortune_guide": "Fortune Guide",
   "select_country_or_region": "Please select Country/Region",
   "select_city": "Please select City",
-  "introduction_to_constellations": "Introduction to Constellations"
+  "introduction_to_constellations": "Introduction to Constellations",
+  "horoscope_summary": "Horoscope Summary",
 };

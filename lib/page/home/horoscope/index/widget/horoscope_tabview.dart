@@ -1,16 +1,32 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/horoscope/detail/widget/astrologer_chat_btn.dart';
 import 'package:astrea/page/home/horoscope/detail/widget/blur_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class HoroscopeTabview extends StatelessWidget {
   final int tabIndex;
-
-  const HoroscopeTabview({super.key, required this.tabIndex});
+  final String content;
+  final int? love;
+  final int? career;
+  final int? wealth;
+  final String? guide;
+  final String? should;
+  final String? avoid;
+  const HoroscopeTabview({
+    super.key,
+    required this.tabIndex,
+    required this.content,
+    this.love,
+    this.career,
+    this.wealth,
+    this.guide,
+    this.should,
+    this.avoid,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +34,8 @@ class HoroscopeTabview extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       child: Container(
         margin: EdgeInsetsDirectional.only(
-          start: 20,
-          end: 20,
+          start: 16,
+          end: 16,
           top: 20,
           bottom: 100,
         ),
@@ -50,7 +66,7 @@ class HoroscopeTabview extends StatelessWidget {
                   buildGuide(),
 
                 ///today
-                buildContent(),
+                buildContent(content),
               ],
             ),
             PositionedDirectional(
@@ -68,7 +84,7 @@ class HoroscopeTabview extends StatelessWidget {
     );
   }
 
-  Widget buildContent() {
+  Widget buildContent(String content) {
     return Container(
       margin: EdgeInsetsDirectional.only(
         start: 16,
@@ -83,7 +99,7 @@ class HoroscopeTabview extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'Today\'s Horoscope\nSummary',
+                  LanKey.horoscopeSummary.tr,
                   style: TextStyle(
                     fontSize: 22,
                     fontFamily: AppFonts.textFontFamily,
@@ -91,7 +107,7 @@ class HoroscopeTabview extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsetsDirectional.only(start: 10),
+                margin: EdgeInsetsDirectional.only(start: 5),
                 child: Image.asset(
                   Assets.imageTodayImg,
                   matchTextDirection: true,
@@ -105,7 +121,7 @@ class HoroscopeTabview extends StatelessWidget {
             margin: EdgeInsetsDirectional.only(top: 20),
             width: double.maxFinite,
             child: Text(
-              'In love, singles might meet someone special, and those in relationships can deepen their bond.\n\nAt work, new chances await, thanks to your strong communication.\n\nLibra, spanning from September 23 to October 23, symbolizes balance and harmony. Ruled by Venus, Libras are elegant, sociable, yet often indecisive, always seeking equilibrium.',
+              content,
               style: TextStyle(
                 color: const Color(0xFF6A676C),
                 fontSize: 16,
@@ -135,7 +151,7 @@ class HoroscopeTabview extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Love',
+                      LanKey.love.tr,
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         color: const Color(0xFF323133),
@@ -149,7 +165,7 @@ class HoroscopeTabview extends StatelessWidget {
                       //width: 80,
                       height: 6,
                       child: LinearProgressIndicator(
-                        value: 0.4,
+                        value: (love ?? 0) / 100,
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         backgroundColor: Color(0xFFF0F1F5),
                         valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
@@ -164,7 +180,7 @@ class HoroscopeTabview extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Career',
+                      LanKey.career.tr,
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         color: const Color(0xFF323133),
@@ -178,7 +194,7 @@ class HoroscopeTabview extends StatelessWidget {
                       //width: 80,
                       height: 6,
                       child: LinearProgressIndicator(
-                        value: 0.4,
+                        value: (career ?? 0) / 100,
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         backgroundColor: Color(0xFFF0F1F5),
                         valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
@@ -193,7 +209,7 @@ class HoroscopeTabview extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Money',
+                      LanKey.wealth.tr,
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         color: const Color(0xFF323133),
@@ -207,7 +223,7 @@ class HoroscopeTabview extends StatelessWidget {
                       //width: 80,
                       height: 6,
                       child: LinearProgressIndicator(
-                        value: 0.4,
+                        value: (wealth ?? 0) / 100,
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         backgroundColor: Color(0xFFF0F1F5),
                         valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
@@ -221,180 +237,191 @@ class HoroscopeTabview extends StatelessWidget {
         ),
 
         ///should
-        Container(
-          //color: Colors.black38,
-          width: double.maxFinite,
-          margin: EdgeInsetsDirectional.only(
-            top: 12,
-            start: 16,
-            end: 16,
-            bottom: 12,
-          ),
-          child: Row(
-            children: [
-              Expanded(
-                child: Container(
-                  width: double.maxFinite,
-                  margin: EdgeInsetsDirectional.only(end: 25.w),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        LanKey.should.tr,
-                        style: TextStyle(
-                          color: const Color(0xFF585FC4),
-                          fontSize: 22,
-                          fontFamily: AppFonts.textFontFamily,
+        if ((should ?? "").isNotEmpty)
+          Container(
+            //color: Colors.black38,
+            width: double.maxFinite,
+            margin: EdgeInsetsDirectional.only(
+              top: 12,
+              start: 16,
+              end: 16,
+              bottom: 12,
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    width: double.maxFinite,
+                    margin: EdgeInsetsDirectional.only(end: 25.w),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          LanKey.should.tr,
+                          style: TextStyle(
+                            color: const Color(0xFF585FC4),
+                            fontSize: 22,
+                            fontFamily: AppFonts.textFontFamily,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'It\'s a good time to make travel plans, which may bring you pleasant experiences.',
-                        style: TextStyle(
-                          color: const Color(0xFF585FC4),
-                          fontSize: 16,
-                          fontFamily: AppFonts.textFontFamily,
+                        Text(
+                          should ?? "",
+                          style: TextStyle(
+                            color: const Color(0xFF585FC4),
+                            fontSize: 16,
+                            fontFamily: AppFonts.textFontFamily,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Image.asset(
-                Assets.imageShouldRight,
-                matchTextDirection: true,
-                width: 86,
-                height: 105,
-              ),
-            ],
+                Image.asset(
+                  Assets.imageShouldRight,
+                  matchTextDirection: true,
+                  width: 86,
+                  height: 105,
+                ),
+              ],
+            ),
           ),
-        ),
 
         ///avoid
-        Container(
-          // color: Colors.black38,
-          width: double.maxFinite,
-          margin: EdgeInsetsDirectional.only(
-            top: 12,
-            start: 16,
-            end: 16,
-            bottom: 16.h,
-          ),
-          child: Row(
-            children: [
-              Image.asset(
-                Assets.imageAvoidLeft,
-                width: 84,
-                height: 105,
-                matchTextDirection: true,
-              ),
-              Expanded(
-                child: Container(
-                  width: double.maxFinite,
-                  margin: EdgeInsetsDirectional.only(start: 25.w, end: 0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        LanKey.avoid.tr,
-                        style: TextStyle(
-                          color: const Color(0xFF323133),
-                          fontSize: 22,
-                          fontFamily: AppFonts.textFontFamily,
+        if ((avoid ?? "").isNotEmpty)
+          Container(
+            // color: Colors.black38,
+            width: double.maxFinite,
+            margin: EdgeInsetsDirectional.only(
+              top: 12,
+              start: 16,
+              end: 16,
+              bottom: 16.h,
+            ),
+            child: Row(
+              children: [
+                Image.asset(
+                  Assets.imageAvoidLeft,
+                  width: 84,
+                  height: 105,
+                  matchTextDirection: true,
+                ),
+                Expanded(
+                  child: Container(
+                    width: double.maxFinite,
+                    margin: EdgeInsetsDirectional.only(start: 25.w, end: 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          LanKey.avoid.tr,
+                          style: TextStyle(
+                            color: const Color(0xFF323133),
+                            fontSize: 22,
+                            fontFamily: AppFonts.textFontFamily,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'Refrain from being late for appointments, as it will leave a bad impression on others.',
-                        style: TextStyle(
-                          color: const Color(0xFF323133),
-                          fontSize: 16,
-                          fontFamily: AppFonts.textFontFamily,
+                        Text(
+                          avoid ?? "",
+                          style: TextStyle(
+                            color: const Color(0xFF323133),
+                            fontSize: 16,
+                            fontFamily: AppFonts.textFontFamily,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
       ],
     );
   }
 
   Widget buildGuide() {
-    return Column(
-      children: [
-        Container(
-          margin: EdgeInsetsDirectional.only(start: 16, end: 16, top: 8.h),
-          child: Image.asset(Assets.imageStarLine, matchTextDirection: true),
-        ),
-        Container(
-          margin: EdgeInsetsDirectional.only(
-            start: 16,
-            end: 16,
-            top: 12.h,
-            bottom: 12.h,
-          ),
-          child: Row(
+    return (guide ?? "").isNotEmpty
+        ? Column(
             children: [
               Container(
-                //color: Colors.black,
-                margin: EdgeInsetsDirectional.only(end: 10),
+                margin: EdgeInsetsDirectional.only(
+                  start: 16,
+                  end: 16,
+                  top: 8.h,
+                ),
                 child: Image.asset(
-                  Assets.imageGuideIcon,
-                  width: 80,
-                  height: 100,
+                  Assets.imageStarLine,
                   matchTextDirection: true,
                 ),
               ),
-              Expanded(
-                child: Column(
+              Container(
+                margin: EdgeInsetsDirectional.only(
+                  start: 16,
+                  end: 16,
+                  top: 12.h,
+                  bottom: 12.h,
+                ),
+                child: Row(
                   children: [
                     Container(
-                      margin: EdgeInsetsDirectional.only(bottom: 0.h),
-                      width: double.maxFinite,
-                      child: Text(
-                        LanKey.fortuneGuide.tr,
-                        style: TextStyle(
-                          color: const Color(0xFF585FC4),
-                          fontSize: 22,
-                          fontFamily: AppFonts.textFontFamily,
-                        ),
+                      //color: Colors.black,
+                      margin: EdgeInsetsDirectional.only(end: 10),
+                      child: Image.asset(
+                        Assets.imageGuideIcon,
+                        width: 80,
+                        height: 100,
+                        matchTextDirection: true,
                       ),
                     ),
-                    SizedBox(
-                      width: double.maxFinite,
-                      child: Text(
-                        'Engage in social activities, such as carrying a crystal, facing north.',
-                        style: TextStyle(
-                          color: const Color(0xFF585FC4),
-                          fontSize: 16,
-                          fontFamily: AppFonts.textFontFamily,
-                        ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsetsDirectional.only(bottom: 0.h),
+                            width: double.maxFinite,
+                            child: Text(
+                              LanKey.fortuneGuide.tr,
+                              style: TextStyle(
+                                color: const Color(0xFF585FC4),
+                                fontSize: 22,
+                                fontFamily: AppFonts.textFontFamily,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: double.maxFinite,
+                            child: Text(
+                              guide ?? "",
+                              style: TextStyle(
+                                color: const Color(0xFF585FC4),
+                                fontSize: 16,
+                                fontFamily: AppFonts.textFontFamily,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
               ),
-            ],
-          ),
-        ),
 
-        ///line
-        Container(
-          margin: EdgeInsetsDirectional.only(
-            start: 16,
-            end: 16,
-            top: 8,
-            bottom: 18,
-          ),
-          child: Image.asset(
-            Assets.imageHoroscopeVector,
-            matchTextDirection: true,
-          ),
-        ),
-      ],
-    );
+              ///line
+              Container(
+                margin: EdgeInsetsDirectional.only(
+                  start: 16,
+                  end: 16,
+                  top: 8,
+                  bottom: 18,
+                ),
+                child: Image.asset(
+                  Assets.imageHoroscopeVector,
+                  matchTextDirection: true,
+                ),
+              ),
+            ],
+          )
+        : SizedBox.shrink();
   }
 
   Widget old() => Stack(

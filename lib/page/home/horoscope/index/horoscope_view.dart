@@ -89,12 +89,38 @@ class _HoroscopeViewState extends State<HoroscopeView>
                             TabBarView(
                               controller: tabCtrl,
                               children: [
-                                HoroscopeTabview(tabIndex: 0),
-                                HoroscopeTabview(tabIndex: 1),
-                                HoroscopeTabview(tabIndex: 2),
-                                HoroscopeTabview(tabIndex: 3),
-                                HoroscopeTabview(tabIndex: 4),
-                                HoroscopeTabview(tabIndex: 5),
+                                HoroscopeTabview(
+                                  tabIndex: 0,
+                                  content: logic.yesterdaySummary,
+                                ),
+                                HoroscopeTabview(
+                                  tabIndex: 1,
+                                  content: logic.todaySummary,
+                                  love: logic.loveValue,
+                                  wealth: logic.wealthValue,
+                                  career: logic.careerValue,
+                                  guide: logic.todayGuide,
+                                  should: logic.todayShould,
+                                  avoid: logic.todayAvoid,
+                                ),
+                                HoroscopeTabview(
+                                  tabIndex: 2,
+                                  content: logic.tomorrowSummary,
+                                  guide: logic.tomorrowGuide,
+                                ),
+                                HoroscopeTabview(
+                                  tabIndex: 3,
+                                  content: logic.weekSummary,
+                                  guide: logic.weekGuide,
+                                ),
+                                HoroscopeTabview(
+                                  tabIndex: 4,
+                                  content: logic.monthSummary,
+                                ),
+                                HoroscopeTabview(
+                                  tabIndex: 5,
+                                  content: logic.yearSummary,
+                                ),
                               ],
                             ),
                             /*PositionedDirectional(

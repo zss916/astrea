@@ -184,8 +184,8 @@ class NatalChart extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsetsDirectional.symmetric(horizontal: 10.w),
-              width: 160.w,
-              height: 160.w,
+              width: 130.w,
+              height: 130.w,
               decoration: logic.natalChartImage.isEmpty
                   ? BoxDecoration()
                   : BoxDecoration(

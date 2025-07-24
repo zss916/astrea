@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HoroscopeTitle extends StatelessWidget {
   const HoroscopeTitle({super.key});
@@ -11,7 +11,7 @@ class HoroscopeTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       //color: Colors.amber,
-      padding: EdgeInsetsDirectional.only(start: 20, end: 20),
+      padding: EdgeInsetsDirectional.only(start: 16, end: 16),
       margin: EdgeInsetsDirectional.only(bottom: 0, top: 4),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,

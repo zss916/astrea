@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:astrea/generated/json/base/json_convert_content.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
 
@@ -1187,6 +1189,10 @@ $NatalReportPredicationAnalysisResultYesterdayFromJson(
   if (score != null) {
     natalReportPredicationAnalysisResultYesterday.score = score;
   }
+  final String? dod = jsonConvert.convert<String>(json['do']);
+  if (dod != null) {
+    natalReportPredicationAnalysisResultYesterday.dod = dod;
+  }
   final String? avoid = jsonConvert.convert<String>(json['avoid']);
   if (avoid != null) {
     natalReportPredicationAnalysisResultYesterday.avoid = avoid;
@@ -1211,6 +1217,7 @@ Map<String, dynamic> $NatalReportPredicationAnalysisResultYesterdayToJson(
   data['career'] = entity.career;
   data['wealth'] = entity.wealth;
   data['score'] = entity.score?.toJson();
+  data['do'] = entity.dod;
   data['avoid'] = entity.avoid;
   data['luck-boosting-tip'] = entity.luckBoostingTip;
   return data;
@@ -1225,6 +1232,7 @@ extension NatalReportPredicationAnalysisResultYesterdayExtension
     String? career,
     String? wealth,
     NatalReportPredicationAnalysisResultYesterdayScore? score,
+    String? dod,
     String? avoid,
     String? luckBoostingTip,
   }) {
@@ -1235,6 +1243,7 @@ extension NatalReportPredicationAnalysisResultYesterdayExtension
       ..career = career ?? this.career
       ..wealth = wealth ?? this.wealth
       ..score = score ?? this.score
+      ..dod = dod ?? this.dod
       ..avoid = avoid ?? this.avoid
       ..luckBoostingTip = luckBoostingTip ?? this.luckBoostingTip;
   }
@@ -1318,6 +1327,10 @@ $NatalReportPredicationAnalysisResultTodayFromJson(Map<String, dynamic> json) {
   if (score != null) {
     natalReportPredicationAnalysisResultToday.score = score;
   }
+  final String? dod = jsonConvert.convert<String>(json['do']);
+  if (dod != null) {
+    natalReportPredicationAnalysisResultToday.dod = dod;
+  }
   final String? avoid = jsonConvert.convert<String>(json['avoid']);
   if (avoid != null) {
     natalReportPredicationAnalysisResultToday.avoid = avoid;
@@ -1341,6 +1354,7 @@ Map<String, dynamic> $NatalReportPredicationAnalysisResultTodayToJson(
   data['career'] = entity.career;
   data['wealth'] = entity.wealth;
   data['score'] = entity.score?.toJson();
+  data['do'] = entity.dod;
   data['avoid'] = entity.avoid;
   data['luck-boosting-tip'] = entity.luckBoostingTip;
   return data;
@@ -1355,6 +1369,7 @@ extension NatalReportPredicationAnalysisResultTodayExtension
     String? career,
     String? wealth,
     NatalReportPredicationAnalysisResultTodayScore? score,
+    String? dod,
     String? avoid,
     String? luckBoostingTip,
   }) {
@@ -1365,6 +1380,7 @@ extension NatalReportPredicationAnalysisResultTodayExtension
       ..career = career ?? this.career
       ..wealth = wealth ?? this.wealth
       ..score = score ?? this.score
+      ..dod = dod ?? this.dod
       ..avoid = avoid ?? this.avoid
       ..luckBoostingTip = luckBoostingTip ?? this.luckBoostingTip;
   }
@@ -1452,6 +1468,10 @@ $NatalReportPredicationAnalysisResultTomorrowFromJson(
   if (score != null) {
     natalReportPredicationAnalysisResultTomorrow.score = score;
   }
+  final String? dod = jsonConvert.convert<String>(json['do']);
+  if (dod != null) {
+    natalReportPredicationAnalysisResultTomorrow.dod = dod;
+  }
   final String? avoid = jsonConvert.convert<String>(json['avoid']);
   if (avoid != null) {
     natalReportPredicationAnalysisResultTomorrow.avoid = avoid;
@@ -1476,6 +1496,7 @@ Map<String, dynamic> $NatalReportPredicationAnalysisResultTomorrowToJson(
   data['career'] = entity.career;
   data['wealth'] = entity.wealth;
   data['score'] = entity.score?.toJson();
+  data['do'] = entity.dod;
   data['avoid'] = entity.avoid;
   data['luck-boosting-tip'] = entity.luckBoostingTip;
   return data;
@@ -1490,6 +1511,7 @@ extension NatalReportPredicationAnalysisResultTomorrowExtension
     String? career,
     String? wealth,
     NatalReportPredicationAnalysisResultTomorrowScore? score,
+    String? dod,
     String? avoid,
     String? luckBoostingTip,
   }) {
@@ -1500,6 +1522,7 @@ extension NatalReportPredicationAnalysisResultTomorrowExtension
       ..career = career ?? this.career
       ..wealth = wealth ?? this.wealth
       ..score = score ?? this.score
+      ..dod = dod ?? this.dod
       ..avoid = avoid ?? this.avoid
       ..luckBoostingTip = luckBoostingTip ?? this.luckBoostingTip;
   }

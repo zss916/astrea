@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:astrea/components/tab/kugou_tabbar.dart';
 import 'package:astrea/components/tab/rrect_indicator.dart';
 import 'package:astrea/components/tab_bar_delegate.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HoroscopeTabBar extends StatelessWidget {
   final TabController tabCtrl;
@@ -21,7 +21,7 @@ class HoroscopeTabBar extends StatelessWidget {
           preferredSize: const Size.fromHeight(44),
           child: Container(
             decoration: BoxDecoration(color: AppColor.pageBackground),
-            padding: EdgeInsetsDirectional.only(start: 8, end: 8),
+            padding: EdgeInsetsDirectional.only(start: 4, end: 4),
             child: KuGouTabBar(
               tabs: [
                 Tab(text: LanKey.yesterday.tr),

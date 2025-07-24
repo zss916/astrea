@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/bus/app_event_bus.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/horoscope/index/widget/add_friend_tip_box.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_list_view/horoscope_list_item.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class HoroscopeListview extends StatelessWidget {
   final Function(int)? onSelect;
@@ -63,7 +63,7 @@ class HoroscopeListview extends StatelessWidget {
         Container(
           //color: Colors.amber,
           padding: EdgeInsetsDirectional.only(top: 12),
-          margin: EdgeInsetsDirectional.only(start: 20, end: 20, top: 12),
+          margin: EdgeInsetsDirectional.only(start: 16, end: 16, top: 12),
           height: 75 + 12,
           width: double.maxFinite,
           child: Row(

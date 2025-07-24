@@ -90,8 +90,8 @@ class StarContent extends StatelessWidget {
     return Container(
       //constraints: BoxConstraints(minHeight: 305),
       margin: EdgeInsetsDirectional.only(
-        start: 20,
-        end: 20,
+        start: 16,
+        end: 16,
         top: 20.h,
         bottom: 20.h,
       ),
