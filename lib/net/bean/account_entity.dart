@@ -56,8 +56,13 @@ class AccountEntity {
   String? friendId;
 
   ///显示生日
-  String get showBirthDay =>
-      "${CalculateTools.formattedTime("$birthday")}${(birthHour ?? 0).formatted}:${(birthMinute ?? 0).formatted} ${CalculateTools.formattedAmOrPm(birthHour ?? 0)}";
+  String get showBirthDay {
+    if ((birthday ?? "").isNotEmpty) {
+      return "${CalculateTools.formattedTime("$birthday")}${(birthHour ?? 0).formatted}:${(birthMinute ?? 0).formatted} ${CalculateTools.formattedAmOrPm(birthHour ?? 0)}";
+    } else {
+      return "--";
+    }
+  }
 
   AccountEntity();
 

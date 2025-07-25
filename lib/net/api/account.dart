@@ -5,6 +5,7 @@ import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/net/bean/account_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 ///account
@@ -105,7 +106,15 @@ abstract class AccountAPI {
         "locality": "Afghanistan/Badghis/Ghormach",
       };
 
-      var result = await Http.instance.patch(ApiPath.updateAccount, data: d);
+      var result = await Http.instance.patch(
+        ApiPath.updateAccount,
+        data: d,
+        options: Options(
+          sendTimeout: Duration(minutes: 5),
+          receiveTimeout: Duration(minutes: 5),
+          receiveDataWhenStatusError: true,
+        ),
+      );
       if (result["code"] != 0) {
         AppLoading.toast("${result["msg"]}");
       }

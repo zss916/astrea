@@ -17,7 +17,7 @@ Future<void> main() async {
   await AppCommonSetting.init();
 
   ///解决证书验证问题
-  HttpOverrides.global = AppHttpOverrides();
+  HttpOverrides.global = MyHttpOverrides();
   runApp(const App());
 }
 
@@ -51,7 +51,6 @@ class App extends StatelessWidget {
         routingCallback: (routing) {
           debugPrint("routing:${routing?.current}");
         },
-
         // home: PlaceOfBirthPage(),
         //initialRoute: APages.splash,
         initialRoute: APages.home,

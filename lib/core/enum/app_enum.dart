@@ -1,3 +1,7 @@
+import 'package:astrea/core/translations/en.dart';
+import 'package:astrea/generated/assets.dart';
+import 'package:get/get.dart';
+
 enum LoginChannel {
   email(value: 0, symbol: 'Email'),
   google(value: 1, symbol: 'Google'),
@@ -30,3 +34,41 @@ enum LoginStep {
   static String getSymbol(int value) =>
       LoginStep.values.firstWhere((e) => e.value == value).symbol;
 }
+
+enum AppPlanets {
+  aries(value: 0, symbol: 'Aries'),
+  taurus(value: 1, symbol: 'Taurus'),
+  gemini(value: 3, symbol: 'Gemini'),
+  cancer(value: 4, symbol: 'Cancer,'),
+  leo(value: 5, symbol: 'Leo'),
+  virgo(value: 6, symbol: 'Virgo'),
+  libra(value: 7, symbol: 'Libra'),
+  scorpio(value: 8, symbol: 'Scorpio'),
+  sagittarius(value: 9, symbol: 'Sagittarius'),
+  capricorn(value: 10, symbol: 'Capricorn'),
+  aquarius(value: 11, symbol: 'Aquarius'),
+  pisces(value: 12, symbol: 'Pisces');
+
+  final int value;
+  final String symbol;
+
+  const AppPlanets({required this.value, required this.symbol});
+
+  static String getSymbol(int value) =>
+      AppPlanets.values.firstWhere((e) => e.value == value).symbol;
+}
+
+List<Map<String, dynamic>> get starIcons => [
+  {"img": Assets.imageAnalysisAries, "name": LanKey.aries.tr},
+  {"img": Assets.imageAnalysisTaurus, "name": LanKey.taurus.tr},
+  {"img": Assets.imageAnalysisGemini, "name": LanKey.gemini.tr},
+  {"img": Assets.imageAnalysisCancer, "name": LanKey.cancer.tr},
+  {"img": Assets.imageAnalysisLeo, "name": LanKey.leo.tr},
+  {"img": Assets.imageAnalysisVirgo, "name": LanKey.virgo.tr},
+  {"img": Assets.imageAnalysisLibra, "name": LanKey.libra.tr},
+  {"img": Assets.imageAnalysisScorpio, "name": LanKey.scorpio.tr},
+  {"img": Assets.imageAnalysisSagittarius, "name": LanKey.sagittarius.tr},
+  {"img": Assets.imageAnalysisCapricorn, "name": LanKey.capricorn.tr},
+  {"img": Assets.imageAnalysisAquarius, "name": LanKey.aquarius.tr},
+  {"img": Assets.imageAnalysisPisces, "name": LanKey.pisces.tr},
+];

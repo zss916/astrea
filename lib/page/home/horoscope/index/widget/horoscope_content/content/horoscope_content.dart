@@ -61,7 +61,22 @@ class HoroscopeContent extends StatelessWidget {
               ),
             Column(
               children: [
-                NatalChart(isShow: isShow, logic: logic),
+                NatalChart(
+                  isShow: isShow,
+                  nickName: logic.nickName,
+                  showBirthday: logic.showBirthday,
+                  sunSign: logic.sunSign,
+                  sunSignIcon: logic.sunSignIcon,
+                  moonSign: logic.moonSign,
+                  moonSignIcon: logic.moonSignIcon,
+                  ascendantSign: logic.ascendantSign,
+                  ascendantSignIcon: logic.ascendantSignIcon,
+                  natalChartImage: logic.natalChartImage,
+                  element: logic.element,
+                  ruler: logic.ruler,
+                  form: logic.form,
+                ),
+                // FreeUnlockingCard(),
                 if (isShow) PersonalityAnalysis(logic: logic),
               ],
             ),

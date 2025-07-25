@@ -16,6 +16,9 @@ class HoroscopeTabview extends StatelessWidget {
   final String? guide;
   final String? should;
   final String? avoid;
+  final String? loveContent;
+  final String? careerContent;
+  final String? wealthContent;
   const HoroscopeTabview({
     super.key,
     required this.tabIndex,
@@ -26,6 +29,9 @@ class HoroscopeTabview extends StatelessWidget {
     this.guide,
     this.should,
     this.avoid,
+    this.loveContent,
+    this.careerContent,
+    this.wealthContent,
   });
 
   @override
@@ -66,7 +72,12 @@ class HoroscopeTabview extends StatelessWidget {
                   buildGuide(),
 
                 ///today
-                buildContent(content),
+                buildContent(
+                  loveContent: loveContent,
+                  careerContent: careerContent,
+                  wealthContent: wealthContent,
+                  summary: content,
+                ),
               ],
             ),
             PositionedDirectional(
@@ -84,7 +95,12 @@ class HoroscopeTabview extends StatelessWidget {
     );
   }
 
-  Widget buildContent(String content) {
+  Widget buildContent({
+    String? loveContent,
+    String? careerContent,
+    String? wealthContent,
+    required String summary,
+  }) {
     return Container(
       margin: EdgeInsetsDirectional.only(
         start: 16,
@@ -118,15 +134,40 @@ class HoroscopeTabview extends StatelessWidget {
             ],
           ),
           Container(
-            margin: EdgeInsetsDirectional.only(top: 20),
+            margin: EdgeInsetsDirectional.only(top: 20.h),
             width: double.maxFinite,
-            child: Text(
-              content,
-              style: TextStyle(
-                color: const Color(0xFF6A676C),
-                fontSize: 16,
-                fontFamily: AppFonts.textFontFamily,
-              ),
+            child: Column(
+              spacing: 16.h,
+              children: [
+                if ((loveContent ?? "").isNotEmpty)
+                  buildPersonalTitle(
+                    title: "${LanKey.love.tr}: ",
+                    content: loveContent ?? "",
+                  ),
+                if ((careerContent ?? "").isNotEmpty)
+                  buildPersonalTitle(
+                    title: "${LanKey.career.tr}: ",
+                    content: careerContent ?? "",
+                  ),
+                if ((wealthContent ?? "").isNotEmpty)
+                  buildPersonalTitle(
+                    title: "${LanKey.wealth.tr}: ",
+                    content: wealthContent ?? "",
+                  ),
+                Container(
+                  margin: EdgeInsetsDirectional.only(top: 0),
+                  width: double.maxFinite,
+                  child: Text(
+                    content,
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      color: const Color(0xFF6A676C),
+                      fontSize: 16,
+                      fontFamily: AppFonts.textFontFamily,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -423,6 +464,36 @@ class HoroscopeTabview extends StatelessWidget {
           )
         : SizedBox.shrink();
   }
+
+  Widget buildPersonalTitle({required String title, required String content}) =>
+      Container(
+        margin: EdgeInsetsDirectional.only(top: 0),
+        width: double.maxFinite,
+        child: Text.rich(
+          // maxLines: 3,
+          // overflow: TextOverflow.ellipsis,
+          TextSpan(
+            children: [
+              TextSpan(
+                text: title,
+                style: TextStyle(
+                  color: const Color(0xFF585FC4),
+                  fontSize: 16,
+                  fontFamily: AppFonts.textFontFamily,
+                ),
+              ),
+              TextSpan(
+                text: content,
+                style: TextStyle(
+                  color: const Color(0xFF6A676C),
+                  fontSize: 16,
+                  fontFamily: AppFonts.textFontFamily,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
 
   Widget old() => Stack(
     alignment: AlignmentDirectional.topCenter,

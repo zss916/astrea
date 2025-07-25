@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:core';
 
+import 'package:astrea/core/enum/app_enum.dart';
 import 'package:astrea/generated/json/base/json_field.dart';
 import 'package:astrea/generated/json/natal_report_entity.g.dart';
+import 'package:sprintf/sprintf.dart';
 
 export 'package:astrea/generated/json/natal_report_entity.g.dart';
 
@@ -212,6 +214,21 @@ class NatalReportNatalChartReportPlanetsMercury {
 
   NatalReportNatalChartReportPlanetsMercury();
 
+  String get showInterpretation => interpretation ?? "";
+
+  ///显示信息
+  String get showPlanetInfo => sprintf("%s %s %s", [
+    (sign ?? ""),
+    (zodiacDegree == null ? "" : "$zodiacDegree°"),
+    (house == null ? "" : "· ${house}st house"),
+  ]).trim();
+
+  String get showIcon => starIcons.firstWhere(
+    (e) =>
+        (e["name"] ?? '').toString().toLowerCase() ==
+        (sign ?? "").toLowerCase(),
+  )["img"];
+
   factory NatalReportNatalChartReportPlanetsMercury.fromJson(
     Map<String, dynamic> json,
   ) => $NatalReportNatalChartReportPlanetsMercuryFromJson(json);
@@ -239,6 +256,20 @@ class NatalReportNatalChartReportPlanetsVenus {
 
   NatalReportNatalChartReportPlanetsVenus();
 
+  String get showInterpretation => interpretation ?? "";
+  String get showIcon => starIcons.firstWhere(
+    (e) =>
+        (e["name"] ?? '').toString().toLowerCase() ==
+        (sign ?? "").toLowerCase(),
+  )["img"];
+
+  ///显示信息
+  String get showPlanetInfo => sprintf("%s %s %s", [
+    (sign ?? ""),
+    (zodiacDegree == null ? "" : "$zodiacDegree°"),
+    (house == null ? "" : "· ${house}st house"),
+  ]).trim();
+
   factory NatalReportNatalChartReportPlanetsVenus.fromJson(
     Map<String, dynamic> json,
   ) => $NatalReportNatalChartReportPlanetsVenusFromJson(json);
@@ -265,6 +296,19 @@ class NatalReportNatalChartReportPlanetsMars {
   String? interpretation;
 
   NatalReportNatalChartReportPlanetsMars();
+  String get showInterpretation => interpretation ?? "";
+  String get showIcon => starIcons.firstWhere(
+    (e) =>
+        (e["name"] ?? '').toString().toLowerCase() ==
+        (sign ?? "").toLowerCase(),
+  )["img"];
+
+  ///显示信息
+  String get showPlanetInfo => sprintf("%s %s %s", [
+    (sign ?? ""),
+    (zodiacDegree == null ? "" : "$zodiacDegree°"),
+    (house == null ? "" : "· ${house}st house"),
+  ]).trim();
 
   factory NatalReportNatalChartReportPlanetsMars.fromJson(
     Map<String, dynamic> json,
@@ -293,6 +337,20 @@ class NatalReportNatalChartReportPlanetsJupiter {
 
   NatalReportNatalChartReportPlanetsJupiter();
 
+  String get showInterpretation => interpretation ?? "";
+  String get showIcon => starIcons.firstWhere(
+    (e) =>
+        (e["name"] ?? '').toString().toLowerCase() ==
+        (sign ?? "").toLowerCase(),
+  )["img"];
+
+  ///显示信息
+  String get showPlanetInfo => sprintf("%s %s %s", [
+    (sign ?? ""),
+    (zodiacDegree == null ? "" : "$zodiacDegree°"),
+    (house == null ? "" : "· ${house}st house"),
+  ]).trim();
+
   factory NatalReportNatalChartReportPlanetsJupiter.fromJson(
     Map<String, dynamic> json,
   ) => $NatalReportNatalChartReportPlanetsJupiterFromJson(json);
@@ -319,6 +377,19 @@ class NatalReportNatalChartReportPlanetsSaturn {
   String? interpretation;
 
   NatalReportNatalChartReportPlanetsSaturn();
+  String get showInterpretation => interpretation ?? "";
+  String get showIcon => starIcons.firstWhere(
+    (e) =>
+        (e["name"] ?? '').toString().toLowerCase() ==
+        (sign ?? "").toLowerCase(),
+  )["img"];
+
+  ///显示信息
+  String get showPlanetInfo => sprintf("%s %s %s", [
+    (sign ?? ""),
+    (zodiacDegree == null ? "" : "$zodiacDegree°"),
+    (house == null ? "" : "· ${house}st house"),
+  ]).trim();
 
   factory NatalReportNatalChartReportPlanetsSaturn.fromJson(
     Map<String, dynamic> json,
@@ -346,6 +417,19 @@ class NatalReportNatalChartReportPlanetsUranus {
   String? interpretation;
 
   NatalReportNatalChartReportPlanetsUranus();
+  String get showInterpretation => interpretation ?? "";
+  String get showIcon => starIcons.firstWhere(
+    (e) =>
+        (e["name"] ?? '').toString().toLowerCase() ==
+        (sign ?? "").toLowerCase(),
+  )["img"];
+
+  ///显示信息
+  String get showPlanetInfo => sprintf("%s %s %s", [
+    (sign ?? ""),
+    (zodiacDegree == null ? "" : "$zodiacDegree°"),
+    (house == null ? "" : "· ${house}st house"),
+  ]).trim();
 
   factory NatalReportNatalChartReportPlanetsUranus.fromJson(
     Map<String, dynamic> json,
@@ -373,6 +457,19 @@ class NatalReportNatalChartReportPlanetsNeptune {
   String? interpretation;
 
   NatalReportNatalChartReportPlanetsNeptune();
+  String get showInterpretation => interpretation ?? "";
+  String get showIcon => starIcons.firstWhere(
+    (e) =>
+        (e["name"] ?? '').toString().toLowerCase() ==
+        (sign ?? "").toLowerCase(),
+  )["img"];
+
+  ///显示信息
+  String get showPlanetInfo => sprintf("%s %s %s", [
+    (sign ?? ""),
+    (zodiacDegree == null ? "" : "$zodiacDegree°"),
+    (house == null ? "" : "· ${house}st house"),
+  ]).trim();
 
   factory NatalReportNatalChartReportPlanetsNeptune.fromJson(
     Map<String, dynamic> json,
@@ -400,6 +497,19 @@ class NatalReportNatalChartReportPlanetsPluto {
   String? interpretation;
 
   NatalReportNatalChartReportPlanetsPluto();
+  String get showInterpretation => interpretation ?? "";
+  String get showIcon => starIcons.firstWhere(
+    (e) =>
+        (e["name"] ?? '').toString().toLowerCase() ==
+        (sign ?? "").toLowerCase(),
+  )["img"];
+
+  ///显示信息
+  String get showPlanetInfo => sprintf("%s %s %s", [
+    (sign ?? ""),
+    (zodiacDegree == null ? "" : "$zodiacDegree°"),
+    (house == null ? "" : "· ${house}st house"),
+  ]).trim();
 
   factory NatalReportNatalChartReportPlanetsPluto.fromJson(
     Map<String, dynamic> json,

@@ -102,6 +102,9 @@ class _HoroscopeViewState extends State<HoroscopeView>
                                   guide: logic.todayGuide,
                                   should: logic.todayShould,
                                   avoid: logic.todayAvoid,
+                                  loveContent: logic.todayLove,
+                                  careerContent: logic.todayCareer,
+                                  wealthContent: logic.todayWealth,
                                 ),
                                 HoroscopeTabview(
                                   tabIndex: 2,

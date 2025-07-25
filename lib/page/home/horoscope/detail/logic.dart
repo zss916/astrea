@@ -1,12 +1,6 @@
-import 'package:astrea/components/star.dart';
-import 'package:astrea/core/storage/account_service.dart';
-import 'package:astrea/net/api/account.dart';
-import 'package:astrea/net/api/astro.dart';
-import 'package:astrea/net/bean/account_entity.dart';
-import 'package:astrea/net/bean/natal_report_entity.dart';
-import 'package:get/get.dart';
+part of 'index.dart';
 
-class HoroscopeLogic extends GetxController {
+class AnalysisLogic extends GetxController {
   NatalReportEntity? data;
   AccountEntity? account;
   bool isNewUser = true;
@@ -29,6 +23,9 @@ class HoroscopeLogic extends GetxController {
   String get element => data?.natalChartResult?.element ?? "";
   String get form => data?.natalChartResult?.form ?? "";
   String get ruler => data?.natalChartResult?.ruler ?? "";
+  String get luckyColor => data?.natalChartResult?.luckColor ?? "--";
+  String get luckyNumber => data?.natalChartResult?.luckNumber ?? "--";
+  String get luckyGem => data?.natalChartResult?.luckGemstone ?? "--";
 
   ///三大主行
   String get sunSignInterpretation =>
@@ -55,12 +52,6 @@ class HoroscopeLogic extends GetxController {
   String get todayGuide =>
       data?.predicationAnalysisResult?.today?.luckBoostingTip ?? "";
 
-  String get todayLove => data?.predicationAnalysisResult?.today?.love ?? "";
-  String get todayCareer =>
-      data?.predicationAnalysisResult?.today?.career ?? "";
-  String get todayWealth =>
-      data?.predicationAnalysisResult?.today?.wealth ?? "";
-
   ///tomorrow
   String get tomorrowSummary =>
       data?.predicationAnalysisResult?.tomorrow?.summary ?? "";
@@ -81,6 +72,23 @@ class HoroscopeLogic extends GetxController {
   /// year
   String get yearSummary =>
       data?.predicationAnalysisResult?.year?.summary ?? "";
+
+  ///行星
+  List<NatalReportNatalChartReportPlanets> get planetList =>
+      data?.natalChartReport?.planets ?? [];
+  NatalReportNatalChartReportPlanetsMercury? get mercury =>
+      planetList.first.mercury;
+  NatalReportNatalChartReportPlanetsVenus? get venus => planetList.first.venus;
+  NatalReportNatalChartReportPlanetsMars? get mars => planetList.first.mars;
+  NatalReportNatalChartReportPlanetsJupiter? get jupiter =>
+      planetList.first.jupiter;
+  NatalReportNatalChartReportPlanetsSaturn? get saturn =>
+      planetList.first.saturn;
+  NatalReportNatalChartReportPlanetsUranus? get uranus =>
+      planetList.first.uranus;
+  NatalReportNatalChartReportPlanetsNeptune? get neptune =>
+      planetList.first.neptune;
+  NatalReportNatalChartReportPlanetsPluto? get pluto => planetList.first.pluto;
 
   @override
   void onInit() {

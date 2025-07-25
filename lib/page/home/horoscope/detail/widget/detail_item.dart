@@ -1,31 +1,22 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
-import 'package:astrea/core/translations/en.dart';
-import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/horoscope/detail/widget/blur_widget.dart';
+import 'package:flutter/material.dart';
 
 class DetailItem extends StatelessWidget {
   final int index;
+  final String info;
+  final String content;
+  final String icon;
 
-  const DetailItem({super.key, required this.index});
+  const DetailItem({
+    super.key,
+    required this.index,
+    required this.info,
+    required this.content,
+    required this.icon,
+  });
 
-  List<String> get icons => [
-    Assets.imageAnalysisAries,
-    Assets.imageAnalysisTaurus,
-    Assets.imageAnalysisGemini,
-    Assets.imageAnalysisCancer,
-    Assets.imageAnalysisLeo,
-    Assets.imageAnalysisVirgo,
-    Assets.imageAnalysisLibra,
-    Assets.imageAnalysisScorpio,
-    Assets.imageAnalysisSagittarius,
-    Assets.imageAnalysisCapricorn,
-    Assets.imageAnalysisAquarius,
-    Assets.imageAnalysisPisces,
-  ];
-
-  List<String> get titles => [
+  /*List<String> get titles => [
     LanKey.aries.tr,
     LanKey.taurus.tr,
     LanKey.gemini.tr,
@@ -38,6 +29,17 @@ class DetailItem extends StatelessWidget {
     LanKey.capricorn.tr,
     LanKey.aquarius.tr,
     LanKey.pisces.tr,
+  ];*/
+
+  List<String> get titles => [
+    "Mercury",
+    "Venus",
+    "Mars",
+    "Jupiter",
+    "Saturn",
+    "Uranus",
+    "Neptune",
+    "Pluto",
   ];
 
   @override
@@ -70,7 +72,7 @@ class DetailItem extends StatelessWidget {
                               ),
                             ),
                             TextSpan(
-                              text: 'Libra 29° · 1st house',
+                              text: info,
                               style: TextStyle(
                                 color: const Color(0xFF323133),
                                 fontSize: 16,
@@ -93,7 +95,7 @@ class DetailItem extends StatelessWidget {
                   margin: EdgeInsetsDirectional.only(top: 14),
                   width: double.maxFinite,
                   child: Text(
-                    'Use elegant language to resolve conflicts, hate rude expressions, and be wary of sharp words when you feel unfair.',
+                    content,
                     style: TextStyle(
                       color: const Color(0xFF91929D),
                       fontSize: 16,
@@ -110,7 +112,7 @@ class DetailItem extends StatelessWidget {
           top: 2,
           end: 2,
           child: Image.asset(
-            icons[index],
+            icon,
             matchTextDirection: true,
             width: 44,
             height: 44,

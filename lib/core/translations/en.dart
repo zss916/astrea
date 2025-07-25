@@ -304,7 +304,12 @@ class LanKey {
   static const aquariusIntroduction = "aquarius_introduction";
   static const piscesIntroduction = "pisces_introduction";
   static const horoscopeSummary = "horoscope_summary";
-
+  static const sunSignTitle = "sun_sign_title";
+  static const sunSignTitleIcon = "sun_sign_title_icon";
+  static const moonSignTitle = "moon_sign_title";
+  static const moonSignTitleIcon = "moon_sign_title_icon";
+  static const ascendantSignTitle = "ascendant_sign_title";
+  static const ascendantSignTitleIcon = "ascendant_sign_title_icon";
   //
 }
 
@@ -643,5 +648,11 @@ const en = {
   "select_country_or_region": "Please select Country/Region",
   "select_city": "Please select City",
   "introduction_to_constellations": "Introduction to Constellations",
-  "horoscope_summary": "Horoscope Summary",
+  "horoscope_summary": "Personal fortune \ninterpretation",
+  "sun_sign_title": "Sun sign: ",
+  "sun_sign_title_icon": "☀️ ",
+  "moon_sign_title": "Moon Sign: ",
+  "moon_sign_title_icon": "🌙 ",
+  "ascendant_sign_title": "Ascendant: ",
+  "ascendant_sign_title_icon": "💫 ",
 };

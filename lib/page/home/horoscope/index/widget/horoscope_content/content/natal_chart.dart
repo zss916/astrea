@@ -1,22 +1,48 @@
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
-import 'package:astrea/page/home/horoscope/index/logic.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class NatalChart extends StatelessWidget {
   final bool isShow;
-  final HoroscopeLogic logic;
-  const NatalChart({super.key, required this.isShow, required this.logic});
+  final String nickName;
+  final String showBirthday;
+  final String sunSign;
+  final String? sunSignIcon;
+  final String moonSign;
+  final String? moonSignIcon;
+  final String ascendantSign;
+  final String? ascendantSignIcon;
+  final String natalChartImage;
+  final String element;
+  final String ruler;
+  final String form;
+
+  const NatalChart({
+    super.key,
+    required this.isShow,
+    required this.showBirthday,
+    required this.nickName,
+    required this.sunSign,
+    required this.moonSign,
+    required this.ascendantSign,
+    this.sunSignIcon,
+    this.moonSignIcon,
+    this.ascendantSignIcon,
+    required this.natalChartImage,
+    required this.element,
+    required this.ruler,
+    required this.form,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
-          logic.nickName,
+          nickName,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.black,
@@ -27,7 +53,7 @@ class NatalChart extends StatelessWidget {
         Container(
           margin: EdgeInsetsDirectional.only(top: 6, bottom: 15),
           child: Text(
-            logic.showBirthday,
+            showBirthday,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: const Color(0xFF6A676C),
@@ -38,11 +64,6 @@ class NatalChart extends StatelessWidget {
         ),
         Row(
           children: [
-            /*Image.network(
-              "https://s3.ap-south-1.amazonaws.com/western-chart/254e6ec0-67a4-11f0-9c43-1190c2fb8802.svg",
-              width: 50,
-              height: 50,
-            ),*/
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -68,7 +89,7 @@ class NatalChart extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              logic.sunSign,
+                              sunSign,
                               textAlign: TextAlign.end,
                               style: TextStyle(
                                 color: const Color(0xFF323133),
@@ -78,9 +99,9 @@ class NatalChart extends StatelessWidget {
                             ),
                           ),
                           SizedBox(width: 3.w),
-                          if ((logic.sunSignIcon ?? "").isNotEmpty)
+                          if ((sunSignIcon ?? "").isNotEmpty)
                             Image.asset(
-                              logic.sunSignIcon ?? '',
+                              sunSignIcon ?? '',
                               width: 14,
                               height: 14,
                               matchTextDirection: true,
@@ -111,7 +132,7 @@ class NatalChart extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              logic.moonSign,
+                              moonSign,
                               textAlign: TextAlign.end,
                               style: TextStyle(
                                 color: const Color(0xFF323133) /* Color1 */,
@@ -121,9 +142,9 @@ class NatalChart extends StatelessWidget {
                             ),
                           ),
                           SizedBox(width: 3.w),
-                          if ((logic.moonSignIcon ?? "").isNotEmpty)
+                          if ((moonSignIcon ?? "").isNotEmpty)
                             Image.asset(
-                              logic.moonSignIcon ?? '',
+                              moonSignIcon ?? '',
                               width: 14,
                               height: 14,
                               matchTextDirection: true,
@@ -153,7 +174,7 @@ class NatalChart extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              logic.ascendantSign,
+                              ascendantSign,
                               textAlign: TextAlign.end,
                               style: TextStyle(
                                 color: const Color(0xFF323133),
@@ -163,9 +184,9 @@ class NatalChart extends StatelessWidget {
                             ),
                           ),
                           SizedBox(width: 3.w),
-                          if ((logic.ascendantSignIcon ?? "").isNotEmpty)
+                          if ((ascendantSignIcon ?? "").isNotEmpty)
                             Image.asset(
-                              logic.ascendantSignIcon ?? '',
+                              ascendantSignIcon ?? '',
                               width: 14,
                               height: 14,
                               matchTextDirection: true,
@@ -179,6 +200,16 @@ class NatalChart extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsetsDirectional.symmetric(horizontal: 10.w),
+              child: SvgPicture.network(
+                natalChartImage,
+                width: 130.w,
+                height: 130.w,
+                placeholderBuilder: (_) => SizedBox(),
+              ),
+            ),
+
+            /*Container(
+              margin: EdgeInsetsDirectional.symmetric(horizontal: 10.w),
               width: 130.w,
               height: 130.w,
               decoration: logic.natalChartImage.isEmpty
@@ -188,15 +219,17 @@ class NatalChart extends StatelessWidget {
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: CachedNetworkImageProvider(
-                          "https://s3.ap-south-1.amazonaws.com/western-chart/254e6ec0-67a4-11f0-9c43-1190c2fb8802.svg",
+                          "https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg",
                         ),
                       ),
                     ),
-              /*decoration: ShapeDecoration(
+              */
+            /*decoration: ShapeDecoration(
                 color: Colors.transparent,
                 shape: OvalBorder(side: BorderSide(width: 1)),
               ),*/
-            ),
+            /*
+            ),*/
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -218,7 +251,7 @@ class NatalChart extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        logic.element,
+                        element,
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           color: const Color(0xFF323133),
@@ -245,7 +278,7 @@ class NatalChart extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        logic.ruler,
+                        ruler,
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           color: const Color(0xFF323133),
@@ -272,7 +305,7 @@ class NatalChart extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        logic.form,
+                        form,
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           color: const Color(0xFF323133),
