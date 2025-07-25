@@ -1,4 +1,3 @@
-import 'package:astrea/net/http/interceptor/logger_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -19,7 +18,7 @@ class Http {
     _dio = Dio(baseDioOptions);
     _dio.httpClientAdapter = httpAdapter;
     _dio.interceptors.add(AuthInterceptor());
-    _dio.interceptors.add(LoggerInterceptor());
+    // _dio.interceptors.add(LoggerInterceptor());
     _dio.interceptors.add(
       PrettyDioLogger(
         requestHeader: true,

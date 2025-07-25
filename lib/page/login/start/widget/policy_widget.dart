@@ -1,8 +1,8 @@
+import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/translations/en.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:astrea/core/setting/app_fonts.dart';
-import 'package:astrea/core/translations/en.dart';
 
 class PolicyWidget extends StatelessWidget {
   final Function onServiceTap;
@@ -33,6 +33,7 @@ class PolicyWidget extends StatelessWidget {
                 text: LanKey.startTermsOfService.tr,
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
+                    debugPrint("onTap:${LanKey.startTermsOfService.tr}");
                     onServiceTap.call();
                   },
               ),
@@ -49,6 +50,7 @@ class PolicyWidget extends StatelessWidget {
                 text: LanKey.startPrivacyPolicy.tr,
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
+                    debugPrint("onTap:${LanKey.startPrivacyPolicy.tr}");
                     onPrivacyTap.call();
                   },
               ),

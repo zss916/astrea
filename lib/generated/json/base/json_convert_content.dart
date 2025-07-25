@@ -3,6 +3,9 @@
 // ignore_for_file: prefer_single_quotes
 
 import 'package:astrea/net/bean/account_entity.dart';
+import 'package:astrea/net/bean/analysis_article_entity.dart';
+import 'package:astrea/net/bean/analysis_entity.dart';
+import 'package:astrea/net/bean/analysis_identity_entity.dart';
 import 'package:astrea/net/bean/auth_entity.dart';
 import 'package:astrea/net/bean/base_response_entity.dart';
 import 'package:astrea/net/bean/city_entity.dart';
@@ -172,6 +175,63 @@ class JsonConvert {
       return data
               .map<AccountRights>(
                 (Map<String, dynamic> e) => AccountRights.fromJson(e),
+              )
+              .toList()
+          as M;
+    }
+    if (<AnalysisArticleEntity>[] is M) {
+      return data
+              .map<AnalysisArticleEntity>(
+                (Map<String, dynamic> e) => AnalysisArticleEntity.fromJson(e),
+              )
+              .toList()
+          as M;
+    }
+    if (<AnalysisArticleScores>[] is M) {
+      return data
+              .map<AnalysisArticleScores>(
+                (Map<String, dynamic> e) => AnalysisArticleScores.fromJson(e),
+              )
+              .toList()
+          as M;
+    }
+    if (<AnalysisArticleMeanings>[] is M) {
+      return data
+              .map<AnalysisArticleMeanings>(
+                (Map<String, dynamic> e) => AnalysisArticleMeanings.fromJson(e),
+              )
+              .toList()
+          as M;
+    }
+    if (<AnalysisEntity>[] is M) {
+      return data
+              .map<AnalysisEntity>(
+                (Map<String, dynamic> e) => AnalysisEntity.fromJson(e),
+              )
+              .toList()
+          as M;
+    }
+    if (<AnalysisFirstFriendInfo>[] is M) {
+      return data
+              .map<AnalysisFirstFriendInfo>(
+                (Map<String, dynamic> e) => AnalysisFirstFriendInfo.fromJson(e),
+              )
+              .toList()
+          as M;
+    }
+    if (<AnalysisSecondFriendInfo>[] is M) {
+      return data
+              .map<AnalysisSecondFriendInfo>(
+                (Map<String, dynamic> e) =>
+                    AnalysisSecondFriendInfo.fromJson(e),
+              )
+              .toList()
+          as M;
+    }
+    if (<AnalysisIdentityEntity>[] is M) {
+      return data
+              .map<AnalysisIdentityEntity>(
+                (Map<String, dynamic> e) => AnalysisIdentityEntity.fromJson(e),
               )
               .toList()
           as M;
@@ -525,6 +585,13 @@ class JsonConvertClassCollection {
   Map<String, JsonConvertFunction> convertFuncMap = {
     (AccountEntity).toString(): AccountEntity.fromJson,
     (AccountRights).toString(): AccountRights.fromJson,
+    (AnalysisArticleEntity).toString(): AnalysisArticleEntity.fromJson,
+    (AnalysisArticleScores).toString(): AnalysisArticleScores.fromJson,
+    (AnalysisArticleMeanings).toString(): AnalysisArticleMeanings.fromJson,
+    (AnalysisEntity).toString(): AnalysisEntity.fromJson,
+    (AnalysisFirstFriendInfo).toString(): AnalysisFirstFriendInfo.fromJson,
+    (AnalysisSecondFriendInfo).toString(): AnalysisSecondFriendInfo.fromJson,
+    (AnalysisIdentityEntity).toString(): AnalysisIdentityEntity.fromJson,
     (AuthEntity).toString(): AuthEntity.fromJson,
     (AuthRights).toString(): AuthRights.fromJson,
     (BaseResponseEntity).toString(): BaseResponseEntity.fromJson,

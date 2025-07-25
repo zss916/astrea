@@ -32,15 +32,20 @@ class ResultLogic extends GetxController {
       avatar: account?.headimg,
     );
     if (isSuccessful) {
-      /*(bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
-        id: account.friendId ?? "",
-      );
-      if (value.$1) {
-         AstrologyService.to.update(value.$2);
-      }
+      AccountEntity account = await AccountAPI.getAccount();
+      if (account.friendId != null) {
+        (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
+          id: account.friendId ?? "",
+        );
+        if (value.$1) {
+          AstrologyService.to.update(value.$2);
+        }
 
-      ///无论结果，都先进入主页
-      PageTools.offAllNamedHome();*/
+        ///无论结果，都先进入主页
+        PageTools.offAllNamedHome(data: value.$2);
+      } else {
+        debugPrint("getAccount error");
+      }
     }
   }
 }

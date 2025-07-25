@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 class HoroscopeLogic extends GetxController {
   NatalReportEntity? data;
   AccountEntity? account;
-  bool isNewUser = true;
+  bool isAddFriend = false;
 
   ///账户
   String get nickName => account?.nickName ?? "--";
@@ -17,9 +17,8 @@ class HoroscopeLogic extends GetxController {
   String get showBirthday => account?.showBirthDay ?? "--";
 
   ///星盘
-  //String get natalChartImage => data?.natalChartImg ?? "";
-  String get natalChartImage =>
-      "https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg";
+  String get natalChartImage => data?.natalChartImg ?? "";
+  //String get natalChartImage => "https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg";
   String get sunSign => data?.natalChartResult?.sunSign ?? "";
   String? get sunSignIcon => AppStarIcon.selectSign(sunSign);
   String get moonSign => data?.natalChartResult?.moonSign ?? "";
@@ -92,7 +91,8 @@ class HoroscopeLogic extends GetxController {
     if (Get.arguments != null && Get.arguments is NatalReportEntity) {
       data = Get.arguments as NatalReportEntity;
     }
-    isNewUser = AccountService.to.isNewUser;
+    // isNewUser = AccountService.to.isNewUser;
+    account = AccountService.to.data;
     update();
   }
 
@@ -104,17 +104,31 @@ class HoroscopeLogic extends GetxController {
   }
 
   Future<void> loadAccount() async {
-    account = await AccountAPI.getAccount();
-    update();
+    if (account != null) {
+      account = await AccountAPI.getAccount();
+      update();
+    }
   }
 
+  ///todo 需要优化
   Future<void> loadAstrologyReport() async {
-    (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
-      id: "1",
-    );
-    if (value.$1) {
-      data = value.$2;
+    if (AccountService.to.friendId.isNotEmpty) {
+      (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
+        id: AccountService.to.friendId,
+      );
+      if (value.$1) {
+        data = value.$2;
+      }
+      update();
+    } else {
+      await loadAccount();
+      (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
+        id: AccountService.to.friendId,
+      );
+      if (value.$1) {
+        data = value.$2;
+      }
+      update();
     }
-    update();
   }
 }

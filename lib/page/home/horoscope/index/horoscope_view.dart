@@ -71,7 +71,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
                       ///title
                       buildTitle(
                         logic,
-                        isNewUser: logic.isNewUser,
+                        isAddFriend: logic.isAddFriend,
                         avatar: logic.avatar,
                       ),
 
@@ -153,13 +153,13 @@ class _HoroscopeViewState extends State<HoroscopeView>
 
   Widget buildTitle(
     HoroscopeLogic logic, {
-    required bool isNewUser,
+    required bool isAddFriend,
     required String avatar,
   }) {
     return SliverToBoxAdapter(
       child: HoroscopeListview(
         avatar: avatar,
-        isNewUser: isNewUser,
+        isAddFriend: isAddFriend,
         onAdd: () {
           PageTools.toAddFile();
         },

@@ -52,8 +52,8 @@ class App extends StatelessWidget {
           debugPrint("routing:${routing?.current}");
         },
         // home: PlaceOfBirthPage(),
-        //initialRoute: APages.splash,
-        initialRoute: APages.home,
+        initialRoute: APages.splash,
+        //initialRoute: APages.home,
         //initialRoute: APages.start,
       ),
     );

@@ -44,6 +44,9 @@ class AccountService extends GetxService {
   ///获取用户ID
   String get userID => data?.userId ?? "-";
 
+  ///请求星盘分析等需要
+  String get friendId => data?.friendId ?? "";
+
   ///获取登录渠道
   int? get loginStep => data?.loginStep;
 
@@ -221,10 +224,49 @@ class AccountService extends GetxService {
   ///获取用户昵称
   String getUserNickName() => data?.nickName ?? "";
 
-  ///更新用户账号信息
-  void update(AccountEntity data) {
-    this.data = data;
-    save(data);
+  ///更新用户账号信息(接口获取account)
+  void update(AccountEntity value) {
+    if (value.friendId != null) {
+      data?.friendId = value.friendId;
+    }
+    if (value.userId != null) {
+      data?.userId = value.userId;
+    }
+    if (value.nickName != null) {
+      data?.nickName = value.nickName;
+    }
+    if (value.headimg != null) {
+      data?.headimg = value.headimg;
+    }
+    if (value.isNewUser != null) {
+      data?.isNewUser = value.isNewUser;
+    }
+    if (value.sex != null) {
+      data?.sex = value.sex;
+    }
+    if (value.age != null) {
+      data?.age = value.age;
+    }
+    if (value.birthday != null) {
+      data?.birthday = value.birthday;
+    }
+    if (value.interests != null) {
+      data?.interests = value.interests;
+    }
+    if (value.lat != null) {
+      data?.lat = value.lat;
+    }
+    if (value.lon != null) {
+      data?.lon = value.lon;
+    }
+    if (value.birthHour != null) {
+      data?.birthHour = value.birthHour;
+    }
+    if (value.birthMinute != null) {
+      data?.birthMinute = value.birthMinute;
+    }
+    //this.data = data;
+    save(data!);
   }
 
   ///保存用户账号信息

@@ -76,6 +76,8 @@ class AccountEntity {
     return jsonEncode(this);
   }
 
+  bool get isNew => isNewUser == 1;
+
   String get userIdStr {
     if (userId == null) {
       return '--';

@@ -53,4 +53,16 @@ class ApiPath {
 
   ///查询朋友列表 POST (header add auth)
   static const String addFriend = "/v1/account/friend";
+
+  ///合盘分析（查询列表）GET
+  static const String getAnalysisList = "/v1/synastry/analysis";
+
+  ///更新合盘分析（添加记录并分析）POST
+  static const String updateAnalysis = "/v1/synastry/analysis";
+
+  ///合盘分析（查询详情））GET
+  static const String getAnalysis = "/v1/synastry/analysis";
+
+  ///获取文件上传地址））GET
+  static const String uploadUrl = "/v1/global/uploadurl";
 }

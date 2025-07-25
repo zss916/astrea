@@ -4,7 +4,9 @@ class SplashLogic extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    Future.delayed(Duration(seconds: 2), () {
+    AppService.to.loadData().whenComplete(() async {
+      await Future.delayed(Duration(seconds: 1));
+
       ///是否已经登录
       if (AccountService.to.isLogin) {
         PageTools.toHome();

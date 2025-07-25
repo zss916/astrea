@@ -5,7 +5,6 @@ import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/net/bean/account_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 ///account
@@ -94,7 +93,7 @@ abstract class AccountAPI {
 
       debugPrint("map ==> ${map}");
 
-      dynamic d = {
+      /* Map<String, dynamic> d = {
         "nick_name": "ytyt",
         "birthday": "2000-07-15",
         "birth_hour": 16,
@@ -104,17 +103,9 @@ abstract class AccountAPI {
         "lon": 63,
         "lat": 35,
         "locality": "Afghanistan/Badghis/Ghormach",
-      };
+      };*/
 
-      var result = await Http.instance.patch(
-        ApiPath.updateAccount,
-        data: d,
-        options: Options(
-          sendTimeout: Duration(minutes: 5),
-          receiveTimeout: Duration(minutes: 5),
-          receiveDataWhenStatusError: true,
-        ),
-      );
+      var result = await Http.instance.patch(ApiPath.updateAccount, data: map);
       if (result["code"] != 0) {
         AppLoading.toast("${result["msg"]}");
       }

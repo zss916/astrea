@@ -13,11 +13,11 @@ class HoroscopeListview extends StatelessWidget {
   final Function? onAdd;
   final Function? onOneself;
   final Function? onSynastry;
-  final bool isNewUser;
+  final bool isAddFriend;
   final String avatar;
   const HoroscopeListview({
     super.key,
-    required this.isNewUser,
+    required this.isAddFriend,
     required this.avatar,
     this.onSelect,
     this.onAdd,
@@ -115,11 +115,11 @@ class HoroscopeListview extends StatelessWidget {
             ],
           ),
         ),
-        if (isNewUser)
+        if (isAddFriend)
           PositionedDirectional(
             top: 0,
             start: 23.w,
-            child: AddFriendTip(isShow: isNewUser),
+            child: AddFriendTip(isShow: isAddFriend),
           ),
       ],
     );

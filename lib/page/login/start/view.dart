@@ -75,9 +75,11 @@ class StartPage extends StatelessWidget {
                 child: PolicyWidget(
                   onPrivacyTap: () {
                     //todo
+                    debugPrint("onPrivacyTap ===>>");
                   },
                   onServiceTap: () {
                     //todo
+                    debugPrint("onServiceTap ===>>");
                   },
                 ),
               ),
