@@ -199,6 +199,12 @@ class NatalChart extends StatelessWidget {
               ),
             ),
             Container(
+              decoration: BoxDecoration(
+                color: Color(0x1A000000),
+                borderRadius: BorderRadiusDirectional.circular(100),
+              ),
+              width: 130.w,
+              height: 130.w,
               margin: EdgeInsetsDirectional.symmetric(horizontal: 10.w),
               child: SvgPicture.network(
                 natalChartImage,

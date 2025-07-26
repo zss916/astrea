@@ -53,16 +53,6 @@ class _HoroscopeViewState extends State<HoroscopeView>
         builder: (logic) {
           return Column(
             children: [
-              /*SvgPicture.network(
-                    logic.natalChartImage,
-                    width: 150,
-                    height: 150,
-                    placeholderBuilder: (context) =>
-                        CircularProgressIndicator(),
-                    errorBuilder: (con, _, p) => Container(
-                      color: Colors.blue,
-                    ),
-                  ),*/
               HoroscopeTitle(),
               Expanded(
                 child: NestedScrollView(

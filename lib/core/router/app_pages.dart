@@ -123,7 +123,11 @@ class APages {
     GetPage(name: email, page: () => EmailPage(), binding: EmailBinding()),
     GetPage(name: result, page: () => ResultPage(), binding: ResultBinding()),
     GetPage(name: home, page: () => HomePage(), binding: HomeBinding()),
-    GetPage(name: starChartAnalysis, page: () => AnalysisPage()),
+    GetPage(
+      name: starChartAnalysis,
+      page: () => AnalysisPage(),
+      binding: AnalysisBinding(),
+    ),
     GetPage(name: spiritualList, page: () => SpiritualListPage()),
     GetPage(name: myCollection, page: () => CollectionPage()),
     GetPage(name: technician, page: () => TechnicianPage()),

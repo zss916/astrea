@@ -8,7 +8,7 @@ class SplashLogic extends GetxController {
       await Future.delayed(Duration(seconds: 1));
 
       ///是否已经登录
-      if (AccountService.to.isLogin) {
+      if (AccountService.to.getAccount() != null) {
         PageTools.toHome();
       } else {
         ///是否有数据

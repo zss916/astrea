@@ -18,22 +18,23 @@ class PersonalDataLogic extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    //loadData();
+    loadAccount();
   }
 
   void initLocalData() {
-    AccountEntity data = Get.arguments ?? AccountEntity();
-    if (data.userId != null) {
-      account = data;
+    if (Get.arguments != null && Get.arguments is AccountEntity) {
+      account = Get.arguments as AccountEntity;
     } else {
-      account = AccountService.to.data ?? AccountEntity();
+      account = AccountService.to.getAccount();
     }
     update();
   }
 
-  Future<void> loadData() async {
-    account = AccountService.to.data ?? AccountEntity();
-    update();
+  Future<void> loadAccount() async {
+    if (account != null) {
+      account = await AccountAPI.getAccount();
+      update();
+    }
   }
 
   Future<void> saveData({String? nickName}) async {

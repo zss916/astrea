@@ -1,8 +1,10 @@
 import 'package:astrea/components/star.dart';
 import 'package:astrea/core/storage/account_service.dart';
-import 'package:astrea/net/api/account.dart';
+import 'package:astrea/core/storage/astrology_service.dart';
 import 'package:astrea/net/api/astro.dart';
+import 'package:astrea/net/api/friend.dart';
 import 'package:astrea/net/bean/account_entity.dart';
+import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
 import 'package:get/get.dart';
 
@@ -87,28 +89,34 @@ class HoroscopeLogic extends GetxController {
     initLocalData();
   }
 
+  bool refreshState = false;
+
   void initLocalData() {
     if (Get.arguments != null && Get.arguments is NatalReportEntity) {
       data = Get.arguments as NatalReportEntity;
+    } else {
+      data = AstrologyService.to.getNatalValue();
     }
-    // isNewUser = AccountService.to.isNewUser;
     account = AccountService.to.data;
+    // debugPrint("data=> ${data}, account => ${account}");
+    refreshState = data == null;
     update();
   }
 
   @override
   void onReady() {
     super.onReady();
-    loadAccount();
-    loadAstrologyReport();
+    // loadAccount();
+    // loadAstrologyReport();
+    // getFriends();
   }
 
-  Future<void> loadAccount() async {
+  /*Future<void> loadAccount() async {
     if (account != null) {
       account = await AccountAPI.getAccount();
       update();
     }
-  }
+  }*/
 
   ///todo 需要优化
   Future<void> loadAstrologyReport() async {
@@ -121,7 +129,7 @@ class HoroscopeLogic extends GetxController {
       }
       update();
     } else {
-      await loadAccount();
+      //  await loadAccount();
       (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
         id: AccountService.to.friendId,
       );
@@ -130,5 +138,15 @@ class HoroscopeLogic extends GetxController {
       }
       update();
     }
+  }
+
+  Future<void> getFriends() async {
+    List<FriendEntity> friends = await FriendAPI.getFriends();
+    if (friends.isNotEmpty) {
+      isAddFriend = friends.length > 1;
+    } else {
+      isAddFriend = false;
+    }
+    update();
   }
 }

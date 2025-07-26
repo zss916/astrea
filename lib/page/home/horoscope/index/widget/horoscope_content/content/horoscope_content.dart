@@ -16,7 +16,7 @@ class HoroscopeContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        PageTools.toStarChartAnalysis();
+        PageTools.toStarChartAnalysis(data: logic.data, account: logic.account);
       },
       child: Container(
         margin: EdgeInsetsDirectional.only(

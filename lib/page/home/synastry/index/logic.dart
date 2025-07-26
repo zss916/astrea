@@ -1,9 +1,9 @@
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/net/api/account.dart';
 import 'package:astrea/net/bean/account_entity.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:get/get.dart';
 
-class AccountLogic extends GetxController {
+class SynastryLogic extends GetxController {
   AccountEntity? account;
   String get avatar => account?.headimg ?? "";
   String get nickName => account?.nickName ?? "--";

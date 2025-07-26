@@ -21,11 +21,9 @@ class AnalysisPage extends StatelessWidget {
         children: [
           GetBuilder<AnalysisLogic>(
             init: AnalysisLogic(),
-            builder: (logic) {
-              return buildBody(logic);
-            },
+            builder: (logic) => buildBody(logic),
           ),
-          if (isShowVip) buildOpenVip(),
+          // if (isShowVip) buildOpenVip(),
         ],
       ),
     );

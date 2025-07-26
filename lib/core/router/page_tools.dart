@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/enum/app_enum.dart';
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/net/bean/account_entity.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PageTools {
   static toSplash() => Get.toNamed(APages.splash);
@@ -93,7 +93,14 @@ class PageTools {
 
   static toResult() => Get.toNamed(APages.result);
 
-  static toStarChartAnalysis() => Get.toNamed(APages.starChartAnalysis);
+  static toStarChartAnalysis({
+    NatalReportEntity? data,
+    AccountEntity? account,
+  }) {
+    if (data != null && account != null) {
+      Get.toNamed(APages.starChartAnalysis, arguments: [data, account]);
+    }
+  }
 
   static toSpiritualList() => Get.toNamed(APages.spiritualList);
 
@@ -112,22 +119,22 @@ class PageTools {
 
   static toAccount() => Get.toNamed(APages.account);
 
-  static toAccountInformation({String? email, String? uid, int? loginChannel}) {
+  static toAccountInformation({AccountEntity? account}) {
     Map<String, dynamic> map = {};
-    if (email != null) {
-      map["email"] = email;
+    if (account?.loginEmail != null) {
+      map["email"] = account?.loginEmail;
     }
-    if (uid != null) {
-      map["uid"] = uid;
+    if (account?.userId != null) {
+      map["uid"] = account?.userId;
     }
-    if (loginChannel != null) {
-      map["loginChannel"] = loginChannel;
+    if (account?.loginChannel != null) {
+      map["loginChannel"] = account?.loginChannel;
     }
     Get.toNamed(APages.accountInformation, arguments: map);
   }
 
   static toPersonalData({AccountEntity? account}) {
-    Get.toNamed(APages.personalData, arguments: account ?? AccountEntity());
+    Get.toNamed(APages.personalData, arguments: account);
   }
 
   static toTelephone() => Get.toNamed(APages.telephone);

@@ -1,16 +1,25 @@
 part of 'index.dart';
 
 class AccountInfoLogic extends GetxController {
-  String email = "-";
-  String loginChannel = "-";
-  String userID = "-";
+  AccountEntity? account;
+
+  String get email => account?.loginEmail ?? "-";
+  String get loginChannel =>
+      LoginChannel.getSymbol((account?.loginChannel ?? 0));
+  String get userID => account?.userId ?? "-";
 
   @override
   void onInit() {
     super.onInit();
-    email = AccountService.to.loginEmail;
-    loginChannel = LoginChannel.getSymbol(AccountService.to.loginChannelIndex);
-    userID = AccountService.to.userID;
+    initLocalData();
+  }
+
+  void initLocalData() {
+    if (Get.arguments != null && Get.arguments is AccountEntity) {
+      account = Get.arguments as AccountEntity;
+    } else {
+      account = AccountService.to.getAccount();
+    }
     update();
   }
 
@@ -22,9 +31,10 @@ class AccountInfoLogic extends GetxController {
 
   ///获取账号信息
   Future<void> loadAccount() async {
-    AccountEntity data = await AccountAPI.getAccount();
-    userID = data.userIdStr;
-    update();
+    if (account != null) {
+      account = await AccountAPI.getAccount();
+      update();
+    }
   }
 
   ///删除账号

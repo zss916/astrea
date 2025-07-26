@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:astrea/components/common_app_bar.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
@@ -11,6 +8,9 @@ import 'package:astrea/net/bean/account_entity.dart';
 import 'package:astrea/page/account/accountInfo/details/widget/common_divider.dart';
 import 'package:astrea/page/home/account/index/logic.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/edit_avatar.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../../account/index/widget/common_item.dart';
 
@@ -56,7 +56,7 @@ class AccountView extends StatelessWidget {
                     ],
                   ),
                 ),
-                buildPersonalData(logic.data),
+                buildPersonalData(logic.account),
                 buildLawAndPrivacy(),
                 SizedBox(height: 120.h),
               ],
@@ -67,7 +67,7 @@ class AccountView extends StatelessWidget {
     );
   }
 
-  Widget buildPersonalData(AccountEntity data) {
+  Widget buildPersonalData(AccountEntity? account) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -103,18 +103,14 @@ class AccountView extends StatelessWidget {
               CommonItem(
                 title: LanKey.accountInformation.tr,
                 onTap: () {
-                  PageTools.toAccountInformation(
-                    email: data.loginEmail,
-                    uid: data.userIdStr,
-                    loginChannel: data.loginChannel,
-                  );
+                  PageTools.toAccountInformation(account: account);
                 },
               ),
               CommonDivider(),
               CommonItem(
                 title: LanKey.personalData.tr,
                 onTap: () {
-                  PageTools.toPersonalData(account: data);
+                  PageTools.toPersonalData(account: account);
                 },
               ),
               CommonDivider(),

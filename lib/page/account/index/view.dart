@@ -8,49 +8,49 @@ class AccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: ComAppBar(
-          title: LanKey.myFile.tr,
-          leading: Container(
-            margin: EdgeInsetsDirectional.only(start: 16),
-            child: Stack(
-              alignment: AlignmentDirectional.center,
-              children: [
-                InkWell(
-                  borderRadius: BorderRadius.circular(50),
-                  onTap: () => Get.back(),
-                  child: Image.asset(
-                    Assets.imageBackIcon,
-                    matchTextDirection: true,
-                    width: 40,
-                    height: 40,
-                  ),
-                )
-              ],
-            ),
+      appBar: ComAppBar(
+        title: LanKey.myFile.tr,
+        leading: Container(
+          margin: EdgeInsetsDirectional.only(start: 16),
+          child: Stack(
+            alignment: AlignmentDirectional.center,
+            children: [
+              InkWell(
+                borderRadius: BorderRadius.circular(50),
+                onTap: () => Get.back(),
+                child: Image.asset(
+                  Assets.imageBackIcon,
+                  matchTextDirection: true,
+                  width: 40,
+                  height: 40,
+                ),
+              ),
+            ],
           ),
-          backgroundColor: Colors.white,
         ),
-        backgroundColor: AppColor.pageBackground,
-        body: Column(
-          children: [
-            /*EditAvatar(
+        backgroundColor: Colors.white,
+      ),
+      backgroundColor: AppColor.pageBackground,
+      body: Column(
+        children: [
+          /*EditAvatar(
               path: null,
             ),*/
-            AccountTop(
-              isUser: true,
-            ),
-            Expanded(
-                child: SingleChildScrollView(
+          AccountTop(isUser: true),
+          Expanded(
+            child: SingleChildScrollView(
               child: Column(
                 children: [
                   buildPersonalData(),
                   if (!isUser) buildAccountInformation(),
-                  buildLawAndPrivacy()
+                  buildLawAndPrivacy(),
                 ],
               ),
-            ))
-          ],
-        ));
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Widget buildPersonalData() {
@@ -59,7 +59,11 @@ class AccountPage extends StatelessWidget {
       children: [
         Container(
           margin: EdgeInsetsDirectional.only(
-              start: 16, top: 16, end: 16, bottom: 16),
+            start: 16,
+            top: 16,
+            end: 16,
+            bottom: 16,
+          ),
           width: double.maxFinite,
           child: Text(
             LanKey.personalDataTitle.tr,
@@ -85,39 +89,33 @@ class AccountPage extends StatelessWidget {
               CommonItem(
                 title: LanKey.accountInformation.tr,
                 onTap: () {
-                  PageTools.toAccountInformation();
+                  // PageTools.toAccountInformation(account: );
                 },
               ),
               CommonDivider(),
               CommonItem(
                 title: LanKey.personalData.tr,
                 onTap: () {
-                  PageTools.toPersonalData();
+                  //  PageTools.toPersonalData(account: );
                 },
               ),
               CommonDivider(),
               CommonItem(
                 title: LanKey.certifiedDiviner.tr,
-                subWidget: CertifiedLabel(
-                  state: 2,
-                ),
+                subWidget: CertifiedLabel(state: 2),
                 onTap: () {
                   PageTools.toCertifiedDiviner();
                 },
               ),
               CommonDivider(),
-              CommonItem(
-                title: LanKey.contactUs.tr,
-              ),
+              CommonItem(title: LanKey.contactUs.tr),
               CommonDivider(),
-              CommonItem(
-                title: LanKey.scoring.tr,
-              ),
+              CommonItem(title: LanKey.scoring.tr),
               CommonDivider(),
               NoticeItem(),
             ],
           ),
-        )
+        ),
       ],
     );
   }
@@ -128,7 +126,11 @@ class AccountPage extends StatelessWidget {
       children: [
         Container(
           margin: EdgeInsetsDirectional.only(
-              start: 16, top: 24, end: 16, bottom: 16),
+            start: 16,
+            top: 24,
+            end: 16,
+            bottom: 16,
+          ),
           width: double.maxFinite,
           child: Text(
             LanKey.accountInformation.tr,
@@ -191,7 +193,11 @@ class AccountPage extends StatelessWidget {
       children: [
         Container(
           margin: EdgeInsetsDirectional.only(
-              start: 16, top: 24, end: 16, bottom: 16),
+            start: 16,
+            top: 24,
+            end: 16,
+            bottom: 16,
+          ),
           width: double.maxFinite,
           child: Text(
             LanKey.lawAndPrivacy.tr,
@@ -214,21 +220,13 @@ class AccountPage extends StatelessWidget {
           width: double.maxFinite,
           child: Column(
             children: [
-              CommonItem(
-                title: LanKey.agreement.tr,
-              ),
+              CommonItem(title: LanKey.agreement.tr),
               CommonDivider(),
-              CommonItem(
-                title: LanKey.subscriptionTerms.tr,
-              ),
+              CommonItem(title: LanKey.subscriptionTerms.tr),
               CommonDivider(),
-              CommonItem(
-                title: LanKey.privacyPolicy.tr,
-              ),
+              CommonItem(title: LanKey.privacyPolicy.tr),
               CommonDivider(),
-              CommonItem(
-                title: LanKey.contentRules.tr,
-              ),
+              CommonItem(title: LanKey.contentRules.tr),
             ],
           ),
         ),

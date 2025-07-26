@@ -275,14 +275,18 @@ class AccountService extends GetxService {
   }
 
   ///获取用户账号信息
-  void get() {
+  AccountEntity? getAccount() {
     String? str = StorageService.to.getString(userData);
     if (str.isNotEmpty) {
       try {
-        data = JsonConvert.fromJsonAsT<AccountEntity>(jsonDecode(str))!;
+        data = JsonConvert.fromJsonAsT<AccountEntity>(jsonDecode(str));
+        return data;
       } catch (e) {
         debugPrint("$e");
+        return null;
       }
+    }else{
+      return null;
     }
   }
 
