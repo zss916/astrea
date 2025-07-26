@@ -1,6 +1,9 @@
+import 'package:astrea/components/loading_widget.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_common_setting.dart';
+import 'package:astrea/page/home/horoscope/index/logic.dart';
+import 'package:astrea/page/home/horoscope/index/widget/home_refresh.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_content/content/horoscope_content.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_content/star_content.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_list_view/horoscope_listview.dart';
@@ -8,9 +11,7 @@ import 'package:astrea/page/home/horoscope/index/widget/horoscope_tabbar.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_tabview.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_title.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
-
-import 'logic.dart';
+import 'package:get/get.dart';
 
 class HoroscopeView extends StatefulWidget {
   const HoroscopeView({super.key});
@@ -54,69 +55,88 @@ class _HoroscopeViewState extends State<HoroscopeView>
           return Column(
             children: [
               HoroscopeTitle(),
-              Expanded(
-                child: NestedScrollView(
-                  headerSliverBuilder: (_, w) {
-                    return [
-                      ///title
-                      buildTitle(
-                        logic,
-                        isAddFriend: logic.isAddFriend,
-                        avatar: logic.avatar,
+              Expanded(child: buildBody(logic)),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  /// body
+  Widget buildBody(HoroscopeLogic logic) {
+    return NestedScrollView(
+      headerSliverBuilder: (_, w) {
+        return [
+          ///title
+          SliverToBoxAdapter(child: buildTitle(logic, avatar: logic.avatar)),
+
+          ///content
+          // if (isShowOneself && logic.viewState == 0) buildContent(logic: logic),
+          if (isShowOneself && logic.viewState == 0)
+            SliverToBoxAdapter(child: HoroscopeContent(logic: logic)),
+
+          ///tabbar
+          if (isShowOneself && logic.viewState == 0) buildTabBar(),
+        ];
+      },
+      body: Stack(
+        alignment: AlignmentDirectional.topCenter,
+        children: [
+          (isShowOneself)
+              ? Stack(
+                  alignment: AlignmentDirectional.topCenter,
+                  children: [
+                    if (logic.viewState == 0) buildTabViewBody(logic),
+                    if (logic.viewState == 1) HomeRefresh(logic: logic),
+                    if (logic.viewState == 2)
+                      Container(
+                        margin: EdgeInsetsDirectional.only(bottom: 140),
+                        child: LoadingWidget(),
                       ),
+                  ],
+                )
+              : buildStarWidget(index: selectedIndex),
+        ],
+      ),
+    );
+  }
 
-                      ///content
-                      buildContent(logic: logic),
-
-                      ///tabbar
-                      if (isShowOneself) buildTabBar(),
-                    ];
-                  },
-                  body: (isShowOneself)
-                      ? Stack(
-                          alignment: AlignmentDirectional.topCenter,
-                          children: [
-                            TabBarView(
-                              controller: tabCtrl,
-                              children: [
-                                HoroscopeTabview(
-                                  tabIndex: 0,
-                                  content: logic.yesterdaySummary,
-                                ),
-                                HoroscopeTabview(
-                                  tabIndex: 1,
-                                  content: logic.todaySummary,
-                                  love: logic.loveValue,
-                                  wealth: logic.wealthValue,
-                                  career: logic.careerValue,
-                                  guide: logic.todayGuide,
-                                  should: logic.todayShould,
-                                  avoid: logic.todayAvoid,
-                                  loveContent: logic.todayLove,
-                                  careerContent: logic.todayCareer,
-                                  wealthContent: logic.todayWealth,
-                                ),
-                                HoroscopeTabview(
-                                  tabIndex: 2,
-                                  content: logic.tomorrowSummary,
-                                  guide: logic.tomorrowGuide,
-                                ),
-                                HoroscopeTabview(
-                                  tabIndex: 3,
-                                  content: logic.weekSummary,
-                                  guide: logic.weekGuide,
-                                ),
-                                HoroscopeTabview(
-                                  tabIndex: 4,
-                                  content: logic.monthSummary,
-                                ),
-                                HoroscopeTabview(
-                                  tabIndex: 5,
-                                  content: logic.yearSummary,
-                                ),
-                              ],
-                            ),
-                            /*PositionedDirectional(
+  Widget buildTabViewBody(HoroscopeLogic logic) => Stack(
+    alignment: AlignmentDirectional.topCenter,
+    children: [
+      TabBarView(
+        controller: tabCtrl,
+        children: [
+          HoroscopeTabview(tabIndex: 0, content: logic.yesterdaySummary),
+          HoroscopeTabview(
+            tabIndex: 1,
+            content: logic.todaySummary,
+            love: logic.loveValue,
+            wealth: logic.wealthValue,
+            career: logic.careerValue,
+            guide: logic.todayGuide,
+            should: logic.todayShould,
+            avoid: logic.todayAvoid,
+            loveContent: logic.todayLove,
+            careerContent: logic.todayCareer,
+            wealthContent: logic.todayWealth,
+          ),
+          HoroscopeTabview(
+            tabIndex: 2,
+            content: logic.tomorrowSummary,
+            guide: logic.tomorrowGuide,
+          ),
+          HoroscopeTabview(
+            tabIndex: 3,
+            content: logic.weekSummary,
+            guide: logic.weekGuide,
+          ),
+          HoroscopeTabview(tabIndex: 4, content: logic.monthSummary),
+          HoroscopeTabview(tabIndex: 5, content: logic.yearSummary),
+        ],
+      ),
+      /*PositionedDirectional(
                         bottom: 0,
                         start: 0,
                         end: 0,
@@ -129,27 +149,20 @@ class _HoroscopeViewState extends State<HoroscopeView>
                             //todo
                           },
                         ))*/
-                          ],
-                        )
-                      : SizedBox.shrink(),
-                ),
-              ),
-            ],
-          );
-        },
-      ),
-    );
-  }
+    ],
+  );
 
-  Widget buildTitle(
-    HoroscopeLogic logic, {
-    required bool isAddFriend,
-    required String avatar,
-  }) {
-    return SliverToBoxAdapter(
-      child: HoroscopeListview(
+  Widget buildStarWidget({required int index}) => Column(
+    children: [
+      StarContent(index: index),
+      Spacer(),
+    ],
+  );
+
+  Widget buildTitle(HoroscopeLogic logic, {required String avatar}) =>
+      HoroscopeListview(
         avatar: avatar,
-        isAddFriend: isAddFriend,
+        logic: logic,
         onAdd: () {
           PageTools.toAddFile();
         },
@@ -164,11 +177,11 @@ class _HoroscopeViewState extends State<HoroscopeView>
             selectedIndex = i;
           });
         },
-      ),
-    );
-  }
+      );
 
-  Widget buildContent({required HoroscopeLogic logic}) {
+  Widget buildTabBar() => HoroscopeTabBar(tabCtrl: tabCtrl);
+
+  /*Widget buildContent({required HoroscopeLogic logic}) {
     return SliverToBoxAdapter(
       child: Stack(
         alignment: AlignmentDirectional.center,
@@ -180,9 +193,5 @@ class _HoroscopeViewState extends State<HoroscopeView>
         ],
       ),
     );
-  }
-
-  Widget buildTabBar() {
-    return HoroscopeTabBar(tabCtrl: tabCtrl);
-  }
+  }*/
 }

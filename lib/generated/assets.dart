@@ -83,6 +83,7 @@ class Assets {
   static const String imageGoogle = 'assets/image/google.png';
   static const String imageGuideIcon = 'assets/image/guide_icon.png';
   static const String imageHomeAvatar = 'assets/image/home_avatar.png';
+  static const String imageHomeLoading = 'assets/image/home_loading.png';
   static const String imageHomeTarotBg = 'assets/image/home_tarot_bg.png';
   static const String imageHoroscope = 'assets/image/horoscope.png';
   static const String imageHoroscopeS = 'assets/image/horoscope_s.png';

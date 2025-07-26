@@ -2,6 +2,7 @@ import 'package:astrea/core/bus/app_event_bus.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:astrea/page/home/horoscope/index/logic.dart';
 import 'package:astrea/page/home/horoscope/index/widget/add_friend_tip_box.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_list_view/horoscope_list_item.dart';
 import 'package:flutter/material.dart';
@@ -13,12 +14,12 @@ class HoroscopeListview extends StatelessWidget {
   final Function? onAdd;
   final Function? onOneself;
   final Function? onSynastry;
-  final bool isAddFriend;
   final String avatar;
+  final HoroscopeLogic logic;
   const HoroscopeListview({
     super.key,
-    required this.isAddFriend,
     required this.avatar,
+    required this.logic,
     this.onSelect,
     this.onAdd,
     this.onOneself,
@@ -115,12 +116,11 @@ class HoroscopeListview extends StatelessWidget {
             ],
           ),
         ),
-        if (isAddFriend)
-          PositionedDirectional(
-            top: 0,
-            start: 23.w,
-            child: AddFriendTip(isShow: isAddFriend),
-          ),
+        PositionedDirectional(
+          top: 0,
+          start: 23.w,
+          child: AddFriendTip(logic: logic),
+        ),
       ],
     );
   }

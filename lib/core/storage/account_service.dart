@@ -6,6 +6,7 @@ import 'package:astrea/core/storage/storage.dart';
 import 'package:astrea/core/utils/calculate.dart';
 import 'package:astrea/generated/json/base/json_convert_content.dart';
 import 'package:astrea/net/bean/account_entity.dart';
+import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/page/login/guide/interests/widget/common.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,7 @@ class AccountService extends GetxService {
   static AccountService get to => Get.find();
 
   static const String userData = "horoscope_save_user_info";
+  static const String friendData = "horoscope_save_friends";
 
   AccountEntity? data;
 
@@ -289,6 +291,29 @@ class AccountService extends GetxService {
       }
     } else {
       return null;
+    }
+  }
+
+  ///保存朋友列表
+  void updateFriendList(List<FriendEntity> friends) {
+    List<String> value = friends.map((e) => jsonEncode(e.toJson())).toList();
+    StorageService.to.setList(friendData, value);
+  }
+
+  ///获取朋友列表
+  List<FriendEntity> getFriendList() {
+    List<String> list = StorageService.to.getList(friendData);
+    if (list.isNotEmpty) {
+      List<FriendEntity> value = list
+          .map(
+            (e) =>
+                JsonConvert.fromJsonAsT<FriendEntity>(jsonDecode(e)) ??
+                FriendEntity(),
+          )
+          .toList();
+      return value;
+    } else {
+      return [];
     }
   }
 

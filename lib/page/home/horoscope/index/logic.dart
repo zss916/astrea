@@ -11,7 +11,6 @@ import 'package:get/get.dart';
 class HoroscopeLogic extends GetxController {
   NatalReportEntity? data;
   AccountEntity? account;
-  bool isAddFriend = false;
 
   ///账户
   String get nickName => account?.nickName ?? "--";
@@ -83,13 +82,15 @@ class HoroscopeLogic extends GetxController {
   String get yearSummary =>
       data?.predicationAnalysisResult?.year?.summary ?? "";
 
+  int viewState = 0;
+
+  bool isAddFriend = false;
+
   @override
   void onInit() {
     super.onInit();
     initLocalData();
   }
-
-  bool refreshState = false;
 
   void initLocalData() {
     if (Get.arguments != null && Get.arguments is NatalReportEntity) {
@@ -99,49 +100,50 @@ class HoroscopeLogic extends GetxController {
     }
     account = AccountService.to.data;
     // debugPrint("data=> ${data}, account => ${account}");
-    refreshState = data == null;
+    if (data == null) {
+      viewState = 1;
+    }
     update();
   }
 
   @override
   void onReady() {
     super.onReady();
-    // loadAccount();
-    // loadAstrologyReport();
-    // getFriends();
+    loadData();
+    getFriends();
   }
 
-  /*Future<void> loadAccount() async {
-    if (account != null) {
-      account = await AccountAPI.getAccount();
+  Future<void> loadData() async {
+    (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
+      id: AccountService.to.friendId,
+    );
+    if (value.$1) {
+      viewState = 0;
+      data = value.$2;
       update();
     }
-  }*/
+  }
 
-  ///todo 需要优化
-  Future<void> loadAstrologyReport() async {
-    if (AccountService.to.friendId.isNotEmpty) {
-      (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
-        id: AccountService.to.friendId,
-      );
-      if (value.$1) {
-        data = value.$2;
-      }
+  Future<void> refreshData() async {
+    viewState = 2;
+    update();
+
+    (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
+      id: AccountService.to.friendId,
+    );
+    if (value.$1) {
+      viewState = 0;
+      data = value.$2;
       update();
     } else {
-      //  await loadAccount();
-      (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
-        id: AccountService.to.friendId,
-      );
-      if (value.$1) {
-        data = value.$2;
-      }
+      viewState = 1;
       update();
     }
   }
 
   Future<void> getFriends() async {
     List<FriendEntity> friends = await FriendAPI.getFriends();
+    AccountService.to.updateFriendList(friends);
     if (friends.isNotEmpty) {
       isAddFriend = friends.length > 1;
     } else {

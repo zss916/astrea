@@ -110,8 +110,7 @@ class AnalysisLogic extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    //loadAccount();
-    // loadAstrologyReport();
+    //loadData();
   }
 
   /*Future<void> loadAccount() async {
@@ -121,15 +120,15 @@ class AnalysisLogic extends GetxController {
     }
   }*/
 
-  Future<void> loadAstrologyReport() async {
+  Future<void> loadData() async {
     if (data == null && AccountService.to.friendId.isNotEmpty) {
       (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
         id: AccountService.to.friendId,
       );
       if (value.$1) {
         data = value.$2;
+        update();
       }
-      update();
     }
   }
 }

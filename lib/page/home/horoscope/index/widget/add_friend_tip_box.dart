@@ -1,37 +1,24 @@
+import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/translations/en.dart';
+import 'package:astrea/generated/assets.dart';
+import 'package:astrea/page/home/horoscope/index/logic.dart';
 import 'package:bubble_box/bubble_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:astrea/core/setting/app_fonts.dart';
-import 'package:astrea/core/translations/en.dart';
-import 'package:astrea/generated/assets.dart';
 
-class AddFriendTip extends StatefulWidget {
-  final bool isShow;
-  const AddFriendTip({super.key, required this.isShow});
-
-  @override
-  State<AddFriendTip> createState() => _AddFriendTipState();
-}
-
-class _AddFriendTipState extends State<AddFriendTip> {
-  bool isShowTip = false;
-
-  @override
-  void initState() {
-    super.initState();
-    isShowTip = widget.isShow;
-  }
+class AddFriendTip extends StatelessWidget {
+  final HoroscopeLogic logic;
+  const AddFriendTip({super.key, required this.logic});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        setState(() {
-          isShowTip = false;
-        });
+        logic.isAddFriend = true;
+        logic.update();
       },
-      child: isShowTip
+      child: (!logic.isAddFriend)
           ? UnconstrainedBox(
               child: BubbleBox(
                 shape: BubbleShapeBorder(

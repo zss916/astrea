@@ -496,10 +496,10 @@ class AnalysisPage extends StatelessWidget {
             content: pluto.showInterpretation,
             icon: pluto.showIcon,
           ),
-        if (pluto != null) buildCommonDivider(),
 
+        //if (pluto != null) buildCommonDivider(),
         Container(
-          margin: EdgeInsetsDirectional.only(top: 0.h),
+          margin: EdgeInsetsDirectional.only(top: 20.h),
           child: Image.asset(
             Assets.imageAnalysisBottom,
             matchTextDirection: true,

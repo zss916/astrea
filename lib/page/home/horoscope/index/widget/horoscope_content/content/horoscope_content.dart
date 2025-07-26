@@ -46,43 +46,56 @@ class HoroscopeContent extends StatelessWidget {
             ),
           ],
         ),
-        child: Stack(
-          alignment: AlignmentDirectional.topCenter,
-          children: [
-            if (isShow)
-              PositionedDirectional(
-                bottom: 0,
-                start: 12,
-                end: 12,
-                child: Image.asset(
-                  Assets.imageBottomTexture,
-                  matchTextDirection: true,
-                ),
-              ),
-            Column(
-              children: [
-                NatalChart(
-                  isShow: isShow,
-                  nickName: logic.nickName,
-                  showBirthday: logic.showBirthday,
-                  sunSign: logic.sunSign,
-                  sunSignIcon: logic.sunSignIcon,
-                  moonSign: logic.moonSign,
-                  moonSignIcon: logic.moonSignIcon,
-                  ascendantSign: logic.ascendantSign,
-                  ascendantSignIcon: logic.ascendantSignIcon,
-                  natalChartImage: logic.natalChartImage,
-                  element: logic.element,
-                  ruler: logic.ruler,
-                  form: logic.form,
-                ),
-                // FreeUnlockingCard(),
-                if (isShow) PersonalityAnalysis(logic: logic),
-              ],
+        child: buildContent(),
+      ),
+    );
+  }
+
+  /* Widget bu() => Stack(
+    alignment: AlignmentDirectional.center,
+    children: [
+      if (logic.viewState == 0) buildContent(),
+      if (logic.viewState == 1) buildRefresh(logic),
+      if (logic.viewState == 2) buildLoading(),
+    ],
+  );*/
+
+  Widget buildContent() {
+    return Stack(
+      alignment: AlignmentDirectional.topCenter,
+      children: [
+        if (isShow)
+          PositionedDirectional(
+            bottom: 0,
+            start: 12,
+            end: 12,
+            child: Image.asset(
+              Assets.imageBottomTexture,
+              matchTextDirection: true,
             ),
+          ),
+        Column(
+          children: [
+            NatalChart(
+              isShow: isShow,
+              nickName: logic.nickName,
+              showBirthday: logic.showBirthday,
+              sunSign: logic.sunSign,
+              sunSignIcon: logic.sunSignIcon,
+              moonSign: logic.moonSign,
+              moonSignIcon: logic.moonSignIcon,
+              ascendantSign: logic.ascendantSign,
+              ascendantSignIcon: logic.ascendantSignIcon,
+              natalChartImage: logic.natalChartImage,
+              element: logic.element,
+              ruler: logic.ruler,
+              form: logic.form,
+            ),
+            // FreeUnlockingCard(),
+            if (isShow) PersonalityAnalysis(logic: logic),
           ],
         ),
-      ),
+      ],
     );
   }
 }
