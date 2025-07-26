@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:astrea/components/custom_tag.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SelectGender extends StatefulWidget {
   final int sex;
@@ -21,7 +21,17 @@ class _SelectGenderState extends State<SelectGender> {
   @override
   void initState() {
     super.initState();
-    selectSex = widget.sex;
+    setState(() {
+      selectSex = widget.sex;
+    });
+  }
+
+  @override
+  void didUpdateWidget(covariant SelectGender oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    setState(() {
+      selectSex = widget.sex;
+    });
   }
 
   @override

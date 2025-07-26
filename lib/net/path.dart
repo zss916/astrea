@@ -62,7 +62,4 @@ class ApiPath {
 
   ///合盘分析（查询详情））GET
   static const String getAnalysis = "/v1/synastry/analysis";
-
-  ///获取文件上传地址））GET
-  static const String uploadUrl = "/v1/global/uploadurl";
 }

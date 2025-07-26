@@ -133,8 +133,10 @@ class PageTools {
     Get.toNamed(APages.accountInformation, arguments: map);
   }
 
-  static toPersonalData({AccountEntity? account}) {
-    Get.toNamed(APages.personalData, arguments: account);
+  static toPersonalData({AccountEntity? account, Function? onRefresh}) {
+    Get.toNamed(APages.personalData, arguments: account)?.whenComplete(() {
+      onRefresh?.call();
+    });
   }
 
   static toTelephone() => Get.toNamed(APages.telephone);

@@ -27,7 +27,9 @@ class PlaceOfBirthLogic extends GetxController {
   void onInit() {
     super.onInit();
     if (AppService.to.countryData.isNotEmpty) {
-      //AppService.to.countryData.values.map((e) => e.map((b) => b..isSelected = false));
+      AppService.to.countryData.values.map(
+        (e) => e.map((b) => b..isSelected = false),
+      );
       countryData = AppService.to.countryData;
       update();
     }
@@ -41,10 +43,10 @@ class PlaceOfBirthLogic extends GetxController {
 
   void loadCountryList({bool isLoading = false}) async {
     if (isLoading) AppLoading.show();
-    List<CountryEntity> countryList =
-        await LocationAPI.getCountryList().whenComplete(() {
-      AppLoading.dismiss();
-    });
+    List<CountryEntity> countryList = await LocationAPI.getCountryList()
+        .whenComplete(() {
+          AppLoading.dismiss();
+        });
     countryData = countryList.groupListsBy((e) => e.firstLetter ?? "");
     update();
   }
@@ -53,23 +55,24 @@ class PlaceOfBirthLogic extends GetxController {
     AppLoading.show();
     List<StateEntity> states =
         await LocationAPI.getStateList(countryId: countryId).whenComplete(() {
-      AppLoading.dismiss();
-    });
+          AppLoading.dismiss();
+        });
     stateData = states.groupListsBy((e) => e.firstLetter ?? "");
   }
 
   Future<void> loadCityList({required int stateId}) async {
     AppLoading.show();
-    List<CityEntity> cities =
-        await LocationAPI.getCityList(stateId: stateId).whenComplete(() {
-      AppLoading.dismiss();
-    });
+    List<CityEntity> cities = await LocationAPI.getCityList(stateId: stateId)
+        .whenComplete(() {
+          AppLoading.dismiss();
+        });
     cityData = cities.groupListsBy((e) => e.firstLetter ?? "");
   }
 
-  void selectCountry(CountryEntity country,
-      {Function(String place, String latitude, String longitude)?
-          onSelect}) async {
+  void selectCountry(
+    CountryEntity country, {
+    Function(String place, String latitude, String longitude)? onSelect,
+  }) async {
     for (var element in countryData.values) {
       for (var element in element) {
         element.isSelected = false;
@@ -83,16 +86,23 @@ class PlaceOfBirthLogic extends GetxController {
       index = 1;
       update();
     } else {
-      String place =
-          sprintf("%s/%s/%s", [countryName, stateName, cityName]).trim();
+      String place = sprintf("%s/%s/%s", [
+        countryName,
+        stateName,
+        cityName,
+      ]).trim();
       onSelect?.call(
-          place, country.latitude.toString(), country.longitude.toString());
+        place,
+        country.latitude.toString(),
+        country.longitude.toString(),
+      );
     }
   }
 
-  void selectState(StateEntity state,
-      {Function(String place, String latitude, String longitude)?
-          onSelect}) async {
+  void selectState(
+    StateEntity state, {
+    Function(String place, String latitude, String longitude)? onSelect,
+  }) async {
     for (var element in stateData.values) {
       for (var element in element) {
         element.isSelected = false;
@@ -106,16 +116,23 @@ class PlaceOfBirthLogic extends GetxController {
       index = 2;
       update();
     } else {
-      String place =
-          sprintf("%s/%s/%s", [countryName, stateName, cityName]).trim();
+      String place = sprintf("%s/%s/%s", [
+        countryName,
+        stateName,
+        cityName,
+      ]).trim();
       onSelect?.call(
-          place, state.latitude.toString(), state.longitude.toString());
+        place,
+        state.latitude.toString(),
+        state.longitude.toString(),
+      );
     }
   }
 
-  void selectCity(CityEntity city,
-      {Function(String place, String latitude, String longitude)?
-          onSelect}) async {
+  void selectCity(
+    CityEntity city, {
+    Function(String place, String latitude, String longitude)? onSelect,
+  }) async {
     for (var element in cityData.values) {
       for (var element in element) {
         element.isSelected = false;
@@ -124,8 +141,11 @@ class PlaceOfBirthLogic extends GetxController {
     city.isSelected = true;
     update();
     cityName = city.name ?? "";
-    String place =
-        sprintf("%s/%s/%s", [countryName, stateName, cityName]).trim();
+    String place = sprintf("%s/%s/%s", [
+      countryName,
+      stateName,
+      cityName,
+    ]).trim();
     onSelect?.call(place, city.latitude.toString(), city.longitude.toString());
   }
 }

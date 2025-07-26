@@ -4,7 +4,6 @@ class StartLogic extends GetxController {
   @override
   void onInit() {
     super.onInit();
-
     // toAuthEmail(email: "ddddd@qq.com", pwd: "12dsdfdsfs3456");
   }
 
@@ -25,9 +24,7 @@ class StartLogic extends GetxController {
         authToken: data.$2.authToken ?? "",
         isNewUser: data.$2.isNewUser,
       );
-      debugPrint("authToken => ${data.$2.authToken ?? ""}");
-
-      await AccountAPI.updateAccount();
+      // debugPrint("authToken => ${data.$2.authToken ?? ""}");
     }
   }
 }

@@ -5,8 +5,8 @@ class PersonalDataLogic extends GetxController {
 
   String get avatar => account?.headimg ?? "";
   String get nickName => account?.nickName ?? "";
-  String get dateBirth => account?.birthday ?? "";
-  String? get placeBirth => account?.locality;
+  String get dateBirth => account?.showBirthDayContent ?? "";
+  String? get placeBirth => account?.locality ?? AccountService.to.showLocality;
   int get sex => account?.sex ?? 0;
 
   @override
@@ -31,16 +31,56 @@ class PersonalDataLogic extends GetxController {
   }
 
   Future<void> loadAccount() async {
-    if (account != null) {
-      account = await AccountAPI.getAccount();
-      update();
-    }
+    account = await AccountAPI.getAccount();
+    update();
   }
 
-  Future<void> saveData({String? nickName}) async {
-    await AccountAPI.updateAccount(nickName: nickName);
-    if (nickName != null) {
-      //AccountService.to.updateUserNickName(nickName);
+  Future<void> updateData() async {
+    AppLoading.show();
+    bool isSuccessful =
+        await AccountAPI.updateAccount(
+          birthday: account?.birthday,
+          nickName: account?.nickName,
+          birthMinute: account?.birthMinute,
+          birthHour: account?.birthHour,
+          interests: account?.interests,
+          lon: (account?.lon == null)
+              ? null
+              : num.parse(account?.lon ?? "0").toInt(),
+          lat: (account?.lat == null)
+              ? null
+              : num.parse(account?.lat ?? "0").toInt(),
+          locality: account?.locality,
+          sex: account?.sex,
+          avatar: account?.headimg,
+        ).whenComplete(() {
+          AppLoading.dismiss();
+        });
+    if (isSuccessful) {
+      if ((account?.nickName ?? "").isNotEmpty) {
+        AccountService.to.updateUserNickName(nickName);
+      }
+      if (account?.sex != null) {
+        AccountService.to.updateUserSex(account!.sex!);
+      }
+      if (account?.birthday != null) {
+        AccountService.to.updateUserBirth(account!.birthday!);
+      }
+      if (account?.birthHour != null && account?.birthMinute != null) {
+        AccountService.to.updateUserBirthHAndM(
+          account!.birthHour!,
+          account!.birthMinute!,
+        );
+      }
+      if (account?.lat != null &&
+          account?.lon != null &&
+          account?.locality != null) {
+        AccountService.to.updatePlaceBirth(
+          account!.locality!,
+          account!.lat!,
+          account!.lon!,
+        );
+      }
     }
   }
 }

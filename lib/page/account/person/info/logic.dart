@@ -3,7 +3,7 @@ part of 'index.dart';
 class AccountInfoLogic extends GetxController {
   AccountEntity? account;
 
-  String get email => account?.loginEmail ?? "-";
+  String email = AccountService.to.loginEmail ?? "-";
   String get loginChannel =>
       LoginChannel.getSymbol((account?.loginChannel ?? 0));
   String get userID => account?.userId ?? "-";
@@ -31,10 +31,8 @@ class AccountInfoLogic extends GetxController {
 
   ///获取账号信息
   Future<void> loadAccount() async {
-    if (account != null) {
-      account = await AccountAPI.getAccount();
-      update();
-    }
+    account = await AccountAPI.getAccount();
+    update();
   }
 
   ///删除账号

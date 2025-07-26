@@ -64,6 +64,14 @@ class AccountEntity {
     }
   }
 
+  String get showBirthDayContent {
+    if ((birthday ?? "").isNotEmpty) {
+      return "${CalculateTools.formattedTime2("$birthday")}\n${(birthHour ?? 0).formatted}:${(birthMinute ?? 0).formatted} ${CalculateTools.formattedAmOrPm(birthHour ?? 0)}";
+    } else {
+      return "--";
+    }
+  }
+
   AccountEntity();
 
   factory AccountEntity.fromJson(Map<String, dynamic> json) =>

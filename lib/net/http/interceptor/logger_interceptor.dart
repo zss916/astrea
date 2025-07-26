@@ -1,5 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:astrea/core/utils/index.dart';
+import 'package:dio/dio.dart';
 
 class LoggerInterceptor extends Interceptor {
   @override
@@ -8,6 +8,17 @@ class LoggerInterceptor extends Interceptor {
       '[Method]:${options.method}\n[Request]:${options.uri}\n[Body]:${options.data}',
     );
     super.onRequest(options, handler);
+  }
+
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    super.onResponse(response, handler);
+
+    Console.log(
+      '[Method]:${response.requestOptions.method}\n'
+      '[Request]:${response.requestOptions.uri}\n'
+      '[Response]:${response.data}',
+    );
   }
 
   @override

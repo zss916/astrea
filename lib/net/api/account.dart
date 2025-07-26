@@ -39,7 +39,7 @@ abstract class AccountAPI {
   ///更新账号信息
   static Future<bool> updateAccount({
     String? nickName,
-    String? birthday,
+    required String? birthday,
     int? birthHour,
     int? birthMinute,
     int? sex,

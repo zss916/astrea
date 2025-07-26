@@ -1,3 +1,4 @@
+import 'package:astrea/net/http/interceptor/logger_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -18,7 +19,7 @@ class Http {
     _dio = Dio(baseDioOptions);
     _dio.httpClientAdapter = httpAdapter;
     _dio.interceptors.add(AuthInterceptor());
-    // _dio.interceptors.add(LoggerInterceptor());
+    _dio.interceptors.add(LoggerInterceptor());
     _dio.interceptors.add(
       PrettyDioLogger(
         requestHeader: true,
@@ -84,6 +85,34 @@ class Http {
     }
   }
 
+  ///upload
+  Future<dynamic> upload(
+    String url, {
+    Map<String, dynamic>? query,
+    Object? data,
+    Options? options,
+    CancelToken? cancelToken,
+  }) async {
+    try {
+      final result = await _dio.get(
+        url,
+        queryParameters: query,
+        data: data,
+        options: options,
+        cancelToken: cancelToken,
+      );
+      // https://api-test.theappastro.com/v1/global/uploadurl?file_name=scaled_8bcbaca7-6f57-4b19-9209-23925d86a39c9079525850921131112.jpg
+      //String path = result.requestOptions.uri.path;
+      // result.toString();
+      //debugPrint("result ${result.requestOptions.queryParameters.}");
+      //String path = "https://${result.realUri.authority}${result.realUri.path}?file_name=";
+      //debugPrint("code ${result.statusCode}, data ${result.data}");
+      return result.data ?? {};
+    } catch (error) {
+      rethrow;
+    }
+  }
+
   ///delete
   Future<dynamic> delete(
     String url, {
@@ -120,6 +149,27 @@ class Http {
         queryParameters: query,
         data: data,
         options: options,
+        cancelToken: cancelToken,
+      );
+      return result.data ?? '{}';
+    } catch (error) {
+      rethrow;
+    }
+  }
+
+  ///put
+  Future<dynamic> put(
+    String url, {
+    Map<String, dynamic>? query,
+    Object? data,
+    Options? options,
+    CancelToken? cancelToken,
+  }) async {
+    try {
+      final result = await _dio.put(
+        url,
+        queryParameters: query,
+        data: data,
         cancelToken: cancelToken,
       );
       return result.data ?? '{}';

@@ -28,6 +28,13 @@ class CalculateTools {
     return formattedDate;
   }
 
+  static String formattedTime2(String inputDate) {
+    DateTime dateTime = DateTime.parse(inputDate);
+    //MMMM d,y.hh:mm a
+    String formattedDate = DateFormat('MMMM d,y').format(dateTime);
+    return formattedDate;
+  }
+
   /*DateFormat(
             'MMMM d,y.hh:mm a',
               ).format(DateTime.fromMillisecondsSinceEpoch(907363200 * 1000)),*/

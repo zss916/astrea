@@ -1,3 +1,4 @@
+import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/net/api/account.dart';
 import 'package:astrea/net/bean/account_entity.dart';
@@ -26,9 +27,19 @@ class AccountLogic extends GetxController {
   }
 
   Future<void> loadData() async {
-    if (account == null) {
-      account = await AccountAPI.getAccount();
-      update();
-    }
+    account = await AccountAPI.getAccount();
+    update();
   }
+
+  void toPersonalData() {
+    PageTools.toPersonalData(
+      account: account,
+      onRefresh: () {
+        loadData();
+      },
+    );
+  }
+
+  void toAccountInformation() =>
+      PageTools.toAccountInformation(account: account);
 }

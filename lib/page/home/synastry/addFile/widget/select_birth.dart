@@ -1,10 +1,10 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/sheet/select_time_sheet.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SelectBirth extends StatefulWidget {
   final String birth;
@@ -21,7 +21,17 @@ class _SelectBirthState extends State<SelectBirth> {
   @override
   void initState() {
     super.initState();
-    birth = widget.birth;
+    setState(() {
+      birth = widget.birth;
+    });
+  }
+
+  @override
+  void didUpdateWidget(covariant SelectBirth oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    setState(() {
+      birth = widget.birth;
+    });
   }
 
   @override
@@ -34,10 +44,12 @@ class _SelectBirthState extends State<SelectBirth> {
     return InkWell(
       onTap: () {
         showDatePickerSheet((value, dateBirth, hourBirth, minuteBirth) {
-          setState(() {
-            birth = value;
-          });
-          widget.onNext(dateBirth, hourBirth, minuteBirth);
+          if (value.isNotEmpty) {
+            setState(() {
+              birth = value;
+            });
+            widget.onNext(dateBirth, hourBirth, minuteBirth);
+          }
         });
       },
       child: SizedBox(

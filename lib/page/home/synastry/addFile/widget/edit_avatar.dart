@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:astrea/core/gallery/sheet_gallery.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:flutter/material.dart';
 
 class EditAvatar extends StatelessWidget {
   final String? path;

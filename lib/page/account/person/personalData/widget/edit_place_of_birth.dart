@@ -1,10 +1,10 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/account/person/personalData/sheet/select_place_sheet.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class EditPlaceOfBirth extends StatelessWidget {
   final String? showPlace;
@@ -13,7 +13,7 @@ class EditPlaceOfBirth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         showSelectPlaceSheet(
           onSelect: (String place, String latitude, String longitude) {

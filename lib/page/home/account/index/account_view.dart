@@ -4,7 +4,6 @@ import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/core/translations/en.dart';
-import 'package:astrea/net/bean/account_entity.dart';
 import 'package:astrea/page/account/accountInfo/details/widget/common_divider.dart';
 import 'package:astrea/page/home/account/index/logic.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/edit_avatar.dart';
@@ -56,7 +55,7 @@ class AccountView extends StatelessWidget {
                     ],
                   ),
                 ),
-                buildPersonalData(logic.account),
+                buildPersonalData(logic),
                 buildLawAndPrivacy(),
                 SizedBox(height: 120.h),
               ],
@@ -67,7 +66,7 @@ class AccountView extends StatelessWidget {
     );
   }
 
-  Widget buildPersonalData(AccountEntity? account) {
+  Widget buildPersonalData(AccountLogic logic) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -103,14 +102,14 @@ class AccountView extends StatelessWidget {
               CommonItem(
                 title: LanKey.accountInformation.tr,
                 onTap: () {
-                  PageTools.toAccountInformation(account: account);
+                  logic.toAccountInformation();
                 },
               ),
               CommonDivider(),
               CommonItem(
                 title: LanKey.personalData.tr,
                 onTap: () {
-                  PageTools.toPersonalData(account: account);
+                  logic.toPersonalData();
                 },
               ),
               CommonDivider(),

@@ -1,8 +1,8 @@
+import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/translations/en.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:astrea/core/setting/app_fonts.dart';
-import 'package:astrea/core/translations/en.dart';
 
 class EditName extends StatefulWidget {
   final String nickName;
@@ -20,7 +20,19 @@ class _EditNameState extends State<EditName> {
   void initState() {
     super.initState();
     if (widget.nickName.isNotEmpty) {
-      textEditCtrl.text = widget.nickName;
+      setState(() {
+        textEditCtrl.text = widget.nickName;
+      });
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant EditName oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.nickName.isNotEmpty) {
+      setState(() {
+        textEditCtrl.text = widget.nickName;
+      });
     }
   }
 
