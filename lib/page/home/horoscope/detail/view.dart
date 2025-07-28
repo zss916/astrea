@@ -375,7 +375,6 @@ class AnalysisPage extends StatelessWidget {
               height: 1.62,
             ),
           ),*/
-          // Assets.imageSunIcon,
           WidgetSpan(
             child: Container(
               margin: EdgeInsetsDirectional.only(end: 4),

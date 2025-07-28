@@ -1,5 +1,6 @@
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
+import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/horoscope/index/logic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,16 +44,28 @@ class PersonalityAnalysis extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     TextSpan(
                       children: [
-                        TextSpan(
+                        WidgetSpan(
+                          child: Container(
+                            margin: EdgeInsetsDirectional.only(end: 4),
+                            child: Image.asset(
+                              Assets.imageSunIcon,
+                              matchTextDirection: true,
+                              width: 16,
+                              height: 18,
+                            ),
+                          ),
+                        ),
+
+                        /*TextSpan(
                           text: '☀️ ',
                           style: TextStyle(
                             color: const Color(0xFF6A676C),
                             fontSize: 16,
                             fontFamily: AppFonts.textFontFamily,
                           ),
-                        ),
+                        ),*/
                         TextSpan(
-                          text: 'Sun sign: ',
+                          text: LanKey.sunSignTitle.tr,
                           style: TextStyle(
                             color: const Color(0xFF585FC4),
                             fontSize: 16,
