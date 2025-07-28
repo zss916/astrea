@@ -3,10 +3,17 @@ part of 'index.dart';
 class FileManagementLogic extends GetxController {
   List<FriendEntity> list = [];
 
+  late StreamSubscription<RefreshFriendsEvent> refreshEvent;
+
   @override
   void onInit() {
     super.onInit();
     initLocalData();
+    refreshEvent = AppEventBus.eventBus.on<RefreshFriendsEvent>().listen((
+      event,
+    ) {
+      loadData();
+    });
   }
 
   void initLocalData() {
@@ -22,6 +29,12 @@ class FileManagementLogic extends GetxController {
     loadData();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    refreshEvent.cancel();
+  }
+
   ///加载朋友列表
   Future<void> loadData() async {
     AppLoading.show();
@@ -34,8 +47,31 @@ class FileManagementLogic extends GetxController {
   }
 
   ///删除朋友
-  void removeFriend(int index) {
-    list.removeAt(index);
-    update();
+  Future<void> removeFriend({
+    required String id,
+    required int index,
+    required Function onFinish,
+  }) async {
+    AppLoading.show();
+    bool value = await FriendAPI.deleteFriend(id: id).whenComplete(() {
+      AppLoading.dismiss();
+    });
+    if (value) {
+      list.removeAt(index);
+      update();
+      onFinish.call();
+    }
+  }
+
+  void toAddFile() {
+    if (list.length < 11) {
+      PageTools.toAddFile(
+        onRefresh: () {
+          // loadData();
+        },
+      );
+    } else {
+      AppLoading.toast("add friend more 10");
+    }
   }
 }

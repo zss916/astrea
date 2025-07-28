@@ -54,6 +54,9 @@ class ApiPath {
   ///查询朋友列表 POST (header add auth)
   static const String addFriend = "/v1/account/friend";
 
+  ///删除朋友 DELETE (header add auth)
+  static const String deleteFriend = "/v1/account/friend";
+
   ///合盘分析（查询列表）GET
   static const String getAnalysisList = "/v1/synastry/analysis";
 

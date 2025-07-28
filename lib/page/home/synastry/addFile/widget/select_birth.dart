@@ -1,10 +1,13 @@
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
+import 'package:astrea/core/utils/calculate.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/sheet/select_time_sheet.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:awesome_datetime_picker/awesome_datetime_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sprintf/sprintf.dart';
 
 class SelectBirth extends StatefulWidget {
   final String birth;
@@ -49,6 +52,24 @@ class _SelectBirthState extends State<SelectBirth> {
               birth = value;
             });
             widget.onNext(dateBirth, hourBirth, minuteBirth);
+          } else {
+            setState(() {
+              String m = AwesomeDateUtils.getMonthNames(
+                LocaleType.en,
+              )[(DateTime.now().month - 1)];
+              birth =
+                  "$m ${DateTime.now().day},${DateTime.now().year}\n${DateTime.now().hour}:${DateTime.now().minute} ${AwesomeTimeUtils.getAmPm(DateTime.now().hour)}";
+            });
+            String dateBirth = sprintf("%s-%s-%s", [
+              DateTime.now().year,
+              DateTime.now().month.formatted,
+              DateTime.now().day.formatted,
+            ]);
+            widget.onNext(
+              dateBirth,
+              DateTime.now().hour,
+              DateTime.now().minute,
+            );
           }
         });
       },

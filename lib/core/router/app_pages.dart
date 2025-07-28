@@ -180,6 +180,7 @@ class APages {
   static const countryCodeSheet = 'CountryCodeSheet';
   static const selectTimeSheet = 'SelectTimeSheet';
   static const selectRelationshipSheet = 'SelectRelationshipSheet';
+  static const selectInterestsSheet = 'SelectInterestsSheet';
   static const shareSheet = 'ShareSheet';
   static const chatMoreSheet = 'ChatMoreSheet';
   static const setLoginPasswordSheet = 'LoginPasswordSheet';

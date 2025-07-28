@@ -1,19 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:astrea/page/home/synastry/record/index.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class AddFriends extends StatelessWidget {
-  const AddFriends({super.key});
+  final FileManagementLogic logic;
+  const AddFriends({super.key, required this.logic});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        PageTools.toAddFile();
+        logic.toAddFile();
       },
       child: Stack(
         alignment: AlignmentDirectional.center,

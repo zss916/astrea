@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:astrea/core/utils/calculate.dart';
 import 'package:astrea/generated/json/base/json_field.dart';
 import 'package:astrea/generated/json/friend_entity.g.dart';
 
@@ -26,6 +27,17 @@ class FriendEntity {
   num? lat;
   @JSONField(name: 'is_self')
   int? isSelf;
+
+  ///1 me
+  bool get isMe => isSelf == 1;
+
+  String get showBirthDay {
+    if ((birthday ?? "").isNotEmpty) {
+      return "${CalculateTools.formattedTime("$birthday")}${(birthHour ?? 0).formatted}:${(birthMinute ?? 0).formatted} ${CalculateTools.formattedAmOrPm(birthHour ?? 0)}";
+    } else {
+      return "";
+    }
+  }
 
   FriendEntity();
 

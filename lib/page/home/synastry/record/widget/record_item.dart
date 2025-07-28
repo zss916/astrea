@@ -1,15 +1,22 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/page/home/synastry/record/widget/radio_item.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class RecordItem extends StatefulWidget {
   //late bool isSelected;
-  int index;
-  Function onDelete;
-  RecordItem({super.key, required this.index, required this.onDelete});
+  final int index;
+  final Function onDelete;
+  final FriendEntity item;
+  const RecordItem({
+    super.key,
+    required this.index,
+    required this.item,
+    required this.onDelete,
+  });
 
   @override
   _RecordItemState createState() => _RecordItemState();
@@ -42,7 +49,7 @@ class _RecordItemState extends State<RecordItem> {
         child: Slidable(
           key: ValueKey("fileTag\$index"),
           groupTag: "fileTags",
-          enabled: widget.index != 0,
+          enabled: (!widget.item.isMe),
           useTextDirection: true,
           endActionPane: ActionPane(
             extentRatio: 0.28,
@@ -88,7 +95,7 @@ class _RecordItemState extends State<RecordItem> {
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
                               Text(
-                                widget.index == 0 ? "CC" : 'Nineteen',
+                                widget.item.nickName ?? "",
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
@@ -98,7 +105,7 @@ class _RecordItemState extends State<RecordItem> {
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
-                              if (widget.index == 0)
+                              if (widget.item.isMe)
                                 Container(
                                   margin: EdgeInsetsDirectional.only(start: 0),
                                   padding: EdgeInsetsDirectional.symmetric(
@@ -126,7 +133,7 @@ class _RecordItemState extends State<RecordItem> {
                         SizedBox(
                           width: double.maxFinite,
                           child: Text(
-                            'June 6, 1995, 12:15 PM',
+                            widget.item.showBirthDay,
                             textAlign: TextAlign.start,
                             style: TextStyle(
                               color: const Color(0xFF91929D),

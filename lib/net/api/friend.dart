@@ -28,12 +28,13 @@ abstract class FriendAPI {
     String? nickName,
     String? avatar,
     String? birthday,
-    String? birthHour,
-    String? birthMinute,
+    num? birthHour,
+    num? birthMinute,
     int? sex,
-    int? lon,
-    int? lat,
+    String? lon,
+    String? lat,
     String? locality,
+    String? interests,
   }) async {
     Map<String, dynamic> map = {};
     if (nickName != null) {
@@ -41,7 +42,7 @@ abstract class FriendAPI {
     }
 
     if (avatar != null) {
-      map["headimg"] = avatar;
+      map["head_img"] = avatar;
     }
 
     if (birthday != null) {
@@ -61,22 +62,48 @@ abstract class FriendAPI {
     }
 
     if (lon != null) {
-      map["lon"] = lon;
+      map["lon"] = num.parse(lon);
     }
 
     if (lat != null) {
-      map["lat"] = lat;
+      map["lat"] = num.parse(lat);
     }
 
     if (locality != null) {
       map["locality"] = locality;
     }
 
+    if (interests != null) {
+      map["interests"] = interests;
+    }
+
     try {
       var result = await Http.instance.post(ApiPath.addFriend, data: map);
-      return result["data"] as int;
+      if (result["code"] == 0) {
+        return result["data"]["id"] as int?;
+      } else {
+        AppLoading.toast(result["msg"]);
+        return null;
+      }
     } catch (error) {
       return null;
+    }
+  }
+
+  ///删除朋友
+  static Future<bool> deleteFriend({required String id}) async {
+    try {
+      Map<String, dynamic> map = {};
+      map["friend_id"] = id;
+      var result = await Http.instance.delete(ApiPath.deleteFriend, data: map);
+      if (result["code"] == 0) {
+        return true;
+      } else {
+        AppLoading.toast(result["msg"]);
+        return false;
+      }
+    } catch (error) {
+      return false;
     }
   }
 }

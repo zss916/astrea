@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:flutter/material.dart';
 
 class SynastryAvatar extends StatelessWidget {
   final Widget child;
@@ -38,7 +38,7 @@ class SynastryAvatar extends StatelessWidget {
               child: Container(
                 margin: EdgeInsetsDirectional.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.black,
+                  color: Color(0x1A000000),
                   borderRadius: BorderRadius.circular(50),
                 ),
                 child: child,

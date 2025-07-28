@@ -110,8 +110,13 @@ class PageTools {
 
   static toRecord() => Get.toNamed(APages.record);
 
-  static toAddFile({bool isEditFile = false}) =>
-      Get.toNamed(APages.addFile, arguments: {"isEditFile": isEditFile});
+  static toAddFile({bool isEditFile = false, Function? onRefresh}) =>
+      Get.toNamed(
+        APages.addFile,
+        arguments: {"isEditFile": isEditFile},
+      )?.whenComplete(() {
+        onRefresh?.call();
+      });
 
   static toLogs() => Get.toNamed(APages.starLog);
 

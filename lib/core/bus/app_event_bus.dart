@@ -8,3 +8,7 @@ class TabEvent {
   int index;
   TabEvent(this.index);
 }
+
+class RefreshFriendsEvent {
+  RefreshFriendsEvent();
+}
