@@ -11,6 +11,7 @@ import 'package:astrea/net/bean/base_response_entity.dart';
 import 'package:astrea/net/bean/city_entity.dart';
 import 'package:astrea/net/bean/country_entity.dart';
 import 'package:astrea/net/bean/friend_entity.dart';
+import 'package:astrea/net/bean/log_item_entity.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
 import 'package:astrea/net/bean/state_entity.dart';
 import 'package:astrea/net/bean/upload_url_entity.dart';
@@ -289,6 +290,30 @@ class JsonConvert {
       return data
               .map<FriendEntity>(
                 (Map<String, dynamic> e) => FriendEntity.fromJson(e),
+              )
+              .toList()
+          as M;
+    }
+    if (<LogItemEntity>[] is M) {
+      return data
+              .map<LogItemEntity>(
+                (Map<String, dynamic> e) => LogItemEntity.fromJson(e),
+              )
+              .toList()
+          as M;
+    }
+    if (<LogItemFirstFriendInfo>[] is M) {
+      return data
+              .map<LogItemFirstFriendInfo>(
+                (Map<String, dynamic> e) => LogItemFirstFriendInfo.fromJson(e),
+              )
+              .toList()
+          as M;
+    }
+    if (<LogItemSecondFriendInfo>[] is M) {
+      return data
+              .map<LogItemSecondFriendInfo>(
+                (Map<String, dynamic> e) => LogItemSecondFriendInfo.fromJson(e),
               )
               .toList()
           as M;
@@ -608,6 +633,9 @@ class JsonConvertClassCollection {
     (CityEntity).toString(): CityEntity.fromJson,
     (CountryEntity).toString(): CountryEntity.fromJson,
     (FriendEntity).toString(): FriendEntity.fromJson,
+    (LogItemEntity).toString(): LogItemEntity.fromJson,
+    (LogItemFirstFriendInfo).toString(): LogItemFirstFriendInfo.fromJson,
+    (LogItemSecondFriendInfo).toString(): LogItemSecondFriendInfo.fromJson,
     (NatalReportEntity).toString(): NatalReportEntity.fromJson,
     (NatalReportNatalChartResult).toString():
         NatalReportNatalChartResult.fromJson,

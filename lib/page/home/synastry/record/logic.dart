@@ -4,6 +4,19 @@ class FileManagementLogic extends GetxController {
   List<FriendEntity> list = [];
 
   @override
+  void onInit() {
+    super.onInit();
+    initLocalData();
+  }
+
+  void initLocalData() {
+    list.clear();
+    List<FriendEntity> value = AccountService.to.getFriendList();
+    list.addAll(value);
+    update();
+  }
+
+  @override
   void onReady() {
     super.onReady();
     loadData();
