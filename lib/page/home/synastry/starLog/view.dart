@@ -31,10 +31,18 @@ class LogsPage extends StatelessWidget {
       body: GetBuilder<LogsLogic>(
         init: LogsLogic(),
         builder: (logic) {
-          return buildList(logic);
+          return buildBody(logic.viewState, logic);
         },
       ),
     );
+  }
+
+  Widget buildBody(int viewState, LogsLogic logic) {
+    return switch (viewState) {
+      _ when viewState == Status.empty.index => buildEmpty(),
+      _ when viewState == Status.data.index => buildList(logic),
+      _ => LoadingWidget(),
+    };
   }
 
   Widget buildList(LogsLogic logic) => ListView.separated(
@@ -45,7 +53,7 @@ class LogsPage extends StatelessWidget {
       onTap: () {
         PageTools.toStarReport();
       },
-      child: LogItem(),
+      child: LogItem(item: logic.list[i]),
     ),
   );
 

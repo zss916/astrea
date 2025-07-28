@@ -1,7 +1,8 @@
 import 'package:astrea/components/common_app_bar.dart';
+import 'package:astrea/components/loading_widget.dart';
+import 'package:astrea/core/enum/app_enum.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
-import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/net/api/synastry.dart';

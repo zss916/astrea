@@ -1,8 +1,10 @@
 import 'package:astrea/generated/assets.dart';
+import 'package:astrea/net/bean/analysis_entity.dart';
 import 'package:flutter/material.dart';
 
 class LogItem extends StatelessWidget {
-  const LogItem({super.key});
+  final AnalysisEntity item;
+  const LogItem({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +25,26 @@ class LogItem extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsetsDirectional.only(bottom: 8),
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadiusDirectional.circular(100),
-                ),
+                decoration: (item.firstFriendInfo?.headImg ?? "").isNotEmpty
+                    ? BoxDecoration(
+                        color: Color(0x0d000000),
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                            item.firstFriendInfo?.headImg ?? "",
+                          ),
+                        ),
+                        borderRadius: BorderRadiusDirectional.circular(100),
+                      )
+                    : BoxDecoration(
+                        color: Color(0x0d000000),
+                        borderRadius: BorderRadiusDirectional.circular(100),
+                      ),
                 width: 58,
                 height: 58,
               ),
               Text(
-                'ThornLullaby‌',
+                item.firstFriendInfo?.nickName ?? "",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: const Color(0xFF323133),
@@ -52,6 +65,7 @@ class LogItem extends StatelessWidget {
                 matchTextDirection: true,
               ),
               Container(
+                constraints: BoxConstraints(minHeight: 23, minWidth: 52),
                 margin: EdgeInsetsDirectional.only(top: 12),
                 padding: EdgeInsetsDirectional.symmetric(
                   horizontal: 12,
@@ -62,7 +76,7 @@ class LogItem extends StatelessWidget {
                   color: Color(0xFFEDEDFE),
                 ),
                 child: Text(
-                  'Lover',
+                  item.relationship ?? "",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: const Color(0xFF585FC4),
@@ -79,15 +93,25 @@ class LogItem extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsetsDirectional.only(bottom: 8),
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadiusDirectional.circular(100),
-                ),
+                decoration: (item.secondFriendInfo?.headImg ?? "").isNotEmpty
+                    ? BoxDecoration(
+                        color: Color(0x1A000000),
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            item.secondFriendInfo?.headImg ?? "",
+                          ),
+                        ),
+                        borderRadius: BorderRadiusDirectional.circular(100),
+                      )
+                    : BoxDecoration(
+                        color: Color(0x1A000000),
+                        borderRadius: BorderRadiusDirectional.circular(100),
+                      ),
                 width: 58,
                 height: 58,
               ),
               Text(
-                'ThornLullaby‌',
+                item.secondFriendInfo?.nickName ?? "",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: const Color(0xFF323133),
