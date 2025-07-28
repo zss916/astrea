@@ -137,21 +137,22 @@ class AnalysisPage extends StatelessWidget {
                           //todo
                           if (logic.sunSignInterpretation.isNotEmpty)
                             buildInterpretation(
-                              titleIcon: LanKey.sunSignTitleIcon.tr,
+                              titleIcon: Assets.imageSunIcon,
                               title: LanKey.sunSignTitle.tr,
                               logic.sunSignInterpretation,
                             ),
                           //buildAddFriend(),
                           if (logic.moonSignInterpretation.isNotEmpty)
                             buildInterpretation(
-                              titleIcon: LanKey.moonSignTitleIcon.tr,
+                              titleIcon: Assets.imageMoonIcon,
                               title: LanKey.moonSignTitle.tr,
                               logic.sunSignInterpretation,
                             ),
                           // buildRelationShip(),
                           if (logic.ascendantSignInterpretation.isNotEmpty)
                             buildInterpretation(
-                              titleIcon: LanKey.ascendantSignTitleIcon.tr,
+                              // titleIcon: LanKey.ascendantSignTitleIcon.tr,
+                              titleIcon: Assets.imageStarIcon,
                               title: LanKey.ascendantSignTitle.tr,
                               logic.ascendantSignInterpretation,
                             ),
@@ -364,7 +365,7 @@ class AnalysisPage extends StatelessWidget {
       //overflow: TextOverflow.ellipsis,
       TextSpan(
         children: [
-          TextSpan(
+          /*TextSpan(
             text: titleIcon,
             style: TextStyle(
               color: const Color(0xFF6A676C),
@@ -373,7 +374,20 @@ class AnalysisPage extends StatelessWidget {
               fontFamily: AppFonts.textFontFamily,
               height: 1.62,
             ),
+          ),*/
+          // Assets.imageSunIcon,
+          WidgetSpan(
+            child: Container(
+              margin: EdgeInsetsDirectional.only(end: 4),
+              child: Image.asset(
+                titleIcon,
+                matchTextDirection: true,
+                width: 16,
+                height: 18,
+              ),
+            ),
           ),
+
           TextSpan(
             text: title,
             style: TextStyle(

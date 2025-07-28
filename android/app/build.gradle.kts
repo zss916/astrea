@@ -19,7 +19,8 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.astrea.findmyslef.astrea"
+        //applicationId = "com.astrea.findmyslef.astrea"
+        applicationId = "com.xxxxx.xxxxxxx.astrea"
         minSdk = 26
         targetSdk = 36
         versionCode = flutter.versionCode

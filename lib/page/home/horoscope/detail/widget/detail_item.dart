@@ -1,6 +1,8 @@
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/home/horoscope/detail/widget/blur_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DetailItem extends StatelessWidget {
   final int index;
@@ -32,14 +34,14 @@ class DetailItem extends StatelessWidget {
   ];*/
 
   List<String> get titles => [
-    "Mercury",
-    "Venus",
-    "Mars",
-    "Jupiter",
-    "Saturn",
-    "Uranus",
-    "Neptune",
-    "Pluto",
+    LanKey.mercury.tr,
+    LanKey.venus.tr,
+    LanKey.mars.tr,
+    LanKey.jupiter.tr,
+    LanKey.saturn.tr,
+    LanKey.uranus.tr,
+    LanKey.neptune.tr,
+    LanKey.pluto.tr,
   ];
 
   @override

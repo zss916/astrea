@@ -310,11 +310,28 @@ class LanKey {
   static const moonSignTitleIcon = "moon_sign_title_icon";
   static const ascendantSignTitle = "ascendant_sign_title";
   static const ascendantSignTitleIcon = "ascendant_sign_title_icon";
+  static const mercury = "mercury";
+  static const venus = "venus";
+  static const mars = "mars";
+  static const jupiter = "jupiter";
+  static const saturn = "saturn";
+  static const uranus = "uranus";
+  static const neptune = "neptune";
+  static const pluto = "pluto";
+
   //
 }
 
 ///英语文案
 const en = {
+  "mercury": "Mercury",
+  "venus": "Venus",
+  "mars": "Mars",
+  "jupiter": "Jupiter",
+  "saturn": "Saturn",
+  "uranus": "Uranus",
+  "neptune": "Neptune",
+  "pluto": "Pluto",
   "aries_introduction":
       "Aries : Fiery and bold, they’re natural adventurers. Always up for a challenge, with the drive to lead the way. Think Lady Gaga’s fearless spirit or Robert Downey Jr.’s charismatic energy.\nThey dive into life head - on, turning ideas into action quickly. Their passion makes them hard to ignore.",
   "taurus_introduction":

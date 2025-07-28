@@ -137,6 +137,7 @@ class Assets {
   static const String imageMercury = 'assets/image/mercury.png';
   static const String imageMoneyIcon = 'assets/image/money_icon.png';
   static const String imageMoon = 'assets/image/moon.png';
+  static const String imageMoonIcon = 'assets/image/moon_icon.png';
   static const String imageMore = 'assets/image/more.png';
   static const String imageMoreArrow = 'assets/image/more_arrow.png';
   static const String imageNeptune = 'assets/image/neptune.png';
@@ -173,6 +174,7 @@ class Assets {
   static const String imageSplashIcon = 'assets/image/splash_icon.png';
   static const String imageStarBorde = 'assets/image/star_borde.png';
   static const String imageStarFill = 'assets/image/star_fill.png';
+  static const String imageStarIcon = 'assets/image/star_icon.png';
   static const String imageStarLight = 'assets/image/star_light.webp';
   static const String imageStarLine = 'assets/image/star_line.png';
   static const String imageStartBg = 'assets/image/start_bg.png';
@@ -183,6 +185,7 @@ class Assets {
   static const String imageSubscribeRight = 'assets/image/subscribe_right.png';
   static const String imageSubscribeTop = 'assets/image/subscribe_top.png';
   static const String imageSun = 'assets/image/sun.png';
+  static const String imageSunIcon = 'assets/image/sun_icon.png';
   static const String imageSwitchN = 'assets/image/switch_n.png';
   static const String imageSwitchS = 'assets/image/switch_s.png';
   static const String imageSynastry = 'assets/image/synastry.png';
