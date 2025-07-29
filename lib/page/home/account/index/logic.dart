@@ -1,3 +1,4 @@
+import 'package:astrea/core/gallery/sheet_gallery.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/net/api/account.dart';
@@ -42,4 +43,13 @@ class AccountLogic extends GetxController {
 
   void toAccountInformation() =>
       PageTools.toAccountInformation(account: account);
+
+  void showSheet() {
+    showCameraAndGallerySheet(
+      onFinish: (url) {
+        account?.headimg = url;
+        update();
+      },
+    );
+  }
 }

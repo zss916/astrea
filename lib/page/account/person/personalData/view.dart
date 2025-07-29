@@ -42,7 +42,7 @@ class PersonalDataPage extends StatelessWidget {
           builder: (logic) {
             return Column(
               children: [
-                EditAvatar(path: logic.avatar),
+                EditAvatar(path: logic.avatar, logic: logic),
                 EditName(
                   nickName: logic.nickName,
                   onChange: (value) {

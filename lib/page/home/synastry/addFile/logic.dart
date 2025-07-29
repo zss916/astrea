@@ -20,10 +20,31 @@ class AddFileLogic extends GetxController {
   }
 
   bool isSave = false;
+  bool isUser = false;
 
   @override
   void onInit() {
     super.onInit();
+    initData();
+  }
+
+  void initData() {
+    if (Get.arguments != null && Get.arguments["data"] is FriendEntity) {
+      FriendEntity data = Get.arguments["data"] as FriendEntity;
+      nickName = data.nickName ?? "";
+      sex = data.sex ?? 0;
+      birthday = data.birthday ?? "";
+      hourBirth = data.birthHour;
+      minuteBirth = data.birthMinute;
+      lon = (data.lon ?? 0).toString();
+      lat = (data.lat ?? 0).toString();
+      locality = data.locality ?? "";
+      avatar = data.headImg ?? "";
+      interests = data.interests ?? "";
+      isUser = data.isMe;
+      //isSave = true;
+      update();
+    }
   }
 
   @override
@@ -69,7 +90,7 @@ class AddFileLogic extends GetxController {
     int? id =
         await FriendAPI.addFriend(
           nickName: nickName,
-          avatar: avatar ?? "xxxxxx",
+          avatar: avatar ?? "",
           birthday: birthday,
           birthHour: hourBirth,
           birthMinute: minuteBirth,
@@ -86,5 +107,14 @@ class AddFileLogic extends GetxController {
       AppEventBus.eventBus.fire(RefreshFriendsEvent());
       Get.back();
     }
+  }
+
+  void showSheet() {
+    showCameraAndGallerySheet(
+      onFinish: (url) {
+        avatar = url;
+        update();
+      },
+    );
   }
 }

@@ -6,7 +6,7 @@ import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/account/accountInfo/details/widget/common_divider.dart';
 import 'package:astrea/page/home/account/index/logic.dart';
-import 'package:astrea/page/home/synastry/addFile/widget/edit_avatar.dart';
+import 'package:astrea/page/home/account/index/widget/edit_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -31,7 +31,7 @@ class AccountView extends StatelessWidget {
           builder: (logic) {
             return Column(
               children: [
-                EditAvatar(path: logic.avatar),
+                EditAvatar(path: logic.avatar, logic: logic),
                 Container(
                   width: double.maxFinite,
                   margin: EdgeInsetsDirectional.only(
@@ -157,7 +157,7 @@ class AccountView extends StatelessWidget {
         ),
         Container(
           margin: EdgeInsetsDirectional.only(start: 16, end: 16, bottom: 0.h),
-          constraints: BoxConstraints(minHeight: (56 * 3)),
+          constraints: BoxConstraints(minHeight: (56 * 2)),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
@@ -178,13 +178,13 @@ class AccountView extends StatelessWidget {
               ),
               CommonDivider(),*/
               CommonItem(title: LanKey.privacyPolicy.tr),
-              CommonDivider(),
-              CommonItem(
+              //CommonDivider(),
+              /*CommonItem(
                 title: LanKey.contentRules.tr,
                 onTap: () {
                   // LocationAPI.getCountryList();
                 },
-              ),
+              ),*/
             ],
           ),
         ),

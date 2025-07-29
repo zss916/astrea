@@ -50,7 +50,7 @@ class AddFilePage extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        EditAvatar(path: null),
+                        EditAvatar(path: logic.avatar, logic: logic),
                         EditName(
                           nickName: logic.nickName,
                           onChange: (value) {
@@ -186,7 +186,11 @@ class AddFilePage extends StatelessWidget {
                   padding: EdgeInsetsDirectional.only(bottom: 24.h, top: 70.h),
                   onTap: () {
                     logic.log();
-                    logic.addFriend();
+                    if (logic.isSave) {
+                      logic.addFriend();
+                    } else {
+                      // AppLoading.toast("");
+                    }
                   },
                 ),
               ),

@@ -26,9 +26,9 @@ class AnalysisEntity {
 
 @JsonSerializable()
 class AnalysisFirstFriendInfo {
-  double? id;
+  num? id;
   @JSONField(name: "user_id")
-  double? userId;
+  num? userId;
   @JSONField(name: "nick_name")
   String? nickName;
   @JSONField(name: "head_img")

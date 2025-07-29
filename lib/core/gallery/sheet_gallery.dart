@@ -8,12 +8,13 @@ import 'package:astrea/net/api/system.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void showCameraAndGallerySheet() {
-  Get.bottomSheet(OpenCamera(), barrierColor: Colors.black12);
+void showCameraAndGallerySheet({required Function(String) onFinish}) {
+  Get.bottomSheet(OpenCamera(onFinish: onFinish), barrierColor: Colors.black12);
 }
 
 class OpenCamera extends StatelessWidget {
-  const OpenCamera({super.key});
+  final Function(String) onFinish;
+  const OpenCamera({super.key, required this.onFinish});
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +42,12 @@ class OpenCamera extends StatelessWidget {
                 Get.back();
                 ImageUtils.chooseImage(camera: true).then((xFile) {
                   uploadFile(
-                    fileName: xFile?.name ?? "avatar",
+                    fileName: xFile?.name ?? "",
                     filePath: xFile?.path ?? "",
+                    onFinish: (url) {
+                      onFinish.call(url);
+                      // debugPrint("uploadFile url => $url");
+                    },
                   );
                 });
               },
@@ -134,21 +139,27 @@ class OpenCamera extends StatelessWidget {
     );
   }
 
-  void uploadFile({required String fileName, required String filePath}) async {
-    String url =
-        "https://api-test.theappastro.com/v1/global/uploadurl?file_name=scaled_15dccc46-4b0a-4bd3-ac7d-6cf5ae3a7c9464304673462335635.jpg";
-    // await SystemAPI.upload(url: url ?? "", filePath: filePath);
-
+  void uploadFile({
+    required String fileName,
+    required String filePath,
+    required Function(String) onFinish,
+  }) async {
     File file = File(filePath);
     bool isExist = file.existsSync();
     if (isExist) {
-      SystemAPI.getUploadUrl(fileName: fileName).then((url) {
-        if ((url ?? "").isNotEmpty) {
-          debugPrint("getUploadUrl => $url");
-          SystemAPI.upload(url: url ?? "", filePath: filePath).then((value) {});
-        }
-      });
+      AppLoading.show();
+      SystemAPI.getUploadUrl(fileName: fileName, filePath: file.path)
+          .then((url) {
+            if ((url ?? "").isNotEmpty) {
+              // debugPrint("getUploadUrl => $url");
+              onFinish.call(url ?? "");
+            }
+          })
+          .whenComplete(() {
+            AppLoading.dismiss();
+          });
     } else {
+      AppLoading.dismiss();
       AppLoading.toast("file is not exist");
       debugPrint("file is not exist");
     }

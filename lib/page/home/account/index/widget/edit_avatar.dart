@@ -1,11 +1,12 @@
+import 'package:astrea/core/gallery/sheet_gallery.dart';
 import 'package:astrea/generated/assets.dart';
-import 'package:astrea/page/home/synastry/addFile/index.dart';
+import 'package:astrea/page/home/account/index/logic.dart';
 import 'package:flutter/material.dart';
 
 class EditAvatar extends StatelessWidget {
   final String? path;
-  final AddFileLogic logic;
-  const EditAvatar({super.key, required this.path, required this.logic});
+  final AccountLogic logic;
+  const EditAvatar({super.key, required this.path,required this.logic});
 
   @override
   Widget build(BuildContext context) {

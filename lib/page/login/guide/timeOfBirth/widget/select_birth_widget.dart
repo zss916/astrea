@@ -1,11 +1,11 @@
-import 'package:awesome_datetime_picker/awesome_datetime_picker.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/login/guide/timeOfBirth/widget/houses_widget.dart';
+import 'package:awesome_datetime_picker/awesome_datetime_picker.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SelectBirthWidget extends StatefulWidget {
   final Function(int, int) onSelect;
@@ -138,7 +138,7 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
                   ),
                   RotationTransition(
                     turns: (_animation),
-                    child: HousesWidget(),
+                    child: HousesWidget(size: Size(132, 132)),
                   ),
                 ],
               ),

@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:astrea/components/common_btn.dart';
 import 'package:astrea/components/custom_tag.dart';
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 void showRelationshipSheet(Function(String) onSelect) {
   Get.bottomSheet(
@@ -27,6 +28,14 @@ class SelectRelationshipSheet extends StatefulWidget {
 
 class _SelectRelationshipSheetState extends State<SelectRelationshipSheet> {
   int selectedIndex = -1;
+  List<Map<String, dynamic>> list = [
+    {"title": "Family", "value": false},
+    {"title": "Lover", "value": false},
+    {"title": "Friend", "value": false},
+    {"title": "Partners", "value": false},
+    {"title": "Customers", "value": false},
+    {"title": "Colleagues", "value": false},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -88,49 +97,26 @@ class _SelectRelationshipSheetState extends State<SelectRelationshipSheet> {
               spacing: 6.w,
               runSpacing: 12.h,
               children: [
-                /*...[
-                    "Family",
-                    "Lover",
-                    "Friend",
-                    "Peer",
-                    "Supervisor",
-                    "Subordinate",
-                    "Business Parners"
-                  ].map((e) => Container(
-                        padding: EdgeInsetsDirectional.symmetric(
-                            horizontal: 25, vertical: 8),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            //border: Border.all(width: 1, color: Colors.black),
-                            borderRadius: BorderRadiusDirectional.circular(50)),
-                        child: Text(
-                          e,
-                          style: TextStyle(
-                            color: const Color(0xFF333333),
-                            fontSize: 16,
-                            fontFamily: AppFonts.textFontFamily,
-                            fontWeight: FontWeight.w400,
-                          ),
+                ...list.mapIndexed(
+                  (i, e) => GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        for (int index = 0; index < (list.length); index++) {
+                          list[index]["value"] = (index == i);
+                          selectedIndex = i;
+                        }
+                      });
+                    },
+                    child: CustomTag(
+                      isSelected: list[i]["value"],
+                      child: Text(
+                        list[i]["title"],
+                        style: TextStyle(
+                          color: const Color(0xFF333333),
+                          fontSize: 16,
+                          fontFamily: AppFonts.textFontFamily,
+                          fontWeight: FontWeight.w400,
                         ),
-                      ))*/
-                ...[
-                  "Family",
-                  "Lover",
-                  "Peer",
-                  "Friend",
-                  "Supervisor",
-                  "Subordinate",
-                  "Business Parners",
-                ].map(
-                  (e) => CustomTag(
-                    isSelected: true,
-                    child: Text(
-                      e,
-                      style: TextStyle(
-                        color: const Color(0xFF333333),
-                        fontSize: 16,
-                        fontFamily: AppFonts.textFontFamily,
-                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   ),
@@ -147,7 +133,8 @@ class _SelectRelationshipSheetState extends State<SelectRelationshipSheet> {
               bottom: 10.h,
             ),
             onTap: () {
-              widget.onSelect.call("");
+              Get.back();
+              widget.onSelect.call(list[selectedIndex]["title"]);
             },
           ),
         ],

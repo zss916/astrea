@@ -39,6 +39,9 @@ class FriendEntity {
     }
   }
 
+  ///本地需要
+  bool? isSelected;
+
   FriendEntity();
 
   factory FriendEntity.fromJson(Map<String, dynamic> json) =>

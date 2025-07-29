@@ -48,11 +48,11 @@ AnalysisFirstFriendInfo $AnalysisFirstFriendInfoFromJson(
 ) {
   final AnalysisFirstFriendInfo analysisFirstFriendInfo =
       AnalysisFirstFriendInfo();
-  final double? id = jsonConvert.convert<double>(json['id']);
+  final num? id = jsonConvert.convert<num>(json['id']);
   if (id != null) {
     analysisFirstFriendInfo.id = id;
   }
-  final double? userId = jsonConvert.convert<double>(json['user_id']);
+  final num? userId = jsonConvert.convert<num>(json['user_id']);
   if (userId != null) {
     analysisFirstFriendInfo.userId = userId;
   }
@@ -125,8 +125,8 @@ Map<String, dynamic> $AnalysisFirstFriendInfoToJson(
 
 extension AnalysisFirstFriendInfoExtension on AnalysisFirstFriendInfo {
   AnalysisFirstFriendInfo copyWith({
-    double? id,
-    double? userId,
+    num? id,
+    num? userId,
     String? nickName,
     String? headImg,
     double? sex,

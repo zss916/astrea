@@ -10,12 +10,14 @@ class RecordItem extends StatefulWidget {
   //late bool isSelected;
   final int index;
   final Function onDelete;
+  final Function onTap;
   final FriendEntity item;
   const RecordItem({
     super.key,
     required this.index,
     required this.item,
     required this.onDelete,
+    required this.onTap,
   });
 
   @override
@@ -23,7 +25,7 @@ class RecordItem extends StatefulWidget {
 }
 
 class _RecordItemState extends State<RecordItem> {
-  bool isSelected = false;
+  // bool isSelected = false;
 
   @override
   void initState() {
@@ -35,7 +37,9 @@ class _RecordItemState extends State<RecordItem> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          isSelected = !isSelected;
+          // isSelected = !isSelected;
+          widget.item.isSelected = !(widget.item.isSelected ?? false);
+          widget.onTap.call();
           // widget.isSelected = !widget.isSelected;
         });
       },
@@ -82,7 +86,7 @@ class _RecordItemState extends State<RecordItem> {
             ),
             child: Row(
               children: [
-                RadioItem(isSelected: isSelected),
+                RadioItem(isSelected: (widget.item.isSelected == true)),
                 Expanded(
                   child: Container(
                     margin: EdgeInsetsDirectional.only(start: 12, end: 5),
@@ -152,7 +156,7 @@ class _RecordItemState extends State<RecordItem> {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(10),
                     onTap: () {
-                      PageTools.toAddFile(isEditFile: true);
+                      PageTools.toAddFile(isEditFile: true, data: widget.item);
                     },
                     child: Container(
                       margin: EdgeInsetsDirectional.all(15),

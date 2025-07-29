@@ -1,3 +1,4 @@
+import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/net/bean/analysis_entity.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,7 @@ class LogItem extends StatelessWidget {
                 style: TextStyle(
                   color: const Color(0xFF323133),
                   fontSize: 16,
+                  fontFamily: AppFonts.textFontFamily,
                   fontWeight: FontWeight.w400,
                 ),
               ),
@@ -81,6 +83,7 @@ class LogItem extends StatelessWidget {
                   style: TextStyle(
                     color: const Color(0xFF585FC4),
                     fontSize: 14,
+                    fontFamily: AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -116,6 +119,7 @@ class LogItem extends StatelessWidget {
                 style: TextStyle(
                   color: const Color(0xFF323133),
                   fontSize: 16,
+                  fontFamily: AppFonts.textFontFamily,
                   fontWeight: FontWeight.w400,
                 ),
               ),

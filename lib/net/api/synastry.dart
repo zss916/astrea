@@ -27,8 +27,8 @@ abstract class SynastryAPI {
 
   ///更新合盘分析
   static Future<AnalysisIdentityEntity> updateAnalysis({
-    required String userId,
-    required String otherId,
+    required num userId,
+    required num otherId,
     required String relationship,
   }) async {
     try {
@@ -51,10 +51,7 @@ abstract class SynastryAPI {
   ///查询合盘分析列表
   static Future<AnalysisArticleEntity> getAnalysis({required String id}) async {
     try {
-      var result = await Http.instance.get(
-        ApiPath.getAnalysis,
-        query: {"id": id},
-      );
+      var result = await Http.instance.get("${ApiPath.getAnalysis}/$id");
       if (result["code"] == 0) {
         return AnalysisArticleEntity.fromJson(result["data"]);
       } else {

@@ -237,4 +237,7 @@ class Assets {
   static const String svgTag = 'assets/svg/tag.svg';
   static const String svgTagImg = 'assets/svg/tag_img.svg';
   static const String svgTopBg = 'assets/svg/top_bg.svg';
+  static const String timeBig = 'assets/time/big_286.png';
+  static const String timeMiddle = 'assets/time/middle_194.png';
+  static const String timeSmall = 'assets/time/small_132.png';
 }

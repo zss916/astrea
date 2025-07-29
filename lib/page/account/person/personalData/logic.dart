@@ -83,4 +83,13 @@ class PersonalDataLogic extends GetxController {
       }
     }
   }
+
+  void showSheet() {
+    showCameraAndGallerySheet(
+      onFinish: (url) {
+        account?.headimg = url;
+        update();
+      },
+    );
+  }
 }

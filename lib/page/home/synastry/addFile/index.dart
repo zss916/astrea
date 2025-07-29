@@ -1,6 +1,7 @@
 import 'package:astrea/components/bottom_stack_btn.dart';
 import 'package:astrea/components/common_app_bar.dart';
 import 'package:astrea/core/bus/app_event_bus.dart';
+import 'package:astrea/core/gallery/sheet_gallery.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/toast/app_loading.dart';
@@ -8,6 +9,7 @@ import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/core/utils/calculate.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/net/api/friend.dart';
+import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/page/account/person/personalData/widget/edit_place_of_birth.dart';
 import 'package:astrea/page/home/account/select_gender/select_gender.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/edit_avatar.dart';

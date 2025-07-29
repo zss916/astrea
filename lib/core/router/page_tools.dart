@@ -2,6 +2,7 @@ import 'package:astrea/core/enum/app_enum.dart';
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/net/bean/account_entity.dart';
+import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -110,17 +111,44 @@ class PageTools {
 
   static toRecord() => Get.toNamed(APages.record);
 
-  static toAddFile({bool isEditFile = false, Function? onRefresh}) =>
-      Get.toNamed(
-        APages.addFile,
-        arguments: {"isEditFile": isEditFile},
-      )?.whenComplete(() {
-        onRefresh?.call();
-      });
+  static toAddFile({bool isEditFile = false, FriendEntity? data}) {
+    Get.toNamed(
+      APages.addFile,
+      arguments: {"isEditFile": isEditFile, "data": data},
+    );
+  }
 
   static toLogs() => Get.toNamed(APages.starLog);
 
-  static toStarReport() => Get.toNamed(APages.starReport);
+  /// 合盘分析
+  static toStarReport({
+    required num firstId,
+    required num secondId,
+    required String relationship,
+    bool isSave = false,
+    required String userName,
+    required String friendName,
+    required String userAvatar,
+    required String friendAvatar,
+  }) => Get.toNamed(
+    APages.starReport,
+    arguments: {
+      "firstId": firstId,
+      "secondId": secondId,
+      "relationship": relationship,
+      "isSave": isSave,
+    },
+    parameters: {
+      "userName": userName,
+      "userAvatar": userAvatar,
+      "friendName": friendName,
+      "friendAvatar": friendAvatar,
+    },
+  );
+
+  /// 合盘分析
+  static toStarReportPage({required String id}) =>
+      Get.toNamed(APages.starReport, parameters: {"id": id});
 
   static toAccount() => Get.toNamed(APages.account);
 

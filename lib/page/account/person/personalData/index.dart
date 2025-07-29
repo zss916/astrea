@@ -1,5 +1,6 @@
 import 'package:astrea/components/common_app_bar.dart';
 import 'package:astrea/components/common_btn.dart';
+import 'package:astrea/core/gallery/sheet_gallery.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
@@ -9,9 +10,9 @@ import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/net/api/account.dart';
 import 'package:astrea/net/bean/account_entity.dart';
+import 'package:astrea/page/account/person/personalData/widget/edit_avatar.dart';
 import 'package:astrea/page/account/person/personalData/widget/edit_place_of_birth.dart';
 import 'package:astrea/page/home/account/select_gender/select_gender.dart';
-import 'package:astrea/page/home/synastry/addFile/widget/edit_avatar.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/edit_name.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/select_birth.dart';
 import 'package:flutter/material.dart';

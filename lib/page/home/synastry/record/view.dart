@@ -50,25 +50,10 @@ class FileManagementPage extends StatelessWidget {
                         index: i,
                         item: logic.list[i],
                         onDelete: () {
-                          showCommonDialog(
-                            content: LanKey.deletePeopleTip.tr,
-                            leftButtonText: LanKey.ok.tr,
-                            rightButtonText: LanKey.cancel.tr,
-                            onLeftButtonCall: () {
-                              String uid = logic.list[i].id.toString();
-                              logic.removeFriend(
-                                id: uid,
-                                index: i,
-                                onFinish: () {
-                                  Get.back();
-                                },
-                              );
-                            },
-                            onRightButtonCall: () {
-                              Get.back();
-                            },
-                            routeName: APages.deletePeopleFileDialog,
-                          );
+                          logic.showDeleteDialog(i);
+                        },
+                        onTap: () {
+                          logic.tapItem(i);
                         },
                       ),
                       separatorBuilder: (_, i) =>
@@ -83,13 +68,15 @@ class FileManagementPage extends StatelessWidget {
                 end: 0,
                 child: BottomStackBtn(
                   title: LanKey.determine.tr,
-                  isClickable: false,
+                  isClickable: logic.isClick,
                   margin: EdgeInsetsDirectional.only(bottom: 0.h),
                   padding: EdgeInsetsDirectional.only(bottom: 24.h, top: 0.h),
                   onTap: () {
-                    showRelationshipSheet((value) {
-                      PageTools.toStarReport();
-                    });
+                    if (logic.isClick) {
+                      logic.toDetermine();
+                    } else {
+                      AppLoading.toast("Please select at least two friends");
+                    }
                   },
                 ),
               ),

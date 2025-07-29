@@ -1,10 +1,11 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:flutter/material.dart';
 
 class HousesWidget extends StatelessWidget {
-  const HousesWidget({super.key});
+  final Size size;
+  const HousesWidget({super.key, required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +16,8 @@ class HousesWidget extends StatelessWidget {
         child: Image.asset(
           Assets.imageHouses,
           matchTextDirection: true,
-          width: 132,
-          height: 132,
+          width: size.width,
+          height: size.height,
         ),
       ),
     );

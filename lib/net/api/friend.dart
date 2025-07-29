@@ -94,14 +94,15 @@ abstract class FriendAPI {
   static Future<bool> deleteFriend({required String id}) async {
     try {
       Map<String, dynamic> map = {};
-      map["friend_id"] = id;
+      map["friend_id"] = num.parse(id);
       var result = await Http.instance.delete(ApiPath.deleteFriend, data: map);
-      if (result["code"] == 0) {
+      /*if (result["code"] == 0) {
         return true;
       } else {
         AppLoading.toast(result["msg"]);
         return false;
-      }
+      }*/
+      return true;
     } catch (error) {
       return false;
     }

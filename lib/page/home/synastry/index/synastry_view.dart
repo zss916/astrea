@@ -140,7 +140,7 @@ class SynastryView extends StatelessWidget {
                   margin: EdgeInsetsDirectional.only(bottom: 70.h),
                   padding: EdgeInsetsDirectional.only(bottom: 24.h, top: 70.h),
                   onTap: () {
-                    PageTools.toStarReport();
+                    PageTools.toRecord();
                   },
                 ),
               ),

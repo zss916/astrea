@@ -8,17 +8,18 @@ class ImageUtils {
   ///选择单张图片
   static Future<XFile?> chooseImage({bool camera = true}) async {
     return ImagePicker().pickImage(
-        source: camera ? ImageSource.camera : ImageSource.gallery,
-        maxWidth: 1080,
-        maxHeight: 1080);
+      source: camera ? ImageSource.camera : ImageSource.gallery,
+      maxWidth: 1080,
+      maxHeight: 1080,
+    );
   }
 
-/*
   static Future<String> compressImageAndGetFile(File file) async {
     var path = file.path;
     var name = path.substring(path.lastIndexOf("/") + 1);
     var targetPath = await _createTempFile(name: name, dir: 'pic');
-    CompressFormat format = CompressFormat.jpeg;
+
+    /*CompressFormat format = CompressFormat.jpeg;
     if (name.endsWith(".jpg") || name.endsWith(".jpeg")) {
       format = CompressFormat.jpeg;
     } else if (name.endsWith(".png")) {
@@ -27,19 +28,19 @@ class ImageUtils {
       format = CompressFormat.heic;
     } else if (name.endsWith(".webp")) {
       format = CompressFormat.webp;
-    }
+    }*/
 
-    var result = await FlutterImageCompress.compressAndGetFile(
+    /*var result = await FlutterImageCompress.compressAndGetFile(
       file.absolute.path,
       targetPath,
       quality: 90,
       minWidth: 480,
       minHeight: 800,
       format: format,
-    );
-    return result?.path ?? "";
+    );*/
+    //return result?.path ?? "";
+    return "";
   }
-*/
 
   static Future<String> _createTempFile({
     required String dir,

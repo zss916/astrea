@@ -60,6 +60,8 @@ class LanKey {
   static const myCollection = "my_collection";
   static const chat = "chat";
   static const oneself = "oneself";
+  static const otherSide = "other_side";
+  static const summarize = "summarize";
   static const addFriends = "add_friends";
   static const openVip = "open_vip";
   static const toDisclose = "to_disclose";
@@ -324,6 +326,8 @@ class LanKey {
 
 ///英语文案
 const en = {
+  "summarize": "Summarize",
+  "other_side": "Other side",
   "mercury": "Mercury",
   "venus": "Venus",
   "mars": "Mars",

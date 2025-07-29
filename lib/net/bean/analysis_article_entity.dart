@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:astrea/generated/json/analysis_article_entity.g.dart';
 import 'package:astrea/generated/json/base/json_field.dart';
+import 'package:sprintf/sprintf.dart';
 
 export 'package:astrea/generated/json/analysis_article_entity.g.dart';
 
@@ -31,9 +32,38 @@ class AnalysisArticleEntity {
 
 @JsonSerializable()
 class AnalysisArticleScores {
-  int? soul;
-  int? emotion;
-  int? attraction;
+  @JSONField(name: "soul_index")
+  int? soulIndex;
+  @JSONField(name: "emotional_index")
+  int? emotionalIndex;
+  @JSONField(name: "attraction_index")
+  int? attractionIndex;
+  @JSONField(name: "thought_resonance_index")
+  int? thoughtResonanceIndex;
+  @JSONField(name: "mutual_growth_index")
+  int? mutualGrowthIndex;
+  @JSONField(name: "comfort_boundary_index")
+  int? comfortBoundaryIndex;
+  @JSONField(name: "emotional_security_index")
+  int? emotionalSecurityIndex;
+  @JSONField(name: "karma_index")
+  int? karmaIndex;
+  @JSONField(name: "unconditional_support_index")
+  int? unconditionalSupportIndex;
+  @JSONField(name: "smooth_communication_index")
+  int? smoothCommunicationIndex;
+  @JSONField(name: "authoritative_structure_index")
+  int? authoritativeStructureIndex;
+  @JSONField(name: "growth_and_cultivation_index")
+  int? growthAndCultivationIndex;
+  @JSONField(name: "action_coordination_index")
+  int? actionCoordinationIndex;
+  @JSONField(name: "fluent_communication_index")
+  int? fluentCommunicationIndex;
+  @JSONField(name: "long_term_cooperation_index")
+  int? longTermCooperationIndex;
+  @JSONField(name: "wealth_gain_index")
+  int? wealthGainIndex;
 
   AnalysisArticleScores();
 
@@ -65,6 +95,17 @@ class AnalysisArticleMeanings {
   String? meaning;
 
   AnalysisArticleMeanings();
+  //'${data[i].personASign} in ${data[i].personAPlanet} ${data[i].personAHouses}th House'
+  String get showOneself => sprintf("%s in %s %sth House", [
+    personASign,
+    personAPlanet,
+    personAHouses,
+  ]);
+  String get showOtherSide => sprintf("%s in %s %sth House", [
+    personBSign,
+    personBPlanet,
+    personBHouses,
+  ]);
 
   factory AnalysisArticleMeanings.fromJson(Map<String, dynamic> json) =>
       $AnalysisArticleMeaningsFromJson(json);

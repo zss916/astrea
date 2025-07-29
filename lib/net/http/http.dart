@@ -86,7 +86,7 @@ class Http {
   }
 
   ///upload
-  Future<dynamic> upload(
+  /*  Future<dynamic> upload(
     String url, {
     Map<String, dynamic>? query,
     Object? data,
@@ -111,7 +111,7 @@ class Http {
     } catch (error) {
       rethrow;
     }
-  }
+  }*/
 
   ///delete
   Future<dynamic> delete(
@@ -170,6 +170,7 @@ class Http {
         url,
         queryParameters: query,
         data: data,
+        options: options,
         cancelToken: cancelToken,
       );
       return result.data ?? '{}';
