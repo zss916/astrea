@@ -1,9 +1,7 @@
 import 'package:astrea/core/setting/app_fonts.dart';
-import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/home/synastry/report/widget/report_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 class ReportTopWidget extends StatelessWidget {
   final String userName;
@@ -37,11 +35,29 @@ class ReportTopWidget extends StatelessWidget {
             children: [
               PositionedDirectional(
                 start: 0,
-                child: ReportAvatar(child: SizedBox()),
+                child: ReportAvatar(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(userAvatar),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
               ),
               PositionedDirectional(
                 end: 0,
-                child: ReportAvatar(child: SizedBox()),
+                child: ReportAvatar(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(otherAvatar),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
@@ -53,27 +69,35 @@ class ReportTopWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                child: Text(
-                  LanKey.oneself.tr,
-                  textAlign: TextAlign.end,
-                  style: TextStyle(
-                    color: const Color(0xFF323133),
-                    fontSize: 18,
-                    fontFamily: AppFonts.textFontFamily,
-                    fontWeight: FontWeight.w400,
+                child: Container(
+                  width: double.maxFinite,
+                  //color: Colors.amberAccent,
+                  child: Text(
+                    userName,
+                    textAlign: TextAlign.end,
+                    style: TextStyle(
+                      color: const Color(0xFF323133),
+                      fontSize: 18,
+                      fontFamily: AppFonts.textFontFamily,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
               ),
               VerticalDivider(width: 25.w, color: Colors.transparent),
               Expanded(
-                child: Text(
-                  'Sophia',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    color: const Color(0xFF323133),
-                    fontFamily: AppFonts.textFontFamily,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
+                child: Container(
+                  width: double.maxFinite,
+                  // color: Colors.blueAccent,
+                  child: Text(
+                    otherName,
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      color: const Color(0xFF323133),
+                      fontFamily: AppFonts.textFontFamily,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
               ),

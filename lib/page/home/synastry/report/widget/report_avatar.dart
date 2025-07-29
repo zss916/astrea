@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:flutter/material.dart';
 
 class ReportAvatar extends StatelessWidget {
   final Widget child;
@@ -38,9 +38,10 @@ class ReportAvatar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(50),
               ),
               child: Container(
+                clipBehavior: Clip.hardEdge,
                 margin: EdgeInsetsDirectional.all(5.5),
                 decoration: BoxDecoration(
-                  color: Colors.black,
+                  color: Color(0x1A000000),
                   borderRadius: BorderRadius.circular(50),
                 ),
                 child: child,

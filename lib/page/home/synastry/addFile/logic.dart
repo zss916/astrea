@@ -52,7 +52,6 @@ class AddFileLogic extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    EventBus;
   }
 
   void log() {
@@ -74,7 +73,7 @@ class AddFileLogic extends GetxController {
   void updateButtonState() {
     isSave =
         (nickName.isNotEmpty) &&
-        //  ((avatar ?? "").isNotEmpty) &&
+        ((avatar ?? "").isNotEmpty) &&
         (sex != 0) &&
         (birthday.isNotEmpty) &&
         (hourBirth != null) &&
@@ -116,7 +115,7 @@ class AddFileLogic extends GetxController {
     showCameraAndGallerySheet(
       onFinish: (url) {
         avatar = url;
-        update();
+        updateButtonState();
       },
     );
   }

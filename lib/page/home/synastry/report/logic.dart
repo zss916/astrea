@@ -22,7 +22,7 @@ class StarReportLogic extends GetxController {
   String? friendName;
   String? friendAvatar;
 
-  int? id;
+  String? id;
 
   @override
   void onInit() {
@@ -37,6 +37,7 @@ class StarReportLogic extends GetxController {
       secondId = map["secondId"];
       relationship = map["relationship"];
       isSave = map["isSave"];
+      id = map["id"];
     }
 
     if (Get.parameters["userName"] != null) {
@@ -58,11 +59,15 @@ class StarReportLogic extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    loadAnalysis(
-      firstId: firstId ?? 0,
-      secondId: secondId ?? 0,
-      relationship: relationship ?? "",
-    );
+    if (isSave == true) {
+      getAnalysis(id: id ?? "");
+    } else {
+      loadAnalysis(
+        firstId: firstId ?? 0,
+        secondId: secondId ?? 0,
+        relationship: relationship ?? "",
+      );
+    }
   }
 
   ///获取合盘分析
@@ -77,9 +82,9 @@ class StarReportLogic extends GetxController {
       otherId: secondId,
       relationship: relationship,
     ).then((value) async {
-      id = value.synastryId;
+      id = value.synastryId.toString();
       if (id != null) {
-        article = await SynastryAPI.getAnalysis(id: id.toString());
+        article = await SynastryAPI.getAnalysis(id: id ?? "");
         viewState = article != null ? Status.data.index : Status.empty.index;
         update();
       }
@@ -87,13 +92,14 @@ class StarReportLogic extends GetxController {
   }
 
   ///获取合盘分析内容
-  /*Future<void> getAnalysis({required String id}) async {
-    AppLoading.show();
+  Future<void> getAnalysis({required String id}) async {
+    //AppLoading.show();
     article = await SynastryAPI.getAnalysis(id: id).whenComplete(() {
       AppLoading.dismiss();
     });
+    viewState = article != null ? Status.data.index : Status.empty.index;
     update();
-  }*/
+  }
 
   void toCollection() {
     if (isSave == true) {
@@ -114,6 +120,9 @@ class StarReportLogic extends GetxController {
         ),
         leftButtonText: LanKey.cancel.tr,
         rightButtonText: LanKey.save.tr,
+        onLeftButtonCall: () {
+          Get.back(closeOverlays: true);
+        },
         onRightButtonCall: () {
           postCollection(
             id: id.toString(),

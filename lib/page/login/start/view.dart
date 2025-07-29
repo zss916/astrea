@@ -85,15 +85,6 @@ class StartPage extends StatelessWidget {
               ),
             ],
           ),
-
-          /*Stack(
-            alignment: AlignmentDirectional.center,
-            children: [
-              Image.asset(Assets.timeBig, width: 286, height: 286),
-              Image.asset(Assets.timeMiddle, width: 194, height: 194),
-              Image.asset(Assets.timeSmall, width: 132, height: 132),
-            ],
-          ),*/
         ],
       ),
     );

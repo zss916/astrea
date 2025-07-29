@@ -23,6 +23,8 @@ class PlaceOfBirthLogic extends GetxController {
   String stateName = "";
   String cityName = "";
 
+  CancelToken cancelToken = CancelToken();
+
   @override
   void onInit() {
     super.onInit();
@@ -38,23 +40,48 @@ class PlaceOfBirthLogic extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    loadCountryList(isLoading: AppService.to.countryData.isEmpty);
+    loadCountryList(
+      isLoading: AppService.to.countryData.isEmpty,
+      cancelToken: cancelToken,
+    );
   }
 
-  void loadCountryList({bool isLoading = false}) async {
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    cancelToken.cancel();
+  }
+
+  void loadCountryList({
+    bool isLoading = false,
+    CancelToken? cancelToken,
+  }) async {
     if (isLoading) AppLoading.show();
-    List<CountryEntity> countryList = await LocationAPI.getCountryList()
-        .whenComplete(() {
-          AppLoading.dismiss();
-        });
+    List<CountryEntity> countryList =
+        await LocationAPI.getCountryList(cancelToken: cancelToken).whenComplete(
+          () {
+            AppLoading.dismiss();
+          },
+        );
     countryData = countryList.groupListsBy((e) => e.firstLetter ?? "");
     update();
   }
 
-  Future<void> loadStateList({required int countryId}) async {
+  Future<void> loadStateList({
+    required int countryId,
+    CancelToken? cancelToken,
+  }) async {
     AppLoading.show();
     List<StateEntity> states =
-        await LocationAPI.getStateList(countryId: countryId).whenComplete(() {
+        await LocationAPI.getStateList(
+          countryId: countryId,
+          cancelToken: cancelToken,
+        ).whenComplete(() {
           AppLoading.dismiss();
         });
     stateData = states.groupListsBy((e) => e.firstLetter ?? "");
@@ -62,8 +89,11 @@ class PlaceOfBirthLogic extends GetxController {
 
   Future<void> loadCityList({required int stateId}) async {
     AppLoading.show();
-    List<CityEntity> cities = await LocationAPI.getCityList(stateId: stateId)
-        .whenComplete(() {
+    List<CityEntity> cities =
+        await LocationAPI.getCityList(
+          stateId: stateId,
+          cancelToken: cancelToken,
+        ).whenComplete(() {
           AppLoading.dismiss();
         });
     cityData = cities.groupListsBy((e) => e.firstLetter ?? "");
@@ -81,7 +111,7 @@ class PlaceOfBirthLogic extends GetxController {
     countryName = country.name ?? "";
     country.isSelected = true;
     update();
-    await loadStateList(countryId: country.id!);
+    await loadStateList(countryId: country.id!, cancelToken: cancelToken);
     if (stateData.isNotEmpty) {
       index = 1;
       update();

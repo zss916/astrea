@@ -57,6 +57,9 @@ class PersonalDataLogic extends GetxController {
           AppLoading.dismiss();
         });
     if (isSuccessful) {
+      if ((account?.headimg ?? "").isNotEmpty) {
+        AccountService.to.updateUserAvatar(avatar);
+      }
       if ((account?.nickName ?? "").isNotEmpty) {
         AccountService.to.updateUserNickName(nickName);
       }

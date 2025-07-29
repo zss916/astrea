@@ -147,8 +147,22 @@ class PageTools {
   );
 
   /// 合盘分析
-  static toStarReportPage({required String id}) =>
-      Get.toNamed(APages.starReport, parameters: {"id": id});
+  static toStarReportPage({
+    required String id,
+    required String userName,
+    required String friendName,
+    required String userAvatar,
+    required String friendAvatar,
+  }) => Get.toNamed(
+    APages.starReport,
+    arguments: {"id": id, "isSave": true},
+    parameters: {
+      "userName": userName,
+      "userAvatar": userAvatar,
+      "friendName": friendName,
+      "friendAvatar": friendAvatar,
+    },
+  );
 
   static toAccount() => Get.toNamed(APages.account);
 

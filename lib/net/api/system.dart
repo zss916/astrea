@@ -54,6 +54,7 @@ abstract class SystemAPI {
           'Connection': 'keep-alive',
           'User-Agent': 'ClinicPlush',
         },
+        extra: {"uploadImage": "uploadImage"},
       );
       var result = await Http.instance.put(
         url,

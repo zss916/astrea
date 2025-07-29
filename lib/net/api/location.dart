@@ -6,13 +6,19 @@ import 'package:astrea/net/bean/country_entity.dart';
 import 'package:astrea/net/bean/state_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
+import 'package:dio/dio.dart';
 
 ///location
 abstract class LocationAPI {
   ///获取国家列表
-  static Future<List<CountryEntity>> getCountryList() async {
+  static Future<List<CountryEntity>> getCountryList({
+    CancelToken? cancelToken,
+  }) async {
     try {
-      var result = await Http.instance.get(ApiPath.getCountryList);
+      var result = await Http.instance.get(
+        ApiPath.getCountryList,
+        cancelToken: cancelToken,
+      );
       if (result['code'] == 0) {
         List<CountryEntity> value = (result['data']['countries'] as List)
             .map((e) => CountryEntity.fromJson(e))
@@ -31,11 +37,13 @@ abstract class LocationAPI {
   ///获取省列表
   static Future<List<StateEntity>> getStateList({
     required int countryId,
+    CancelToken? cancelToken,
   }) async {
     try {
       var result = await Http.instance.get(
         ApiPath.getStateList,
         query: {"country_id": countryId},
+        cancelToken: cancelToken,
       );
 
       if (result['code'] == 0) {
@@ -54,11 +62,15 @@ abstract class LocationAPI {
   }
 
   ///获取城市列表
-  static Future<List<CityEntity>> getCityList({required int stateId}) async {
+  static Future<List<CityEntity>> getCityList({
+    required int stateId,
+    CancelToken? cancelToken,
+  }) async {
     try {
       var result = await Http.instance.get(
         ApiPath.getCityList,
         query: {"state_id": stateId},
+        cancelToken: cancelToken,
       );
       if (result['code'] == 0) {
         List<CityEntity> value = (result['data']['cities'] as List)

@@ -55,7 +55,14 @@ class LogsPage extends StatelessWidget {
         if ((item.firstFriendInfo?.id != null) &&
             (item.secondFriendInfo?.id != null) &&
             item.relationship != null) {
-          PageTools.toStarReport(
+          PageTools.toStarReportPage(
+            id: (item.firstFriendInfo?.id ?? 0).toString(),
+            userName: item.firstFriendInfo?.nickName ?? "",
+            userAvatar: item.firstFriendInfo?.headImg ?? "",
+            friendName: item.secondFriendInfo?.nickName ?? "",
+            friendAvatar: item.secondFriendInfo?.headImg ?? "",
+          );
+          /* PageTools.toStarReport(
             firstId: item.firstFriendInfo?.id ?? 0,
             secondId: item.secondFriendInfo?.id ?? 0,
             relationship: item.relationship ?? "",
@@ -64,7 +71,7 @@ class LogsPage extends StatelessWidget {
             userAvatar: item.firstFriendInfo?.headImg ?? "",
             friendName: item.secondFriendInfo?.nickName ?? "",
             friendAvatar: item.secondFriendInfo?.headImg ?? "",
-          );
+          );*/
         }
       },
       child: LogItem(item: logic.list[i]),

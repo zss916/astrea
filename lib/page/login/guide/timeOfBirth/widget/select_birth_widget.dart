@@ -2,10 +2,8 @@ import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/generated/assets.dart';
-import 'package:astrea/page/login/guide/timeOfBirth/widget/houses_widget.dart';
 import 'package:awesome_datetime_picker/awesome_datetime_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SelectBirthWidget extends StatefulWidget {
   final Function(int, int) onSelect;
@@ -84,7 +82,7 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
           children: [
             PositionedDirectional(
               start: 0,
-              top: 138.w,
+              top: 152,
               child: Text(
                 'AC',
                 textAlign: TextAlign.center,
@@ -97,7 +95,7 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
             ),
             PositionedDirectional(
               end: 0,
-              top: 138.w,
+              top: 152,
               child: Text(
                 'DC',
                 textAlign: TextAlign.center,
@@ -108,21 +106,29 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
                 ),
               ),
             ),
+
             Container(
               // color: Colors.black38,
-              width: 310.w,
-              height: 300.w,
+              /* width: 310.w,
+              height: 300.w,*/
+              margin: EdgeInsetsDirectional.only(top: 20, start: 20, end: 20),
               child: Stack(
                 alignment: AlignmentDirectional.center,
                 children: [
                   RotationTransition(
                     turns: _animation,
                     child: Image.asset(
+                      Assets.timeBig286,
+                      matchTextDirection: true,
+                      width: 286,
+                      height: 286,
+                    ),
+                    /* child: Image.asset(
                       Assets.imageConstellation,
                       matchTextDirection: true,
                       width: 299,
                       height: 299,
-                    ),
+                    ),*/
                   ),
                   RotationTransition(
                     turns: Tween(
@@ -130,19 +136,32 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
                       end: -1.0,
                     ).animate(_animationCtrl2),
                     child: Image.asset(
+                      Assets.timeMiddle194,
+                      matchTextDirection: true,
+                      width: 194,
+                      height: 194,
+                    ),
+                    /*child: Image.asset(
                       Assets.imagePlanetIcon,
                       matchTextDirection: true,
                       width: 193,
                       height: 193,
-                    ),
+                    ),*/
                   ),
                   RotationTransition(
                     turns: (_animation),
-                    child: HousesWidget(size: Size(132, 132)),
+                    child: Image.asset(
+                      Assets.timeSmall132,
+                      matchTextDirection: true,
+                      width: 132,
+                      height: 132,
+                    ),
+                    /*child: HousesWidget(size: Size(132, 132)),*/
                   ),
                 ],
               ),
             ),
+
             PositionedDirectional(
               top: 0,
               child: Text(
@@ -158,7 +177,7 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
           ],
         ),
         Container(
-          margin: EdgeInsetsDirectional.only(top: 145),
+          margin: EdgeInsetsDirectional.only(top: 164),
           decoration: BoxDecoration(color: AppColor.pageBackground),
           width: double.maxFinite,
           child: Stack(
