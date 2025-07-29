@@ -57,6 +57,9 @@ class ApiPath {
   ///删除朋友 DELETE (header add auth)
   static const String deleteFriend = "/v1/account/friend";
 
+  ///删除朋友 PUT (header add auth)
+  static const String putFriend = "/v1/account/friend";
+
   ///合盘分析（查询列表）GET
   static const String getAnalysisList = "/v1/synastry/analysis";
 
@@ -65,4 +68,10 @@ class ApiPath {
 
   ///合盘分析（查询详情））GET
   static const String getAnalysis = "/v1/synastry/analysis";
+
+  ///合盘收藏 POST
+  static const String postCollection = "/v1/synastry/collection";
+
+  ///合盘取消收藏 DELETE
+  static const String deleteCollection = "/v1/synastry/collection";
 }

@@ -45,6 +45,7 @@ class FileManagementLogic extends GetxController {
     });
     list.clear();
     list.addAll(value);
+    AccountService.to.updateFriendList(list);
     update();
   }
 

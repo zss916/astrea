@@ -8,54 +8,44 @@ class StarReportPage extends StatelessWidget {
     return GetBuilder<StarReportLogic>(
       init: StarReportLogic(),
       builder: (logic) {
-        return Scaffold(
-          appBar: ComAppBar(
-            leading: Container(
-              margin: EdgeInsetsDirectional.only(start: 16),
-              child: Stack(
-                alignment: AlignmentDirectional.center,
-                children: [
-                  InkWell(
-                    borderRadius: BorderRadius.circular(50),
-                    onTap: () => Get.back(),
-                    child: Image.asset(
-                      Assets.imageBackIcon,
-                      matchTextDirection: true,
-                      width: 40,
-                      height: 40,
+        return PopScope(
+          canPop: false,
+          child: Scaffold(
+            appBar: ComAppBar(
+              leading: Container(
+                margin: EdgeInsetsDirectional.only(start: 16),
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    InkWell(
+                      borderRadius: BorderRadius.circular(50),
+                      onTap: () => logic.toBack(),
+                      child: Image.asset(
+                        Assets.imageBackIcon,
+                        matchTextDirection: true,
+                        width: 40,
+                        height: 40,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+              title: LanKey.reportTitle.tr,
+              actions: [
+                SaveAction(
+                  isSave: (logic.isSave ?? false),
+                  onTap: (value) {
+                    logic.toCollection();
+                  },
+                ),
+              ],
             ),
-            title: LanKey.reportTitle.tr,
-            actions: [
-              SaveAction(
-                isSave: (logic.isSave ?? false),
-                onTap: (value) {
-                  showCommonDialog(
-                    content: LanKey.saveTip.tr,
-                    contentStyle: TextStyle(
-                      color: const Color(0xFF6A676C),
-                      fontSize: 17,
-                      fontFamily: AppFonts.textFontFamily,
-                    ),
-                    leftButtonText: LanKey.cancel.tr,
-                    rightButtonText: LanKey.save.tr,
-                    onRightButtonCall: () {
-                      Get.back(closeOverlays: true);
-                    },
-                    routeName: APages.chartReportDialog,
-                  );
-                },
-              ),
-            ],
-          ),
-          backgroundColor: AppColor.pageBackground,
-          body: SizedBox(
-            width: double.maxFinite,
-            height: double.maxFinite,
-            child: buildBody(logic.viewState, logic),
+            backgroundColor: AppColor.pageBackground,
+            body: SizedBox(
+              width: double.maxFinite,
+              height: double.maxFinite,
+              child: buildBody(logic.viewState, logic),
+            ),
           ),
         );
       },

@@ -21,6 +21,7 @@ class AddFileLogic extends GetxController {
 
   bool isSave = false;
   bool isUser = false;
+  int? id;
 
   @override
   void onInit() {
@@ -42,6 +43,7 @@ class AddFileLogic extends GetxController {
       avatar = data.headImg ?? "";
       interests = data.interests ?? "";
       isUser = data.isMe;
+      id = data.id;
       //isSave = true;
       update();
     }
@@ -55,6 +57,7 @@ class AddFileLogic extends GetxController {
 
   void log() {
     debugPrint(
+      "id = $id, "
       "nickName =$nickName, "
       "avatar = $avatar, "
       "birthday = $birthday, "
@@ -116,5 +119,35 @@ class AddFileLogic extends GetxController {
         update();
       },
     );
+  }
+
+  ///修改朋友
+  Future<void> updateFriend() async {
+    log();
+    if (id == null) {
+      return;
+    }
+    AppLoading.show();
+    bool isSuccessful =
+        await FriendAPI.updateFriend(
+          id: id.toString(),
+          nickName: nickName,
+          avatar: avatar ?? "",
+          birthday: birthday,
+          birthHour: hourBirth,
+          birthMinute: minuteBirth,
+          sex: sex,
+          lon: lon,
+          lat: lat,
+          locality: locality,
+          interests: interests,
+        ).whenComplete(() {
+          AppLoading.dismiss();
+        });
+    if (isSuccessful) {
+      AppLoading.toast("Successful");
+      AppEventBus.eventBus.fire(RefreshFriendsEvent());
+      Get.back();
+    }
   }
 }

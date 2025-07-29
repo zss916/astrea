@@ -22,6 +22,8 @@ class StarReportLogic extends GetxController {
   String? friendName;
   String? friendAvatar;
 
+  int? id;
+
   @override
   void onInit() {
     super.onInit();
@@ -75,7 +77,7 @@ class StarReportLogic extends GetxController {
       otherId: secondId,
       relationship: relationship,
     ).then((value) async {
-      int? id = value.synastryId;
+      id = value.synastryId;
       if (id != null) {
         article = await SynastryAPI.getAnalysis(id: id.toString());
         viewState = article != null ? Status.data.index : Status.empty.index;
@@ -85,11 +87,74 @@ class StarReportLogic extends GetxController {
   }
 
   ///获取合盘分析内容
-  Future<void> getAnalysis({required String id}) async {
+  /*Future<void> getAnalysis({required String id}) async {
     AppLoading.show();
     article = await SynastryAPI.getAnalysis(id: id).whenComplete(() {
       AppLoading.dismiss();
     });
+    update();
+  }*/
+
+  void toCollection() {
+    if (isSave == true) {
+      deleteCollection(id: id.toString());
+    } else {
+      postCollection(id: id.toString());
+    }
+  }
+
+  void toBack() {
+    if (isSave != true) {
+      showCommonDialog(
+        content: LanKey.saveTip.tr,
+        contentStyle: TextStyle(
+          color: const Color(0xFF6A676C),
+          fontSize: 17,
+          fontFamily: AppFonts.textFontFamily,
+        ),
+        leftButtonText: LanKey.cancel.tr,
+        rightButtonText: LanKey.save.tr,
+        onRightButtonCall: () {
+          postCollection(
+            id: id.toString(),
+            onSuccess: () {
+              Get.back(closeOverlays: true);
+            },
+          );
+        },
+        routeName: APages.chartReportDialog,
+      );
+    } else {
+      Get.back(closeOverlays: true);
+    }
+  }
+
+  ///收藏
+  Future<void> postCollection({required String id, Function? onSuccess}) async {
+    AppLoading.show();
+    bool isSuccessful = await SynastryAPI.postCollection(id: id).whenComplete(
+      () {
+        AppLoading.dismiss();
+      },
+    );
+    if (isSuccessful) {
+      isSave = true;
+    }
+    update();
+    onSuccess?.call();
+  }
+
+  ///取消收藏
+  Future<void> deleteCollection({required String id}) async {
+    AppLoading.show();
+    bool isSuccessful = await SynastryAPI.deleteCollection(id: id).whenComplete(
+      () {
+        AppLoading.dismiss();
+      },
+    );
+    if (isSuccessful) {
+      isSave = false;
+    }
     update();
   }
 }

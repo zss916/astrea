@@ -62,4 +62,36 @@ abstract class SynastryAPI {
       return AnalysisArticleEntity();
     }
   }
+
+  ///合盘收藏
+  static Future<bool> postCollection({required String id}) async {
+    try {
+      var result = await Http.instance.post("${ApiPath.postCollection}/$id");
+      if (result["code"] == 0) {
+        return true;
+      } else {
+        AppLoading.toast("${result["msg"]}");
+        return false;
+      }
+    } catch (error) {
+      return false;
+    }
+  }
+
+  ///合盘取消收藏
+  static Future<bool> deleteCollection({required String id}) async {
+    try {
+      var result = await Http.instance.delete(
+        "${ApiPath.deleteCollection}/$id",
+      );
+      if (result["code"] == 0) {
+        return true;
+      } else {
+        AppLoading.toast("${result["msg"]}");
+        return false;
+      }
+    } catch (error) {
+      return false;
+    }
+  }
 }

@@ -96,12 +96,71 @@ abstract class FriendAPI {
       Map<String, dynamic> map = {};
       map["friend_id"] = num.parse(id);
       var result = await Http.instance.delete(ApiPath.deleteFriend, data: map);
-      /*if (result["code"] == 0) {
-        return true;
-      } else {
-        AppLoading.toast(result["msg"]);
-        return false;
-      }*/
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  ///修改朋友
+  static Future<bool> updateFriend({
+    required String id,
+    String? nickName,
+    String? avatar,
+    String? birthday,
+    num? birthHour,
+    num? birthMinute,
+    int? sex,
+    String? lon,
+    String? lat,
+    String? locality,
+    String? interests,
+  }) async {
+    try {
+      Map<String, dynamic> map = {};
+      map["friend_id"] = num.parse(id);
+
+      if (nickName != null) {
+        map["nick_name"] = nickName;
+      }
+
+      if (avatar != null) {
+        map["head_img"] = avatar;
+      }
+
+      if (birthday != null) {
+        map["birthday"] = birthday;
+      }
+
+      if (birthHour != null) {
+        map["birth_hour"] = birthHour;
+      }
+
+      if (birthMinute != null) {
+        map["birth_minute"] = birthMinute;
+      }
+
+      if (sex != null) {
+        map["sex"] = sex;
+      }
+
+      if (lon != null) {
+        map["lon"] = num.parse(lon);
+      }
+
+      if (lat != null) {
+        map["lat"] = num.parse(lat);
+      }
+
+      if (locality != null) {
+        map["locality"] = locality;
+      }
+
+      if (interests != null) {
+        map["interests"] = interests;
+      }
+
+      var result = await Http.instance.put(ApiPath.putFriend, data: map);
       return true;
     } catch (error) {
       return false;

@@ -187,7 +187,11 @@ class AddFilePage extends StatelessWidget {
                   onTap: () {
                     logic.log();
                     if (logic.isSave) {
-                      logic.addFriend();
+                      if (logic.id == null) {
+                        logic.addFriend();
+                      } else {
+                        logic.updateFriend();
+                      }
                     } else {
                       // AppLoading.toast("");
                     }
