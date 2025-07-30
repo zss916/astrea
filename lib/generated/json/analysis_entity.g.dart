@@ -19,6 +19,10 @@ AnalysisEntity $AnalysisEntityFromJson(Map<String, dynamic> json) {
   if (relationship != null) {
     analysisEntity.relationship = relationship;
   }
+  final int? id = jsonConvert.convert<int>(json['id']);
+  if (id != null) {
+    analysisEntity.id = id;
+  }
   return analysisEntity;
 }
 
@@ -27,6 +31,7 @@ Map<String, dynamic> $AnalysisEntityToJson(AnalysisEntity entity) {
   data['first_friend_info'] = entity.firstFriendInfo?.toJson();
   data['second_friend_info'] = entity.secondFriendInfo?.toJson();
   data['relationship'] = entity.relationship;
+  data['id'] = entity.id;
   return data;
 }
 
@@ -35,11 +40,13 @@ extension AnalysisEntityExtension on AnalysisEntity {
     AnalysisFirstFriendInfo? firstFriendInfo,
     AnalysisSecondFriendInfo? secondFriendInfo,
     String? relationship,
+    int? id,
   }) {
     return AnalysisEntity()
       ..firstFriendInfo = firstFriendInfo ?? this.firstFriendInfo
       ..secondFriendInfo = secondFriendInfo ?? this.secondFriendInfo
-      ..relationship = relationship ?? this.relationship;
+      ..relationship = relationship ?? this.relationship
+      ..id = id ?? this.id;
   }
 }
 

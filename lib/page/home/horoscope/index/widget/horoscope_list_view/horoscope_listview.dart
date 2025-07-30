@@ -69,32 +69,74 @@ class HoroscopeListview extends StatelessWidget {
           width: double.maxFinite,
           child: Row(
             children: [
-              /*CustomPopup(
-                showArrow: true,
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                // barrierColor: Colors.transparent,
-                contentDecoration: BoxDecoration(color: Color(0xFF585FC4)),
-                position: PopupPosition.top,
-                content: AddFriendTip(
-                  isShow: true,
-                ),
-                child: buildAdd(),
-              ),*/
-              GestureDetector(
-                onTap: () {
-                  onAdd?.call();
-                },
-                child: buildAdd(),
-              ),
-              SizedBox(width: 12),
-              GestureDetector(
-                onTap: () {
-                  onOneself?.call();
-                },
-                child: buildOneself(avatar),
-              ),
               Expanded(
+                child: CustomScrollView(
+                  scrollDirection: Axis.horizontal,
+                  slivers: [
+                    ///add
+                    SliverToBoxAdapter(
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(5),
+                        onTap: () {
+                          onAdd?.call();
+                        },
+                        child: buildAdd(),
+                      ),
+                    ),
+
+                    /*///space
+                    SliverPadding(
+                      padding: EdgeInsetsDirectional.only(start: 10),
+                    ),*/
+
+                    /// oneself
+                    SliverToBoxAdapter(
+                      child: GestureDetector(
+                        onTap: () {
+                          onOneself?.call();
+                        },
+                        child: buildOneself(avatar),
+                      ),
+                    ),
+
+                    ///friends
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (_, i) => InkWell(
+                          borderRadius: BorderRadius.circular(5),
+                          onTap: () {
+                            onSelect?.call(i);
+                          },
+                          child: Container(
+                            margin: EdgeInsetsDirectional.only(start: 10),
+                            child: buildFriend(avatar, "namename"),
+                          ),
+                        ),
+                        childCount: 2,
+                      ),
+                    ),
+
+                    /// star
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (_, i) => InkWell(
+                          borderRadius: BorderRadius.circular(5),
+                          onTap: () {
+                            onSelect?.call(i);
+                          },
+                          child: HoroscopeListItem(
+                            icon: list[i],
+                            title: listTitle[i],
+                          ),
+                        ),
+                        childCount: 12,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              /* Expanded(
                 child: ListView.builder(
                   // physics: NeverScrollableScrollPhysics(),
                   itemCount: 12,
@@ -111,7 +153,7 @@ class HoroscopeListview extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
+              ),*/
               buildSynastry(),
             ],
           ),
@@ -203,6 +245,57 @@ class HoroscopeListview extends StatelessWidget {
         Spacer(),
         Text(
           LanKey.oneself.tr,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: const Color(0xFF323133),
+            fontSize: 12,
+            fontFamily: AppFonts.textFontFamily,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildFriend(String avatar, String name) {
+    return Column(
+      children: [
+        Container(
+          clipBehavior: Clip.hardEdge,
+          padding: EdgeInsetsDirectional.all(1.6),
+          decoration: BoxDecoration(
+            border: Border.all(width: 1, color: Color(0xFF9292CA)),
+            // color: Color(0xFFEDEDFE),
+            borderRadius: BorderRadiusDirectional.circular(50),
+          ),
+          width: 48,
+          height: 48,
+          child: Container(
+            clipBehavior: Clip.hardEdge,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadiusDirectional.circular(50),
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: ExactAssetImage(Assets.imageHomeAvatar),
+              ),
+            ),
+            child: Container(
+              clipBehavior: Clip.hardEdge,
+              decoration: avatar.isEmpty
+                  ? BoxDecoration()
+                  : BoxDecoration(
+                      color: Colors.transparent,
+                      image: DecorationImage(
+                        image: NetworkImage(avatar),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadiusDirectional.circular(50),
+                    ),
+            ),
+          ),
+        ),
+        Spacer(),
+        Text(
+          name,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: const Color(0xFF323133),

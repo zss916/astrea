@@ -10,6 +10,7 @@ class AnalysisEntity {
   @JSONField(name: "second_friend_info")
   AnalysisSecondFriendInfo? secondFriendInfo;
   String? relationship;
+  int? id;
 
   AnalysisEntity();
 
