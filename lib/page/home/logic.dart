@@ -15,7 +15,7 @@ class HomeLogic extends GetxController {
 
   Future<void> loadData() async {
     if (AccountService.to.getAccount() == null) {
-      AccountEntity account = await AccountAPI.getAccount();
+      AccountEntity? account = await AccountAPI.getAccount();
     }
   }
 }

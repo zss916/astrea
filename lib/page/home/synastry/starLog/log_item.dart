@@ -26,21 +26,16 @@ class LogItem extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsetsDirectional.only(bottom: 8),
-                decoration: (item.firstFriendInfo?.headImg ?? "").isNotEmpty
-                    ? BoxDecoration(
-                        color: Color(0x0d000000),
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                            item.firstFriendInfo?.headImg ?? "",
-                          ),
-                        ),
-                        borderRadius: BorderRadiusDirectional.circular(100),
-                      )
-                    : BoxDecoration(
-                        color: Color(0x0d000000),
-                        borderRadius: BorderRadiusDirectional.circular(100),
-                      ),
+                decoration: BoxDecoration(
+                  color: Color(0x0d000000),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: (item.firstFriendInfo?.headImg ?? "").isNotEmpty
+                        ? NetworkImage(item.firstFriendInfo?.headImg ?? "")
+                        : ExactAssetImage(Assets.imageFriendDefaultIcon),
+                  ),
+                  borderRadius: BorderRadiusDirectional.circular(100),
+                ),
                 width: 58,
                 height: 58,
               ),
@@ -96,20 +91,16 @@ class LogItem extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsetsDirectional.only(bottom: 8),
-                decoration: (item.secondFriendInfo?.headImg ?? "").isNotEmpty
-                    ? BoxDecoration(
-                        color: Color(0x1A000000),
-                        image: DecorationImage(
-                          image: NetworkImage(
-                            item.secondFriendInfo?.headImg ?? "",
-                          ),
-                        ),
-                        borderRadius: BorderRadiusDirectional.circular(100),
-                      )
-                    : BoxDecoration(
-                        color: Color(0x1A000000),
-                        borderRadius: BorderRadiusDirectional.circular(100),
-                      ),
+                decoration: BoxDecoration(
+                  color: Color(0x1A000000),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: (item.secondFriendInfo?.headImg ?? "").isNotEmpty
+                        ? NetworkImage(item.secondFriendInfo?.headImg ?? "")
+                        : ExactAssetImage(Assets.imageFriendDefaultIcon),
+                  ),
+                  borderRadius: BorderRadiusDirectional.circular(100),
+                ),
                 width: 58,
                 height: 58,
               ),

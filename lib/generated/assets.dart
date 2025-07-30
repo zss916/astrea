@@ -78,6 +78,8 @@ class Assets {
   static const String imageFrameEditAvatar =
       'assets/image/frame_edit_avatar.png';
   static const String imageFremale = 'assets/image/fremale.png';
+  static const String imageFriendDefaultIcon =
+      'assets/image/friend_default_icon.png';
   static const String imageFriendsIcon = 'assets/image/friends_icon.png';
   static const String imageGemini = 'assets/image/gemini.png';
   static const String imageGoogle = 'assets/image/google.png';
@@ -129,6 +131,8 @@ class Assets {
       'assets/image/location_edit_icon.png';
   static const String imageLocationIcon = 'assets/image/location_icon.png';
   static const String imageLogEmpty = 'assets/image/log_empty.png';
+  static const String imageLogoDefaultIcon =
+      'assets/image/logo_default_icon.png';
   static const String imageLoveIcon = 'assets/image/love_icon.png';
   static const String imageLuckyColor = 'assets/image/lucky_color.png';
   static const String imageMale = 'assets/image/male.png';

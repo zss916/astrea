@@ -78,7 +78,16 @@ class OpenCamera extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               onTap: () async {
                 Get.back();
-                ImageUtils.chooseImage(camera: false).then((file) {});
+                ImageUtils.chooseImage(camera: false).then((xFile) {
+                  uploadFile(
+                    fileName: xFile?.name ?? "",
+                    filePath: xFile?.path ?? "",
+                    onFinish: (url) {
+                      onFinish.call(url);
+                      // debugPrint("uploadFile url => $url");
+                    },
+                  );
+                });
               },
               child: Container(
                 width: double.infinity,

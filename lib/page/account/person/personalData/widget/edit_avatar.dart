@@ -11,7 +11,7 @@ class EditAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        logic.showSheet();
+        logic.showPhotoSheet();
       },
       child: Container(
         // color: Colors.red,

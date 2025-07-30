@@ -244,4 +244,17 @@ class PageTools {
       Get.offAllNamed(APages.home, arguments: data);
 
   static offAllNamedLogin() => Get.offAllNamed(APages.welcome);
+
+  static loginToNext() {
+    if (AccountService.to.isNewUser) {
+      ///判断是否完成资料录入
+      if (AccountService.to.isFinishRecord) {
+        PageTools.toResult();
+      } else {
+        PageTools.toStep();
+      }
+    } else {
+      PageTools.offAllNamedHome();
+    }
+  }
 }

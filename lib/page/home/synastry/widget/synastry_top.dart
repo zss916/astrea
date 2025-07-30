@@ -1,13 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/synastry/widget/synastry_add.dart';
 import 'package:astrea/page/home/synastry/widget/synastry_avatar.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SynastryTop extends StatelessWidget {
-  const SynastryTop({super.key});
+  final String avatar;
+  final String nickName;
+  const SynastryTop({super.key, required this.avatar, required this.nickName});
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +22,15 @@ class SynastryTop extends StatelessWidget {
         children: [
           Column(
             children: [
-              SynastryAvatar(child: SizedBox()),
+              SynastryAvatar(avatar: avatar),
               Container(
+                width: 120,
+                color: Colors.transparent,
                 margin: EdgeInsetsDirectional.only(top: 10),
                 child: Text(
-                  LanKey.oneself.tr,
+                  nickName,
                   textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: const Color(0xFF323133),
                     fontSize: 18,
@@ -47,7 +52,7 @@ class SynastryTop extends StatelessWidget {
           ),
           Column(
             children: [
-              SynastryAdd(child: SizedBox()),
+              SynastryAdd(child: SizedBox.shrink()),
               Container(
                 margin: EdgeInsetsDirectional.only(top: 10),
                 child: Text(

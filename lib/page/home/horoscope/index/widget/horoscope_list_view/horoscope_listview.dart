@@ -84,35 +84,42 @@ class HoroscopeListview extends StatelessWidget {
                       ),
                     ),
 
-                    /*///space
+                    ///space
                     SliverPadding(
-                      padding: EdgeInsetsDirectional.only(start: 10),
-                    ),*/
+                      padding: EdgeInsetsDirectional.only(start: 5),
+                    ),
 
                     /// oneself
                     SliverToBoxAdapter(
-                      child: GestureDetector(
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(5),
                         onTap: () {
                           onOneself?.call();
                         },
-                        child: buildOneself(avatar),
+                        child: buildOneself(avatar, logic.nickName),
                       ),
                     ),
 
                     ///friends
                     SliverList(
                       delegate: SliverChildBuilderDelegate(
-                        (_, i) => InkWell(
-                          borderRadius: BorderRadius.circular(5),
-                          onTap: () {
-                            onSelect?.call(i);
-                          },
-                          child: Container(
-                            margin: EdgeInsetsDirectional.only(start: 10),
-                            child: buildFriend(avatar, "namename"),
+                        (_, i) => Container(
+                          margin: EdgeInsetsDirectional.only(start: 5),
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(5),
+                            onTap: () {
+                              // onSelect?.call(i);
+                            },
+                            child: Container(
+                              margin: EdgeInsetsDirectional.only(start: 0),
+                              child: buildFriend(
+                                logic.friends[i].headImg ?? "",
+                                logic.friends[i].nickName ?? "--",
+                              ),
+                            ),
                           ),
                         ),
-                        childCount: 2,
+                        childCount: logic.friends.length,
                       ),
                     ),
 
@@ -190,7 +197,7 @@ class HoroscopeListview extends StatelessWidget {
     );
   }
 
-  Widget buildOneself(String avatar) {
+  Widget buildOneself(String avatar, String name) {
     return Column(
       children: [
         Stack(
@@ -243,13 +250,17 @@ class HoroscopeListview extends StatelessWidget {
           ],
         ),
         Spacer(),
-        Text(
-          LanKey.oneself.tr,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: const Color(0xFF323133),
-            fontSize: 12,
-            fontFamily: AppFonts.textFontFamily,
+        SizedBox(
+          width: 65,
+          child: Text(
+            name,
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              color: const Color(0xFF323133),
+              fontSize: 12,
+              fontFamily: AppFonts.textFontFamily,
+            ),
           ),
         ),
       ],
@@ -275,7 +286,7 @@ class HoroscopeListview extends StatelessWidget {
               borderRadius: BorderRadiusDirectional.circular(50),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: ExactAssetImage(Assets.imageHomeAvatar),
+                image: ExactAssetImage(Assets.imageFriendDefaultIcon),
               ),
             ),
             child: Container(
@@ -294,13 +305,17 @@ class HoroscopeListview extends StatelessWidget {
           ),
         ),
         Spacer(),
-        Text(
-          name,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: const Color(0xFF323133),
-            fontSize: 12,
-            fontFamily: AppFonts.textFontFamily,
+        SizedBox(
+          width: 65,
+          child: Text(
+            name,
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              color: const Color(0xFF323133),
+              fontSize: 12,
+              fontFamily: AppFonts.textFontFamily,
+            ),
           ),
         ),
       ],

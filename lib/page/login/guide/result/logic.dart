@@ -32,10 +32,10 @@ class ResultLogic extends GetxController {
       avatar: account?.headimg,
     );
     if (isSuccessful) {
-      AccountEntity account = await AccountAPI.getAccount();
-      if (account.friendId != null) {
+      AccountEntity? account = await AccountAPI.getAccount();
+      if (account?.friendId != null) {
         (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
-          id: account.friendId ?? "",
+          id: account?.friendId ?? "",
         );
         if (value.$1) {
           AstrologyService.to.update(value.$2);

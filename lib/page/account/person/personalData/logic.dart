@@ -22,6 +22,12 @@ class PersonalDataLogic extends GetxController {
     loadAccount();
   }
 
+  @override
+  void onClose() {
+    super.onClose();
+    AppLoading.dismiss();
+  }
+
   void initLocalData() {
     if (Get.arguments != null && Get.arguments is AccountEntity) {
       account = Get.arguments as AccountEntity;
@@ -87,10 +93,12 @@ class PersonalDataLogic extends GetxController {
           account!.lon!,
         );
       }
+    } else {
+      debugPrint("upload  failed");
     }
   }
 
-  void showSheet() {
+  void showPhotoSheet() {
     showCameraAndGallerySheet(
       onFinish: (url) {
         account?.headimg = url;

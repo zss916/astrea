@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:flutter/material.dart';
 
 class SynastryAdd extends StatelessWidget {
   final Widget child;
@@ -37,6 +37,7 @@ class SynastryAdd extends StatelessWidget {
               ),
               // margin: EdgeInsetsDirectional.only(start: 12, top: 4),
               child: Container(
+                clipBehavior: Clip.hardEdge,
                 margin: EdgeInsetsDirectional.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),

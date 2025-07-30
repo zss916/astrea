@@ -4,6 +4,7 @@ class LogsLogic extends GetxController {
   List<AnalysisEntity> list = [];
 
   int viewState = Status.init.index;
+  CancelToken cancelToken = CancelToken();
 
   ///0 loading, 1 data, 2 empty
 
@@ -21,16 +22,20 @@ class LogsLogic extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    loadData();
+    loadData(cancelToken: cancelToken);
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    cancelToken.cancel();
   }
 
   ///加载朋友列表
-  Future<void> loadData() async {
-    //AppLoading.show();
-    List<AnalysisEntity> value = await SynastryAPI.getAnalysisList()
-        .whenComplete(() {
-          // AppLoading.dismiss();
-        });
+  Future<void> loadData({CancelToken? cancelToken}) async {
+    List<AnalysisEntity> value = await SynastryAPI.getAnalysisList(
+      cancelToken: cancelToken,
+    );
     list.clear();
     list.addAll(value);
     viewState = list.isNotEmpty ? Status.data.index : Status.empty.index;

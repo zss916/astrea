@@ -5,24 +5,28 @@ import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/net/bean/account_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 ///account
 abstract class AccountAPI {
   ///获取账号信息
-  static Future<AccountEntity> getAccount() async {
+  static Future<AccountEntity?> getAccount({CancelToken? cancelToken}) async {
     try {
-      var result = await Http.instance.get(ApiPath.getAccount);
+      var result = await Http.instance.get(
+        ApiPath.getAccount,
+        cancelToken: cancelToken,
+      );
       if (result["code"] == 0) {
         AccountEntity value = AccountEntity.fromJson(result["data"]);
         AccountService.to.update(value);
         return value;
       } else {
         AppLoading.toast("${result["msg"]}");
-        return AccountEntity();
+        return null;
       }
     } catch (error) {
-      return AccountEntity();
+      return null;
     }
   }
 

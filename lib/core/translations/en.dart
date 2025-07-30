@@ -17,6 +17,7 @@ class LanKey {
   static const birthChart = "birth_chart";
   static const dateOfBirth = "date_of_birth";
   static const timeOfBirth = "time_of_birth";
+  static const combinedResults = "combined_results";
   static const dateOfBirthContent = "date_of_birth_content";
   static const timeOfBirthSubTitle = "time_of_birth_sub_title";
   static const timeOfBirthContent = "time_of_birth_content";
@@ -286,6 +287,7 @@ class LanKey {
   static const love = "love";
   static const wealth = "wealth";
   static const family = "family";
+  static const lover = "lover";
   static const career = "career";
   static const constellationChart = "constellation_chart";
   static const fortuneGuide = "fortune_guide";
@@ -320,12 +322,20 @@ class LanKey {
   static const uranus = "uranus";
   static const neptune = "neptune";
   static const pluto = "pluto";
-
-  //
+  static const friend = "friend";
+  static const partners = "partners";
+  static const customers = "customers";
+  static const colleagues = "colleagues";
 }
 
 ///英语文案
 const en = {
+  "colleagues": "Colleagues",
+  "customers": "Customers",
+  "partners": "Partners",
+  "friend": "Friend",
+  "lover": "Lover",
+  "combined_results": "Combined results: ",
   "summarize": "Summarize",
   "other_side": "Other side",
   "mercury": "Mercury",

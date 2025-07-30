@@ -1,5 +1,6 @@
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
+import 'package:astrea/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -200,7 +201,10 @@ class NatalChart extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                color: Color(0x1A000000),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage(Assets.imageLogoDefaultIcon),
+                ),
                 borderRadius: BorderRadiusDirectional.circular(100),
               ),
               width: 130.w,

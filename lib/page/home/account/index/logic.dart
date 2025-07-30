@@ -39,7 +39,7 @@ class AccountLogic extends GetxController {
   }
 
   void initLocalData() {
-    account = AccountService.to.data;
+    account = AccountService.to.getAccount();
     update();
   }
 

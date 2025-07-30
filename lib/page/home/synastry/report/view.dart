@@ -19,7 +19,13 @@ class StarReportPage extends StatelessWidget {
                   children: [
                     InkWell(
                       borderRadius: BorderRadius.circular(50),
-                      onTap: () => logic.toBack(),
+                      onTap: () {
+                        if (logic.viewState == Status.data.index) {
+                          logic.toBack();
+                        } else {
+                          Get.back(closeOverlays: true);
+                        }
+                      },
                       child: Image.asset(
                         Assets.imageBackIcon,
                         matchTextDirection: true,
@@ -32,12 +38,13 @@ class StarReportPage extends StatelessWidget {
               ),
               title: LanKey.reportTitle.tr,
               actions: [
-                SaveAction(
-                  isSave: (logic.isSave ?? false),
-                  onTap: (value) {
-                    logic.toCollection();
-                  },
-                ),
+                if (logic.viewState == Status.data.index)
+                  SaveAction(
+                    isSave: (logic.isSave ?? false),
+                    onTap: (value) {
+                      logic.toCollection();
+                    },
+                  ),
               ],
             ),
             backgroundColor: AppColor.pageBackground,
@@ -105,9 +112,12 @@ class StarReportPage extends StatelessWidget {
                       end: 4,
                     ),
                     child: ScoresWidget(
-                      soul: logic.soul,
-                      emotion: logic.emotion,
-                      attraction: logic.attraction,
+                      title1: logic.title1 ?? "",
+                      title2: logic.title2 ?? "",
+                      title3: logic.title3 ?? "",
+                      value1: logic.value1 ?? 0,
+                      value2: logic.value2 ?? 0,
+                      value3: logic.value3 ?? 0,
                     ),
                   ),
                   if (logic.meanings.isNotEmpty)
@@ -123,7 +133,7 @@ class StarReportPage extends StatelessWidget {
                         TextSpan(
                           children: [
                             TextSpan(
-                              text: 'Combined results：',
+                              text: LanKey.combinedResults.tr,
                               style: TextStyle(
                                 color: const Color(0xFF323133),
                                 fontSize: 16,
@@ -155,14 +165,40 @@ class StarReportPage extends StatelessWidget {
                         top: 8.h,
                         bottom: 20.h,
                       ),
-                      child: Text(
-                        logic.analysis,
-                        style: TextStyle(
-                          color: const Color(0xFF6A676C),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: AppFonts.textFontFamily,
-                        ),
+                      child: Column(
+                        children: [
+                          Text(
+                            logic.analysis,
+                            style: TextStyle(
+                              color: const Color(0xFF6A676C),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: AppFonts.textFontFamily,
+                            ),
+                          ),
+
+                          Divider(height: 10, color: Colors.transparent),
+                          Text(
+                            logic.dailyAdvice,
+                            style: TextStyle(
+                              color: const Color(0xFF6A676C),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: AppFonts.textFontFamily,
+                            ),
+                          ),
+
+                          Divider(height: 10, color: Colors.transparent),
+                          Text(
+                            logic.trend3Months,
+                            style: TextStyle(
+                              color: const Color(0xFF6A676C),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: AppFonts.textFontFamily,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

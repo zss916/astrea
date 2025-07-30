@@ -3,8 +3,8 @@ import 'package:astrea/generated/assets.dart';
 import 'package:flutter/material.dart';
 
 class SynastryAvatar extends StatelessWidget {
-  final Widget child;
-  const SynastryAvatar({super.key, required this.child});
+  final String avatar;
+  const SynastryAvatar({super.key, required this.avatar});
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +36,19 @@ class SynastryAvatar extends StatelessWidget {
                 ),
               ),
               child: Container(
+                clipBehavior: Clip.hardEdge,
                 margin: EdgeInsetsDirectional.all(10),
                 decoration: BoxDecoration(
                   color: Color(0x1A000000),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    matchTextDirection: true,
+                    image: avatar.isNotEmpty
+                        ? NetworkImage(avatar)
+                        : ExactAssetImage(Assets.imageHomeAvatar),
+                  ),
                   borderRadius: BorderRadius.circular(50),
                 ),
-                child: child,
               ),
             ),
           ],

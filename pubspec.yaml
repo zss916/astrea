@@ -50,6 +50,9 @@ dependencies:
   collection: 1.19.1
   lottie: 3.3.1
   #flutter_image_compress: ^4.0.0
+  #抓包配置
+  http_proxy: ^1.2.3
+  dio_http2_adapter: ^2.6.0
 
 
 

@@ -1,6 +1,7 @@
 import 'package:astrea/components/star.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/storage/astrology_service.dart';
+import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/net/api/astro.dart';
 import 'package:astrea/net/api/friend.dart';
 import 'package:astrea/net/bean/account_entity.dart';
@@ -13,7 +14,7 @@ class HoroscopeLogic extends GetxController {
   AccountEntity? account;
 
   ///账户
-  String get nickName => account?.nickName ?? "--";
+  String get nickName => account?.nickName ?? LanKey.oneself.tr;
   String get avatar => account?.headimg ?? "";
   String get showBirthday => account?.showBirthDay ?? "--";
 
@@ -86,6 +87,9 @@ class HoroscopeLogic extends GetxController {
 
   bool isAddFriend = false;
 
+  ///不包含用户自己
+  List<FriendEntity> friends = [];
+
   @override
   void onInit() {
     super.onInit();
@@ -98,7 +102,8 @@ class HoroscopeLogic extends GetxController {
     } else {
       data = AstrologyService.to.getNatalValue();
     }
-    account = AccountService.to.data;
+    account = AccountService.to.getAccount();
+    friends = AccountService.to.getFriendList().where((e) => !e.isMe).toList();
     // debugPrint("data=> ${data}, account => ${account}");
     if (data == null) {
       viewState = 1;
@@ -147,7 +152,8 @@ class HoroscopeLogic extends GetxController {
       isAddFriend = true;
       update();
     } else {
-      List<FriendEntity> friends = await FriendAPI.getFriends();
+      List<FriendEntity> data = await FriendAPI.getFriends();
+      friends = data.where((e) => !e.isMe).toList();
       AccountService.to.updateFriendList(friends);
       isAddFriend = (friends.length >= 2);
       update();

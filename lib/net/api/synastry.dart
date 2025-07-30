@@ -4,13 +4,19 @@ import 'package:astrea/net/bean/analysis_entity.dart';
 import 'package:astrea/net/bean/analysis_identity_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
+import 'package:dio/dio.dart';
 
 ///Synastry
 abstract class SynastryAPI {
   ///查询合盘分析列表
-  static Future<List<AnalysisEntity>> getAnalysisList() async {
+  static Future<List<AnalysisEntity>> getAnalysisList({
+    CancelToken? cancelToken,
+  }) async {
     try {
-      var result = await Http.instance.get(ApiPath.getAnalysisList);
+      var result = await Http.instance.get(
+        ApiPath.getAnalysisList,
+        cancelToken: cancelToken,
+      );
       if (result["code"] == 0) {
         List<AnalysisEntity> value = (result['data'] as List)
             .map((e) => AnalysisEntity.fromJson(e))
@@ -26,7 +32,7 @@ abstract class SynastryAPI {
   }
 
   ///更新合盘分析
-  static Future<AnalysisIdentityEntity> updateAnalysis({
+  static Future<AnalysisIdentityEntity?> updateAnalysis({
     required num userId,
     required num otherId,
     required String relationship,
@@ -41,25 +47,27 @@ abstract class SynastryAPI {
         return AnalysisIdentityEntity.fromJson(result["data"]);
       } else {
         AppLoading.toast("${result["msg"]}");
-        return AnalysisIdentityEntity();
+        return null;
       }
     } catch (error) {
-      return AnalysisIdentityEntity();
+      return null;
     }
   }
 
   ///查询合盘分析列表
-  static Future<AnalysisArticleEntity> getAnalysis({required String id}) async {
+  static Future<AnalysisArticleEntity?> getAnalysis({
+    required String id,
+  }) async {
     try {
       var result = await Http.instance.get("${ApiPath.getAnalysis}/$id");
       if (result["code"] == 0) {
         return AnalysisArticleEntity.fromJson(result["data"]);
       } else {
         AppLoading.toast("${result["msg"]}");
-        return AnalysisArticleEntity();
+        return null;
       }
     } catch (error) {
-      return AnalysisArticleEntity();
+      return null;
     }
   }
 

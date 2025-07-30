@@ -41,7 +41,10 @@ class SynastryView extends StatelessWidget {
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
-                            SynastryTop(),
+                            SynastryTop(
+                              avatar: logic.avatar,
+                              nickName: logic.nickName,
+                            ),
                             Stack(
                               alignment: AlignmentDirectional.topCenter,
                               children: [

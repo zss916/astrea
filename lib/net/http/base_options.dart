@@ -3,8 +3,8 @@ import 'package:dio/dio.dart';
 
 BaseOptions baseDioOptions = BaseOptions(
   baseUrl: ApiPath.baseUrl,
-  connectTimeout: const Duration(minutes: 2),
-  receiveTimeout: const Duration(minutes: 2),
+  connectTimeout: const Duration(seconds: 30),
+  receiveTimeout: const Duration(seconds: 30),
   headers: {},
   contentType: 'application/json; charset=utf-8',
   //contentType: Headers.jsonContentType,

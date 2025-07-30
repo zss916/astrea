@@ -11,6 +11,7 @@ import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/net/api/synastry.dart';
 import 'package:astrea/net/bean/analysis_article_entity.dart';
+import 'package:astrea/net/bean/analysis_identity_entity.dart';
 import 'package:astrea/page/home/horoscope/detail/widget/blur_widget.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_content/content/free_unlocking_card.dart';
 import 'package:astrea/page/home/synastry/report/widget/report_table_widget.dart';

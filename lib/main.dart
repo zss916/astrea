@@ -18,6 +18,11 @@ Future<void> main() async {
 
   ///解决证书验证问题
   HttpOverrides.global = AppHttpOverrides();
+
+  ///抓包配置
+  //WidgetsFlutterBinding.ensureInitialized();
+  //HttpProxy httpProxy = await HttpProxy.createHttpProxy();
+  //HttpOverrides.global = httpProxy;
   runApp(const App());
 }
 

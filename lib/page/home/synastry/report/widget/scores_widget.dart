@@ -1,18 +1,22 @@
 import 'package:astrea/core/setting/app_fonts.dart';
-import 'package:astrea/core/translations/en.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 class ScoresWidget extends StatelessWidget {
-  final num soul;
-  final num emotion;
-  final num attraction;
+  final String title1;
+  final String title2;
+  final String title3;
+  final num value1;
+  final num value2;
+  final num value3;
   const ScoresWidget({
     super.key,
-    required this.soul,
-    required this.emotion,
-    required this.attraction,
+    required this.title1,
+    required this.title2,
+    required this.title3,
+    required this.value1,
+    required this.value2,
+    required this.value3,
   });
 
   @override
@@ -25,7 +29,8 @@ class ScoresWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                LanKey.soulIndex.tr,
+                title1,
+                //LanKey.soulIndex.tr,
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   color: const Color(0xFF323133),
@@ -39,14 +44,14 @@ class ScoresWidget extends StatelessWidget {
                 //width: 80,
                 height: 6,
                 child: LinearProgressIndicator(
-                  value: (soul / 100),
+                  value: (value1 / 100),
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   backgroundColor: Color(0xFFF0F1F5),
                   valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
                 ),
               ),
               Text(
-                "$soul",
+                "$value1",
                 style: TextStyle(
                   color: const Color(0xFF585FC4),
                   fontSize: 18,
@@ -62,7 +67,8 @@ class ScoresWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                LanKey.emotionIndex.tr,
+                //LanKey.emotionIndex.tr,
+                title2,
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   color: const Color(0xFF323133),
@@ -76,14 +82,14 @@ class ScoresWidget extends StatelessWidget {
                 //width: 80,
                 height: 6,
                 child: LinearProgressIndicator(
-                  value: (emotion / 100),
+                  value: (value2 / 100),
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   backgroundColor: Color(0xFFF0F1F5),
                   valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
                 ),
               ),
               Text(
-                '$emotion',
+                '$value2',
                 style: TextStyle(
                   color: const Color(0xFF585FC4),
                   fontSize: 18,
@@ -99,7 +105,8 @@ class ScoresWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                LanKey.attractionIndex.tr,
+                title3,
+                //LanKey.attractionIndex.tr,
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   color: const Color(0xFF323133),
@@ -113,14 +120,14 @@ class ScoresWidget extends StatelessWidget {
                 //width: 80,
                 height: 6,
                 child: LinearProgressIndicator(
-                  value: (attraction / 100),
+                  value: (value3 / 100),
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   backgroundColor: Color(0xFFF0F1F5),
                   valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
                 ),
               ),
               Text(
-                "$attraction",
+                "$value3",
                 style: TextStyle(
                   color: const Color(0xFF585FC4),
                   fontSize: 18,

@@ -28,13 +28,22 @@ class SelectRelationshipSheet extends StatefulWidget {
 
 class _SelectRelationshipSheetState extends State<SelectRelationshipSheet> {
   int selectedIndex = -1;
-  List<Map<String, dynamic>> list = [
+  /*List<Map<String, dynamic>> list2 = [
     {"title": "Family", "value": false},
     {"title": "Lover", "value": false},
     {"title": "Friend", "value": false},
     {"title": "Partners", "value": false},
     {"title": "Customers", "value": false},
     {"title": "Colleagues", "value": false},
+  ];*/
+
+  List<Map<String, dynamic>> list = [
+    {"title": LanKey.family.tr, "value": false},
+    {"title": LanKey.lover.tr, "value": false},
+    {"title": LanKey.friend.tr, "value": false},
+    {"title": LanKey.partners.tr, "value": false},
+    {"title": LanKey.customers.tr, "value": false},
+    {"title": LanKey.colleagues.tr, "value": false},
   ];
 
   @override

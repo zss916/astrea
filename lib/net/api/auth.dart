@@ -28,7 +28,7 @@ abstract class AuthAPI {
   }
 
   ///google登录
-  static Future<AuthEntity> googleLogin({required String token}) async {
+  static Future<AuthEntity?> googleLogin({required String token}) async {
     try {
       var result = await Http.instance.post(
         ApiPath.googleLogin,
@@ -36,12 +36,12 @@ abstract class AuthAPI {
       );
       return AuthEntity.fromJson(result["data"]);
     } catch (error) {
-      return AuthEntity();
+      return null;
     }
   }
 
   ///apple登录
-  static Future<AuthEntity> appleLogin({
+  static Future<AuthEntity?> appleLogin({
     required String code,
     String? token,
     String? thirdId,
@@ -57,7 +57,7 @@ abstract class AuthAPI {
       var result = await Http.instance.post(ApiPath.appleLogin, data: map);
       return AuthEntity.fromJson(result["data"]);
     } catch (error) {
-      return AuthEntity();
+      return null;
     }
   }
 
