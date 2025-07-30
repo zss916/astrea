@@ -20,10 +20,7 @@ class _RotateWidgetState extends State<RotateWidget>
       vsync: this,
       duration: Duration(seconds: 15),
     )..repeat();
-    _animation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.linear,
-    );
+    _animation = CurvedAnimation(parent: _controller, curve: Curves.linear);
   }
 
   @override
@@ -34,9 +31,6 @@ class _RotateWidgetState extends State<RotateWidget>
 
   @override
   Widget build(BuildContext context) {
-    return RotationTransition(
-      turns: _animation,
-      child: widget.child,
-    );
+    return RotationTransition(turns: _animation, child: widget.child);
   }
 }

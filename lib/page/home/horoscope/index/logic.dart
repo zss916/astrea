@@ -142,13 +142,15 @@ class HoroscopeLogic extends GetxController {
   }
 
   Future<void> getFriends() async {
-    List<FriendEntity> friends = await FriendAPI.getFriends();
-    AccountService.to.updateFriendList(friends);
-    if (friends.isNotEmpty) {
-      isAddFriend = friends.length > 1;
+    int len = AccountService.to.getFriendList().length;
+    if (len >= 2) {
+      isAddFriend = true;
+      update();
     } else {
-      isAddFriend = false;
+      List<FriendEntity> friends = await FriendAPI.getFriends();
+      AccountService.to.updateFriendList(friends);
+      isAddFriend = (friends.length >= 2);
+      update();
     }
-    update();
   }
 }

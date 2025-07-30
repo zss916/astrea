@@ -1,10 +1,8 @@
-import 'dart:io';
-
 import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/net/bean/upload_url_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
-import 'package:dio/dio.dart';
+import 'package:upload/upload.dart';
 
 ///system
 abstract class SystemAPI {
@@ -45,23 +43,7 @@ abstract class SystemAPI {
     required String filePath,
   }) async {
     try {
-      File file = File(filePath);
-      final image = file.readAsBytesSync();
-      Options options = Options(
-        headers: {
-          'Accept': "*/*",
-          'Content-Length': image.length,
-          'Connection': 'keep-alive',
-          'User-Agent': 'ClinicPlush',
-        },
-        extra: {"uploadImage": "uploadImage"},
-      );
-      var result = await Http.instance.put(
-        url,
-        options: options,
-        //data: Stream.fromIterable(image.map((e) => [e])),
-        data: file.openRead(),
-      );
+      await UploadFile.put(url: url, filePath: filePath);
       return true;
     } catch (error) {
       return false;

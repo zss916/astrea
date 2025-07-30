@@ -4,6 +4,7 @@ class SplashLogic extends GetxController {
   @override
   void onReady() {
     super.onReady();
+
     Future.delayed(Duration(seconds: 3), () {
       if (AccountService.to.getAccount() != null && AccountService.to.isLogin) {
         PageTools.toHome();

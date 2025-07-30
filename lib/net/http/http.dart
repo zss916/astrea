@@ -26,11 +26,6 @@ class Http {
         requestBody: true,
         responseHeader: false,
         responseBody: true,
-        /* filter: (RequestOptions options, FilterArgs args) {
-          return (options.path == ApiPath.getStateList) ||
-              (options.path == ApiPath.getCountryList) ||
-              (options.path == ApiPath.getCityList);
-        },*/
       ),
     );
   }
@@ -84,34 +79,6 @@ class Http {
       rethrow;
     }
   }
-
-  ///upload
-  /*  Future<dynamic> upload(
-    String url, {
-    Map<String, dynamic>? query,
-    Object? data,
-    Options? options,
-    CancelToken? cancelToken,
-  }) async {
-    try {
-      final result = await _dio.get(
-        url,
-        queryParameters: query,
-        data: data,
-        options: options,
-        cancelToken: cancelToken,
-      );
-      // https://api-test.theappastro.com/v1/global/uploadurl?file_name=scaled_8bcbaca7-6f57-4b19-9209-23925d86a39c9079525850921131112.jpg
-      //String path = result.requestOptions.uri.path;
-      // result.toString();
-      //debugPrint("result ${result.requestOptions.queryParameters.}");
-      //String path = "https://${result.realUri.authority}${result.realUri.path}?file_name=";
-      //debugPrint("code ${result.statusCode}, data ${result.data}");
-      return result.data ?? {};
-    } catch (error) {
-      rethrow;
-    }
-  }*/
 
   ///delete
   Future<dynamic> delete(

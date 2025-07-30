@@ -17,7 +17,7 @@ Future<void> main() async {
   await AppCommonSetting.init();
 
   ///解决证书验证问题
-  HttpOverrides.global = MyHttpOverrides();
+  HttpOverrides.global = AppHttpOverrides();
   runApp(const App());
 }
 
