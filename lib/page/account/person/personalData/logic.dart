@@ -6,7 +6,8 @@ class PersonalDataLogic extends GetxController {
   String get avatar => account?.headimg ?? "";
   String get nickName => account?.nickName ?? "";
   String get dateBirth => account?.showBirthDayContent ?? "";
-  String? get placeBirth => account?.locality ?? AccountService.to.showLocality;
+  String? get placeBirth =>
+      account?.showLocality ?? AccountService.to.showLocality;
   int get sex => account?.sex ?? 0;
 
   @override
@@ -55,6 +56,8 @@ class PersonalDataLogic extends GetxController {
           avatar: account?.headimg,
         ).whenComplete(() {
           AppLoading.dismiss();
+          AppEventBus.eventBus.fire(RefreshFriendsEvent());
+          AppEventBus.eventBus.fire(RefreshUserEvent());
         });
     if (isSuccessful) {
       if ((account?.headimg ?? "").isNotEmpty) {

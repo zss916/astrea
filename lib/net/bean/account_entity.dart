@@ -55,6 +55,8 @@ class AccountEntity {
   @JSONField(name: 'friend_id')
   String? friendId;
 
+  String? get showLocality => locality?.split("/").join(",");
+
   ///显示生日
   String get showBirthDay {
     if ((birthday ?? "").isNotEmpty) {

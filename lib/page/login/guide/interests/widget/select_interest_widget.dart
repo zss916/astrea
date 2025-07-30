@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:astrea/components/common_btn.dart';
 import 'package:astrea/core/setting/app_common_setting.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/login/guide/interests/widget/interest_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import 'common.dart';
 
@@ -47,6 +47,7 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
         Expanded(
           child: Container(
             width: double.maxFinite,
+            constraints: BoxConstraints(minHeight: 350.h),
             margin: EdgeInsetsDirectional.symmetric(
               horizontal: 42,
               vertical: 24.h,

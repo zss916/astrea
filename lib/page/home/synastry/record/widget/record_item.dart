@@ -156,7 +156,14 @@ class _RecordItemState extends State<RecordItem> {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(10),
                     onTap: () {
-                      PageTools.toAddFile(isEditFile: true, data: widget.item);
+                      if (widget.item.isMe) {
+                        PageTools.toPersonalData();
+                      } else {
+                        PageTools.toAddFile(
+                          isEditFile: true,
+                          data: widget.item,
+                        );
+                      }
                     },
                     child: Container(
                       margin: EdgeInsetsDirectional.all(15),

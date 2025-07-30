@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/translations/en.dart';
@@ -9,6 +6,9 @@ import 'package:astrea/page/login/guide/placeOfBirth/index.dart';
 import 'package:astrea/page/login/guide/placeOfBirth/place/city_list_widget.dart';
 import 'package:astrea/page/login/guide/placeOfBirth/place/country_list_widget.dart';
 import 'package:astrea/page/login/guide/placeOfBirth/place/state_list_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 void showSelectPlaceSheet({
   Function(String place, String latitude, String longitude)? onSelect,
@@ -32,7 +32,7 @@ class SelectPlaceWidget extends StatelessWidget {
         height: Get.height - 140,
         padding: EdgeInsetsDirectional.all(20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color(0xFFF5F5FD),
           borderRadius: BorderRadiusDirectional.vertical(
             top: Radius.circular(20),
           ),

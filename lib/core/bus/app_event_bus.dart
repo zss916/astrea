@@ -12,3 +12,7 @@ class TabEvent {
 class RefreshFriendsEvent {
   RefreshFriendsEvent();
 }
+
+class RefreshUserEvent {
+  RefreshUserEvent();
+}
