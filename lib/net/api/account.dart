@@ -6,7 +6,6 @@ import 'package:astrea/net/bean/account_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 
 ///account
 abstract class AccountAPI {
@@ -31,9 +30,12 @@ abstract class AccountAPI {
   }
 
   ///删除账号信息
-  static Future<bool> deleteAccount() async {
+  static Future<bool> deleteAccount({CancelToken? cancelToken}) async {
     try {
-      var result = await Http.instance.delete(ApiPath.deleteAccount);
+      var result = await Http.instance.delete(
+        ApiPath.deleteAccount,
+        cancelToken: cancelToken,
+      );
       return true;
     } catch (error) {
       return false;
@@ -95,19 +97,7 @@ abstract class AccountAPI {
         map["locality"] = locality;
       }
 
-      debugPrint("map ==> ${map}");
-
-      /* Map<String, dynamic> d = {
-        "nick_name": "ytyt",
-        "birthday": "2000-07-15",
-        "birth_hour": 16,
-        "birth_minute": 9,
-        "sex": 1,
-        "interests": "Money,Love,Family,Career,Friends,Business",
-        "lon": 63,
-        "lat": 35,
-        "locality": "Afghanistan/Badghis/Ghormach",
-      };*/
+      //debugPrint("map => ${map}");
 
       var result = await Http.instance.patch(ApiPath.updateAccount, data: map);
       if (result["code"] != 0) {

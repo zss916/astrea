@@ -19,6 +19,7 @@ import 'package:astrea/page/home/synastry/report/widget/report_top_widget.dart';
 import 'package:astrea/page/home/synastry/report/widget/save_action.dart';
 import 'package:astrea/page/home/synastry/report/widget/scores_widget.dart';
 import 'package:astrea/page/sheet/dialog_common.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

@@ -35,22 +35,27 @@ class FileManagementLogic extends GetxController {
 
   @override
   void onClose() {
-    super.onClose();
     refreshEvent.cancel();
     cancelToken.cancel();
+    super.onClose();
+    AppLoading.dismiss();
   }
 
   ///加载朋友列表
   Future<void> loadData({CancelToken? cancelToken}) async {
     AppLoading.show();
-    List<FriendEntity> value =
+    (bool, List<FriendEntity>) value =
         await FriendAPI.getFriends(cancelToken: cancelToken).whenComplete(() {
           AppLoading.dismiss();
         });
-    list.clear();
-    list.addAll(value);
-    AccountService.to.updateFriendList(list);
-    update();
+    if (value.$1) {
+      list.clear();
+      list.addAll(value.$2);
+      AccountService.to.updateFriendList(list);
+      update();
+    } else {
+      AppLoading.toast("net error");
+    }
   }
 
   ///删除朋友
@@ -60,14 +65,17 @@ class FileManagementLogic extends GetxController {
     required Function onFinish,
   }) async {
     AppLoading.show();
-    bool value = await FriendAPI.deleteFriend(id: id).whenComplete(() {
-      AppLoading.dismiss();
-    });
+    bool value = await FriendAPI.deleteFriend(id: id, cancelToken: cancelToken)
+        .whenComplete(() {
+          AppLoading.dismiss();
+        });
     if (value) {
       list.removeAt(index);
       AccountService.to.updateFriendList(list);
       update();
       onFinish.call();
+    } else {
+      AppLoading.toast("delete failed");
     }
   }
 
@@ -112,25 +120,29 @@ class FileManagementLogic extends GetxController {
 
   ///获取分析报告
   void toDetermine() {
-    showRelationshipSheet((value) {
-      //debugPrint("showRelationshipSheet $value");
-      FriendEntity first = list
-          .where((e) => e.isMe && e.isSelected == true)
-          .first;
-      FriendEntity second = list
-          .where((e) => e.isSelected == true && !(e.isMe))
-          .first;
-      if (first.id != null && second.id != null && value.isNotEmpty) {
-        PageTools.toStarReport(
-          firstId: first.id ?? 0,
-          secondId: second.id ?? 0,
-          relationship: value,
-          userName: first.nickName ?? "",
-          userAvatar: first.headImg ?? "",
-          friendName: second.nickName ?? "",
-          friendAvatar: second.headImg ?? "",
-        );
-      }
-    });
+    if (isClick) {
+      showRelationshipSheet((value) {
+        //debugPrint("showRelationshipSheet $value");
+        FriendEntity first = list
+            .where((e) => e.isMe && e.isSelected == true)
+            .first;
+        FriendEntity second = list
+            .where((e) => e.isSelected == true && !(e.isMe))
+            .first;
+        if (first.id != null && second.id != null && value.isNotEmpty) {
+          PageTools.toStarReport(
+            firstId: first.id ?? 0,
+            secondId: second.id ?? 0,
+            relationship: value,
+            userName: first.nickName ?? "",
+            userAvatar: first.headImg ?? "",
+            friendName: second.nickName ?? "",
+            friendAvatar: second.headImg ?? "",
+          );
+        }
+      });
+    } else {
+      AppLoading.toast("Please select at least two friends");
+    }
   }
 }

@@ -2,17 +2,20 @@ import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/net/bean/auth_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
+import 'package:dio/dio.dart';
 
 ///auth
 abstract class AuthAPI {
   ///邮箱登录
-  static Future<(bool, AuthEntity)> emailLogin({
+  static Future<(bool, AuthEntity?)> emailLogin({
     required String email,
     required String pwd,
+    CancelToken? cancelToken,
   }) async {
     try {
       var result = await Http.instance.post(
         ApiPath.emailLogin,
+        cancelToken: cancelToken,
         data: {"email": email, "pwd": pwd},
       );
 
@@ -20,18 +23,22 @@ abstract class AuthAPI {
         return (true, AuthEntity.fromJson(result["data"]));
       } else {
         AppLoading.toast("${result["msg"]}");
-        return (false, AuthEntity());
+        return (false, null);
       }
     } catch (error) {
-      return (false, AuthEntity());
+      return (false, null);
     }
   }
 
   ///google登录
-  static Future<AuthEntity?> googleLogin({required String token}) async {
+  static Future<AuthEntity?> googleLogin({
+    required String token,
+    CancelToken? cancelToken,
+  }) async {
     try {
       var result = await Http.instance.post(
         ApiPath.googleLogin,
+        cancelToken: cancelToken,
         data: {"id_token": token},
       );
       return AuthEntity.fromJson(result["data"]);
@@ -45,6 +52,7 @@ abstract class AuthAPI {
     required String code,
     String? token,
     String? thirdId,
+    CancelToken? cancelToken,
   }) async {
     try {
       Map<String, dynamic> map = {"code": code};
@@ -54,7 +62,11 @@ abstract class AuthAPI {
       if (thirdId != null) {
         map["third_id"] = thirdId;
       }
-      var result = await Http.instance.post(ApiPath.appleLogin, data: map);
+      var result = await Http.instance.post(
+        ApiPath.appleLogin,
+        cancelToken: cancelToken,
+        data: map,
+      );
       return AuthEntity.fromJson(result["data"]);
     } catch (error) {
       return null;
@@ -81,9 +93,12 @@ abstract class AuthAPI {
   }
 
   ///退出登录
-  static Future<bool> logOut() async {
+  static Future<bool> logOut({CancelToken? cancelToken}) async {
     try {
-      var result = await Http.instance.post(ApiPath.logout);
+      var result = await Http.instance.post(
+        ApiPath.logout,
+        cancelToken: cancelToken,
+      );
       if (result["code"] != 0) {
         AppLoading.toast("${result["msg"]}");
       }

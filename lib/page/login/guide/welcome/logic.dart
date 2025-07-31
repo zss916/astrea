@@ -1,9 +1,16 @@
 part of 'index.dart';
 
 class WelcomeLogic extends GetxController with LoginChannelMixin {
+  CancelToken cancelToken = CancelToken();
+
+  @override
+  void onClose() {
+    cancelToken.cancel();
+    super.onClose();
+  }
+
   ///google 登录
   void toGoogleAuth() async {
-    // PageTools.toHome();
     googleSignIn(({
       required bool success,
       String? idToken,
@@ -12,7 +19,14 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
       String? nickname,
       String? cover,
     }) async {
-      AuthEntity? data = await AuthAPI.googleLogin(token: idToken ?? "");
+      AppLoading.show();
+      AuthEntity? data =
+          await AuthAPI.googleLogin(
+            token: idToken ?? "",
+            cancelToken: cancelToken,
+          ).whenComplete(() {
+            AppLoading.dismiss();
+          });
       //debugPrint("data===> ${data.toJson()}");
       if (data != null) {
         AccountService.to.updateLocalUserInfo(
@@ -31,13 +45,15 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
 
   ///apple 登录
   void toAppleAuth() async {
-    // PageTools.toHome();
     appleLogin(({
       required bool success,
       String? token,
       String? nickname,
     }) async {
-      AuthEntity? data = await AuthAPI.appleLogin(code: token ?? "");
+      AuthEntity? data = await AuthAPI.appleLogin(
+        code: token ?? "",
+        cancelToken: cancelToken,
+      );
       // debugPrint("data===> ${data.toJson()}");
       if (data != null) {
         AccountService.to.updateLocalUserInfo(
@@ -52,5 +68,18 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
         AppLoading.toast("login failed");
       }
     });
+  }
+
+  ///邮箱登录
+  void toEmailAuth() => PageTools.toEmail();
+
+  ///隐私
+  void toPrivacy() {
+    ///
+  }
+
+  ///服务
+  void toService() {
+    ///
   }
 }

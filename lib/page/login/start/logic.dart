@@ -4,28 +4,22 @@ class StartLogic extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    //RequestMethod.GET;
-    // toAuthEmail(email: "ddddd@qq.com", pwd: "12dsdfdsfs3456");
   }
 
-  Future<void> toAuthEmail({required String email, required String pwd}) async {
-    AppLoading.show();
-    (bool isSuccess, AuthEntity auth) data =
-        await AuthAPI.emailLogin(email: email, pwd: pwd).whenComplete(() {
-          AppLoading.dismiss();
-        });
+  @override
+  void onClose() {
+    super.onClose();
+  }
 
-    if (data.$1) {
-      /// 更新本地用户信息
-      AccountService.to.updateLocalUserInfo(
-        uid: data.$2.userId,
-        // friendId: data.$2.friendId,
-        loginEmail: email,
-        loginChannel: LoginChannel.email.value,
-        authToken: data.$2.authToken ?? "",
-        isNewUser: data.$2.isNewUser,
-      );
-      // debugPrint("authToken => ${data.$2.authToken ?? ""}");
-    }
+  void toStep() => PageTools.toStep();
+
+  void toLogin() => PageTools.toWelcome();
+
+  void toPrivacy() {
+    ///
+  }
+
+  void toService() {
+    ///
   }
 }

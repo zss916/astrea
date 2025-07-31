@@ -72,7 +72,7 @@ class AnalysisPage extends StatelessWidget {
             margin: EdgeInsetsDirectional.only(
               start: 16,
               end: 16,
-              top: 20,
+              top: 10,
               bottom: 12,
             ),
             decoration: ShapeDecoration(

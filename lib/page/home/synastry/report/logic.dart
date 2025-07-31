@@ -130,10 +130,19 @@ class StarReportLogic extends GetxController {
   String? title3;
   num? value3;
 
+  CancelToken cancelToken = CancelToken();
+
   @override
   void onInit() {
     super.onInit();
     initData();
+  }
+
+  @override
+  void onClose() {
+    cancelToken.cancel();
+    super.onClose();
+    AppLoading.dismiss();
   }
 
   void initData() {
@@ -269,11 +278,13 @@ class StarReportLogic extends GetxController {
   ///收藏
   Future<void> postCollection({required String id, Function? onSuccess}) async {
     AppLoading.show();
-    bool isSuccessful = await SynastryAPI.postCollection(id: id).whenComplete(
-      () {
-        AppLoading.dismiss();
-      },
-    );
+    bool isSuccessful =
+        await SynastryAPI.postCollection(
+          id: id,
+          cancelToken: cancelToken,
+        ).whenComplete(() {
+          AppLoading.dismiss();
+        });
     if (isSuccessful) {
       isSave = true;
     }
@@ -284,11 +295,13 @@ class StarReportLogic extends GetxController {
   ///取消收藏
   Future<void> deleteCollection({required String id}) async {
     AppLoading.show();
-    bool isSuccessful = await SynastryAPI.deleteCollection(id: id).whenComplete(
-      () {
-        AppLoading.dismiss();
-      },
-    );
+    bool isSuccessful =
+        await SynastryAPI.deleteCollection(
+          id: id,
+          cancelToken: cancelToken,
+        ).whenComplete(() {
+          AppLoading.dismiss();
+        });
     if (isSuccessful) {
       isSave = false;
     }

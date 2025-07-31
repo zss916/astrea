@@ -1,5 +1,6 @@
 import 'package:astrea/components/common_btn.dart';
 import 'package:astrea/core/router/app_pages.dart';
+import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_common_setting.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
@@ -55,7 +56,7 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
         Container(
           padding: EdgeInsetsDirectional.only(top: 20),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColor.pageBackground,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),

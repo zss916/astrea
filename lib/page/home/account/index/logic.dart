@@ -52,7 +52,7 @@ class AccountLogic extends GetxController {
     PageTools.toPersonalData(
       account: account,
       onRefresh: () {
-        loadData();
+        // loadData();
       },
     );
   }

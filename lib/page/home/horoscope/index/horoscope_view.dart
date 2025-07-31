@@ -1,7 +1,9 @@
+import 'package:astrea/components/bottom_stack_btn.dart';
 import 'package:astrea/components/loading_widget.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_common_setting.dart';
+import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/home/horoscope/index/logic.dart';
 import 'package:astrea/page/home/horoscope/index/widget/home_refresh.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_content/content/horoscope_content.dart';
@@ -11,6 +13,7 @@ import 'package:astrea/page/home/horoscope/index/widget/horoscope_tabbar.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_tabview.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_title.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class HoroscopeView extends StatefulWidget {
@@ -24,7 +27,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
     with SingleTickerProviderStateMixin {
   late final TabController tabCtrl;
   bool isShowOneself = true;
-  int selectedIndex = 0;
+  int selectedStarIndex = 0;
 
   @override
   void initState() {
@@ -69,7 +72,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
       headerSliverBuilder: (_, w) {
         return [
           ///title
-          SliverToBoxAdapter(child: buildTitle(logic, avatar: logic.avatar)),
+          SliverToBoxAdapter(child: buildTitle(logic)),
 
           ///content
           // if (isShowOneself && logic.viewState == 0) buildContent(logic: logic),
@@ -96,7 +99,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
                       ),
                   ],
                 )
-              : buildStarWidget(index: selectedIndex),
+              : buildStarWidget(index: selectedStarIndex),
         ],
       ),
     );
@@ -136,19 +139,6 @@ class _HoroscopeViewState extends State<HoroscopeView>
           HoroscopeTabview(tabIndex: 5, content: logic.yearSummary),
         ],
       ),
-      /*PositionedDirectional(
-                        bottom: 0,
-                        start: 0,
-                        end: 0,
-                        child: BottomStackBtn(
-                          title: LanKey.openVip.tr,
-                          margin: EdgeInsetsDirectional.only(bottom: 70.h),
-                          padding: EdgeInsetsDirectional.only(
-                              bottom: 24.h, top: 70.h),
-                          onTap: () {
-                            //todo
-                          },
-                        ))*/
     ],
   );
 
@@ -159,27 +149,40 @@ class _HoroscopeViewState extends State<HoroscopeView>
     ],
   );
 
-  Widget buildTitle(HoroscopeLogic logic, {required String avatar}) =>
-      HoroscopeListview(
-        avatar: avatar,
-        logic: logic,
-        onAdd: () {
-          PageTools.toAddFile();
-        },
-        onOneself: () {
-          setState(() {
-            isShowOneself = true;
-          });
-        },
-        onSelect: (i) {
-          setState(() {
-            isShowOneself = false;
-            selectedIndex = i;
-          });
-        },
-      );
+  Widget buildTitle(HoroscopeLogic logic) => HoroscopeListview(
+    logic: logic,
+    onAdd: () {
+      PageTools.toAddFile();
+    },
+    onOneself: () {
+      setState(() {
+        isShowOneself = true;
+      });
+    },
+    onSelect: (i) {
+      setState(() {
+        isShowOneself = false;
+        selectedStarIndex = i;
+      });
+    },
+  );
 
   Widget buildTabBar() => HoroscopeTabBar(tabCtrl: tabCtrl);
+
+  @Deprecated("hide")
+  Widget buildOpenVip() => PositionedDirectional(
+    bottom: 0,
+    start: 0,
+    end: 0,
+    child: BottomStackBtn(
+      title: LanKey.openVip.tr,
+      margin: EdgeInsetsDirectional.only(bottom: 70.h),
+      padding: EdgeInsetsDirectional.only(bottom: 24.h, top: 70.h),
+      onTap: () {
+        //todo
+      },
+    ),
+  );
 
   /*Widget buildContent({required HoroscopeLogic logic}) {
     return SliverToBoxAdapter(

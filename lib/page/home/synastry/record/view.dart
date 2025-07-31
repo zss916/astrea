@@ -72,11 +72,7 @@ class FileManagementPage extends StatelessWidget {
                   margin: EdgeInsetsDirectional.only(bottom: 0.h),
                   padding: EdgeInsetsDirectional.only(bottom: 24.h, top: 0.h),
                   onTap: () {
-                    if (logic.isClick) {
-                      logic.toDetermine();
-                    } else {
-                      AppLoading.toast("Please select at least two friends");
-                    }
+                    logic.toDetermine();
                   },
                 ),
               ),

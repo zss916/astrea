@@ -76,9 +76,15 @@ abstract class SynastryAPI {
   }
 
   ///合盘收藏
-  static Future<bool> postCollection({required String id}) async {
+  static Future<bool> postCollection({
+    required String id,
+    CancelToken? cancelToken,
+  }) async {
     try {
-      var result = await Http.instance.post("${ApiPath.postCollection}/$id");
+      var result = await Http.instance.post(
+        "${ApiPath.postCollection}/$id",
+        cancelToken: cancelToken,
+      );
       if (result["code"] == 0) {
         return true;
       } else {
@@ -91,10 +97,14 @@ abstract class SynastryAPI {
   }
 
   ///合盘取消收藏
-  static Future<bool> deleteCollection({required String id}) async {
+  static Future<bool> deleteCollection({
+    required String id,
+    CancelToken? cancelToken,
+  }) async {
     try {
       var result = await Http.instance.delete(
         "${ApiPath.deleteCollection}/$id",
+        cancelToken: cancelToken,
       );
       if (result["code"] == 0) {
         return true;

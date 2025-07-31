@@ -12,12 +12,6 @@ class WelcomePage extends StatelessWidget {
         init: WelcomeLogic(),
         builder: (logic) => Column(
           children: [
-            /*SizedBox(
-                      height: 20.h,
-                    ),*/
-            /*StepIndicator(
-                      index: 8,
-                    ),*/
             Container(
               margin: EdgeInsetsDirectional.only(start: 20, end: 20, top: 30.h),
               width: double.maxFinite,
@@ -90,7 +84,7 @@ class WelcomePage extends StatelessWidget {
               bgColor: Color(0xFFEAE9F1),
               textColor: Color(0xFF323133),
               onTap: () {
-                PageTools.toEmail();
+                logic.toEmailAuth();
               },
             ),
             Container(
@@ -102,10 +96,10 @@ class WelcomePage extends StatelessWidget {
               ),
               child: PolicyWidget(
                 onPrivacyTap: () {
-                  //todo
+                  logic.toPrivacy();
                 },
                 onServiceTap: () {
-                  //todo
+                  logic.toService();
                 },
               ),
             ),
@@ -114,4 +108,7 @@ class WelcomePage extends StatelessWidget {
       ),
     );
   }
+
+  @Deprecated("delete")
+  Widget buildStep() => StepIndicator(index: 8);
 }

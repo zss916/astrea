@@ -8,6 +8,8 @@ class AccountInfoLogic extends GetxController {
       LoginChannel.getSymbol((account?.loginChannel ?? 0));
   String get userID => account?.userId ?? "-";
 
+  CancelToken cancelToken = CancelToken();
+
   @override
   void onInit() {
     super.onInit();
@@ -29,6 +31,12 @@ class AccountInfoLogic extends GetxController {
     loadAccount();
   }
 
+  @override
+  void onClose() {
+    cancelToken.cancel();
+    super.onClose();
+  }
+
   ///获取账号信息
   Future<void> loadAccount() async {
     account = await AccountAPI.getAccount();
@@ -38,24 +46,28 @@ class AccountInfoLogic extends GetxController {
   ///删除账号
   Future<void> deleteAccount() async {
     AppLoading.show();
-    bool isSuccessful = await AccountAPI.deleteAccount().whenComplete(() {
-      AppLoading.dismiss();
-    });
+    bool isSuccessful = await AccountAPI.deleteAccount(cancelToken: cancelToken)
+        .whenComplete(() {
+          AppLoading.dismiss();
+        });
     if (isSuccessful) {
       AccountService.to.deleteAccount();
     } else {
-      AppLoading.toast("delete account");
+      AppLoading.toast("delete account error");
     }
   }
 
   ///登出
   Future<void> toLogOut() async {
     AppLoading.show();
-    bool isSuccessful = await AuthAPI.logOut().whenComplete(() {
-      AppLoading.dismiss();
-    });
+    bool isSuccessful = await AuthAPI.logOut(cancelToken: cancelToken)
+        .whenComplete(() {
+          AppLoading.dismiss();
+        });
     if (isSuccessful) {
       AccountService.to.logout();
+    } else {
+      AppLoading.toast("delete logout error");
     }
   }
 }

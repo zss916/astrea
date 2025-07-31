@@ -6,7 +6,6 @@ import 'package:astrea/page/home/horoscope/index/logic.dart';
 import 'package:astrea/page/home/horoscope/index/widget/add_friend_tip_box.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_list_view/horoscope_list_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class HoroscopeListview extends StatelessWidget {
@@ -14,11 +13,9 @@ class HoroscopeListview extends StatelessWidget {
   final Function? onAdd;
   final Function? onOneself;
   final Function? onSynastry;
-  final String avatar;
   final HoroscopeLogic logic;
   const HoroscopeListview({
     super.key,
-    required this.avatar,
     required this.logic,
     this.onSelect,
     this.onAdd,
@@ -58,119 +55,106 @@ class HoroscopeListview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: AlignmentDirectional.center,
-      children: [
-        Container(
-          //color: Colors.amber,
-          padding: EdgeInsetsDirectional.only(top: 12),
-          margin: EdgeInsetsDirectional.only(start: 16, end: 16, top: 12),
-          height: 75 + 12,
-          width: double.maxFinite,
-          child: Row(
-            children: [
-              Expanded(
-                child: CustomScrollView(
-                  scrollDirection: Axis.horizontal,
-                  slivers: [
-                    ///add
-                    SliverToBoxAdapter(
-                      child: InkWell(
-                        borderRadius: BorderRadius.circular(5),
-                        onTap: () {
-                          onAdd?.call();
-                        },
-                        child: buildAdd(),
-                      ),
-                    ),
-
-                    ///space
-                    SliverPadding(
-                      padding: EdgeInsetsDirectional.only(start: 5),
-                    ),
-
-                    /// oneself
-                    SliverToBoxAdapter(
-                      child: InkWell(
-                        borderRadius: BorderRadius.circular(5),
-                        onTap: () {
-                          onOneself?.call();
-                        },
-                        child: buildOneself(avatar, logic.nickName),
-                      ),
-                    ),
-
-                    ///friends
-                    SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (_, i) => Container(
-                          margin: EdgeInsetsDirectional.only(start: 5),
-                          child: InkWell(
-                            borderRadius: BorderRadius.circular(5),
-                            onTap: () {
-                              // onSelect?.call(i);
-                            },
-                            child: Container(
-                              margin: EdgeInsetsDirectional.only(start: 0),
-                              child: buildFriend(
-                                logic.friends[i].headImg ?? "",
-                                logic.friends[i].nickName ?? "--",
-                              ),
+    return Container(
+      //color: Colors.amber,
+      padding: EdgeInsetsDirectional.only(top: 0),
+      margin: EdgeInsetsDirectional.only(start: 16, end: 16, top: 0),
+      height: 90,
+      width: double.maxFinite,
+      child: Row(
+        children: [
+          Expanded(
+            child: CustomScrollView(
+              scrollDirection: Axis.horizontal,
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      Container(
+                        //color: Colors.black,
+                        padding: EdgeInsetsDirectional.only(top: 22, end: 10),
+                        child: Row(
+                          children: [
+                            ///add
+                            InkWell(
+                              borderRadius: BorderRadius.circular(5),
+                              onTap: () {
+                                onAdd?.call();
+                              },
+                              child: buildAdd(),
                             ),
-                          ),
-                        ),
-                        childCount: logic.friends.length,
-                      ),
-                    ),
 
-                    /// star
-                    SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (_, i) => InkWell(
-                          borderRadius: BorderRadius.circular(5),
-                          onTap: () {
-                            onSelect?.call(i);
-                          },
-                          child: HoroscopeListItem(
-                            icon: list[i],
-                            title: listTitle[i],
-                          ),
+                            /// oneself
+                            InkWell(
+                              borderRadius: BorderRadius.circular(5),
+                              onTap: () {
+                                onOneself?.call();
+                              },
+                              child: buildOneself(logic.avatar, logic.nickName),
+                            ),
+                          ],
                         ),
-                        childCount: 12,
                       ),
-                    ),
-                  ],
-                ),
-              ),
 
-              /* Expanded(
-                child: ListView.builder(
-                  // physics: NeverScrollableScrollPhysics(),
-                  itemCount: 12,
-                  padding: EdgeInsetsDirectional.only(start: 10, end: 20),
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (_, i) => InkWell(
-                    borderRadius: BorderRadius.circular(5),
-                    onTap: () {
-                      onSelect?.call(i);
-                    },
-                    child: HoroscopeListItem(
-                      icon: list[i],
-                      title: listTitle[i],
-                    ),
+                      PositionedDirectional(
+                        top: 0,
+                        start: 0,
+                        child: AddFriendTip(logic: logic),
+                      ),
+                    ],
                   ),
                 ),
-              ),*/
-              buildSynastry(),
-            ],
+
+                ///friends
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (_, i) => Container(
+                      margin: EdgeInsetsDirectional.only(start: 0, top: 22),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(5),
+                        onTap: () {
+                          // onSelect?.call(i);
+                        },
+                        child: Container(
+                          margin: EdgeInsetsDirectional.only(start: 0),
+                          child: buildFriend(
+                            logic.friends[i].headImg ?? "",
+                            logic.friends[i].nickName ?? "",
+                          ),
+                        ),
+                      ),
+                    ),
+                    childCount: logic.friends.length,
+                  ),
+                ),
+
+                /// star
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (_, i) => Container(
+                      margin: EdgeInsetsDirectional.only(top: 22),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(5),
+                        onTap: () {
+                          onSelect?.call(i);
+                        },
+                        child: HoroscopeListItem(
+                          icon: list[i],
+                          title: listTitle[i],
+                        ),
+                      ),
+                    ),
+                    childCount: 12,
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        PositionedDirectional(
-          top: 0,
-          start: 23.w,
-          child: AddFriendTip(logic: logic),
-        ),
-      ],
+
+          buildSynastry(),
+        ],
+      ),
     );
   }
 
@@ -271,6 +255,7 @@ class HoroscopeListview extends StatelessWidget {
     return Column(
       children: [
         Container(
+          margin: EdgeInsetsDirectional.only(top: 0),
           clipBehavior: Clip.hardEdge,
           padding: EdgeInsetsDirectional.all(1.6),
           decoration: BoxDecoration(
@@ -323,29 +308,33 @@ class HoroscopeListview extends StatelessWidget {
   }
 
   Widget buildSynastry() {
-    return GestureDetector(
-      onTap: () {
-        AppEventBus.eventBus.fire(TabEvent(1));
-      },
-      child: Column(
-        children: [
-          Image.asset(
-            Assets.imageSynastryIcons,
-            width: 48,
-            height: 48,
-            matchTextDirection: true,
-          ),
-          Spacer(),
-          Text(
-            LanKey.synastry.tr,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: const Color(0xFF585FC4),
-              fontSize: 12,
-              fontFamily: AppFonts.textFontFamily,
+    return Container(
+      margin: EdgeInsetsDirectional.only(top: 22),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(5),
+        onTap: () {
+          AppEventBus.eventBus.fire(TabEvent(1));
+        },
+        child: Column(
+          children: [
+            Image.asset(
+              Assets.imageSynastryIcons,
+              width: 48,
+              height: 48,
+              matchTextDirection: true,
             ),
-          ),
-        ],
+            Spacer(),
+            Text(
+              LanKey.synastry.tr,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: const Color(0xFF585FC4),
+                fontSize: 12,
+                fontFamily: AppFonts.textFontFamily,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -5,16 +5,6 @@ class ResultLogic extends GetxController {
   void onReady() {
     super.onReady();
     loadData();
-
-    /*Future.doWhile(() async {
-      await Future.delayed(const Duration(seconds: 1));
-      // if (value == 3) {
-      //   print('Finished with $value');
-
-      return false;
-      // }
-      return true;
-    });*/
   }
 
   Future<void> loadData() async {
@@ -44,7 +34,7 @@ class ResultLogic extends GetxController {
         ///无论结果，都先进入主页
         PageTools.offAllNamedHome(data: value.$2);
       } else {
-        debugPrint("getAccount error");
+        debugPrint("getAccount friendId error: null");
       }
     }
   }

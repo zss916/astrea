@@ -7,7 +7,7 @@ import 'package:dio/dio.dart';
 ///Friend
 abstract class FriendAPI {
   ///查询朋友列表
-  static Future<List<FriendEntity>> getFriends({
+  static Future<(bool, List<FriendEntity>)> getFriends({
     CancelToken? cancelToken,
   }) async {
     try {
@@ -19,13 +19,13 @@ abstract class FriendAPI {
         List<FriendEntity> value = (result['data']['friends'] as List)
             .map((e) => FriendEntity.fromJson(e))
             .toList();
-        return value;
+        return (true, value);
       } else {
         AppLoading.toast(result["msg"]);
-        return [];
+        return (false, <FriendEntity>[]);
       }
     } catch (error) {
-      return [];
+      return (false, <FriendEntity>[]);
     }
   }
 
@@ -41,6 +41,7 @@ abstract class FriendAPI {
     String? lat,
     String? locality,
     String? interests,
+    CancelToken? cancelToken,
   }) async {
     Map<String, dynamic> map = {};
     if (nickName != null) {
@@ -84,7 +85,11 @@ abstract class FriendAPI {
     }
 
     try {
-      var result = await Http.instance.post(ApiPath.addFriend, data: map);
+      var result = await Http.instance.post(
+        ApiPath.addFriend,
+        cancelToken: cancelToken,
+        data: map,
+      );
       if (result["code"] == 0) {
         return result["data"]["id"] as int?;
       } else {
@@ -97,11 +102,18 @@ abstract class FriendAPI {
   }
 
   ///删除朋友
-  static Future<bool> deleteFriend({required String id}) async {
+  static Future<bool> deleteFriend({
+    required String id,
+    CancelToken? cancelToken,
+  }) async {
     try {
       Map<String, dynamic> map = {};
       map["friend_id"] = num.parse(id);
-      var result = await Http.instance.delete(ApiPath.deleteFriend, data: map);
+      var result = await Http.instance.delete(
+        ApiPath.deleteFriend,
+        cancelToken: cancelToken,
+        data: map,
+      );
       return true;
     } catch (error) {
       return false;
@@ -121,6 +133,7 @@ abstract class FriendAPI {
     String? lat,
     String? locality,
     String? interests,
+    CancelToken? cancelToken,
   }) async {
     try {
       Map<String, dynamic> map = {};
@@ -166,7 +179,11 @@ abstract class FriendAPI {
         map["interests"] = interests;
       }
 
-      var result = await Http.instance.put(ApiPath.putFriend, data: map);
+      var result = await Http.instance.put(
+        ApiPath.putFriend,
+        cancelToken: cancelToken,
+        data: map,
+      );
       return true;
     } catch (error) {
       return false;

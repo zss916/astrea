@@ -11,6 +11,13 @@ class AddFileLogic extends GetxController {
   String? locality;
   String? avatar;
   String? interests;
+  String showInterests() {
+    List<String> parts = (interests ?? "").split(",");
+    return parts.length >= 3
+        ? '${parts.sublist(0, 3).join(',')}\n${parts.sublist(3).join(',')}'
+        : (interests ?? "");
+  }
+
   String get showBirthDay {
     if ((birthday ?? "").isNotEmpty) {
       return "${CalculateTools.formattedTime2(birthday)}\n${(hourBirth ?? 0).formatted}:${(minuteBirth ?? 0).formatted} ${CalculateTools.formattedAmOrPm(hourBirth ?? 0)}";
@@ -22,6 +29,8 @@ class AddFileLogic extends GetxController {
   bool isSave = false;
   bool isUser = false;
   int? id;
+
+  CancelToken cancelToken = CancelToken();
 
   @override
   void onInit() {
@@ -52,6 +61,13 @@ class AddFileLogic extends GetxController {
   @override
   void onReady() {
     super.onReady();
+  }
+
+  @override
+  void onClose() {
+    cancelToken.cancel();
+    super.onClose();
+    AppLoading.dismiss();
   }
 
   void log() {
@@ -101,6 +117,7 @@ class AddFileLogic extends GetxController {
           lat: lat,
           locality: locality,
           interests: interests,
+          cancelToken: cancelToken,
         ).whenComplete(() {
           AppLoading.dismiss();
         });
@@ -140,6 +157,7 @@ class AddFileLogic extends GetxController {
           lat: lat,
           locality: locality,
           interests: interests,
+          cancelToken: cancelToken,
         ).whenComplete(() {
           AppLoading.dismiss();
         });

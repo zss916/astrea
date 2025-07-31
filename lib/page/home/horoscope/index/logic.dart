@@ -101,7 +101,7 @@ class HoroscopeLogic extends GetxController {
     refreshEvent = AppEventBus.eventBus.on<RefreshFriendsEvent>().listen((
       event,
     ) {
-      // loadData();
+      getFriends();
     });
   }
 
@@ -163,10 +163,12 @@ class HoroscopeLogic extends GetxController {
   }
 
   Future<void> getFriends() async {
-    List<FriendEntity> data = await FriendAPI.getFriends();
-    AccountService.to.updateFriendList(data);
-    friends = data.where((e) => !e.isMe).toList();
-    isAddFriend = friends.isNotEmpty;
-    update();
+    (bool, List<FriendEntity>) value = await FriendAPI.getFriends();
+    if (value.$1) {
+      AccountService.to.updateFriendList(value.$2);
+      friends = value.$2.where((e) => !e.isMe).toList();
+      isAddFriend = friends.isNotEmpty;
+      update();
+    }
   }
 }

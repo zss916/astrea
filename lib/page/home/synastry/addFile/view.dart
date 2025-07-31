@@ -141,8 +141,8 @@ class AddFilePage extends StatelessWidget {
                                         child: AutoSizeText(
                                           logic.interests == null
                                               ? LanKey.interestsTitle.tr
-                                              : (logic.interests ?? ""),
-                                          maxLines: 1,
+                                              : logic.showInterests(),
+                                          maxLines: 2,
                                           textAlign: TextAlign.right,
                                           maxFontSize: 18,
                                           minFontSize: 10,

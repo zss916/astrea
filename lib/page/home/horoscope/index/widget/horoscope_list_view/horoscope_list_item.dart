@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:flutter/material.dart';
 
 class HoroscopeListItem extends StatelessWidget {
   final String icon;
@@ -11,18 +11,10 @@ class HoroscopeListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsetsDirectional.only(start: 10, end: 10),
+      margin: EdgeInsetsDirectional.only(top: 0, start: 10, end: 10),
       child: Column(
         children: [
-          Container(
-            margin: EdgeInsetsDirectional.only(bottom: 0),
-            child: Image.asset(
-              icon,
-              width: 48,
-              height: 48,
-              matchTextDirection: true,
-            ),
-          ),
+          Image.asset(icon, width: 48, height: 48, matchTextDirection: true),
           Spacer(),
           Text(
             title,

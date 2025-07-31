@@ -17,7 +17,7 @@ import 'package:astrea/page/home/synastry/addFile/widget/edit_name.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/select_birth.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/sheet/select_interests_sheet.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:event_bus/event_bus.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

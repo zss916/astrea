@@ -27,8 +27,8 @@ class LogsLogic extends GetxController {
 
   @override
   void onClose() {
-    super.onClose();
     cancelToken.cancel();
+    super.onClose();
   }
 
   ///加载朋友列表

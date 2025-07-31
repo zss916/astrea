@@ -1,4 +1,5 @@
 import 'package:astrea/components/common_app_bar.dart';
+import 'package:astrea/components/step_indicator.dart';
 import 'package:astrea/core/enum/app_enum.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
@@ -13,6 +14,7 @@ import 'package:astrea/net/api/auth.dart';
 import 'package:astrea/net/bean/auth_entity.dart';
 import 'package:astrea/page/login/guide/welcome/widget/welcome_btn.dart';
 import 'package:astrea/page/login/start/widget/policy_widget.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
