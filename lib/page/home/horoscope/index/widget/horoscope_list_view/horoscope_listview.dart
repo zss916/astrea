@@ -73,7 +73,10 @@ class HoroscopeListview extends StatelessWidget {
                     children: [
                       Container(
                         //color: Colors.black,
-                        padding: EdgeInsetsDirectional.only(top: 22, end: 10),
+                        padding: EdgeInsetsDirectional.only(
+                          top: 22,
+                          end: logic.isAddFriend ? 0 : 10,
+                        ),
                         child: Row(
                           children: [
                             ///add
