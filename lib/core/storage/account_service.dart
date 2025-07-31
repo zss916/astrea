@@ -37,6 +37,9 @@ class AccountService extends GetxService {
   ///是否登录
   bool get isLogin => (data != null) && (data?.authToken != null);
 
+  ///是否更新用户信息
+  // bool get isNotUpdateUserInfo => (data?.isNewUser ?? 1) == 1;
+
   ///获取登录邮箱
   String get loginEmail => data?.loginEmail ?? "-";
 
@@ -53,7 +56,7 @@ class AccountService extends GetxService {
   int? get loginStep => data?.loginStep;
 
   ///是否新用户
-  bool get isNewUser => data?.isNewUser == 1;
+  bool get isNewUser => (data?.isNewUser ?? 1) == 1;
 
   ///是否完成资料的录入
   bool get isFinishRecord => (loginStep == LoginStep.stepFinish.value);

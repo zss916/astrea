@@ -2,9 +2,11 @@ import 'package:astrea/components/common_btn.dart';
 import 'package:astrea/core/setting/app_common_setting.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
+import 'package:astrea/core/validator/app_validator.dart';
 import 'package:astrea/page/login/guide/email/index.dart';
 import 'package:astrea/page/login/guide/email/widget/input_email.dart';
 import 'package:astrea/page/login/guide/email/widget/input_password.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -17,7 +19,7 @@ class InputLogin extends StatefulWidget {
   _InputLoginState createState() => _InputLoginState();
 }
 
-class _InputLoginState extends State<InputLogin> {
+class _InputLoginState extends State<InputLogin> with AppValidatorMixin {
   bool isEditEmail = false;
   bool isPsdEmail = false;
 
@@ -66,7 +68,8 @@ class _InputLoginState extends State<InputLogin> {
                     onNext: (value) {
                       setState(() {
                         email = value;
-                        isEditEmail = true;
+                        isEditEmail = EmailValidator.validate(email);
+                        //isEditEmail = true;
                       });
                     },
                   ),
@@ -74,7 +77,8 @@ class _InputLoginState extends State<InputLogin> {
                     onNext: (value) {
                       setState(() {
                         pwd = value;
-                        isPsdEmail = true;
+                        isPsdEmail = isPwd(value);
+                        //isPsdEmail = true;
                       });
                     },
                   ),

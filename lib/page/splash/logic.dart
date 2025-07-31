@@ -6,7 +6,7 @@ class SplashLogic extends GetxController {
     super.onReady();
 
     Future.delayed(Duration(seconds: 3), () {
-      if (AccountService.to.getAccount() != null && AccountService.to.isLogin) {
+      if (AccountService.to.isLogin && !AccountService.to.isNewUser) {
         PageTools.toHome();
       } else {
         ///是否有数据

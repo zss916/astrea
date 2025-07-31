@@ -88,6 +88,8 @@ class AccountEntity {
 
   bool get isNew => isNewUser == 1;
 
+  ///新用户(没有更新用户信息)
+
   String get userIdStr {
     if (userId == null) {
       return '--';

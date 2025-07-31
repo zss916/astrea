@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/core/validator/app_validator.dart';
+import 'package:astrea/generated/assets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:keyboard_visibility_pro/keyboard_visibility_pro.dart';
 
 class InputPassword extends StatefulWidget {
@@ -56,6 +57,8 @@ class _EditNameState extends State<InputPassword> with AppValidatorMixin {
     FocusScope.of(context).requestFocus(FocusNode()); // 隐藏键盘
   }
 
+  bool obscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return KeyboardVisibility(
@@ -75,13 +78,33 @@ class _EditNameState extends State<InputPassword> with AppValidatorMixin {
             child: TextField(
               controller: textEditCtrl,
               focusNode: focusNode,
-              obscureText: true,
+              obscureText: obscureText,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 16,
                 fontFamily: AppFonts.textFontFamily,
               ),
               decoration: InputDecoration(
+                suffixIcon: InkWell(
+                  onTap: () {
+                    setState(() {
+                      obscureText = !obscureText;
+                    });
+                  },
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      Image.asset(
+                        obscureText
+                            ? Assets.imageEyeClose
+                            : Assets.imageEyeOpen,
+                        width: 24,
+                        height: 24,
+                        matchTextDirection: true,
+                      ),
+                    ],
+                  ),
+                ),
                 fillColor: Colors.white,
                 filled: true,
                 hintText: LanKey.password.tr,
@@ -112,14 +135,24 @@ class _EditNameState extends State<InputPassword> with AppValidatorMixin {
                 ),
               ),
               onChanged: (value) {
-                if (value.trim().isEmpty && isError) {
+                if (value.trim().isEmpty) {
                   setState(() {
                     isError = false;
                   });
+                } else {
+                  setState(() {
+                    isError = !isValidPassword(value);
+                  });
                 }
-                if (isValidPassword(value)) {
+                /*if (value.trim().isEmpty && isError) {
+                  setState(() {
+                    isError = false;
+                  });
+                }*/
+                widget.onNext.call(value);
+                /*if (isValidPassword(value)) {
                   widget.onNext.call(value);
-                }
+                }*/
               },
               onEditingComplete: () {
                 _hideKeyboard();

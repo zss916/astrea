@@ -113,14 +113,20 @@ class _EditNameState extends State<InputEmail> {
                 ),
               ),
               onChanged: (value) {
-                if (value.trim().isEmpty && isError) {
+                if (value.trim().isEmpty) {
                   setState(() {
                     isError = false;
                   });
+                } else {
+                  setState(() {
+                    isError = !isValidEmail(value);
+                  });
                 }
-                if (isValidEmail(value)) {
+                /*if (isValidEmail(value)) {
                   widget.onNext.call(value);
-                }
+                }*/
+
+                widget.onNext.call(value);
               },
               onEditingComplete: () {
                 _hideKeyboard();

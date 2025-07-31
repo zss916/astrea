@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'base_options.dart';
 import 'http_adpter/httpClientAdapter.dart';
 import 'interceptor/auth_interceptor.dart';
+import 'interceptor/cache_interceptor.dart';
 import 'interceptor/logger_interceptor.dart';
 
 class Http {
@@ -23,7 +24,7 @@ class Http {
     _dio.interceptors.add(AuthInterceptor());
 
     /// 缓存
-    // _dio.interceptors.add(cacheInterceptor);
+    _dio.interceptors.add(cacheInterceptor);
 
     /// 日志
     //_dio.interceptors.add(LoggerInterceptor());

@@ -26,172 +26,12 @@ class KeywordsWidget extends StatelessWidget {
         Container(
           width: double.maxFinite,
           padding: EdgeInsets.symmetric(horizontal: 11),
-          child: Row(
+          child: Column(
+            spacing: 12,
             children: [
-              Expanded(
-                child: Container(
-                  constraints: BoxConstraints(minHeight: 90, minWidth: 90),
-                  padding: EdgeInsetsDirectional.symmetric(
-                    horizontal: 5,
-                    vertical: 14,
-                  ),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFFFAFAFA),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    spacing: 8,
-                    children: [
-                      /*BlurWidget(
-                                  isBlur: false,
-                                  sigma: 6,
-                                  radius: 3,
-                                  child: Image.asset(Assets.imageLuckyColor,
-                                      matchTextDirection: true,
-                                      width: 20,
-                                      height: 20)),*/
-                      BlurWidget(
-                        isBlur: false,
-                        sigma: 6,
-                        radius: 3,
-                        child: Text(
-                          luckyColor,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: const Color(0xFF323133),
-                            fontSize: 18,
-                            fontFamily: AppFonts.textFontFamily,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        LanKey.luckyColor.tr,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: const Color(0xFF91929D),
-                          fontSize: 12,
-                          fontFamily: AppFonts.textFontFamily,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(width: 10),
-              Expanded(
-                child: Container(
-                  constraints: BoxConstraints(minHeight: 90, minWidth: 90),
-                  padding: EdgeInsetsDirectional.symmetric(
-                    horizontal: 5,
-                    vertical: 14,
-                  ),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFFFAFAFA),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    spacing: 8,
-                    children: [
-                      Container(
-                        height: 20,
-                        constraints: BoxConstraints(maxWidth: 80),
-                        child: BlurWidget(
-                          isBlur: false,
-                          sigma: 6,
-                          radius: 3,
-                          child: Text(
-                            luckyNumber,
-                            maxLines: 1,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: const Color(0xFF323133),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Text(
-                        LanKey.luckyNumber.tr,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: const Color(0xFF91929D),
-                          fontSize: 12,
-                          fontFamily: AppFonts.textFontFamily,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(width: 10),
-              Expanded(
-                child: Container(
-                  constraints: BoxConstraints(minHeight: 90, minWidth: 90),
-                  padding: EdgeInsetsDirectional.symmetric(
-                    horizontal: 5,
-                    vertical: 14,
-                  ),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFFFAFAFA),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    spacing: 8,
-                    children: [
-                      Container(
-                        height: 20,
-                        constraints: BoxConstraints(maxWidth: 80),
-                        child: BlurWidget(
-                          isBlur: false,
-                          sigma: 6,
-                          radius: 3,
-                          child: AutoSizeText(
-                            luckyGem,
-                            maxLines: 1,
-                            maxFontSize: 16,
-                            minFontSize: 16,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: AppFonts.textFontFamily,
-                              color: const Color(0xFF323133),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Text(
-                        LanKey.luckyGem.tr,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: const Color(0xFF91929D),
-                          fontSize: 12,
-                          fontFamily: AppFonts.textFontFamily,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              buildItem(title: LanKey.luckyColor.tr, value: luckyColor),
+              buildItem(title: LanKey.luckyNumber.tr, value: luckyNumber),
+              buildItem(title: LanKey.luckyGem.tr, value: luckyGem),
             ],
           ),
         ),
@@ -199,6 +39,41 @@ class KeywordsWidget extends StatelessWidget {
     );
   }
 
+  Widget buildItem({required String title, required String value}) => Container(
+    width: double.infinity,
+    padding: const EdgeInsets.all(16),
+    decoration: BoxDecoration(
+      color: Color(0xFFFAFAFA),
+      borderRadius: BorderRadiusDirectional.circular(12),
+    ),
+    child: Row(
+      children: [
+        Container(
+          margin: EdgeInsetsDirectional.only(end: 5),
+          child: Text(
+            title,
+            style: TextStyle(
+              color: const Color(0xFF91929D),
+              fontSize: 18,
+              fontFamily: AppFonts.textFontFamily,
+            ),
+          ),
+        ),
+        Spacer(),
+        Text(
+          value,
+          textAlign: TextAlign.end,
+          style: TextStyle(
+            color: const Color(0xFF323133),
+            fontSize: 18,
+            fontFamily: AppFonts.textFontFamily,
+          ),
+        ),
+      ],
+    ),
+  );
+
+  @Deprecated("hide")
   Widget buildKeywords() => BlurWidget(
     isBlur: false,
     child: Container(
@@ -229,5 +104,183 @@ class KeywordsWidget extends StatelessWidget {
         ),
       ),
     ),
+  );
+
+  @Deprecated("delete")
+  Widget buildOldWidget() => Row(
+    children: [
+      Expanded(
+        child: Container(
+          constraints: BoxConstraints(minHeight: 90, minWidth: 90),
+          padding: EdgeInsetsDirectional.symmetric(
+            horizontal: 5.w,
+            vertical: 14,
+          ),
+          decoration: ShapeDecoration(
+            color: const Color(0xFFFAFAFA),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            spacing: 8,
+            children: [
+              /*BlurWidget(
+                                  isBlur: false,
+                                  sigma: 6,
+                                  radius: 3,
+                                  child: Image.asset(Assets.imageLuckyColor,
+                                      matchTextDirection: true,
+                                      width: 20,
+                                      height: 20)),*/
+              Container(
+                height: 20,
+                constraints: BoxConstraints(maxWidth: 80.w),
+                child: BlurWidget(
+                  isBlur: false,
+                  sigma: 6,
+                  radius: 3,
+                  child: AutoSizeText(
+                    luckyColor,
+                    maxLines: 1,
+                    maxFontSize: 18,
+                    minFontSize: 18,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: AppFonts.textFontFamily,
+                      color: const Color(0xFF323133),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+              Text(
+                LanKey.luckyColor.tr,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: const Color(0xFF91929D),
+                  fontSize: 12,
+                  fontFamily: AppFonts.textFontFamily,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      SizedBox(width: 10.w),
+      Expanded(
+        child: Container(
+          constraints: BoxConstraints(minHeight: 90, minWidth: 90),
+          padding: EdgeInsetsDirectional.symmetric(
+            horizontal: 5.w,
+            vertical: 14,
+          ),
+          decoration: ShapeDecoration(
+            color: const Color(0xFFFAFAFA),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            spacing: 8,
+            children: [
+              Container(
+                height: 20,
+                constraints: BoxConstraints(maxWidth: 80.w),
+                child: BlurWidget(
+                  isBlur: false,
+                  sigma: 6,
+                  radius: 3,
+                  child: Text(
+                    luckyNumber,
+                    maxLines: 1,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: const Color(0xFF323133),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+              Text(
+                LanKey.luckyNumber.tr,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: const Color(0xFF91929D),
+                  fontSize: 12,
+                  fontFamily: AppFonts.textFontFamily,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      SizedBox(width: 10.w),
+      Expanded(
+        child: Container(
+          constraints: BoxConstraints(minHeight: 90, minWidth: 90),
+          padding: EdgeInsetsDirectional.symmetric(
+            horizontal: 5.w,
+            vertical: 14,
+          ),
+          decoration: ShapeDecoration(
+            color: const Color(0xFFFAFAFA),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            spacing: 8,
+            children: [
+              Container(
+                height: 20,
+                constraints: BoxConstraints(maxWidth: 80.w),
+                child: BlurWidget(
+                  isBlur: false,
+                  sigma: 6,
+                  radius: 3,
+                  child: AutoSizeText(
+                    luckyGem,
+                    maxLines: 1,
+                    maxFontSize: 16,
+                    minFontSize: 16,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: AppFonts.textFontFamily,
+                      color: const Color(0xFF323133),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+              Text(
+                LanKey.luckyGem.tr,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: const Color(0xFF91929D),
+                  fontSize: 12,
+                  fontFamily: AppFonts.textFontFamily,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ],
   );
 }

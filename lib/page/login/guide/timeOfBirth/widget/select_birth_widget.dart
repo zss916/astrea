@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:astrea/page/login/guide/timeOfBirth/widget/transform_rotate_widget.dart';
 import 'package:awesome_datetime_picker/awesome_datetime_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -117,11 +120,14 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
                 children: [
                   RotationTransition(
                     turns: _animation,
-                    child: Image.asset(
-                      Assets.timeBig286,
-                      matchTextDirection: true,
-                      width: 286,
-                      height: 286,
+                    child: TransformRotateWidget(
+                      angle: (pi / 12) * 2,
+                      child: Image.asset(
+                        Assets.timeBig286,
+                        matchTextDirection: true,
+                        width: 286,
+                        height: 286,
+                      ),
                     ),
                     /* child: Image.asset(
                       Assets.imageConstellation,
@@ -135,11 +141,14 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
                       begin: 0.0,
                       end: -1.0,
                     ).animate(_animationCtrl2),
-                    child: Image.asset(
-                      Assets.timeMiddle194,
-                      matchTextDirection: true,
-                      width: 194,
-                      height: 194,
+                    child: TransformRotateWidget(
+                      angle: (pi / 12) * 4,
+                      child: Image.asset(
+                        Assets.timeMiddle194,
+                        matchTextDirection: true,
+                        width: 194,
+                        height: 194,
+                      ),
                     ),
                     /*child: Image.asset(
                       Assets.imagePlanetIcon,
@@ -150,11 +159,14 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
                   ),
                   RotationTransition(
                     turns: (_animation),
-                    child: Image.asset(
-                      Assets.timeSmall132,
-                      matchTextDirection: true,
-                      width: 132,
-                      height: 132,
+                    child: TransformRotateWidget(
+                      angle: (pi / 12) * 6,
+                      child: Image.asset(
+                        Assets.timeSmall132,
+                        matchTextDirection: true,
+                        width: 132,
+                        height: 132,
+                      ),
                     ),
                     /*child: HousesWidget(size: Size(132, 132)),*/
                   ),

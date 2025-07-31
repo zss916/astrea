@@ -29,7 +29,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
   @override
   void initState() {
     super.initState();
-    tabCtrl = TabController(length: 6, vsync: this);
+    tabCtrl = TabController(length: 6, vsync: this, initialIndex: 1);
   }
 
   @override

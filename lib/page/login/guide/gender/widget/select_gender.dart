@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:astrea/components/common_btn.dart';
 import 'package:astrea/core/setting/app_common_setting.dart';
 import 'package:astrea/core/storage/account_service.dart';
@@ -7,6 +5,9 @@ import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/login/guide/gender/widget/gender_widget.dart';
 import 'package:astrea/page/login/guide/gender/widget/sex_enum.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class SelectGender extends StatefulWidget {
   final Function onNext;
@@ -55,6 +56,7 @@ class _SelectGenderState extends State<SelectGender> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            VerticalDivider(width: 20.w, color: Colors.transparent),
             GestureDetector(
               onTap: () {
                 setState(() {
@@ -70,7 +72,7 @@ class _SelectGenderState extends State<SelectGender> {
                 icon: Assets.imageFremale,
               ),
             ),
-            VerticalDivider(width: 16, color: Colors.transparent),
+            VerticalDivider(width: 16.w, color: Colors.transparent),
             GestureDetector(
               onTap: () {
                 setState(() {
@@ -86,6 +88,7 @@ class _SelectGenderState extends State<SelectGender> {
                 icon: Assets.imageMale,
               ),
             ),
+            VerticalDivider(width: 20.w, color: Colors.transparent),
           ],
         ),
         Spacer(),

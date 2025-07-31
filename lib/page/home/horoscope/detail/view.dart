@@ -146,7 +146,7 @@ class AnalysisPage extends StatelessWidget {
                             buildInterpretation(
                               titleIcon: Assets.imageMoonIcon,
                               title: LanKey.moonSignTitle.tr,
-                              logic.sunSignInterpretation,
+                              logic.moonSignInterpretation,
                             ),
                           // buildRelationShip(),
                           if (logic.ascendantSignInterpretation.isNotEmpty)
