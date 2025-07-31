@@ -20,11 +20,14 @@ abstract class SystemAPI {
         UploadUrlEntity upload = UploadUrlEntity.fromJson(result["data"]);
         if (upload.uploadUrl != null) {
           // debugPrint("filePath => $filePath");
+          //debugPrint("upload delayed");
+          // await Future.delayed(Duration(seconds: 12));
+          //debugPrint("upload start");
           bool isSuccessful = await SystemAPI.upload(
             url: upload.uploadUrl ?? "",
             filePath: filePath,
           );
-          //return (upload.uploadUrl ?? "");
+          // debugPrint("upload end");
           return isSuccessful ? (upload.cdnUrl ?? "") : null;
         } else {
           return null;
@@ -44,10 +47,8 @@ abstract class SystemAPI {
     required String filePath,
   }) async {
     try {
-      // await UploadFile.put(url: url, filePath: filePath);
-      AppUploadIsolate().loadData(url ?? "", filePath);
-
-      return true;
+      final value = await AppUploadIsolate().loadData(url, filePath);
+      return (value == 200);
     } catch (error) {
       return false;
     }

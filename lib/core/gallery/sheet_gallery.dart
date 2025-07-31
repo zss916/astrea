@@ -166,7 +166,7 @@ class OpenCamera extends StatelessWidget {
           .then((url) async {
             if ((url ?? "").isNotEmpty) {
               // debugPrint("getUploadUrl => $url");
-              //onFinish.call(url ?? "");
+              onFinish.call(url ?? "");
             }
           })
           .whenComplete(() {

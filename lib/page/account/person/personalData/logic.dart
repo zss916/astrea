@@ -102,6 +102,7 @@ class PersonalDataLogic extends GetxController {
     showCameraAndGallerySheet(
       onFinish: (url) {
         account?.headimg = url;
+        debugPrint("upload image: ${account?.headimg}");
         update();
       },
     );
