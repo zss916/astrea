@@ -111,9 +111,6 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
             ),
 
             Container(
-              // color: Colors.black38,
-              /* width: 310.w,
-              height: 300.w,*/
               margin: EdgeInsetsDirectional.only(top: 20, start: 20, end: 20),
               child: Stack(
                 alignment: AlignmentDirectional.center,
@@ -129,12 +126,6 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
                         height: 286,
                       ),
                     ),
-                    /* child: Image.asset(
-                      Assets.imageConstellation,
-                      matchTextDirection: true,
-                      width: 299,
-                      height: 299,
-                    ),*/
                   ),
                   RotationTransition(
                     turns: Tween(
@@ -150,12 +141,6 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
                         height: 194,
                       ),
                     ),
-                    /*child: Image.asset(
-                      Assets.imagePlanetIcon,
-                      matchTextDirection: true,
-                      width: 193,
-                      height: 193,
-                    ),*/
                   ),
                   RotationTransition(
                     turns: (_animation),
@@ -168,7 +153,6 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
                         height: 132,
                       ),
                     ),
-                    /*child: HousesWidget(size: Size(132, 132)),*/
                   ),
                 ],
               ),

@@ -91,12 +91,6 @@ class Assets {
   static const String imageHoroscopeS = 'assets/image/horoscope_s.png';
   static const String imageHoroscopeVector =
       'assets/image/horoscope_vector.png';
-  static const String imageHouses = 'assets/image/houses.png';
-  static const String imageI = 'assets/image/I.png';
-  static const String imageII = 'assets/image/II.png';
-  static const String imageIII = 'assets/image/III.png';
-  static const String imageIV = 'assets/image/IV.png';
-  static const String imageIX = 'assets/image/IX.png';
   static const String imageIconAquarius = 'assets/image/icon_aquarius.png';
   static const String imageIconAries = 'assets/image/icon_aries.png';
   static const String imageIconCancer = 'assets/image/icon_cancer.png';
@@ -134,7 +128,6 @@ class Assets {
   static const String imageLogoDefaultIcon =
       'assets/image/logo_default_icon.png';
   static const String imageLoveIcon = 'assets/image/love_icon.png';
-  static const String imageLuckyColor = 'assets/image/lucky_color.png';
   static const String imageMale = 'assets/image/male.png';
   static const String imageMars = 'assets/image/mars.png';
   static const String imageMask = 'assets/image/mask.png';
@@ -222,16 +215,9 @@ class Assets {
   static const String imageTwitter = 'assets/image/twitter.png';
   static const String imageUpload = 'assets/image/upload.png';
   static const String imageUranus = 'assets/image/uranus.png';
-  static const String imageV = 'assets/image/V.png';
-  static const String imageVI = 'assets/image/VI.png';
-  static const String imageVII = 'assets/image/VII.png';
-  static const String imageVIII = 'assets/image/VIII.png';
   static const String imageVenus = 'assets/image/venus.png';
   static const String imageVirgo = 'assets/image/virgo.png';
   static const String imageVortex = 'assets/image/vortex.png';
-  static const String imageX = 'assets/image/X.png';
-  static const String imageXI = 'assets/image/XI.png';
-  static const String imageXII = 'assets/image/XII.png';
   static const String jsonLoading = 'assets/json/loading.json';
   static const String launchSplashBg = 'launch/splash_bg.png';
   static const String svgAddFriend = 'assets/svg/add_friend.svg';
