@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 //import 'package:get/get.dart' hide Response;
 import 'base_options.dart';
-import 'httpClientAdapter.dart';
+import 'http_adpter/httpClientAdapter.dart';
 import 'interceptor/auth_interceptor.dart';
+import 'interceptor/logger_interceptor.dart';
 
 class Http {
   static final Http _instance = Http._internal();
@@ -17,25 +17,17 @@ class Http {
   Http._internal() {
     _dio = Dio(baseDioOptions);
     _dio.httpClientAdapter = httpAdapter;
-    /* _dio.httpClientAdapter = Http2Adapter(
-      ConnectionManager(
-        idleTimeout: Duration(seconds: 30),
-        onClientCreate: (_, config) {
-          config.onBadCertificate = (_) => true;
-          config.proxy = Uri.parse("http://login:password@192.168.2.111:9090");
-        },
-      ),
-    );*/
+
+    /// 代理抓包
+    // _dio.httpClientAdapter = proxyAdapter;
     _dio.interceptors.add(AuthInterceptor());
+
+    /// 缓存
+    // _dio.interceptors.add(cacheInterceptor);
+
+    /// 日志
     //_dio.interceptors.add(LoggerInterceptor());
-    _dio.interceptors.add(
-      PrettyDioLogger(
-        requestHeader: true,
-        requestBody: true,
-        responseHeader: false,
-        responseBody: true,
-      ),
-    );
+    _dio.interceptors.add(prettyDioLogger);
   }
 
   void cancelRequests(CancelToken token) {

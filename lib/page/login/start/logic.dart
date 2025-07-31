@@ -4,6 +4,7 @@ class StartLogic extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    //RequestMethod.GET;
     // toAuthEmail(email: "ddddd@qq.com", pwd: "12dsdfdsfs3456");
   }
 

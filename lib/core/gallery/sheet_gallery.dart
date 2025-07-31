@@ -41,14 +41,19 @@ class OpenCamera extends StatelessWidget {
               onTap: () async {
                 Get.back();
                 ImageUtils.chooseImage(camera: true).then((xFile) {
-                  uploadFile(
-                    fileName: xFile?.name ?? "",
-                    filePath: xFile?.path ?? "",
-                    onFinish: (url) {
-                      onFinish.call(url);
-                      // debugPrint("uploadFile url => $url");
-                    },
-                  );
+                  ImageUtils.compressImageAndGetFile(
+                    File(xFile?.path ?? ""),
+                  ).then((path) {
+                    uploadFile(
+                      fileName: xFile?.name ?? "",
+                      filePath: path,
+                      // filePath: xFile?.path ?? "",
+                      onFinish: (url) {
+                        onFinish.call(url);
+                        // debugPrint("uploadFile url => $url");
+                      },
+                    );
+                  });
                 });
               },
               child: Container(
@@ -158,10 +163,10 @@ class OpenCamera extends StatelessWidget {
     if (isExist) {
       AppLoading.show();
       SystemAPI.getUploadUrl(fileName: fileName, filePath: file.path)
-          .then((url) {
+          .then((url) async {
             if ((url ?? "").isNotEmpty) {
               // debugPrint("getUploadUrl => $url");
-              onFinish.call(url ?? "");
+              //onFinish.call(url ?? "");
             }
           })
           .whenComplete(() {

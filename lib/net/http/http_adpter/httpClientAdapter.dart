@@ -8,7 +8,7 @@ IOHttpClientAdapter httpAdapter = IOHttpClientAdapter(
   },
 );
 
-/*class MyHttpOverrides extends HttpOverrides {
+class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
@@ -16,7 +16,7 @@ IOHttpClientAdapter httpAdapter = IOHttpClientAdapter(
         return host == 'api-test.theappastro.com';
       };
   }
-}*/
+}
 
 class AppHttpOverrides extends HttpOverrides {
   @override

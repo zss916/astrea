@@ -2,7 +2,7 @@ import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/net/bean/upload_url_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
-import 'package:upload/upload.dart';
+import 'package:upload/app_upload_isolate.dart';
 
 ///system
 abstract class SystemAPI {
@@ -24,6 +24,7 @@ abstract class SystemAPI {
             url: upload.uploadUrl ?? "",
             filePath: filePath,
           );
+          //return (upload.uploadUrl ?? "");
           return isSuccessful ? (upload.cdnUrl ?? "") : null;
         } else {
           return null;
@@ -43,7 +44,9 @@ abstract class SystemAPI {
     required String filePath,
   }) async {
     try {
-      await UploadFile.put(url: url, filePath: filePath);
+      // await UploadFile.put(url: url, filePath: filePath);
+      AppUploadIsolate().loadData(url ?? "", filePath);
+
       return true;
     } catch (error) {
       return false;

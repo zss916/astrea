@@ -2,13 +2,19 @@ import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
+import 'package:dio/dio.dart';
 
 ///Friend
 abstract class FriendAPI {
   ///查询朋友列表
-  static Future<List<FriendEntity>> getFriends() async {
+  static Future<List<FriendEntity>> getFriends({
+    CancelToken? cancelToken,
+  }) async {
     try {
-      var result = await Http.instance.get(ApiPath.getFriends);
+      var result = await Http.instance.get(
+        ApiPath.getFriends,
+        cancelToken: cancelToken,
+      );
       if (result["code"] == 0) {
         List<FriendEntity> value = (result['data']['friends'] as List)
             .map((e) => FriendEntity.fromJson(e))

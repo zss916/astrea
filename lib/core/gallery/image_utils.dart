@@ -1,6 +1,7 @@
 import 'dart:io';
 
 //import 'package:flutter_image_compress/flutter_image_compress.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -19,7 +20,7 @@ class ImageUtils {
     var name = path.substring(path.lastIndexOf("/") + 1);
     var targetPath = await _createTempFile(name: name, dir: 'pic');
 
-    /*CompressFormat format = CompressFormat.jpeg;
+    CompressFormat format = CompressFormat.jpeg;
     if (name.endsWith(".jpg") || name.endsWith(".jpeg")) {
       format = CompressFormat.jpeg;
     } else if (name.endsWith(".png")) {
@@ -28,18 +29,17 @@ class ImageUtils {
       format = CompressFormat.heic;
     } else if (name.endsWith(".webp")) {
       format = CompressFormat.webp;
-    }*/
+    }
 
-    /*var result = await FlutterImageCompress.compressAndGetFile(
+    var result = await FlutterImageCompress.compressAndGetFile(
       file.absolute.path,
       targetPath,
       quality: 90,
       minWidth: 480,
-      minHeight: 800,
+      minHeight: 480,
       format: format,
-    );*/
-    //return result?.path ?? "";
-    return "";
+    );
+    return result?.path ?? "";
   }
 
   static Future<String> _createTempFile({

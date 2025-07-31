@@ -16,6 +16,7 @@ import 'package:astrea/page/home/synastry/addFile/widget/sheet/select_relationsh
 import 'package:astrea/page/home/synastry/record/widget/add_friends.dart';
 import 'package:astrea/page/home/synastry/record/widget/record_item.dart';
 import 'package:astrea/page/sheet/dialog_common.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

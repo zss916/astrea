@@ -1,5 +1,13 @@
 import 'package:astrea/core/utils/index.dart';
 import 'package:dio/dio.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
+PrettyDioLogger prettyDioLogger = PrettyDioLogger(
+  requestHeader: true,
+  requestBody: true,
+  responseHeader: false,
+  responseBody: true,
+);
 
 class LoggerInterceptor extends Interceptor {
   @override

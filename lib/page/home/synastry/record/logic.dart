@@ -7,6 +7,8 @@ class FileManagementLogic extends GetxController {
 
   bool isClick = false;
 
+  CancelToken cancelToken = CancelToken();
+
   @override
   void onInit() {
     super.onInit();
@@ -14,7 +16,7 @@ class FileManagementLogic extends GetxController {
     refreshEvent = AppEventBus.eventBus.on<RefreshFriendsEvent>().listen((
       event,
     ) {
-      loadData();
+      loadData(cancelToken: cancelToken);
     });
   }
 
@@ -28,21 +30,23 @@ class FileManagementLogic extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    loadData();
+    loadData(cancelToken: cancelToken);
   }
 
   @override
-  void dispose() {
-    super.dispose();
+  void onClose() {
+    super.onClose();
     refreshEvent.cancel();
+    cancelToken.cancel();
   }
 
   ///加载朋友列表
-  Future<void> loadData() async {
+  Future<void> loadData({CancelToken? cancelToken}) async {
     AppLoading.show();
-    List<FriendEntity> value = await FriendAPI.getFriends().whenComplete(() {
-      AppLoading.dismiss();
-    });
+    List<FriendEntity> value =
+        await FriendAPI.getFriends(cancelToken: cancelToken).whenComplete(() {
+          AppLoading.dismiss();
+        });
     list.clear();
     list.addAll(value);
     AccountService.to.updateFriendList(list);

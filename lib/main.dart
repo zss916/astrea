@@ -11,7 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'core/translations/language.dart';
-import 'net/http/httpClientAdapter.dart';
+import 'net/http/http_adpter/httpClientAdapter.dart';
 
 Future<void> main() async {
   await AppCommonSetting.init();
