@@ -20,7 +20,7 @@ class Http {
     _dio.httpClientAdapter = httpAdapter;
 
     /// 代理抓包
-    // _dio.httpClientAdapter = proxyAdapter;
+    //_dio.httpClientAdapter = proxyAdapter;
     _dio.interceptors.add(AuthInterceptor());
 
     /// 缓存

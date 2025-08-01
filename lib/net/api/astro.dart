@@ -5,6 +5,7 @@ import 'package:astrea/net/bean/natal_report_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 ///Astrology
 abstract class AstrologyAPI {
@@ -248,11 +249,10 @@ abstract class AstrologyAPI {
         },
       },
     };
-
     // return (true, NatalReportEntity.fromJson(d["data"]));
 
     try {
-      dynamic response = await Http.instance.get(
+      Map<String, dynamic> response = await Http.instance.get(
         ApiPath.getNatalReport,
         query: {"friend_id": id},
         options: Options(
@@ -264,7 +264,11 @@ abstract class AstrologyAPI {
       );
 
       if (response["code"] == 0) {
-        NatalReportEntity value = NatalReportEntity.fromJson(response["data"]);
+        NatalReportEntity value = await compute(
+          (dynamic jsonStr) => NatalReportEntity.fromJson(jsonStr),
+          response["data"],
+        );
+        //NatalReportEntity value = NatalReportEntity.fromJson(response["data"]);
         AstrologyService.to.update(value);
         return (true, value);
       } else {

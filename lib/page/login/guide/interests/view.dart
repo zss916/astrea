@@ -12,7 +12,7 @@ class InterestsPage extends StatelessWidget {
         children: [
           SizedBox(height: 20.h),
           StepIndicator(index: 6),
-          SizedBox(height: 35.h),
+          SizedBox(height: 25.h),
           Container(
             margin: EdgeInsetsDirectional.symmetric(horizontal: 20),
             width: double.maxFinite,

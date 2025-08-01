@@ -3,6 +3,7 @@ import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 ///Friend
 abstract class FriendAPI {
@@ -16,9 +17,14 @@ abstract class FriendAPI {
         cancelToken: cancelToken,
       );
       if (result["code"] == 0) {
-        List<FriendEntity> value = (result['data']['friends'] as List)
+        /* List<FriendEntity> value = (result['data']['friends'] as List)
             .map((e) => FriendEntity.fromJson(e))
-            .toList();
+            .toList();*/
+        List<FriendEntity> value = await compute(
+          (List<dynamic> jsonList) =>
+              jsonList.map((e) => FriendEntity.fromJson(e)).toList(),
+          (result['data']['friends'] as List),
+        );
         return (true, value);
       } else {
         AppLoading.toast(result["msg"]);
@@ -109,7 +115,7 @@ abstract class FriendAPI {
     try {
       Map<String, dynamic> map = {};
       map["friend_id"] = num.parse(id);
-      var result = await Http.instance.delete(
+      await Http.instance.delete(
         ApiPath.deleteFriend,
         cancelToken: cancelToken,
         data: map,
@@ -179,7 +185,7 @@ abstract class FriendAPI {
         map["interests"] = interests;
       }
 
-      var result = await Http.instance.put(
+      await Http.instance.put(
         ApiPath.putFriend,
         cancelToken: cancelToken,
         data: map,

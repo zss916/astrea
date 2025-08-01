@@ -3,6 +3,7 @@ import 'package:astrea/net/bean/auth_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 ///auth
 abstract class AuthAPI {
@@ -20,7 +21,11 @@ abstract class AuthAPI {
       );
 
       if (result["code"] == 0) {
-        return (true, AuthEntity.fromJson(result["data"]));
+        AuthEntity value = await compute(
+          (dynamic jsonStr) => AuthEntity.fromJson(jsonStr),
+          result["data"],
+        );
+        return (true, value);
       } else {
         AppLoading.toast("${result["msg"]}");
         return (false, null);
@@ -41,7 +46,16 @@ abstract class AuthAPI {
         cancelToken: cancelToken,
         data: {"id_token": token},
       );
-      return AuthEntity.fromJson(result["data"]);
+      if (result["code"] == 0) {
+        AuthEntity value = await compute(
+          (dynamic jsonStr) => AuthEntity.fromJson(jsonStr),
+          result["data"],
+        );
+        return value;
+      } else {
+        AppLoading.toast("${result["msg"]}");
+        return null;
+      }
     } catch (error) {
       return null;
     }
@@ -67,7 +81,16 @@ abstract class AuthAPI {
         cancelToken: cancelToken,
         data: map,
       );
-      return AuthEntity.fromJson(result["data"]);
+      if (result["code"] == 0) {
+        AuthEntity value = await compute(
+          (dynamic jsonStr) => AuthEntity.fromJson(jsonStr),
+          result["data"],
+        );
+        return value;
+      } else {
+        AppLoading.toast("${result["msg"]}");
+        return null;
+      }
     } catch (error) {
       return null;
     }

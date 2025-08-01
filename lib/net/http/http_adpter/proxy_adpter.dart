@@ -5,7 +5,7 @@ Http2Adapter proxyAdapter = Http2Adapter(
     idleTimeout: Duration(seconds: 30),
     onClientCreate: (_, config) {
       config.onBadCertificate = (_) => true;
-      config.proxy = Uri.parse("http://login:password@192.168.2.111:9090");
+      config.proxy = Uri.parse("http://login:password@192.168.2.112:9090");
     },
   ),
 );

@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:astrea/components/common_btn.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/core/validator/app_validator.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:keyboard_visibility_pro/keyboard_visibility_pro.dart';
 
 class EditName extends StatefulWidget {
@@ -127,11 +127,16 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
                     : null,
               ),
               onChanged: (value) {
-                if (value.trim().isEmpty && isError) {
+                if (value.trim().isEmpty) {
                   setState(() {
                     isError = false;
                   });
+                } else {
+                  setState(() {
+                    isError = !isValidate(value);
+                  });
                 }
+
                 setState(() {
                   isEdit = value.isNotEmpty;
                 });

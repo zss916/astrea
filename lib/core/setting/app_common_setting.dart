@@ -36,7 +36,9 @@ class AppCommonSetting {
   }
 }
 
-SystemUiOverlayStyle barStyle = darkBarStyle;
+SystemUiOverlayStyle barStyle = GetPlatform.isIOS
+    ? lightBarStyle
+    : darkBarStyle;
 
 ///dark
 SystemUiOverlayStyle darkBarStyle = const SystemUiOverlayStyle(

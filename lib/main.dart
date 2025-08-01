@@ -20,9 +20,9 @@ Future<void> main() async {
   HttpOverrides.global = AppHttpOverrides();
 
   ///抓包配置
-  //WidgetsFlutterBinding.ensureInitialized();
-  //HttpProxy httpProxy = await HttpProxy.createHttpProxy();
-  //HttpOverrides.global = httpProxy;
+  /*WidgetsFlutterBinding.ensureInitialized();
+  HttpProxy httpProxy = await HttpProxy.createHttpProxy();
+  HttpOverrides.global = httpProxy;*/
   runApp(const App());
 }
 
@@ -56,10 +56,7 @@ class App extends StatelessWidget {
         routingCallback: (routing) {
           debugPrint("routing:${routing?.current}");
         },
-        // home: PlaceOfBirthPage(),
         initialRoute: APages.splash,
-        //initialRoute: APages.home,
-        //initialRoute: APages.start,
       ),
     );
   }

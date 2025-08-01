@@ -57,6 +57,8 @@ dependencies:
   dio_http2_adapter: ^2.6.0
   #缓存
   dio_cache_interceptor: ^4.0.3
+  #加https://juejin.cn/post/7083806995085525006?searchId=202507312321216CB1503F13BC855E3D7B
+  azlistview_plus: ^3.0.0
 
 
 

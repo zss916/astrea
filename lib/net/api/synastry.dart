@@ -5,6 +5,7 @@ import 'package:astrea/net/bean/analysis_identity_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 ///Synastry
 abstract class SynastryAPI {
@@ -65,7 +66,9 @@ abstract class SynastryAPI {
     try {
       var result = await Http.instance.get("${ApiPath.getAnalysis}/$id");
       if (result["code"] == 0) {
-        return AnalysisArticleEntity.fromJson(result["data"]);
+        AnalysisArticleEntity value = await compute(parseJson, result["data"]);
+        // return AnalysisArticleEntity.fromJson(result["data"]);
+        return value;
       } else {
         AppLoading.toast("${result["msg"]}");
         return null;
@@ -73,6 +76,10 @@ abstract class SynastryAPI {
     } catch (error) {
       return null;
     }
+  }
+
+  static AnalysisArticleEntity parseJson(dynamic jsonStr) {
+    return AnalysisArticleEntity.fromJson(jsonStr);
   }
 
   ///合盘收藏

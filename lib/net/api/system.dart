@@ -19,15 +19,10 @@ abstract class SystemAPI {
       if (result["code"] == 0) {
         UploadUrlEntity upload = UploadUrlEntity.fromJson(result["data"]);
         if (upload.uploadUrl != null) {
-          // debugPrint("filePath => $filePath");
-          //debugPrint("upload delayed");
-          // await Future.delayed(Duration(seconds: 12));
-          //debugPrint("upload start");
           bool isSuccessful = await SystemAPI.upload(
             url: upload.uploadUrl ?? "",
             filePath: filePath,
           );
-          // debugPrint("upload end");
           return isSuccessful ? (upload.cdnUrl ?? "") : null;
         } else {
           return null;

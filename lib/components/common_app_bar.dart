@@ -1,10 +1,10 @@
+import 'package:astrea/core/setting/app_common_setting.dart';
+import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/generated/assets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:astrea/core/setting/app_common_setting.dart';
-import 'package:astrea/core/setting/app_fonts.dart';
-import 'package:astrea/generated/assets.dart';
 
 ///no title appBar
 AppBar get noTitleAppBar => AppBar(
@@ -26,7 +26,8 @@ class ComAppBar extends AppBar {
     super.bottom,
     SystemUiOverlayStyle? systemOverlayStyle,
     Widget? titleWidget,
-    bool isDark = true,
+    bool isDark = false,
+    bool isTextDark = true,
     Function? back,
     bool? isSetBg,
   }) : super(
@@ -41,7 +42,7 @@ class ComAppBar extends AppBar {
                minFontSize: 22,
                textAlign: TextAlign.center,
                style: TextStyle(
-                 color: isDark ? Colors.black : Colors.white,
+                 color: isTextDark ? Colors.black : Colors.white,
                  fontSize: 22,
                  fontFamily: AppFonts.textFontFamily,
                  fontWeight: FontWeight.w400,

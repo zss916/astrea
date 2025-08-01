@@ -6,6 +6,7 @@ import 'package:astrea/net/bean/account_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 ///account
 abstract class AccountAPI {
@@ -17,7 +18,11 @@ abstract class AccountAPI {
         cancelToken: cancelToken,
       );
       if (result["code"] == 0) {
-        AccountEntity value = AccountEntity.fromJson(result["data"]);
+        AccountEntity value = await compute(
+          (jsonStr) => AccountEntity.fromJson(jsonStr),
+          result["data"],
+        );
+        // AccountEntity value = AccountEntity.fromJson(result["data"]);
         AccountService.to.update(value);
         return value;
       } else {
