@@ -38,8 +38,8 @@ class SplashPage extends StatelessWidget {
           RotateWidget(
             child: Image.asset(
               Assets.imageSplashIcon,
-              width: 315,
-              height: 315,
+              width: 300,
+              height: 300,
               matchTextDirection: true,
             ),
           ),
@@ -55,7 +55,7 @@ class SplashPage extends StatelessWidget {
               minFontSize: 20,
               style: TextStyle(
                 color: const Color(0xFFD6CDFF),
-                fontSize: 24,
+                fontSize: 22,
                 fontFamily: AppFonts.textFontFamily,
               ),
             ),

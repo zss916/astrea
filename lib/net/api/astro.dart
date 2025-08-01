@@ -1,10 +1,8 @@
-import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/storage/astrology_service.dart';
 import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
 ///Astrology
@@ -255,12 +253,12 @@ abstract class AstrologyAPI {
       Map<String, dynamic> response = await Http.instance.get(
         ApiPath.getNatalReport,
         query: {"friend_id": id},
-        options: Options(
+        /*options: Options(
           headers: {"Authorization": AccountService.to.getAuthToken()},
           sendTimeout: Duration(minutes: 5),
           receiveTimeout: Duration(minutes: 5),
           receiveDataWhenStatusError: true,
-        ),
+        ),*/
       );
 
       if (response["code"] == 0) {

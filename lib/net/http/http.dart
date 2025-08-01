@@ -40,7 +40,7 @@ class Http {
     String path, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
-    Options? options,
+    //Options? options,
     bool showLoading = false,
     bool showToast = true,
     CancelToken? cancelToken,
@@ -50,7 +50,7 @@ class Http {
         path,
         data: data,
         queryParameters: queryParameters,
-        options: options,
+        //options: options,
         cancelToken: cancelToken,
       );
       return response.data ?? '{}';
@@ -64,7 +64,7 @@ class Http {
     String url, {
     Map<String, dynamic>? query,
     Object? data,
-    Options? options,
+    //Options? options,
     CancelToken? cancelToken,
   }) async {
     try {
@@ -72,7 +72,7 @@ class Http {
         url,
         queryParameters: query,
         data: data,
-        options: options,
+        //options: options,
         cancelToken: cancelToken,
       );
       return result.data ?? '{}';
@@ -86,7 +86,7 @@ class Http {
     String url, {
     Map<String, dynamic>? query,
     Object? data,
-    Options? options,
+    //Options? options,
     CancelToken? cancelToken,
   }) async {
     try {
@@ -94,7 +94,7 @@ class Http {
         url,
         queryParameters: query,
         data: data,
-        options: options,
+        //options: options,
         cancelToken: cancelToken,
       );
       return result.data ?? '{}';
@@ -108,7 +108,7 @@ class Http {
     String url, {
     Map<String, dynamic>? query,
     Object? data,
-    Options? options,
+    //Options? options,
     CancelToken? cancelToken,
   }) async {
     try {
@@ -116,7 +116,7 @@ class Http {
         url,
         queryParameters: query,
         data: data,
-        options: options,
+        //options: options,
         cancelToken: cancelToken,
       );
       return result.data ?? '{}';
@@ -130,7 +130,7 @@ class Http {
     String url, {
     Map<String, dynamic>? query,
     Object? data,
-    Options? options,
+    //Options? options,
     CancelToken? cancelToken,
   }) async {
     try {
@@ -138,7 +138,7 @@ class Http {
         url,
         queryParameters: query,
         data: data,
-        options: options,
+        //options: options,
         cancelToken: cancelToken,
       );
       return result.data ?? '{}';

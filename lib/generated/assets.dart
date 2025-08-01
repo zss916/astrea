@@ -219,6 +219,7 @@ class Assets {
   static const String imageVirgo = 'assets/image/virgo.png';
   static const String imageVortex = 'assets/image/vortex.png';
   static const String jsonLoading = 'assets/json/loading.json';
+  static const String launchLogo = 'launch/logo.png';
   static const String launchSplashBg = 'launch/splash_bg.png';
   static const String svgAddFriend = 'assets/svg/add_friend.svg';
   static const String svgInterestBorder = 'assets/svg/interest_border.svg';
