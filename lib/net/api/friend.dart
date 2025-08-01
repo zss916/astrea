@@ -17,9 +17,6 @@ abstract class FriendAPI {
         cancelToken: cancelToken,
       );
       if (result["code"] == 0) {
-        /* List<FriendEntity> value = (result['data']['friends'] as List)
-            .map((e) => FriendEntity.fromJson(e))
-            .toList();*/
         List<FriendEntity> value = await compute(
           (List<dynamic> jsonList) =>
               jsonList.map((e) => FriendEntity.fromJson(e)).toList(),

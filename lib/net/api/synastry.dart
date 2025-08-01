@@ -23,9 +23,15 @@ abstract class SynastryAPI {
         cancelToken: cancelToken,
       );
       if (result["code"] == 0) {
-        List<AnalysisEntity> value = (result['data'] as List)
+        /*List<AnalysisEntity> value = (result['data'] as List)
             .map((e) => AnalysisEntity.fromJson(e))
-            .toList();
+            .toList();*/
+
+        List<AnalysisEntity> value = await compute(
+          (List<dynamic> jsonList) =>
+              jsonList.map((e) => AnalysisEntity.fromJson(e)).toList(),
+          (result['data'] as List),
+        );
         return value;
       } else {
         AppLoading.toast("${result["msg"]}");
@@ -66,8 +72,10 @@ abstract class SynastryAPI {
     try {
       var result = await Http.instance.get("${ApiPath.getAnalysis}/$id");
       if (result["code"] == 0) {
-        AnalysisArticleEntity value = await compute(parseJson, result["data"]);
-        // return AnalysisArticleEntity.fromJson(result["data"]);
+        AnalysisArticleEntity value = await compute(
+          (dynamic jsonStr) => AnalysisArticleEntity.fromJson(jsonStr),
+          result["data"],
+        );
         return value;
       } else {
         AppLoading.toast("${result["msg"]}");
@@ -76,10 +84,6 @@ abstract class SynastryAPI {
     } catch (error) {
       return null;
     }
-  }
-
-  static AnalysisArticleEntity parseJson(dynamic jsonStr) {
-    return AnalysisArticleEntity.fromJson(jsonStr);
   }
 
   ///合盘收藏
