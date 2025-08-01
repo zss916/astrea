@@ -38,8 +38,8 @@ class SplashPage extends StatelessWidget {
           RotateWidget(
             child: Image.asset(
               Assets.imageSplashIcon,
-              width: 300,
-              height: 300,
+              width: 315,
+              height: 315,
               matchTextDirection: true,
             ),
           ),
