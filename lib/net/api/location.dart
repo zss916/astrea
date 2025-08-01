@@ -7,6 +7,7 @@ import 'package:astrea/net/bean/state_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 ///location
 abstract class LocationAPI {
@@ -20,10 +21,12 @@ abstract class LocationAPI {
         cancelToken: cancelToken,
       );
       if (result['code'] == 0) {
-        List<CountryEntity> value = (result['data']['countries'] as List)
-            .map((e) => CountryEntity.fromJson(e))
-            .toList();
-        sortFirstChar(value);
+        List<CountryEntity> value = await compute(
+          (List<dynamic> jsonList) =>
+              jsonList.map((e) => CountryEntity.fromJson(e)).toList(),
+          (result['data']['countries'] as List),
+        );
+        await compute(sortFirstChar, value);
         return value;
       } else {
         AppLoading.toast("${result['msg']}");
@@ -47,10 +50,12 @@ abstract class LocationAPI {
       );
 
       if (result['code'] == 0) {
-        List<StateEntity> value = (result['data']['states'] as List)
-            .map((e) => StateEntity.fromJson(e))
-            .toList();
-        sortFirstChar(value);
+        List<StateEntity> value = await compute(
+          (List<dynamic> jsonList) =>
+              jsonList.map((e) => StateEntity.fromJson(e)).toList(),
+          (result['data']['states'] as List),
+        );
+        await compute(sortFirstChar, value);
         return value;
       } else {
         AppLoading.toast("${result['msg']}");
@@ -73,10 +78,12 @@ abstract class LocationAPI {
         cancelToken: cancelToken,
       );
       if (result['code'] == 0) {
-        List<CityEntity> value = (result['data']['cities'] as List)
-            .map((e) => CityEntity.fromJson(e))
-            .toList();
-        sortFirstChar(value);
+        List<CityEntity> value = await compute(
+          (List<dynamic> jsonList) =>
+              jsonList.map((e) => CityEntity.fromJson(e)).toList(),
+          (result['data']['cities'] as List),
+        );
+        await compute(sortFirstChar, value);
         return value;
       } else {
         AppLoading.toast("${result['msg']}");

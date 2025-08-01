@@ -16,6 +16,8 @@ import 'package:astrea/page/account/person/personalData/widget/edit_place_of_bir
 import 'package:astrea/page/home/account/select_gender/select_gender.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/edit_name.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/select_birth.dart';
+import 'package:astrea/page/home/synastry/addFile/widget/sheet/select_interests_sheet.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

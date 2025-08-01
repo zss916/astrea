@@ -168,7 +168,11 @@ class AccountService extends GetxService {
     }
   }
 
-  String get showLocality => data?.locality ?? "";
+  String get showLocality => (data?.locality ?? "")
+      .split("/")
+      .where((e) => e.isNotEmpty)
+      .toList()
+      .join(",");
 
   ///更新用户兴趣
   void updateUserInterest(List<int> list) {

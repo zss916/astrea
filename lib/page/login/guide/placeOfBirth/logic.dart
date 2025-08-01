@@ -116,11 +116,7 @@ class PlaceOfBirthLogic extends GetxController {
       index = 1;
       update();
     } else {
-      String place = sprintf("%s/%s/%s", [
-        countryName,
-        stateName,
-        cityName,
-      ]).trim();
+      String place = sprintf("%s", [countryName]).trim();
       onSelect?.call(
         place,
         country.latitude.toString(),
@@ -146,11 +142,7 @@ class PlaceOfBirthLogic extends GetxController {
       index = 2;
       update();
     } else {
-      String place = sprintf("%s/%s/%s", [
-        countryName,
-        stateName,
-        cityName,
-      ]).trim();
+      String place = sprintf("%s/%s", [countryName, stateName]).trim();
       onSelect?.call(
         place,
         state.latitude.toString(),

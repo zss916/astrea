@@ -10,6 +10,14 @@ class PersonalDataLogic extends GetxController {
       account?.showLocality ?? AccountService.to.showLocality;
   int get sex => account?.sex ?? 0;
 
+  String? get interests => account?.interests ?? "";
+  String showInterests() {
+    List<String> parts = (interests ?? "").split(",");
+    return parts.length > 3
+        ? '${parts.sublist(0, 3).join(',')}\n${parts.sublist(3).join(',')}'
+        : (interests ?? "");
+  }
+
   @override
   void onInit() {
     super.onInit();
