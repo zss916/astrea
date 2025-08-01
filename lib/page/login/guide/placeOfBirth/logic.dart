@@ -9,8 +9,9 @@ class PlaceOfBirthLogic extends GetxController {
   int get keyStateCount => stateData.values.length;
   int get keyCityCount => cityData.values.length;
 
-  /// countryKeys
   List<String> get countryKeys => countryData.keys.toList();
+  List<String> get stateKeys => stateData.keys.toList();
+  List<String> get cityKeys => cityData.keys.toList();
 
   int valueCountryCount(int index) =>
       (countryData[countryData.keys.toList()[index]] ?? []).length;

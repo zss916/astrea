@@ -21,11 +21,8 @@ class CountryWidget extends StatefulWidget {
 }
 
 class _CountryWidgetState extends State<CountryWidget> {
-  //List<String> _az = [];
-
   int currentIndex = -1;
   final ItemScrollController _scrollController = ItemScrollController();
-  // late ScrollController controller = ScrollController();
 
   @override
   void initState() {
@@ -77,42 +74,6 @@ class _CountryWidgetState extends State<CountryWidget> {
           },
           itemCount: widget.logic.keyCountryCount,
         ),
-
-        /*ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          controller: controller,
-          padding: EdgeInsets.only(bottom: 80.h, top: 20.h),
-          itemCount: widget.logic.keyCountryCount,
-          itemBuilder: (_, index) => ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: widget.logic.valueCountryCount(index),
-            itemBuilder: (_, i) {
-              CountryEntity country =
-                  (widget.logic.countryData[widget.logic.countryData.keys
-                      .toList()[index]] ??
-                  [])[i];
-              return InkWell(
-                onTap: () {
-                  widget.logic.selectCountry(
-                    country,
-                    onSelect:
-                        (String place, String latitude, String longitude) {
-                          widget.onSelect?.call(place, latitude, longitude);
-                        },
-                  );
-                },
-                child: PlaceItem(
-                  index: i,
-                  isSelected: country.isSelected ?? false,
-                  firstLetter: country.firstLetter ?? "",
-                  name: country.name ?? "",
-                ),
-              );
-            },
-          ),
-        ),*/
         PositionedDirectional(
           end: 0,
           child: GestureDetector(
@@ -130,7 +91,7 @@ class _CountryWidgetState extends State<CountryWidget> {
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: currentIndex == index ? Colors.redAccent : null,
+                        color: currentIndex == index ? Color(0xFF766DF8) : null,
                         shape: BoxShape.circle,
                       ),
                       child: Text(

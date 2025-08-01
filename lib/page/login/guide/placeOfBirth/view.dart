@@ -80,7 +80,8 @@ class PlaceOfBirthPage extends StatelessWidget {
                               PageTools.toGender();
                             },
                       ),
-                      StateListWidget(
+                      StatesWidget(
+                        az: logic.stateKeys,
                         logic: logic,
                         onSelect:
                             (String place, String latitude, String longitude) {
@@ -92,7 +93,8 @@ class PlaceOfBirthPage extends StatelessWidget {
                               PageTools.toGender();
                             },
                       ),
-                      CityListWidget(
+                      CitiesWidget(
+                        az: logic.cityKeys,
                         logic: logic,
                         onSelect:
                             (String place, String latitude, String longitude) {
