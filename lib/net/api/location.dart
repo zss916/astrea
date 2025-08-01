@@ -26,8 +26,19 @@ abstract class LocationAPI {
               jsonList.map((e) => CountryEntity.fromJson(e)).toList(),
           (result['data']['countries'] as List),
         );
-        await compute(sortFirstChar, value);
-        return value;
+
+        List<CountryEntity> list = await compute(
+          (data) => data
+            ..sort(
+              (a, b) => a.name
+                  .toString()
+                  .trim()
+                  .substring(0, 1)
+                  .compareTo(b.name.toString().trim().substring(0, 1)),
+            ),
+          value,
+        );
+        return list;
       } else {
         AppLoading.toast("${result['msg']}");
         return [];
@@ -55,8 +66,19 @@ abstract class LocationAPI {
               jsonList.map((e) => StateEntity.fromJson(e)).toList(),
           (result['data']['states'] as List),
         );
-        await compute(sortFirstChar, value);
-        return value;
+
+        List<StateEntity> list = await compute(
+          (data) => data
+            ..sort(
+              (a, b) => a.name
+                  .toString()
+                  .trim()
+                  .substring(0, 1)
+                  .compareTo(b.name.toString().trim().substring(0, 1)),
+            ),
+          value,
+        );
+        return list;
       } else {
         AppLoading.toast("${result['msg']}");
         return [];
@@ -83,8 +105,19 @@ abstract class LocationAPI {
               jsonList.map((e) => CityEntity.fromJson(e)).toList(),
           (result['data']['cities'] as List),
         );
-        await compute(sortFirstChar, value);
-        return value;
+
+        List<CityEntity> list = await compute(
+          (data) => data
+            ..sort(
+              (a, b) => a.name
+                  .toString()
+                  .trim()
+                  .substring(0, 1)
+                  .compareTo(b.name.toString().trim().substring(0, 1)),
+            ),
+          value,
+        );
+        return list;
       } else {
         AppLoading.toast("${result['msg']}");
         return [];
@@ -95,8 +128,8 @@ abstract class LocationAPI {
   }
 
   ///首字母排序
-  static sortFirstChar(List<dynamic> data) {
-    data.sort(
+  static List<dynamic> sortFirstChar(List<dynamic> data) {
+    return data..sort(
       (a, b) => a.name
           .toString()
           .trim()

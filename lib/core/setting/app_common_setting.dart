@@ -40,6 +40,9 @@ SystemUiOverlayStyle barStyle = GetPlatform.isIOS
     ? lightBarStyle
     : darkBarStyle;
 
+///ios
+//SystemUiOverlayStyle barStyle = SystemUiOverlayStyle.dark;
+
 ///dark
 SystemUiOverlayStyle darkBarStyle = const SystemUiOverlayStyle(
   statusBarColor: Colors.transparent,

@@ -67,7 +67,8 @@ class PlaceOfBirthPage extends StatelessWidget {
                   child: IndexedStack(
                     index: logic.index,
                     children: [
-                      CountryListWidget(
+                      CountryWidget(
+                        az: logic.countryKeys,
                         logic: logic,
                         onSelect:
                             (String place, String latitude, String longitude) {

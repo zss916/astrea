@@ -26,7 +26,6 @@ class ComAppBar extends AppBar {
     super.bottom,
     SystemUiOverlayStyle? systemOverlayStyle,
     Widget? titleWidget,
-    bool isDark = false,
     bool isTextDark = true,
     Function? back,
     bool? isSetBg,
@@ -75,19 +74,6 @@ class ComAppBar extends AppBar {
          centerTitle: centerTitle ?? true,
          foregroundColor: Colors.transparent,
          surfaceTintColor: Colors.transparent,
-         systemOverlayStyle:
-             systemOverlayStyle ??
-             SystemUiOverlayStyle(
-               statusBarColor: Colors.transparent,
-               statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
-               statusBarIconBrightness: isDark
-                   ? Brightness.dark
-                   : Brightness.light,
-               systemNavigationBarDividerColor: Colors.transparent,
-               systemNavigationBarColor: Colors.transparent,
-               systemNavigationBarIconBrightness: isDark
-                   ? Brightness.dark
-                   : Brightness.light,
-             ),
+         systemOverlayStyle: barStyle,
        );
 }
