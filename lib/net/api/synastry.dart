@@ -23,10 +23,6 @@ abstract class SynastryAPI {
         cancelToken: cancelToken,
       );
       if (result["code"] == 0) {
-        /*List<AnalysisEntity> value = (result['data'] as List)
-            .map((e) => AnalysisEntity.fromJson(e))
-            .toList();*/
-
         List<AnalysisEntity> value = await compute(
           (List<dynamic> jsonList) =>
               jsonList.map((e) => AnalysisEntity.fromJson(e)).toList(),
