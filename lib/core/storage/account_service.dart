@@ -104,6 +104,12 @@ class AccountService extends GetxService {
   ///获取用户token
   String getAuthToken() => data?.authToken ?? "";
 
+  ///更新用户token
+  void updateAuthToken(String? authToken) {
+    data?.authToken = authToken;
+    save(data!);
+  }
+
   ///更新用户生日
   void updateUserBirth(String birthday) {
     debugPrint("birthday => $birthday");
@@ -326,6 +332,8 @@ class AccountService extends GetxService {
 
   ///注销
   Future<void> logout() async {
+    // AccountService.to.data?.authToken = null;
+    // AccountService.to.updateAuthToken(null);
     clear();
     data = AccountEntity();
     PageTools.offAllNamedLogin();

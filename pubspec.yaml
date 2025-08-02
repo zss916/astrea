@@ -54,6 +54,7 @@ dependencies:
   dio_cache_interceptor: 4.0.3
   #azlistview_plus: ^3.0.0
   scrollable_positioned_list: 0.3.8
+  scroll_to_position: ^0.0.2
   #logo
   flutter_launcher_icons: ^0.14.4
   #splash
@@ -61,6 +62,10 @@ dependencies:
   #判断是否支持google服务
   #google_api_availability: 5.0.1
   webview_flutter: 4.13.0
+  #通知
+  #firebase_messaging: 16.0.0
+  notification_permissions: 0.6.1
+  flutter_local_notifications: 19.4.0
 
 
  #抓包工具

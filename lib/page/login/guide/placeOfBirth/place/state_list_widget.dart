@@ -41,44 +41,38 @@ class _StatesWidgetState extends State<StatesWidget> {
       children: [
         ScrollablePositionedList.builder(
           physics: BouncingScrollPhysics(),
+          itemCount: widget.logic.keyStateCount,
           itemScrollController: _scrollController,
           itemBuilder: (context, index) {
             return ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.only(bottom: 80.h, top: 20.h),
-              itemCount: widget.logic.keyStateCount,
-              itemBuilder: (_, index) => ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: widget.logic.valueStateCount(index),
-                itemBuilder: (_, i) {
-                  StateEntity state =
-                      (widget.logic.stateData[widget.logic.stateData.keys
-                          .toList()[index]] ??
-                      [])[i];
-                  return InkWell(
-                    onTap: () {
-                      widget.logic.selectState(
-                        state,
-                        onSelect:
-                            (String place, String latitude, String longitude) {
-                              widget.onSelect?.call(place, latitude, longitude);
-                            },
-                      );
-                    },
-                    child: PlaceItem(
-                      index: i,
-                      isSelected: state.isSelected ?? false,
-                      firstLetter: state.firstLetter ?? "",
-                      name: state.name ?? "",
-                    ),
-                  );
-                },
-              ),
+              itemCount: widget.logic.valueStateCount(index),
+              itemBuilder: (_, i) {
+                StateEntity state =
+                    (widget.logic.stateData[widget.logic.stateData.keys
+                        .toList()[index]] ??
+                    [])[i];
+                return InkWell(
+                  onTap: () {
+                    widget.logic.selectState(
+                      state,
+                      onSelect:
+                          (String place, String latitude, String longitude) {
+                            widget.onSelect?.call(place, latitude, longitude);
+                          },
+                    );
+                  },
+                  child: PlaceItem(
+                    index: i,
+                    isSelected: state.isSelected ?? false,
+                    firstLetter: state.firstLetter ?? "",
+                    name: state.name ?? "",
+                  ),
+                );
+              },
             );
           },
-          itemCount: widget.logic.keyStateCount,
         ),
         PositionedDirectional(
           end: 0,

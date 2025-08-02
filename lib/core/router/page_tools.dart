@@ -22,36 +22,32 @@ class PageTools {
       toGuide();
     } else {
       int step = (AccountService.to.loginStep ?? 0);
-      if (AccountService.to.friendId.isEmpty) {
-        debugPrint("friend:${AccountService.to.friendId}");
-      } else {
-        debugPrint("step===>$step");
-        switch (step) {
-          case 0:
-            toGuide();
-            break;
-          case 1:
-            toDateOfBirth();
-            break;
-          case 2:
-            toTimeOfBirth();
-            break;
-          case 3:
-            toPlaceOfBirth();
-            break;
-          case 4:
-            toGender();
-            break;
-          case 5:
-            toEditUserName();
-            break;
-          case 6:
-            toInterests();
-            break;
-          case 7:
-            toWelcome();
-            break;
-        }
+      debugPrint("step===>$step");
+      switch (step) {
+        case 0:
+          toGuide();
+          break;
+        case 1:
+          toDateOfBirth();
+          break;
+        case 2:
+          toTimeOfBirth();
+          break;
+        case 3:
+          toPlaceOfBirth();
+          break;
+        case 4:
+          toGender();
+          break;
+        case 5:
+          toEditUserName();
+          break;
+        case 6:
+          toInterests();
+          break;
+        case 7:
+          toWelcome();
+          break;
       }
     }
   }

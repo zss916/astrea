@@ -8,6 +8,7 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 class CountryWidget extends StatefulWidget {
   final PlaceOfBirthLogic logic;
   final List<String> az;
+
   final Function(String place, String latitude, String longitude)? onSelect;
   const CountryWidget({
     super.key,
@@ -42,6 +43,7 @@ class _CountryWidgetState extends State<CountryWidget> {
         ScrollablePositionedList.builder(
           physics: BouncingScrollPhysics(),
           itemScrollController: _scrollController,
+          itemCount: widget.logic.keyCountryCount,
           itemBuilder: (context, index) {
             return ListView.builder(
               shrinkWrap: true,
@@ -72,7 +74,6 @@ class _CountryWidgetState extends State<CountryWidget> {
               },
             );
           },
-          itemCount: widget.logic.keyCountryCount,
         ),
         PositionedDirectional(
           end: 0,

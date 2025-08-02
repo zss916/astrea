@@ -42,43 +42,37 @@ class _CitiesWidgetState extends State<CitiesWidget> {
         ScrollablePositionedList.builder(
           physics: BouncingScrollPhysics(),
           itemScrollController: _scrollController,
+          itemCount: widget.logic.keyCityCount,
           itemBuilder: (context, index) {
             return ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.only(bottom: 80.h, top: 20.h),
-              itemCount: widget.logic.keyCityCount,
-              itemBuilder: (_, index) => ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: widget.logic.valueCityCount(index),
-                itemBuilder: (_, i) {
-                  CityEntity city =
-                      (widget.logic.cityData[widget.logic.cityData.keys
-                          .toList()[index]] ??
-                      [])[i];
-                  return InkWell(
-                    onTap: () {
-                      widget.logic.selectCity(
-                        city,
-                        onSelect:
-                            (String place, String latitude, String longitude) {
-                              widget.onSelect?.call(place, latitude, longitude);
-                            },
-                      );
-                    },
-                    child: PlaceItem(
-                      index: i,
-                      isSelected: city.isSelected ?? false,
-                      firstLetter: city.firstLetter ?? "",
-                      name: city.name ?? "",
-                    ),
-                  );
-                },
-              ),
+              itemCount: widget.logic.valueCityCount(index),
+              itemBuilder: (_, i) {
+                CityEntity city =
+                    (widget.logic.cityData[widget.logic.cityData.keys
+                        .toList()[index]] ??
+                    [])[i];
+                return InkWell(
+                  onTap: () {
+                    widget.logic.selectCity(
+                      city,
+                      onSelect:
+                          (String place, String latitude, String longitude) {
+                            widget.onSelect?.call(place, latitude, longitude);
+                          },
+                    );
+                  },
+                  child: PlaceItem(
+                    index: i,
+                    isSelected: city.isSelected ?? false,
+                    firstLetter: city.firstLetter ?? "",
+                    name: city.name ?? "",
+                  ),
+                );
+              },
             );
           },
-          itemCount: widget.logic.keyCityCount,
         ),
         PositionedDirectional(
           end: 0,
