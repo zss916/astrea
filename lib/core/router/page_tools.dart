@@ -257,4 +257,7 @@ class PageTools {
       PageTools.offAllNamedHome();
     }
   }
+
+  static toWeb({required String title, required String url}) =>
+      Get.toNamed(APages.webview, arguments: {"title": title, "url": url});
 }

@@ -45,6 +45,7 @@ import 'package:astrea/page/login/guide/welcome/index.dart';
 import 'package:astrea/page/login/start/index.dart';
 import 'package:astrea/page/splash/index.dart';
 import 'package:astrea/page/subscribe/index.dart';
+import 'package:astrea/page/web/web_page.dart';
 import 'package:get/get.dart';
 
 class APages {
@@ -96,6 +97,7 @@ class APages {
   static const subscribe = '/subscribe';
   static const splash = '/splash';
   static const noticeSetting = '/notice_setting';
+  static const webview = '/webview';
 
   static final List<GetPage> routes = [
     GetPage(name: splash, page: () => SplashPage(), binding: SplashBinding()),
@@ -137,6 +139,7 @@ class APages {
     GetPage(name: starReport, page: () => StarReportPage()),
     GetPage(name: account, page: () => AccountPage()),
     GetPage(name: feedback, page: () => FeedbackPage()),
+    GetPage(name: webview, page: () => WebPage()),
     GetPage(
       name: accountInformation,
       page: () => AccountInfoPage(),

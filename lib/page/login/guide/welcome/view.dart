@@ -54,29 +54,34 @@ class WelcomePage extends StatelessWidget {
               ),
             ),
             Spacer(),
-            //if (GetPlatform.isIOS)
-            WelcomeBtn(
-              title: LanKey.apple.tr,
-              icon: Assets.imageApple,
-              onTap: () {
-                logic.toGoogleAuth();
-              },
-            ),
-            //if (GetPlatform.isAndroid)
-            WelcomeBtn(
-              margin: EdgeInsetsDirectional.symmetric(
-                vertical: 12,
-                horizontal: 20,
+            if (GetPlatform.isIOS)
+              WelcomeBtn(
+                margin: EdgeInsetsDirectional.only(
+                  bottom: 12,
+                  start: 20,
+                  end: 20,
+                ),
+                title: LanKey.apple.tr,
+                icon: Assets.imageApple,
+                onTap: () {
+                  logic.toGoogleAuth();
+                },
               ),
-              title: LanKey.google.tr,
-              iconSize: SizedBox(width: 16, height: 16),
-              bgColor: Color(0xFFEAE9F1),
-              textColor: Color(0xFF323133),
-              icon: Assets.imageGoogle,
-              onTap: () {
-                logic.toAppleAuth();
-              },
-            ),
+            if (GetPlatform.isAndroid)
+              WelcomeBtn(
+                margin: EdgeInsetsDirectional.only(
+                  bottom: 12,
+                  start: 20,
+                  end: 20,
+                ),
+                title: LanKey.google.tr,
+                iconSize: SizedBox(width: 16, height: 16),
+                textColor: Color(0xFF323133),
+                icon: Assets.imageGoogle,
+                onTap: () {
+                  logic.toAppleAuth();
+                },
+              ),
             WelcomeBtn(
               title: LanKey.email.tr,
               icon: Assets.imageEmail,

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:astrea/core/bus/app_event_bus.dart';
 import 'package:astrea/core/gallery/sheet_gallery.dart';
 import 'package:astrea/core/router/page_tools.dart';
+import 'package:astrea/core/setting/app_setting.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/net/api/account.dart';
@@ -67,5 +68,16 @@ class AccountLogic extends GetxController {
         update();
       },
     );
+  }
+
+  void toPrivacy() {
+    PageTools.toWeb(
+      title: LanKey.startPrivacyPolicy.tr,
+      url: AppSetting.policy,
+    );
+  }
+
+  void toService() {
+    PageTools.toWeb(title: LanKey.startTermsOfService.tr, url: AppSetting.term);
   }
 }

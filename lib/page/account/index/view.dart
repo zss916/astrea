@@ -222,9 +222,25 @@ class AccountPage extends StatelessWidget {
             children: [
               CommonItem(title: LanKey.agreement.tr),
               CommonDivider(),
-              CommonItem(title: LanKey.subscriptionTerms.tr),
+              CommonItem(
+                title: LanKey.subscriptionTerms.tr,
+                onTap: () {
+                  PageTools.toWeb(
+                    title: LanKey.startTermsOfService.tr,
+                    url: AppSetting.term,
+                  );
+                },
+              ),
               CommonDivider(),
-              CommonItem(title: LanKey.privacyPolicy.tr),
+              CommonItem(
+                title: LanKey.privacyPolicy.tr,
+                onTap: () {
+                  PageTools.toWeb(
+                    title: LanKey.startPrivacyPolicy.tr,
+                    url: AppSetting.policy,
+                  );
+                },
+              ),
               CommonDivider(),
               CommonItem(title: LanKey.contentRules.tr),
             ],

@@ -16,10 +16,13 @@ class StartLogic extends GetxController {
   void toLogin() => PageTools.toWelcome();
 
   void toPrivacy() {
-    ///
+    PageTools.toWeb(
+      title: LanKey.startPrivacyPolicy.tr,
+      url: AppSetting.policy,
+    );
   }
 
   void toService() {
-    ///
+    PageTools.toWeb(title: LanKey.startTermsOfService.tr, url: AppSetting.term);
   }
 }

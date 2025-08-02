@@ -3,6 +3,7 @@ import 'package:astrea/components/common_btn.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/setting/app_setting.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/login/start/widget/policy_widget.dart';

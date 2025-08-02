@@ -2,7 +2,6 @@ import 'package:astrea/components/common_app_bar.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
-import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/account/accountInfo/details/widget/common_divider.dart';
 import 'package:astrea/page/home/account/index/logic.dart';
@@ -56,7 +55,7 @@ class AccountView extends StatelessWidget {
                   ),
                 ),
                 buildPersonalData(logic),
-                buildLawAndPrivacy(),
+                buildLawAndPrivacy(logic),
                 SizedBox(height: 120.h),
               ],
             );
@@ -133,7 +132,7 @@ class AccountView extends StatelessWidget {
     );
   }
 
-  Widget buildLawAndPrivacy() {
+  Widget buildLawAndPrivacy(AccountLogic logic) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -169,7 +168,7 @@ class AccountView extends StatelessWidget {
               CommonItem(
                 title: LanKey.agreement.tr,
                 onTap: () {
-                  AppLoading.toast("${LanKey.agreement.tr}");
+                  logic.toService();
                 },
               ),
               CommonDivider(),
@@ -177,7 +176,12 @@ class AccountView extends StatelessWidget {
                 title: LanKey.subscriptionTerms.tr,
               ),
               CommonDivider(),*/
-              CommonItem(title: LanKey.privacyPolicy.tr),
+              CommonItem(
+                title: LanKey.privacyPolicy.tr,
+                onTap: () {
+                  logic.toPrivacy();
+                },
+              ),
               //CommonDivider(),
               /*CommonItem(
                 title: LanKey.contentRules.tr,

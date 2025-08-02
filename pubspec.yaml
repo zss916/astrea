@@ -32,14 +32,14 @@ dependencies:
   permission_handler: 12.0.1
   screen_protector: 1.4.2+1
   flutter_slidable: 4.0.0
-  wheel_picker: ^0.2.2
+  wheel_picker: 0.2.2
   #压缩
-  flutter_image_compress: ^2.4.0
+  flutter_image_compress: 2.4.0
   #国家数据
-  intl_country_data: ^1.2.9
-  bubble_tab_indicator: ^0.1.6
+  intl_country_data: 1.2.9
+  bubble_tab_indicator: 0.1.6
   event_bus: ^2.0.1
-  logger: ^2.6.0
+  logger: 2.6.0
   flutter_svg: ^2.2.0
   url_launcher: 6.3.2
   image_picker: 1.1.2
@@ -48,19 +48,22 @@ dependencies:
   sign_in_with_apple: 7.0.1
   email_validator: 3.0.0
   sprintf: ^7.0.0
-  flutter_native_splash: ^2.4.6
   collection: 1.19.1
   lottie: 3.3.1
-  #flutter_image_compress: ^4.0.0
   #抓包配置
   http_proxy: ^1.2.3
   dio_http2_adapter: ^2.6.0
   #缓存
-  dio_cache_interceptor: ^4.0.3
+  dio_cache_interceptor: 4.0.3
   #azlistview_plus: ^3.0.0
-  scrollable_positioned_list: ^0.3.8
+  scrollable_positioned_list: 0.3.8
   #logo
   flutter_launcher_icons: ^0.14.4
+  #splash
+  flutter_native_splash: ^2.4.6
+  #判断是否支持google服务
+  #google_api_availability: 5.0.1
+  webview_flutter: 4.13.0
 
 
 
