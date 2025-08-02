@@ -105,8 +105,8 @@ flutter_launcher_icons:
   image_path_android: "launch/logo.png"
   #android 13+
   #adaptive_icon_monochrome: "#563E88"
-  #adaptive_icon_foreground: "xxxx"
-  #adaptive_icon_background: "assets/images/christmas-background.png"
+  adaptive_icon_foreground: "launch/logo.png"
+  adaptive_icon_background: "#000044"
   min_sdk_android: 26
 
 
