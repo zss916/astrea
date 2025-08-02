@@ -100,9 +100,13 @@ flutter:
 
 #dart run flutter_launcher_icons
 flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "launch/logo.png"
+  android: "ic_launcher"
+  ios: false
+  image_path_android: "launch/logo.png"
+  #android 13+
+  #adaptive_icon_monochrome: "#563E88"
+  #adaptive_icon_foreground: "xxxx"
+  #adaptive_icon_background: "assets/images/christmas-background.png"
   min_sdk_android: 26
 
 
@@ -120,6 +124,6 @@ flutter_native_splash:
     color_dark: "#563E88"
 
 
-  android: false
-  ios: true
+  android: true
+  ios: false
   web: false
