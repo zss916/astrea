@@ -28,15 +28,34 @@ class EmailLogic extends GetxController {
           AppLoading.dismiss();
         });
 
+    /*if (AccountService.to.isNewUser) {
+      ///判断是否完成资料录入
+      if (AccountService.to.isFinishRecord) {
+        debugPrint("ddd===>> ${AccountService.to.friendId}");
+        AccountService.to.userID;
+        AccountService.to.isLogin;
+        PageTools.toResult();
+      } else {
+        PageTools.toStep();
+      }
+    } else {
+      PageTools.offAllNamedHome();
+    }*/
+
     if (data.$1) {
-      AccountService.to.updateLocalUserInfo(
-        uid: data.$2?.userId,
-        loginEmail: email,
-        loginChannel: LoginChannel.email.value,
-        authToken: data.$2?.authToken ?? "",
-        isNewUser: data.$2?.isNewUser,
-      );
-      PageTools.loginToNext();
+      ///判断是否是同一个用户
+      if (AccountService.to.getAccount()?.userId == data.$2?.userId) {
+        PageTools.offAllNamedHome();
+      } else {
+        AccountService.to.updateLocalUserInfo(
+          uid: data.$2?.userId,
+          loginEmail: email,
+          loginChannel: LoginChannel.email.value,
+          authToken: data.$2?.authToken ?? "",
+          isNewUser: data.$2?.isNewUser,
+        );
+        PageTools.loginToNext();
+      }
     } else {
       AppLoading.toast("login failed");
     }

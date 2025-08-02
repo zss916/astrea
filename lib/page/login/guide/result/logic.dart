@@ -34,8 +34,10 @@ class ResultLogic extends GetxController {
         ///无论结果，都先进入主页
         PageTools.offAllNamedHome(data: value.$2);
       } else {
-        debugPrint("getAccount friendId error: null");
+        AppLoading.toast("get account failed");
       }
+    } else {
+      AppLoading.toast("update account failed");
     }
   }
 }

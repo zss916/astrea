@@ -11,18 +11,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-void showInterestsSheet(Function(String) onSelect) {
+void showInterestsSheet(String interests, Function(String) onSelect) {
   Get.bottomSheet(
-    SelectInterestWidget(onSelect: onSelect),
+    SelectInterestWidget(interests: interests, onSelect: onSelect),
     isScrollControlled: true,
     settings: RouteSettings(name: APages.selectInterestsSheet),
   );
 }
 
 class SelectInterestWidget extends StatefulWidget {
+  final String interests;
   final Function(String value) onSelect;
 
-  const SelectInterestWidget({super.key, required this.onSelect});
+  const SelectInterestWidget({
+    super.key,
+    required this.interests,
+    required this.onSelect,
+  });
 
   @override
   _SelectInterestWidgetState createState() => _SelectInterestWidgetState();
@@ -46,6 +51,8 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
   @override
   void initState() {
     super.initState();
+    // List<String> arr = widget.interests.split(",").toList();
+    // selectList = arr.map((e) => interests.indexOf(e)).toList();
   }
 
   @override

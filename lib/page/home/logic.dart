@@ -5,7 +5,7 @@ class HomeLogic extends GetxController {
   void onInit() {
     super.onInit();
 
-    ///
+    ///init
   }
 
   @override

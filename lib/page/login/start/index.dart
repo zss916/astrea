@@ -7,6 +7,7 @@ import 'package:astrea/core/setting/app_setting.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/login/start/widget/policy_widget.dart';
+import 'package:astrea/test/test.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

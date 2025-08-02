@@ -192,7 +192,7 @@ packages:
     source: hosted
     version: "4.0.3"
   dio_http2_adapter:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: dio_http2_adapter
       sha256: b8bd5d587fd228a461711f8b82f378ccd4bf1fbf7802e7663ca60d7b5ce0e3aa
@@ -543,7 +543,7 @@ packages:
     source: hosted
     version: "4.1.2"
   http_proxy:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: http_proxy
       sha256: "1fd2f5357e018a20a2ba7b0c97d83dea65b19e1a793ea0ee7c0fbade8768843a"
@@ -894,6 +894,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.4.0"
+  proxy:
+    dependency: "direct main"
+    description:
+      path: "tools/proxy"
+      relative: true
+    source: path
+    version: "0.0.1"
   pull_to_refresh:
     dependency: "direct main"
     description:

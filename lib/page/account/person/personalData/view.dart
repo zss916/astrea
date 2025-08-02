@@ -101,7 +101,7 @@ class PersonalDataPage extends StatelessWidget {
                 Divider(height: 1, color: Color(0xFFD5D5D5)),
                 InkWell(
                   onTap: () {
-                    showInterestsSheet((value) {
+                    showInterestsSheet(logic.interests ?? "", (value) {
                       logic.account?.interests = value;
                       logic.update();
                     });

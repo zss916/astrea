@@ -20,7 +20,9 @@ class Http {
     _dio.httpClientAdapter = httpAdapter;
 
     /// 代理抓包
-    //_dio.httpClientAdapter = proxyAdapter;
+    // _dio.httpClientAdapter = ProxyTool.getProxyAdapter();
+
+    ///auth
     _dio.interceptors.add(AuthInterceptor());
 
     /// 缓存
@@ -40,7 +42,7 @@ class Http {
     String path, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
-    //Options? options,
+    Options? options,
     bool showLoading = false,
     bool showToast = true,
     CancelToken? cancelToken,
@@ -64,7 +66,7 @@ class Http {
     String url, {
     Map<String, dynamic>? query,
     Object? data,
-    //Options? options,
+    Options? options,
     CancelToken? cancelToken,
   }) async {
     try {
@@ -86,7 +88,7 @@ class Http {
     String url, {
     Map<String, dynamic>? query,
     Object? data,
-    //Options? options,
+    Options? options,
     CancelToken? cancelToken,
   }) async {
     try {
@@ -108,7 +110,7 @@ class Http {
     String url, {
     Map<String, dynamic>? query,
     Object? data,
-    //Options? options,
+    Options? options,
     CancelToken? cancelToken,
   }) async {
     try {
@@ -130,7 +132,7 @@ class Http {
     String url, {
     Map<String, dynamic>? query,
     Object? data,
-    //Options? options,
+    Options? options,
     CancelToken? cancelToken,
   }) async {
     try {

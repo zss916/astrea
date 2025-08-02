@@ -22,32 +22,36 @@ class PageTools {
       toGuide();
     } else {
       int step = (AccountService.to.loginStep ?? 0);
-      debugPrint("step===>$step");
-      switch (step) {
-        case 0:
-          toGuide();
-          break;
-        case 1:
-          toDateOfBirth();
-          break;
-        case 2:
-          toTimeOfBirth();
-          break;
-        case 3:
-          toPlaceOfBirth();
-          break;
-        case 4:
-          toGender();
-          break;
-        case 5:
-          toEditUserName();
-          break;
-        case 6:
-          toInterests();
-          break;
-        case 7:
-          toWelcome();
-          break;
+      if (AccountService.to.friendId.isEmpty) {
+        debugPrint("friend:${AccountService.to.friendId}");
+      } else {
+        debugPrint("step===>$step");
+        switch (step) {
+          case 0:
+            toGuide();
+            break;
+          case 1:
+            toDateOfBirth();
+            break;
+          case 2:
+            toTimeOfBirth();
+            break;
+          case 3:
+            toPlaceOfBirth();
+            break;
+          case 4:
+            toGender();
+            break;
+          case 5:
+            toEditUserName();
+            break;
+          case 6:
+            toInterests();
+            break;
+          case 7:
+            toWelcome();
+            break;
+        }
       }
     }
   }
@@ -249,6 +253,7 @@ class PageTools {
     if (AccountService.to.isNewUser) {
       ///判断是否完成资料录入
       if (AccountService.to.isFinishRecord) {
+        ///todo ????????
         PageTools.toResult();
       } else {
         PageTools.toStep();
