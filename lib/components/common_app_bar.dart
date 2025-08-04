@@ -1,5 +1,5 @@
-import 'package:astrea/core/setting/app_common_setting.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/setting/global.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';

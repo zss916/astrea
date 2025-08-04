@@ -1,3 +1,4 @@
+import 'package:astrea/net/http/interceptor/error_interceptor.dart';
 import 'package:dio/dio.dart';
 
 //import 'package:get/get.dart' hide Response;
@@ -31,6 +32,9 @@ class Http {
     /// 日志
     //_dio.interceptors.add(LoggerInterceptor());
     _dio.interceptors.add(prettyDioLogger);
+
+    /// 错误拦截
+    _dio.interceptors.add(ErrorInterceptor());
   }
 
   void cancelRequests(CancelToken token) {

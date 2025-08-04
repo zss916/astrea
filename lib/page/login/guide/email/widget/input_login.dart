@@ -1,6 +1,6 @@
 import 'package:astrea/components/common_btn.dart';
-import 'package:astrea/core/setting/app_common_setting.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/setting/global.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/core/validator/app_validator.dart';
 import 'package:astrea/page/login/guide/email/index.dart';

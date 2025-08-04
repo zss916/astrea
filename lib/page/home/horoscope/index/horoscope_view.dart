@@ -2,7 +2,7 @@ import 'package:astrea/components/bottom_stack_btn.dart';
 import 'package:astrea/components/loading_widget.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
-import 'package:astrea/core/setting/app_common_setting.dart';
+import 'package:astrea/core/setting/global.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/home/horoscope/index/logic.dart';
 import 'package:astrea/page/home/horoscope/index/widget/home_refresh.dart';

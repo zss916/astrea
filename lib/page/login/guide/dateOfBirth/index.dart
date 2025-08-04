@@ -1,17 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:astrea/components/common_app_bar.dart';
 import 'package:astrea/components/common_btn.dart';
 import 'package:astrea/components/step_indicator.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
-import 'package:astrea/core/setting/app_common_setting.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/setting/global.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/core/utils/calculate.dart';
 import 'package:astrea/page/login/guide/dateOfBirth/widget/select_date_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 part 'binding.dart';
 part 'logic.dart';

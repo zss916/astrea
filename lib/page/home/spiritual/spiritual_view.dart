@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:astrea/core/setting/app_color.dart';
-import 'package:astrea/core/setting/app_common_setting.dart';
+import 'package:astrea/core/setting/global.dart';
 import 'package:astrea/page/home/spiritual/widget/horizontal_listview.dart';
 import 'package:astrea/page/home/spiritual/widget/hot_topic.dart';
 import 'package:astrea/page/home/spiritual/widget/spiritual_bg.dart';
 import 'package:astrea/page/home/spiritual/widget/spiritual_title.dart';
+import 'package:flutter/material.dart';
 
 class SpiritualView extends StatelessWidget {
   const SpiritualView({super.key});

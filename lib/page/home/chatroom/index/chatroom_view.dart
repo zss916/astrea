@@ -1,10 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:astrea/components/bottom_stack_btn.dart';
 import 'package:astrea/components/star_level.dart';
 import 'package:astrea/core/router/page_tools.dart';
-import 'package:astrea/core/setting/app_common_setting.dart';
+import 'package:astrea/core/setting/global.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/home/chatroom/index/widget/chatroom_bg.dart';
 import 'package:astrea/page/home/chatroom/index/widget/line_state.dart';
@@ -12,6 +9,9 @@ import 'package:astrea/page/home/chatroom/index/widget/msg_content.dart';
 import 'package:astrea/page/home/chatroom/index/widget/msg_name.dart';
 import 'package:astrea/page/home/chatroom/index/widget/msg_time.dart';
 import 'package:astrea/page/home/chatroom/index/widget/number_tag.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class ChatroomView extends StatelessWidget {
   const ChatroomView({super.key});

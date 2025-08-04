@@ -11,13 +11,14 @@ abstract class AuthAPI {
   static Future<(bool, AuthEntity?)> emailLogin({
     required String email,
     required String pwd,
+    required int loginType,
     CancelToken? cancelToken,
   }) async {
     try {
       var result = await Http.instance.post(
         ApiPath.emailLogin,
         cancelToken: cancelToken,
-        data: {"email": email, "pwd": pwd},
+        data: {"email": email, "pwd": pwd, "login_type": loginType},
       );
 
       if (result["code"] == 0) {
@@ -27,7 +28,16 @@ abstract class AuthAPI {
         );
         return (true, value);
       } else {
-        AppLoading.toast("${result["msg"]}");
+        switch (result["code"]) {
+          case 1005:
+            AppLoading.toast("Email does not exist");
+            break;
+          case 1006:
+            AppLoading.toast("Password error");
+            break;
+          default:
+            AppLoading.toast("${result["msg"]}");
+        }
         return (false, null);
       }
     } catch (error) {

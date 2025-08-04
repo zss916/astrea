@@ -4,6 +4,7 @@ import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/net/bean/account_entity.dart';
 import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
+import 'package:astrea/page/login/guide/email/enum/login_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -46,7 +47,7 @@ class PageTools {
           toInterests();
           break;
         case 7:
-          toWelcome();
+          toWelcome(loginType: LoginType.loginAndRegister.index);
           break;
       }
     }
@@ -82,15 +83,16 @@ class PageTools {
     Get.toNamed(APages.interests);
   }
 
-  static toWelcome() {
-    Get.toNamed(APages.welcome);
+  static toWelcome({required int loginType}) {
+    Get.toNamed(APages.welcome, arguments: loginType);
   }
 
   static toHome() => Get.toNamed(APages.home);
 
   static toNotifySetting() => Get.toNamed(APages.notifySetting);
 
-  static toEmail() => Get.toNamed(APages.email);
+  static toEmail({required int loginType}) =>
+      Get.toNamed(APages.email, arguments: loginType);
 
   static toResult() => Get.toNamed(APages.result);
 
@@ -248,7 +250,8 @@ class PageTools {
     Get.offAndToNamed(APages.guide);
   }
 
-  static offAllNamedLogin() => Get.offAllNamed(APages.welcome);
+  static offAllNamedLogin() =>
+      Get.offAllNamed(APages.welcome, arguments: LoginType.onlyLogin.index);
 
   static loginToNext() {
     if (AccountService.to.isNewUser) {

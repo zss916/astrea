@@ -4,6 +4,15 @@ class EmailLogic extends GetxController with AppValidatorMixin {
   CancelToken cancelToken = CancelToken();
   bool isEmailError = false;
   bool isPsdError = false;
+  int loginType = LoginType.loginAndRegister.index;
+
+  @override
+  void onInit() {
+    super.onInit();
+    if (Get.arguments != null && Get.arguments is int) {
+      loginType = Get.arguments as int;
+    }
+  }
 
   @override
   void onReady() {
@@ -24,7 +33,6 @@ class EmailLogic extends GetxController with AppValidatorMixin {
     isEmailError = !isEmailValidate;
     update();
 
-
     bool isPwdValidate = isPwd(pwd);
     isPsdError = !isPwdValidate;
     update();
@@ -40,6 +48,7 @@ class EmailLogic extends GetxController with AppValidatorMixin {
         await AuthAPI.emailLogin(
           email: email,
           pwd: pwd,
+          loginType: loginType,
           cancelToken: cancelToken,
         ).whenComplete(() {
           AppLoading.dismiss();
@@ -60,8 +69,6 @@ class EmailLogic extends GetxController with AppValidatorMixin {
       } else {
         PageTools.loginToNext();
       }
-    } else {
-      AppLoading.toast("login failed");
     }
   }
 }

@@ -4,7 +4,7 @@ import 'dart:io';
 //import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/router/router_observer.dart';
-import 'package:astrea/core/setting/app_common_setting.dart';
+import 'package:astrea/core/setting/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,7 +14,7 @@ import 'core/translations/language.dart';
 import 'net/http/http_adpter/httpClientAdapter.dart';
 
 Future<void> main() async {
-  await AppCommonSetting.init();
+  await Global.init();
 
   ///解决证书验证问题
   HttpOverrides.global = AppHttpOverrides();

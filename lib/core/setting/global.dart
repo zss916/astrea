@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class AppCommonSetting {
+class Global {
   static Future<void> init() async {
     WidgetsFlutterBinding.ensureInitialized();
     setSystemUi();

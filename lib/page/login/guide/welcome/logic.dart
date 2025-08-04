@@ -2,6 +2,15 @@ part of 'index.dart';
 
 class WelcomeLogic extends GetxController with LoginChannelMixin {
   CancelToken cancelToken = CancelToken();
+  int loginType = LoginType.loginAndRegister.index;
+
+  @override
+  void onInit() {
+    super.onInit();
+    if (Get.arguments != null && Get.arguments is int) {
+      loginType = Get.arguments as int;
+    }
+  }
 
   @override
   void onClose() {
@@ -71,7 +80,7 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
   }
 
   ///邮箱登录
-  void toEmailAuth() => PageTools.toEmail();
+  void toEmailAuth() => PageTools.toEmail(loginType: loginType);
 
   ///隐私
   void toPrivacy() {

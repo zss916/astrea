@@ -1,7 +1,7 @@
 import 'package:astrea/components/bottom_stack_btn.dart';
 import 'package:astrea/core/router/page_tools.dart';
-import 'package:astrea/core/setting/app_common_setting.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/setting/global.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/synastry/index/logic.dart';

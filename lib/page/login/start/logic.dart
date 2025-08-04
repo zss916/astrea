@@ -13,7 +13,7 @@ class StartLogic extends GetxController {
 
   void toStep() => PageTools.toStep();
 
-  void toLogin() => PageTools.toWelcome();
+  void toLogin() => PageTools.toWelcome(loginType: LoginType.onlyLogin.index);
 
   void toPrivacy() {
     PageTools.toWeb(

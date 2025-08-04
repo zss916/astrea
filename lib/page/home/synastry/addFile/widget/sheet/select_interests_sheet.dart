@@ -1,8 +1,8 @@
 import 'package:astrea/components/common_btn.dart';
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/setting/app_color.dart';
-import 'package:astrea/core/setting/app_common_setting.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/setting/global.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/login/guide/interests/widget/common.dart';

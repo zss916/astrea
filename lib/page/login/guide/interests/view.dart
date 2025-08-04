@@ -49,7 +49,9 @@ class InterestsPage extends StatelessWidget {
                 if (AccountService.to.isLogin && AccountService.to.isNewUser) {
                   PageTools.toResult();
                 } else {
-                  PageTools.toWelcome();
+                  PageTools.toWelcome(
+                    loginType: LoginType.loginAndRegister.index,
+                  );
                 }
                 AppPermissionTools.checkNotification();
                 // PageTools.toNotifySetting();
