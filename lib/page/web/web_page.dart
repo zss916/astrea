@@ -18,6 +18,7 @@ class _WebPageState extends State<WebPage> {
   String _lastUrl = "";
   String url = "";
   String title = "";
+  String javaScriptChannelName = "Astrea";
   @override
   void initState() {
     super.initState();
@@ -27,8 +28,17 @@ class _WebPageState extends State<WebPage> {
     initWebController();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    webViewController.clearLocalStorage();
+    webViewController.clearCache();
+    webViewController.removeJavaScriptChannel(javaScriptChannelName);
+  }
+
   void initWebController() {
     webViewController = WebViewController()
+      ..addJavaScriptChannel(javaScriptChannelName, onMessageReceived: (e) {})
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(Colors.white)
       ..setNavigationDelegate(
