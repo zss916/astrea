@@ -53,6 +53,7 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
               vertical: 24.h,
             ),
             child: GridView.builder(
+              shrinkWrap: true,
               itemCount: 6,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,

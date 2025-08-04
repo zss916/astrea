@@ -36,21 +36,13 @@ class EmailLogic extends GetxController {
         authToken: data.$2?.authToken ?? "",
         isNewUser: data.$2?.isNewUser,
       );
-      PageTools.loginToNext();
 
-      ///判断是否是上次账号
-      /*if (AccountService.to.getAccount()?.loginEmail == email) {
-
+      if (data.$2?.checkNewUser == true) {
+        // PageTools.offAndNamedGuide()();
+        PageTools.toGuide()();
       } else {
-        AccountService.to.updateLocalUserInfo(
-          uid: data.$2?.userId,
-          loginEmail: email,
-          loginChannel: LoginChannel.email.value,
-          authToken: data.$2?.authToken ?? "",
-          isNewUser: data.$2?.isNewUser,
-        );
-        PageTools.toGuide();
-      }*/
+        PageTools.loginToNext();
+      }
     } else {
       AppLoading.toast("login failed");
     }

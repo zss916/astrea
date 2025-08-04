@@ -243,6 +243,11 @@ class PageTools {
   static offAllNamedHome({NatalReportEntity? data}) =>
       Get.offAllNamed(APages.home, arguments: data);
 
+  static offAndNamedGuide() {
+    AccountService.to.updateLoginStep(step: LoginStep.step0.value);
+    Get.offAndToNamed(APages.guide);
+  }
+
   static offAllNamedLogin() => Get.offAllNamed(APages.welcome);
 
   static loginToNext() {

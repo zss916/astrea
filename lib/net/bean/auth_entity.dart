@@ -24,6 +24,8 @@ class AuthEntity {
   @JSONField(name: 'friend_id')
   String? friendId;
 
+  bool get checkNewUser => (isNewUser ?? 1) == 1;
+
   AuthEntity();
 
   factory AuthEntity.fromJson(Map<String, dynamic> json) =>
