@@ -67,7 +67,7 @@ class AccountInfoLogic extends GetxController {
     if (isSuccessful) {
       AccountService.to.logout();
     } else {
-      AppLoading.toast("delete logout error");
+      AppLoading.toast("logout error");
     }
   }
 }

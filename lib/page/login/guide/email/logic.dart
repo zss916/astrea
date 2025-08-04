@@ -23,14 +23,13 @@ class EmailLogic extends GetxController with AppValidatorMixin {
     bool isEmailValidate = EmailValidator.validate(email);
     isEmailError = !isEmailValidate;
     update();
-    if (!isEmailValidate) {
-      return;
-    }
+
 
     bool isPwdValidate = isPwd(pwd);
     isPsdError = !isPwdValidate;
     update();
-    if (!isPwdValidate) {
+
+    if (!isEmailValidate || !isPwdValidate) {
       return;
     }
 

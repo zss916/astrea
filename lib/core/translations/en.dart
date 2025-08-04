@@ -263,6 +263,7 @@ class LanKey {
   static const deleteAccount = "delete_account";
   static const deleteAccountTitle = "delete_account_title";
   static const deleteAccountContent = "delete_account_content";
+  static const deleteAccountContent2 = "delete_account_content2";
   static const send = "send";
   static const noticeSetting = "notice_setting";
   static const starChartDisplay = "star_chart_display";
@@ -673,6 +674,8 @@ const en = {
   "name_match_hint": "The nickname must not exceed 16 characters in total.",
   "delete_account_title": "Confirm account deletion？",
   "delete_account_content":
+      "After deletion, your account, profile, and historical data will be permanently deleted and unrecoverable.",
+  "delete_account_content2":
       "After deletion, your account, profile, and historical data will be permanently deleted and unrecoverable. You will no longer be able to log in with this account.The cooling-off period is 30 days. If you log in with this account within 30 days, the cancellation application will be automatically cancelled. After the cooling-off period ends, the system will automatically execute the final deletion.",
   "constellation_chart": "Constellation chart",
   "fortune_guide": "Fortune Guide",
