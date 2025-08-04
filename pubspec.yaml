@@ -33,9 +33,7 @@ dependencies:
   screen_protector: 1.4.2+1
   flutter_slidable: 4.0.0
   wheel_picker: 0.2.2
-  #压缩
   flutter_image_compress: 2.4.0
-  #国家数据
   intl_country_data: 1.2.9
   bubble_tab_indicator: 0.1.6
   event_bus: ^2.0.1
@@ -50,22 +48,20 @@ dependencies:
   sprintf: ^7.0.0
   collection: 1.19.1
   lottie: 3.3.1
-  #缓存
   dio_cache_interceptor: 4.0.3
-  #azlistview_plus: ^3.0.0
   scrollable_positioned_list: 0.3.8
   scroll_to_position: ^0.0.2
-  #logo
-  flutter_launcher_icons: ^0.14.4
-  #splash
-  flutter_native_splash: ^2.4.6
-  #判断是否支持google服务
-  #google_api_availability: 5.0.1
   webview_flutter: 4.13.0
   #通知
   #firebase_messaging: 16.0.0
-  notification_permissions: 0.6.1
-  flutter_local_notifications: 19.4.0
+  #notification_permissions: 0.6.1
+  #flutter_local_notifications: 19.4.0
+  #logo
+  #flutter_launcher_icons: ^0.14.4
+  #splash
+  #flutter_native_splash: ^2.4.6
+  #判断是否支持google服务
+  #google_api_availability: 5.0.1
 
 
  #抓包工具
@@ -107,31 +103,31 @@ flutter:
         - asset: fonts/SansitaOne.ttf
 
 #dart run flutter_launcher_icons
-flutter_launcher_icons:
-  android: "ic_launcher"
-  ios: false
-  image_path_android: "launch/logo.png"
-  #android 13+
-  adaptive_icon_monochrome: "launch/logo.png"
-  adaptive_icon_foreground: "launch/logo.png"
-  adaptive_icon_background: "#000044"
-  min_sdk_android: 26
+#flutter_launcher_icons:
+#  android: "ic_launcher"
+#  ios: false
+#  image_path_android: "launch/logo.png"
+#  #android 13+
+#  adaptive_icon_monochrome: "launch/logo.png"
+#  adaptive_icon_foreground: "launch/logo.png"
+#  adaptive_icon_background: "#000044"
+#  min_sdk_android: 26
 
 
 
 #dart run flutter_native_splash:create
-flutter_native_splash:
-
-  background_image: "launch/splash_bg.png"
-  background_image_dark: "launch/splash_bg.png"
-
-  android_12:
-    image: launch/logo.png
-    color: "#563E88"
-    image_dark: launch/logo.png
-    color_dark: "#563E88"
-
-
-  android: true
-  ios: false
-  web: false
+#flutter_native_splash:
+#
+#  background_image: "launch/splash_bg.png"
+#  background_image_dark: "launch/splash_bg.png"
+#
+#  android_12:
+#    image: launch/logo.png
+#    color: "#563E88"
+#    image_dark: launch/logo.png
+#    color_dark: "#563E88"
+#
+#
+#  android: true
+#  ios: false
+#  web: false

@@ -1,5 +1,5 @@
-import 'package:get/get_utils/get_utils.dart';
 import 'package:astrea/core/toast/app_loading.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<void> launchEmail({String? emailContent}) async {
