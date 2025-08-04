@@ -6,7 +6,6 @@ import 'package:astrea/core/validator/app_validator.dart';
 import 'package:astrea/page/login/guide/email/index.dart';
 import 'package:astrea/page/login/guide/email/widget/input_email.dart';
 import 'package:astrea/page/login/guide/email/widget/input_password.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -65,20 +64,22 @@ class _InputLoginState extends State<InputLogin> with AppValidatorMixin {
                     ),
                   ),
                   InputEmail(
+                    isShowError: widget.logic.isEmailError,
                     onNext: (value) {
                       setState(() {
                         email = value;
-                        isEditEmail = EmailValidator.validate(email);
-                        //isEditEmail = true;
+                        // isEditEmail = EmailValidator.validate(email);
+                        isEditEmail = value.trim().isNotEmpty;
                       });
                     },
                   ),
                   InputPassword(
+                    isShowError: widget.logic.isPsdError,
                     onNext: (value) {
                       setState(() {
                         pwd = value;
-                        isPsdEmail = isPwd(value);
-                        //isPsdEmail = true;
+                        //isPsdEmail = isPwd(value);
+                        isPsdEmail = value.trim().isNotEmpty;
                       });
                     },
                   ),
@@ -103,6 +104,7 @@ class _InputLoginState extends State<InputLogin> with AppValidatorMixin {
                 if (isEditEmail && isPsdEmail) {
                   //PageTools.toResult();
                   widget.logic.toAuthEmail(email: email, pwd: pwd);
+                  setState(() {});
                 }
               },
             ),

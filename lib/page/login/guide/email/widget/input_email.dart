@@ -8,8 +8,13 @@ import 'package:keyboard_visibility_pro/keyboard_visibility_pro.dart';
 
 class InputEmail extends StatefulWidget {
   final Function(String) onNext;
+  final bool isShowError;
 
-  const InputEmail({super.key, required this.onNext});
+  const InputEmail({
+    super.key,
+    required this.isShowError,
+    required this.onNext,
+  });
 
   @override
   _EditNameState createState() => _EditNameState();
@@ -19,6 +24,7 @@ class _EditNameState extends State<InputEmail> {
   TextEditingController textEditCtrl = TextEditingController();
   FocusNode focusNode = FocusNode();
   bool isError = false;
+  //bool isError2 = false;
 
   @override
   void initState() {
@@ -138,7 +144,7 @@ class _EditNameState extends State<InputEmail> {
               },
             ),
           ),
-          if (isError)
+          if (widget.isShowError)
             Container(
               margin: EdgeInsetsDirectional.only(start: 32, end: 32, top: 6.h),
               width: double.maxFinite,

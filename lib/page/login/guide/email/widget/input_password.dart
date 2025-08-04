@@ -9,8 +9,13 @@ import 'package:keyboard_visibility_pro/keyboard_visibility_pro.dart';
 
 class InputPassword extends StatefulWidget {
   final Function(String) onNext;
+  final bool isShowError;
 
-  const InputPassword({Key? key, required this.onNext}) : super(key: key);
+  const InputPassword({
+    Key? key,
+    required this.isShowError,
+    required this.onNext,
+  }) : super(key: key);
 
   @override
   _EditNameState createState() => _EditNameState();
@@ -20,6 +25,7 @@ class _EditNameState extends State<InputPassword> with AppValidatorMixin {
   TextEditingController textEditCtrl = TextEditingController();
   FocusNode focusNode = FocusNode();
   bool isError = false;
+  //bool isError2 = false;
 
   @override
   void initState() {
@@ -168,11 +174,13 @@ class _EditNameState extends State<InputPassword> with AppValidatorMixin {
             margin: EdgeInsetsDirectional.only(start: 32, end: 32, top: 6.h),
             width: double.maxFinite,
             child: Text(
-              isError
+              widget.isShowError
                   ? LanKey.invalidPasswordError.tr
                   : LanKey.invalidPasswordHint.tr,
               style: TextStyle(
-                color: isError ? const Color(0xFFFF2200) : Color(0xFF6A686D),
+                color: widget.isShowError
+                    ? const Color(0xFFFF2200)
+                    : Color(0xFF6A686D),
                 fontSize: 14,
                 fontFamily: AppFonts.textFontFamily,
                 fontWeight: FontWeight.normal,

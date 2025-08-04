@@ -1,7 +1,9 @@
 part of 'index.dart';
 
-class EmailLogic extends GetxController {
+class EmailLogic extends GetxController with AppValidatorMixin {
   CancelToken cancelToken = CancelToken();
+  bool isEmailError = false;
+  bool isPsdError = false;
 
   @override
   void onReady() {
@@ -18,6 +20,22 @@ class EmailLogic extends GetxController {
 
   /// 邮箱登录
   Future<void> toAuthEmail({required String email, required String pwd}) async {
+    bool isEmailValidate = EmailValidator.validate(email);
+    isEmailError = !isEmailValidate;
+    update();
+    if (!isEmailValidate) {
+      return;
+    }
+
+    bool isPwdValidate = isPwd(pwd);
+    isPsdError = !isPwdValidate;
+    update();
+    if (!isPwdValidate) {
+      return;
+    }
+
+    // return;
+
     AppLoading.show();
     (bool isSuccess, AuthEntity? auth) data =
         await AuthAPI.emailLogin(
