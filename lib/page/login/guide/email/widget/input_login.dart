@@ -103,6 +103,7 @@ class _InputLoginState extends State<InputLogin> with AppValidatorMixin {
               onTap: () {
                 if (isEditEmail && isPsdEmail) {
                   //PageTools.toResult();
+                  //showFailedTipDialog();
                   widget.logic.toAuthEmail(email: email, pwd: pwd);
                   setState(() {});
                 }
