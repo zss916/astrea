@@ -54,9 +54,7 @@ class App extends StatelessWidget {
         routingCallback: (routing) {
           debugPrint("routing:${routing?.current}");
         },
-
-        // initialRoute: APages.splash,
-        initialRoute: APages.gender,
+        initialRoute: APages.splash,
       ),
     );
   }

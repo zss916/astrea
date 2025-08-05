@@ -76,7 +76,8 @@ class WelcomePage extends StatelessWidget {
                 ),
                 title: LanKey.google.tr,
                 iconSize: SizedBox(width: 16, height: 16),
-                textColor: Color(0xFF323133),
+                iconColor: Colors.white,
+                //: Color(0xFF323133),
                 icon: Assets.imageGoogle,
                 onTap: () {
                   logic.toAppleAuth();

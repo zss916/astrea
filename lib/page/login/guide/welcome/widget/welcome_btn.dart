@@ -1,12 +1,13 @@
+import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:astrea/core/setting/app_fonts.dart';
 
 class WelcomeBtn extends StatelessWidget {
   final String title;
   final String icon;
   final Color? bgColor;
   final Color? textColor;
+  final Color? iconColor;
   final EdgeInsetsGeometry? margin;
   final Function onTap;
   final SizedBox? iconSize;
@@ -20,6 +21,7 @@ class WelcomeBtn extends StatelessWidget {
     this.textColor,
     this.margin,
     this.iconSize,
+    this.iconColor,
   });
 
   @override
@@ -44,6 +46,7 @@ class WelcomeBtn extends StatelessWidget {
               margin: EdgeInsetsDirectional.only(end: 8.w, bottom: 0),
               child: Image.asset(
                 icon,
+                color: iconColor,
                 width: iconSize?.width ?? 20,
                 height: iconSize?.height ?? 20,
                 matchTextDirection: true,
