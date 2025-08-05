@@ -42,65 +42,133 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
+      alignment: AlignmentDirectional.topCenter,
       children: [
-        Expanded(
-          child: Container(
-            width: double.maxFinite,
-            constraints: BoxConstraints(minHeight: 350.h),
-            margin: EdgeInsetsDirectional.symmetric(
-              horizontal: 42,
-              vertical: 24.h,
+        Container(
+          width: double.maxFinite,
+          height: double.maxFinite,
+          constraints: BoxConstraints(minHeight: 350.h),
+          margin: EdgeInsetsDirectional.only(
+            start: 42,
+            end: 42,
+            top: 24.h,
+            bottom: 90.h,
+          ),
+          child: GridView.builder(
+            padding: EdgeInsetsDirectional.only(bottom: 0),
+            shrinkWrap: true,
+            itemCount: 6,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              childAspectRatio: 151 / 106,
             ),
-            child: GridView.builder(
-              shrinkWrap: true,
-              itemCount: 6,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                childAspectRatio: 151 / 106,
-              ),
-              itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      // isSelected = !isSelected;
-                      // select = index;
-                      if (selectList.contains(index)) {
-                        selectList.remove(index);
-                      } else {
-                        selectList.add(index);
-                      }
-                    });
+            itemBuilder: (BuildContext context, int index) {
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    // isSelected = !isSelected;
+                    // select = index;
+                    if (selectList.contains(index)) {
+                      selectList.remove(index);
+                    } else {
+                      selectList.add(index);
+                    }
+                  });
 
-                    AccountService.to.updateUserInterest(selectList);
-                  },
-                  child: InterestWidget(
-                    icon: images[index],
-                    title: interests[index],
-                    isChecked: selectList.contains(index),
-                  ),
-                );
-              },
-            ),
+                  AccountService.to.updateUserInterest(selectList);
+                },
+                child: InterestWidget(
+                  icon: images[index],
+                  title: interests[index],
+                  isChecked: selectList.contains(index),
+                ),
+              );
+            },
           ),
         ),
-        CommonBtn(
-          margin: EdgeInsetsDirectional.only(
-            start: 20,
-            end: 20,
-            bottom: bottomPadding,
+
+        Align(
+          alignment: AlignmentDirectional.bottomCenter,
+          child: CommonBtn(
+            margin: EdgeInsetsDirectional.only(
+              start: 20,
+              end: 20,
+              bottom: 24.h,
+            ),
+            isClickable: selectList.isNotEmpty,
+            title: LanKey.next.tr,
+            onTap: () {
+              if (selectList.isNotEmpty) {
+                widget.onNext.call(selectList);
+              }
+            },
           ),
-          isClickable: selectList.isNotEmpty,
-          title: LanKey.next.tr,
-          onTap: () {
-            if (selectList.isNotEmpty) {
-              widget.onNext.call(selectList);
-            }
-          },
         ),
       ],
     );
   }
+
+  Widget buildOld() => Column(
+    children: [
+      Expanded(
+        child: Container(
+          width: double.maxFinite,
+          constraints: BoxConstraints(minHeight: 350.h),
+          margin: EdgeInsetsDirectional.symmetric(
+            horizontal: 42,
+            vertical: 24.h,
+          ),
+          child: GridView.builder(
+            shrinkWrap: true,
+            itemCount: 6,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              childAspectRatio: 151 / 106,
+            ),
+            itemBuilder: (BuildContext context, int index) {
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    // isSelected = !isSelected;
+                    // select = index;
+                    if (selectList.contains(index)) {
+                      selectList.remove(index);
+                    } else {
+                      selectList.add(index);
+                    }
+                  });
+
+                  AccountService.to.updateUserInterest(selectList);
+                },
+                child: InterestWidget(
+                  icon: images[index],
+                  title: interests[index],
+                  isChecked: selectList.contains(index),
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+      CommonBtn(
+        margin: EdgeInsetsDirectional.only(
+          start: 20,
+          end: 20,
+          bottom: bottomPadding,
+        ),
+        isClickable: selectList.isNotEmpty,
+        title: LanKey.next.tr,
+        onTap: () {
+          if (selectList.isNotEmpty) {
+            widget.onNext.call(selectList);
+          }
+        },
+      ),
+    ],
+  );
 }

@@ -225,6 +225,7 @@ class Assets {
   static const String svgInterestBorder = 'assets/svg/interest_border.svg';
   static const String svgItemLine = 'assets/svg/item_line.svg';
   static const String svgSexBorder = 'assets/svg/sex_border.svg';
+  static const String svgSexBorder2 = 'assets/svg/sex_border2.svg';
   static const String svgTag = 'assets/svg/tag.svg';
   static const String svgTagImg = 'assets/svg/tag_img.svg';
   static const String svgTopBg = 'assets/svg/top_bg.svg';

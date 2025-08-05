@@ -39,14 +39,13 @@ class GenderWidget extends StatelessWidget {
   Widget buildSexWidget() => Stack(
     alignment: AlignmentDirectional.center,
     children: [
-      if (isChecked)
-        SvgPicture.asset(Assets.svgSexBorder, width: 151, height: 168),
+      SvgPicture.asset(
+        isChecked ? Assets.svgSexBorder : Assets.svgSexBorder2,
+        width: 151,
+        height: 168,
+      ),
 
-      Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadiusDirectional.circular(16),
-          color: isChecked ? Colors.transparent : Color(0xFFFFFFFF),
-        ),
+      SizedBox(
         width: 151,
         height: 168,
         child: Column(
