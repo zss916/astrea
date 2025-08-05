@@ -45,6 +45,7 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
     return Stack(
       alignment: AlignmentDirectional.topCenter,
       children: [
+        SizedBox(width: double.maxFinite, height: double.maxFinite),
         Container(
           width: double.maxFinite,
           height: double.maxFinite,
@@ -89,7 +90,6 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
             },
           ),
         ),
-
         Align(
           alignment: AlignmentDirectional.bottomCenter,
           child: CommonBtn(

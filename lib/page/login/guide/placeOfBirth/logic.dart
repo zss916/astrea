@@ -38,10 +38,30 @@ class PlaceOfBirthLogic extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    initLocalData();
+    // initLocalData();
   }
 
-  void initLocalData() async {}
+  void initLocalData() async {
+    rootBundle.loadString(Assets.dataCountryData).then((value) async {
+      List list = json.decode(value) as List;
+      List<CountryEntity> lists = list
+          .map((e) => CountryEntity.fromJson(e))
+          .toList();
+      List<CountryEntity> data = await compute(
+        (data) => data
+          ..sort(
+            (a, b) => a.name
+                .toString()
+                .trim()
+                .substring(0, 1)
+                .compareTo(b.name.toString().trim().substring(0, 1)),
+          ),
+        lists,
+      );
+      countryData = data.groupListsBy((e) => e.firstLetter ?? "");
+      update();
+    });
+  }
 
   @override
   void onReady() {
@@ -148,7 +168,7 @@ class PlaceOfBirthLogic extends GetxController {
       index = 2;
       update();
     } else {
-      String place = sprintf("%s/%s", [countryName, stateName]).trim();
+      String place = sprintf("%s,%s", [countryName, stateName]).trim();
       onSelect?.call(
         place,
         state.latitude.toString(),
@@ -169,7 +189,7 @@ class PlaceOfBirthLogic extends GetxController {
     city.isSelected = true;
     update();
     cityName = city.name ?? "";
-    String place = sprintf("%s/%s/%s", [
+    String place = sprintf("%s,%s,%s", [
       countryName,
       stateName,
       cityName,

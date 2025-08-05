@@ -3,7 +3,7 @@ class Assets {
   Assets._();
 
   static const String backgroundChatBg = 'assets/background/chat_bg.webp';
-  static const String dataCarModels = 'assets/data/country_data.json';
+  static const String dataCountryData = 'assets/data/country_data.json';
   static const String imageAccount = 'assets/image/account.png';
   static const String imageAccountS = 'assets/image/account_s.png';
   static const String imageAdd = 'assets/image/add.png';

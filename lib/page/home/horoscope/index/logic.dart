@@ -5,6 +5,7 @@ import 'package:astrea/core/bus/app_event_bus.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/storage/astrology_service.dart';
 import 'package:astrea/core/translations/en.dart';
+import 'package:astrea/net/api/account.dart';
 import 'package:astrea/net/api/astro.dart';
 import 'package:astrea/net/api/friend.dart';
 import 'package:astrea/net/bean/account_entity.dart';
@@ -93,6 +94,7 @@ class HoroscopeLogic extends GetxController {
   ///不包含用户自己
   List<FriendEntity> friends = [];
   late StreamSubscription<RefreshFriendsEvent> refreshEvent;
+  late StreamSubscription<RefreshUserEvent> refreshUserEvent;
 
   @override
   void onInit() {
@@ -102,6 +104,12 @@ class HoroscopeLogic extends GetxController {
       event,
     ) {
       getFriends();
+    });
+
+    refreshUserEvent = AppEventBus.eventBus.on<RefreshUserEvent>().listen((
+      event,
+    ) {
+      loadAccount();
     });
   }
 
@@ -114,7 +122,6 @@ class HoroscopeLogic extends GetxController {
     account = AccountService.to.getAccount();
     friends = AccountService.to.getFriendList().where((e) => !e.isMe).toList();
     isAddFriend = friends.isNotEmpty;
-    // debugPrint("data=> ${data}, account => ${account}");
     if (data == null) {
       viewState = 1;
     }
@@ -132,6 +139,7 @@ class HoroscopeLogic extends GetxController {
   void onClose() {
     super.onClose();
     refreshEvent.cancel();
+    refreshUserEvent.cancel();
   }
 
   Future<void> loadData() async {
@@ -170,5 +178,10 @@ class HoroscopeLogic extends GetxController {
       isAddFriend = friends.isNotEmpty;
       update();
     }
+  }
+
+  Future<void> loadAccount() async {
+    account = await AccountAPI.getAccount();
+    update();
   }
 }
