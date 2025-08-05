@@ -1,6 +1,8 @@
+import 'package:astrea/generated/assets.dart';
 import 'package:astrea/net/bean/state_entity.dart';
 import 'package:astrea/page/login/guide/placeOfBirth/index.dart';
 import 'package:astrea/page/login/guide/placeOfBirth/place/place_item.dart';
+import 'package:azlistview_plus/azlistview_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
@@ -192,5 +194,113 @@ class StateListWidget extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+///优化
+class NetWorkStatesWidget extends StatefulWidget {
+  final PlaceOfBirthLogic logic;
+
+  final Function(String place, String latitude, String longitude)? onSelect;
+  const NetWorkStatesWidget({super.key, required this.logic, this.onSelect});
+
+  @override
+  State<NetWorkStatesWidget> createState() => _NetWorkStatesWidgetState();
+}
+
+class _NetWorkStatesWidgetState extends State<NetWorkStatesWidget> {
+  List<StateEntity> data = [];
+
+  @override
+  void initState() {
+    super.initState();
+    // loadData();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    loadData();
+    return AzListView(
+      data: data,
+      itemCount: data.length,
+      itemBuilder: (BuildContext context, int index) {
+        StateEntity state = data[index];
+        return InkWell(
+          onTap: () {
+            widget.logic.selectState(
+              state,
+              onSelect: (String place, String latitude, String longitude) {
+                widget.onSelect?.call(place, latitude, longitude);
+              },
+            );
+          },
+          child: PlaceItem(
+            index: -1,
+            isSelected: state.isSelected ?? false,
+            firstLetter: state.firstLetter ?? "",
+            name: state.name ?? "",
+          ),
+        );
+      },
+      physics: BouncingScrollPhysics(),
+      susItemBuilder: (BuildContext context, int index) {
+        StateEntity state = data[index];
+        return Container(
+          height: 40,
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.only(left: 16.0),
+          //color: Color(0xFFF3F4F5),
+          color: Color(0xFFEAE9F1),
+          alignment: Alignment.centerLeft,
+          child: Text(
+            state.getSuspensionTag(),
+            softWrap: false,
+            style: TextStyle(fontSize: 18.0, color: const Color(0xFF323133)),
+          ),
+        );
+      },
+      indexBarData: [...widget.logic.stateKeys],
+      indexBarOptions: IndexBarOptions(
+        needRebuild: true,
+        ignoreDragCancel: true,
+        downTextStyle: TextStyle(fontSize: 12, color: Colors.white),
+        downItemDecoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Color(0xFF766DF8),
+        ),
+        indexHintWidth: 120 / 2,
+        indexHintHeight: 100 / 2,
+        indexHintDecoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(Assets.imagesIcIndexBarBubbleGray),
+            fit: BoxFit.contain,
+          ),
+        ),
+        indexHintAlignment: Alignment.centerRight,
+        indexHintChildAlignment: Alignment(-0.25, 0.0),
+        indexHintOffset: Offset(-20, 0),
+      ),
+    );
+  }
+
+  void loadData() async {
+    data = widget.logic.originalStateData;
+    _handleList(data);
+  }
+
+  void _handleList(List<StateEntity> list) {
+    if (list.isEmpty) return;
+    // A-Z sort.
+    SuspensionUtil.sortListBySuspensionTag(data);
+
+    // show sus tag.
+    SuspensionUtil.setShowSuspensionStatus(data);
+
+    setState(() {});
   }
 }

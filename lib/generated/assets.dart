@@ -3,6 +3,7 @@ class Assets {
   Assets._();
 
   static const String backgroundChatBg = 'assets/background/chat_bg.webp';
+  static const String dataCarModels = 'assets/data/country_data.json';
   static const String imageAccount = 'assets/image/account.png';
   static const String imageAccountS = 'assets/image/account_s.png';
   static const String imageAdd = 'assets/image/add.png';
@@ -218,6 +219,8 @@ class Assets {
   static const String imageVenus = 'assets/image/venus.png';
   static const String imageVirgo = 'assets/image/virgo.png';
   static const String imageVortex = 'assets/image/vortex.png';
+  static const String imagesIcIndexBarBubbleGray =
+      'assets/images/ic_index_bar_bubble_gray.png';
   static const String jsonLoading = 'assets/json/loading.json';
   static const String launchLogo = 'launch/logo.png';
   static const String launchSplashBg = 'launch/splash_bg.png';

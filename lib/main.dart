@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:io';
 
-//import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/router/router_observer.dart';
 import 'package:astrea/core/setting/global.dart';
+import 'package:astrea/page/login/guide/placeOfBirth/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,7 +54,8 @@ class App extends StatelessWidget {
         routingCallback: (routing) {
           debugPrint("routing:${routing?.current}");
         },
-        initialRoute: APages.splash,
+        //initialRoute: APages.splash,
+        home: PlaceOfBirthPage(),
       ),
     );
   }

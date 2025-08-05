@@ -2,11 +2,13 @@ import 'dart:convert';
 
 import 'package:astrea/generated/json/base/json_field.dart';
 import 'package:astrea/generated/json/country_entity.g.dart';
+import 'package:azlistview_plus/azlistview_plus.dart';
+
 
 export 'package:astrea/generated/json/country_entity.g.dart';
 
 @JsonSerializable()
-class CountryEntity {
+class CountryEntity extends ISuspensionBean {
   int? id;
   String? name;
   @JSONField(name: 'region_id')
@@ -36,4 +38,7 @@ class CountryEntity {
   String toString() {
     return jsonEncode(this);
   }
+
+  @override
+  String getSuspensionTag() => firstLetter!;
 }

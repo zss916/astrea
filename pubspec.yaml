@@ -49,6 +49,7 @@ dependencies:
   collection: 1.19.1
   lottie: 3.3.1
   dio_cache_interceptor: 4.0.3
+  azlistview_plus: 3.0.0
   scrollable_positioned_list: 0.3.8
   scroll_to_position: ^0.0.2
   webview_flutter: 4.13.0
@@ -92,6 +93,8 @@ flutter:
     - assets/json/
     - assets/time/
     - assets/image/
+    - assets/images/
+    - assets/data/
     - assets/background/
 
   fonts:

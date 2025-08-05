@@ -1,7 +1,12 @@
+import 'dart:convert';
+
+import 'package:astrea/generated/assets.dart';
 import 'package:astrea/net/bean/country_entity.dart';
 import 'package:astrea/page/login/guide/placeOfBirth/index.dart';
 import 'package:astrea/page/login/guide/placeOfBirth/place/place_item.dart';
+import 'package:azlistview_plus/azlistview_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
@@ -194,5 +199,122 @@ class CountryListWidget extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+///本地缓存
+class LocalCacheCountryWidget extends StatefulWidget {
+  final PlaceOfBirthLogic logic;
+
+  final Function(String place, String latitude, String longitude)? onSelect;
+  const LocalCacheCountryWidget({
+    super.key,
+    required this.logic,
+    this.onSelect,
+  });
+
+  @override
+  State<LocalCacheCountryWidget> createState() =>
+      _LocalCacheCountryWidgetState();
+}
+
+class _LocalCacheCountryWidgetState extends State<LocalCacheCountryWidget> {
+  List<CountryEntity> data = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AzListView(
+      data: data,
+      itemCount: data.length,
+      itemBuilder: (BuildContext context, int index) {
+        CountryEntity country = data[index];
+        return InkWell(
+          onTap: () {
+            widget.logic.selectCountry(
+              country,
+              onSelect: (String place, String latitude, String longitude) {
+                widget.onSelect?.call(place, latitude, longitude);
+              },
+            );
+          },
+          child: PlaceItem(
+            index: -1,
+            isSelected: country.isSelected ?? false,
+            firstLetter: country.firstLetter ?? "",
+            name: country.name ?? "",
+          ),
+        );
+      },
+      physics: BouncingScrollPhysics(),
+      susItemBuilder: (BuildContext context, int index) {
+        CountryEntity country = data[index];
+        return Container(
+          height: 40,
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.only(left: 16.0),
+          //color: Color(0xFFF3F4F5),
+          color: Color(0xFFEAE9F1),
+          alignment: Alignment.centerLeft,
+          child: Text(
+            country.getSuspensionTag(),
+            softWrap: false,
+            style: TextStyle(fontSize: 18.0, color: const Color(0xFF323133)),
+          ),
+        );
+      },
+      indexBarData: [...widget.logic.countryKeys],
+      indexBarOptions: IndexBarOptions(
+        needRebuild: true,
+        ignoreDragCancel: true,
+        downTextStyle: TextStyle(fontSize: 12, color: Colors.white),
+        downItemDecoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Color(0xFF766DF8),
+        ),
+        indexHintWidth: 120 / 2,
+        indexHintHeight: 100 / 2,
+        indexHintDecoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(Assets.imagesIcIndexBarBubbleGray),
+            fit: BoxFit.contain,
+          ),
+        ),
+        indexHintAlignment: Alignment.centerRight,
+        indexHintChildAlignment: Alignment(-0.25, 0.0),
+        indexHintOffset: Offset(-20, 0),
+      ),
+    );
+  }
+
+  void loadData() async {
+    rootBundle.loadString('assets/data/country_data.json').then((value) {
+      List list = json.decode(value);
+      for (var v in list) {
+        data.add(CountryEntity.fromJson(v));
+      }
+      _handleList(data);
+    });
+  }
+
+  void _handleList(List<CountryEntity> list) {
+    if (list.isEmpty) return;
+    // A-Z sort.
+    SuspensionUtil.sortListBySuspensionTag(data);
+
+    // show sus tag.
+    SuspensionUtil.setShowSuspensionStatus(data);
+
+    setState(() {});
   }
 }

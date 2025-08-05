@@ -29,16 +29,28 @@ class PlaceOfBirthLogic extends GetxController {
 
   CancelToken cancelToken = CancelToken();
 
+  List<CountryEntity> originalCountryData = [];
+
+  List<StateEntity> originalStateData = [];
+
+  List<CityEntity> originalCityData = [];
+
   @override
   void onInit() {
     super.onInit();
-    if (AppService.to.countryData.isNotEmpty) {
+    /*if (AppService.to.countryData.isNotEmpty) {
       AppService.to.countryData.values.map(
         (e) => e.map((b) => b..isSelected = false),
       );
       countryData = AppService.to.countryData;
       update();
-    }
+    }*/
+    // initLocalData();
+  }
+
+  void initLocalData() async {
+    countryData = await AppService.to.loadData();
+    update();
   }
 
   @override
@@ -72,6 +84,7 @@ class PlaceOfBirthLogic extends GetxController {
             AppLoading.dismiss();
           },
         );
+    originalCountryData = countryList;
     countryData = countryList.groupListsBy((e) => e.firstLetter ?? "");
     update();
   }
@@ -88,6 +101,7 @@ class PlaceOfBirthLogic extends GetxController {
         ).whenComplete(() {
           AppLoading.dismiss();
         });
+    originalStateData = states;
     stateData = states.groupListsBy((e) => e.firstLetter ?? "");
   }
 
@@ -100,6 +114,7 @@ class PlaceOfBirthLogic extends GetxController {
         ).whenComplete(() {
           AppLoading.dismiss();
         });
+    originalCityData = cities;
     cityData = cities.groupListsBy((e) => e.firstLetter ?? "");
   }
 

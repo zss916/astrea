@@ -116,4 +116,33 @@ class PlaceOfBirthPage extends StatelessWidget {
       },
     );
   }
+
+  Widget buildNew(PlaceOfBirthLogic logic) => Expanded(
+    child: IndexedStack(
+      index: logic.index,
+      children: [
+        LocalCacheCountryWidget(
+          logic: logic,
+          onSelect: (String place, String latitude, String longitude) {
+            AccountService.to.updatePlaceBirth(place, latitude, longitude);
+            PageTools.toGender();
+          },
+        ),
+        NetWorkStatesWidget(
+          logic: logic,
+          onSelect: (String place, String latitude, String longitude) {
+            AccountService.to.updatePlaceBirth(place, latitude, longitude);
+            PageTools.toGender();
+          },
+        ),
+        NetWorkCitiesWidget(
+          logic: logic,
+          onSelect: (String place, String latitude, String longitude) {
+            AccountService.to.updatePlaceBirth(place, latitude, longitude);
+            PageTools.toGender();
+          },
+        ),
+      ],
+    ),
+  );
 }
