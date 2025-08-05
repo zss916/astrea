@@ -44,7 +44,7 @@ class EmailLogic extends GetxController with AppValidatorMixin {
     // return;
 
     AppLoading.show();
-    (bool isSuccess, AuthEntity? auth) data =
+    (bool isSuccess, AuthEntity? auth, int code) data =
         await AuthAPI.emailLogin(
           email: email,
           pwd: pwd,
@@ -62,12 +62,10 @@ class EmailLogic extends GetxController with AppValidatorMixin {
         authToken: data.$2?.authToken ?? "",
         isNewUser: data.$2?.isNewUser,
       );
-
-      if (data.$2?.checkNewUser == true) {
-        // PageTools.offAndNamedGuide()();
-        PageTools.toGuide()();
-      } else {
-        PageTools.loginToNext();
+      PageTools.loginToNext(loginType: loginType);
+    } else {
+      if (data.$3 == 1005) {
+        showFailedTipDialog();
       }
     }
   }

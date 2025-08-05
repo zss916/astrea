@@ -327,6 +327,9 @@ class LanKey {
   static const partners = "partners";
   static const customers = "customers";
   static const colleagues = "colleagues";
+  static const createNewAccountNow = "createNewAccountNow";
+  static const logInWithAnotherAccount = "logInWithAnotherAccount";
+  static const loginFailedTip = "loginFailedTip";
 }
 
 ///英语文案
@@ -689,4 +692,8 @@ const en = {
   "moon_sign_title_icon": "🌙 ",
   "ascendant_sign_title": "Ascendant: ",
   "ascendant_sign_title_icon": "💫 ",
+  "logInWithAnotherAccount": "Log In with another account",
+  "createNewAccountNow": "Create new account now",
+  "loginFailedTip":
+      "The account does not exist. Do you want to register a new account or log in with a different account?",
 };

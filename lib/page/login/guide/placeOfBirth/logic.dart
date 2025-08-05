@@ -38,28 +38,15 @@ class PlaceOfBirthLogic extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    /*if (AppService.to.countryData.isNotEmpty) {
-      AppService.to.countryData.values.map(
-        (e) => e.map((b) => b..isSelected = false),
-      );
-      countryData = AppService.to.countryData;
-      update();
-    }*/
-    // initLocalData();
+    initLocalData();
   }
 
-  void initLocalData() async {
-    countryData = await AppService.to.loadData();
-    update();
-  }
+  void initLocalData() async {}
 
   @override
   void onReady() {
     super.onReady();
-    loadCountryList(
-      isLoading: AppService.to.countryData.isEmpty,
-      cancelToken: cancelToken,
-    );
+    loadCountryList(isLoading: true, cancelToken: cancelToken);
   }
 
   @override

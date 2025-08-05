@@ -253,8 +253,14 @@ class PageTools {
   static offAllNamedLogin() =>
       Get.offAllNamed(APages.welcome, arguments: LoginType.onlyLogin.index);
 
-  static loginToNext() {
-    if (AccountService.to.isNewUser) {
+  static loginToNext({required int loginType}) {
+    if (loginType == LoginType.onlyLogin.index) {
+      PageTools.offAllNamedHome();
+    } else {
+      PageTools.toResult();
+    }
+
+    /*if (AccountService.to.isNewUser) {
       ///判断是否完成资料录入
       if (AccountService.to.isFinishRecord) {
         ///todo ????????
@@ -264,7 +270,7 @@ class PageTools {
       }
     } else {
       PageTools.offAllNamedHome();
-    }
+    }*/
   }
 
   static toWeb({required String title, required String url}) =>

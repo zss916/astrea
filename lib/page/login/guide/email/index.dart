@@ -7,6 +7,7 @@ import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/core/validator/app_validator.dart';
 import 'package:astrea/net/api/auth.dart';
 import 'package:astrea/net/bean/auth_entity.dart';
+import 'package:astrea/page/login/guide/email/dialog/failed_dialog.dart';
 import 'package:astrea/page/login/guide/email/enum/login_enum.dart';
 import 'package:astrea/page/login/guide/email/widget/input_login.dart';
 import 'package:dio/dio.dart';

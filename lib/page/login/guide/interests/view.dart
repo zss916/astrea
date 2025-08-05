@@ -45,14 +45,18 @@ class InterestsPage extends StatelessWidget {
                 AccountService.to.updateLoginStep(
                   step: LoginStep.stepFinish.value,
                 );
+                PageTools.toWelcome(
+                  loginType: LoginType.loginAndRegister.index,
+                );
 
-                if (AccountService.to.isLogin && AccountService.to.isNewUser) {
+                ///登录方式判断
+                /*if (AccountService.to.isLogin && AccountService.to.isNewUser) {
                   PageTools.toResult();
                 } else {
                   PageTools.toWelcome(
                     loginType: LoginType.loginAndRegister.index,
                   );
-                }
+                }*/
                 AppPermissionTools.checkNotification();
                 // PageTools.toNotifySetting();
               },

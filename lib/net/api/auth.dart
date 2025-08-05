@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 ///auth
 abstract class AuthAPI {
   ///邮箱登录
-  static Future<(bool, AuthEntity?)> emailLogin({
+  static Future<(bool, AuthEntity?, int)> emailLogin({
     required String email,
     required String pwd,
     required int loginType,
@@ -26,11 +26,12 @@ abstract class AuthAPI {
           (dynamic jsonStr) => AuthEntity.fromJson(jsonStr),
           result["data"],
         );
-        return (true, value);
+        return (true, value, 0);
       } else {
         switch (result["code"]) {
           case 1005:
-            AppLoading.toast("Email does not exist");
+            debugPrint("Email does not exist");
+            // AppLoading.toast("Email does not exist");
             break;
           case 1006:
             AppLoading.toast("Password error");
@@ -38,10 +39,10 @@ abstract class AuthAPI {
           default:
             AppLoading.toast("${result["msg"]}");
         }
-        return (false, null);
+        return (false, null, (result["code"] as int));
       }
     } catch (error) {
-      return (false, null);
+      return (false, null, -1);
     }
   }
 
