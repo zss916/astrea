@@ -160,7 +160,6 @@ class PersonalDataPage extends StatelessWidget {
                   ),
                 ),
                 Divider(height: 1, color: Color(0xFFD5D5D5)),
-
                 Spacer(),
                 CommonBtn(
                   title: LanKey.save.tr,

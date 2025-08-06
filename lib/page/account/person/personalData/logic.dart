@@ -1,6 +1,6 @@
 part of 'index.dart';
 
-class PersonalDataLogic extends GetxController {
+class PersonalDataLogic extends GetxController with AppValidatorMixin {
   AccountEntity? account;
 
   String get avatar => account?.headimg ?? "";
@@ -51,6 +51,11 @@ class PersonalDataLogic extends GetxController {
   }
 
   Future<void> updateData() async {
+    if (!isMatchName(account?.nickName)) {
+      AppLoading.toast(LanKey.nameMatchHint.tr);
+      return;
+    }
+
     AppLoading.show();
     bool isSuccessful =
         await AccountAPI.updateAccount(
@@ -101,7 +106,10 @@ class PersonalDataLogic extends GetxController {
           account!.lon!,
         );
       }
+      AppLoading.toast("Successful");
+      Get.back(closeOverlays: true);
     } else {
+      AppLoading.toast("Upload Failed");
       debugPrint("upload  failed");
     }
   }

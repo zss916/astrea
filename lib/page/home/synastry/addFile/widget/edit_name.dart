@@ -1,5 +1,6 @@
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
+import 'package:astrea/core/validator/app_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,7 @@ class EditName extends StatefulWidget {
   State<EditName> createState() => _EditNameState();
 }
 
-class _EditNameState extends State<EditName> {
+class _EditNameState extends State<EditName> with AppValidatorMixin {
   TextEditingController textEditCtrl = TextEditingController();
 
   @override
@@ -42,6 +43,8 @@ class _EditNameState extends State<EditName> {
     super.dispose();
   }
 
+  //bool isValidate(String input) => isMatchName(input);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -66,6 +69,9 @@ class _EditNameState extends State<EditName> {
             child: TextField(
               controller: textEditCtrl,
               textAlign: TextAlign.end,
+              /* inputFormatters: [
+                FilteringTextInputFormatter.allow(RegExp(r'^[0-9+]+$')),
+              ],*/
               style: TextStyle(
                 fontSize: 18,
                 fontFamily: AppFonts.textFontFamily,

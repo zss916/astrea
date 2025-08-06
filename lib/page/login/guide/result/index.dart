@@ -12,6 +12,7 @@ import 'package:astrea/net/api/astro.dart';
 import 'package:astrea/net/bean/account_entity.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
 import 'package:astrea/page/login/guide/result/widget/slide_marquee.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

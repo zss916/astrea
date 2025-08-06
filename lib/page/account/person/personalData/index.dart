@@ -8,6 +8,7 @@ import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/core/translations/en.dart';
+import 'package:astrea/core/validator/app_validator.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/net/api/account.dart';
 import 'package:astrea/net/bean/account_entity.dart';

@@ -121,7 +121,11 @@ class StarReportPage extends StatelessWidget {
                     ),
                   ),
                   if (logic.meanings.isNotEmpty)
-                    ReportTableWidget(data: logic.meanings),
+                    ReportTableWidget(
+                      oneself: logic.userName ?? '',
+                      otherSide: logic.friendName ?? "",
+                      data: logic.meanings,
+                    ),
                   BlurWidget(
                     isBlur: false,
                     sigma: 6,

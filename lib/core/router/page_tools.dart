@@ -145,6 +145,7 @@ class PageTools {
       "userAvatar": userAvatar,
       "friendName": friendName,
       "friendAvatar": friendAvatar,
+      "relationship": relationship,
     },
   );
 
@@ -155,6 +156,7 @@ class PageTools {
     required String friendName,
     required String userAvatar,
     required String friendAvatar,
+    required String relationship,
   }) => Get.toNamed(
     APages.starReport,
     arguments: {"id": id, "isSave": true},
@@ -163,6 +165,7 @@ class PageTools {
       "userAvatar": userAvatar,
       "friendName": friendName,
       "friendAvatar": friendAvatar,
+      "relationship": relationship,
     },
   );
 

@@ -62,6 +62,7 @@ abstract class AccountAPI {
     int? lon,
     int? lat,
     String? locality,
+    CancelToken? cancelToken,
   }) async {
     try {
       Map<String, dynamic> map = {};
@@ -107,7 +108,11 @@ abstract class AccountAPI {
 
       //debugPrint("map => ${map}");
 
-      var result = await Http.instance.patch(ApiPath.updateAccount, data: map);
+      var result = await Http.instance.patch(
+        ApiPath.updateAccount,
+        data: map,
+        cancelToken: cancelToken,
+      );
       if (result["code"] != 0) {
         AppLoading.toast("${result["msg"]}");
       }

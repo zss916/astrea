@@ -4,6 +4,7 @@ import 'package:astrea/components/star.dart';
 import 'package:astrea/core/bus/app_event_bus.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/storage/astrology_service.dart';
+import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/net/api/account.dart';
 import 'package:astrea/net/api/astro.dart';
@@ -17,9 +18,13 @@ class HoroscopeLogic extends GetxController {
   NatalReportEntity? data;
   AccountEntity? account;
 
+  ///显示姓名和生日
+  String name = "";
+  String birthday = "";
+
   ///账户
-  String get nickName => account?.nickName ?? LanKey.oneself.tr;
   String get avatar => account?.headimg ?? "";
+  String get nickName => account?.nickName ?? LanKey.oneself.tr;
   String get showBirthday => account?.showBirthDay ?? "--";
 
   ///星盘
@@ -96,6 +101,8 @@ class HoroscopeLogic extends GetxController {
   late StreamSubscription<RefreshFriendsEvent> refreshEvent;
   late StreamSubscription<RefreshUserEvent> refreshUserEvent;
 
+  String reportId = "";
+
   @override
   void onInit() {
     super.onInit();
@@ -122,6 +129,9 @@ class HoroscopeLogic extends GetxController {
     account = AccountService.to.getAccount();
     friends = AccountService.to.getFriendList().where((e) => !e.isMe).toList();
     isAddFriend = friends.isNotEmpty;
+    name = account?.nickName ?? "";
+    birthday = account?.showBirthDay ?? "";
+    reportId = AccountService.to.friendId;
     if (data == null) {
       viewState = 1;
     }
@@ -143,9 +153,9 @@ class HoroscopeLogic extends GetxController {
   }
 
   Future<void> loadData() async {
-    if (AccountService.to.friendId.isNotEmpty) {
+    if (reportId.isNotEmpty) {
       (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
-        id: AccountService.to.friendId,
+        id: reportId,
       );
       if (value.$1) {
         viewState = 0;
@@ -157,6 +167,9 @@ class HoroscopeLogic extends GetxController {
       }
     } else {
       account = await AccountAPI.getAccount();
+      reportId = account?.friendId ?? "";
+      name = account?.nickName ?? "";
+      birthday = account?.showBirthDay ?? "";
       (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
         id: account?.friendId ?? "",
       );
@@ -171,12 +184,33 @@ class HoroscopeLogic extends GetxController {
     }
   }
 
+  ///切换星盘
+  Future<void> changeReport({required String id, required int index}) async {
+    AppLoading.show();
+    FriendEntity account = friends[index];
+    name = account.nickName ?? "";
+    birthday = account.showBirthDay;
+    reportId = id;
+    (bool, NatalReportEntity) value =
+        await AstrologyAPI.getAstrologyReport(id: id).whenComplete(() {
+          AppLoading.dismiss();
+        });
+    if (value.$1) {
+      viewState = 0;
+      data = value.$2;
+      update();
+    } else {
+      viewState = 1;
+      update();
+    }
+  }
+
   Future<void> refreshData() async {
     viewState = 2;
     update();
 
     (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
-      id: AccountService.to.friendId,
+      id: reportId,
     );
     if (value.$1) {
       viewState = 0;

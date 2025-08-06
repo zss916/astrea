@@ -93,13 +93,13 @@ class AccountService extends GetxService {
     save(data!);
   }
 
-  ///保存用户登录结束状态
-  void setLoginFinish({required bool isFinish}) {
-    StorageService.to.setBool("horoscope_login_finish", isFinish);
+  ///记录报告失败
+  void setResult({required bool isFinish}) {
+    StorageService.to.setBool("horoscope_result", isFinish);
   }
 
-  ///保存用户登录结束状态
-  bool getLoginFinish() => StorageService.to.getBool("horoscope_login_finish");
+  ///记录报告失败
+  bool getResult() => StorageService.to.getBool("horoscope_result");
 
   ///保存用户登录步骤
   void updateLoginStep({int? step}) {

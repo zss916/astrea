@@ -67,43 +67,43 @@ class StarReportLogic extends GetxController {
 
   Map<String, dynamic> get json => {
     "lover": {
-      "key1": "Soul Match",
+      "key1": "Soul\nMatch",
       "value1": soul,
-      "key2": "Emotion Sync",
+      "key2": "Emotion\nSync",
       "value2": emotion,
-      "key3": "Attraction",
+      "key3": "\nAttraction",
       "value3": attraction,
     },
     "family": {
-      "key1": "Emotional Security",
+      "key1": "Emotional\nSecurity",
       "value1": unconditionalSupport,
-      "key2": "Karmic Bond",
+      "key2": "Karmic\nBond",
       "value2": karma,
-      "key3": "Full Support",
+      "key3": "Full\nSupport",
       "value3": emotionalSecurity,
     },
     "friend": {
-      "key1": "Ideology Match",
+      "key1": "Ideology\nMatch",
       "value1": thoughtResonance,
-      "key2": "Mutual Growth",
+      "key2": "Mutual\nGrowth",
       "value2": mutualGrowth,
-      "key3": " Comfort Zone",
+      "key3": " Comfort\nZone",
       "value3": comfortBoundary,
     },
     "customers": {
-      "key1": "Flow Chat",
+      "key1": "Flow\nChat",
       "value1": smoothCommunication,
-      "key2": "Mutual Growth",
+      "key2": "Mutual\nGrowth",
       "value2": mutualGrowth,
-      "key3": "Comfort Zone",
+      "key3": "Comfort\nZone",
       "value3": comfortBoundary,
     },
-    "Colleagues": {
-      "key1": "Flow Chat",
+    "colleagues": {
+      "key1": "Flow\nChat",
       "value1": authoritativeStructure,
-      "key2": "Long Partnership",
+      "key2": "Long\nPartnership",
       "value2": growthAndCultivation,
-      "key3": "Wealth Growth",
+      "key3": "Wealth\nGrowth",
       "value3": actionCoordination,
     },
   };
@@ -166,6 +166,9 @@ class StarReportLogic extends GetxController {
     }
     if (Get.parameters["friendAvatar"] != null) {
       friendAvatar = Get.parameters["friendAvatar"];
+    }
+    if (Get.parameters["relationship"] != null) {
+      relationship = Get.parameters["relationship"];
     }
     viewState = Status.init.index;
     update();

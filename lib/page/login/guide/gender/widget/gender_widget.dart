@@ -19,6 +19,7 @@ class GenderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return buildScaleRatioWidget();
     return LayoutBuilder(
       builder: (context, constraints) {
         double w = constraints.maxWidth;
@@ -74,4 +75,7 @@ class GenderWidget extends StatelessWidget {
       ),
     ],
   );
+
+  Widget buildScaleRatioWidget() =>
+      Transform.scale(scale: (Get.width / 375), child: buildSexWidget());
 }

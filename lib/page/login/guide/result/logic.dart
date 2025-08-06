@@ -1,6 +1,14 @@
 part of 'index.dart';
 
 class ResultLogic extends GetxController {
+  CancelToken cancelToken = CancelToken();
+
+  @override
+  void onClose() {
+    cancelToken.cancel("result cancel");
+    super.onClose();
+  }
+
   @override
   void onReady() {
     super.onReady();
@@ -20,28 +28,35 @@ class ResultLogic extends GetxController {
       lat: num.parse(account?.lat ?? "0").toInt(),
       locality: account?.locality,
       avatar: account?.headimg,
+      cancelToken: cancelToken,
     );
     if (isSuccessful) {
-      AccountEntity? account = await AccountAPI.getAccount();
+      AccountEntity? account = await AccountAPI.getAccount(
+        cancelToken: cancelToken,
+      );
       if (account?.friendId != null) {
         (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
           id: account?.friendId ?? "",
+          cancelToken: cancelToken,
         );
         if (value.$1) {
           AstrologyService.to.update(value.$2);
-          AccountService.to.setLoginFinish(isFinish: true);
+          // AccountService.to.setResult(isFinish: false);
           PageTools.offAllNamedHome(data: value.$2);
         } else {
-          AppLoading.toast("get astrology report failed");
-          AccountService.to.setLoginFinish(isFinish: false);
+          debugPrint("get astrology report failed");
+          // AccountService.to.setResult(isFinish: true);
+          PageTools.offAllNamedHome();
         }
       } else {
-        AppLoading.toast("get account failed");
-        AccountService.to.setLoginFinish(isFinish: false);
+        debugPrint("get account failed");
+        // AccountService.to.setResult(isFinish: true);
+        PageTools.offAllNamedHome();
       }
     } else {
-      AppLoading.toast("update account failed");
-      AccountService.to.setLoginFinish(isFinish: false);
+      debugPrint("update account failed");
+      // AccountService.to.setResult(isFinish: true);
+      PageTools.offAllNamedHome();
     }
   }
 }

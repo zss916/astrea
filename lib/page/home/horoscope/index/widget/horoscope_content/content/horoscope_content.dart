@@ -78,8 +78,8 @@ class HoroscopeContent extends StatelessWidget {
           children: [
             NatalChart(
               isShow: isShow,
-              nickName: logic.nickName,
-              showBirthday: logic.showBirthday,
+              nickName: logic.name,
+              showBirthday: logic.birthday,
               sunSign: logic.sunSign,
               sunSignIcon: logic.sunSignIcon,
               moonSign: logic.moonSign,

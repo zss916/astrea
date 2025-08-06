@@ -34,7 +34,7 @@ class ScoresWidget extends StatelessWidget {
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   color: const Color(0xFF323133),
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: AppFonts.textFontFamily,
                   fontWeight: FontWeight.w400,
                 ),
@@ -61,7 +61,7 @@ class ScoresWidget extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(width: 24.w),
+        SizedBox(width: 16.w),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +72,7 @@ class ScoresWidget extends StatelessWidget {
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   color: const Color(0xFF323133),
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: AppFonts.textFontFamily,
                   fontWeight: FontWeight.w400,
                 ),
@@ -99,7 +99,7 @@ class ScoresWidget extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(width: 24.w),
+        SizedBox(width: 16.w),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,7 +110,7 @@ class ScoresWidget extends StatelessWidget {
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   color: const Color(0xFF323133),
-                  fontSize: 16,
+                  fontSize: 14,
                   fontFamily: AppFonts.textFontFamily,
                   fontWeight: FontWeight.w400,
                 ),

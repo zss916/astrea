@@ -31,15 +31,13 @@ abstract class AuthAPI {
       } else {
         switch (result["code"]) {
           case 1005:
-            debugPrint("Email does not exist");
-            // AppLoading.toast("Email does not exist");
+            AppLoading.toast("Account does not exist or password is incorrect");
             break;
           case 1006:
-            AppLoading.toast("Password error");
+            AppLoading.toast("The password you entered is incorrect");
             break;
           case 1007:
             debugPrint("Account already exists!");
-            // AppLoading.toast("Email does not exist");
             break;
           default:
             AppLoading.toast("${result["msg"]}");

@@ -59,6 +59,7 @@ class LogsPage extends StatelessWidget {
             userAvatar: item.firstFriendInfo?.headImg ?? "",
             friendName: item.secondFriendInfo?.nickName ?? "",
             friendAvatar: item.secondFriendInfo?.headImg ?? "",
+            relationship: item.relationship ?? "",
           );
           /* PageTools.toStarReport(
             firstId: item.firstFriendInfo?.id ?? 0,

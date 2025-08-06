@@ -85,17 +85,17 @@ class EmailLogic extends GetxController with AppValidatorMixin {
     } else {
       if (data.$3 == 1005) {
         ///邮箱不存在(type = 1)
-        showAccountLostDialog(
-          onEditEmail: () {
-            //修改邮箱
-          },
-          onLogin: () {
-            //注册
-            //  loginType = LoginType.loginAndRegister.index;
-            //  toAuthEmail(email: email, pwd: pwd);
-            toLoginAndRegister(email: email, pwd: pwd);
-          },
-        );
+        // showAccountLostDialog(
+        //   onEditEmail: () {
+        //     //修改邮箱
+        //   },
+        //   onLogin: () {
+        //     //注册
+        //     //  loginType = LoginType.loginAndRegister.index;
+        //     //  toAuthEmail(email: email, pwd: pwd);
+        //     toLoginAndRegister(email: email, pwd: pwd);
+        //   },
+        // );
       } else if (data.$3 == 1007) {
         ///账号已存在(type = 0)
         showAccountExistsDialog(
@@ -103,8 +103,9 @@ class EmailLogic extends GetxController with AppValidatorMixin {
           onLogin: () {
             //登录
             // loginType = LoginType.onlyLogin.index;
-            toOnlyLogin(email: email, pwd: pwd);
             //toOnlyLogin(email: email, pwd: pwd);
+            //toOnlyLogin(email: email, pwd: pwd);
+            PageTools.toResult();
           },
         );
       }

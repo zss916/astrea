@@ -117,7 +117,13 @@ class HoroscopeListview extends StatelessWidget {
                       child: InkWell(
                         borderRadius: BorderRadius.circular(5),
                         onTap: () {
-                          // onSelect?.call(i);
+                          int? reportId = logic.friends[i].id;
+                          if (reportId != null) {
+                            logic.changeReport(
+                              id: logic.friends[i].id.toString(),
+                              index: i,
+                            );
+                          }
                         },
                         child: Container(
                           margin: EdgeInsetsDirectional.only(start: 0),

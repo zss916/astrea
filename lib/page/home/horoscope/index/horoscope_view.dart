@@ -158,6 +158,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
       setState(() {
         isShowOneself = true;
       });
+      logic.loadData();
     },
     onSelect: (i) {
       setState(() {

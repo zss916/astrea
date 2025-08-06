@@ -7,8 +7,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ReportTableWidget extends StatelessWidget {
+  final String oneself;
+  final String otherSide;
   final List<AnalysisArticleMeanings> data;
-  const ReportTableWidget({super.key, required this.data});
+  const ReportTableWidget({
+    super.key,
+    required this.data,
+    required this.oneself,
+    required this.otherSide,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +46,11 @@ class ReportTableWidget extends StatelessWidget {
                       color: Color(0xFFEDEDFD),
                     ),
                     child: Text(
-                      LanKey.oneself.tr,
+                      oneself,
+                      // LanKey.oneself.tr,
                       textAlign: TextAlign.center,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         color: const Color(0xFF323133),
                         fontSize: 12,
@@ -61,7 +71,10 @@ class ReportTableWidget extends StatelessWidget {
                     decoration: BoxDecoration(color: Color(0xFFEDEDFD)),
                     width: double.maxFinite,
                     child: Text(
-                      LanKey.otherSide.tr,
+                      otherSide,
+                      //LanKey.otherSide.tr,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: const Color(0xFF323133),
