@@ -6,26 +6,19 @@ class SplashLogic extends GetxController {
     super.onReady();
 
     Future.delayed(Duration(seconds: 3), () {
-      if (AccountService.to.isLogin && !AccountService.to.isNewUser) {
-        PageTools.toHome();
+      if (AccountService.to.getLoginFinish()) {
+        if (AccountService.to.isLogin && !AccountService.to.isNewUser) {
+          ///登录成功
+          PageTools.toHome();
+        } else {
+          ///重新登录
+          PageTools.toStart();
+          // PageTools.toWelcome();
+        }
       } else {
-        ///是否有数据
-        PageTools.toStart();
-        // PageTools.toWelcome();
+        ///登录失败
+        PageTools.toResult();
       }
     });
-
-    /*AppService.to.loadData().whenComplete(() async {
-      await Future.delayed(Duration(seconds: 1));
-
-      ///是否已经登录
-      if (AccountService.to.getAccount() != null && AccountService.to.isLogin) {
-        PageTools.toHome();
-      } else {
-        ///是否有数据
-        PageTools.toStart();
-        // PageTools.toWelcome();
-      }
-    });*/
   }
 }

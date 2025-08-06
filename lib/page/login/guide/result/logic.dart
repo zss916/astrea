@@ -8,7 +8,7 @@ class ResultLogic extends GetxController {
   }
 
   Future<void> loadData() async {
-    AccountEntity? account = AccountService.to.data;
+    AccountEntity? account = AccountService.to.getAccount();
     bool isSuccessful = await AccountAPI.updateAccount(
       nickName: account?.nickName,
       birthday: account?.birthday,
@@ -29,15 +29,19 @@ class ResultLogic extends GetxController {
         );
         if (value.$1) {
           AstrologyService.to.update(value.$2);
+          AccountService.to.setLoginFinish(isFinish: true);
+          PageTools.offAllNamedHome(data: value.$2);
+        } else {
+          AppLoading.toast("get astrology report failed");
+          AccountService.to.setLoginFinish(isFinish: false);
         }
-
-        ///无论结果，都先进入主页
-        PageTools.offAllNamedHome(data: value.$2);
       } else {
         AppLoading.toast("get account failed");
+        AccountService.to.setLoginFinish(isFinish: false);
       }
     } else {
       AppLoading.toast("update account failed");
+      AccountService.to.setLoginFinish(isFinish: false);
     }
   }
 }

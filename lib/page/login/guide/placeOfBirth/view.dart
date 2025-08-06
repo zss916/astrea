@@ -51,16 +51,40 @@ class PlaceOfBirthPage extends StatelessWidget {
                 Container(
                   width: double.maxFinite,
                   margin: EdgeInsets.only(top: 20.h, bottom: 40.h),
-                  child: Text(
-                    logic.index == 2
-                        ? LanKey.selectCity.tr
-                        : LanKey.selectCountryOrRegion.tr,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: const Color(0xFF91929D),
-                      fontSize: 16,
-                      fontFamily: AppFonts.textFontFamily,
-                    ),
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      if (logic.index == 0)
+                        Text(
+                          LanKey.selectCountryOrRegion.tr,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: const Color(0xFF91929D),
+                            fontSize: 16,
+                            fontFamily: AppFonts.textFontFamily,
+                          ),
+                        ),
+                      if (logic.index == 1)
+                        Text(
+                          LanKey.selectStateOrProvince.tr,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: const Color(0xFF91929D),
+                            fontSize: 16,
+                            fontFamily: AppFonts.textFontFamily,
+                          ),
+                        ),
+                      if (logic.index == 2)
+                        Text(
+                          LanKey.selectCity.tr,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: const Color(0xFF91929D),
+                            fontSize: 16,
+                            fontFamily: AppFonts.textFontFamily,
+                          ),
+                        ),
+                    ],
                   ),
                 ),
                 Expanded(
@@ -77,7 +101,7 @@ class PlaceOfBirthPage extends StatelessWidget {
                                 latitude,
                                 longitude,
                               );
-                              PageTools.toGender();
+                              logic.toSex();
                             },
                       ),
                       StatesWidget(
@@ -90,7 +114,7 @@ class PlaceOfBirthPage extends StatelessWidget {
                                 latitude,
                                 longitude,
                               );
-                              PageTools.toGender();
+                              logic.toSex();
                             },
                       ),
                       CitiesWidget(
@@ -103,7 +127,7 @@ class PlaceOfBirthPage extends StatelessWidget {
                                 latitude,
                                 longitude,
                               );
-                              PageTools.toGender();
+                              logic.toSex();
                             },
                       ),
                     ],
@@ -125,21 +149,21 @@ class PlaceOfBirthPage extends StatelessWidget {
           logic: logic,
           onSelect: (String place, String latitude, String longitude) {
             AccountService.to.updatePlaceBirth(place, latitude, longitude);
-            PageTools.toGender();
+            logic.toSex();
           },
         ),
         NetWorkStatesWidget(
           logic: logic,
           onSelect: (String place, String latitude, String longitude) {
             AccountService.to.updatePlaceBirth(place, latitude, longitude);
-            PageTools.toGender();
+            logic.toSex();
           },
         ),
         NetWorkCitiesWidget(
           logic: logic,
           onSelect: (String place, String latitude, String longitude) {
             AccountService.to.updatePlaceBirth(place, latitude, longitude);
-            PageTools.toGender();
+            logic.toSex();
           },
         ),
       ],

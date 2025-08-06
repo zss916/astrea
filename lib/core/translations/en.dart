@@ -53,6 +53,7 @@ class LanKey {
   static const password = "password";
   static const emailTitle = "email_title";
   static const invalidEmail = "invalid_email";
+  static const invalidPsdTip = "invalidPsdTip";
   static const invalidPasswordHint = "invalid_password_hint";
   static const invalidPasswordError = "invalid_password_error";
   static const resultContent = "result_content";
@@ -293,6 +294,7 @@ class LanKey {
   static const constellationChart = "constellation_chart";
   static const fortuneGuide = "fortune_guide";
   static const selectCountryOrRegion = "select_country_or_region";
+  static const selectStateOrProvince = "selectStateOrProvince";
   static const selectCity = "select_city";
   static const introductionToConstellations = "introduction_to_constellations";
 
@@ -330,6 +332,7 @@ class LanKey {
   static const createNewAccountNow = "createNewAccountNow";
   static const logInWithAnotherAccount = "logInWithAnotherAccount";
   static const loginFailedTip = "loginFailedTip";
+  static const loginFailedTitle = "loginFailedTitle";
 }
 
 ///英语文案
@@ -692,8 +695,11 @@ const en = {
   "moon_sign_title_icon": "🌙 ",
   "ascendant_sign_title": "Ascendant: ",
   "ascendant_sign_title_icon": "💫 ",
-  "logInWithAnotherAccount": "Log In with another account",
-  "createNewAccountNow": "Create new account now",
+  "logInWithAnotherAccount": "Edit my info",
+  "loginFailedTitle": "Can’t find your account",
+  "createNewAccountNow": "Create a new account",
   "loginFailedTip":
-      "The account does not exist. Do you want to register a new account or log in with a different account?",
+      "The info you entered doesn’t match our records.\nWhat would you like to do?",
+  "selectStateOrProvince": "Please select State/Province",
+  "invalidPsdTip": "Please enter 8 to 20 characters.",
 };

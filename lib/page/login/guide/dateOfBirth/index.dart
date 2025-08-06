@@ -9,6 +9,7 @@ import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/core/utils/calculate.dart';
 import 'package:astrea/page/login/guide/dateOfBirth/widget/select_date_widget.dart';
+import 'package:astrea/page/login/guide/email/enum/login_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

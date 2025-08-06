@@ -13,9 +13,16 @@ mixin AppValidatorMixin {
     return null;
   }
 
-  bool isPwd(String? value) {
+  bool isPwd2(String? value) {
     if (value == null || value.isEmpty) return false;
     final regex = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+    if (regex.hasMatch(value)) return true;
+    return false;
+  }
+
+  bool isPwd(String? value) {
+    if (value == null || value.isEmpty) return false;
+    final regex = RegExp(r'^.{8,20}$');
     if (regex.hasMatch(value)) return true;
     return false;
   }

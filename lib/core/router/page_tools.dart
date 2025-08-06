@@ -13,74 +13,74 @@ class PageTools {
 
   static toStart() => Get.offAndToNamed(APages.start);
 
-  static toGuide() {
+  static toGuide({required int loginType}) {
     AccountService.to.updateLoginStep(step: LoginStep.step0.value);
-    Get.toNamed(APages.guide);
+    Get.toNamed(APages.guide, arguments: loginType);
   }
 
-  static toStep() {
+  static toStep({required int loginType}) {
     if (AccountService.to.loginStep == null) {
-      toGuide();
+      toGuide(loginType: loginType);
     } else {
       int step = (AccountService.to.loginStep ?? 0);
       debugPrint("step===>$step");
       switch (step) {
         case 0:
-          toGuide();
+          toGuide(loginType: loginType);
           break;
         case 1:
-          toDateOfBirth();
+          toDateOfBirth(loginType: loginType);
           break;
         case 2:
-          toTimeOfBirth();
+          toTimeOfBirth(loginType: loginType);
           break;
         case 3:
-          toPlaceOfBirth();
+          toPlaceOfBirth(loginType: loginType);
           break;
         case 4:
-          toGender();
+          toGender(loginType: loginType);
           break;
         case 5:
-          toEditUserName();
+          toEditUserName(loginType: loginType);
           break;
         case 6:
-          toInterests();
+          toInterests(loginType: loginType);
           break;
         case 7:
-          toWelcome(loginType: LoginType.loginAndRegister.index);
+          toWelcome(loginType: loginType);
           break;
       }
     }
   }
 
-  static toDateOfBirth() {
+  static toDateOfBirth({required int loginType}) {
     AccountService.to.updateLoginStep(step: LoginStep.step1.value);
-    Get.toNamed(APages.dateOfBirth);
+    Get.toNamed(APages.dateOfBirth, arguments: loginType);
   }
 
-  static toTimeOfBirth() {
+  static toTimeOfBirth({required int loginType}) {
     AccountService.to.updateLoginStep(step: LoginStep.step2.value);
-    Get.toNamed(APages.timeOfBirth);
+    Get.toNamed(APages.timeOfBirth, arguments: loginType);
   }
 
-  static toPlaceOfBirth() {
+  static toPlaceOfBirth({required int loginType}) {
     AccountService.to.updateLoginStep(step: LoginStep.step3.value);
-    Get.toNamed(APages.placeOfBirth);
+    Get.toNamed(APages.placeOfBirth, arguments: loginType);
   }
 
-  static toGender() {
+  static toGender({required int loginType}) {
     AccountService.to.updateLoginStep(step: LoginStep.step4.value);
-    Get.toNamed(APages.gender);
+    Get.toNamed(APages.gender, arguments: loginType);
   }
 
-  static toEditUserName() {
+  static toEditUserName({required int loginType}) {
     AccountService.to.updateLoginStep(step: LoginStep.step5.value);
-    Get.toNamed(APages.editName);
+    Get.toNamed(APages.editName, arguments: loginType);
   }
 
-  static toInterests() {
+  static toInterests({required int loginType}) {
     AccountService.to.updateLoginStep(step: LoginStep.step6.value);
-    Get.toNamed(APages.interests);
+    Get.toNamed(APages.interests, arguments: loginType);
   }
 
   static toWelcome({required int loginType}) {
@@ -194,7 +194,6 @@ class PageTools {
 
   static toCertifiedName() async {
     var result = await Get.toNamed(APages.certifiedName);
-    debugPrint("====>>>>>result:$result");
   }
 
   static toCertifiedGender() async {

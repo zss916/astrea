@@ -93,6 +93,14 @@ class AccountService extends GetxService {
     save(data!);
   }
 
+  ///保存用户登录结束状态
+  void setLoginFinish({required bool isFinish}) {
+    StorageService.to.setBool("horoscope_login_finish", isFinish);
+  }
+
+  ///保存用户登录结束状态
+  bool getLoginFinish() => StorageService.to.getBool("horoscope_login_finish");
+
   ///保存用户登录步骤
   void updateLoginStep({int? step}) {
     if (step != null) {
@@ -116,11 +124,11 @@ class AccountService extends GetxService {
     data?.birthday = birthday;
     data?.age = CalculateTools.calculateAge(birthday);
     save(data!);
+    getUserBirth();
   }
 
   ///获取用户生日数据
   (int year, int month, int day) getUserBirth() {
-    //debugPrint("getUserBirth => ${data?.birthday}");
     if (data?.birthday != null) {
       List<String> list = (data?.birthday ?? "").split("-");
       if (list.isEmpty) {
@@ -138,6 +146,7 @@ class AccountService extends GetxService {
 
   ///更新用户生日时间
   void updateUserBirthHAndM(int birthHour, int birthMinute) {
+    debugPrint("birthHour => $birthHour，birthMinute => $birthMinute");
     data?.birthHour = birthHour;
     data?.birthMinute = birthMinute;
     save(data!);

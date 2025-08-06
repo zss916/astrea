@@ -6,53 +6,53 @@ class GenderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: ComAppBar(),
-        backgroundColor: AppColor.pageBackground,
-        body: Column(
-          children: [
-            SizedBox(
-              height: 20.h,
-            ),
-            StepIndicator(
-              index: 4,
-            ),
-            SizedBox(
-              height: 40.h,
-            ),
-            Container(
-              margin: EdgeInsetsDirectional.symmetric(horizontal: 20),
-              width: double.maxFinite,
-              child: Text(
-                LanKey.youGender.tr,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: const Color(0xFF323133),
-                  fontSize: 32,
-                  fontFamily: AppFonts.textFontFamily,
-                ),
+      appBar: ComAppBar(),
+      backgroundColor: AppColor.pageBackground,
+      body: Column(
+        children: [
+          SizedBox(height: 20.h),
+          StepIndicator(index: 4),
+          SizedBox(height: 40.h),
+          Container(
+            margin: EdgeInsetsDirectional.symmetric(horizontal: 20),
+            width: double.maxFinite,
+            child: Text(
+              LanKey.youGender.tr,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: const Color(0xFF323133),
+                fontSize: 32,
+                fontFamily: AppFonts.textFontFamily,
               ),
             ),
-            Container(
-              margin: EdgeInsetsDirectional.only(
-                  start: 20, end: 20, top: 16.h, bottom: 24.h),
-              width: double.maxFinite,
-              child: Text(
-                LanKey.youGenderContent.tr,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: const Color(0xFF6A676C),
-                  fontSize: 17,
-                  fontFamily: AppFonts.textFontFamily,
-                ),
+          ),
+          Container(
+            margin: EdgeInsetsDirectional.only(
+              start: 20,
+              end: 20,
+              top: 16.h,
+              bottom: 24.h,
+            ),
+            width: double.maxFinite,
+            child: Text(
+              LanKey.youGenderContent.tr,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: const Color(0xFF6A676C),
+                fontSize: 17,
+                fontFamily: AppFonts.textFontFamily,
               ),
             ),
-            Expanded(child: SelectGender(
+          ),
+          Expanded(
+            child: SelectGender(
               onNext: () {
-                //todo
-                PageTools.toEditUserName();
+                PageTools.toEditUserName(loginType: (Get.arguments as int));
               },
-            ))
-          ],
-        ));
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

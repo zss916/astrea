@@ -174,13 +174,14 @@ class _EditNameState extends State<InputPassword> with AppValidatorMixin {
             margin: EdgeInsetsDirectional.only(start: 32, end: 32, top: 6.h),
             width: double.maxFinite,
             child: Text(
-              widget.isShowError
+              LanKey.invalidPsdTip.tr,
+              /*widget.isShowError
                   ? LanKey.invalidPasswordError.tr
-                  : LanKey.invalidPasswordHint.tr,
+                  : LanKey.invalidPasswordHint.tr,*/
               style: TextStyle(
                 color: widget.isShowError
                     ? const Color(0xFFFF2200)
-                    : Color(0xFF6A686D),
+                    : const Color(0xFF6A686D),
                 fontSize: 14,
                 fontFamily: AppFonts.textFontFamily,
                 fontWeight: FontWeight.normal,

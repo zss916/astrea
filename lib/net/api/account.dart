@@ -11,7 +11,10 @@ import 'package:flutter/foundation.dart';
 ///account
 abstract class AccountAPI {
   ///获取账号信息
-  static Future<AccountEntity?> getAccount({CancelToken? cancelToken}) async {
+  static Future<AccountEntity?> getAccount({
+    CancelToken? cancelToken,
+    bool isCache = true,
+  }) async {
     try {
       var result = await Http.instance.get(
         ApiPath.getAccount,
@@ -23,7 +26,7 @@ abstract class AccountAPI {
           result["data"],
         );
         // AccountEntity value = AccountEntity.fromJson(result["data"]);
-        AccountService.to.update(value);
+        if (isCache) AccountService.to.update(value);
         return value;
       } else {
         AppLoading.toast("${result["msg"]}");

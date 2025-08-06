@@ -143,13 +143,31 @@ class HoroscopeLogic extends GetxController {
   }
 
   Future<void> loadData() async {
-    (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
-      id: AccountService.to.friendId,
-    );
-    if (value.$1) {
-      viewState = 0;
-      data = value.$2;
-      update();
+    if (AccountService.to.friendId.isNotEmpty) {
+      (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
+        id: AccountService.to.friendId,
+      );
+      if (value.$1) {
+        viewState = 0;
+        data = value.$2;
+        update();
+      } else {
+        viewState = 1;
+        update();
+      }
+    } else {
+      account = await AccountAPI.getAccount();
+      (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
+        id: account?.friendId ?? "",
+      );
+      if (value.$1) {
+        viewState = 0;
+        data = value.$2;
+        update();
+      } else {
+        viewState = 1;
+        update();
+      }
     }
   }
 

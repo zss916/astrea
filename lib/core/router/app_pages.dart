@@ -201,4 +201,5 @@ class APages {
   static const noticeSelectTimeDialog = 'noticeSelectTimeDialog';
   static const deleteAccountDialog = 'deleteAccountDialog';
   static const loginFailedDialog = 'loginFailedDialog';
+  static const loginFailedDialog2 = 'loginFailedDialog2';
 }

@@ -18,6 +18,7 @@ abstract class AuthAPI {
       var result = await Http.instance.post(
         ApiPath.emailLogin,
         cancelToken: cancelToken,
+        //data: {"email": email, "pwd": pwd, "login_type": loginType},
         data: {"email": email, "pwd": pwd, "login_type": loginType},
       );
 
@@ -35,6 +36,10 @@ abstract class AuthAPI {
             break;
           case 1006:
             AppLoading.toast("Password error");
+            break;
+          case 1007:
+            debugPrint("Account already exists!");
+            // AppLoading.toast("Email does not exist");
             break;
           default:
             AppLoading.toast("${result["msg"]}");

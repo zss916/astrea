@@ -35,10 +35,19 @@ class PlaceOfBirthLogic extends GetxController {
 
   List<CityEntity> originalCityData = [];
 
+  int loginType = LoginType.loginAndRegister.index;
+
   @override
   void onInit() {
     super.onInit();
+    if (Get.arguments != null && Get.arguments is int) {
+      loginType = Get.arguments as int;
+    }
     // initLocalData();
+  }
+
+  toSex() {
+    PageTools.toGender(loginType: loginType);
   }
 
   void initLocalData() async {

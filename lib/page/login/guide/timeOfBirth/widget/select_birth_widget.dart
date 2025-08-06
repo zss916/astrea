@@ -112,49 +112,57 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
 
             Container(
               margin: EdgeInsetsDirectional.only(top: 20, start: 20, end: 20),
-              child: Stack(
-                alignment: AlignmentDirectional.center,
-                children: [
-                  RotationTransition(
-                    turns: _animation,
-                    child: TransformRotateWidget(
-                      angle: (pi / 12) * 2,
-                      child: Image.asset(
-                        Assets.timeBig286,
-                        matchTextDirection: true,
-                        width: 286,
-                        height: 286,
+              child: Transform.flip(
+                flipY: true,
+                //alignment: Alignment.center,
+                //transform: Matrix4.identity()..scale(1.0, -1.0),
+                child: TransformRotateWidget(
+                  angle: (pi / 12) * 14,
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      RotationTransition(
+                        turns: _animation,
+                        child: TransformRotateWidget(
+                          angle: (pi / 12) * 2,
+                          child: Image.asset(
+                            Assets.timeBig286,
+                            matchTextDirection: true,
+                            width: 286,
+                            height: 286,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  RotationTransition(
-                    turns: Tween(
-                      begin: 0.0,
-                      end: -1.0,
-                    ).animate(_animationCtrl2),
-                    child: TransformRotateWidget(
-                      angle: (pi / 12) * 4,
-                      child: Image.asset(
-                        Assets.timeMiddle194,
-                        matchTextDirection: true,
-                        width: 194,
-                        height: 194,
+                      RotationTransition(
+                        turns: Tween(
+                          begin: 0.0,
+                          end: -1.0,
+                        ).animate(_animationCtrl2),
+                        child: TransformRotateWidget(
+                          angle: (pi / 12) * 4,
+                          child: Image.asset(
+                            Assets.timeMiddle194,
+                            matchTextDirection: true,
+                            width: 194,
+                            height: 194,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  RotationTransition(
-                    turns: (_animation),
-                    child: TransformRotateWidget(
-                      angle: (pi / 12) * 6,
-                      child: Image.asset(
-                        Assets.timeSmall132,
-                        matchTextDirection: true,
-                        width: 132,
-                        height: 132,
+                      RotationTransition(
+                        turns: (_animation),
+                        child: TransformRotateWidget(
+                          angle: (pi / 12) * 6,
+                          child: Image.asset(
+                            Assets.timeSmall132,
+                            matchTextDirection: true,
+                            width: 132,
+                            height: 132,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
 

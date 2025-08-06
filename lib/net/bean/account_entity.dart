@@ -86,7 +86,8 @@ class AccountEntity {
     return jsonEncode(this);
   }
 
-  bool get isNew => isNewUser == 1;
+  ///是否是新用户
+  bool get isNew => (isNewUser ?? 1) == 1;
 
   ///新用户(没有更新用户信息)
 

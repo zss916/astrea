@@ -13,6 +13,7 @@ import 'package:astrea/net/api/location.dart';
 import 'package:astrea/net/bean/city_entity.dart';
 import 'package:astrea/net/bean/country_entity.dart';
 import 'package:astrea/net/bean/state_entity.dart';
+import 'package:astrea/page/login/guide/email/enum/login_enum.dart';
 import 'package:astrea/page/login/guide/placeOfBirth/place/city_list_widget.dart';
 import 'package:astrea/page/login/guide/placeOfBirth/place/country_list_widget.dart';
 import 'package:astrea/page/login/guide/placeOfBirth/place/state_list_widget.dart';

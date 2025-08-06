@@ -11,7 +11,8 @@ class StartLogic extends GetxController {
     super.onClose();
   }
 
-  void toStep() => PageTools.toStep();
+  void toStep() =>
+      PageTools.toStep(loginType: LoginType.loginAndRegister.index);
 
   void toLogin() => PageTools.toWelcome(loginType: LoginType.onlyLogin.index);
 
