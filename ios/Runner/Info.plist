@@ -32,12 +32,12 @@
 		<string>App needs your permission to access the album and select pictures for use in uploading avatars / reviews</string>
 		<key>NSLocalNetworkUsageDescription</key>
 		<string>App needs your consent to use local network to connect to other devices under the local network to enable the screen projection function</string>
-        <key>LSApplicationQueriesSchemes</key>
-        <array>
-            <string>https</string>
-            <string>sms</string>
-            <string>tel</string>
-        </array>
+		<key>LSApplicationQueriesSchemes</key>
+		<array>
+			<string>https</string>
+			<string>sms</string>
+			<string>tel</string>
+		</array>
 		<key>UILaunchStoryboardName</key>
 		<string>LaunchScreen</string>
 		<key>UIMainStoryboardFile</key>
