@@ -2,6 +2,7 @@ class LanKey {
   static const startTitle = "start_title";
   static const startBtn = "start_btn";
   static const apple = "apple";
+  static const signUp = "signUp";
   static const startExistingUsers = "start_existing_users";
   static const startPolicyTitle1 = "start_policy_title1";
   static const startTermsOfService = "start_terms_of_service";
@@ -401,7 +402,7 @@ const en = {
   "star_chart_display": "Star chart display",
   "monthly": "Month",
   "lucky_gem": "Lucky Gem",
-  "apple": "Apple",
+  "apple": "Log in with Apple",
   "notice_setting": "Notification Settings",
   "feedback_hint": "Please provide the content...",
   "send": "Send",
@@ -458,8 +459,8 @@ const en = {
   "welcome": "Welcome",
   "welcome_tip":
       "The personal information you entered has been generated into your exclusive star chart. Please log in to view it now.",
-  "google": "Google",
-  "email": "Email",
+  "google": "Log in with Google",
+  "email": "Log in with Email",
   "password": "Password",
   "email_title": "What is your email",
   "invalid_email": 'Invalid email address, please try again.',
@@ -703,4 +704,5 @@ const en = {
       "The info you entered doesn’t match our records.\nWhat would you like to do?",
   "selectStateOrProvince": "Please select State/Province",
   "invalidPsdTip": "Please enter 8 to 20 characters.",
+  "signUp": "Sign Up",
 };

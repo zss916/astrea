@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:astrea/components/common_btn.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void showCommonConfirmDialog({
   String? title,
@@ -12,6 +12,7 @@ void showCommonConfirmDialog({
   String? confirmText,
   TextStyle? contentStyle,
   Widget? nextWidget,
+  bool barrierDismissible = true,
   required String routeName,
 }) {
   Get.dialog(
@@ -73,5 +74,6 @@ void showCommonConfirmDialog({
       ),
     ),
     routeSettings: RouteSettings(name: routeName),
+    barrierDismissible: barrierDismissible,
   );
 }

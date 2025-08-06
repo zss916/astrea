@@ -28,7 +28,11 @@ class EmailLogic extends GetxController with AppValidatorMixin {
   }
 
   /// 邮箱登录
-  Future<void> toAuthEmail({required String email, required String pwd}) async {
+  Future<void> toAuthEmail({
+    required String email,
+    required String pwd,
+    bool? isToResult,
+  }) async {
     bool isEmailValidate = EmailValidator.validate(email);
     isEmailError = !isEmailValidate;
     update();
@@ -62,17 +66,43 @@ class EmailLogic extends GetxController with AppValidatorMixin {
         authToken: data.$2?.authToken ?? "",
         isNewUser: data.$2?.isNewUser,
       );
-      PageTools.offAllNamedHome();
-    } else {
+      if (loginType == LoginType.loginAndRegister.index) {
+        showAccountExistsDialog(
+          onEditEmail: () {
+            ///更新
+            PageTools.toResult();
+          },
+          onLogin: () {
+            ///不更新
+            PageTools.offAllNamedHome();
+          },
+        );
+      } else {
+        PageTools.offAllNamedHome();
+
+        /* if (data.$2?.checkNewUser == true) {
+          PageTools.toResult();
+        } else {
+          PageTools.offAllNamedHome();
+        }*/
+      }
+    } /*else {
       if (data.$3 == 1007) {
         ///账号已存在(type = 0)
         showAccountExistsDialog(
-          onEditEmail: () {},
+          onEditEmail: () {
+            ///更新
+            loginType = LoginType.onlyLogin.index;
+            toAuthEmail(email: email, pwd: pwd, isToResult: true);
+          },
           onLogin: () {
-            PageTools.toResult();
+            ///不更新
+            loginType = LoginType.onlyLogin.index;
+            toAuthEmail(email: email, pwd: pwd);
+            // PageTools.toResult();
           },
         );
       }
-    }
+    }*/
   }
 }

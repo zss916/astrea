@@ -104,5 +104,6 @@ void showAccountExistsDialog({Function? onEditEmail, Function? onLogin}) {
       ),
     ),
     routeName: APages.loginFailedDialog2,
+    barrierDismissible: false,
   );
 }

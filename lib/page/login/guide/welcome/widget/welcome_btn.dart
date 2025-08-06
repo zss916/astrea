@@ -34,6 +34,7 @@ class WelcomeBtn extends StatelessWidget {
         alignment: AlignmentDirectional.center,
         width: double.maxFinite,
         height: 58,
+        padding: EdgeInsetsDirectional.symmetric(horizontal: 24.w),
         margin: margin ?? EdgeInsetsDirectional.only(start: 20, end: 20),
         decoration: BoxDecoration(
           color: bgColor ?? Color(0xFF766DF8),
@@ -43,7 +44,7 @@ class WelcomeBtn extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsetsDirectional.only(end: 8.w, bottom: 0),
+              margin: EdgeInsetsDirectional.only(end: 0.w, bottom: 0),
               child: Image.asset(
                 icon,
                 color: iconColor,
@@ -52,6 +53,7 @@ class WelcomeBtn extends StatelessWidget {
                 matchTextDirection: true,
               ),
             ),
+            Spacer(),
             Container(
               color: Colors.transparent,
               child: Text(
@@ -65,6 +67,8 @@ class WelcomeBtn extends StatelessWidget {
                 ),
               ),
             ),
+            Spacer(),
+            SizedBox(width: 20),
           ],
         ),
       ),
