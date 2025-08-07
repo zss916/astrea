@@ -89,7 +89,7 @@ class AddFileLogic extends GetxController {
   void updateButtonState() {
     isSave =
         (nickName.isNotEmpty) &&
-        ((avatar ?? "").isNotEmpty) &&
+        // ((avatar ?? "").isNotEmpty) &&
         (sex != 0) &&
         (birthday.isNotEmpty) &&
         (hourBirth != null) &&

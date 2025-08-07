@@ -105,8 +105,8 @@ class AnalysisPage extends StatelessWidget {
                   children: [
                     NatalChart(
                       isShow: false,
-                      nickName: logic.nickName,
-                      showBirthday: logic.showBirthday,
+                      nickName: logic.nickName ?? "",
+                      showBirthday: logic.showBirthday ?? "",
                       sunSign: logic.sunSign,
                       sunSignIcon: logic.sunSignIcon,
                       moonSign: logic.moonSign,

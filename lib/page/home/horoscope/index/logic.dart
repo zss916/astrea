@@ -35,8 +35,14 @@ class HoroscopeLogic extends GetxController
   void onReady() {
     super.onReady();
     loadData();
-    loadAccount();
     loadFriends();
+    loadAccount().then((value) {
+      if (value != null) {
+        name = value.nickName ?? "";
+        birthday = value.showBirthDay;
+        update();
+      }
+    });
   }
 
   void initLocal() {

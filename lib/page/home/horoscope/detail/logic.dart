@@ -2,12 +2,10 @@ part of 'index.dart';
 
 class AnalysisLogic extends GetxController {
   NatalReportEntity? data;
-  AccountEntity? account;
 
   ///账户
-  String get nickName => account?.nickName ?? "--";
-  String get avatar => account?.headimg ?? "";
-  String get showBirthday => account?.showBirthDay ?? "--";
+  String? nickName;
+  String? showBirthday;
 
   ///星盘
   String get natalChartImage => data?.natalChartImg ?? "";
@@ -95,22 +93,22 @@ class AnalysisLogic extends GetxController {
   }
 
   void initLocalData() {
-    if (Get.arguments != null && Get.arguments is List) {
-      if (Get.arguments[0] != null && Get.arguments[0] is NatalReportEntity) {
-        data = Get.arguments[0] as NatalReportEntity;
-        update();
-      }
-      if (Get.arguments[1] != null && Get.arguments[1] is AccountEntity) {
-        account = Get.arguments[1] as AccountEntity;
-        update();
-      }
+    if (Get.arguments != null && Get.arguments is NatalReportEntity) {
+      data = Get.arguments as NatalReportEntity;
+      update();
+    }
+    if (Get.parameters['nickName'] != null) {
+      nickName = Get.parameters['nickName'];
+      update();
+    }
+    if (Get.parameters['birthday'] != null) {
+      showBirthday = Get.parameters['birthday'];
+      update();
     }
   }
 
   @override
   void onReady() {
     super.onReady();
-
-    ///
   }
 }

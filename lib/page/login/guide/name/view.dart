@@ -12,7 +12,7 @@ class EditNamePage extends StatelessWidget {
         children: [
           SizedBox(height: 20.h),
           StepIndicator(index: 5),
-          Container(
+          /* Container(
             width: 128,
             height: 128,
             margin: EdgeInsets.only(top: 24.h, bottom: 18.h),
@@ -24,9 +24,9 @@ class EditNamePage extends StatelessWidget {
               ),
               shape: OvalBorder(),
             ),
-          ),
+          ),*/
           Container(
-            margin: EdgeInsetsDirectional.symmetric(horizontal: 20),
+            margin: EdgeInsetsDirectional.only(start: 20, end: 20, top: 40.h),
             child: Text(
               LanKey.yourName.tr,
               style: TextStyle(

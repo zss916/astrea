@@ -97,10 +97,15 @@ class PageTools {
 
   static toStarChartAnalysis({
     NatalReportEntity? data,
-    AccountEntity? account,
+    String? nickName,
+    String? birthday,
   }) {
-    if (data != null && account != null) {
-      Get.toNamed(APages.starChartAnalysis, arguments: [data, account]);
+    if (data != null && nickName != null && birthday != null) {
+      Get.toNamed(
+        APages.starChartAnalysis,
+        arguments: data,
+        parameters: {"nickName": nickName, "birthday": birthday},
+      );
     }
   }
 

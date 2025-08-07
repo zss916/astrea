@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/login/guide/timeOfBirth/widget/dialog/dialog_time_of_birth.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DoNotKnow extends StatelessWidget {
   final Function(int, int) onSelect;
@@ -13,8 +13,8 @@ class DoNotKnow extends StatelessWidget {
     return Container(
       margin: EdgeInsetsDirectional.symmetric(horizontal: 16),
       width: double.maxFinite,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(20),
+      child: GestureDetector(
+        // borderRadius: BorderRadius.circular(20),
         onTap: () {
           showTimeOfBirthDialog(() {
             onSelect.call(12, 0);
