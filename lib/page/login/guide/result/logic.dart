@@ -41,21 +41,20 @@ class ResultLogic extends GetxController {
         );
         if (value.$1) {
           AstrologyService.to.update(value.$2);
-          // AccountService.to.setResult(isFinish: false);
-          PageTools.offAllNamedHome(data: value.$2);
+          PageTools.offAllNamedHome(
+            data: value.$2,
+            friendId: account?.friendId,
+          );
         } else {
           debugPrint("get astrology report failed");
-          // AccountService.to.setResult(isFinish: true);
-          PageTools.offAllNamedHome();
+          PageTools.offAllNamedHome(friendId: account?.friendId);
         }
       } else {
         debugPrint("get account failed");
-        // AccountService.to.setResult(isFinish: true);
         PageTools.offAllNamedHome();
       }
     } else {
       debugPrint("update account failed");
-      // AccountService.to.setResult(isFinish: true);
       PageTools.offAllNamedHome();
     }
   }

@@ -1,4 +1,5 @@
 import 'package:astrea/core/enum/app_enum.dart';
+import 'package:astrea/core/enum/view_state.dart';
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/net/bean/account_entity.dart';
@@ -86,8 +87,6 @@ class PageTools {
   static toWelcome({required int loginType}) {
     Get.toNamed(APages.welcome, arguments: loginType);
   }
-
-  static toHome() => Get.toNamed(APages.home);
 
   static toNotifySetting() => Get.toNamed(APages.notifySetting);
 
@@ -244,8 +243,33 @@ class PageTools {
 
   static offAllNamedSplash() => Get.offAllNamed(APages.splash);
 
-  static offAllNamedHome({NatalReportEntity? data}) =>
-      Get.offAllNamed(APages.home, arguments: data);
+  static toHome({String? friendId}) {
+    Get.toNamed(
+      APages.home,
+      arguments: {
+        "viewSate": HomeViewState.loading.index,
+        "data": null,
+        "friendId": friendId,
+      },
+    );
+  }
+
+  static offAllNamedHome({NatalReportEntity? data, String? friendId}) {
+    int viewSate = HomeViewState.reload.index;
+    if (data != null && friendId != null) {
+      viewSate = HomeViewState.data.index;
+    }
+    if (data == null && friendId != null) {
+      viewSate = HomeViewState.loading.index;
+    }
+    if (data == null && friendId == null) {
+      viewSate = HomeViewState.reload.index;
+    }
+    Get.offAllNamed(
+      APages.home,
+      arguments: {"viewSate": viewSate, "data": data, "friendId": friendId},
+    );
+  }
 
   static offAndNamedGuide() {
     AccountService.to.updateLoginStep(step: LoginStep.step0.value);
@@ -255,24 +279,12 @@ class PageTools {
   static offAllNamedLogin() =>
       Get.offAllNamed(APages.welcome, arguments: LoginType.onlyLogin.index);
 
-  static loginToNext({required int loginType}) {
+  static loginToNext({required int loginType, String? friendId}) {
     if (loginType == LoginType.onlyLogin.index) {
-      PageTools.offAllNamedHome();
+      PageTools.offAllNamedHome(friendId: friendId);
     } else {
       PageTools.toResult();
     }
-
-    /*if (AccountService.to.isNewUser) {
-      ///判断是否完成资料录入
-      if (AccountService.to.isFinishRecord) {
-        ///todo ????????
-        PageTools.toResult();
-      } else {
-        PageTools.toStep();
-      }
-    } else {
-      PageTools.offAllNamedHome();
-    }*/
   }
 
   static toWeb({required String title, required String url}) =>

@@ -1,239 +1,149 @@
 import 'dart:async';
 
-import 'package:astrea/components/star.dart';
-import 'package:astrea/core/bus/app_event_bus.dart';
-import 'package:astrea/core/storage/account_service.dart';
-import 'package:astrea/core/storage/astrology_service.dart';
+import 'package:astrea/core/enum/view_state.dart';
 import 'package:astrea/core/toast/app_loading.dart';
-import 'package:astrea/core/translations/en.dart';
-import 'package:astrea/net/api/account.dart';
-import 'package:astrea/net/api/astro.dart';
-import 'package:astrea/net/api/friend.dart';
-import 'package:astrea/net/bean/account_entity.dart';
 import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
+import 'package:astrea/page/home/horoscope/index/mixin_controller/mixin_report.dart';
 import 'package:get/get.dart';
 
-class HoroscopeLogic extends GetxController {
-  NatalReportEntity? data;
-  AccountEntity? account;
+import 'mixin_controller/mixin_account.dart';
+import 'mixin_controller/mixin_friend.dart';
+
+class HoroscopeLogic extends GetxController
+    with
+        HoroscopeFriendLogicMixin,
+        HoroscopeAccountLogicMixin,
+        HoroscopeReportLogicMixin {
+  String? reportId = "";
 
   ///显示姓名和生日
   String name = "";
   String birthday = "";
 
-  ///账户
-  String get avatar => account?.headimg ?? "";
-  String get nickName => account?.nickName ?? LanKey.oneself.tr;
-  String get showBirthday => account?.showBirthDay ?? "--";
-
-  ///星盘
-  String get natalChartImage => data?.natalChartImg ?? "";
-  //String get natalChartImage => "https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg";
-  String get sunSign => data?.natalChartResult?.sunSign ?? "";
-  String? get sunSignIcon => AppStarIcon.selectSign(sunSign);
-  String get moonSign => data?.natalChartResult?.moonSign ?? "";
-  String? get moonSignIcon => AppStarIcon.selectSign(moonSign);
-  String get ascendantSign => data?.natalChartResult?.ascendantSign ?? "";
-  String? get ascendantSignIcon => AppStarIcon.selectSign(ascendantSign);
-  String get element => data?.natalChartResult?.element ?? "";
-  String get form => data?.natalChartResult?.form ?? "";
-  String get ruler => data?.natalChartResult?.ruler ?? "";
-
-  ///三大主行
-  String get sunSignInterpretation =>
-      data?.natalChartReport?.threeMainStars?.sun?.interpretation ?? "";
-  String get moonSignInterpretation =>
-      data?.natalChartReport?.threeMainStars?.moon?.interpretation ?? "";
-  String get ascendantSignInterpretation =>
-      data?.natalChartReport?.threeMainStars?.ascendant?.interpretation ?? "";
-
-  ///yesterday
-  String get yesterdaySummary =>
-      data?.predicationAnalysisResult?.yesterday?.summary ?? "";
-
-  ///today
-  String get todaySummary =>
-      data?.predicationAnalysisResult?.today?.summary ?? "";
-  String get todayShould => data?.predicationAnalysisResult?.today?.dod ?? "";
-  String get todayAvoid => data?.predicationAnalysisResult?.today?.avoid ?? "";
-  int get loveValue => data?.predicationAnalysisResult?.today?.score?.love ?? 0;
-  int get careerValue =>
-      data?.predicationAnalysisResult?.today?.score?.career ?? 0;
-  int get wealthValue =>
-      data?.predicationAnalysisResult?.today?.score?.wealth ?? 0;
-  String get todayGuide =>
-      data?.predicationAnalysisResult?.today?.luckBoostingTip ?? "";
-
-  String get todayLove => data?.predicationAnalysisResult?.today?.love ?? "";
-  String get todayCareer =>
-      data?.predicationAnalysisResult?.today?.career ?? "";
-  String get todayWealth =>
-      data?.predicationAnalysisResult?.today?.wealth ?? "";
-
-  ///tomorrow
-  String get tomorrowSummary =>
-      data?.predicationAnalysisResult?.tomorrow?.summary ?? "";
-  String get tomorrowGuide =>
-      data?.predicationAnalysisResult?.tomorrow?.luckBoostingTip ?? "";
-
-  /// week
-  String get weekSummary =>
-      data?.predicationAnalysisResult?.week?.summary ?? "";
-
-  String get weekGuide =>
-      data?.predicationAnalysisResult?.week?.luckBoostingTip ?? "";
-
-  /// month
-  String get monthSummary =>
-      data?.predicationAnalysisResult?.month?.summary ?? "";
-
-  /// year
-  String get yearSummary =>
-      data?.predicationAnalysisResult?.year?.summary ?? "";
-
-  int viewState = 0;
-
-  bool isAddFriend = false;
-
-  ///不包含用户自己
-  List<FriendEntity> friends = [];
-  late StreamSubscription<RefreshFriendsEvent> refreshEvent;
-  late StreamSubscription<RefreshUserEvent> refreshUserEvent;
-
-  String reportId = "";
+  ///默认loading
+  int viewState = HomeViewState.loading.index;
+  bool isOneself = true;
 
   @override
   void onInit() {
     super.onInit();
-    initLocalData();
-    refreshEvent = AppEventBus.eventBus.on<RefreshFriendsEvent>().listen((
-      event,
-    ) {
-      getFriends();
-    });
-
-    refreshUserEvent = AppEventBus.eventBus.on<RefreshUserEvent>().listen((
-      event,
-    ) {
-      loadAccount();
-    });
-  }
-
-  void initLocalData() {
-    if (Get.arguments != null && Get.arguments is NatalReportEntity) {
-      data = Get.arguments as NatalReportEntity;
-    } else {
-      data = AstrologyService.to.getNatalValue();
-    }
-    account = AccountService.to.getAccount();
-    friends = AccountService.to.getFriendList().where((e) => !e.isMe).toList();
-    isAddFriend = friends.isNotEmpty;
-    name = account?.nickName ?? "";
-    birthday = account?.showBirthDay ?? "";
-    reportId = AccountService.to.friendId;
-    if (data == null) {
-      viewState = 1;
-    }
-    update();
+    initLocal();
   }
 
   @override
   void onReady() {
     super.onReady();
     loadData();
-    getFriends();
+    loadAccount();
+    loadFriends();
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-    refreshEvent.cancel();
-    refreshUserEvent.cancel();
+  void initLocal() {
+    if (Get.arguments != null && Get.arguments is Map<String, dynamic>) {
+      Map map = Get.arguments as Map<String, dynamic>;
+      int value = map["viewSate"] as int;
+      if (value == HomeViewState.data.index) {
+        reportId = map["friendId"] as String?;
+        data = (map["data"] as NatalReportEntity?);
+        viewState = HomeViewState.data.index;
+      }
+      if (value == HomeViewState.loading.index) {
+        reportId = map["friendId"] as String?;
+        viewState = HomeViewState.loading.index;
+      }
+      if (value == HomeViewState.reload.index) {
+        viewState = HomeViewState.reload.index;
+      }
+      update();
+    }
   }
 
   Future<void> loadData() async {
-    if (reportId.isNotEmpty) {
-      (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
-        id: reportId,
-      );
-      if (value.$1) {
-        viewState = 0;
-        data = value.$2;
-        update();
+    if (viewState == HomeViewState.data.index) {
+      if (data == null && reportId != null) {
+        loadReport(reportId: reportId ?? "");
+      }
+    } else if (viewState == HomeViewState.loading.index) {
+      if (reportId != null) {
+        loadReport(reportId: reportId ?? "");
+      }
+    } else if (viewState == HomeViewState.reload.index) {
+      //reloadData();
+    }
+  }
+
+  Future<void> loadReport({
+    required String reportId,
+    bool isLoading = true,
+  }) async {
+    if (isLoading) viewState = HomeViewState.loading.index;
+    update();
+    (bool, NatalReportEntity) value = await loadAstrologyReport(
+      reportId: reportId,
+    );
+    if (value.$1) {
+      viewState = HomeViewState.data.index;
+      update();
+    } else {
+      viewState = HomeViewState.reload.index;
+      update();
+    }
+  }
+
+  ///点击reload
+  Future<void> reloadData() async {
+    viewState = HomeViewState.loading.index;
+    update();
+    if (isOneself) {
+      account = await loadAccount();
+      if (account?.isNew == true) {
+        bool isSuccessful = await updateAccount();
+        if (isSuccessful) {
+          account = await loadAccount();
+          if (account?.friendId != null) {
+            reportId = account?.friendId;
+            loadReport(reportId: reportId ?? "");
+          } else {
+            viewState = HomeViewState.reload.index;
+            update();
+          }
+        } else {
+          viewState = HomeViewState.reload.index;
+          update();
+        }
       } else {
-        viewState = 1;
-        update();
+        loadReport(reportId: reportId ?? "");
       }
     } else {
-      account = await AccountAPI.getAccount();
-      reportId = account?.friendId ?? "";
-      name = account?.nickName ?? "";
-      birthday = account?.showBirthDay ?? "";
-      (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
-        id: account?.friendId ?? "",
-      );
-      if (value.$1) {
-        viewState = 0;
-        data = value.$2;
-        update();
-      } else {
-        viewState = 1;
-        update();
-      }
+      loadReport(reportId: reportId ?? "");
     }
   }
 
   ///切换星盘
-  Future<void> changeReport({required String id, required int index}) async {
+  Future<void> changeReport({
+    String? id,
+    int? index,
+    bool isOneself = true,
+  }) async {
+    isOneself = isOneself;
     AppLoading.show();
-    FriendEntity account = friends[index];
-    name = account.nickName ?? "";
-    birthday = account.showBirthDay;
-    reportId = id;
-    (bool, NatalReportEntity) value =
-        await AstrologyAPI.getAstrologyReport(id: id).whenComplete(() {
-          AppLoading.dismiss();
-        });
-    if (value.$1) {
-      viewState = 0;
-      data = value.$2;
+    if (isOneself) {
+      await loadAccount();
+      name = nickName;
+      birthday = showBirthday;
+      reportId = account?.friendId;
       update();
+      await loadReport(reportId: reportId ?? "", isLoading: false);
+      AppLoading.dismiss();
     } else {
-      viewState = 1;
+      FriendEntity account = friends[(index ?? 0)];
+      name = account.nickName ?? "";
+      birthday = account.showBirthDay;
       update();
+      reportId = id;
+      await loadReport(reportId: reportId ?? "", isLoading: false);
+      AppLoading.dismiss();
     }
-  }
-
-  Future<void> refreshData() async {
-    viewState = 2;
-    update();
-
-    (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
-      id: reportId,
-    );
-    if (value.$1) {
-      viewState = 0;
-      data = value.$2;
-      update();
-    } else {
-      viewState = 1;
-      update();
-    }
-  }
-
-  Future<void> getFriends() async {
-    (bool, List<FriendEntity>) value = await FriendAPI.getFriends();
-    if (value.$1) {
-      AccountService.to.updateFriendList(value.$2);
-      friends = value.$2.where((e) => !e.isMe).toList();
-      isAddFriend = friends.isNotEmpty;
-      update();
-    }
-  }
-
-  Future<void> loadAccount() async {
-    account = await AccountAPI.getAccount();
-    update();
   }
 }

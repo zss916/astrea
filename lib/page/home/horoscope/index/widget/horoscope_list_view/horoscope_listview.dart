@@ -122,6 +122,7 @@ class HoroscopeListview extends StatelessWidget {
                             logic.changeReport(
                               id: logic.friends[i].id.toString(),
                               index: i,
+                              isOneself: false,
                             );
                           }
                         },

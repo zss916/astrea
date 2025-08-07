@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:astrea/core/toast/app_loading.dart';
+import 'package:astrea/generated/assets.dart';
 import 'package:astrea/net/bean/city_entity.dart';
 import 'package:astrea/net/bean/country_entity.dart';
 import 'package:astrea/net/bean/state_entity.dart';
@@ -8,9 +10,31 @@ import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 
 ///location
 abstract class LocationAPI {
+  ///获取本地国家列表
+  static Future<List<CountryEntity>> getLocalCountryList() async {
+    String value = await rootBundle.loadString(Assets.dataCountryData);
+    List list = json.decode(value) as List;
+    List<CountryEntity> lists = list
+        .map((e) => CountryEntity.fromJson(e))
+        .toList();
+    List<CountryEntity> data = await compute(
+      (data) => data
+        ..sort(
+          (a, b) => a.name
+              .toString()
+              .trim()
+              .substring(0, 1)
+              .compareTo(b.name.toString().trim().substring(0, 1)),
+        ),
+      lists,
+    );
+    return data;
+  }
+
   ///获取国家列表
   static Future<List<CountryEntity>> getCountryList({
     CancelToken? cancelToken,
@@ -80,10 +104,11 @@ abstract class LocationAPI {
         );
         return list;
       } else {
-        AppLoading.toast("${result['msg']}");
+        AppLoading.toast("Request Failed");
         return [];
       }
     } catch (error) {
+      AppLoading.toast("Request Failed");
       return [];
     }
   }
@@ -119,10 +144,11 @@ abstract class LocationAPI {
         );
         return list;
       } else {
-        AppLoading.toast("${result['msg']}");
+        AppLoading.toast("Request Failed");
         return [];
       }
     } catch (error) {
+      AppLoading.toast("Request Failed");
       return [];
     }
   }

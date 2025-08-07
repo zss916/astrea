@@ -45,7 +45,7 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
           nickName: nickname,
           authToken: data.authToken ?? "",
         );
-        PageTools.loginToNext(loginType: loginType);
+        PageTools.loginToNext(loginType: loginType, friendId: data.friendId);
       } else {
         AppLoading.toast("login failed");
       }
@@ -72,7 +72,7 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
           nickName: nickname,
           authToken: data.authToken ?? "",
         );
-        PageTools.loginToNext(loginType: loginType);
+        PageTools.loginToNext(loginType: loginType, friendId: data.friendId);
       } else {
         AppLoading.toast("login failed");
       }

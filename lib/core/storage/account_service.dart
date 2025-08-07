@@ -16,6 +16,7 @@ class AccountService extends GetxService {
 
   static const String userData = "horoscope_save_user_info";
   static const String friendData = "horoscope_save_friends";
+  static const String accountAndPwd = "horoscope_login_account_and_pwd";
 
   AccountEntity? data;
 
@@ -94,13 +95,13 @@ class AccountService extends GetxService {
   }
 
   ///记录报告失败
-  void setResult({required bool isFinish}) {
+  /*void setResult({required bool isFinish}) {
     StorageService.to.setBool("horoscope_result", isFinish);
-  }
+  }*/
 
   ///记录报告失败
-  bool getResult() => StorageService.to.getBool("horoscope_result");
-
+  /*bool getResult() => StorageService.to.getBool("horoscope_result");
+*/
   ///保存用户登录步骤
   void updateLoginStep({int? step}) {
     if (step != null) {
@@ -337,14 +338,12 @@ class AccountService extends GetxService {
 
   ///注销
   Future<void> logout() async {
-    // AccountService.to.data?.authToken = null;
-    // AccountService.to.updateAuthToken(null);
     clear();
     data = AccountEntity();
     PageTools.offAllNamedLogin();
   }
 
-  ///清除用户账号信息
+  ///清除用户信息
   void clear() {
     StorageService.to.remove(userData);
   }
@@ -355,5 +354,27 @@ class AccountService extends GetxService {
     StorageService.to.clear();
     data = AccountEntity();
     PageTools.offAllNamedSplash();
+  }
+
+  ///保存已登录账号和密码
+  void saveAccountAndPsd(String account, String pwd) {
+    Map<String, dynamic> map = {"account": account, "pwd": pwd};
+    StorageService.to.setString(accountAndPwd, jsonEncode(map));
+  }
+
+  ///获取已登录账号和密码
+  (String? account, String? pwd) getAccountAndPsd() {
+    String? str = StorageService.to.getString(accountAndPwd);
+    if (str.isNotEmpty) {
+      try {
+        Map<String, dynamic> map = jsonDecode(str);
+        return (map["account"] ?? "", map["pwd"] ?? "");
+      } catch (e) {
+        debugPrint("$e");
+        return ("", "");
+      }
+    } else {
+      return ("", "");
+    }
   }
 }

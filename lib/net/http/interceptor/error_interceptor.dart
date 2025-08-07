@@ -1,3 +1,4 @@
+import 'package:astrea/core/toast/app_loading.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -6,10 +7,13 @@ class ErrorInterceptor extends Interceptor {
   void onError(DioException err, ErrorInterceptorHandler handler) {
     switch (err.type) {
       case DioExceptionType.connectionTimeout:
+        AppLoading.toast("Network Connection Timeout");
         break;
       case DioExceptionType.sendTimeout:
+        AppLoading.toast("Network Send Timeout");
         break;
       case DioExceptionType.receiveTimeout:
+        AppLoading.toast("Network Receive Timeout");
         break;
       case DioExceptionType.badCertificate:
         break;

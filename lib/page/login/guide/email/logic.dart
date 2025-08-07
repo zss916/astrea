@@ -15,13 +15,6 @@ class EmailLogic extends GetxController with AppValidatorMixin {
   }
 
   @override
-  void onReady() {
-    super.onReady();
-
-    ///
-  }
-
-  @override
   void onClose() {
     cancelToken.cancel();
     super.onClose();
@@ -59,6 +52,7 @@ class EmailLogic extends GetxController with AppValidatorMixin {
         });
 
     if (data.$1) {
+      AccountService.to.saveAccountAndPsd(email, pwd);
       AccountService.to.updateLocalUserInfo(
         uid: data.$2?.userId,
         loginEmail: email,
@@ -67,42 +61,23 @@ class EmailLogic extends GetxController with AppValidatorMixin {
         isNewUser: data.$2?.isNewUser,
       );
       if (loginType == LoginType.loginAndRegister.index) {
-        showAccountExistsDialog(
-          onEditEmail: () {
-            ///更新
-            PageTools.toResult();
-          },
-          onLogin: () {
-            ///不更新
-            PageTools.offAllNamedHome();
-          },
-        );
-      } else {
-        PageTools.offAllNamedHome();
-
-        /* if (data.$2?.checkNewUser == true) {
-          PageTools.toResult();
+        if (data.$3 == 1007) {
+          showAccountExistsDialog(
+            onEditEmail: () {
+              ///更新
+              PageTools.toResult();
+            },
+            onLogin: () {
+              ///不更新
+              PageTools.offAllNamedHome(friendId: data.$2?.friendId);
+            },
+          );
         } else {
-          PageTools.offAllNamedHome();
-        }*/
+          PageTools.toResult();
+        }
+      } else {
+        PageTools.offAllNamedHome(friendId: data.$2?.friendId);
       }
-    } /*else {
-      if (data.$3 == 1007) {
-        ///账号已存在(type = 0)
-        showAccountExistsDialog(
-          onEditEmail: () {
-            ///更新
-            loginType = LoginType.onlyLogin.index;
-            toAuthEmail(email: email, pwd: pwd, isToResult: true);
-          },
-          onLogin: () {
-            ///不更新
-            loginType = LoginType.onlyLogin.index;
-            toAuthEmail(email: email, pwd: pwd);
-            // PageTools.toResult();
-          },
-        );
-      }
-    }*/
+    }
   }
 }

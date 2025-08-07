@@ -1,5 +1,6 @@
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
+import 'package:astrea/page/login/guide/email/enum/login_enum.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,11 +10,15 @@ import 'package:keyboard_visibility_pro/keyboard_visibility_pro.dart';
 class InputEmail extends StatefulWidget {
   final Function(String) onNext;
   final bool isShowError;
+  final int type;
+  final String? email;
 
   const InputEmail({
     super.key,
     required this.isShowError,
     required this.onNext,
+    required this.type,
+    this.email,
   });
 
   @override
@@ -29,9 +34,16 @@ class _EditNameState extends State<InputEmail> {
   @override
   void initState() {
     super.initState();
-    //focusNode.unfocus();
-    focusNode.requestFocus();
+    focusNode.unfocus();
+    //focusNode.requestFocus();
     focusNode.addListener(_onFocusChange);
+    if (widget.type == LoginType.onlyLogin.index) {
+      if ((widget.email ?? "").isNotEmpty) {
+        setState(() {
+          textEditCtrl.text = widget.email ?? "";
+        });
+      }
+    }
   }
 
   @override

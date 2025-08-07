@@ -1,10 +1,10 @@
+import 'package:astrea/core/enum/view_state.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/setting/global.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/storage/astrology_service.dart';
-import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/net/api/account.dart';

@@ -11,12 +11,12 @@ class HomeLogic extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    loadData();
+    // loadData();
   }
 
-  Future<void> loadData() async {
+  /* Future<void> loadData() async {
     if (AccountService.to.getAccount() == null) {
       await AccountAPI.getAccount();
     }
-  }
+  }*/
 }

@@ -2,6 +2,7 @@ import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/core/validator/app_validator.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:astrea/page/login/guide/email/enum/login_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -10,12 +11,16 @@ import 'package:keyboard_visibility_pro/keyboard_visibility_pro.dart';
 class InputPassword extends StatefulWidget {
   final Function(String) onNext;
   final bool isShowError;
+  final int type;
+  final String? pwd;
 
   const InputPassword({
-    Key? key,
+    super.key,
     required this.isShowError,
     required this.onNext,
-  }) : super(key: key);
+    required this.type,
+    this.pwd,
+  });
 
   @override
   _EditNameState createState() => _EditNameState();
@@ -32,6 +37,13 @@ class _EditNameState extends State<InputPassword> with AppValidatorMixin {
     super.initState();
     focusNode.unfocus();
     focusNode.addListener(_onFocusChange);
+    if (widget.type == LoginType.onlyLogin.index) {
+      if ((widget.pwd ?? "").isNotEmpty) {
+        setState(() {
+          textEditCtrl.text = widget.pwd ?? "";
+        });
+      }
+    }
   }
 
   @override

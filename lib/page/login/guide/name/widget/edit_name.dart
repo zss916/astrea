@@ -33,6 +33,7 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
 
   @override
   void dispose() {
+    focusNode.unfocus();
     focusNode.removeListener(_onFocusChange);
     focusNode.dispose();
     textEditCtrl.dispose();

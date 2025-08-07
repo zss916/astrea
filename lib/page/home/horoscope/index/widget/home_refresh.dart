@@ -40,7 +40,7 @@ class HomeRefresh extends StatelessWidget {
               SizedBox(height: 24),
               GestureDetector(
                 onTap: () {
-                  logic.refreshData();
+                  logic.reloadData();
                 },
                 child: Container(
                   width: 140,

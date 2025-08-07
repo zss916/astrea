@@ -1,5 +1,6 @@
 import 'package:astrea/components/bottom_stack_btn.dart';
 import 'package:astrea/components/loading_widget.dart';
+import 'package:astrea/core/enum/view_state.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/global.dart';
@@ -76,11 +77,12 @@ class _HoroscopeViewState extends State<HoroscopeView>
 
           ///content
           // if (isShowOneself && logic.viewState == 0) buildContent(logic: logic),
-          if (isShowOneself && logic.viewState == 0)
+          if (isShowOneself && logic.viewState == HomeViewState.data.index)
             SliverToBoxAdapter(child: HoroscopeContent(logic: logic)),
 
           ///tabbar
-          if (isShowOneself && logic.viewState == 0) buildTabBar(),
+          if (isShowOneself && logic.viewState == HomeViewState.data.index)
+            buildTabBar(),
         ];
       },
       body: Stack(
@@ -90,13 +92,15 @@ class _HoroscopeViewState extends State<HoroscopeView>
               ? Stack(
                   alignment: AlignmentDirectional.topCenter,
                   children: [
-                    if (logic.viewState == 0) buildTabViewBody(logic),
-                    if (logic.viewState == 1) HomeRefresh(logic: logic),
-                    if (logic.viewState == 2)
+                    if (logic.viewState == HomeViewState.data.index)
+                      buildTabViewBody(logic),
+                    if (logic.viewState == HomeViewState.loading.index)
                       Container(
                         margin: EdgeInsetsDirectional.only(bottom: 140),
                         child: LoadingWidget(),
                       ),
+                    if (logic.viewState == HomeViewState.reload.index)
+                      HomeRefresh(logic: logic),
                   ],
                 )
               : buildStarWidget(index: selectedStarIndex),
@@ -158,7 +162,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
       setState(() {
         isShowOneself = true;
       });
-      logic.loadData();
+      logic.changeReport(isOneself: true);
     },
     onSelect: (i) {
       setState(() {

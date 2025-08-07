@@ -1,8 +1,10 @@
 import 'package:astrea/components/common_btn.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/setting/global.dart';
+import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/core/validator/app_validator.dart';
+import 'package:astrea/page/login/guide/email/enum/login_enum.dart';
 import 'package:astrea/page/login/guide/email/index.dart';
 import 'package:astrea/page/login/guide/email/widget/input_email.dart';
 import 'package:astrea/page/login/guide/email/widget/input_password.dart';
@@ -24,6 +26,27 @@ class _InputLoginState extends State<InputLogin> with AppValidatorMixin {
 
   String email = "";
   String pwd = "";
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.logic.loginType == LoginType.onlyLogin.index) {
+      (String? account, String? pwd) value = AccountService.to
+          .getAccountAndPsd();
+      if ((value.$1) != null) {
+        setState(() {
+          email = (value.$1 ?? "");
+          isEditEmail = true;
+        });
+      }
+      if ((value.$2) != null) {
+        setState(() {
+          pwd = (value.$2 ?? "");
+          isPsdEmail = true;
+        });
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +87,8 @@ class _InputLoginState extends State<InputLogin> with AppValidatorMixin {
                     ),
                   ),
                   InputEmail(
+                    email: email,
+                    type: widget.logic.loginType,
                     isShowError: widget.logic.isEmailError,
                     onNext: (value) {
                       setState(() {
@@ -74,6 +99,8 @@ class _InputLoginState extends State<InputLogin> with AppValidatorMixin {
                     },
                   ),
                   InputPassword(
+                    pwd: pwd,
+                    type: widget.logic.loginType,
                     isShowError: widget.logic.isPsdError,
                     onNext: (value) {
                       setState(() {

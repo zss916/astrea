@@ -51,31 +51,19 @@ class PlaceOfBirthLogic extends GetxController {
   }
 
   void initLocalData() async {
-    rootBundle.loadString(Assets.dataCountryData).then((value) async {
-      List list = json.decode(value) as List;
-      List<CountryEntity> lists = list
-          .map((e) => CountryEntity.fromJson(e))
-          .toList();
-      List<CountryEntity> data = await compute(
-        (data) => data
-          ..sort(
-            (a, b) => a.name
-                .toString()
-                .trim()
-                .substring(0, 1)
-                .compareTo(b.name.toString().trim().substring(0, 1)),
-          ),
-        lists,
-      );
-      countryData = data.groupListsBy((e) => e.firstLetter ?? "");
-      update();
-    });
+    AppLoading.show();
+    List<CountryEntity> countryList = await LocationAPI.getLocalCountryList()
+        .whenComplete(() => AppLoading.dismiss());
+    originalCountryData = countryList;
+    countryData = countryList.groupListsBy((e) => e.firstLetter ?? "");
+    update();
   }
 
   @override
   void onReady() {
     super.onReady();
-    loadCountryList(isLoading: true, cancelToken: cancelToken);
+    // loadCountryList(isLoading: true, cancelToken: cancelToken);
+    initLocalData();
   }
 
   @override
