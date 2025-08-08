@@ -222,9 +222,9 @@ class Assets {
   static const String imagesIcIndexBarBubbleGray =
       'assets/images/ic_index_bar_bubble_gray.png';
   static const String jsonLoading = 'assets/json/loading.json';
+  static const String launchAppName = 'launch/app_name.png';
   static const String launchLaunchBg = 'launch/launch_bg.png';
   static const String launchLaunchLogo = 'launch/launch_logo.png';
-  static const String launchLaunchName = 'launch/app_name.png';
   static const String launchLogo = 'launch/logo.png';
   static const String svgAddFriend = 'assets/svg/add_friend.svg';
   static const String svgInterestBorder = 'assets/svg/interest_border.svg';

@@ -184,96 +184,131 @@ class HoroscopeTabview extends StatelessWidget {
           // color: Colors.cyan,
           padding: EdgeInsetsDirectional.only(bottom: 12),
           margin: EdgeInsetsDirectional.only(start: 16, end: 16, top: 12),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      LanKey.love.tr,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: const Color(0xFF323133),
-                        fontSize: 18,
-                        fontFamily: AppFonts.textFontFamily,
-                        fontWeight: FontWeight.w400,
+          child: IntrinsicHeight(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        LanKey.love.tr,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: const Color(0xFF323133),
+                          fontSize: 18,
+                          fontFamily: AppFonts.textFontFamily,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsetsDirectional.only(top: 8),
-                      //width: 80,
-                      height: 6,
-                      child: LinearProgressIndicator(
-                        value: (love ?? 0) / 100,
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        backgroundColor: Color(0xFFF0F1F5),
-                        valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
+                      Container(
+                        margin: EdgeInsetsDirectional.only(top: 8, bottom: 8),
+                        //width: 80,
+                        height: 6,
+                        child: LinearProgressIndicator(
+                          value: (love ?? 0) / 100,
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          backgroundColor: Color(0xFFF0F1F5),
+                          valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
+                        ),
                       ),
-                    ),
-                  ],
+                      Text(
+                        "${love ?? 0}",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: const Color(0xFF585FC4),
+                          fontSize: 18,
+                          fontFamily: AppFonts.textFontFamily,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(width: 26.w),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      LanKey.career.tr,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: const Color(0xFF323133),
-                        fontSize: 18,
-                        fontFamily: AppFonts.textFontFamily,
-                        fontWeight: FontWeight.w400,
+                SizedBox(width: 26.w),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        LanKey.career.tr,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: const Color(0xFF323133),
+                          fontSize: 18,
+                          fontFamily: AppFonts.textFontFamily,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsetsDirectional.only(top: 8),
-                      //width: 80,
-                      height: 6,
-                      child: LinearProgressIndicator(
-                        value: (career ?? 0) / 100,
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        backgroundColor: Color(0xFFF0F1F5),
-                        valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
+                      Container(
+                        margin: EdgeInsetsDirectional.only(top: 8, bottom: 8),
+                        //width: 80,
+                        height: 6,
+                        child: LinearProgressIndicator(
+                          value: (career ?? 0) / 100,
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          backgroundColor: Color(0xFFF0F1F5),
+                          valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
+                        ),
                       ),
-                    ),
-                  ],
+                      Text(
+                        "${career ?? 0}",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: const Color(0xFF585FC4),
+                          fontSize: 18,
+                          fontFamily: AppFonts.textFontFamily,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(width: 26.w),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      LanKey.wealth.tr,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: const Color(0xFF323133),
-                        fontSize: 18,
-                        fontFamily: AppFonts.textFontFamily,
-                        fontWeight: FontWeight.w400,
+                SizedBox(width: 26.w),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        LanKey.wealth.tr,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: const Color(0xFF323133),
+                          fontSize: 18,
+                          fontFamily: AppFonts.textFontFamily,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsetsDirectional.only(top: 8),
-                      //width: 80,
-                      height: 6,
-                      child: LinearProgressIndicator(
-                        value: (wealth ?? 0) / 100,
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        backgroundColor: Color(0xFFF0F1F5),
-                        valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
+                      Container(
+                        margin: EdgeInsetsDirectional.only(top: 8, bottom: 8),
+                        //width: 80,
+                        height: 6,
+                        child: LinearProgressIndicator(
+                          value: (wealth ?? 0) / 100,
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          backgroundColor: Color(0xFFF0F1F5),
+                          valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
+                        ),
                       ),
-                    ),
-                  ],
+                      Text(
+                        "${wealth ?? 0}",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: const Color(0xFF585FC4),
+                          fontSize: 18,
+                          fontFamily: AppFonts.textFontFamily,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
 
@@ -290,17 +325,23 @@ class HoroscopeTabview extends StatelessWidget {
             ),
             child: Row(
               children: [
+                Image.asset(
+                  Assets.imageShouldRight,
+                  matchTextDirection: true,
+                  width: 84,
+                  height: 105,
+                ),
                 Expanded(
                   child: Container(
                     width: double.maxFinite,
-                    margin: EdgeInsetsDirectional.only(end: 25.w),
+                    margin: EdgeInsetsDirectional.only(start: 25.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           LanKey.should.tr,
                           style: TextStyle(
-                            color: const Color(0xFF585FC4),
+                            color: const Color(0xFF323133),
                             fontSize: 22,
                             fontFamily: AppFonts.textFontFamily,
                           ),
@@ -308,7 +349,7 @@ class HoroscopeTabview extends StatelessWidget {
                         Text(
                           should ?? "",
                           style: TextStyle(
-                            color: const Color(0xFF585FC4),
+                            color: const Color(0xFF6A676C),
                             fontSize: 16,
                             fontFamily: AppFonts.textFontFamily,
                           ),
@@ -316,12 +357,6 @@ class HoroscopeTabview extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
-                Image.asset(
-                  Assets.imageShouldRight,
-                  matchTextDirection: true,
-                  width: 86,
-                  height: 105,
                 ),
               ],
             ),
@@ -340,16 +375,10 @@ class HoroscopeTabview extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Image.asset(
-                  Assets.imageAvoidLeft,
-                  width: 84,
-                  height: 105,
-                  matchTextDirection: true,
-                ),
                 Expanded(
                   child: Container(
                     width: double.maxFinite,
-                    margin: EdgeInsetsDirectional.only(start: 25.w, end: 0),
+                    margin: EdgeInsetsDirectional.only(end: 25.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -364,7 +393,7 @@ class HoroscopeTabview extends StatelessWidget {
                         Text(
                           avoid ?? "",
                           style: TextStyle(
-                            color: const Color(0xFF323133),
+                            color: const Color(0xFF91929D),
                             fontSize: 16,
                             fontFamily: AppFonts.textFontFamily,
                           ),
@@ -372,6 +401,12 @@ class HoroscopeTabview extends StatelessWidget {
                       ],
                     ),
                   ),
+                ),
+                Image.asset(
+                  Assets.imageAvoidLeft,
+                  width: 84,
+                  height: 105,
+                  matchTextDirection: true,
                 ),
               ],
             ),
