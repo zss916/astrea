@@ -77,5 +77,13 @@ class GenderWidget extends StatelessWidget {
   );
 
   Widget buildScaleRatioWidget() =>
-      Transform.scale(scale: (Get.width / 375), child: buildSexWidget());
+      LayoutBuilder(builder: (context, constraints) {
+       final screenSize = MediaQuery.of(context).size;
+       final screenWidth = screenSize.width;
+        // 计算缩放比例
+        double scaleRatio = screenWidth / 375.0;
+       // 限制缩放范围，避免过大或过小
+       scaleRatio = scaleRatio.clamp(0.7, 1);
+        return Transform.scale(scale: scaleRatio, child: buildSexWidget());
+      });
 }

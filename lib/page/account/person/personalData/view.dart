@@ -1,7 +1,8 @@
 part of 'index.dart';
 
 class PersonalDataPage extends StatelessWidget {
-  const PersonalDataPage({super.key});
+  final FocusNode focusNode = FocusNode();
+  PersonalDataPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +43,15 @@ class PersonalDataPage extends StatelessWidget {
           builder: (logic) {
             return Column(
               children: [
-                EditAvatar(path: logic.avatar, logic: logic),
+                EditAvatar(
+                  path: logic.avatar,
+                  logic: logic,
+                  onTap: () {
+                    focusNode.unfocus();
+                  },
+                ),
                 EditName(
+                  focusNode: focusNode,
                   nickName: logic.nickName,
                   onChange: (value) {
                     logic.account?.nickName = value;
@@ -73,6 +81,7 @@ class PersonalDataPage extends StatelessWidget {
                         sex: logic.sex,
                         onNext: (sex) {
                           logic.account?.sex = sex;
+                          focusNode.unfocus();
                         },
                       ),
                     ],
@@ -85,6 +94,7 @@ class PersonalDataPage extends StatelessWidget {
                     logic.account?.birthday = dateBirth;
                     logic.account?.birthHour = hourBirth;
                     logic.account?.birthMinute = minuteBirth;
+                    focusNode.unfocus();
                     //logic.update();
                   },
                 ),
@@ -96,6 +106,7 @@ class PersonalDataPage extends StatelessWidget {
                     logic.account?.lat = latitude;
                     logic.account?.lon = longitude;
                     logic.update();
+                    focusNode.unfocus();
                   },
                 ),
                 Divider(height: 1, color: Color(0xFFD5D5D5)),
@@ -104,6 +115,7 @@ class PersonalDataPage extends StatelessWidget {
                     showInterestsSheet(logic.interests ?? "", (value) {
                       logic.account?.interests = value;
                       logic.update();
+                      focusNode.unfocus();
                     });
                   },
                   child: SizedBox(
@@ -166,6 +178,7 @@ class PersonalDataPage extends StatelessWidget {
                   isClickable: true,
                   margin: EdgeInsetsDirectional.zero,
                   onTap: () {
+                    focusNode.unfocus();
                     logic.updateData();
                   },
                 ),

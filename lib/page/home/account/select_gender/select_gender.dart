@@ -15,7 +15,7 @@ class SelectGender extends StatefulWidget {
 }
 
 class _SelectGenderState extends State<SelectGender> {
-  int selectSex = 0;
+  int selectSex = 2;
   // 0 - unknown, 1 - male, 2 - female, 3 - non-binary
 
   @override

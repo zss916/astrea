@@ -2,7 +2,7 @@ part of 'index.dart';
 
 class AddFileLogic extends GetxController {
   String nickName = "";
-  int sex = 0;
+  int sex = 2;
   String birthday = "";
   int? hourBirth;
   int? minuteBirth;

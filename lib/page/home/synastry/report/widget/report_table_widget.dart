@@ -123,6 +123,7 @@ class ReportTableWidget extends StatelessWidget {
             // height: 200,
             child: ListView.builder(
               shrinkWrap: true,
+              padding: EdgeInsets.zero,
               physics: NeverScrollableScrollPhysics(),
               itemCount: data.length,
               itemBuilder: (_, i) => Container(
@@ -136,55 +137,17 @@ class ReportTableWidget extends StatelessWidget {
                 child: Stack(
                   alignment: AlignmentDirectional.center,
                   children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            padding: EdgeInsetsDirectional.all(2),
-                            width: double.maxFinite,
-                            alignment: AlignmentDirectional.center,
-                            child: Text(
-                              data[i].showOneself,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: const Color(0xFF323133),
-                                fontSize: 12,
-                                fontFamily: AppFonts.textFontFamily,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                        ),
-                        // Container(width: 1, height: 300, color: Color(0xFFD9D9D9)),
-                        Expanded(
-                          child: Container(
-                            padding: EdgeInsetsDirectional.all(2),
-                            width: double.maxFinite,
-                            alignment: AlignmentDirectional.center,
-                            child: Text(
-                              data[i].showOtherSide,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: const Color(0xFF323133),
-                                fontSize: 12,
-                                fontFamily: AppFonts.textFontFamily,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                        ),
-                        // Container(width: 1, height: 300, color: Color(0xFFD9D9D9)),
-                        Expanded(
-                          child: Container(
-                            padding: EdgeInsetsDirectional.all(2),
-                            width: double.maxFinite,
-                            alignment: AlignmentDirectional.center,
-                            child: BlurWidget(
-                              isBlur: false,
-                              sigma: 6,
-                              radius: 3,
+                    IntrinsicHeight(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              // color: Colors.amber,
+                              padding: EdgeInsetsDirectional.all(10),
+                              width: double.maxFinite,
+                              alignment: AlignmentDirectional.center,
                               child: Text(
-                                data[i].meaning ?? "",
+                                data[i].showOneself,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: const Color(0xFF323133),
@@ -195,8 +158,53 @@ class ReportTableWidget extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                          /*Container(
+                            width: 1,
+                            height: 300,
+                            color: Color(0xFF000000),
+                          ),*/
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsetsDirectional.all(10),
+                              width: double.maxFinite,
+                              alignment: AlignmentDirectional.center,
+                              child: Text(
+                                data[i].showOtherSide,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: const Color(0xFF323133),
+                                  fontSize: 12,
+                                  fontFamily: AppFonts.textFontFamily,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                          ),
+                          // Container(width: 1, height: 300, color: Color(0xFFD9D9D9)),
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsetsDirectional.all(10),
+                              width: double.maxFinite,
+                              alignment: AlignmentDirectional.center,
+                              child: BlurWidget(
+                                isBlur: false,
+                                sigma: 6,
+                                radius: 3,
+                                child: Text(
+                                  data[i].meaning ?? "",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: const Color(0xFF323133),
+                                    fontSize: 12,
+                                    fontFamily: AppFonts.textFontFamily,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
 
                     PositionedDirectional(

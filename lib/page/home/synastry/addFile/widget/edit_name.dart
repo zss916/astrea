@@ -8,7 +8,13 @@ import 'package:get/get.dart';
 class EditName extends StatefulWidget {
   final String nickName;
   final Function(String) onChange;
-  const EditName({super.key, required this.nickName, required this.onChange});
+  final FocusNode focusNode;
+  const EditName({
+    super.key,
+    required this.nickName,
+    required this.onChange,
+    required this.focusNode,
+  });
 
   @override
   State<EditName> createState() => _EditNameState();
@@ -20,6 +26,7 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
   @override
   void initState() {
     super.initState();
+    widget.focusNode.unfocus();
     if (widget.nickName.isNotEmpty) {
       setState(() {
         textEditCtrl.text = widget.nickName;
@@ -27,7 +34,7 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
     }
   }
 
-  @override
+  /* @override
   void didUpdateWidget(covariant EditName oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.nickName.isNotEmpty) {
@@ -35,10 +42,12 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
         textEditCtrl.text = widget.nickName;
       });
     }
-  }
+  }*/
 
   @override
   void dispose() {
+    widget.focusNode.unfocus();
+    widget.focusNode.dispose();
     textEditCtrl.dispose();
     super.dispose();
   }
@@ -67,6 +76,7 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
           ),
           Expanded(
             child: TextField(
+              focusNode: widget.focusNode,
               controller: textEditCtrl,
               textAlign: TextAlign.end,
               /* inputFormatters: [

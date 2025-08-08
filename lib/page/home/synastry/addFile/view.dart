@@ -1,7 +1,8 @@
 part of 'index.dart';
 
 class AddFilePage extends StatelessWidget {
-  const AddFilePage({super.key});
+  final FocusNode _focusNode = FocusNode();
+  AddFilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +51,15 @@ class AddFilePage extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        EditAvatar(path: logic.avatar, logic: logic),
+                        EditAvatar(
+                          path: logic.avatar,
+                          logic: logic,
+                          onTap: () {
+                            _focusNode.unfocus();
+                          },
+                        ),
                         EditName(
+                          focusNode: _focusNode,
                           nickName: logic.nickName,
                           onChange: (value) {
                             logic.nickName = value;
@@ -81,6 +89,7 @@ class AddFilePage extends StatelessWidget {
                                 sex: logic.sex,
                                 onNext: (sex) {
                                   logic.sex = sex;
+                                  _focusNode.unfocus();
                                   logic.updateButtonState();
                                 },
                               ),
@@ -96,6 +105,7 @@ class AddFilePage extends StatelessWidget {
                             logic.hourBirth = hourBirth;
                             logic.minuteBirth = minuteBirth;
                             logic.updateButtonState();
+                            _focusNode.unfocus();
                           },
                         ),
                         Divider(height: 1, color: Color(0xFFD5D5D5)),
@@ -106,6 +116,7 @@ class AddFilePage extends StatelessWidget {
                             logic.lat = latitude;
                             logic.lon = longitude;
                             logic.updateButtonState();
+                            _focusNode.unfocus();
                           },
                         ),
                         Divider(height: 1, color: Color(0xFFD5D5D5)),
@@ -114,6 +125,7 @@ class AddFilePage extends StatelessWidget {
                             showInterestsSheet(logic.interests ?? "", (value) {
                               logic.interests = value;
                               logic.updateButtonState();
+                              _focusNode.unfocus();
                             });
                           },
                           child: SizedBox(

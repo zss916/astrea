@@ -56,7 +56,8 @@ class _SelectGenderState extends State<SelectGender> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            VerticalDivider(width: 20.w, color: Colors.transparent),
+            Spacer(),
+            // VerticalDivider(width: 20.w, color: Colors.transparent),
             GestureDetector(
               onTap: () {
                 setState(() {
@@ -72,7 +73,7 @@ class _SelectGenderState extends State<SelectGender> {
                 icon: Assets.imageFremale,
               ),
             ),
-            VerticalDivider(width: 16.w, color: Colors.transparent),
+            VerticalDivider(width: 10.w, color: Colors.transparent),
             GestureDetector(
               onTap: () {
                 setState(() {
@@ -88,7 +89,8 @@ class _SelectGenderState extends State<SelectGender> {
                 icon: Assets.imageMale,
               ),
             ),
-            VerticalDivider(width: 20.w, color: Colors.transparent),
+            Spacer(),
+            //  VerticalDivider(width: 20.w, color: Colors.transparent),
           ],
         ),
         Spacer(),

@@ -21,123 +21,128 @@ class ScoresWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title1,
-                //LanKey.soulIndex.tr,
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  color: const Color(0xFF323133),
-                  fontSize: 14,
-                  fontFamily: AppFonts.textFontFamily,
-                  fontWeight: FontWeight.w400,
+    return IntrinsicHeight(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title1,
+                  //LanKey.soulIndex.tr,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: const Color(0xFF323133),
+                    fontSize: 14,
+                    fontFamily: AppFonts.textFontFamily,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsetsDirectional.only(top: 8.h, bottom: 8.h),
-                //width: 80,
-                height: 6,
-                child: LinearProgressIndicator(
-                  value: (value1 / 100),
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  backgroundColor: Color(0xFFF0F1F5),
-                  valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
+                Container(
+                  margin: EdgeInsetsDirectional.only(top: 8.h, bottom: 8.h),
+                  //width: 80,
+                  height: 6,
+                  child: LinearProgressIndicator(
+                    value: (value1 / 100),
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    backgroundColor: Color(0xFFF0F1F5),
+                    valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
+                  ),
                 ),
-              ),
-              Text(
-                "$value1",
-                style: TextStyle(
-                  color: const Color(0xFF585FC4),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
+                Text(
+                  "$value1",
+                  style: TextStyle(
+                    color: const Color(0xFF585FC4),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        SizedBox(width: 16.w),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                //LanKey.emotionIndex.tr,
-                title2,
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  color: const Color(0xFF323133),
-                  fontSize: 14,
-                  fontFamily: AppFonts.textFontFamily,
-                  fontWeight: FontWeight.w400,
+          SizedBox(width: 16.w),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  //LanKey.emotionIndex.tr,
+                  title2,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: const Color(0xFF323133),
+                    fontSize: 14,
+                    fontFamily: AppFonts.textFontFamily,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsetsDirectional.only(top: 8.h, bottom: 8.h),
-                //width: 80,
-                height: 6,
-                child: LinearProgressIndicator(
-                  value: (value2 / 100),
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  backgroundColor: Color(0xFFF0F1F5),
-                  valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
+                Container(
+                  margin: EdgeInsetsDirectional.only(top: 8.h, bottom: 8.h),
+                  //width: 80,
+                  height: 6,
+                  child: LinearProgressIndicator(
+                    value: (value2 / 100),
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    backgroundColor: Color(0xFFF0F1F5),
+                    valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
+                  ),
                 ),
-              ),
-              Text(
-                '$value2',
-                style: TextStyle(
-                  color: const Color(0xFF585FC4),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
+                Text(
+                  '$value2',
+                  style: TextStyle(
+                    color: const Color(0xFF585FC4),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        SizedBox(width: 16.w),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title3,
-                //LanKey.attractionIndex.tr,
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  color: const Color(0xFF323133),
-                  fontSize: 14,
-                  fontFamily: AppFonts.textFontFamily,
-                  fontWeight: FontWeight.w400,
+          SizedBox(width: 16.w),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title3,
+                  //LanKey.attractionIndex.tr,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: const Color(0xFF323133),
+                    fontSize: 14,
+                    fontFamily: AppFonts.textFontFamily,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsetsDirectional.only(top: 8.h, bottom: 8.h),
-                //width: 80,
-                height: 6,
-                child: LinearProgressIndicator(
-                  value: (value3 / 100),
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  backgroundColor: Color(0xFFF0F1F5),
-                  valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
+                Container(
+                  margin: EdgeInsetsDirectional.only(top: 8.h, bottom: 8.h),
+                  //width: 80,
+                  height: 6,
+                  child: LinearProgressIndicator(
+                    value: (value3 / 100),
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    backgroundColor: Color(0xFFF0F1F5),
+                    valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
+                  ),
                 ),
-              ),
-              Text(
-                "$value3",
-                style: TextStyle(
-                  color: const Color(0xFF585FC4),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
+                Text(
+                  "$value3",
+                  style: TextStyle(
+                    color: const Color(0xFF585FC4),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

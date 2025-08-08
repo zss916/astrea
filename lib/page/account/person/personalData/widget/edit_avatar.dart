@@ -5,13 +5,20 @@ import 'package:flutter/material.dart';
 class EditAvatar extends StatelessWidget {
   final String? path;
   final PersonalDataLogic logic;
-  const EditAvatar({super.key, required this.path, required this.logic});
+  final Function() onTap;
+  const EditAvatar({
+    super.key,
+    required this.path,
+    required this.logic,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         logic.showPhotoSheet();
+        onTap.call();
       },
       child: Container(
         // color: Colors.red,

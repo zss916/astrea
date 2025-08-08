@@ -48,6 +48,7 @@ class App extends StatelessWidget {
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
             backgroundColor: Colors.transparent,
           ),
+          // textTheme: TextTheme(),
           tabBarTheme: TabBarThemeData(dividerColor: Colors.transparent),
         ),
         routingCallback: (routing) {

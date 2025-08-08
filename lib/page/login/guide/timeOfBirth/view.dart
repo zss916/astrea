@@ -59,7 +59,7 @@ class TimeOfBirthPage extends StatelessWidget {
                   Spacer(),
                 ],
               ),
-              PositionedDirectional(
+                PositionedDirectional(
                 bottom: 0,
                 start: 0,
                 end: 0,

@@ -61,7 +61,7 @@ class EmailLogic extends GetxController with AppValidatorMixin {
         isNewUser: data.$2?.isNewUser,
       );
       if (loginType == LoginType.loginAndRegister.index) {
-        if (data.$3 == 1007) {
+        if (data.$2?.checkNewUser == false) {
           showAccountExistsDialog(
             onEditEmail: () {
               ///更新
