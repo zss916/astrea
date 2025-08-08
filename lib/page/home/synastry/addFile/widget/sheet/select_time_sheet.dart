@@ -1,5 +1,6 @@
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/core/utils/calculate.dart';
 import 'package:awesome_datetime_picker/awesome_datetime_picker.dart';
@@ -12,6 +13,7 @@ void showDatePickerSheet(Function(String, String, int, int) onChange) {
   String dateBirth = '';
   int hourBirth = 0;
   int minuteBirth = 0;
+  bool isShowBirth = true;
   Get.bottomSheet(
     Container(
       width: double.maxFinite,
@@ -46,8 +48,12 @@ void showDatePickerSheet(Function(String, String, int, int) onChange) {
               ),
               GestureDetector(
                 onTap: () {
-                  onChange.call(birth, dateBirth, hourBirth, minuteBirth);
-                  Get.back();
+                  if (isShowBirth) {
+                    onChange.call(birth, dateBirth, hourBirth, minuteBirth);
+                    Get.back();
+                  } else {
+                    AppLoading.toast("Please choose a new date of birth");
+                  }
                 },
                 child: Text(
                   LanKey.finish.tr,
@@ -64,6 +70,17 @@ void showDatePickerSheet(Function(String, String, int, int) onChange) {
           ),
           AwesomeDateTimePicker(
             isYmd: true,
+            /*initialDateTime: AwesomeDateTime(
+              date: AwesomeDate(
+                year: 1900,
+                month: 1,
+                day: 1,
+              ),
+              time: AwesomeTime(
+                hour: 0,
+                minute: 0,
+              )
+            ),*/
             maxDateTime: AwesomeDateTime(
               date: AwesomeDate(
                 year: DateTime.now().year,
@@ -71,8 +88,10 @@ void showDatePickerSheet(Function(String, String, int, int) onChange) {
                 day: DateTime.now().day,
               ),
               time: AwesomeTime(
-                hour: DateTime.now().hour,
-                minute: DateTime.now().minute,
+                hour: 23,
+                minute: 59,
+                //hour: DateTime.now().hour,
+                //minute: DateTime.now().minute,
               ),
             ),
             dateFormat: AwesomeDateFormat.yMd,
@@ -93,19 +112,24 @@ void showDatePickerSheet(Function(String, String, int, int) onChange) {
                 time.date.month.formatted,
                 time.date.day.formatted,
               ]);
+
               if (time.date.year == DateTime.now().year &&
                   time.date.month == DateTime.now().month &&
                   time.date.day == DateTime.now().day) {
-                hourBirth = DateTime.now().hour;
-                minuteBirth = DateTime.now().minute;
-                birth =
-                    "$m ${time.date.day},${time.date.year}\n${DateTime.now().hour}:${DateTime.now().minute} ${AwesomeTimeUtils.getAmPm(DateTime.now().hour)}";
-              } else {
+                // hourBirth = DateTime.now().hour;
+                // minuteBirth = DateTime.now().minute;
                 hourBirth = time.time.hour;
                 minuteBirth = time.time.minute;
-                birth =
-                    "$m ${time.date.day},${time.date.year}\n${time.time.hour}:${time.time.minute} $amPm";
+                isShowBirth =
+                    (hourBirth <= DateTime.now().hour) &&
+                    (minuteBirth <= DateTime.now().minute);
+                // birth = "$m ${time.date.day},${time.date.year} ${DateTime.now().hour}:${DateTime.now().minute} ${AwesomeTimeUtils.getAmPm(DateTime.now().hour)}";
               }
+
+              hourBirth = time.time.hour;
+              minuteBirth = time.time.minute;
+              birth =
+                  "$m ${time.date.day},${time.date.year} ${time.time.hour}:${time.time.minute} $amPm";
             },
           ),
         ],

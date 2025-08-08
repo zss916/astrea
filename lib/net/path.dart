@@ -36,6 +36,9 @@ class ApiPath {
   ///删除账号信息 DELETE
   static const String deleteAccount = "/v1/account/me";
 
+  ///根据设备ID查询用户
+  static const String postDevice = "/v1/account/by-device-id";
+
   ///获取文件上传地址 GET
   static const String getUploadUrl = "/v1/global/uploadurl";
 

@@ -121,4 +121,21 @@ abstract class AccountAPI {
       return false;
     }
   }
+
+  ///根据设备ID查询用户
+  static Future<bool> fetchDevice({
+    String? deviceId,
+    CancelToken? cancelToken,
+  }) async {
+    try {
+      var result = await Http.instance.post(
+        ApiPath.postDevice,
+        data: {"did": deviceId},
+        cancelToken: cancelToken,
+      );
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
 }
