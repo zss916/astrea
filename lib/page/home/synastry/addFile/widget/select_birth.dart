@@ -58,7 +58,7 @@ class _SelectBirthState extends State<SelectBirth> {
                 LocaleType.en,
               )[(DateTime.now().month - 1)];
               birth =
-                  "$m ${DateTime.now().day},${DateTime.now().year}\n${DateTime.now().hour}:${DateTime.now().minute} ${AwesomeTimeUtils.getAmPm(DateTime.now().hour)}";
+                  "$m ${DateTime.now().day},${DateTime.now().year} ${DateTime.now().hour}:${DateTime.now().minute} ${AwesomeTimeUtils.getAmPm(DateTime.now().hour)}";
             });
             String dateBirth = sprintf("%s-%s-%s", [
               DateTime.now().year,
@@ -73,51 +73,48 @@ class _SelectBirthState extends State<SelectBirth> {
           }
         });
       },
-      child: SizedBox(
-        height: 72,
-        width: double.maxFinite,
-        child: Row(
-          children: [
-            Container(
-              margin: EdgeInsetsDirectional.only(end: 10),
-              child: Text(
-                LanKey.dateOfBirth.tr,
+      child: Column(
+        children: [
+          Container(
+            width: double.maxFinite,
+            margin: EdgeInsetsDirectional.only(end: 0, top: 16, bottom: 8),
+            child: Text(
+              LanKey.dateOfBirth.tr,
+              style: TextStyle(
+                color: const Color(0xFF6A676C),
+                fontSize: 14,
+                fontFamily: AppFonts.textFontFamily,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
+          Row(
+            children: [
+              AutoSizeText(
+                birth.isNotEmpty ? birth : LanKey.selectBirthTime.tr,
+                textAlign: TextAlign.start,
+                maxFontSize: 18,
+                minFontSize: 18,
                 style: TextStyle(
-                  color: const Color(0xFF6A676C),
+                  color: (birth.isNotEmpty)
+                      ? const Color(0xFF323133)
+                      : const Color(0xFF91929D),
                   fontSize: 18,
                   fontFamily: AppFonts.textFontFamily,
                   fontWeight: FontWeight.w400,
                 ),
               ),
-            ),
-            Spacer(),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                AutoSizeText(
-                  birth.isNotEmpty ? birth : LanKey.selectBirthTime.tr,
-                  textAlign: TextAlign.start,
-                  maxFontSize: 18,
-                  minFontSize: 18,
-                  style: TextStyle(
-                    color: (birth.isNotEmpty)
-                        ? const Color(0xFF323133)
-                        : const Color(0xFF91929D),
-                    fontSize: 18,
-                    fontFamily: AppFonts.textFontFamily,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                Image.asset(
-                  Assets.imageArrowEnd,
-                  width: 24,
-                  height: 24,
-                  matchTextDirection: true,
-                ),
-              ],
-            ),
-          ],
-        ),
+              Spacer(),
+              Image.asset(
+                Assets.imageArrowEnd,
+                width: 24,
+                height: 24,
+                matchTextDirection: true,
+              ),
+            ],
+          ),
+          SizedBox(height: 16),
+        ],
       ),
     );
   }

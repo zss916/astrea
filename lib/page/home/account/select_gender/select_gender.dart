@@ -46,6 +46,7 @@ class _SelectGenderState extends State<SelectGender> {
             });
           },
           child: CustomTag(
+            margin: EdgeInsetsDirectional.zero,
             isSelected: selectSex == 2,
             padding: EdgeInsetsDirectional.symmetric(
               horizontal: 12,
@@ -76,6 +77,7 @@ class _SelectGenderState extends State<SelectGender> {
             ),
           ),
         ),
+        SizedBox(width: 16),
         GestureDetector(
           onTap: () {
             setState(() {
@@ -84,6 +86,7 @@ class _SelectGenderState extends State<SelectGender> {
             });
           },
           child: CustomTag(
+            margin: EdgeInsetsDirectional.zero,
             isSelected: selectSex == 1,
             padding: EdgeInsetsDirectional.symmetric(
               horizontal: 12,

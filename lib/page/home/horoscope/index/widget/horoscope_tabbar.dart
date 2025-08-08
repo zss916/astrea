@@ -33,13 +33,13 @@ class HoroscopeTabBar extends StatelessWidget {
               ],
               controller: tabCtrl,
               labelStyle: const TextStyle(
-                fontSize: 22,
+                fontSize: 16,
                 fontFamily: AppFonts.textFontFamily,
                 fontWeight: FontWeight.w400,
                 color: Color(0xFF91929D),
               ),
               unselectedLabelStyle: const TextStyle(
-                fontSize: 22,
+                fontSize: 16,
                 fontFamily: AppFonts.textFontFamily,
                 color: Color(0xFF323133),
                 fontWeight: FontWeight.w400,

@@ -47,7 +47,7 @@ class AddFilePage extends StatelessWidget {
                       start: 16,
                       end: 16,
                       top: 25.h,
-                      bottom: 120.h,
+                      bottom: 160.h,
                     ),
                     child: Column(
                       children: [
@@ -67,35 +67,13 @@ class AddFilePage extends StatelessWidget {
                           },
                         ),
                         Divider(height: 1, color: Color(0xFFD5D5D5)),
-                        SizedBox(
-                          height: 72,
-                          width: double.maxFinite,
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsetsDirectional.only(end: 10),
-                                child: Text(
-                                  LanKey.gender.tr,
-                                  style: TextStyle(
-                                    color: const Color(0xFF6A676C),
-                                    fontSize: 18,
-                                    fontFamily: AppFonts.textFontFamily,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ),
-                              Spacer(),
-                              SelectGender(
-                                sex: logic.sex,
-                                onNext: (sex) {
-                                  logic.sex = sex;
-                                  _focusNode.unfocus();
-                                  logic.updateButtonState();
-                                },
-                              ),
-                              //Gender(isMale: false)
-                            ],
-                          ),
+                        SelectSex(
+                          sex: logic.sex,
+                          onNext: (sex) {
+                            logic.sex = sex;
+                            _focusNode.unfocus();
+                            logic.updateButtonState();
+                          },
                         ),
                         Divider(height: 1, color: Color(0xFFD5D5D5)),
                         SelectBirth(
@@ -128,58 +106,7 @@ class AddFilePage extends StatelessWidget {
                               _focusNode.unfocus();
                             });
                           },
-                          child: SizedBox(
-                            height: 72,
-                            width: double.maxFinite,
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsetsDirectional.only(end: 10),
-                                  child: Text(
-                                    LanKey.interestsTitle.tr,
-                                    style: TextStyle(
-                                      color: const Color(0xFF6A676C),
-                                      fontSize: 18,
-                                      fontFamily: AppFonts.textFontFamily,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Expanded(
-                                        child: AutoSizeText(
-                                          logic.interests == null
-                                              ? LanKey.interestsTitle.tr
-                                              : logic.showInterests(),
-                                          maxLines: 2,
-                                          textAlign: TextAlign.right,
-                                          maxFontSize: 18,
-                                          minFontSize: 10,
-                                          style: TextStyle(
-                                            color: logic.interests == null
-                                                ? const Color(0xFF91929D)
-                                                : Color(0xFF323133),
-                                            fontSize: 18,
-                                            fontFamily: AppFonts.textFontFamily,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                      Image.asset(
-                                        Assets.imageArrowEnd,
-                                        width: 24,
-                                        height: 24,
-                                        matchTextDirection: true,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                          child: SelectInterests(interests: logic.interests),
                         ),
                         Divider(height: 1, color: Color(0xFFD5D5D5)),
                         /*SelectTag()*/

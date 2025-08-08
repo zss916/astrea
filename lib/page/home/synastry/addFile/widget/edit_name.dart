@@ -57,28 +57,29 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsetsDirectional.only(top: 40.h),
-      height: 72,
+      margin: EdgeInsetsDirectional.only(top: 35.h),
       width: double.maxFinite,
-      child: Row(
+      child: Column(
         children: [
           Container(
+            width: double.maxFinite,
             margin: EdgeInsetsDirectional.only(end: 10),
             child: Text(
               LanKey.name.tr,
               style: TextStyle(
                 color: const Color(0xFF6A676C),
-                fontSize: 18,
+                fontSize: 14,
                 fontFamily: AppFonts.textFontFamily,
                 fontWeight: FontWeight.w400,
               ),
             ),
           ),
-          Expanded(
+          Container(
+            width: double.maxFinite,
             child: TextField(
               focusNode: widget.focusNode,
               controller: textEditCtrl,
-              textAlign: TextAlign.end,
+              textAlign: TextAlign.start,
               /* inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp(r'^[0-9+]+$')),
               ],*/
@@ -88,6 +89,7 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
               ),
               decoration: InputDecoration(
                 fillColor: Colors.transparent,
+                contentPadding: EdgeInsets.symmetric(horizontal: 0),
                 filled: true,
                 hintText: LanKey.editNameHint.tr,
                 hintStyle: TextStyle(

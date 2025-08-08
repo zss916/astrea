@@ -1,16 +1,18 @@
+import 'package:astrea/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:astrea/generated/assets.dart';
 
 class CustomTag extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry? padding;
   final bool? isSelected;
+  final EdgeInsetsGeometry? margin;
   const CustomTag({
     super.key,
     required this.child,
     this.padding,
     this.isSelected,
+    this.margin,
   });
 
   @override
@@ -37,7 +39,7 @@ class CustomTag extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadiusDirectional.circular(50),
               ),
-        margin: EdgeInsetsDirectional.symmetric(horizontal: 6),
+        margin: margin ?? EdgeInsetsDirectional.symmetric(horizontal: 6),
         child: child,
       ),
     );

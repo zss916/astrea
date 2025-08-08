@@ -2,7 +2,6 @@ import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/account/person/personalData/sheet/select_place_sheet.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -29,51 +28,45 @@ class EditPlaceOfBirth extends StatelessWidget {
         );
       },
       child: SizedBox(
-        height: 72,
         width: double.maxFinite,
-        child: Row(
+        child: Column(
           children: [
             Container(
-              margin: EdgeInsetsDirectional.only(end: 10),
+              width: double.maxFinite,
+              margin: EdgeInsetsDirectional.only(top: 16, bottom: 8),
               child: Text(
                 LanKey.placeOfBirth.tr,
                 style: TextStyle(
                   color: const Color(0xFF6A676C),
-                  fontSize: 18,
+                  fontSize: 14,
                   fontFamily: AppFonts.textFontFamily,
                   fontWeight: FontWeight.w400,
                 ),
               ),
             ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Expanded(
-                    child: AutoSizeText(
-                      showPlace ?? LanKey.enterPlaceOfBirth.tr,
-                      maxLines: 2,
-                      textAlign: TextAlign.right,
-                      maxFontSize: 18,
-                      minFontSize: 14,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        color: Color(
-                          showPlace == null ? 0xFF91929D : 0xFF323133,
-                        ),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: AppFonts.textFontFamily,
-                      ),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    showPlace ?? LanKey.enterPlaceOfBirth.tr,
+                    textAlign: TextAlign.start,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: TextStyle(
+                      color: Color(showPlace == null ? 0xFF91929D : 0xFF323133),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: AppFonts.textFontFamily,
                     ),
                   ),
-                  Image.asset(
-                    Assets.imageArrowEnd,
-                    width: 24,
-                    height: 24,
-                    matchTextDirection: true,
-                  ),
-                  /*Container(
+                ),
+                Image.asset(
+                  Assets.imageArrowEnd,
+                  width: 24,
+                  height: 24,
+                  matchTextDirection: true,
+                ),
+                /*Container(
                           margin:
                               EdgeInsetsDirectional.symmetric(horizontal: 8),
                           width: 1,
@@ -87,9 +80,9 @@ class EditPlaceOfBirth extends StatelessWidget {
                           height: 26,
                           width: 50,
                         )*/
-                ],
-              ),
+              ],
             ),
+            SizedBox(height: 16),
           ],
         ),
       ),

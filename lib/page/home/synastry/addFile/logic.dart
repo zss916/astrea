@@ -11,16 +11,10 @@ class AddFileLogic extends GetxController {
   String? locality;
   String? avatar;
   String? interests;
-  String showInterests() {
-    List<String> parts = (interests ?? "").split(",");
-    return parts.length >= 3
-        ? '${parts.sublist(0, 3).join(',')}\n${parts.sublist(3).join(',')}'
-        : (interests ?? "");
-  }
 
   String get showBirthDay {
     if ((birthday ?? "").isNotEmpty) {
-      return "${CalculateTools.formattedTime2(birthday)}\n${(hourBirth ?? 0).formatted}:${(minuteBirth ?? 0).formatted} ${CalculateTools.formattedAmOrPm(hourBirth ?? 0)}";
+      return "${CalculateTools.formattedTime2(birthday)} ${(hourBirth ?? 0).formatted}:${(minuteBirth ?? 0).formatted} ${CalculateTools.formattedAmOrPm(hourBirth ?? 0)}";
     } else {
       return "";
     }
