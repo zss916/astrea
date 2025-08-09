@@ -9,6 +9,7 @@ class WelcomeBtn extends StatelessWidget {
   final Color? textColor;
   final Color? iconColor;
   final EdgeInsetsGeometry? margin;
+  final BoxBorder? border;
   final Function onTap;
   final SizedBox? iconSize;
 
@@ -22,6 +23,7 @@ class WelcomeBtn extends StatelessWidget {
     this.margin,
     this.iconSize,
     this.iconColor,
+    this.border,
   });
 
   @override
@@ -33,12 +35,13 @@ class WelcomeBtn extends StatelessWidget {
       child: Container(
         alignment: AlignmentDirectional.center,
         width: double.maxFinite,
-        height: 58,
+        height: 58.h,
         padding: EdgeInsetsDirectional.symmetric(horizontal: 24.w),
-        margin: margin ?? EdgeInsetsDirectional.only(start: 20, end: 20),
+        margin: margin ?? EdgeInsetsDirectional.only(start: 20.w, end: 20.w),
         decoration: BoxDecoration(
+          border: border ?? Border.all(width: 1, color: Colors.transparent),
           color: bgColor ?? Color(0xFF766DF8),
-          borderRadius: BorderRadiusDirectional.all(Radius.circular(20)),
+          borderRadius: BorderRadiusDirectional.all(Radius.circular(20.r)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -60,7 +63,7 @@ class WelcomeBtn extends StatelessWidget {
                 title,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   height: 1,
                   color: textColor ?? Color(0xFFFFFFFF),
                   fontFamily: AppFonts.textFontFamily,

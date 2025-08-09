@@ -3,9 +3,6 @@ part of 'index.dart';
 class StartPage extends StatelessWidget {
   const StartPage({super.key});
 
-  ///是否已经注册过
-  final bool isRegistered = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +48,7 @@ class StartPage extends StatelessWidget {
                       LanKey.startTitle.tr,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 28.sp,
                         fontFamily: AppFonts.textFontFamily,
                         fontWeight: FontWeight.w400,
                         color: Color(0xFF323133),
@@ -60,7 +57,7 @@ class StartPage extends StatelessWidget {
                   ),
                   Spacer(),
 
-                  if (!isRegistered)
+                  if (!logic.isRegistered)
                     CommonBtn(
                       title: LanKey.signUp.tr,
                       onTap: () {
@@ -74,39 +71,42 @@ class StartPage extends StatelessWidget {
                           WelcomeBtn(
                             margin: EdgeInsetsDirectional.only(
                               bottom: 12,
-                              start: 20,
-                              end: 20,
+                              start: 20.w,
+                              end: 20.w,
                             ),
                             title: LanKey.apple.tr,
                             icon: Assets.imageApple,
                             onTap: () {
-                              // logic.toGoogleAuth();
+                              logic.toAppleAuth();
                             },
                           ),
                         if (GetPlatform.isAndroid)
                           WelcomeBtn(
                             margin: EdgeInsetsDirectional.only(
                               bottom: 12,
-                              start: 20,
-                              end: 20,
+                              start: 20.w,
+                              end: 20.w,
                             ),
                             title: LanKey.google.tr,
                             iconSize: SizedBox(width: 16, height: 16),
                             iconColor: Colors.white,
-                            //: Color(0xFF323133),
                             icon: Assets.imageGoogle,
                             onTap: () {
-                              // logic.toAppleAuth();
+                              logic.toGoogleAuth();
                             },
                           ),
                         WelcomeBtn(
                           title: LanKey.email.tr,
                           icon: Assets.imageEmail,
+                          border: Border.all(
+                            width: 1,
+                            color: Color(0xFFD9D9D9),
+                          ),
                           iconSize: SizedBox(width: 16, height: 16),
-                          bgColor: Color(0xFFEAE9F1),
+                          bgColor: Colors.transparent,
                           textColor: Color(0xFF323133),
                           onTap: () {
-                            // logic.toEmailAuth();
+                            logic.toLogin();
                           },
                         ),
                       ],
@@ -114,8 +114,8 @@ class StartPage extends StatelessWidget {
 
                   Container(
                     margin: EdgeInsetsDirectional.only(
-                      start: 20,
-                      end: 20,
+                      start: 20.w,
+                      end: 20.w,
                       top: 28,
                       bottom: 70.h,
                     ),
@@ -130,14 +130,13 @@ class StartPage extends StatelessWidget {
                   ),
                 ],
               ),
-
               PositionedDirectional(
                 top: 30,
                 end: 10,
                 child: InkWell(
                   borderRadius: BorderRadius.circular(10),
                   onTap: () {
-                    if (isRegistered) {
+                    if (logic.isRegistered) {
                       logic.toStep();
                     } else {
                       logic.toLogin();
@@ -146,12 +145,12 @@ class StartPage extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      isRegistered
+                      logic.isRegistered
                           ? LanKey.signUp.tr
                           : LanKey.startExistingUsers.tr,
                       style: TextStyle(
                         color: const Color(0xFF6A676C),
-                        fontSize: 18,
+                        fontSize: 18.sp,
                         fontFamily: AppFonts.textFontFamily,
                       ),
                     ),

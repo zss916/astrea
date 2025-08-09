@@ -237,4 +237,6 @@ class Assets {
   static const String timeBig286 = 'assets/time/big_286.png';
   static const String timeMiddle194 = 'assets/time/middle_194.png';
   static const String timeSmall132 = 'assets/time/small_132.png';
+  static const String videoLoading1 = 'assets/video/loading1.mp4';
+  static const String videoLoading2 = 'assets/video/loading2.mp4';
 }

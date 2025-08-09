@@ -13,20 +13,28 @@ class WelcomePage extends StatelessWidget {
         builder: (logic) => Column(
           children: [
             Container(
-              margin: EdgeInsetsDirectional.only(start: 20, end: 20, top: 30.h),
+              margin: EdgeInsetsDirectional.only(
+                start: 20.w,
+                end: 20.w,
+                top: 60.h,
+              ),
               width: double.maxFinite,
               child: Text(
-                LanKey.welcome.tr,
+                LanKey.startTitle.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: const Color(0xFF323133),
-                  fontSize: 32,
+                  fontSize: 28.sp,
                   fontFamily: AppFonts.textFontFamily,
                 ),
               ),
             ),
             Container(
-              margin: EdgeInsetsDirectional.only(start: 20, end: 20, top: 16.h),
+              margin: EdgeInsetsDirectional.only(
+                start: 20.w,
+                end: 20.w,
+                top: 16.h,
+              ),
               width: double.maxFinite,
               child: Text(
                 LanKey.welcomeTip.tr,
@@ -34,14 +42,14 @@ class WelcomePage extends StatelessWidget {
                 style: TextStyle(
                   color: const Color(0xFF6A676C),
                   fontFamily: AppFonts.textFontFamily,
-                  fontSize: 17,
+                  fontSize: 18.sp,
                 ),
               ),
             ),
             Container(
-              width: 140,
-              height: 140,
-              margin: EdgeInsetsDirectional.only(top: 30.h, bottom: 20.h),
+              width: 140.r,
+              height: 140.r,
+              margin: EdgeInsetsDirectional.only(top: 60.h, bottom: 20.h),
               decoration: ShapeDecoration(
                 image: DecorationImage(
                   matchTextDirection: true,
@@ -86,8 +94,9 @@ class WelcomePage extends StatelessWidget {
             WelcomeBtn(
               title: LanKey.email.tr,
               icon: Assets.imageEmail,
+              border: Border.all(width: 1, color: Color(0xFFD9D9D9)),
               iconSize: SizedBox(width: 16, height: 16),
-              bgColor: Color(0xFFEAE9F1),
+              bgColor: Colors.transparent,
               textColor: Color(0xFF323133),
               onTap: () {
                 logic.toEmailAuth();

@@ -28,11 +28,11 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
   void initState() {
     super.initState();
     _animationCtrl = AnimationController(
-      duration: const Duration(seconds: 5),
+      duration: const Duration(milliseconds: 1000),
       vsync: this,
     );
     _animationCtrl2 = AnimationController(
-      duration: const Duration(seconds: 5),
+      duration: const Duration(milliseconds: 1000),
       vsync: this,
     );
 

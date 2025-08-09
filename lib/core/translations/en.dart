@@ -328,12 +328,15 @@ class LanKey {
   static const pluto = "pluto";
   static const friend = "friend";
   static const partners = "partners";
+  static const logInOnly = "logInOnly";
   static const customers = "customers";
   static const colleagues = "colleagues";
   static const createNewAccountNow = "createNewAccountNow";
   static const logInWithAnotherAccount = "logInWithAnotherAccount";
   static const loginFailedTip = "loginFailedTip";
   static const loginFailedTitle = "loginFailedTitle";
+  static const logInAndUpdate = "logInAndUpdate";
+  static const accountAlreadyExistsTip = "accountAlreadyExistsTip";
 }
 
 ///英语文案
@@ -411,7 +414,7 @@ const en = {
   "splash_title2": 'Unlock Your\nDestiny\nin the Stars',
   'splash_title': 'Decode Your\nCosmic Truth',
   "add_friend_tip": "Who's My Mate？",
-  "start_title": "Understand yourself better through astrology",
+  "start_title": "Welcome to Astrea",
   "start_btn": "Create Account",
   "start_existing_users": "Log in",
   "start_policy_title1": "By continuing, you agree to the",
@@ -458,12 +461,12 @@ const en = {
   "unfold": "unfold",
   "welcome": "Welcome",
   "welcome_tip":
-      "The personal information you entered has been generated into your exclusive star chart. Please log in to view it now.",
+      "We’ve crafted your personalized star chart based on your details. Go explore it now!",
   "google": "Log in with Google",
   "email": "Log in with Email",
   "password": "Password",
-  "email_title": "What is your email",
-  "invalid_email": 'Invalid email address, please try again.',
+  "email_title": "Access Your Account",
+  "invalid_email": 'The email format is incorrect, please enter it again.',
   "invalid_password_hint": "Minimum 8 numbers and letters mixed",
   "invalid_password_error":
       'The password must contain 8+ characters with a mix of letters and numbers.',
@@ -705,4 +708,8 @@ const en = {
   "selectStateOrProvince": "Please select State/Province",
   "invalidPsdTip": "Please enter 8 to 20 characters.",
   "signUp": "Sign Up",
+  "logInOnly": "Log In Only",
+  "logInAndUpdate": "Log In and Update",
+  "accountAlreadyExistsTip":
+      "This account already exists. Do you want to update your information and log in?",
 };

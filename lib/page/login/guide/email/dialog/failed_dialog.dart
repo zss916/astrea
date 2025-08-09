@@ -3,6 +3,7 @@ import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/sheet/dialog_common_confirm.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 void showAccountLostDialog({Function? onLogin, Function? onEditEmail}) {
@@ -53,53 +54,46 @@ void showAccountLostDialog({Function? onLogin, Function? onEditEmail}) {
   );
 }
 
-void showAccountExistsDialog({Function? onEditEmail, Function? onLogin}) {
+void showAccountExistsDialog({
+  Function? onLoginAndUpdate,
+  Function? onOnlyLogin,
+}) {
   showCommonConfirmDialog(
-    title: "Account already exists",
-    content:
-        "This email is already linked to an account.\nPlease log in instead or use a different email.",
-    confirmText: "Use a different email",
+    title: null,
+    content: LanKey.accountAlreadyExistsTip.tr,
+    confirmText: LanKey.logInAndUpdate.tr,
     onConfirm: () {
-      onEditEmail?.call();
+      onLoginAndUpdate?.call();
     },
-    nextWidget: GestureDetector(
-      onTap: () {
-        onLogin?.call();
-        /*Get.removeName(APages.interests);
-        Get.removeName(APages.editName);
-        Get.removeName(APages.gender);
-        Get.removeName(APages.placeOfBirth);
-        Get.removeName(APages.timeOfBirth);
-        Get.removeName(APages.dateOfBirth);
-        Get.removeName(APages.guide);
-        Get.toNamed(APages.welcome);*/
-      },
-      child: Container(
-        width: double.infinity,
-        height: 56,
-        margin: EdgeInsets.only(top: 6),
-        padding: const EdgeInsets.all(16),
-        decoration: ShapeDecoration(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
-          ),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 8,
-          children: [
-            Text(
-              "Log in",
+    nextWidget: Container(
+      margin: EdgeInsets.only(top: 12.h),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(12.r),
+          onTap: () {
+            onOnlyLogin?.call();
+          },
+          child: Container(
+            width: double.infinity,
+            height: 56.h,
+            alignment: AlignmentDirectional.center,
+            // padding: const EdgeInsets.all(16),
+            decoration: ShapeDecoration(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24.r),
+              ),
+            ),
+            child: Text(
+              LanKey.logInOnly.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: const Color(0xFF91929D),
-                fontSize: 18,
+                color: const Color(0xFF766DF8),
+                fontSize: 18.sp,
                 fontFamily: AppFonts.textFontFamily,
               ),
             ),
-          ],
+          ),
         ),
       ),
     ),

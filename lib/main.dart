@@ -30,7 +30,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       enableScaleText: () => false,
-      designSize: const Size(375.0, 812.0),
+      designSize: Size(designWidth, designHeight),
       builder: (context, _) => GetMaterialApp(
         title: "Astrea",
         debugShowCheckedModeBanner: false,
@@ -55,7 +55,7 @@ class App extends StatelessWidget {
           debugPrint("routing:${routing?.current}");
         },
         initialRoute: APages.splash,
-        //home: PlaceOfBirthPage(),
+        //home: PlayerView(),
       ),
     );
   }

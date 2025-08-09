@@ -89,7 +89,7 @@ class _EditNameState extends State<InputEmail> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            margin: EdgeInsetsDirectional.symmetric(horizontal: 20),
+            margin: EdgeInsetsDirectional.symmetric(horizontal: 20.w),
             width: double.maxFinite,
             child: TextField(
               keyboardType: TextInputType.emailAddress,
@@ -97,7 +97,7 @@ class _EditNameState extends State<InputEmail> {
               focusNode: focusNode,
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 16,
+                fontSize: 16.sp,
                 fontFamily: AppFonts.textFontFamily,
               ),
               decoration: InputDecoration(
@@ -106,25 +106,25 @@ class _EditNameState extends State<InputEmail> {
                 hintText: LanKey.email.tr,
                 hintStyle: TextStyle(
                   color: const Color(0xFFA4A4A4),
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontFamily: AppFonts.textFontFamily,
                 ),
                 errorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+                  borderRadius: BorderRadius.circular(20.r),
                   borderSide: BorderSide(color: Color(0xFFE1DFE3)),
                 ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+                  borderRadius: BorderRadius.circular(20.r),
                   borderSide: BorderSide(color: Color(0xFFE1DFE3)),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0), // 启用时的边框圆角
+                  borderRadius: BorderRadius.circular(20.r), // 启用时的边框圆角
                   borderSide: BorderSide(
                     color: Color(0xFFE1DFE3),
                   ), // 启用时的下划线颜色设置为透明
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0), // 聚焦时的边框圆角
+                  borderRadius: BorderRadius.circular(20.r), // 聚焦时的边框圆角
                   borderSide: BorderSide(
                     color: Color(0xFFE1DFE3),
                   ), // 聚焦时的下划线颜色设置为透明
@@ -158,13 +158,17 @@ class _EditNameState extends State<InputEmail> {
           ),
           if (widget.isShowError)
             Container(
-              margin: EdgeInsetsDirectional.only(start: 32, end: 32, top: 6.h),
+              margin: EdgeInsetsDirectional.only(
+                start: 32.w,
+                end: 32.w,
+                top: 12.h,
+              ),
               width: double.maxFinite,
               child: Text(
                 LanKey.invalidEmail.tr,
                 style: TextStyle(
                   color: Color(0xFFFF2200),
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontFamily: AppFonts.textFontFamily,
                   fontWeight: FontWeight.normal,
                 ),

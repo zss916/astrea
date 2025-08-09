@@ -57,6 +57,10 @@ dependencies:
   device_info_plus: 11.2.0
   android_id: 0.4.0
   #package_info_plus: 8.3.0
+  #video_player: 2.8.1
+  video_player: 2.10.0
+  #android 手机必须加
+  #video_player_android: 2.7.16
 
 
   #通知
@@ -82,7 +86,6 @@ dependencies:
     path: plugins/custom_bubble_navigation_bar-master
 
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -96,6 +99,7 @@ flutter:
     - launch/
     - assets/
     - assets/svg/
+    - assets/video/
     - assets/json/
     - assets/time/
     - assets/image/

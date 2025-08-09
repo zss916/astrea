@@ -2,6 +2,7 @@ import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class PolicyWidget extends StatelessWidget {
@@ -57,8 +58,8 @@ class PolicyWidget extends StatelessWidget {
             ],
             style: TextStyle(
               fontFamily: AppFonts.textFontFamily,
-              color: const Color(0xFF999999),
-              fontSize: 13,
+              color: Color(0xFF999999),
+              fontSize: 13.sp,
               fontWeight: FontWeight.w400,
             ),
           ),

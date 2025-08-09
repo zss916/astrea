@@ -91,7 +91,7 @@ class _EditNameState extends State<InputPassword> with AppValidatorMixin {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            margin: EdgeInsetsDirectional.symmetric(horizontal: 20),
+            margin: EdgeInsetsDirectional.symmetric(horizontal: 20.w),
             width: double.maxFinite,
             child: TextField(
               controller: textEditCtrl,
@@ -99,7 +99,7 @@ class _EditNameState extends State<InputPassword> with AppValidatorMixin {
               obscureText: obscureText,
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 16,
+                fontSize: 16.sp,
                 fontFamily: AppFonts.textFontFamily,
               ),
               decoration: InputDecoration(
@@ -116,8 +116,8 @@ class _EditNameState extends State<InputPassword> with AppValidatorMixin {
                         obscureText
                             ? Assets.imageEyeClose
                             : Assets.imageEyeOpen,
-                        width: 24,
-                        height: 24,
+                        width: 24.r,
+                        height: 24.r,
                         matchTextDirection: true,
                       ),
                     ],
@@ -128,25 +128,25 @@ class _EditNameState extends State<InputPassword> with AppValidatorMixin {
                 hintText: LanKey.password.tr,
                 hintStyle: TextStyle(
                   color: const Color(0xFFA4A4A4),
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontFamily: AppFonts.textFontFamily,
                 ),
                 errorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+                  borderRadius: BorderRadius.circular(20.r),
                   borderSide: BorderSide(color: Color(0xFFE1DFE3)),
                 ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+                  borderRadius: BorderRadius.circular(20.r),
                   borderSide: BorderSide(color: Color(0xFFE1DFE3)),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0), // 启用时的边框圆角
+                  borderRadius: BorderRadius.circular(20.r), // 启用时的边框圆角
                   borderSide: BorderSide(
                     color: Color(0xFFE1DFE3),
                   ), // 启用时的下划线颜色设置为透明
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0), // 聚焦时的边框圆角
+                  borderRadius: BorderRadius.circular(20.r), // 聚焦时的边框圆角
                   borderSide: BorderSide(
                     color: Color(0xFFE1DFE3),
                   ), // 聚焦时的下划线颜色设置为透明
@@ -183,7 +183,11 @@ class _EditNameState extends State<InputPassword> with AppValidatorMixin {
             ),
           ),
           Container(
-            margin: EdgeInsetsDirectional.only(start: 32, end: 32, top: 6.h),
+            margin: EdgeInsetsDirectional.only(
+              start: 32.w,
+              end: 32.w,
+              top: 12.h,
+            ),
             width: double.maxFinite,
             child: Text(
               LanKey.invalidPsdTip.tr,
@@ -194,7 +198,7 @@ class _EditNameState extends State<InputPassword> with AppValidatorMixin {
                 color: widget.isShowError
                     ? const Color(0xFFFF2200)
                     : const Color(0xFF6A686D),
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontFamily: AppFonts.textFontFamily,
                 fontWeight: FontWeight.normal,
               ),

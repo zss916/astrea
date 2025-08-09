@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CommonBtn extends StatelessWidget {
   final String title;
@@ -28,24 +29,26 @@ class CommonBtn extends StatelessWidget {
       child: Container(
         alignment: AlignmentDirectional.center,
         width: double.maxFinite,
-        height: 58,
+        height: 58.h,
         foregroundDecoration: isClickable == false
             ? BoxDecoration(
                 color: Color(0x80FFFFFF),
-                borderRadius: BorderRadiusDirectional.all(Radius.circular(20)),
+                borderRadius: BorderRadiusDirectional.all(
+                  Radius.circular(20.r),
+                ),
               )
             : BoxDecoration(),
-        margin: margin ?? EdgeInsetsDirectional.only(start: 20, end: 20),
+        margin: margin ?? EdgeInsetsDirectional.only(start: 20.w, end: 20.w),
         decoration: BoxDecoration(
           color: bgColor ?? Color(0xFF766DF8),
-          borderRadius: BorderRadiusDirectional.all(Radius.circular(20)),
+          borderRadius: BorderRadiusDirectional.all(Radius.circular(20.r)),
         ),
         child: Text(
           title,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontFamily: AppFonts.textFontFamily,
-            fontSize: 18,
+            fontSize: 18.sp,
             color: textColor ?? Color(0xFFFFFFFF),
             fontWeight: FontWeight.w400,
           ),

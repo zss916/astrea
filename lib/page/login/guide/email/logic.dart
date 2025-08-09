@@ -16,8 +16,9 @@ class EmailLogic extends GetxController with AppValidatorMixin {
 
   @override
   void onClose() {
-    cancelToken.cancel();
+    cancelToken.cancel("email cancel");
     super.onClose();
+    AppLoading.dismiss();
   }
 
   /// 邮箱登录
@@ -37,8 +38,6 @@ class EmailLogic extends GetxController with AppValidatorMixin {
     if (!isEmailValidate || !isPwdValidate) {
       return;
     }
-
-    // return;
 
     AppLoading.show();
     (bool isSuccess, AuthEntity? auth, int code) data =
@@ -63,11 +62,11 @@ class EmailLogic extends GetxController with AppValidatorMixin {
       if (loginType == LoginType.loginAndRegister.index) {
         if (data.$2?.checkNewUser == false) {
           showAccountExistsDialog(
-            onEditEmail: () {
+            onLoginAndUpdate: () {
               ///更新
               PageTools.toResult();
             },
-            onLogin: () {
+            onOnlyLogin: () {
               ///不更新
               PageTools.offAllNamedHome(friendId: data.$2?.friendId);
             },

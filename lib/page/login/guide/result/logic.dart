@@ -4,6 +4,13 @@ class ResultLogic extends GetxController {
   CancelToken cancelToken = CancelToken();
 
   @override
+  void onInit() {
+    super.onInit();
+    // 预加载视频资源
+    PlayerPreloader().preloadVideos();
+  }
+
+  @override
   void onClose() {
     cancelToken.cancel("result cancel");
     super.onClose();

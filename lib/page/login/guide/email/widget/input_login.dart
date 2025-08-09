@@ -62,17 +62,11 @@ class _InputLoginState extends State<InputLogin> with AppValidatorMixin {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  /*SizedBox(
-                    height: 20.h,
-                  ),
-                  StepIndicator(
-                    index: 5,
-                  ),*/
                   Container(
                     margin: EdgeInsetsDirectional.only(
-                      start: 20,
-                      end: 20,
-                      top: 30.h,
+                      start: 20.w,
+                      end: 20.w,
+                      top: 80.h,
                       bottom: 24.h,
                     ),
                     width: double.maxFinite,
@@ -81,7 +75,7 @@ class _InputLoginState extends State<InputLogin> with AppValidatorMixin {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: const Color(0xFF323133),
-                        fontSize: 32,
+                        fontSize: 28.sp,
                         fontFamily: AppFonts.textFontFamily,
                       ),
                     ),
@@ -121,15 +115,14 @@ class _InputLoginState extends State<InputLogin> with AppValidatorMixin {
             child: CommonBtn(
               isClickable: (isEditEmail && isPsdEmail),
               margin: EdgeInsetsDirectional.only(
-                start: 20,
-                end: 20,
+                start: 20.w,
+                end: 20.w,
                 top: 10.h,
                 bottom: bottomPadding,
               ),
-              title: LanKey.confirm.tr,
+              title: LanKey.submit.tr,
               onTap: () {
                 if (isEditEmail && isPsdEmail) {
-                  //PageTools.toResult();
                   widget.logic.toAuthEmail(email: email, pwd: pwd);
                   setState(() {});
                 }

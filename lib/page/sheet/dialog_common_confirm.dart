@@ -2,6 +2,7 @@ import 'package:astrea/components/common_btn.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 void showCommonConfirmDialog({
@@ -23,11 +24,11 @@ void showCommonConfirmDialog({
         children: [
           Container(
             width: double.maxFinite,
-            margin: EdgeInsetsDirectional.symmetric(horizontal: 20),
+            margin: EdgeInsetsDirectional.symmetric(horizontal: 20.w),
             padding: EdgeInsetsDirectional.all(24),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadiusDirectional.circular(20),
+              borderRadius: BorderRadiusDirectional.circular(20.r),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -41,10 +42,10 @@ void showCommonConfirmDialog({
                         TextStyle(
                           fontFamily: AppFonts.textFontFamily,
                           color: const Color(0xFF323133),
-                          fontSize: 22,
+                          fontSize: 22.sp,
                         ),
                   ),
-                SizedBox(height: 12),
+                if (title != null) SizedBox(height: 12.h),
                 if (content != null)
                   Text(
                     content,
@@ -54,10 +55,10 @@ void showCommonConfirmDialog({
                         TextStyle(
                           fontFamily: AppFonts.textFontFamily,
                           color: const Color(0xFF6A676C),
-                          fontSize: 17,
+                          fontSize: 18.sp,
                         ),
                   ),
-                SizedBox(height: 24),
+                SizedBox(height: 24.h),
                 CommonBtn(
                   margin: EdgeInsetsDirectional.zero,
                   title: confirmText ?? LanKey.confirm.tr,

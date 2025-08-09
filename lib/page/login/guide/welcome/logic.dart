@@ -14,8 +14,9 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
 
   @override
   void onClose() {
-    cancelToken.cancel();
     super.onClose();
+    AppLoading.dismiss();
+    cancelToken.cancel("welcome cancel");
   }
 
   ///google 登录
@@ -83,12 +84,14 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
   void toEmailAuth() => PageTools.toEmail(loginType: loginType);
 
   ///隐私
-  void toPrivacy() {
-    ///
-  }
+  void toPrivacy() => PageTools.toWeb(
+    title: LanKey.startPrivacyPolicy.tr,
+    url: AppSetting.policy,
+  );
 
   ///服务
-  void toService() {
-    ///
-  }
+  void toService() => PageTools.toWeb(
+    title: LanKey.startTermsOfService.tr,
+    url: AppSetting.term,
+  );
 }

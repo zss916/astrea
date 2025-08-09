@@ -12,7 +12,10 @@ import 'package:get/get.dart';
 class PageTools {
   static toSplash() => Get.toNamed(APages.splash);
 
-  static toStart() => Get.offAndToNamed(APages.start);
+  static toStart({bool isRegistered = true}) => Get.offAndToNamed(
+    APages.start,
+    arguments: {"isRegistered": isRegistered},
+  );
 
   static toGuide({required int loginType}) {
     AccountService.to.updateLoginStep(step: LoginStep.step0.value);

@@ -59,6 +59,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
           return Column(
             children: [
               HoroscopeTitle(),
+              // buildTitle(logic),
               Expanded(child: buildBody(logic)),
             ],
           );
@@ -85,6 +86,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
             buildTabBar(),
         ];
       },
+
       body: Stack(
         alignment: AlignmentDirectional.topCenter,
         children: [
@@ -108,6 +110,11 @@ class _HoroscopeViewState extends State<HoroscopeView>
       ),
     );
   }
+
+  /*return RefreshIndicator(
+  child: ,
+  onRefresh: () => logic.reloadData(),
+  );*/
 
   Widget buildTabViewBody(HoroscopeLogic logic) => Stack(
     alignment: AlignmentDirectional.topCenter,
