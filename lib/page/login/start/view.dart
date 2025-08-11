@@ -5,14 +5,49 @@ class StartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: noTitleAppBar,
-      backgroundColor: AppColor.pageBackground,
-      extendBodyBehindAppBar: true,
-      body: GetBuilder<StartLogic>(
-        init: StartLogic(),
-        builder: (logic) {
-          return Stack(
+    return GetBuilder<StartLogic>(
+      init: StartLogic(),
+      builder: (logic) {
+        return Scaffold(
+          appBar: ComAppBar(
+            leading: SizedBox.shrink(),
+            actions: [
+              Container(
+                margin: EdgeInsetsDirectional.only(end: 10),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(10),
+                  onTap: () {
+                    if (logic.isRegistered) {
+                      logic.toStep();
+                    } else {
+                      logic.toLogin();
+                    }
+                  },
+                  child: Container(
+                    padding: EdgeInsetsDirectional.only(
+                      start: 10,
+                      end: 10,
+                      top: 5,
+                      bottom: 5,
+                    ),
+                    child: Text(
+                      logic.isRegistered
+                          ? LanKey.signUp.tr
+                          : LanKey.startExistingUsers.tr,
+                      style: TextStyle(
+                        color: const Color(0xFF6A676C),
+                        fontSize: 18.sp,
+                        fontFamily: AppFonts.textFontFamily,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          backgroundColor: AppColor.pageBackground,
+          extendBodyBehindAppBar: true,
+          body: Stack(
             alignment: AlignmentDirectional.bottomCenter,
             children: [
               PositionedDirectional(
@@ -130,9 +165,9 @@ class StartPage extends StatelessWidget {
                   ),
                 ],
               ),
-              PositionedDirectional(
-                top: 30,
-                end: 10,
+              /* PositionedDirectional(
+                top: 45.h,
+                end: 20.w,
                 child: InkWell(
                   borderRadius: BorderRadius.circular(10),
                   onTap: () {
@@ -156,11 +191,11 @@ class StartPage extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
+              ),*/
             ],
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

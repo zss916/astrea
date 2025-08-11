@@ -21,27 +21,33 @@ class _PlayerViewState extends State<PlayerView> {
   @override
   void initState() {
     super.initState();
-    
+
     // 使用预加载的控制器或创建新的控制器
     final preloader = PlayerPreloader();
-    if (preloader.isPreloaded && preloader.controller1 != null && preloader.controller2 != null) {
+    if (preloader.isPreloaded &&
+        preloader.controller1 != null &&
+        preloader.controller2 != null) {
       _controller = preloader.controller1!;
       _controller2 = preloader.controller2!;
       _playVideos();
     } else {
-      _controller = VideoPlayerController.asset(
-        Assets.videoLoading1,
-        videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
-      )..initialize().then((_) {
-        _playVideos();
-      });
+      _controller =
+          VideoPlayerController.asset(
+              Assets.videoLoading1,
+              videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
+            )
+            ..initialize().then((_) {
+              _playVideos();
+            });
 
-      _controller2 = VideoPlayerController.asset(
-        Assets.videoLoading2,
-        videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
-      )..initialize().then((_) {
-        setState(() {});
-      });
+      _controller2 =
+          VideoPlayerController.asset(
+              Assets.videoLoading2,
+              videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
+            )
+            ..initialize().then((_) {
+              setState(() {});
+            });
     }
   }
 
@@ -84,6 +90,7 @@ class _PlayerViewState extends State<PlayerView> {
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       backgroundColor: Colors.black,
+      extendBody: true,
       body: Stack(
         children: [
           if (_controller.value.isInitialized)

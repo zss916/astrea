@@ -31,7 +31,7 @@ class _NoticeState extends State<NoticeItem> {
               content: LanKey.noticeCloseTip.tr,
               leftButtonText: LanKey.yes.tr,
               rightButtonText: LanKey.notNow.tr,
-              onRightButtonCall: () {
+              onLeftButtonCall: () {
                 Get.back();
                 setState(() {
                   isSwitchOn = false;
