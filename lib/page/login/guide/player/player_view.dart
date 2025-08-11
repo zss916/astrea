@@ -3,7 +3,6 @@ import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/login/guide/player/player_preloader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
 class PlayerView extends StatefulWidget {
@@ -89,19 +88,31 @@ class _PlayerViewState extends State<PlayerView> {
         leading: const SizedBox.shrink(),
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
-      backgroundColor: Colors.black,
-      extendBody: true,
+      backgroundColor: Colors.white,
+      extendBodyBehindAppBar: true,
       body: Stack(
         children: [
           if (_controller.value.isInitialized)
             Positioned.fill(
-              child: Transform.scale(
-                scaleX: designWidth / Get.width,
-                scaleY: designHeight / Get.height,
-                child: AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  child: VideoPlayer(_controller),
-                ),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  double w = constraints.maxWidth;
+                  double h = constraints.maxHeight;
+                  double scaleX = (designWidth >= w)
+                      ? (designWidth / w)
+                      : (w / designWidth);
+                  double scaleY = (designHeight >= h)
+                      ? (designHeight / h)
+                      : (h / designHeight);
+                  return Transform.scale(
+                    scaleX: scaleX,
+                    scaleY: scaleY,
+                    child: AspectRatio(
+                      aspectRatio: _controller.value.aspectRatio,
+                      child: VideoPlayer(_controller),
+                    ),
+                  );
+                },
               ),
             ),
 
@@ -109,13 +120,25 @@ class _PlayerViewState extends State<PlayerView> {
             Positioned.fill(
               child: Visibility(
                 visible: isVisible,
-                child: Transform.scale(
-                  scaleX: designWidth / Get.width,
-                  scaleY: designHeight / Get.height,
-                  child: AspectRatio(
-                    aspectRatio: _controller2.value.aspectRatio,
-                    child: VideoPlayer(_controller2),
-                  ),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    double w = constraints.maxWidth;
+                    double h = constraints.maxHeight;
+                    double scaleX = (designWidth >= w)
+                        ? (designWidth / w)
+                        : (w / designWidth);
+                    double scaleY = (designHeight >= h)
+                        ? (designHeight / h)
+                        : (h / designHeight);
+                    return Transform.scale(
+                      scaleX: scaleX,
+                      scaleY: scaleY,
+                      child: AspectRatio(
+                        aspectRatio: _controller2.value.aspectRatio,
+                        child: VideoPlayer(_controller2),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
