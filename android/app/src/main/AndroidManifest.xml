@@ -41,6 +41,7 @@
 
     <application
         android:label="Astrea"
+        android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_security"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
