@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class PushItem extends StatelessWidget {
   final Function onTap;
@@ -33,7 +33,7 @@ class PushItem extends StatelessWidget {
                 LanKey.selectThePushTime.tr,
                 style: TextStyle(
                   color: const Color(0xFF323133),
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontFamily: AppFonts.textFontFamily,
                   fontWeight: FontWeight.w400,
                 ),

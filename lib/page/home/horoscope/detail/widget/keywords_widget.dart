@@ -25,9 +25,9 @@ class KeywordsWidget extends StatelessWidget {
         // buildKeywords(),
         Container(
           width: double.maxFinite,
-          padding: EdgeInsets.symmetric(horizontal: 11),
+          padding: EdgeInsets.symmetric(horizontal: 11.w),
           child: Column(
-            spacing: 12,
+            spacing: 12.h,
             children: [
               buildItem(title: LanKey.luckyColor.tr, value: luckyColor),
               buildItem(title: LanKey.luckyNumber.tr, value: luckyNumber),
@@ -54,7 +54,7 @@ class KeywordsWidget extends StatelessWidget {
             title,
             style: TextStyle(
               color: const Color(0xFF91929D),
-              fontSize: 18,
+              fontSize: 18.sp,
               fontFamily: AppFonts.textFontFamily,
             ),
           ),
@@ -65,7 +65,7 @@ class KeywordsWidget extends StatelessWidget {
           textAlign: TextAlign.end,
           style: TextStyle(
             color: const Color(0xFF323133),
-            fontSize: 18,
+            fontSize: 18.sp,
             fontFamily: AppFonts.textFontFamily,
           ),
         ),

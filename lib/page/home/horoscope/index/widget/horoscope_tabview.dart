@@ -40,17 +40,17 @@ class HoroscopeTabview extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       child: Container(
         margin: EdgeInsetsDirectional.only(
-          start: 16,
-          end: 16,
-          top: 20,
-          bottom: 100,
+          start: 16.w,
+          end: 16.w,
+          top: 20.h,
+          bottom: 100.h,
         ),
-        padding: EdgeInsetsDirectional.only(top: 16, bottom: 10),
+        padding: EdgeInsetsDirectional.only(top: 16.h, bottom: 10.h),
         width: double.maxFinite,
         decoration: ShapeDecoration(
           color: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(16.r),
           ),
           shadows: [
             BoxShadow(
@@ -103,10 +103,10 @@ class HoroscopeTabview extends StatelessWidget {
   }) {
     return Container(
       margin: EdgeInsetsDirectional.only(
-        start: 16,
-        end: 16,
+        start: 16.w,
+        end: 16.w,
         top: 0,
-        bottom: 50,
+        bottom: 40.h,
       ),
       width: double.maxFinite,
       child: Column(
@@ -117,7 +117,7 @@ class HoroscopeTabview extends StatelessWidget {
                 child: Text(
                   LanKey.horoscopeSummary.tr,
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 22.sp,
                     fontFamily: AppFonts.textFontFamily,
                   ),
                 ),
@@ -127,8 +127,8 @@ class HoroscopeTabview extends StatelessWidget {
                 child: Image.asset(
                   Assets.imageTodayImg,
                   matchTextDirection: true,
-                  height: 72,
-                  width: 72,
+                  height: 72.r,
+                  width: 72.r,
                 ),
               ),
             ],
@@ -162,7 +162,7 @@ class HoroscopeTabview extends StatelessWidget {
                     textAlign: TextAlign.start,
                     style: TextStyle(
                       color: const Color(0xFF6A676C),
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontFamily: AppFonts.textFontFamily,
                     ),
                   ),
@@ -182,8 +182,8 @@ class HoroscopeTabview extends StatelessWidget {
         ///love
         Container(
           // color: Colors.cyan,
-          padding: EdgeInsetsDirectional.only(bottom: 12),
-          margin: EdgeInsetsDirectional.only(start: 16, end: 16, top: 12),
+          padding: EdgeInsetsDirectional.only(bottom: 12.h),
+          margin: EdgeInsetsDirectional.only(start: 16.w, end: 16.w, top: 12.h),
           child: IntrinsicHeight(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -198,13 +198,16 @@ class HoroscopeTabview extends StatelessWidget {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           color: const Color(0xFF323133),
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontFamily: AppFonts.textFontFamily,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                       Container(
-                        margin: EdgeInsetsDirectional.only(top: 8, bottom: 8),
+                        margin: EdgeInsetsDirectional.only(
+                          top: 8.h,
+                          bottom: 8.h,
+                        ),
                         //width: 80,
                         height: 6,
                         child: LinearProgressIndicator(
@@ -219,7 +222,7 @@ class HoroscopeTabview extends StatelessWidget {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           color: const Color(0xFF585FC4),
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontFamily: AppFonts.textFontFamily,
                           fontWeight: FontWeight.w400,
                         ),
@@ -238,13 +241,16 @@ class HoroscopeTabview extends StatelessWidget {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           color: const Color(0xFF323133),
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontFamily: AppFonts.textFontFamily,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                       Container(
-                        margin: EdgeInsetsDirectional.only(top: 8, bottom: 8),
+                        margin: EdgeInsetsDirectional.only(
+                          top: 8.h,
+                          bottom: 8.h,
+                        ),
                         //width: 80,
                         height: 6,
                         child: LinearProgressIndicator(
@@ -259,7 +265,7 @@ class HoroscopeTabview extends StatelessWidget {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           color: const Color(0xFF585FC4),
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontFamily: AppFonts.textFontFamily,
                           fontWeight: FontWeight.w400,
                         ),
@@ -278,13 +284,16 @@ class HoroscopeTabview extends StatelessWidget {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           color: const Color(0xFF323133),
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontFamily: AppFonts.textFontFamily,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                       Container(
-                        margin: EdgeInsetsDirectional.only(top: 8, bottom: 8),
+                        margin: EdgeInsetsDirectional.only(
+                          top: 8.h,
+                          bottom: 8.h,
+                        ),
                         //width: 80,
                         height: 6,
                         child: LinearProgressIndicator(
@@ -299,7 +308,7 @@ class HoroscopeTabview extends StatelessWidget {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           color: const Color(0xFF585FC4),
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontFamily: AppFonts.textFontFamily,
                           fontWeight: FontWeight.w400,
                         ),
@@ -318,10 +327,10 @@ class HoroscopeTabview extends StatelessWidget {
             //color: Colors.black38,
             width: double.maxFinite,
             margin: EdgeInsetsDirectional.only(
-              top: 12,
-              start: 16,
-              end: 16,
-              bottom: 12,
+              top: 12.h,
+              start: 16.w,
+              end: 16.w,
+              bottom: 12.h,
             ),
             child: Row(
               children: [
@@ -342,7 +351,7 @@ class HoroscopeTabview extends StatelessWidget {
                           LanKey.should.tr,
                           style: TextStyle(
                             color: const Color(0xFF323133),
-                            fontSize: 22,
+                            fontSize: 22.sp,
                             fontFamily: AppFonts.textFontFamily,
                           ),
                         ),
@@ -350,7 +359,7 @@ class HoroscopeTabview extends StatelessWidget {
                           should ?? "",
                           style: TextStyle(
                             color: const Color(0xFF6A676C),
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontFamily: AppFonts.textFontFamily,
                           ),
                         ),
@@ -368,9 +377,9 @@ class HoroscopeTabview extends StatelessWidget {
             // color: Colors.black38,
             width: double.maxFinite,
             margin: EdgeInsetsDirectional.only(
-              top: 12,
-              start: 16,
-              end: 16,
+              top: 12.h,
+              start: 16.w,
+              end: 16.w,
               bottom: 16.h,
             ),
             child: Row(
@@ -386,7 +395,7 @@ class HoroscopeTabview extends StatelessWidget {
                           LanKey.avoid.tr,
                           style: TextStyle(
                             color: const Color(0xFF323133),
-                            fontSize: 22,
+                            fontSize: 22.sp,
                             fontFamily: AppFonts.textFontFamily,
                           ),
                         ),
@@ -394,7 +403,7 @@ class HoroscopeTabview extends StatelessWidget {
                           avoid ?? "",
                           style: TextStyle(
                             color: const Color(0xFF91929D),
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontFamily: AppFonts.textFontFamily,
                           ),
                         ),
@@ -421,8 +430,8 @@ class HoroscopeTabview extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsetsDirectional.only(
-                  start: 16,
-                  end: 16,
+                  start: 16.w,
+                  end: 16.w,
                   top: 8.h,
                 ),
                 child: Image.asset(
@@ -432,8 +441,8 @@ class HoroscopeTabview extends StatelessWidget {
               ),
               Container(
                 margin: EdgeInsetsDirectional.only(
-                  start: 16,
-                  end: 16,
+                  start: 16.w,
+                  end: 16.w,
                   top: 12.h,
                   bottom: 12.h,
                 ),
@@ -441,7 +450,7 @@ class HoroscopeTabview extends StatelessWidget {
                   children: [
                     Container(
                       //color: Colors.black,
-                      margin: EdgeInsetsDirectional.only(end: 10),
+                      margin: EdgeInsetsDirectional.only(end: 10.w),
                       child: Image.asset(
                         Assets.imageGuideIcon,
                         width: 80,
@@ -459,7 +468,7 @@ class HoroscopeTabview extends StatelessWidget {
                               LanKey.fortuneGuide.tr,
                               style: TextStyle(
                                 color: const Color(0xFF585FC4),
-                                fontSize: 22,
+                                fontSize: 22.sp,
                                 fontFamily: AppFonts.textFontFamily,
                               ),
                             ),
@@ -470,7 +479,7 @@ class HoroscopeTabview extends StatelessWidget {
                               guide ?? "",
                               style: TextStyle(
                                 color: const Color(0xFF585FC4),
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 fontFamily: AppFonts.textFontFamily,
                               ),
                             ),
@@ -513,7 +522,7 @@ class HoroscopeTabview extends StatelessWidget {
                 text: title,
                 style: TextStyle(
                   color: const Color(0xFF585FC4),
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontFamily: AppFonts.textFontFamily,
                 ),
               ),
@@ -521,7 +530,7 @@ class HoroscopeTabview extends StatelessWidget {
                 text: content,
                 style: TextStyle(
                   color: const Color(0xFF6A676C),
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontFamily: AppFonts.textFontFamily,
                 ),
               ),
@@ -530,6 +539,7 @@ class HoroscopeTabview extends StatelessWidget {
         ),
       );
 
+  @Deprecated("remove")
   Widget old() => Stack(
     alignment: AlignmentDirectional.topCenter,
     children: [

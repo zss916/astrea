@@ -6,6 +6,7 @@ import 'package:astrea/page/home/horoscope/index/logic.dart';
 import 'package:astrea/page/home/horoscope/index/widget/add_friend_tip_box.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_list_view/horoscope_list_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class HoroscopeListview extends StatelessWidget {
@@ -58,7 +59,7 @@ class HoroscopeListview extends StatelessWidget {
     return Container(
       //color: Colors.amber,
       padding: EdgeInsetsDirectional.only(top: 0),
-      margin: EdgeInsetsDirectional.only(start: 16, end: 16, top: 0),
+      margin: EdgeInsetsDirectional.only(start: 16.w, end: 16.w, top: 0),
       height: 90,
       width: double.maxFinite,
       child: Row(
@@ -252,7 +253,7 @@ class HoroscopeListview extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: const Color(0xFF323133),
-              fontSize: 12,
+              fontSize: 12.sp,
               fontFamily: AppFonts.textFontFamily,
             ),
           ),
@@ -308,7 +309,7 @@ class HoroscopeListview extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: const Color(0xFF323133),
-              fontSize: 12,
+              fontSize: 12.sp,
               fontFamily: AppFonts.textFontFamily,
             ),
           ),
@@ -339,7 +340,7 @@ class HoroscopeListview extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: const Color(0xFF585FC4),
-                fontSize: 12,
+                fontSize: 12.sp,
                 fontFamily: AppFonts.textFontFamily,
               ),
             ),

@@ -51,25 +51,25 @@ class _SelectRelationshipSheetState extends State<SelectRelationshipSheet> {
     return Container(
       decoration: BoxDecoration(
         color: Color(0xFFF0F1F5),
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
       ),
       width: double.maxFinite,
-      padding: EdgeInsetsDirectional.symmetric(horizontal: 6, vertical: 14),
+      padding: EdgeInsetsDirectional.symmetric(horizontal: 6.h, vertical: 14.w),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            margin: EdgeInsetsDirectional.only(top: 10),
+            margin: EdgeInsetsDirectional.only(top: 10.h),
             child: Row(
               children: [
                 Expanded(
                   child: Container(
-                    margin: EdgeInsetsDirectional.only(start: 10, end: 10),
+                    margin: EdgeInsetsDirectional.only(start: 10.w, end: 10.w),
                     child: Text(
                       LanKey.relationshipTitle.tr,
                       style: TextStyle(
                         color: const Color(0xFF323133),
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontFamily: AppFonts.textFontFamily,
                         fontWeight: FontWeight.w400,
                       ),
@@ -85,8 +85,8 @@ class _SelectRelationshipSheetState extends State<SelectRelationshipSheet> {
                       padding: EdgeInsetsDirectional.all(10),
                       child: Image.asset(
                         Assets.imageCloseDialog,
-                        width: 20,
-                        height: 20,
+                        width: 30,
+                        height: 30,
                       ),
                     ),
                   ),
@@ -98,8 +98,8 @@ class _SelectRelationshipSheetState extends State<SelectRelationshipSheet> {
             margin: EdgeInsetsDirectional.only(
               top: 18.h,
               bottom: 20.h,
-              start: 10,
-              end: 10,
+              start: 10.w,
+              end: 10.w,
             ),
             width: double.maxFinite,
             child: Wrap(
@@ -122,7 +122,7 @@ class _SelectRelationshipSheetState extends State<SelectRelationshipSheet> {
                         list[i]["title"],
                         style: TextStyle(
                           color: const Color(0xFF333333),
-                          fontSize: 16,
+                          fontSize: 16.sp,
                           fontFamily: AppFonts.textFontFamily,
                           fontWeight: FontWeight.w400,
                         ),
@@ -135,10 +135,10 @@ class _SelectRelationshipSheetState extends State<SelectRelationshipSheet> {
           ),
           CommonBtn(
             isClickable: selectedIndex != -1,
-            title: LanKey.determine.tr,
+            title: LanKey.confirm.tr,
             margin: EdgeInsetsDirectional.only(
-              start: 10,
-              end: 10,
+              start: 10.w,
+              end: 10.w,
               bottom: 10.h,
             ),
             onTap: () {

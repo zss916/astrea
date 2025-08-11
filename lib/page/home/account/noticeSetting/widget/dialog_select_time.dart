@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/home/account/noticeSetting/widget/notify_select_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 void showSelectTimeDialog({
   String? leftButtonText,
@@ -20,7 +20,7 @@ void showSelectTimeDialog({
         children: [
           Container(
             padding: EdgeInsetsDirectional.all(20),
-            margin: EdgeInsetsDirectional.only(start: 20, end: 20),
+            margin: EdgeInsetsDirectional.only(start: 20.w, end: 20.w),
             decoration: BoxDecoration(
               color: Color(0xFFFFFFFF),
               borderRadius: BorderRadiusDirectional.circular(20),
@@ -38,7 +38,7 @@ void showSelectTimeDialog({
                     style: TextStyle(
                       color: const Color(0xFF323133),
                       fontFamily: AppFonts.textFontFamily,
-                      fontSize: 22,
+                      fontSize: 22.sp,
                     ),
                   ),
                 ),
@@ -68,7 +68,7 @@ void showSelectTimeDialog({
                             style: TextStyle(
                               color: const Color(0xFF323133),
                               fontFamily: AppFonts.textFontFamily,
-                              fontSize: 18,
+                              fontSize: 18.sp,
                             ),
                           ),
                         ),

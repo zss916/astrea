@@ -41,15 +41,15 @@ class AddFriendTip extends StatelessWidget {
                       LanKey.addFriendTip.tr,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 12,
+                        fontSize: 12.sp,
                         fontFamily: AppFonts.textFontFamily,
                       ),
                     ),
                     Image.asset(
                       Assets.imageClose,
                       matchTextDirection: true,
-                      width: 20,
-                      height: 20,
+                      width: 20.r,
+                      height: 20.r,
                     ),
                   ],
                 ),

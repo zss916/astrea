@@ -39,18 +39,18 @@ class PlaceOfBirthPage extends StatelessWidget {
                   margin: EdgeInsetsDirectional.symmetric(horizontal: 20),
                   width: double.maxFinite,
                   child: Text(
-                    LanKey.placeOfBirth.tr,
+                    LanKey.selectBirthLocation.tr,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: const Color(0xFF323133),
-                      fontSize: 32,
+                      fontSize: 28.sp,
                       fontFamily: AppFonts.textFontFamily,
                     ),
                   ),
                 ),
                 Container(
                   width: double.maxFinite,
-                  margin: EdgeInsets.only(top: 20.h, bottom: 40.h),
+                  margin: EdgeInsets.only(top: 16.h, bottom: 40.h),
                   child: Stack(
                     alignment: AlignmentDirectional.center,
                     children: [
@@ -60,7 +60,7 @@ class PlaceOfBirthPage extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: const Color(0xFF91929D),
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontFamily: AppFonts.textFontFamily,
                           ),
                         ),

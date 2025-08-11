@@ -17,6 +17,7 @@ class LanKey {
   static const birthChartTitle = "birth_chart_title";
   static const birthChart = "birth_chart";
   static const dateOfBirth = "date_of_birth";
+  static const selectDateOfBirth = "select_date_of_birth";
   static const timeOfBirth = "time_of_birth";
   static const combinedResults = "combined_results";
   static const dateOfBirthContent = "date_of_birth_content";
@@ -34,6 +35,7 @@ class LanKey {
   static const yourName = "your_name";
   static const editNameHint = "edit_name_hint";
   static const interestsTitle = "interests_title";
+  static const selectInterestsTitle = "select_interests_title";
   static const interestsContent = "interests_content";
   static const notifySettingTitle = "notify_setting_title";
   static const notifySettingContent = "notify_setting_content";
@@ -104,6 +106,7 @@ class LanKey {
   static const accountInformation = "account_information";
   static const personalDataTitle = "personal_data_title";
   static const lawAndPrivacy = "law_and_privacy";
+  static const aboutUs = "aboutUs";
   static const agreement = "agreement";
   static const subscriptionTerms = "subscription_terms";
   static const privacyPolicy = "privacy_policy";
@@ -241,6 +244,7 @@ class LanKey {
   static const freeUnlocking = "free_unlocking";
   static const freeUnlockingContent = "free_unlocking_content";
   static const personalityAnalysis = "personality_analysis";
+  static const natalChartInterpretation = "natalChartInterpretation";
   static const all = "all";
   static const yesterday = "yesterday";
   static const today = "today";
@@ -337,6 +341,16 @@ class LanKey {
   static const loginFailedTitle = "loginFailedTitle";
   static const logInAndUpdate = "logInAndUpdate";
   static const accountAlreadyExistsTip = "accountAlreadyExistsTip";
+  static const doNotKnowTime = "doNotKnowTime";
+  static const doNotKnowTimeContent = "doNotKnowTimeContent";
+  static const nameMatchErrorHint = "name_match_error_hint";
+  static const reload = "reload";
+  static const reloadTip = "reloadTip";
+  static const selectBirthLocation = "select_birth_location";
+  static const synastryContentTitle = "synastry_content_title";
+  static const me = "me";
+  static const delete = "delete";
+  static const emailSubtitle = "emailSubtitle";
 }
 
 ///英语文案
@@ -346,7 +360,7 @@ const en = {
   "partners": "Partners",
   "friend": "Friend",
   "lover": "Lover",
-  "combined_results": "Combined results: ",
+  "combined_results": "Key Aspects:",
   "summarize": "Summarize",
   "other_side": "Other side",
   "mercury": "Mercury",
@@ -391,8 +405,8 @@ const en = {
   "to_start": "To start",
   "camera": "Take photos",
   "gallery": "Album",
-  "edit_file": "Edit file",
-  "relationship_title": "Please choose a relationship",
+  "edit_file": "Edit Information",
+  "relationship_title": "Please select a relationship",
   "ok": "Ok",
   "delete_people_tip":
       "Are you sure you want to delete this piece of information?",
@@ -402,7 +416,7 @@ const en = {
   "attraction_Index": "Attraction\nIndex",
   "emotion_index": 'Emotion\nIndex',
   "soul_index": 'Soul\nIndex',
-  "star_chart_display": "Star chart display",
+  "star_chart_display": "Synastry Analysis",
   "monthly": "Month",
   "lucky_gem": "Lucky Gem",
   "apple": "Log in with Apple",
@@ -411,7 +425,6 @@ const en = {
   "send": "Send",
   "delete_account": "Delete Account",
   "feed_back": "Feedback",
-  "splash_title2": 'Unlock Your\nDestiny\nin the Stars',
   'splash_title': 'Decode Your\nCosmic Truth',
   "add_friend_tip": "Who's My Mate？",
   "start_title": "Welcome to Astrea",
@@ -427,36 +440,36 @@ const en = {
   "chatroom": "Chatroom",
   "next": "Next",
   "birth_chart_content":
-      'You\'ll get al personalized insights, tips, and daily guidance based on your unique birth chart - a snapshot of the sky at the moment and place of your birth',
-  "birth_chart_title": 'Let\'s personalize your experience',
-  "birth_chart": 'Birth chart',
-  "date_of_birth": 'Date of birth',
-  "date_of_birth_content":
-      "Date is important for determining your Sun sign, numerology and compatibility",
-  "time_of_birth": 'Time of birth',
+      'Before you took your first breath, the sky held a story — your story. We’ll help you rediscover it. Your birth chart is the key to ancient wisdom, waiting to guide you through love, purpose, and transformation',
+  "birth_chart_title": 'Awaken Your Cosmic Self',
+  "birth_chart": 'Birth Chart',
+  "select_date_of_birth": 'Select Your Birth Date',
+  "date_of_birth": 'Date of Birth',
+  "date_of_birth_content": "To calculate your cosmic profile core",
+  "time_of_birth": 'Select Your Birth Time',
   "time_of_birth_content":
       "If you don't remember your exact birth time, we will default to 12:00 PM (noon) for you. This may slightly affect the test results, but you can modify it later in your personal profile page.",
   "confirm": "Confirm",
-  "you_gender": "You gender",
-  "you_gender_content":
-      "Check the spelling or enter the nearest location to where you were born. This won't affect your astrological reading.",
+  "you_gender": "Select Your Gender",
+  "you_gender_content": "Shapes classical astrological profiles",
   "female": "Female",
   "male": "Male",
-  "your_name": "Your name",
+  "your_name": "What Should We Call You?",
   "edit_name_hint": 'Enter your name',
-  "interests_title": "Interests",
+  "interests_title": "What Fascinates You?",
   "interests_content":
-      "Check the spelling or enter the nearest location to where you were born. This won't affect your astrological reading.",
+      "Your interests guide which planetary influences we spotlight",
   "notify_setting_title": "Zodiac Memo",
   "notify_setting_content": "Get your daily horoscope at",
   "skip": "Skip",
-  "daily_stars": "Daily Stars",
+  "daily_stars": "Notification Switch",
   "daily_stars_content": "Cosmic whispers daily",
   "star_alerts": "Star Alerts",
   "star_alerts_content": "Your celestial compass",
   "star_fest_alert": "Star Fest Alert",
   "star_fest_alert_content": "Astrology hours await",
-  "place_of_birth": "Place of birth",
+  "place_of_birth": "Place Of Birth",
+  "select_birth_location": "Select Birth Location",
   "input_place_hint": "Input in your place of birth",
   "unfold": "unfold",
   "welcome": "Welcome",
@@ -478,20 +491,20 @@ const en = {
   "my_collection": "My Collection",
   "chat": "Chat",
   "oneself": "Oneself",
-  "add_friends": "Add friends",
+  "add_friends": "Add Friends",
   "open_vip": "Open VIP to view all",
-  "to_disclose": "Start to disclose everything",
-  "record": "File management",
-  "add_file": "Add file",
+  "to_disclose": "Unlock Secrets",
+  "record": "File List",
+  "add_file": "Add Information",
   "determine": "Determine",
   "name": "Name",
   "gender": "Gender",
-  "select_birth_time": 'Select birth time',
+  "select_birth_time": 'Select your birth time',
   "finish": "Finish",
   "cancel": "Cancel",
-  "enter_place_of_birth": 'Enter place of birth',
-  "star_log": "Star Log",
-  "the_star_chart_report": "The Star Chart Report",
+  "enter_place_of_birth": 'Select your place of birth',
+  "star_log": "Synastry Archives",
+  "the_star_chart_report": "Synastry Report",
   "focus_tip": "Focus on user success",
   "tag_selection": "Tag selection",
   "select_relationship": "Select relationship",
@@ -500,21 +513,21 @@ const en = {
   "share_link": "Share link",
   "invite": "Invite",
   "enter_email_to_share": "Enter email to share",
-  "my_file": "My File",
+  "my_file": "My Information",
   "notice": "Notice",
   "scoring": "Scoring",
   "contact_us": "Contact Us",
   "certified_diviner": "Certified Diviner",
-  "personal_data": "Personal Data",
+  "personal_data": "Personal Information",
   "account_information": "Account Information",
-  "personal_data_title": "Personal data",
+  "personal_data_title": "Personal Data",
   "law_and_privacy": "Law and Privacy",
-  "agreement": "Agreement",
+  "agreement": "Terms of Service",
   "subscription_terms": "Subscription Terms",
   "privacy_policy": "Privacy Policy",
   "content_rules": "Content Rules",
-  "sign_out": "Sign Out",
-  "login_method": "Login method",
+  "sign_out": "Log Out",
+  "login_method": "Login Method",
   "user_ID": "User ID",
   "yes": "Yes",
   "telephone_number": "Telephone number",
@@ -628,7 +641,7 @@ const en = {
   "permanent": "Permanent",
   "subscribe_tip": "In-depth interpretation of the horoscope, get a head",
   "time_of_birth_sub_title":
-      "Time is important for determining your Houses, Rising sign, and the exact Moon position",
+      "To map your cosmic DNA & real-time planetary alignments",
   "do_not_know": "I don’t know",
   "place_of_birth_tip":
       'Please provide your birthplace in the format: Country + State/Province + City/County (District). \nWe will analyze the positions of the stars and planets at the time of your birth.',
@@ -647,12 +660,12 @@ const en = {
   "capricorn": "Capricorn",
   "aquarius": "Aquarius",
   "pisces": "Pisces",
-  "sun_sign": "Sun Sign",
-  "moon_sign": "Moon Sign",
-  "ascendant": "Ascendant",
+  "sun_sign": "Sun",
+  "moon_sign": "Moon",
+  "ascendant": "Rising",
   "element": "Element",
-  "attribute": "Attribute",
-  "form": "Form",
+  "attribute": "Ruling",
+  "form": "Ruling",
   "natal_chart": "Natal Chart",
   "ask": "Ask",
   "free_unlocking": "Free unlocking",
@@ -671,29 +684,31 @@ const en = {
   "lucky_number": 'Lucky Numbers',
   "lucky_location": 'Lucky Location',
   "sign_out_title": 'Are you sure you want to cancel your account?',
-  "sign_out_content": 'If you cancel your account, you will lose your data',
+  "sign_out_content":
+      'After logging out, you will need to log in again to view your past data. Are you sure you want to log out?',
   "expenses": "Expenses",
   "income": "Income",
-  "select_the_push_time": "Select the push time",
+  "select_the_push_time": "Push Time",
   "notice_tip":
       "It has been detected that you have disabled the system notification permission. Please enable it to receive notifications.",
   "select_time": "Select Time",
   "are_you_sure": "Are you sure?",
   "notice_close_tip":
       "You might miss out on astrological events that could have an impact on your romantic relationship.",
-  "not_now": "Not now",
+  "not_now": "Not Now",
   "name_match_hint": "The nickname must not exceed 16 characters in total.",
+  "name_match_error_hint": "Nickname: max 16 characters",
   "delete_account_title": "Confirm account deletion？",
   "delete_account_content":
-      "After deletion, your account, profile, and historical data will be permanently deleted and unrecoverable.",
+      "After deletion, your account, profile, and historical data will be permanently deleted and cannot be recovered. You will no longer be able to log in with this account.",
   "delete_account_content2":
       "After deletion, your account, profile, and historical data will be permanently deleted and unrecoverable. You will no longer be able to log in with this account.The cooling-off period is 30 days. If you log in with this account within 30 days, the cancellation application will be automatically cancelled. After the cooling-off period ends, the system will automatically execute the final deletion.",
-  "constellation_chart": "Constellation chart",
+  "constellation_chart": "Constellation Chart",
   "fortune_guide": "Fortune Guide",
-  "select_country_or_region": "Please select Country/Region",
-  "select_city": "Please select City",
+  "select_country_or_region": "Please Select Country/Region",
+  "select_city": "Please Select City",
   "introduction_to_constellations": "Introduction to Constellations",
-  "horoscope_summary": "Personal fortune \ninterpretation",
+  "horoscope_summary": "Personal Fortune \nInterpretation",
   "sun_sign_title": "Sun sign: ",
   "sun_sign_title_icon": "☀️ ",
   "moon_sign_title": "Moon Sign: ",
@@ -705,11 +720,25 @@ const en = {
   "createNewAccountNow": "Create a new account",
   "loginFailedTip":
       "The info you entered doesn’t match our records.\nWhat would you like to do?",
-  "selectStateOrProvince": "Please select State/Province",
+  "selectStateOrProvince": "Please Select State/Province",
   "invalidPsdTip": "Please enter 8 to 20 characters.",
   "signUp": "Sign Up",
   "logInOnly": "Log In Only",
   "logInAndUpdate": "Log In and Update",
   "accountAlreadyExistsTip":
       "This account already exists. Do you want to update your information and log in?",
+  "doNotKnowTime":
+      "Don't know your birth time? We'll use 12:00 PM (noon) to calculate.",
+  "doNotKnowTimeContent":
+      "Note: Approximate times may affect rising sign and house interpretations. You can update this anytime in Settings → Profile with one click.",
+  "natalChartInterpretation": "Natal Chart Interpretation",
+  "reload": "Reload",
+  "reloadTip": "Data loading failed. Please click to\nreload.",
+  "select_interests_title": "Select Interests",
+  "synastry_content_title":
+      "What does it mean for two people to merge star charts?",
+  "me": "Me",
+  "delete": "Delete",
+  "aboutUs": "About Us",
+  "emailSubtitle": "Email",
 };

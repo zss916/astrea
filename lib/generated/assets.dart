@@ -139,6 +139,7 @@ class Assets {
   static const String imageMore = 'assets/image/more.png';
   static const String imageMoreArrow = 'assets/image/more_arrow.png';
   static const String imageNeptune = 'assets/image/neptune.png';
+  static const String imageNetLoss = 'assets/image/net_loss.png';
   static const String imagePersion = 'assets/image/persion.png';
   static const String imagePisces = 'assets/image/pisces.png';
   static const String imagePlanetIcon = 'assets/image/planet_icon.png';

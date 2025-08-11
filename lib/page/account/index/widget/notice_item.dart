@@ -1,11 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/permission/app_permission_tools.dart';
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/account/index/widget/notice_switch.dart';
 import 'package:astrea/page/sheet/dialog_common.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class NoticeItem extends StatefulWidget {
@@ -49,7 +50,7 @@ class _NoticeState extends State<NoticeItem> {
                 showCommonDialog(
                   content: LanKey.noticeTip.tr,
                   leftButtonText: LanKey.yes.tr,
-                  rightButtonText: LanKey.toStart.tr,
+                  rightButtonText: LanKey.notNow.tr,
                   onRightButtonCall: () {
                     Get.back();
                     openAppSettings();
@@ -81,7 +82,7 @@ class _NoticeState extends State<NoticeItem> {
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     color: const Color(0xFF323133),
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     fontFamily: AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,
                   ),

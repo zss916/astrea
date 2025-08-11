@@ -23,11 +23,11 @@ class PersonalityAnalysis extends StatelessWidget {
               width: double.maxFinite,
               margin: EdgeInsetsDirectional.only(top: isVersion ? 16 : 0),
               child: Text(
-                LanKey.personalityAnalysis.tr,
+                LanKey.natalChartInterpretation.tr,
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   color: const Color(0xFF323133),
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontFamily: AppFonts.textFontFamily,
                 ),
               ),
@@ -37,16 +37,22 @@ class PersonalityAnalysis extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  margin: EdgeInsetsDirectional.only(top: 8),
+                  margin: EdgeInsetsDirectional.only(top: 8.h),
                   width: double.maxFinite,
                   child: Text.rich(
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: const Color(0xFF6A676C),
+                      fontSize: 16.sp,
+                      height: 1.62.h,
+                      fontFamily: AppFonts.textFontFamily,
+                    ),
                     TextSpan(
                       children: [
                         WidgetSpan(
                           child: Container(
-                            margin: EdgeInsetsDirectional.only(end: 4),
+                            margin: EdgeInsetsDirectional.only(end: 4.w),
                             child: Image.asset(
                               Assets.imageSunIcon,
                               matchTextDirection: true,
@@ -68,7 +74,7 @@ class PersonalityAnalysis extends StatelessWidget {
                           text: LanKey.sunSignTitle.tr,
                           style: TextStyle(
                             color: const Color(0xFF585FC4),
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontFamily: AppFonts.textFontFamily,
                           ),
                         ),
@@ -76,7 +82,7 @@ class PersonalityAnalysis extends StatelessWidget {
                           text: logic.sunSignInterpretation,
                           style: TextStyle(
                             color: const Color(0xFF6A676C),
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontFamily: AppFonts.textFontFamily,
                           ),
                         ),
@@ -85,14 +91,14 @@ class PersonalityAnalysis extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsetsDirectional.only(bottom: 22),
-                  padding: EdgeInsetsDirectional.only(top: 8, bottom: 8),
+                  margin: EdgeInsetsDirectional.only(bottom: 22.h),
+                  padding: EdgeInsetsDirectional.only(top: 3.h, bottom: 8.h),
                   width: double.maxFinite,
                   child: Text(
                     '${LanKey.all.tr}>>>',
                     style: TextStyle(
                       color: const Color(0xFF585FC4),
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontFamily: AppFonts.textFontFamily,
                     ),
                   ),

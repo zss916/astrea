@@ -91,7 +91,7 @@ class FileManagementLogic extends GetxController {
   void showDeleteDialog(int index) {
     showCommonDialog(
       content: LanKey.deletePeopleTip.tr,
-      leftButtonText: LanKey.ok.tr,
+      leftButtonText: LanKey.delete.tr,
       rightButtonText: LanKey.cancel.tr,
       onLeftButtonCall: () {
         String uid = list[index].id.toString();

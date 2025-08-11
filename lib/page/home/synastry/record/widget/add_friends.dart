@@ -3,6 +3,7 @@ import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/synastry/record/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -23,9 +24,9 @@ class AddFriends extends StatelessWidget {
             width: double.maxFinite,
             height: 84,
             margin: EdgeInsetsDirectional.only(
-              start: 16,
-              end: 16,
-              top: 0,
+              start: 16.w,
+              end: 16.w,
+              top: 16.h,
               bottom: 0,
             ),
             child: SvgPicture.asset(
@@ -45,12 +46,12 @@ class AddFriends extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  margin: EdgeInsetsDirectional.only(bottom: 5),
+                  margin: EdgeInsetsDirectional.only(top: 10.h, bottom: 5.h),
                   child: Image.asset(
                     Assets.imageFileAdd,
                     matchTextDirection: true,
-                    width: 21,
-                    height: 21,
+                    width: 21.r,
+                    height: 21.r,
                   ),
                 ),
                 Text(
@@ -58,7 +59,7 @@ class AddFriends extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: const Color(0xFF323133),
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     fontFamily: AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,
                   ),

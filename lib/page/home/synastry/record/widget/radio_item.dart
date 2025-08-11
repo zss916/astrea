@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RadioItem extends StatefulWidget {
   final bool isSelected;
@@ -15,8 +16,8 @@ class _RadioItemState extends State<RadioItem> {
     return Image.asset(
       widget.isSelected ? Assets.imageRadioS : Assets.imageRadioU,
       matchTextDirection: true,
-      width: 30,
-      height: 30,
+      width: 30.r,
+      height: 30.r,
     );
   }
 }

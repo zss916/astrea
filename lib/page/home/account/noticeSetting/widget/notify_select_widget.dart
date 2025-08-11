@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:astrea/components/custom_item_picker_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NotifySelectWidget extends StatelessWidget {
   NotifySelectWidget({super.key});
@@ -36,7 +37,7 @@ class NotifySelectWidget extends StatelessWidget {
             ),
             unselectedTextStyle: TextStyle(
               color: Color(0xFF323133),
-              fontSize: 16,
+              fontSize: 16.sp,
               // fontFamily: AppFonts.textFontFamily,
               fontWeight: FontWeight.w400,
             ),

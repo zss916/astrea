@@ -47,18 +47,18 @@ class NatalChart extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.black,
-            fontSize: 20,
+            fontSize: 20.sp,
             fontFamily: AppFonts.textFontFamily,
           ),
         ),
         Container(
-          margin: EdgeInsetsDirectional.only(top: 6, bottom: 15),
+          margin: EdgeInsetsDirectional.only(top: 6.h, bottom: 28.h),
           child: Text(
             showBirthday,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: const Color(0xFF6A676C),
-              fontSize: 12,
+              fontSize: 12.sp,
               fontFamily: AppFonts.textFontFamily,
             ),
           ),
@@ -103,8 +103,8 @@ class NatalChart extends StatelessWidget {
                           if ((sunSignIcon ?? "").isNotEmpty)
                             Image.asset(
                               sunSignIcon ?? '',
-                              width: 14,
-                              height: 14,
+                              width: 14.r,
+                              height: 14.r,
                               matchTextDirection: true,
                             ),
                           // AppStarIcon.aries,
@@ -146,8 +146,8 @@ class NatalChart extends StatelessWidget {
                           if ((moonSignIcon ?? "").isNotEmpty)
                             Image.asset(
                               moonSignIcon ?? '',
-                              width: 14,
-                              height: 14,
+                              width: 14.r,
+                              height: 14.r,
                               matchTextDirection: true,
                             ),
                         ],
@@ -188,8 +188,8 @@ class NatalChart extends StatelessWidget {
                           if ((ascendantSignIcon ?? "").isNotEmpty)
                             Image.asset(
                               ascendantSignIcon ?? '',
-                              width: 14,
-                              height: 14,
+                              width: 14.r,
+                              height: 14.r,
                               matchTextDirection: true,
                             ),
                         ],

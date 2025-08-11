@@ -127,17 +127,17 @@ class StarContent extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: const Color(0xFF323133),
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontFamily: AppFonts.textFontFamily,
                   ),
                 ),
                 Container(
-                  margin: EdgeInsetsDirectional.only(start: 3),
+                  margin: EdgeInsetsDirectional.only(start: 3.w),
                   child: Image.asset(
                     icons[index],
                     matchTextDirection: true,
-                    width: 16,
-                    height: 16,
+                    width: 16.r,
+                    height: 16.r,
                     color: Colors.black,
                   ),
                 ),
@@ -149,7 +149,7 @@ class StarContent extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               color: const Color(0xFF6A676C),
-              fontSize: 12,
+              fontSize: 12.sp,
               fontFamily: AppFonts.textFontFamily,
             ),
           ),
@@ -163,7 +163,7 @@ class StarContent extends StatelessWidget {
             LanKey.constellationChart.tr,
             style: TextStyle(
               color: const Color(0xFF323133),
-              fontSize: 18,
+              fontSize: 18.sp,
               fontFamily: AppFonts.textFontFamily,
             ),
           ),
@@ -174,7 +174,7 @@ class StarContent extends StatelessWidget {
               LanKey.introductionToConstellations.tr,
               style: TextStyle(
                 color: const Color(0xFF323133),
-                fontSize: 18,
+                fontSize: 18.sp,
                 fontFamily: AppFonts.textFontFamily,
               ),
             ),
@@ -186,7 +186,8 @@ class StarContent extends StatelessWidget {
               contents[index],
               style: TextStyle(
                 color: const Color(0xFF6A676C),
-                fontSize: 16,
+                fontSize: 16.sp,
+                height: 1.62.h,
                 fontFamily: AppFonts.textFontFamily,
               ),
             ),

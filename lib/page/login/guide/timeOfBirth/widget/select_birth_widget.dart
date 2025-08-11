@@ -7,6 +7,7 @@ import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/login/guide/timeOfBirth/widget/transform_rotate_widget.dart';
 import 'package:awesome_datetime_picker/awesome_datetime_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SelectBirthWidget extends StatefulWidget {
   final Function(int, int) onSelect;
@@ -190,10 +191,21 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
               Container(
                 height: 35,
                 width: 215,
+                padding: EdgeInsetsDirectional.only(bottom: 4),
+                alignment: AlignmentDirectional.center,
                 margin: const EdgeInsetsDirectional.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadiusDirectional.circular(7),
+                ),
+                child: Text(
+                  ':',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: const Color(0xFF323133),
+                    fontSize: 22.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
               AwesomeTimePicker(

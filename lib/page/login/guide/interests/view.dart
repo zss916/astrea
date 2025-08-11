@@ -14,27 +14,31 @@ class InterestsPage extends StatelessWidget {
           StepIndicator(index: 6),
           SizedBox(height: 25.h),
           Container(
-            margin: EdgeInsetsDirectional.symmetric(horizontal: 20),
+            margin: EdgeInsetsDirectional.symmetric(horizontal: 20.w),
             width: double.maxFinite,
             child: Text(
               LanKey.interestsTitle.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: const Color(0xFF323133),
-                fontSize: 32,
+                fontSize: 28.sp,
                 fontFamily: AppFonts.textFontFamily,
               ),
             ),
           ),
           Container(
-            margin: EdgeInsetsDirectional.only(start: 20, end: 20, top: 16.h),
+            margin: EdgeInsetsDirectional.only(
+              start: 20.w,
+              end: 20.w,
+              top: 16.h,
+            ),
             width: double.maxFinite,
             child: Text(
               LanKey.interestsContent.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: const Color(0xFF6A676C),
-                fontSize: 17,
+                fontSize: 18.sp,
                 fontFamily: AppFonts.textFontFamily,
               ),
             ),

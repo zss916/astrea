@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CommonItem extends StatelessWidget {
   final String title;
@@ -40,7 +40,7 @@ class CommonItem extends StatelessWidget {
                     title,
                     style: TextStyle(
                       color: textColor ?? const Color(0xFF323133),
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontFamily: AppFonts.textFontFamily,
                       fontWeight: FontWeight.w400,
                     ),
@@ -52,8 +52,8 @@ class CommonItem extends StatelessWidget {
                 margin: EdgeInsetsDirectional.only(start: 4.w),
                 child: Image.asset(
                   Assets.imageArrowEnd,
-                  width: 24,
-                  height: 24,
+                  width: 24.r,
+                  height: 24.r,
                   matchTextDirection: true,
                 ),
               ),

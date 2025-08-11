@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SaveAction extends StatefulWidget {
   final bool isSave;
@@ -22,7 +23,7 @@ class _SaveActionState extends State<SaveAction> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsetsDirectional.only(end: 20),
+      margin: EdgeInsetsDirectional.only(end: 20.w),
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
         onTap: () {
@@ -34,8 +35,8 @@ class _SaveActionState extends State<SaveAction> {
         child: Image.asset(
           isSaved ? Assets.imageSaveS : Assets.imageSave,
           matchTextDirection: true,
-          width: 40,
-          height: 40,
+          width: 40.r,
+          height: 40.r,
         ),
       ),
     );

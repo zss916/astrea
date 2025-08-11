@@ -61,12 +61,12 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
       children: [
         Spacer(),
         Container(
-          padding: EdgeInsetsDirectional.only(top: 20),
+          padding: EdgeInsetsDirectional.only(top: 20.h),
           decoration: BoxDecoration(
             color: AppColor.pageBackground,
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
+              topLeft: Radius.circular(20.r),
+              topRight: Radius.circular(20.r),
             ),
           ),
           child: Column(
@@ -77,15 +77,15 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: const Color(0xFF323133),
-                  fontSize: 22,
+                  fontSize: 22.sp,
                   fontFamily: AppFonts.textFontFamily,
                 ),
               ),
               Container(
-                height: 330,
+                height: 380.h,
                 width: double.maxFinite,
                 margin: EdgeInsetsDirectional.symmetric(
-                  horizontal: 42,
+                  horizontal: 42.w,
                   vertical: 24.h,
                 ),
                 child: GridView.builder(
@@ -121,8 +121,8 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
               ),
               CommonBtn(
                 margin: EdgeInsetsDirectional.only(
-                  start: 20,
-                  end: 20,
+                  start: 20.w,
+                  end: 20.w,
                   bottom: bottomPadding,
                 ),
                 isClickable: selectList.isNotEmpty,

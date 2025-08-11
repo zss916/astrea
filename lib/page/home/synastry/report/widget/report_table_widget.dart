@@ -53,7 +53,7 @@ class ReportTableWidget extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         color: const Color(0xFF323133),
-                        fontSize: 12,
+                        fontSize: 12.sp,
                         fontFamily: AppFonts.textFontFamily,
                         fontWeight: FontWeight.w400,
                       ),
@@ -78,7 +78,7 @@ class ReportTableWidget extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: const Color(0xFF323133),
-                        fontSize: 12,
+                        fontSize: 12.sp,
                         fontFamily: AppFonts.textFontFamily,
                         fontWeight: FontWeight.w400,
                       ),
@@ -105,7 +105,7 @@ class ReportTableWidget extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: const Color(0xFF323133),
-                        fontSize: 12,
+                        fontSize: 12.sp,
                         fontFamily: AppFonts.textFontFamily,
                         fontWeight: FontWeight.w400,
                       ),
@@ -151,7 +151,7 @@ class ReportTableWidget extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: const Color(0xFF323133),
-                                  fontSize: 12,
+                                  fontSize: 12.sp,
                                   fontFamily: AppFonts.textFontFamily,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -173,7 +173,7 @@ class ReportTableWidget extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: const Color(0xFF323133),
-                                  fontSize: 12,
+                                  fontSize: 12.sp,
                                   fontFamily: AppFonts.textFontFamily,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -195,7 +195,7 @@ class ReportTableWidget extends StatelessWidget {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: const Color(0xFF323133),
-                                    fontSize: 12,
+                                    fontSize: 12.sp,
                                     fontFamily: AppFonts.textFontFamily,
                                     fontWeight: FontWeight.w400,
                                   ),

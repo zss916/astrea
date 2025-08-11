@@ -67,10 +67,10 @@ class SynastryView extends StatelessWidget {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          'What does it mean for two people to merge star charts? ',
+                                          LanKey.synastryContentTitle.tr,
                                           style: TextStyle(
                                             color: const Color(0xFF323133),
-                                            fontSize: 22,
+                                            fontSize: 22.sp,
                                             fontFamily: AppFonts.textFontFamily,
                                             fontWeight: FontWeight.w400,
                                           ),
@@ -95,15 +95,15 @@ class SynastryView extends StatelessWidget {
                             Container(
                               width: double.maxFinite,
                               margin: EdgeInsetsDirectional.only(
-                                start: 16,
-                                end: 16,
+                                start: 16.w,
+                                end: 16.w,
                                 top: 18.h,
                               ),
                               child: Text(
                                 'Usually refers to judging or analyzing the degree of compatibility or mutual influence between two people in terms of fortune through some means, commonly seen in the following situations',
                                 style: TextStyle(
                                   color: const Color(0xFF6A676C),
-                                  fontSize: 16,
+                                  fontSize: 16.sp,
                                   fontFamily: AppFonts.textFontFamily,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -112,15 +112,15 @@ class SynastryView extends StatelessWidget {
                             Container(
                               width: double.maxFinite,
                               margin: EdgeInsetsDirectional.only(
-                                start: 16,
-                                end: 16,
+                                start: 16.w,
+                                end: 16.w,
                                 top: 18.h,
                               ),
                               child: Text(
                                 'In business or team collaboration, some people may also consider whether the participants\' fortunes match. For example, two partners can analyze their respective fortunes to see if both parties\' fortunes are beneficial for the progress of the project during the cooperation period. Match to determine whether the overall fortune is conducive to the success of cooperation.',
                                 style: TextStyle(
                                   color: const Color(0xFF6A676C),
-                                  fontSize: 16,
+                                  fontSize: 16.sp,
                                   fontFamily: AppFonts.textFontFamily,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -140,7 +140,7 @@ class SynastryView extends StatelessWidget {
                 end: 0,
                 child: BottomStackBtn(
                   title: LanKey.toDisclose.tr,
-                  margin: EdgeInsetsDirectional.only(bottom: 70.h),
+                  margin: EdgeInsetsDirectional.only(bottom: 90.h),
                   padding: EdgeInsetsDirectional.only(bottom: 24.h, top: 70.h),
                   onTap: () {
                     PageTools.toRecord();

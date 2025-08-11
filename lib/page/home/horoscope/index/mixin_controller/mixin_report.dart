@@ -2,9 +2,11 @@ import 'package:astrea/components/star.dart';
 import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/net/api/astro.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
+import 'package:dio/dio.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 mixin HoroscopeReportLogicMixin on GetxController {
+  CancelToken reportCancelToken = CancelToken();
   NatalReportEntity? data;
 
   ///星盘
@@ -81,6 +83,7 @@ mixin HoroscopeReportLogicMixin on GetxController {
   @override
   void onClose() {
     super.onClose();
+    reportCancelToken.cancel("report cancel");
     AppLoading.dismiss();
   }
 
@@ -89,6 +92,7 @@ mixin HoroscopeReportLogicMixin on GetxController {
   }) async {
     (bool, NatalReportEntity) result = await AstrologyAPI.getAstrologyReport(
       id: reportId,
+      cancelToken: reportCancelToken,
     ).whenComplete(() => AppLoading.dismiss());
     if (result.$1) {
       data = result.$2;

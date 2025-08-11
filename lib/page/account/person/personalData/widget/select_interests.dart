@@ -18,7 +18,7 @@ class SelectInterests extends StatelessWidget {
             width: double.maxFinite,
             margin: EdgeInsetsDirectional.only(top: 16, bottom: 8),
             child: Text(
-              LanKey.interestsTitle.tr,
+              LanKey.selectInterestsTitle.tr,
               style: TextStyle(
                 color: const Color(0xFF6A676C),
                 fontSize: 14,
@@ -31,7 +31,7 @@ class SelectInterests extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  interests ?? LanKey.interestsTitle.tr,
+                  interests ?? LanKey.selectInterestsTitle.tr,
                   style: TextStyle(
                     color: interests == null
                         ? const Color(0xFF91929D)

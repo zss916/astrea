@@ -4,6 +4,7 @@ import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/synastry/widget/synastry_add.dart';
 import 'package:astrea/page/home/synastry/widget/synastry_avatar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class SynastryTop extends StatelessWidget {
@@ -15,7 +16,7 @@ class SynastryTop extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       //color: Color(0xFFF0F1F5),
-      margin: EdgeInsetsDirectional.only(top: 45),
+      margin: EdgeInsetsDirectional.only(top: 45.h),
       width: double.maxFinite,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +34,7 @@ class SynastryTop extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: const Color(0xFF323133),
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     fontFamily: AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,
                   ),
@@ -60,7 +61,7 @@ class SynastryTop extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: const Color(0xFF323133),
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     fontFamily: AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,
                   ),

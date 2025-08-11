@@ -5,6 +5,7 @@ import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class HoroscopeTabBar extends StatelessWidget {
@@ -18,10 +19,10 @@ class HoroscopeTabBar extends StatelessWidget {
       pinned: true,
       delegate: StickyTabBarDelegate(
         child: PreferredSize(
-          preferredSize: const Size.fromHeight(44),
+          preferredSize: Size.fromHeight(44.h),
           child: Container(
             decoration: BoxDecoration(color: AppColor.pageBackground),
-            padding: EdgeInsetsDirectional.only(start: 4, end: 4),
+            padding: EdgeInsetsDirectional.only(start: 4.w, end: 4.w),
             child: KuGouTabBar(
               tabs: [
                 Tab(text: LanKey.yesterday.tr),
@@ -32,14 +33,14 @@ class HoroscopeTabBar extends StatelessWidget {
                 Tab(text: LanKey.yearly.tr),
               ],
               controller: tabCtrl,
-              labelStyle: const TextStyle(
-                fontSize: 16,
+              labelStyle: TextStyle(
+                fontSize: 16.sp,
                 fontFamily: AppFonts.textFontFamily,
                 fontWeight: FontWeight.w400,
                 color: Color(0xFF91929D),
               ),
-              unselectedLabelStyle: const TextStyle(
-                fontSize: 16,
+              unselectedLabelStyle: TextStyle(
+                fontSize: 16.sp,
                 fontFamily: AppFonts.textFontFamily,
                 color: Color(0xFF323133),
                 fontWeight: FontWeight.w400,
@@ -48,12 +49,12 @@ class HoroscopeTabBar extends StatelessWidget {
               padding: EdgeInsets.zero,
               labelColor: Color(0xFF323133),
               unselectedLabelColor: Color(0xFF91929D),
-              indicator: const RRecTabIndicator(
-                radius: 10,
-                insets: EdgeInsets.only(bottom: 2),
+              indicator: RRecTabIndicator(
+                radius: 10.r,
+                insets: EdgeInsets.only(bottom: 2.h),
                 color: Color(0xFF585FC4),
               ),
-              indicatorMinWidth: 15,
+              indicatorMinWidth: 15.w,
             ),
           ),
         ),

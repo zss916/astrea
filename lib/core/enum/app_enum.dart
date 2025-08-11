@@ -73,4 +73,4 @@ List<Map<String, dynamic>> get starIcons => [
   {"img": Assets.imageAnalysisPisces, "name": LanKey.pisces.tr},
 ];
 
-enum Status { init, data, empty }
+enum Status { init, data, empty, error }

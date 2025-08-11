@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 void showLogoutDialog({required Function onConfirm}) {
   Get.dialog(
@@ -14,32 +14,32 @@ void showLogoutDialog({required Function onConfirm}) {
         children: [
           Container(
             padding: EdgeInsetsDirectional.all(24),
-            margin: EdgeInsetsDirectional.only(start: 20, end: 20),
+            margin: EdgeInsetsDirectional.only(start: 20.w, end: 20.w),
             width: double.maxFinite,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadiusDirectional.circular(20),
+              borderRadius: BorderRadiusDirectional.circular(20.r),
             ),
             child: Column(
               spacing: 12.h,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
+                /* Text(
                   LanKey.signOutTitle.tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: const Color(0xFF323133),
-                    fontSize: 22,
+                    fontSize: 22.sp,
                     fontWeight: FontWeight.w500,
                     fontFamily: AppFonts.textFontFamily,
                   ),
-                ),
+                ),*/
                 Text(
                   LanKey.signOutContent.tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: const Color(0xFF6A676C),
-                    fontSize: 17,
+                    fontSize: 17.sp,
                     fontWeight: FontWeight.w400,
                     fontFamily: AppFonts.textFontFamily,
                   ),
@@ -64,12 +64,12 @@ void showLogoutDialog({required Function onConfirm}) {
                               color: Color(0xFF766DF8),
                             ),
                             child: Text(
-                              LanKey.cancel.tr,
+                              LanKey.notNow.tr,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: AppFonts.textFontFamily,
                                 fontWeight: FontWeight.w600,
-                                fontSize: 16,
+                                fontSize: 16.sp,
                               ),
                             ),
                           ),
@@ -92,12 +92,12 @@ void showLogoutDialog({required Function onConfirm}) {
                               color: Color(0xFFF2F2F2),
                             ),
                             child: Text(
-                              LanKey.yes.tr,
+                              LanKey.signOut.tr,
                               style: TextStyle(
                                 color: Color(0xFF323133),
                                 fontFamily: AppFonts.textFontFamily,
                                 fontWeight: FontWeight.w600,
-                                fontSize: 16,
+                                fontSize: 16.sp,
                               ),
                             ),
                           ),

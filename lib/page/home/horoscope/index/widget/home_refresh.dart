@@ -1,7 +1,9 @@
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/horoscope/index/logic.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 /// refresh
@@ -27,21 +29,19 @@ class HomeRefresh extends StatelessWidget {
                 height: 76,
                 matchTextDirection: true,
               ),
-              SizedBox(height: 24),
+              SizedBox(height: 24.h),
               Text(
-                'Data loading failed. Please click to\nreload.',
+                LanKey.reloadTip.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: const Color(0xFF6A676C),
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontFamily: AppFonts.textFontFamily,
                 ),
               ),
-              SizedBox(height: 24),
+              SizedBox(height: 24.h),
               GestureDetector(
-                onTap: () {
-                  logic.reloadData();
-                },
+                onTap: () => logic.reloadData(),
                 child: Container(
                   width: 140,
                   height: 46,
@@ -51,11 +51,11 @@ class HomeRefresh extends StatelessWidget {
                     borderRadius: BorderRadius.circular(100),
                   ),
                   child: Text(
-                    'Reload',
+                    LanKey.reload.tr,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: const Color(0xFF766DF8),
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontFamily: AppFonts.textFontFamily,
                     ),
                   ),

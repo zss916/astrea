@@ -35,7 +35,7 @@ class GuidePage extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsetsDirectional.symmetric(horizontal: 20),
+            margin: EdgeInsetsDirectional.symmetric(horizontal: 20.w),
             width: double.maxFinite,
             child: Text(
               LanKey.birthChartTitle.tr,
@@ -43,12 +43,16 @@ class GuidePage extends StatelessWidget {
               style: TextStyle(
                 fontFamily: AppFonts.textFontFamily,
                 color: const Color(0xFF323133),
-                fontSize: 30,
+                fontSize: 28.sp,
               ),
             ),
           ),
           Container(
-            margin: EdgeInsetsDirectional.only(start: 20, end: 20, top: 16.h),
+            margin: EdgeInsetsDirectional.only(
+              start: 20.w,
+              end: 20.w,
+              top: 16.h,
+            ),
             width: double.maxFinite,
             child: Text(
               LanKey.birthChartContent.tr,

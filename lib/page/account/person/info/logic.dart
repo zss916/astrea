@@ -35,11 +35,12 @@ class AccountInfoLogic extends GetxController {
   void onClose() {
     cancelToken.cancel();
     super.onClose();
+    AppLoading.dismiss();
   }
 
   ///获取账号信息
   Future<void> loadAccount() async {
-    account = await AccountAPI.getAccount();
+    account = await AccountAPI.getAccount(cancelToken: cancelToken);
     update();
   }
 

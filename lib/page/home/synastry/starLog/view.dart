@@ -40,6 +40,7 @@ class LogsPage extends StatelessWidget {
   Widget buildBody(int viewState, LogsLogic logic) {
     return switch (viewState) {
       _ when viewState == Status.empty.index => buildEmpty(),
+      _ when viewState == Status.error.index => buildError(logic),
       _ when viewState == Status.data.index => buildList(logic),
       _ => LoadingWidget(),
     };
@@ -77,9 +78,10 @@ class LogsPage extends StatelessWidget {
     ),
   );
 
-  Widget buildEmpty() => SizedBox(
+  Widget buildEmpty() => Container(
     width: double.maxFinite,
     height: double.maxFinite,
+    padding: EdgeInsetsDirectional.only(bottom: 100.h),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -93,12 +95,122 @@ class LogsPage extends StatelessWidget {
           ),
         ),
         Text(
-          'There is no record of the game, go \nadd friends',
+          'No Synastry Chronicles Yet',
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: const Color(0xFF6A676C),
-            fontSize: 14,
+            color: const Color(0xFF323133),
+            fontSize: 18.sp,
+            fontFamily: AppFonts.textFontFamily,
             fontWeight: FontWeight.w400,
+          ),
+        ),
+        SizedBox(height: 12.h),
+        Text(
+          'Ignite new cosmic bonds now →',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: const Color(0xFF323133),
+            fontSize: 14.sp,
+            fontFamily: AppFonts.textFontFamily,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        SizedBox(height: 16.h),
+        GestureDetector(
+          onTap: () {
+            Get.back();
+            PageTools.toRecord();
+          },
+          child: Container(
+            width: 140,
+            height: 46,
+            alignment: Alignment.center,
+            padding: const EdgeInsets.all(5),
+            decoration: ShapeDecoration(
+              shape: RoundedRectangleBorder(
+                side: BorderSide(width: 1, color: const Color(0x7F766DF8)),
+                borderRadius: BorderRadius.circular(100),
+              ),
+            ),
+            child: Text(
+              'Go Now',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: const Color(0xFF766DF8),
+                fontFamily: AppFonts.textFontFamily,
+                fontWeight: FontWeight.w600,
+                fontSize: 16.sp,
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+
+  Widget buildError(LogsLogic logic) => Container(
+    width: double.maxFinite,
+    height: double.maxFinite,
+    padding: EdgeInsetsDirectional.only(bottom: 100.h),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsetsDirectional.only(bottom: 24.h),
+          child: Image.asset(
+            Assets.imageNetLoss,
+            matchTextDirection: true,
+            width: 88,
+            height: 76,
+          ),
+        ),
+        Text(
+          'Cosmic Signal Lost',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: const Color(0xFF323133),
+            fontSize: 18.sp,
+            fontFamily: AppFonts.textFontFamily,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        SizedBox(height: 12.h),
+        Text(
+          'Check your starlink signal & retry',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: const Color(0xFF323133),
+            fontSize: 14.sp,
+            fontFamily: AppFonts.textFontFamily,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        SizedBox(height: 16.h),
+        GestureDetector(
+          onTap: () {
+            logic.loadData();
+          },
+          child: Container(
+            width: 140,
+            height: 46,
+            alignment: Alignment.center,
+            padding: const EdgeInsets.all(5),
+            decoration: ShapeDecoration(
+              shape: RoundedRectangleBorder(
+                side: BorderSide(width: 1, color: const Color(0x7F766DF8)),
+                borderRadius: BorderRadius.circular(100),
+              ),
+            ),
+            child: Text(
+              'Retry',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: const Color(0xFF766DF8),
+                fontFamily: AppFonts.textFontFamily,
+                fontWeight: FontWeight.w600,
+                fontSize: 16.sp,
+              ),
+            ),
           ),
         ),
       ],

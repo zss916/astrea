@@ -14,22 +14,22 @@ class GenderPage extends StatelessWidget {
           StepIndicator(index: 4),
           SizedBox(height: 40.h),
           Container(
-            margin: EdgeInsetsDirectional.symmetric(horizontal: 20),
+            margin: EdgeInsetsDirectional.symmetric(horizontal: 20.w),
             width: double.maxFinite,
             child: Text(
               LanKey.youGender.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: const Color(0xFF323133),
-                fontSize: 32,
+                fontSize: 28.sp,
                 fontFamily: AppFonts.textFontFamily,
               ),
             ),
           ),
           Container(
             margin: EdgeInsetsDirectional.only(
-              start: 20,
-              end: 20,
+              start: 20.w,
+              end: 20.w,
               top: 16.h,
               bottom: 24.h,
             ),
@@ -39,7 +39,7 @@ class GenderPage extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: const Color(0xFF6A676C),
-                fontSize: 17,
+                fontSize: 18.sp,
                 fontFamily: AppFonts.textFontFamily,
               ),
             ),

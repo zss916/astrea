@@ -1,10 +1,13 @@
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/page/home/synastry/record/widget/radio_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:get/get.dart';
 
 class RecordItem extends StatefulWidget {
   //late bool isSelected;
@@ -46,10 +49,10 @@ class _RecordItemState extends State<RecordItem> {
       child: Container(
         clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
-          borderRadius: BorderRadiusDirectional.circular(16),
+          borderRadius: BorderRadiusDirectional.circular(16.r),
         ),
         width: double.maxFinite,
-        constraints: BoxConstraints(minHeight: 84),
+        constraints: BoxConstraints(minHeight: 84.h),
         child: Slidable(
           key: ValueKey("fileTag\$index"),
           groupTag: "fileTags",
@@ -77,8 +80,8 @@ class _RecordItemState extends State<RecordItem> {
             height: 90,
             width: double.maxFinite,
             padding: EdgeInsetsDirectional.symmetric(
-              horizontal: 16,
-              vertical: 16,
+              horizontal: 16.w,
+              vertical: 16.h,
             ),
             decoration: BoxDecoration(
               color: Colors.white,
@@ -89,13 +92,13 @@ class _RecordItemState extends State<RecordItem> {
                 RadioItem(isSelected: (widget.item.isSelected == true)),
                 Expanded(
                   child: Container(
-                    margin: EdgeInsetsDirectional.only(start: 12, end: 5),
+                    margin: EdgeInsetsDirectional.only(start: 12.w, end: 5.w),
                     child: Column(
                       children: [
                         SizedBox(
                           width: double.maxFinite,
                           child: Wrap(
-                            spacing: 8,
+                            spacing: 8.h,
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
                               Text(
@@ -104,7 +107,7 @@ class _RecordItemState extends State<RecordItem> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   color: const Color(0xFF323133),
-                                  fontSize: 22,
+                                  fontSize: 22.sp,
                                   fontFamily: AppFonts.textFontFamily,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -113,7 +116,7 @@ class _RecordItemState extends State<RecordItem> {
                                 Container(
                                   margin: EdgeInsetsDirectional.only(start: 0),
                                   padding: EdgeInsetsDirectional.symmetric(
-                                    horizontal: 12,
+                                    horizontal: 12.w,
                                     vertical: 1,
                                   ),
                                   decoration: BoxDecoration(
@@ -122,10 +125,10 @@ class _RecordItemState extends State<RecordItem> {
                                     color: Color(0xFFEDEDFE),
                                   ),
                                   child: Text(
-                                    'Me',
+                                    LanKey.me.tr,
                                     style: TextStyle(
                                       color: const Color(0xFF585FC4),
-                                      fontSize: 14,
+                                      fontSize: 14.sp,
                                       fontFamily: AppFonts.textFontFamily,
                                       fontWeight: FontWeight.w400,
                                     ),
@@ -141,7 +144,7 @@ class _RecordItemState extends State<RecordItem> {
                             textAlign: TextAlign.start,
                             style: TextStyle(
                               color: const Color(0xFF91929D),
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               fontFamily: AppFonts.textFontFamily,
                               fontWeight: FontWeight.w400,
                             ),

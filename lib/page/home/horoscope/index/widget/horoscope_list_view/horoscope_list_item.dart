@@ -1,5 +1,6 @@
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HoroscopeListItem extends StatelessWidget {
   final String icon;
@@ -21,7 +22,7 @@ class HoroscopeListItem extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               color: const Color(0xFF91929D),
-              fontSize: 12,
+              fontSize: 12.sp,
               fontFamily: AppFonts.textFontFamily,
             ),
           ),

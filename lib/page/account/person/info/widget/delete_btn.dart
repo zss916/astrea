@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/sheet/dialog_common_confirm.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class DeleteBtn extends StatelessWidget {
   final Function onTap;
@@ -12,7 +13,7 @@ class DeleteBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsetsDirectional.only(start: 20, end: 20, top: 0),
+      margin: EdgeInsetsDirectional.only(start: 20.w, end: 20.w, top: 0),
       alignment: AlignmentDirectional.center,
       width: double.maxFinite,
       child: InkWell(
@@ -28,8 +29,8 @@ class DeleteBtn extends StatelessWidget {
               },
               child: Container(
                 width: double.infinity,
-                height: 56,
-                margin: EdgeInsets.only(top: 6),
+                height: 56.h,
+                margin: EdgeInsets.only(top: 6.h),
                 padding: const EdgeInsets.all(16),
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
@@ -40,14 +41,14 @@ class DeleteBtn extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 8,
+                  spacing: 8.h,
                   children: [
                     Text(
-                      'Proceed to delete account',
+                      LanKey.deleteAccount.tr,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: const Color(0xFF91929D) /* icon-h */,
-                        fontSize: 18,
+                        fontSize: 18.sp,
                         fontFamily: AppFonts.textFontFamily,
                       ),
                     ),

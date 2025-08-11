@@ -36,7 +36,7 @@ class ScoresWidget extends StatelessWidget {
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     color: const Color(0xFF323133),
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     fontFamily: AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,
                   ),
@@ -56,7 +56,8 @@ class ScoresWidget extends StatelessWidget {
                   "$value1",
                   style: TextStyle(
                     color: const Color(0xFF585FC4),
-                    fontSize: 18,
+                    fontSize: 18.sp,
+                    fontFamily: AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -75,7 +76,7 @@ class ScoresWidget extends StatelessWidget {
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     color: const Color(0xFF323133),
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     fontFamily: AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,
                   ),
@@ -95,7 +96,8 @@ class ScoresWidget extends StatelessWidget {
                   '$value2',
                   style: TextStyle(
                     color: const Color(0xFF585FC4),
-                    fontSize: 18,
+                    fontSize: 18.sp,
+                    fontFamily: AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -114,7 +116,7 @@ class ScoresWidget extends StatelessWidget {
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     color: const Color(0xFF323133),
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     fontFamily: AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,
                   ),
@@ -134,7 +136,8 @@ class ScoresWidget extends StatelessWidget {
                   "$value3",
                   style: TextStyle(
                     color: const Color(0xFF585FC4),
-                    fontSize: 18,
+                    fontSize: 18.sp,
+                    fontFamily: AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,
                   ),
                 ),

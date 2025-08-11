@@ -10,7 +10,7 @@ import 'package:flutter/foundation.dart';
 ///Synastry
 abstract class SynastryAPI {
   ///查询合盘分析列表
-  static Future<List<AnalysisEntity>> getAnalysisList({
+  static Future<(bool, List<AnalysisEntity>)> getAnalysisList({
     CancelToken? cancelToken,
   }) async {
     try {
@@ -28,13 +28,13 @@ abstract class SynastryAPI {
               jsonList.map((e) => AnalysisEntity.fromJson(e)).toList(),
           (result['data'] as List),
         );
-        return value;
+        return (true, value);
       } else {
         AppLoading.toast("${result["msg"]}");
-        return [];
+        return (false, <AnalysisEntity>[]);
       }
     } catch (error) {
-      return [];
+      return (false, <AnalysisEntity>[]);
     }
   }
 

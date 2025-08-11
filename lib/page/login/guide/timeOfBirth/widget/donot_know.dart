@@ -2,6 +2,7 @@ import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/login/guide/timeOfBirth/widget/dialog/dialog_time_of_birth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class DoNotKnow extends StatelessWidget {
@@ -28,7 +29,7 @@ class DoNotKnow extends StatelessWidget {
             style: TextStyle(
               fontFamily: AppFonts.textFontFamily,
               color: const Color(0xFF323133),
-              fontSize: 18,
+              fontSize: 18.sp,
             ),
           ),
         ),

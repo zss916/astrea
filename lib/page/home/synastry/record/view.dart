@@ -41,10 +41,10 @@ class FileManagementPage extends StatelessWidget {
                     child: ListView.separated(
                       itemCount: logic.list.length,
                       padding: EdgeInsetsDirectional.only(
-                        top: 16,
-                        bottom: 160,
-                        start: 16,
-                        end: 16,
+                        top: 16.h,
+                        bottom: 160.h,
+                        start: 16.w,
+                        end: 16.w,
                       ),
                       itemBuilder: (_, i) => RecordItem(
                         index: i,
@@ -57,7 +57,7 @@ class FileManagementPage extends StatelessWidget {
                         },
                       ),
                       separatorBuilder: (_, i) =>
-                          Divider(color: Colors.transparent, height: 16),
+                          Divider(color: Colors.transparent, height: 16.h),
                     ),
                   ),
                 ],

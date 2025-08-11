@@ -16,7 +16,7 @@ class DateOfBirthLogic extends GetxController {
 
   void toNext() {
     AccountService.to.updateUserBirth(CalculateTools.formattedDate(birthday));
-    debugPrint("getbirthday => ${AccountService.to.getAccount()?.birthday}");
+    // debugPrint("getbirthday => ${AccountService.to.getAccount()?.birthday}");
     PageTools.toTimeOfBirth(loginType: loginType);
   }
 }

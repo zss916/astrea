@@ -28,15 +28,16 @@ class TimeOfBirthPage extends StatelessWidget {
                       style: TextStyle(
                         fontFamily: AppFonts.textFontFamily,
                         color: const Color(0xFF323133),
-                        fontSize: 32,
+                        fontSize: 28.sp,
                       ),
                     ),
                   ),
                   Container(
                     margin: EdgeInsetsDirectional.only(
-                      start: 9,
-                      end: 9,
+                      start: 20.w,
+                      end: 20.w,
                       top: 15.h,
+                      bottom: 20.h,
                     ),
                     width: double.maxFinite,
                     child: Text(
@@ -44,7 +45,7 @@ class TimeOfBirthPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: const Color(0xFF6A676C),
-                        fontSize: 17,
+                        fontSize: 17.sp,
                         fontFamily: AppFonts.textFontFamily,
                       ),
                     ),
@@ -59,7 +60,7 @@ class TimeOfBirthPage extends StatelessWidget {
                   Spacer(),
                 ],
               ),
-                PositionedDirectional(
+              PositionedDirectional(
                 bottom: 0,
                 start: 0,
                 end: 0,

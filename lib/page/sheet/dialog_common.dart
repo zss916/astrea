@@ -1,7 +1,7 @@
+import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:astrea/core/setting/app_fonts.dart';
 
 void showCommonDialog({
   String? title,
@@ -22,10 +22,10 @@ void showCommonDialog({
         children: [
           Container(
             padding: EdgeInsetsDirectional.all(20),
-            margin: EdgeInsetsDirectional.symmetric(horizontal: 20),
+            margin: EdgeInsetsDirectional.symmetric(horizontal: 20.w),
             decoration: BoxDecoration(
               color: Color(0xFFFFFFFF),
-              borderRadius: BorderRadiusDirectional.circular(20),
+              borderRadius: BorderRadiusDirectional.circular(20.r),
             ),
             width: double.maxFinite,
             child: Column(
@@ -43,7 +43,7 @@ void showCommonDialog({
                           TextStyle(
                             color: const Color(0xFF323133),
                             fontFamily: AppFonts.textFontFamily,
-                            fontSize: 22,
+                            fontSize: 22.sp,
                           ),
                     ),
                   ),
@@ -59,7 +59,7 @@ void showCommonDialog({
                           TextStyle(
                             color: const Color(0xFF6A676C),
                             fontFamily: AppFonts.textFontFamily,
-                            fontSize: 17,
+                            fontSize: 17.sp,
                           ),
                     ),
                   ),
@@ -78,16 +78,16 @@ void showCommonDialog({
                           alignment: AlignmentDirectional.center,
                           decoration: BoxDecoration(
                             color: Color(0xFFF2F2F2),
-                            borderRadius: BorderRadius.circular(24),
+                            borderRadius: BorderRadius.circular(24.r),
                           ),
-                          height: 56,
+                          height: 56.h,
                           child: Text(
                             leftButtonText ?? "",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: const Color(0xFF323133),
                               fontFamily: AppFonts.textFontFamily,
-                              fontSize: 18,
+                              fontSize: 18.sp,
                             ),
                           ),
                         ),
@@ -107,7 +107,7 @@ void showCommonDialog({
                           alignment: AlignmentDirectional.center,
                           decoration: BoxDecoration(
                             color: Color(0xFF766DF8),
-                            borderRadius: BorderRadius.circular(24),
+                            borderRadius: BorderRadius.circular(24.r),
                           ),
                           height: 56,
                           child: Text(
@@ -116,7 +116,7 @@ void showCommonDialog({
                             style: TextStyle(
                               color: Colors.white,
                               fontFamily: AppFonts.textFontFamily,
-                              fontSize: 18,
+                              fontSize: 18.sp,
                             ),
                           ),
                         ),

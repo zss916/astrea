@@ -9,10 +9,8 @@ class AnalysisPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: ComAppBar(
-        title: LanKey.analysis.tr,
-        actions: [
-          //buildShareAction(),
-        ],
+        title: LanKey.natalChartInterpretation.tr,
+        // actions: [buildShareAction(),],
       ),
       backgroundColor: AppColor.pageBackground,
       resizeToAvoidBottomInset: false,
@@ -29,34 +27,6 @@ class AnalysisPage extends StatelessWidget {
     );
   }
 
-  Widget buildShareAction() => Container(
-    margin: const EdgeInsetsDirectional.only(end: 24),
-    child: GestureDetector(
-      onTap: () {
-        showShareSheet();
-      },
-      child: Image.asset(
-        Assets.imageShare,
-        matchTextDirection: true,
-        width: 24,
-        height: 24,
-      ),
-    ),
-  );
-
-  Widget buildOpenVip() => PositionedDirectional(
-    bottom: 0,
-    start: 0,
-    end: 0,
-    child: BottomStackBtn(
-      title: LanKey.openVip.tr,
-      padding: EdgeInsetsDirectional.only(bottom: 24.h, top: 70.h),
-      onTap: () {
-        //todo
-      },
-    ),
-  );
-
   Widget buildBody(AnalysisLogic logic) {
     return SingleChildScrollView(
       child: Column(
@@ -64,21 +34,21 @@ class AnalysisPage extends StatelessWidget {
           Container(
             width: double.maxFinite,
             padding: EdgeInsetsDirectional.only(
-              top: 16,
-              bottom: 16,
+              top: 16.h,
+              bottom: 16.h,
               start: 5.w,
               end: 5.w,
             ),
             margin: EdgeInsetsDirectional.only(
-              start: 16,
-              end: 16,
-              top: 10,
-              bottom: 12,
+              start: 16.w,
+              end: 16.w,
+              top: 10.h,
+              bottom: 12.h,
             ),
             decoration: ShapeDecoration(
               color: Colors.white,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(16.r),
               ),
               shadows: [
                 BoxShadow(
@@ -94,8 +64,8 @@ class AnalysisPage extends StatelessWidget {
               children: [
                 PositionedDirectional(
                   bottom: 0,
-                  start: 12,
-                  end: 12,
+                  start: 12.w,
+                  end: 12.w,
                   child: Image.asset(
                     Assets.imageBottomTexture3,
                     matchTextDirection: true,
@@ -129,7 +99,10 @@ class AnalysisPage extends StatelessWidget {
                         logic.ascendantSignInterpretation.isNotEmpty)
                       buildAnalysisTitle(),
                     Container(
-                      margin: EdgeInsetsDirectional.only(start: 11, end: 11),
+                      margin: EdgeInsetsDirectional.only(
+                        start: 11.w,
+                        end: 11.w,
+                      ),
                       width: double.maxFinite,
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -160,7 +133,7 @@ class AnalysisPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Divider(height: 30, color: Colors.transparent),
+                    Divider(height: 40.h, color: Colors.transparent),
                   ],
                 ),
               ],
@@ -181,173 +154,15 @@ class AnalysisPage extends StatelessWidget {
     );
   }
 
-  Widget buildAddFriend() => Material(
-    color: Colors.transparent,
-    child: InkWell(
-      borderRadius: BorderRadius.circular(8),
-      onTap: () {
-        debugPrint('tap');
-        //todo
-      },
-      child: Container(
-        margin: EdgeInsetsDirectional.only(top: 8, bottom: 8),
-        width: double.maxFinite,
-        child: Text.rich(
-          textAlign: TextAlign.start,
-          TextSpan(
-            children: [
-              TextSpan(
-                text: 'Add friends',
-                style: TextStyle(
-                  color: const Color(0xFF6A676C),
-                  fontSize: 16,
-                  fontFamily: AppFonts.textFontFamily,
-                  fontWeight: FontWeight.w400,
-                  decoration: TextDecoration.underline,
-                  height: 1.62,
-                ),
-              ),
-              TextSpan(
-                text: ' to see who’s similar',
-                style: TextStyle(
-                  color: const Color(0xFF6A676C),
-                  fontSize: 16,
-                  fontFamily: AppFonts.textFontFamily,
-                  fontWeight: FontWeight.w400,
-                  height: 1.62,
-                ),
-              ),
-              WidgetSpan(
-                child: SizedBox(
-                  width: 17,
-                  height: 17,
-                  child: Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: [
-                      Image.asset(
-                        Assets.imageEndArrow,
-                        matchTextDirection: true,
-                        width: 17,
-                        height: 7,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-  );
-
-  Widget buildRelationShip() => Material(
-    color: Colors.transparent,
-    child: InkWell(
-      borderRadius: BorderRadius.circular(8),
-      onTap: () {
-        debugPrint('tap');
-        //todo
-      },
-      child: Container(
-        margin: EdgeInsetsDirectional.only(top: 8, bottom: 8),
-        width: double.maxFinite,
-        child: Text.rich(
-          textAlign: TextAlign.start,
-          TextSpan(
-            children: [
-              TextSpan(
-                text: '🔮 You relationship analysis',
-                style: TextStyle(
-                  color: const Color(0xFF6A676C),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  height: 1.62,
-                  fontFamily: AppFonts.textFontFamily,
-                ),
-              ),
-              WidgetSpan(
-                child: SizedBox(
-                  width: 17,
-                  height: 17,
-                  child: Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: [
-                      Image.asset(
-                        Assets.imageEndArrow,
-                        matchTextDirection: true,
-                        width: 17,
-                        height: 7,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-  );
-
-  Widget buildToAnalysis() => Material(
-    color: Colors.transparent,
-    child: InkWell(
-      borderRadius: BorderRadius.circular(8),
-      onTap: () {
-        debugPrint('tap');
-        //todo
-      },
-      child: Container(
-        margin: EdgeInsetsDirectional.only(top: 8, bottom: 8),
-        width: double.maxFinite,
-        child: Text.rich(
-          textAlign: TextAlign.start,
-          TextSpan(
-            children: [
-              TextSpan(
-                text: '🪐 House analysis and influence analysis',
-                style: TextStyle(
-                  color: const Color(0xFF6A676C),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  height: 1.62,
-                  fontFamily: AppFonts.textFontFamily,
-                ),
-              ),
-              WidgetSpan(
-                child: SizedBox(
-                  width: 17,
-                  height: 17,
-                  child: Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: [
-                      Image.asset(
-                        Assets.imageEndArrow,
-                        matchTextDirection: true,
-                        width: 17,
-                        height: 7,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-  );
-
   Widget buildAnalysisTitle() => Container(
     width: double.maxFinite,
-    margin: EdgeInsetsDirectional.only(top: 16, start: 11, end: 11),
+    margin: EdgeInsetsDirectional.only(top: 16.h, start: 11.w, end: 11.w),
     child: Text(
-      LanKey.personalityAnalysis.tr,
+      LanKey.natalChartInterpretation.tr,
       textAlign: TextAlign.left,
       style: TextStyle(
         color: const Color(0xFF323133),
-        fontSize: 18,
+        fontSize: 18.sp,
         fontFamily: AppFonts.textFontFamily,
         fontWeight: FontWeight.w400,
       ),
@@ -359,10 +174,17 @@ class AnalysisPage extends StatelessWidget {
     required String titleIcon,
     required String title,
   }) => Container(
-    margin: EdgeInsetsDirectional.only(top: 8),
+    margin: EdgeInsetsDirectional.only(top: 16.h),
     width: double.maxFinite,
     child: Text.rich(
       //overflow: TextOverflow.ellipsis,
+      style: TextStyle(
+        color: const Color(0xFF6A676C),
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400,
+        fontFamily: AppFonts.textFontFamily,
+        height: 1.62.h,
+      ),
       TextSpan(
         children: [
           /*TextSpan(
@@ -377,7 +199,7 @@ class AnalysisPage extends StatelessWidget {
           ),*/
           WidgetSpan(
             child: Container(
-              margin: EdgeInsetsDirectional.only(end: 4),
+              margin: EdgeInsetsDirectional.only(end: 4.w),
               child: Image.asset(
                 titleIcon,
                 matchTextDirection: true,
@@ -391,20 +213,20 @@ class AnalysisPage extends StatelessWidget {
             text: title,
             style: TextStyle(
               color: const Color(0xFF585FC4),
-              fontSize: 16,
+              fontSize: 16.sp,
               fontWeight: FontWeight.w400,
               fontFamily: AppFonts.textFontFamily,
-              height: 1.62,
+              height: 1.62.h,
             ),
           ),
           TextSpan(
             text: intro,
             style: TextStyle(
               color: const Color(0xFF6A676C),
-              fontSize: 16,
+              fontSize: 16.sp,
               fontWeight: FontWeight.w400,
               fontFamily: AppFonts.textFontFamily,
-              height: 1.62,
+              height: 1.62.h,
             ),
           ),
         ],
@@ -424,7 +246,12 @@ class AnalysisPage extends StatelessWidget {
   }) => Container(
     width: double.maxFinite,
     padding: EdgeInsetsDirectional.all(14),
-    margin: EdgeInsetsDirectional.only(start: 16, end: 16, top: 12, bottom: 20),
+    margin: EdgeInsetsDirectional.only(
+      start: 16.w,
+      end: 16.w,
+      top: 24.h,
+      bottom: 20.h,
+    ),
     decoration: ShapeDecoration(
       color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -524,10 +351,11 @@ class AnalysisPage extends StatelessWidget {
 
   Widget buildCommonDivider() => Container(
     width: double.maxFinite,
-    margin: EdgeInsetsDirectional.only(top: 14, bottom: 14),
+    margin: EdgeInsetsDirectional.only(top: 14.h, bottom: 14.h),
     child: SvgPicture.asset(Assets.svgItemLine),
   );
 
+  @Deprecated("old")
   Widget old() => ListView.separated(
     shrinkWrap: true,
     itemCount: 8,
@@ -541,6 +369,198 @@ class AnalysisPage extends StatelessWidget {
     ),
   );
 
+  @Deprecated("old")
   Widget buildChat() =>
       AstrologerChatBtn(margin: EdgeInsetsDirectional.only(top: 28));
+
+  @Deprecated("old")
+  Widget buildToAnalysis() => Material(
+    color: Colors.transparent,
+    child: InkWell(
+      borderRadius: BorderRadius.circular(8),
+      onTap: () {
+        debugPrint('tap');
+        //todo
+      },
+      child: Container(
+        margin: EdgeInsetsDirectional.only(top: 8, bottom: 8),
+        width: double.maxFinite,
+        child: Text.rich(
+          textAlign: TextAlign.start,
+          TextSpan(
+            children: [
+              TextSpan(
+                text: '🪐 House analysis and influence analysis',
+                style: TextStyle(
+                  color: const Color(0xFF6A676C),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  height: 1.62,
+                  fontFamily: AppFonts.textFontFamily,
+                ),
+              ),
+              WidgetSpan(
+                child: SizedBox(
+                  width: 17,
+                  height: 17,
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      Image.asset(
+                        Assets.imageEndArrow,
+                        matchTextDirection: true,
+                        width: 17,
+                        height: 7,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+
+  @Deprecated("old")
+  Widget buildRelationShip() => Material(
+    color: Colors.transparent,
+    child: InkWell(
+      borderRadius: BorderRadius.circular(8),
+      onTap: () {
+        debugPrint('tap');
+        //todo
+      },
+      child: Container(
+        margin: EdgeInsetsDirectional.only(top: 8, bottom: 8),
+        width: double.maxFinite,
+        child: Text.rich(
+          textAlign: TextAlign.start,
+          TextSpan(
+            children: [
+              TextSpan(
+                text: '🔮 You relationship analysis',
+                style: TextStyle(
+                  color: const Color(0xFF6A676C),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  height: 1.62,
+                  fontFamily: AppFonts.textFontFamily,
+                ),
+              ),
+              WidgetSpan(
+                child: SizedBox(
+                  width: 17,
+                  height: 17,
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      Image.asset(
+                        Assets.imageEndArrow,
+                        matchTextDirection: true,
+                        width: 17,
+                        height: 7,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+
+  @Deprecated("old")
+  Widget buildAddFriend() => Material(
+    color: Colors.transparent,
+    child: InkWell(
+      borderRadius: BorderRadius.circular(8),
+      onTap: () {
+        debugPrint('tap');
+        //todo
+      },
+      child: Container(
+        margin: EdgeInsetsDirectional.only(top: 8, bottom: 8),
+        width: double.maxFinite,
+        child: Text.rich(
+          textAlign: TextAlign.start,
+          TextSpan(
+            children: [
+              TextSpan(
+                text: 'Add friends',
+                style: TextStyle(
+                  color: const Color(0xFF6A676C),
+                  fontSize: 16,
+                  fontFamily: AppFonts.textFontFamily,
+                  fontWeight: FontWeight.w400,
+                  decoration: TextDecoration.underline,
+                  height: 1.62,
+                ),
+              ),
+              TextSpan(
+                text: ' to see who’s similar',
+                style: TextStyle(
+                  color: const Color(0xFF6A676C),
+                  fontSize: 16,
+                  fontFamily: AppFonts.textFontFamily,
+                  fontWeight: FontWeight.w400,
+                  height: 1.62,
+                ),
+              ),
+              WidgetSpan(
+                child: SizedBox(
+                  width: 17,
+                  height: 17,
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      Image.asset(
+                        Assets.imageEndArrow,
+                        matchTextDirection: true,
+                        width: 17,
+                        height: 7,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+
+  @Deprecated("old")
+  Widget buildShareAction() => Container(
+    margin: const EdgeInsetsDirectional.only(end: 24),
+    child: GestureDetector(
+      onTap: () {
+        showShareSheet();
+      },
+      child: Image.asset(
+        Assets.imageShare,
+        matchTextDirection: true,
+        width: 24,
+        height: 24,
+      ),
+    ),
+  );
+
+  @Deprecated("old")
+  Widget buildOpenVip() => PositionedDirectional(
+    bottom: 0,
+    start: 0,
+    end: 0,
+    child: BottomStackBtn(
+      title: LanKey.openVip.tr,
+      padding: EdgeInsetsDirectional.only(bottom: 24.h, top: 70.h),
+      onTap: () {
+        //todo
+      },
+    ),
+  );
 }

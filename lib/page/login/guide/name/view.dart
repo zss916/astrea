@@ -12,26 +12,17 @@ class EditNamePage extends StatelessWidget {
         children: [
           SizedBox(height: 20.h),
           StepIndicator(index: 5),
-          /* Container(
-            width: 128,
-            height: 128,
-            margin: EdgeInsets.only(top: 24.h, bottom: 18.h),
-            decoration: ShapeDecoration(
-              color: Colors.grey,
-              image: DecorationImage(
-                image: AssetImage(Assets.imageDefaultAvatar),
-                fit: BoxFit.cover,
-              ),
-              shape: OvalBorder(),
-            ),
-          ),*/
           Container(
-            margin: EdgeInsetsDirectional.only(start: 20, end: 20, top: 40.h),
+            margin: EdgeInsetsDirectional.only(
+              start: 20.w,
+              end: 20.w,
+              top: 40.h,
+            ),
             child: Text(
               LanKey.yourName.tr,
               style: TextStyle(
                 color: const Color(0xFF323133),
-                fontSize: 32.sp,
+                fontSize: 28.sp,
                 fontFamily: AppFonts.textFontFamily,
               ),
             ),

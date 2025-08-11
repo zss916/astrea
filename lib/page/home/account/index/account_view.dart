@@ -46,7 +46,7 @@ class AccountView extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: const Color(0xFF323133),
-                          fontSize: 16,
+                          fontSize: 16.sp,
                           fontFamily: AppFonts.textFontFamily,
                           fontWeight: FontWeight.w400,
                         ),
@@ -71,24 +71,24 @@ class AccountView extends StatelessWidget {
       children: [
         Container(
           margin: EdgeInsetsDirectional.only(
-            start: 16,
-            top: 24,
-            end: 16,
-            bottom: 16,
+            start: 16.w,
+            top: 24.h,
+            end: 16.w,
+            bottom: 16.h,
           ),
           width: double.maxFinite,
           child: Text(
             LanKey.personalDataTitle.tr,
             style: TextStyle(
               color: const Color(0xFF6A676C),
-              fontSize: 18,
+              fontSize: 18.sp,
               fontFamily: AppFonts.textFontFamily,
               fontWeight: FontWeight.w400,
             ),
           ),
         ),
         Container(
-          margin: EdgeInsetsDirectional.only(start: 16, end: 16),
+          margin: EdgeInsetsDirectional.only(start: 16.w, end: 16.w),
           constraints: BoxConstraints(minHeight: 224),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -138,24 +138,28 @@ class AccountView extends StatelessWidget {
       children: [
         Container(
           margin: EdgeInsetsDirectional.only(
-            start: 16,
-            top: 24,
-            end: 16,
-            bottom: 16,
+            start: 16.w,
+            top: 24.h,
+            end: 16.w,
+            bottom: 16.h,
           ),
           width: double.maxFinite,
           child: Text(
-            LanKey.lawAndPrivacy.tr,
+            LanKey.aboutUs.tr,
             style: TextStyle(
               color: const Color(0xFF6A676C),
-              fontSize: 18,
+              fontSize: 18.sp,
               fontFamily: AppFonts.textFontFamily,
               fontWeight: FontWeight.w400,
             ),
           ),
         ),
         Container(
-          margin: EdgeInsetsDirectional.only(start: 16, end: 16, bottom: 0.h),
+          margin: EdgeInsetsDirectional.only(
+            start: 16.w,
+            end: 16.w,
+            bottom: 0.h,
+          ),
           constraints: BoxConstraints(minHeight: (56 * 2)),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -166,20 +170,21 @@ class AccountView extends StatelessWidget {
           child: Column(
             children: [
               CommonItem(
-                title: LanKey.agreement.tr,
+                title: LanKey.privacyPolicy.tr,
                 onTap: () {
-                  logic.toService();
+                  logic.toPrivacy();
                 },
               ),
+
               CommonDivider(),
               /*CommonItem(
                 title: LanKey.subscriptionTerms.tr,
               ),
               CommonDivider(),*/
               CommonItem(
-                title: LanKey.privacyPolicy.tr,
+                title: LanKey.agreement.tr,
                 onTap: () {
-                  logic.toPrivacy();
+                  logic.toService();
                 },
               ),
               //CommonDivider(),
@@ -192,8 +197,9 @@ class AccountView extends StatelessWidget {
             ],
           ),
         ),
+
         Container(
-          margin: EdgeInsetsDirectional.only(top: 18),
+          margin: EdgeInsetsDirectional.only(top: 18.h),
           alignment: AlignmentDirectional.center,
           width: double.maxFinite,
           child: Text(
@@ -201,7 +207,7 @@ class AccountView extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               color: const Color(0xFF91929D),
-              fontSize: 16,
+              fontSize: 16.sp,
               fontWeight: FontWeight.w400,
             ),
           ),

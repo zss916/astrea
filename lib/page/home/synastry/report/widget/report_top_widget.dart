@@ -77,7 +77,7 @@ class ReportTopWidget extends StatelessWidget {
                     textAlign: TextAlign.end,
                     style: TextStyle(
                       color: const Color(0xFF323133),
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       fontFamily: AppFonts.textFontFamily,
                       fontWeight: FontWeight.w400,
                     ),
@@ -95,7 +95,7 @@ class ReportTopWidget extends StatelessWidget {
                     style: TextStyle(
                       color: const Color(0xFF323133),
                       fontFamily: AppFonts.textFontFamily,
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w400,
                     ),
                   ),

@@ -8,7 +8,7 @@ class PersonalDataPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: ComAppBar(
-        title: LanKey.personalDataTitle.tr,
+        title: LanKey.editFile.tr,
         leading: Container(
           margin: EdgeInsetsDirectional.only(start: 16),
           child: Stack(

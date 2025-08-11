@@ -81,10 +81,10 @@ class StarReportPage extends StatelessWidget {
           children: [
             Container(
               padding: EdgeInsetsDirectional.all(16),
-              margin: EdgeInsetsDirectional.only(start: 16, end: 16),
+              margin: EdgeInsetsDirectional.only(start: 16.w, end: 16.w),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadiusDirectional.circular(16),
+                borderRadius: BorderRadiusDirectional.circular(16.r),
               ),
               width: double.maxFinite,
               child: Column(
@@ -94,7 +94,7 @@ class StarReportPage extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: const Color(0xFF323133),
-                      fontSize: 20,
+                      fontSize: 20.sp,
                       fontFamily: AppFonts.textFontFamily,
                       fontWeight: FontWeight.w400,
                     ),
@@ -108,8 +108,8 @@ class StarReportPage extends StatelessWidget {
                     // color: Colors.cyan,
                     margin: EdgeInsetsDirectional.only(
                       top: 32.h,
-                      start: 4,
-                      end: 4,
+                      start: 4.w,
+                      end: 4.w,
                     ),
                     child: ScoresWidget(
                       title1: logic.title1 ?? "",
@@ -140,7 +140,8 @@ class StarReportPage extends StatelessWidget {
                               text: LanKey.combinedResults.tr,
                               style: TextStyle(
                                 color: const Color(0xFF323133),
-                                fontSize: 16,
+                                fontSize: 16.sp,
+                                height: 1.62.h,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: AppFonts.textFontFamily,
                               ),
@@ -149,7 +150,8 @@ class StarReportPage extends StatelessWidget {
                               text: logic.summary,
                               style: TextStyle(
                                 color: const Color(0xFF585FC4),
-                                fontSize: 16,
+                                fontSize: 16.sp,
+                                height: 1.62.h,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: AppFonts.textFontFamily,
                               ),
@@ -175,29 +177,32 @@ class StarReportPage extends StatelessWidget {
                             logic.analysis,
                             style: TextStyle(
                               color: const Color(0xFF6A676C),
-                              fontSize: 16,
+                              fontSize: 16.sp,
+                              height: 1.62.h,
                               fontWeight: FontWeight.w400,
                               fontFamily: AppFonts.textFontFamily,
                             ),
                           ),
 
-                          Divider(height: 10, color: Colors.transparent),
+                          Divider(height: 10.h, color: Colors.transparent),
                           Text(
                             logic.dailyAdvice,
                             style: TextStyle(
                               color: const Color(0xFF6A676C),
-                              fontSize: 16,
+                              fontSize: 16.sp,
+                              height: 1.62.h,
                               fontWeight: FontWeight.w400,
                               fontFamily: AppFonts.textFontFamily,
                             ),
                           ),
 
-                          Divider(height: 10, color: Colors.transparent),
+                          Divider(height: 10.h, color: Colors.transparent),
                           Text(
                             logic.trend3Months,
                             style: TextStyle(
                               color: const Color(0xFF6A676C),
-                              fontSize: 16,
+                              fontSize: 16.sp,
+                              height: 1.62.h,
                               fontWeight: FontWeight.w400,
                               fontFamily: AppFonts.textFontFamily,
                             ),
@@ -215,7 +220,7 @@ class StarReportPage extends StatelessWidget {
             ),
             PositionedDirectional(
               end: 16,
-              bottom: 100,
+              bottom: 100.h,
               child: Image.asset(
                 Assets.imageReportBottomRight,
                 width: 23,

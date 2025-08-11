@@ -2,6 +2,7 @@ import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/net/bean/analysis_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LogItem extends StatelessWidget {
   final AnalysisEntity item;
@@ -44,7 +45,7 @@ class LogItem extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: const Color(0xFF323133),
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontFamily: AppFonts.textFontFamily,
                   fontWeight: FontWeight.w400,
                 ),
@@ -77,7 +78,7 @@ class LogItem extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: const Color(0xFF585FC4),
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     fontFamily: AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,
                   ),
@@ -109,7 +110,7 @@ class LogItem extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: const Color(0xFF323133),
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontFamily: AppFonts.textFontFamily,
                   fontWeight: FontWeight.w400,
                 ),

@@ -19,8 +19,8 @@ mixin HoroscopeFriendLogicMixin on GetxController {
 
   @override
   void onInit() {
-    // initLocalData();
     super.onInit();
+    initLocalData();
     refreshEvent = AppEventBus.eventBus.on<RefreshFriendsEvent>().listen((_) {
       loadFriends();
     });

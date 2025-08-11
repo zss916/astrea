@@ -22,7 +22,7 @@ class LogsLogic extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    loadData(cancelToken: cancelToken);
+    loadData();
   }
 
   @override
@@ -32,13 +32,21 @@ class LogsLogic extends GetxController {
   }
 
   ///加载朋友列表
-  Future<void> loadData({CancelToken? cancelToken}) async {
-    List<AnalysisEntity> value = await SynastryAPI.getAnalysisList(
+  Future<void> loadData() async {
+    viewState = Status.init.index;
+    update();
+    (bool, List<AnalysisEntity>) value = await SynastryAPI.getAnalysisList(
       cancelToken: cancelToken,
     );
-    list.clear();
-    list.addAll(value);
-    viewState = list.isNotEmpty ? Status.data.index : Status.empty.index;
-    update();
+    if (!value.$1) {
+      viewState = Status.error.index;
+      update();
+      return;
+    } else {
+      list.clear();
+      list.addAll(value.$2);
+      viewState = list.isNotEmpty ? Status.data.index : Status.empty.index;
+      update();
+    }
   }
 }

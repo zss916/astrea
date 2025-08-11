@@ -70,13 +70,17 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
       child: Column(
         children: [
           Container(
-            margin: EdgeInsetsDirectional.only(start: 20, end: 20, top: 24.h),
+            margin: EdgeInsetsDirectional.only(
+              start: 20.w,
+              end: 20.w,
+              top: 24.h,
+            ),
             width: double.maxFinite,
             child: TextField(
               controller: textEditCtrl,
               focusNode: focusNode,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 16.sp,
                 fontFamily: AppFonts.textFontFamily,
               ),
               decoration: InputDecoration(
@@ -85,21 +89,21 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
                 hintText: LanKey.editNameHint.tr,
                 hintStyle: TextStyle(
                   color: const Color(0xFFA4A4A4),
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontFamily: AppFonts.textFontFamily,
                 ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+                  borderRadius: BorderRadius.circular(20.r),
                   borderSide: BorderSide(color: Color(0xFFE1DFE3)),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0), // 启用时的边框圆角
+                  borderRadius: BorderRadius.circular(20.r), // 启用时的边框圆角
                   borderSide: BorderSide(
                     color: Color(0xFFE1DFE3),
                   ), // 启用时的下划线颜色设置为透明
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0), // 聚焦时的边框圆角
+                  borderRadius: BorderRadius.circular(20.r), // 聚焦时的边框圆角
                   borderSide: BorderSide(
                     color: Color(0xFFE1DFE3),
                   ), // 聚焦时的下划线颜色设置为透明
@@ -118,8 +122,8 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
                           children: [
                             Image.asset(
                               Assets.imageClear,
-                              width: 20,
-                              height: 20,
+                              width: 20.r,
+                              height: 20.r,
                               matchTextDirection: true,
                             ),
                           ],
@@ -155,13 +159,17 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
           if (isError)
             Container(
               constraints: BoxConstraints(minHeight: 20.h),
-              margin: EdgeInsetsDirectional.only(start: 20, end: 20, top: 12.h),
+              margin: EdgeInsetsDirectional.only(
+                start: 20.w,
+                end: 20.w,
+                top: 12.h,
+              ),
               width: double.maxFinite,
               child: Text(
-                LanKey.nameMatchHint.tr,
+                LanKey.nameMatchErrorHint.tr,
                 style: TextStyle(
                   color: const Color(0xFFFF2200),
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontFamily: AppFonts.textFontFamily,
                 ),
               ),
@@ -170,7 +178,11 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
             SizedBox(height: 20.h),
           CommonBtn(
             isClickable: isEdit && (!isError),
-            margin: EdgeInsetsDirectional.only(start: 20, end: 20, top: 16.h),
+            margin: EdgeInsetsDirectional.only(
+              start: 20.w,
+              end: 20.w,
+              top: 16.h,
+            ),
             title: LanKey.next.tr,
             onTap: () {
               if (isEdit && textEditCtrl.text.isNotEmpty) {

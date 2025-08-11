@@ -2,6 +2,7 @@ import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/home/horoscope/detail/widget/blur_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class DetailItem extends StatelessWidget {
@@ -68,7 +69,7 @@ class DetailItem extends StatelessWidget {
                               text: '${titles[index]}\n',
                               style: TextStyle(
                                 color: const Color(0xFF323133),
-                                fontSize: 18,
+                                fontSize: 18.sp,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: AppFonts.textFontFamily,
                               ),
@@ -77,7 +78,7 @@ class DetailItem extends StatelessWidget {
                               text: info,
                               style: TextStyle(
                                 color: const Color(0xFF323133),
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: AppFonts.textFontFamily,
                               ),
@@ -94,13 +95,13 @@ class DetailItem extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  margin: EdgeInsetsDirectional.only(top: 14),
+                  margin: EdgeInsetsDirectional.only(top: 14.h),
                   width: double.maxFinite,
                   child: Text(
                     content,
                     style: TextStyle(
                       color: const Color(0xFF91929D),
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontFamily: AppFonts.textFontFamily,
                       fontWeight: FontWeight.w400,
                     ),

@@ -71,8 +71,8 @@ class HoroscopeContent extends StatelessWidget {
         if (isShow)
           PositionedDirectional(
             bottom: 0,
-            start: 12,
-            end: 12,
+            start: 12.w,
+            end: 12.w,
             child: Image.asset(
               Assets.imageBottomTexture,
               matchTextDirection: true,

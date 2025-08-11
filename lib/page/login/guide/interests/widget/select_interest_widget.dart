@@ -51,8 +51,8 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
           height: double.maxFinite,
           constraints: BoxConstraints(minHeight: 350.h),
           margin: EdgeInsetsDirectional.only(
-            start: 42,
-            end: 42,
+            start: 42.w,
+            end: 42.w,
             top: 24.h,
             bottom: 90.h,
           ),
@@ -94,8 +94,8 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
           alignment: AlignmentDirectional.bottomCenter,
           child: CommonBtn(
             margin: EdgeInsetsDirectional.only(
-              start: 20,
-              end: 20,
+              start: 20.w,
+              end: 20.w,
               bottom: 24.h,
             ),
             isClickable: selectList.isNotEmpty,
