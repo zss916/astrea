@@ -26,6 +26,8 @@ class AddFileLogic extends GetxController {
 
   CancelToken cancelToken = CancelToken();
 
+  AwesomeDateTime? initDateTime;
+
   @override
   void onInit() {
     super.onInit();
@@ -48,6 +50,11 @@ class AddFileLogic extends GetxController {
       isUser = data.isMe;
       id = data.id;
       //isSave = true;
+      initDateTime = getAwesomeDateTime(
+        birthday,
+        hourBirth ?? 0,
+        minuteBirth ?? 0,
+      );
       update();
     }
   }
@@ -159,6 +166,26 @@ class AddFileLogic extends GetxController {
       AppLoading.toast("Successful");
       AppEventBus.eventBus.fire(RefreshFriendsEvent());
       Get.back();
+    }
+  }
+
+  AwesomeDateTime? getAwesomeDateTime(String? birthday, int hour, int minute) {
+    if (birthday != null && birthday.contains("-")) {
+      List<String> value = (birthday ?? "").split("-");
+      if (value.isNotEmpty) {
+        return AwesomeDateTime(
+          date: AwesomeDate(
+            year: int.parse(value[0]),
+            month: int.parse(value[1]),
+            day: int.parse(value[2]),
+          ),
+          time: AwesomeTime(hour: hour, minute: minute),
+        );
+      } else {
+        return null;
+      }
+    } else {
+      return null;
     }
   }
 }

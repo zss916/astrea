@@ -77,6 +77,7 @@ class AddFilePage extends StatelessWidget {
                         ),
                         Divider(height: 1, color: Color(0xFFD5D5D5)),
                         SelectBirth(
+                          initialDateTime: logic.initDateTime,
                           birth: logic.showBirthDay,
                           onNext: (dateBirth, hourBirth, minuteBirth) {
                             logic.birthday = dateBirth;

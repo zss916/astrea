@@ -4,6 +4,7 @@ import 'package:astrea/core/enum/app_enum.dart';
 import 'package:astrea/core/utils/calculate.dart';
 import 'package:astrea/generated/json/account_entity.g.dart';
 import 'package:astrea/generated/json/base/json_field.dart';
+import 'package:awesome_datetime_picker/awesome_datetime_picker.dart';
 
 export 'package:astrea/generated/json/account_entity.g.dart';
 
@@ -71,6 +72,22 @@ class AccountEntity {
       return "${CalculateTools.formattedTime2("$birthday")} ${(birthHour ?? 0).formatted}:${(birthMinute ?? 0).formatted} ${CalculateTools.formattedAmOrPm(birthHour ?? 0)}";
     } else {
       return "--";
+    }
+  }
+
+  AwesomeDateTime? getAwesomeDateTime() {
+    List<String> value = (birthday ?? "").split("-");
+    if (value.isNotEmpty) {
+      return AwesomeDateTime(
+        date: AwesomeDate(
+          year: int.parse(value[0]),
+          month: int.parse(value[1]),
+          day: int.parse(value[2]),
+        ),
+        time: AwesomeTime(hour: birthHour ?? 0, minute: birthMinute ?? 0),
+      );
+    } else {
+      return null;
     }
   }
 

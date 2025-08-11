@@ -71,6 +71,7 @@ class PersonalDataPage extends StatelessWidget {
                       ),
                       Divider(height: 1, color: Color(0xFFD5D5D5)),
                       SelectBirth(
+                        initialDateTime: logic.initDateTime,
                         birth: logic.dateBirth,
                         onNext: (dateBirth, hourBirth, minuteBirth) {
                           logic.account?.birthday = dateBirth;

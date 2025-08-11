@@ -10,7 +10,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sprintf/sprintf.dart';
 
-void showDatePickerSheet(Function(String, String, int, int) onChange) {
+void showDatePickerSheet(
+  AwesomeDateTime? initialDateTime,
+  Function(String, String, int, int) onChange,
+) {
   String birth = '';
   String dateBirth = '';
   int hourBirth = 0;
@@ -88,7 +91,8 @@ void showDatePickerSheet(Function(String, String, int, int) onChange) {
           ),
           AwesomeDateTimePicker(
             isYmd: true,
-            /*initialDateTime: AwesomeDateTime(
+            initialDateTime: initialDateTime,
+            /* initialDateTime: AwesomeDateTime(
               date: AwesomeDate(
                 year: 1900,
                 month: 1,

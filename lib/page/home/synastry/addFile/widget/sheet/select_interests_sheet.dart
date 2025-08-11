@@ -51,8 +51,11 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
   @override
   void initState() {
     super.initState();
-    // List<String> arr = widget.interests.split(",").toList();
-    // selectList = arr.map((e) => interests.indexOf(e)).toList();
+    if (widget.interests.isNotEmpty) {
+      List<String> arr = widget.interests.split(",").toList();
+      selectList = arr.map((e) => interests.indexOf(e)).toList();
+      setState(() {});
+    }
   }
 
   @override

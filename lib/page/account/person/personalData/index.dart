@@ -19,6 +19,7 @@ import 'package:astrea/page/account/person/personalData/widget/select_sex.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/edit_name.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/select_birth.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/sheet/select_interests_sheet.dart';
+import 'package:awesome_datetime_picker/awesome_datetime_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

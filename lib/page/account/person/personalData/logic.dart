@@ -9,8 +9,9 @@ class PersonalDataLogic extends GetxController with AppValidatorMixin {
   String? get placeBirth =>
       account?.showLocality ?? AccountService.to.showLocality;
   int get sex => account?.sex ?? 0;
-
   String? get interests => account?.interests ?? "";
+
+  AwesomeDateTime? initDateTime;
 
   @override
   void onInit() {
@@ -36,11 +37,13 @@ class PersonalDataLogic extends GetxController with AppValidatorMixin {
     } else {
       account = AccountService.to.getAccount();
     }
+    initDateTime = account?.getAwesomeDateTime();
     update();
   }
 
   Future<void> loadAccount() async {
     account = await AccountAPI.getAccount();
+    initDateTime = account?.getAwesomeDateTime();
     update();
   }
 

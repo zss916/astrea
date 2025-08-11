@@ -133,7 +133,7 @@ abstract class AccountAPI {
         data: {"did": deviceId},
         cancelToken: cancelToken,
       );
-      return true;
+      return result["code"] == 0;
     } catch (error) {
       return false;
     }

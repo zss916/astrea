@@ -11,8 +11,14 @@ import 'package:sprintf/sprintf.dart';
 
 class SelectBirth extends StatefulWidget {
   final String birth;
+  final AwesomeDateTime? initialDateTime;
   final Function(String, int, int) onNext;
-  const SelectBirth({super.key, required this.birth, required this.onNext});
+  const SelectBirth({
+    super.key,
+    this.initialDateTime,
+    required this.birth,
+    required this.onNext,
+  });
 
   @override
   _SelectBirthState createState() => _SelectBirthState();
@@ -46,7 +52,12 @@ class _SelectBirthState extends State<SelectBirth> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        showDatePickerSheet((value, dateBirth, hourBirth, minuteBirth) {
+        showDatePickerSheet(widget.initialDateTime, (
+          value,
+          dateBirth,
+          hourBirth,
+          minuteBirth,
+        ) {
           if (value.isNotEmpty) {
             setState(() {
               birth = value;
