@@ -3,8 +3,10 @@ import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/core/utils/calculate.dart';
+import 'package:astrea/generated/assets.dart';
 import 'package:awesome_datetime_picker/awesome_datetime_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sprintf/sprintf.dart';
 
@@ -17,7 +19,12 @@ void showDatePickerSheet(Function(String, String, int, int) onChange) {
   Get.bottomSheet(
     Container(
       width: double.maxFinite,
-      padding: EdgeInsetsDirectional.all(16),
+      padding: EdgeInsetsDirectional.only(
+        start: 16.w,
+        end: 16.w,
+        top: 10.h,
+        bottom: 16.h,
+      ),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -28,45 +35,56 @@ void showDatePickerSheet(Function(String, String, int, int) onChange) {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
-                child: Text(
-                  LanKey.cancel.tr,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: const Color(0xFF6A676C),
-                    fontSize: 18,
-                    fontFamily: AppFonts.textFontFamily,
-                    fontWeight: FontWeight.w400,
+          IntrinsicHeight(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(10),
+                    onTap: () {
+                      if (isShowBirth) {
+                        onChange.call(birth, dateBirth, hourBirth, minuteBirth);
+                        Get.back();
+                      } else {
+                        AppLoading.toast("Please choose a new date of birth");
+                      }
+                    },
+                    child: Text(
+                      LanKey.finish.tr,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: const Color(0xFF585FC4),
+                        fontSize: 18.sp,
+                        fontFamily: AppFonts.textFontFamily,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  if (isShowBirth) {
-                    onChange.call(birth, dateBirth, hourBirth, minuteBirth);
-                    Get.back();
-                  } else {
-                    AppLoading.toast("Please choose a new date of birth");
-                  }
-                },
-                child: Text(
-                  LanKey.finish.tr,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: const Color(0xFF585FC4),
-                    fontSize: 18,
-                    fontFamily: AppFonts.textFontFamily,
-                    fontWeight: FontWeight.w400,
+                Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(30),
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Container(
+                      padding: EdgeInsetsDirectional.symmetric(
+                        horizontal: 0,
+                        vertical: 0,
+                      ),
+                      child: Image.asset(
+                        Assets.imageCloseDialog,
+                        width: 30.r,
+                        height: 30.r,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           AwesomeDateTimePicker(
             isYmd: true,

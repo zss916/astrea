@@ -164,28 +164,52 @@ class _AwesomeDateTimePickerState extends State<AwesomeDateTimePicker> {
                 AwesomeDateTime(date: date, time: selectedDateTime.time));
           },
         ),
-        AwesomeTimePicker(
-          isToday: isToday,
-          theme: widget.theme?.timePickerTheme,
-          backgroundColor: widget.backgroundColor,
-          timeFormat: widget.timeFormat,
-          maxTime: maxDateTime.time,
-          minTime: minDateTime.time,
-          initialTime: initialDateTime.time,
-          selectorColor: widget.selectorColor,
-          fadeEffect: widget.fadeEffect,
-          selectedTextStyle: widget.selectedTextStyle,
-          unselectedTextStyle: widget.unselectedTextStyle,
-          visibleItemCount: widget.visibleItemCount,
-          itemHeight: widget.itemHeight,
-          itemWidth: widget.itemWidth,
-          onChanged: (AwesomeTime time) {
-            setState(() {
-              selectedDateTime.time = time;
-            });
-            widget.onChanged?.call(
-                AwesomeDateTime(date: selectedDateTime.date, time: time));
-          },
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+              height: 35,
+              padding: const EdgeInsetsDirectional.only(bottom: 4),
+              alignment: AlignmentDirectional.center,
+              margin: const EdgeInsetsDirectional.symmetric(horizontal: 16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadiusDirectional.circular(7),
+              ),
+              child: const Text(
+                ':',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF323133),
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            AwesomeTimePicker(
+              isToday: isToday,
+              theme: widget.theme?.timePickerTheme,
+              backgroundColor: widget.backgroundColor,
+              timeFormat: widget.timeFormat,
+              maxTime: maxDateTime.time,
+              minTime: minDateTime.time,
+              initialTime: initialDateTime.time,
+              selectorColor: widget.selectorColor,
+              fadeEffect: widget.fadeEffect,
+              selectedTextStyle: widget.selectedTextStyle,
+              unselectedTextStyle: widget.unselectedTextStyle,
+              visibleItemCount: widget.visibleItemCount,
+              itemHeight: widget.itemHeight,
+              itemWidth: widget.itemWidth,
+              onChanged: (AwesomeTime time) {
+                setState(() {
+                  selectedDateTime.time = time;
+                });
+                widget.onChanged?.call(
+                    AwesomeDateTime(date: selectedDateTime.date, time: time));
+              },
+            )
+          ],
         ),
       ],
     );
