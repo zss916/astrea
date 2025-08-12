@@ -64,7 +64,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
         builder: (logic) {
           return Column(
             children: [
-              HoroscopeTitle(),
+              RepaintBoundary(child: HoroscopeTitle()),
               // buildTitle(logic),
               Expanded(child: buildBody(logic)),
             ],
