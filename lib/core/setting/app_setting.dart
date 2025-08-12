@@ -4,4 +4,7 @@ class AppSetting {
 
   ///服务
   static const String term = "https://www.baidu.com";
+
+  ///版本号
+  static const String versionNumber = "V 1.0.0";
 }

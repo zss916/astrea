@@ -21,6 +21,10 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
 
   ///google 登录
   void toGoogleAuth() async {
+    bool isSuccess = await AvailabilityHelper.checkGooglePlay();
+    if (!isSuccess) {
+      return;
+    }
     googleSignIn(({
       required bool success,
       String? idToken,

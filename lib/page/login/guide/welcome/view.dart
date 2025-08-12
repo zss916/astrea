@@ -72,7 +72,7 @@ class WelcomePage extends StatelessWidget {
                 title: LanKey.apple.tr,
                 icon: Assets.imageApple,
                 onTap: () {
-                  logic.toGoogleAuth();
+                  logic.toAppleAuth();
                 },
               ),
             if (GetPlatform.isAndroid)
@@ -88,7 +88,7 @@ class WelcomePage extends StatelessWidget {
                 //: Color(0xFF323133),
                 icon: Assets.imageGoogle,
                 onTap: () {
-                  logic.toAppleAuth();
+                  logic.toGoogleAuth();
                 },
               ),
             WelcomeBtn(

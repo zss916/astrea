@@ -2,6 +2,7 @@ import 'package:astrea/components/common_app_bar.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/setting/app_setting.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/account/accountInfo/details/widget/common_divider.dart';
 import 'package:astrea/page/home/account/index/logic.dart';
@@ -203,7 +204,7 @@ class AccountView extends StatelessWidget {
           alignment: AlignmentDirectional.center,
           width: double.maxFinite,
           child: Text(
-            "V 1.0.0",
+            AppSetting.versionNumber,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: const Color(0xFF91929D),

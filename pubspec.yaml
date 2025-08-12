@@ -45,7 +45,7 @@ dependencies:
   google_sign_in: 6.3.0
   sign_in_with_apple: 7.0.1
   email_validator: 3.0.0
-  sprintf: ^7.0.0
+  sprintf: 7.0.0
   collection: 1.19.1
   lottie: 3.3.1
   dio_cache_interceptor: 4.0.3
@@ -58,7 +58,8 @@ dependencies:
   android_id: 0.4.0
   #package_info_plus: 8.3.0
   video_player: 2.10.0
-
+  #判断是否支持google服务
+  google_api_availability: 5.0.1
 
 
 
@@ -70,8 +71,7 @@ dependencies:
   #flutter_launcher_icons: ^0.14.4
   #splash
   #flutter_native_splash: ^2.4.6
-  #判断是否支持google服务
-  #google_api_availability: 5.0.1
+
 
 
  #抓包工具
