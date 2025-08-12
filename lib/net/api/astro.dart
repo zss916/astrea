@@ -13,7 +13,7 @@ abstract class AstrologyAPI {
     required String id,
     CancelToken? cancelToken,
   }) async {
-    Map<String, dynamic> d = {
+    /* Map<String, dynamic> d = {
       "code": 0,
       "msg": "",
       "data": {
@@ -248,7 +248,7 @@ abstract class AstrologyAPI {
           },
         },
       },
-    };
+    };*/
     // return (true, NatalReportEntity.fromJson(d["data"]));
 
     try {
