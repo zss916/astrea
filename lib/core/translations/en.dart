@@ -355,9 +355,9 @@ class LanKey {
 
 ///英语文案
 const en = {
-  "colleagues": "Colleagues",
-  "customers": "Customers",
-  "partners": "Partners",
+  "colleagues": "Colleague",
+  "customers": "Client",
+  "partners": "Partner",
   "friend": "Friend",
   "lover": "Lover",
   "combined_results": "Key Aspects:",

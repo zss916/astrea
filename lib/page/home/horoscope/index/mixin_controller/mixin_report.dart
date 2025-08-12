@@ -84,6 +84,7 @@ mixin HoroscopeReportLogicMixin on GetxController {
   void onClose() {
     super.onClose();
     reportCancelToken.cancel("report cancel");
+    AstrologyAPI.stopPolling();
     AppLoading.dismiss();
   }
 

@@ -1,4 +1,5 @@
 import 'package:astrea/components/common_btn.dart';
+import 'package:astrea/core/mixin/delayed_init_mixin.dart';
 import 'package:astrea/core/setting/global.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/translations/en.dart';
@@ -19,13 +20,14 @@ class SelectInterestWidget extends StatefulWidget {
   _SelectInterestWidgetState createState() => _SelectInterestWidgetState();
 }
 
-class _SelectInterestWidgetState extends State<SelectInterestWidget> {
+class _SelectInterestWidgetState extends State<SelectInterestWidget>
+    with DelayedInitMixin {
   //  bool isSelected = false;
   //  int select = -1;
 
   List<int> selectList = [];
 
-  List<String> images = [
+  final List<String> images = [
     Assets.imageMoneyIcon,
     Assets.imageBusinessIcon,
     Assets.imageFriendsIcon,
@@ -34,10 +36,25 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
     Assets.imageCareerIcon,
   ];
 
+  bool isShow = false;
+
   @override
   void initState() {
     super.initState();
-    selectList = AccountService.to.getUserInterestIndex();
+    if (mounted) {
+      setState(() {
+        selectList = AccountService.to.getUserInterestIndex();
+      });
+    }
+  }
+
+  @override
+  void afterFirstLayout() {
+    Future.delayed(Duration(seconds: 1), () {
+      setState(() {
+        isShow = true;
+      });
+    });
   }
 
   @override
@@ -45,7 +62,6 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
     return Stack(
       alignment: AlignmentDirectional.topCenter,
       children: [
-        SizedBox(width: double.maxFinite, height: double.maxFinite),
         Container(
           width: double.maxFinite,
           height: double.maxFinite,
@@ -56,42 +72,46 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
             top: 24.h,
             bottom: 90.h,
           ),
-          child: GridView.builder(
-            padding: EdgeInsetsDirectional.only(bottom: 0),
-            shrinkWrap: true,
-            itemCount: 6,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 16,
-              crossAxisSpacing: 16,
-              childAspectRatio: 151 / 106,
-            ),
-            itemBuilder: (BuildContext context, int index) {
-              return GestureDetector(
-                onTap: () {
-                  setState(() {
-                    // isSelected = !isSelected;
-                    // select = index;
-                    if (selectList.contains(index)) {
-                      selectList.remove(index);
-                    } else {
-                      selectList.add(index);
-                    }
-                  });
+          child: isShow
+              ? GridView.builder(
+                  padding: EdgeInsetsDirectional.only(bottom: 0),
+                  shrinkWrap: true,
+                  itemCount: 6,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    childAspectRatio: 151 / 106,
+                  ),
+                  itemBuilder: (BuildContext context, int index) {
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          // isSelected = !isSelected;
+                          // select = index;
+                          if (selectList.contains(index)) {
+                            selectList.remove(index);
+                          } else {
+                            selectList.add(index);
+                          }
+                        });
 
-                  AccountService.to.updateUserInterest(selectList);
-                },
-                child: InterestWidget(
-                  icon: images[index],
-                  title: interests[index],
-                  isChecked: selectList.contains(index),
-                ),
-              );
-            },
-          ),
+                        AccountService.to.updateUserInterest(selectList);
+                      },
+                      child: InterestWidget(
+                        icon: images[index],
+                        title: interests[index],
+                        isChecked: selectList.contains(index),
+                      ),
+                    );
+                  },
+                )
+              : Center(child: CircularProgressIndicator()),
         ),
-        Align(
-          alignment: AlignmentDirectional.bottomCenter,
+        PositionedDirectional(
+          bottom: 0,
+          start: 0,
+          end: 0,
           child: CommonBtn(
             margin: EdgeInsetsDirectional.only(
               start: 20.w,

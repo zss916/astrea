@@ -90,7 +90,7 @@ class StarReportLogic extends GetxController {
       "key3": " Comfort\nZone",
       "value3": comfortBoundary,
     },
-    "customers": {
+    "client": {
       "key1": "Flow\nChat",
       "value1": smoothCommunication,
       "key2": "Mutual\nGrowth",
@@ -105,6 +105,14 @@ class StarReportLogic extends GetxController {
       "value2": growthAndCultivation,
       "key3": "Wealth\nGrowth",
       "value3": actionCoordination,
+    },
+    "partners": {
+      "key1": "partners",
+      "value1": 0,
+      "key2": "partners",
+      "value2": 0,
+      "key3": "partners",
+      "value3": 0,
     },
   };
 
@@ -145,35 +153,35 @@ class StarReportLogic extends GetxController {
     analysisCancelToken.cancel("analysis Cancel");
     super.onClose();
     AppLoading.dismiss();
+    SynastryAPI.stopPolling();
   }
 
   void initData() {
-    if ((Get.arguments != null) && (Get.arguments is Map)) {
-      Map map = Get.arguments as Map;
+    _parseArguments();
+    _parseParameters();
+    viewState = Status.init.index;
+    update();
+  }
+
+  /// 解析传递的参数
+  void _parseArguments() {
+    if (Get.arguments is Map) {
+      final map = Get.arguments as Map;
       firstId = map["firstId"];
       secondId = map["secondId"];
       relationship = map["relationship"];
       isSave = map["isSave"];
       id = map["id"];
     }
+  }
 
-    if (Get.parameters["userName"] != null) {
-      userName = Get.parameters["userName"];
-    }
-    if (Get.parameters["userAvatar"] != null) {
-      userAvatar = Get.parameters["userAvatar"];
-    }
-    if (Get.parameters["friendName"] != null) {
-      friendName = Get.parameters["friendName"];
-    }
-    if (Get.parameters["friendAvatar"] != null) {
-      friendAvatar = Get.parameters["friendAvatar"];
-    }
-    if (Get.parameters["relationship"] != null) {
-      relationship = Get.parameters["relationship"];
-    }
-    viewState = Status.init.index;
-    update();
+  /// 解析路由参数
+  void _parseParameters() {
+    userName = Get.parameters["userName"];
+    userAvatar = Get.parameters["userAvatar"];
+    friendName = Get.parameters["friendName"];
+    friendAvatar = Get.parameters["friendAvatar"];
+    relationship = Get.parameters["relationship"];
   }
 
   @override
@@ -191,7 +199,7 @@ class StarReportLogic extends GetxController {
   }
 
   ///处理json
-  void _handJson() {
+  void _processRelationshipData() {
     if (relationship != null) {
       Map<String, dynamic> jsonValue = json[relationship!.toLowerCase()];
       title1 = jsonValue["key1"];
@@ -232,7 +240,7 @@ class StarReportLogic extends GetxController {
           id: id ?? "",
           cancelToken: analysisCancelToken,
         );
-        _handJson();
+        _processRelationshipData();
         viewState = article != null ? Status.data.index : Status.empty.index;
         update();
       } else {
@@ -255,7 +263,7 @@ class StarReportLogic extends GetxController {
         ).whenComplete(() {
           AppLoading.dismiss();
         });
-    _handJson();
+    _processRelationshipData();
     viewState = article != null ? Status.data.index : Status.empty.index;
     update();
   }

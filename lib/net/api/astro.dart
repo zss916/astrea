@@ -312,6 +312,13 @@ abstract class AstrologyAPI {
     }
   }
 
+  // 添加一个标志来控制轮询
+  static bool _shouldStopPolling = false;
+
+  static void stopPolling() {
+    _shouldStopPolling = true;
+  }
+
   ///获取natal报告
   static Future<(bool isSuccessful, NatalReportEntity report)>
   loopAndReturnReport({
@@ -319,6 +326,7 @@ abstract class AstrologyAPI {
     CancelToken? cancelToken,
     int maxRetries = 100,
   }) async {
+    _shouldStopPolling = false; // 重置轮询标志
     debugPrint("loopReport start");
     try {
       bool isLoop = true;
@@ -328,6 +336,10 @@ abstract class AstrologyAPI {
         debugPrint("loopReport attempt:$attempt");
         final (bool success, NatalReportEntity report) =
             await getAstrologyReport(id: id, cancelToken: cancelToken);
+        if (_shouldStopPolling) {
+          debugPrint("Analysis _shouldStopPolling:$_shouldStopPolling");
+          return (false, NatalReportEntity());
+        }
         isLoop = (report.done != true);
         debugPrint("loopReport isLoop:$isLoop");
         if (!isLoop) {

@@ -12,8 +12,9 @@ class ResultLogic extends GetxController {
 
   @override
   void onClose() {
-    cancelToken.cancel("result cancel");
     super.onClose();
+    cancelToken.cancel("result cancel");
+    AstrologyAPI.stopPolling();
   }
 
   @override

@@ -66,6 +66,13 @@ abstract class SynastryAPI {
     }
   }
 
+  // 添加一个标志来控制轮询
+  static bool _shouldStopPolling = false;
+
+  static void stopPolling() {
+    _shouldStopPolling = true;
+  }
+
   ///查询合盘分析报告
   static Future<(bool isSuccessful, AnalysisIdentityEntity? value)>
   loopAndReturnAnalysis({
@@ -75,6 +82,7 @@ abstract class SynastryAPI {
     CancelToken? cancelToken,
     int maxRetries = 100,
   }) async {
+    _shouldStopPolling = false; // 重置轮询标志
     debugPrint("Analysis start");
     try {
       bool isLoop = true;
@@ -91,6 +99,11 @@ abstract class SynastryAPI {
           relationship: relationship,
           cancelToken: cancelToken,
         );
+        if (_shouldStopPolling) {
+          debugPrint("Analysis _shouldStopPolling:$_shouldStopPolling");
+          return (false, null);
+        }
+
         isLoop = (value?.done != true);
         debugPrint("Analysis isLoop:$isLoop");
         if (!isLoop) {

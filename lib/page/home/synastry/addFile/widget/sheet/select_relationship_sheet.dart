@@ -41,9 +41,9 @@ class _SelectRelationshipSheetState extends State<SelectRelationshipSheet> {
     {"title": LanKey.family.tr, "value": false},
     {"title": LanKey.lover.tr, "value": false},
     {"title": LanKey.friend.tr, "value": false},
-    {"title": LanKey.partners.tr, "value": false},
-    {"title": LanKey.customers.tr, "value": false},
+    //{"title": LanKey.partners.tr, "value": false},
     {"title": LanKey.colleagues.tr, "value": false},
+    {"title": LanKey.customers.tr, "value": false},
   ];
 
   @override
@@ -59,7 +59,7 @@ class _SelectRelationshipSheetState extends State<SelectRelationshipSheet> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            margin: EdgeInsetsDirectional.only(top: 10.h),
+            margin: EdgeInsetsDirectional.only(top: 0),
             child: Row(
               children: [
                 Expanded(
@@ -96,8 +96,8 @@ class _SelectRelationshipSheetState extends State<SelectRelationshipSheet> {
           ),
           Container(
             margin: EdgeInsetsDirectional.only(
-              top: 18.h,
-              bottom: 20.h,
+              top: 10.h,
+              bottom: 40.h,
               start: 10.w,
               end: 10.w,
             ),

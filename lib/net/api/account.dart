@@ -128,9 +128,9 @@ abstract class AccountAPI {
     CancelToken? cancelToken,
   }) async {
     try {
-      var result = await Http.instance.post(
+      var result = await Http.instance.get(
         ApiPath.postDevice,
-        data: {"did": deviceId},
+        query: {"did": deviceId},
         cancelToken: cancelToken,
       );
       if (result["code"] == 0 && result["data"] != null) {

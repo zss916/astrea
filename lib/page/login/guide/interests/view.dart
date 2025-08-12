@@ -44,22 +44,26 @@ class InterestsPage extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: SelectInterestWidget(
-              onNext: (index) {
-                AccountService.to.updateLoginStep(
-                  step: LoginStep.stepFinish.value,
-                );
-
-                int type = Get.arguments as int;
-                if (type == LoginType.loginAndRegister.index) {
-                  PageTools.toWelcome(
-                    loginType: LoginType.loginAndRegister.index,
+            child: SizedBox(
+              width: double.maxFinite,
+              height: double.maxFinite,
+              child: SelectInterestWidget(
+                onNext: (index) {
+                  AccountService.to.updateLoginStep(
+                    step: LoginStep.stepFinish.value,
                   );
-                } else {
-                  PageTools.toResult();
-                }
-                AppPermissionTools.checkNotification();
-              },
+
+                  int type = Get.arguments as int;
+                  if (type == LoginType.loginAndRegister.index) {
+                    PageTools.toWelcome(
+                      loginType: LoginType.loginAndRegister.index,
+                    );
+                  } else {
+                    PageTools.toResult();
+                  }
+                  AppPermissionTools.checkNotification();
+                },
+              ),
             ),
           ),
         ],
