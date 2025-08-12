@@ -256,12 +256,6 @@ abstract class AstrologyAPI {
         ApiPath.getNatalReport,
         query: {"friend_id": id},
         cancelToken: cancelToken,
-        /*options: Options(
-          headers: {"Authorization": AccountService.to.getAuthToken()},
-          sendTimeout: Duration(minutes: 5),
-          receiveTimeout: Duration(minutes: 5),
-          receiveDataWhenStatusError: true,
-        ),*/
       );
 
       if (response["code"] == 0) {
@@ -278,6 +272,81 @@ abstract class AstrologyAPI {
       }
     } catch (error) {
       return (false, NatalReportEntity());
+    }
+  }
+
+  ///轮询获取数据
+  static Future<void> loopReport({
+    required String id,
+    required Function(NatalReportEntity data) onFinish,
+    required Function() onError,
+    CancelToken? cancelToken,
+    int maxRetries = 100,
+  }) async {
+    debugPrint("loopReport start");
+    try {
+      bool isLoop = true;
+      int attempt = 0;
+      do {
+        attempt++;
+        debugPrint("loopReport attempt:$attempt");
+        final (bool success, NatalReportEntity report) =
+            await getAstrologyReport(id: id, cancelToken: cancelToken);
+        isLoop = (report.done != true);
+        debugPrint("loopReport isLoop:$isLoop");
+        if (!isLoop) {
+          debugPrint("loopReport successful");
+          onFinish.call(report);
+        } else {
+          debugPrint("loopReport next");
+          await Future.delayed(Duration(seconds: 2));
+          if (attempt >= maxRetries) {
+            debugPrint("loopReport maxRetries:$attempt");
+            onError.call();
+          }
+        }
+      } while (isLoop);
+    } catch (error) {
+      debugPrint("loopReport error");
+      onError.call();
+    }
+  }
+
+  ///获取natal报告
+  static Future<(bool isSuccessful, NatalReportEntity report)>
+  loopAndReturnReport({
+    required String id,
+    CancelToken? cancelToken,
+    int maxRetries = 100,
+  }) async {
+    debugPrint("loopReport start");
+    try {
+      bool isLoop = true;
+      int attempt = 0;
+      do {
+        attempt++;
+        debugPrint("loopReport attempt:$attempt");
+        final (bool success, NatalReportEntity report) =
+            await getAstrologyReport(id: id, cancelToken: cancelToken);
+        isLoop = (report.done != true);
+        debugPrint("loopReport isLoop:$isLoop");
+        if (!isLoop) {
+          debugPrint("loopReport successful");
+          return (true, report); // 成功时返回true和报告
+        } else {
+          debugPrint("loopReport next");
+          await Future.delayed(Duration(seconds: 2));
+          if (attempt >= maxRetries) {
+            debugPrint("loopReport maxRetries:$attempt");
+            return (false, report); // 达到最大重试次数时返回false和最新报告
+          }
+        }
+      } while (isLoop);
+      // 理论上不会执行到这里，因为所有路径都已返回
+      return (false, NatalReportEntity());
+    } catch (e) {
+      debugPrint("loopReport error: $e");
+      return (false, NatalReportEntity()); // 错误时返回false和空报告
     }
   }
 }

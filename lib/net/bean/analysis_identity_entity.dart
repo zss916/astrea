@@ -7,6 +7,7 @@ export 'package:astrea/generated/json/analysis_identity_entity.g.dart';
 
 @JsonSerializable()
 class AnalysisIdentityEntity {
+  bool? done;
   @JSONField(name: "synastry_id")
   int? synastryId;
   @JSONField(name: "analysis_id")

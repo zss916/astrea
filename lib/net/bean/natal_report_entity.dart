@@ -10,6 +10,7 @@ export 'package:astrea/generated/json/natal_report_entity.g.dart';
 
 @JsonSerializable()
 class NatalReportEntity {
+  bool? done;
   @JSONField(name: 'natal_chart_img')
   String? natalChartImg;
   @JSONField(name: 'natal_chart_result')

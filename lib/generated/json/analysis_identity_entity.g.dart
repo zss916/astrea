@@ -6,6 +6,10 @@ AnalysisIdentityEntity $AnalysisIdentityEntityFromJson(
 ) {
   final AnalysisIdentityEntity analysisIdentityEntity =
       AnalysisIdentityEntity();
+  final bool? done = jsonConvert.convert<bool>(json['done']);
+  if (done != null) {
+    analysisIdentityEntity.done = done;
+  }
   final int? synastryId = jsonConvert.convert<int>(json['synastry_id']);
   if (synastryId != null) {
     analysisIdentityEntity.synastryId = synastryId;
@@ -21,14 +25,20 @@ Map<String, dynamic> $AnalysisIdentityEntityToJson(
   AnalysisIdentityEntity entity,
 ) {
   final Map<String, dynamic> data = <String, dynamic>{};
+  data['done'] = entity.done;
   data['synastry_id'] = entity.synastryId;
   data['analysis_id'] = entity.analysisId;
   return data;
 }
 
 extension AnalysisIdentityEntityExtension on AnalysisIdentityEntity {
-  AnalysisIdentityEntity copyWith({int? synastryId, int? analysisId}) {
+  AnalysisIdentityEntity copyWith({
+    bool? done,
+    int? synastryId,
+    int? analysisId,
+  }) {
     return AnalysisIdentityEntity()
+      ..done = done ?? this.done
       ..synastryId = synastryId ?? this.synastryId
       ..analysisId = analysisId ?? this.analysisId;
   }

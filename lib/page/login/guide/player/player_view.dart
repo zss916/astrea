@@ -88,7 +88,7 @@ class _PlayerViewState extends State<PlayerView> {
         leading: const SizedBox.shrink(),
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
       body: Stack(
         children: [

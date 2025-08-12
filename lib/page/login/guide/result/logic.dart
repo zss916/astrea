@@ -42,20 +42,46 @@ class ResultLogic extends GetxController {
         cancelToken: cancelToken,
       );
       if (account?.friendId != null) {
-        (bool, NatalReportEntity) value = await AstrologyAPI.getAstrologyReport(
+        /*AstrologyAPI.loopReport(
+          id: account?.friendId ?? "",
+          cancelToken: cancelToken,
+          onFinish: (value) {
+            AstrologyService.to.update(value);
+            PageTools.offAllNamedHome(data: value, friendId: account?.friendId);
+          },
+          onError: () {
+            PageTools.offAllNamedHome(friendId: account?.friendId);
+          },
+        );*/
+
+        final (
+          bool isSuccessful,
+          NatalReportEntity report,
+        ) = await AstrologyAPI.loopAndReturnReport(
           id: account?.friendId ?? "",
           cancelToken: cancelToken,
         );
-        if (value.$1) {
-          AstrologyService.to.update(value.$2);
+        if (isSuccessful) {
+          PageTools.offAllNamedHome(data: report, friendId: account?.friendId);
+        } else {
+          debugPrint("get astrology report failed");
+          PageTools.offAllNamedHome(friendId: account?.friendId);
+        }
+
+        /*final (bool success, NatalReportEntity report) = await AstrologyAPI.getAstrologyReport(
+          id: account?.friendId ?? "",
+          cancelToken: cancelToken,
+        );
+        if (success) {
+          AstrologyService.to.update(report);
           PageTools.offAllNamedHome(
-            data: value.$2,
+            data: report,
             friendId: account?.friendId,
           );
         } else {
           debugPrint("get astrology report failed");
           PageTools.offAllNamedHome(friendId: account?.friendId);
-        }
+        }*/
       } else {
         debugPrint("get account failed");
         PageTools.offAllNamedHome();

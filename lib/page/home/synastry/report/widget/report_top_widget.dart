@@ -18,6 +18,7 @@ class ReportTopWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // debugPrint('userAvatar:$userAvatar,otherAvatar:$otherAvatar');
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [

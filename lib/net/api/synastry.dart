@@ -39,34 +39,90 @@ abstract class SynastryAPI {
   }
 
   ///更新合盘分析
-  static Future<AnalysisIdentityEntity?> updateAnalysis({
+  static Future<(bool, AnalysisIdentityEntity?)> updateAnalysis({
     required num userId,
     required num otherId,
     required String relationship,
+    CancelToken? cancelToken,
   }) async {
     try {
       Map<String, dynamic> map = {};
       map["first_friend_id"] = userId;
       map["second_friend_id"] = otherId;
       map["relationship"] = relationship;
-      var result = await Http.instance.post(ApiPath.updateAnalysis, data: map);
+      var result = await Http.instance.post(
+        ApiPath.updateAnalysis,
+        data: map,
+        cancelToken: cancelToken,
+      );
       if (result["code"] == 0) {
-        return AnalysisIdentityEntity.fromJson(result["data"]);
+        return (true, AnalysisIdentityEntity.fromJson(result["data"]));
       } else {
         AppLoading.toast("${result["msg"]}");
-        return null;
+        return (false, null);
       }
     } catch (error) {
-      return null;
+      return (false, null);
+    }
+  }
+
+  ///查询合盘分析报告
+  static Future<(bool isSuccessful, AnalysisIdentityEntity? value)>
+  loopAndReturnAnalysis({
+    required num userId,
+    required num otherId,
+    required String relationship,
+    CancelToken? cancelToken,
+    int maxRetries = 100,
+  }) async {
+    debugPrint("Analysis start");
+    try {
+      bool isLoop = true;
+      int attempt = 0;
+      do {
+        attempt++;
+        debugPrint("Analysis attempt:$attempt");
+        final (
+          bool success,
+          AnalysisIdentityEntity? value,
+        ) = await updateAnalysis(
+          userId: userId,
+          otherId: otherId,
+          relationship: relationship,
+          cancelToken: cancelToken,
+        );
+        isLoop = (value?.done != true);
+        debugPrint("Analysis isLoop:$isLoop");
+        if (!isLoop) {
+          debugPrint("Analysis successful");
+          return (true, value); // 成功时返回true和报告
+        } else {
+          debugPrint("Analysis next");
+          await Future.delayed(Duration(seconds: 2));
+          if (attempt >= maxRetries) {
+            debugPrint("Analysis maxRetries:$attempt");
+            return (false, null); // 达到最大重试次数时返回false和最新报告
+          }
+        }
+      } while (isLoop);
+      // 理论上不会执行到这里，因为所有路径都已返回
+      return (false, null);
+    } catch (e) {
+      debugPrint("loopReport error: $e");
+      return (false, null); // 错误时返回false和空报告
     }
   }
 
   ///查询合盘分析列表
   static Future<AnalysisArticleEntity?> getAnalysis({
     required String id,
+    CancelToken? cancelToken,
   }) async {
     try {
-      var result = await Http.instance.get("${ApiPath.getAnalysis}/$id");
+      var result = await Http.instance.get(
+        "${ApiPath.getAnalysis}/$id",
+        cancelToken: cancelToken,
+      );
       if (result["code"] == 0) {
         AnalysisArticleEntity value = await compute(
           (dynamic jsonStr) => AnalysisArticleEntity.fromJson(jsonStr),

@@ -5,6 +5,10 @@ import 'package:astrea/net/bean/natal_report_entity.dart';
 
 NatalReportEntity $NatalReportEntityFromJson(Map<String, dynamic> json) {
   final NatalReportEntity natalReportEntity = NatalReportEntity();
+  final bool? done = jsonConvert.convert<bool>(json['done']);
+  if (done != null) {
+    natalReportEntity.done = done;
+  }
   final String? natalChartImg = jsonConvert.convert<String>(
     json['natal_chart_img'],
   );
@@ -33,6 +37,7 @@ NatalReportEntity $NatalReportEntityFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> $NatalReportEntityToJson(NatalReportEntity entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
+  data['done'] = entity.done;
   data['natal_chart_img'] = entity.natalChartImg;
   data['natal_chart_result'] = entity.natalChartResult?.toJson();
   data['natal_chart_report'] = entity.natalChartReport?.toJson();
@@ -43,12 +48,14 @@ Map<String, dynamic> $NatalReportEntityToJson(NatalReportEntity entity) {
 
 extension NatalReportEntityExtension on NatalReportEntity {
   NatalReportEntity copyWith({
+    bool? done,
     String? natalChartImg,
     NatalReportNatalChartResult? natalChartResult,
     NatalReportNatalChartReport? natalChartReport,
     NatalReportPredicationAnalysisResult? predicationAnalysisResult,
   }) {
     return NatalReportEntity()
+      ..done = done ?? this.done
       ..natalChartImg = natalChartImg ?? this.natalChartImg
       ..natalChartResult = natalChartResult ?? this.natalChartResult
       ..natalChartReport = natalChartReport ?? this.natalChartReport

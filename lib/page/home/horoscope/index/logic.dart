@@ -126,6 +126,11 @@ class HoroscopeLogic extends GetxController
     }
   }
 
+  ///刷新
+  toRefresh() {
+    loadReport(reportId: reportId ?? "", isLoading: false);
+  }
+
   ///切换星盘
   Future<void> changeReport({
     String? id,

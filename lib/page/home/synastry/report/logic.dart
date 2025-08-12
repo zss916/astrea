@@ -131,6 +131,7 @@ class StarReportLogic extends GetxController {
   num? value3;
 
   CancelToken cancelToken = CancelToken();
+  CancelToken analysisCancelToken = CancelToken();
 
   @override
   void onInit() {
@@ -141,6 +142,7 @@ class StarReportLogic extends GetxController {
   @override
   void onClose() {
     cancelToken.cancel();
+    analysisCancelToken.cancel("analysis Cancel");
     super.onClose();
     AppLoading.dismiss();
   }
@@ -208,15 +210,28 @@ class StarReportLogic extends GetxController {
     required String relationship,
   }) async {
     //AppLoading.show();
-    AnalysisIdentityEntity? value = await SynastryAPI.updateAnalysis(
+    final (
+      bool issuccessfuul,
+      AnalysisIdentityEntity? value,
+    ) = await SynastryAPI.loopAndReturnAnalysis(
       userId: firstId,
       otherId: secondId,
       relationship: relationship,
+      cancelToken: analysisCancelToken,
     );
+
+    /*final (bool issuccessfuul,AnalysisIdentityEntity? value) = await SynastryAPI.updateAnalysis(
+      userId: firstId,
+      otherId: secondId,
+      relationship: relationship,
+    );*/
     if (value != null) {
       if (value.synastryId != null) {
         id = value.synastryId.toString();
-        article = await SynastryAPI.getAnalysis(id: id ?? "");
+        article = await SynastryAPI.getAnalysis(
+          id: id ?? "",
+          cancelToken: analysisCancelToken,
+        );
         _handJson();
         viewState = article != null ? Status.data.index : Status.empty.index;
         update();
@@ -233,9 +248,13 @@ class StarReportLogic extends GetxController {
   ///获取合盘分析内容
   Future<void> getAnalysis({required String id}) async {
     //AppLoading.show();
-    article = await SynastryAPI.getAnalysis(id: id).whenComplete(() {
-      AppLoading.dismiss();
-    });
+    article =
+        await SynastryAPI.getAnalysis(
+          id: id,
+          cancelToken: analysisCancelToken,
+        ).whenComplete(() {
+          AppLoading.dismiss();
+        });
     _handJson();
     viewState = article != null ? Status.data.index : Status.empty.index;
     update();
