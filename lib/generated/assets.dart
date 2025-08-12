@@ -92,19 +92,19 @@ class Assets {
   static const String imageHoroscopeS = 'assets/image/horoscope_s.png';
   static const String imageHoroscopeVector =
       'assets/image/horoscope_vector.png';
-  static const String imageIconAquarius = 'assets/image/icon_aquarius.png';
-  static const String imageIconAries = 'assets/image/icon_aries.png';
-  static const String imageIconCancer = 'assets/image/icon_cancer.png';
-  static const String imageIconCapricorn = 'assets/image/icon_capricorn.png';
-  static const String imageIconGemini = 'assets/image/icon_gemini.png';
-  static const String imageIconLeo = 'assets/image/icon_leo.png';
-  static const String imageIconLibra = 'assets/image/icon_libra.png';
-  static const String imageIconPisces = 'assets/image/icon_pisces.png';
+  static const String imageIconAquarius = 'assets/image/icon_aquarius.webp';
+  static const String imageIconAries = 'assets/image/icon_aries.webp';
+  static const String imageIconCancer = 'assets/image/icon_cancer.webp';
+  static const String imageIconCapricorn = 'assets/image/icon_capricorn.webp';
+  static const String imageIconGemini = 'assets/image/icon_gemini.webp';
+  static const String imageIconLeo = 'assets/image/icon_leo.webp';
+  static const String imageIconLibra = 'assets/image/icon_libra.webp';
+  static const String imageIconPisces = 'assets/image/icon_pisces.webp';
   static const String imageIconSagittarius =
-      'assets/image/icon_sagittarius.png';
-  static const String imageIconScorpio = 'assets/image/icon_scorpio.png';
-  static const String imageIconTaurus = 'assets/image/icon_taurus.png';
-  static const String imageIconVirgo = 'assets/image/icon_virgo.png';
+      'assets/image/icon_sagittarius.webp';
+  static const String imageIconScorpio = 'assets/image/icon_scorpio.webp';
+  static const String imageIconTaurus = 'assets/image/icon_taurus.webp';
+  static const String imageIconVirgo = 'assets/image/icon_virgo.webp';
   static const String imageImgAquarius = 'assets/image/img_aquarius.png';
   static const String imageImgAries = 'assets/image/img_aries.png';
   static const String imageImgCancer = 'assets/image/img_cancer.png';
@@ -155,7 +155,6 @@ class Assets {
   static const String imageReportBottomRight =
       'assets/image/report_bottom_right.png';
   static const String imageReportLine = 'assets/image/report_line.png';
-  static const String imageResultBg = 'assets/image/result_bg.webp';
   static const String imageSagittarius = 'assets/image/sagittarius.png';
   static const String imageSaturn = 'assets/image/saturn.png';
   static const String imageSave = 'assets/image/save.png';
