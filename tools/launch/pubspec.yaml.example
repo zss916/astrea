@@ -118,6 +118,7 @@ flutter:
 #flutter_launcher_icons:
 #  android: "ic_launcher"
 #  ios: false
+#  remove_alpha_ios: true
 #  image_path_android: "tools/launch/logo.png"
 #  #android 13+
 #  adaptive_icon_monochrome: "tools/launch/logo.png"

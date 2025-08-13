@@ -36,12 +36,14 @@ class Global {
   }
 }
 
-SystemUiOverlayStyle barStyle = GetPlatform.isIOS
+/*SystemUiOverlayStyle barStyle = GetPlatform.isIOS
     ? lightBarStyle
-    : darkBarStyle;
+    : darkBarStyle;*/
 
-///ios
-//SystemUiOverlayStyle barStyle = SystemUiOverlayStyle.dark;
+//Android：使用 statusBarColor + statusBarIconBrightnessiOS：使用 statusBarBrightness + CupertinoTheme
+
+///ios //SystemUiOverlayStyle.dark
+SystemUiOverlayStyle barStyle = lightBarStyle;
 
 ///dark
 SystemUiOverlayStyle darkBarStyle = const SystemUiOverlayStyle(
@@ -56,7 +58,9 @@ SystemUiOverlayStyle darkBarStyle = const SystemUiOverlayStyle(
 ///light
 SystemUiOverlayStyle lightBarStyle = const SystemUiOverlayStyle(
   statusBarColor: Colors.transparent,
-  statusBarIconBrightness: Brightness.light,
+
+  ///ios：使用statusBarBrightness, dark 黑色，light 白色
+  statusBarIconBrightness: Brightness.dark,
   systemNavigationBarDividerColor: Colors.transparent,
   statusBarBrightness: Brightness.light,
   systemNavigationBarColor: Colors.transparent,

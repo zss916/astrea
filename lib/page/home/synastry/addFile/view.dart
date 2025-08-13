@@ -7,6 +7,7 @@ class AddFilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false, // 防止键盘影响布局
       appBar: ComAppBar(
         leading: Container(
           margin: EdgeInsetsDirectional.only(start: 16),

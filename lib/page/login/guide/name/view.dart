@@ -8,6 +8,7 @@ class EditNamePage extends StatelessWidget {
     return Scaffold(
       appBar: ComAppBar(),
       backgroundColor: AppColor.pageBackground,
+      resizeToAvoidBottomInset: false, // 防止键盘影响布局
       body: Column(
         children: [
           SizedBox(height: 20.h),

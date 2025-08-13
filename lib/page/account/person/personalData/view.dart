@@ -7,6 +7,7 @@ class PersonalDataPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false, // 防止键盘影响布局
       appBar: ComAppBar(
         title: LanKey.editFile.tr,
         leading: Container(
