@@ -36,30 +36,14 @@ class Global {
   }
 }
 
-/*SystemUiOverlayStyle barStyle = GetPlatform.isIOS
-    ? lightBarStyle
-    : darkBarStyle;*/
-
-//Android：使用 statusBarColor + statusBarIconBrightnessiOS：使用 statusBarBrightness + CupertinoTheme
-
-///ios //SystemUiOverlayStyle.dark
 SystemUiOverlayStyle barStyle = lightBarStyle;
 
-///dark
-SystemUiOverlayStyle darkBarStyle = const SystemUiOverlayStyle(
-  statusBarColor: Colors.transparent,
-  statusBarIconBrightness: Brightness.dark,
-  systemNavigationBarDividerColor: Colors.transparent,
-  statusBarBrightness: Brightness.dark,
-  systemNavigationBarColor: Colors.transparent,
-  systemNavigationBarIconBrightness: Brightness.dark,
-);
+///ios：使用statusBarBrightness, dark 黑色，light 白色
+///android: 使用 statusBarColor + statusBarIconBrightness
 
-///light
 SystemUiOverlayStyle lightBarStyle = const SystemUiOverlayStyle(
   statusBarColor: Colors.transparent,
 
-  ///ios：使用statusBarBrightness, dark 黑色，light 白色
   statusBarIconBrightness: Brightness.dark,
   systemNavigationBarDividerColor: Colors.transparent,
   statusBarBrightness: Brightness.light,
