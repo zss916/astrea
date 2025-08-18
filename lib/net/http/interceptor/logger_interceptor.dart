@@ -1,5 +1,6 @@
 import 'package:astrea/core/utils/index.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 PrettyDioLogger prettyDioLogger = PrettyDioLogger(
@@ -56,7 +57,7 @@ class LoggerInterceptor extends Interceptor {
       case DioExceptionType.connectionError:
         break;
       case DioExceptionType.unknown:
-        //debugPrint("data => ${err.response?.data}");
+        debugPrint("data => ${err.response}");
 
         break;
     }

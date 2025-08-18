@@ -14,6 +14,8 @@ class SplashLogic extends GetxController {
   }
 
   Future<void> fetchDevice({String? deviceId}) async {
+    // var result = await Http.instance.post(ApiPath.test);
+
     AccountAPI.fetchDevice(deviceId: deviceId).then((value) {
       if (value) {
         if (AccountService.to.isLogin && !AccountService.to.isNewUser) {

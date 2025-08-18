@@ -96,8 +96,9 @@ class _FeedbackPageState extends State<FeedbackPage> {
             isClickable: num > 0,
             title: LanKey.send.tr,
             onTap: () {
-              //todo
-              launchEmail(emailContent: feedback);
+              if (num > 0 && feedback.isNotEmpty) {
+                launchEmail(emailContent: feedback);
+              }
             },
           ),
         ],

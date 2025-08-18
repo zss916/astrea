@@ -8,8 +8,9 @@ class StartLogic extends GetxController with LoginChannelMixin {
   @override
   void onInit() {
     super.onInit();
-    if (Get.arguments != null && Get.arguments is bool) {
+    if (Get.arguments != null) {
       isRegistered = Get.arguments["isRegistered"];
+      debugPrint("isRegistered:$isRegistered");
       update();
     }
   }

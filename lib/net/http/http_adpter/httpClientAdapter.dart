@@ -8,16 +8,6 @@ IOHttpClientAdapter httpAdapter = IOHttpClientAdapter(
   },
 );
 
-class MyHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback = (cert, host, port) {
-        return host == 'api-test.theappastro.com';
-      };
-  }
-}
-
 class AppHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {

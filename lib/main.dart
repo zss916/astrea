@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/router/router_observer.dart';
@@ -8,18 +7,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:proxy/proxy.dart';
 
 import 'core/translations/language.dart';
-import 'net/http/http_adpter/httpClientAdapter.dart';
 
 Future<void> main() async {
   await Global.init();
 
   ///解决证书验证问题
-  HttpOverrides.global = AppHttpOverrides();
+  //HttpOverrides.global = AppHttpOverrides();
 
   /// 抓包初始化
-  // ProxyTool.init();
+  ProxyTool.init();
   runApp(const App());
 }
 

@@ -1,6 +1,6 @@
 
 <network-security-config>
-    <base-config cleartextTrafficPermitted="false"/>
+    <base-config cleartextTrafficPermitted="true"/>
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">insecure.example.com</domain>
     </domain-config>

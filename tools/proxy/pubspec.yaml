@@ -12,7 +12,7 @@ dependencies:
     sdk: flutter
 
 #抓包配置 start
-  http_proxy: ^1.2.3
+  http_proxy: 1.2.3
   dio_http2_adapter: ^2.6.0
 #抓包配置 end
 

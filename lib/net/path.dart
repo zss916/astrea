@@ -1,5 +1,6 @@
 class ApiPath {
   static const String baseUrl = "https://$testHost.com";
+  //static const String baseUrl = "https://api-test.sparkupapps.com";
 
   static const String testHost = "api-test.theappastro";
 
@@ -77,4 +78,6 @@ class ApiPath {
 
   ///合盘取消收藏 DELETE
   static const String deleteCollection = "/v1/synastry/collection";
+
+  //static const String test = "/app/appSettings";
 }
