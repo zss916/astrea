@@ -63,8 +63,9 @@ class WelcomeBtn extends StatelessWidget {
                 title,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 18.sp,
+                  fontSize: 20.sp,
                   height: 1,
+                  fontWeight: FontWeight.w500,
                   color: textColor ?? Color(0xFFFFFFFF),
                   fontFamily: AppFonts.textFontFamily,
                 ),

@@ -59,83 +59,70 @@ class AnalysisPage extends StatelessWidget {
                 ),
               ],
             ),
-            child: Stack(
-              alignment: AlignmentDirectional.topCenter,
+            child: Column(
               children: [
-                PositionedDirectional(
-                  bottom: 0,
-                  start: 12.w,
-                  end: 12.w,
-                  child: Image.asset(
-                    Assets.imageBottomTexture3,
-                    matchTextDirection: true,
+                NatalChart(
+                  isShow: false,
+                  nickName: logic.nickName ?? "",
+                  showBirthday: logic.showBirthday ?? "",
+                  sunSign: logic.sunSign,
+                  sunSignIcon: logic.sunSignIcon,
+                  moonSign: logic.moonSign,
+                  moonSignIcon: logic.moonSignIcon,
+                  ascendantSign: logic.ascendantSign,
+                  ascendantSignIcon: logic.ascendantSignIcon,
+                  natalChartImage: logic.natalChartImage,
+                  element: logic.element,
+                  ruler: logic.ruler,
+                  form: logic.form,
+                ),
+                //  FreeUnlockingCard(),
+                SizedBox(height: 25.h),
+                KeywordsWidget(
+                  luckyColor: logic.luckyColor,
+                  luckyNumber: logic.luckyNumber,
+                  luckyGem: logic.luckyGem,
+                ),
+                if (logic.sunSignInterpretation.isNotEmpty &&
+                    logic.moonSignInterpretation.isNotEmpty &&
+                    logic.ascendantSignInterpretation.isNotEmpty)
+                  buildAnalysisTitle(),
+                Container(
+                  margin: EdgeInsetsDirectional.only(start: 11.w, end: 11.w),
+                  width: double.maxFinite,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      //todo
+                      if (logic.sunSignInterpretation.isNotEmpty)
+                        buildInterpretation2(
+                          titleIcon: Assets.imageTitleSunS,
+                          title: LanKey.sunSign.tr,
+                          logic.sunSignInterpretation,
+                        ),
+
+                      //buildAddFriend(),
+                      if (logic.moonSignInterpretation.isNotEmpty)
+                        buildInterpretation2(
+                          titleIcon: Assets.imageMoonIcon,
+                          title: LanKey.moonSign.tr,
+                          logic.moonSignInterpretation,
+                        ),
+
+                      // buildRelationShip(),
+                      if (logic.ascendantSignInterpretation.isNotEmpty)
+                        buildInterpretation2(
+                          // titleIcon: LanKey.ascendantSignTitleIcon.tr,
+                          titleIcon: Assets.imageRisingIcon,
+                          title: LanKey.ascendant.tr,
+                          logic.ascendantSignInterpretation,
+                          showLine: false,
+                        ),
+                      // buildToAnalysis()
+                    ],
                   ),
                 ),
-                Column(
-                  children: [
-                    NatalChart(
-                      isShow: false,
-                      nickName: logic.nickName ?? "",
-                      showBirthday: logic.showBirthday ?? "",
-                      sunSign: logic.sunSign,
-                      sunSignIcon: logic.sunSignIcon,
-                      moonSign: logic.moonSign,
-                      moonSignIcon: logic.moonSignIcon,
-                      ascendantSign: logic.ascendantSign,
-                      ascendantSignIcon: logic.ascendantSignIcon,
-                      natalChartImage: logic.natalChartImage,
-                      element: logic.element,
-                      ruler: logic.ruler,
-                      form: logic.form,
-                    ),
-                    //  FreeUnlockingCard(),
-                    KeywordsWidget(
-                      luckyColor: logic.luckyColor,
-                      luckyNumber: logic.luckyNumber,
-                      luckyGem: logic.luckyGem,
-                    ),
-                    if (logic.sunSignInterpretation.isNotEmpty &&
-                        logic.moonSignInterpretation.isNotEmpty &&
-                        logic.ascendantSignInterpretation.isNotEmpty)
-                      buildAnalysisTitle(),
-                    Container(
-                      margin: EdgeInsetsDirectional.only(
-                        start: 11.w,
-                        end: 11.w,
-                      ),
-                      width: double.maxFinite,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          //todo
-                          if (logic.sunSignInterpretation.isNotEmpty)
-                            buildInterpretation(
-                              titleIcon: Assets.imageSunIcon,
-                              title: LanKey.sunSignTitle.tr,
-                              logic.sunSignInterpretation,
-                            ),
-                          //buildAddFriend(),
-                          if (logic.moonSignInterpretation.isNotEmpty)
-                            buildInterpretation(
-                              titleIcon: Assets.imageMoonIcon,
-                              title: LanKey.moonSignTitle.tr,
-                              logic.moonSignInterpretation,
-                            ),
-                          // buildRelationShip(),
-                          if (logic.ascendantSignInterpretation.isNotEmpty)
-                            buildInterpretation(
-                              // titleIcon: LanKey.ascendantSignTitleIcon.tr,
-                              titleIcon: Assets.imageStarIcon,
-                              title: LanKey.ascendantSignTitle.tr,
-                              logic.ascendantSignInterpretation,
-                            ),
-                          // buildToAnalysis()
-                        ],
-                      ),
-                    ),
-                    Divider(height: 40.h, color: Colors.transparent),
-                  ],
-                ),
+                Divider(height: 13.h, color: Colors.transparent),
               ],
             ),
           ),
@@ -156,17 +143,104 @@ class AnalysisPage extends StatelessWidget {
 
   Widget buildAnalysisTitle() => Container(
     width: double.maxFinite,
-    margin: EdgeInsetsDirectional.only(top: 16.h, start: 11.w, end: 11.w),
-    child: Text(
-      LanKey.natalChartInterpretation.tr,
-      textAlign: TextAlign.left,
-      style: TextStyle(
-        color: const Color(0xFF323133),
-        fontSize: 18.sp,
-        fontFamily: AppFonts.textFontFamily,
-        fontWeight: FontWeight.w400,
-      ),
+    margin: EdgeInsetsDirectional.only(top: 25.h, start: 11.w, end: 11.w),
+    child: Row(
+      children: [
+        Container(
+          margin: EdgeInsetsDirectional.only(end: 10.w),
+          child: Image.asset(
+            Assets.imageAnalysisTitleIcon,
+            matchTextDirection: true,
+            width: 35,
+            height: 24,
+          ),
+        ),
+
+        Expanded(
+          child: AutoSizeText(
+            LanKey.personalityAnalysis.tr,
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            maxFontSize: 24,
+            minFontSize: 18,
+            style: TextStyle(
+              color: const Color(0xFF323133),
+              fontSize: 24.sp,
+              fontFamily: AppFonts.titleFontFamily,
+            ),
+          ),
+        ),
+
+        Container(
+          margin: EdgeInsetsDirectional.only(start: 10.w),
+          child: Image.asset(
+            Assets.imageAnalysisTitleIcon2,
+            matchTextDirection: true,
+            width: 35,
+            height: 24,
+          ),
+        ),
+      ],
     ),
+  );
+
+  Widget buildInterpretation2(
+    String intro, {
+    required String titleIcon,
+    required String title,
+    bool showLine = true,
+  }) => Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Container(
+        margin: EdgeInsetsDirectional.only(top: 16.h),
+        width: double.maxFinite,
+        child: Row(
+          children: [
+            Container(
+              margin: EdgeInsetsDirectional.only(end: 11),
+              child: Image.asset(titleIcon, width: 24, height: 24),
+            ),
+            Expanded(
+              child: Text(
+                title,
+                style: TextStyle(
+                  color: AppColor.textTitleColor,
+                  fontSize: 18.sp,
+                  fontFamily: AppFonts.subTitleFontFamily,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      Container(
+        margin: EdgeInsetsDirectional.only(top: 6.h, start: 35),
+        width: double.maxFinite,
+        child: Text(
+          intro,
+          softWrap: true,
+          style: TextStyle(
+            color: AppColor.contentTitleColor,
+            fontSize: 14.sp,
+            fontFamily: AppFonts.textFontFamily,
+          ),
+        ),
+      ),
+      if (showLine)
+        Container(
+          margin: EdgeInsetsDirectional.only(top: 20.h, start: 35),
+          child: DottedDashedLine(
+            height: 0,
+            dashSpace: 8.w,
+            dashWidth: 12.w,
+            width: double.maxFinite,
+            dashColor: Color(0xFFD9D9D9),
+            axis: Axis.horizontal,
+          ),
+        ),
+    ],
   );
 
   Widget buildInterpretation(
@@ -336,231 +410,20 @@ class AnalysisPage extends StatelessWidget {
             content: pluto.showInterpretation,
             icon: pluto.showIcon,
           ),
-
-        //if (pluto != null) buildCommonDivider(),
-        Container(
-          margin: EdgeInsetsDirectional.only(top: 20.h),
-          child: Image.asset(
-            Assets.imageAnalysisBottom,
-            matchTextDirection: true,
-          ),
-        ),
       ],
     ),
   );
 
   Widget buildCommonDivider() => Container(
     width: double.maxFinite,
-    margin: EdgeInsetsDirectional.only(top: 14.h, bottom: 14.h),
-    child: SvgPicture.asset(Assets.svgItemLine),
-  );
-
-  @Deprecated("old")
-  Widget old() => ListView.separated(
-    shrinkWrap: true,
-    itemCount: 8,
-    physics: NeverScrollableScrollPhysics(),
-    itemBuilder: (context, index) =>
-        DetailItem(index: index, info: '', content: '', icon: ""),
-    separatorBuilder: (context, index) => Container(
+    margin: EdgeInsetsDirectional.only(top: 24.h, bottom: 24.h),
+    child: DottedDashedLine(
+      height: 0,
+      dashSpace: 8.w,
+      dashWidth: 12.w,
       width: double.maxFinite,
-      margin: EdgeInsetsDirectional.only(top: 14, bottom: 14),
-      child: SvgPicture.asset(Assets.svgItemLine),
-    ),
-  );
-
-  @Deprecated("old")
-  Widget buildChat() =>
-      AstrologerChatBtn(margin: EdgeInsetsDirectional.only(top: 28));
-
-  @Deprecated("old")
-  Widget buildToAnalysis() => Material(
-    color: Colors.transparent,
-    child: InkWell(
-      borderRadius: BorderRadius.circular(8),
-      onTap: () {
-        debugPrint('tap');
-        //todo
-      },
-      child: Container(
-        margin: EdgeInsetsDirectional.only(top: 8, bottom: 8),
-        width: double.maxFinite,
-        child: Text.rich(
-          textAlign: TextAlign.start,
-          TextSpan(
-            children: [
-              TextSpan(
-                text: '🪐 House analysis and influence analysis',
-                style: TextStyle(
-                  color: const Color(0xFF6A676C),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  height: 1.62,
-                  fontFamily: AppFonts.textFontFamily,
-                ),
-              ),
-              WidgetSpan(
-                child: SizedBox(
-                  width: 17,
-                  height: 17,
-                  child: Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: [
-                      Image.asset(
-                        Assets.imageEndArrow,
-                        matchTextDirection: true,
-                        width: 17,
-                        height: 7,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-  );
-
-  @Deprecated("old")
-  Widget buildRelationShip() => Material(
-    color: Colors.transparent,
-    child: InkWell(
-      borderRadius: BorderRadius.circular(8),
-      onTap: () {
-        debugPrint('tap');
-        //todo
-      },
-      child: Container(
-        margin: EdgeInsetsDirectional.only(top: 8, bottom: 8),
-        width: double.maxFinite,
-        child: Text.rich(
-          textAlign: TextAlign.start,
-          TextSpan(
-            children: [
-              TextSpan(
-                text: '🔮 You relationship analysis',
-                style: TextStyle(
-                  color: const Color(0xFF6A676C),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  height: 1.62,
-                  fontFamily: AppFonts.textFontFamily,
-                ),
-              ),
-              WidgetSpan(
-                child: SizedBox(
-                  width: 17,
-                  height: 17,
-                  child: Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: [
-                      Image.asset(
-                        Assets.imageEndArrow,
-                        matchTextDirection: true,
-                        width: 17,
-                        height: 7,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-  );
-
-  @Deprecated("old")
-  Widget buildAddFriend() => Material(
-    color: Colors.transparent,
-    child: InkWell(
-      borderRadius: BorderRadius.circular(8),
-      onTap: () {
-        debugPrint('tap');
-        //todo
-      },
-      child: Container(
-        margin: EdgeInsetsDirectional.only(top: 8, bottom: 8),
-        width: double.maxFinite,
-        child: Text.rich(
-          textAlign: TextAlign.start,
-          TextSpan(
-            children: [
-              TextSpan(
-                text: 'Add friends',
-                style: TextStyle(
-                  color: const Color(0xFF6A676C),
-                  fontSize: 16,
-                  fontFamily: AppFonts.textFontFamily,
-                  fontWeight: FontWeight.w400,
-                  decoration: TextDecoration.underline,
-                  height: 1.62,
-                ),
-              ),
-              TextSpan(
-                text: ' to see who’s similar',
-                style: TextStyle(
-                  color: const Color(0xFF6A676C),
-                  fontSize: 16,
-                  fontFamily: AppFonts.textFontFamily,
-                  fontWeight: FontWeight.w400,
-                  height: 1.62,
-                ),
-              ),
-              WidgetSpan(
-                child: SizedBox(
-                  width: 17,
-                  height: 17,
-                  child: Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: [
-                      Image.asset(
-                        Assets.imageEndArrow,
-                        matchTextDirection: true,
-                        width: 17,
-                        height: 7,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-  );
-
-  @Deprecated("old")
-  Widget buildShareAction() => Container(
-    margin: const EdgeInsetsDirectional.only(end: 24),
-    child: GestureDetector(
-      onTap: () {
-        showShareSheet();
-      },
-      child: Image.asset(
-        Assets.imageShare,
-        matchTextDirection: true,
-        width: 24,
-        height: 24,
-      ),
-    ),
-  );
-
-  @Deprecated("old")
-  Widget buildOpenVip() => PositionedDirectional(
-    bottom: 0,
-    start: 0,
-    end: 0,
-    child: BottomStackBtn(
-      title: LanKey.openVip.tr,
-      padding: EdgeInsetsDirectional.only(bottom: 24.h, top: 70.h),
-      onTap: () {
-        //todo
-      },
+      dashColor: Color(0xFFD9D9D9),
+      axis: Axis.horizontal,
     ),
   );
 }

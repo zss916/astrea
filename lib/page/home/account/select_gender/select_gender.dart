@@ -1,8 +1,10 @@
 import 'package:astrea/components/custom_tag.dart';
+import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class SelectGender extends StatefulWidget {
@@ -67,9 +69,11 @@ class _SelectGenderState extends State<SelectGender> {
                 Text(
                   LanKey.female.tr,
                   style: TextStyle(
-                    color: const Color(0xFF333333),
-                    fontSize: 16,
-                    fontFamily: AppFonts.textFontFamily,
+                    color: AppColor.textTitleColor,
+                    fontSize: 16.sp,
+                    fontFamily: (selectSex == 2)
+                        ? AppFonts.titleFontFamily
+                        : AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -108,8 +112,10 @@ class _SelectGenderState extends State<SelectGender> {
                   LanKey.male.tr,
                   style: TextStyle(
                     color: const Color(0xFF333333),
-                    fontSize: 16,
-                    fontFamily: AppFonts.textFontFamily,
+                    fontSize: 16.sp,
+                    fontFamily: (selectSex == 1)
+                        ? AppFonts.titleFontFamily
+                        : AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,
                   ),
                 ),

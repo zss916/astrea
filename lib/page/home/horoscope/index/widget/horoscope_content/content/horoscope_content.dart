@@ -55,16 +55,31 @@ class HoroscopeContent extends StatelessWidget {
     );
   }
 
-  /* Widget bu() => Stack(
-    alignment: AlignmentDirectional.center,
-    children: [
-      if (logic.viewState == 0) buildContent(),
-      if (logic.viewState == 1) buildRefresh(logic),
-      if (logic.viewState == 2) buildLoading(),
-    ],
-  );*/
-
   Widget buildContent() {
+    return Column(
+      children: [
+        NatalChart(
+          isShow: isShow,
+          nickName: logic.name,
+          showBirthday: logic.birthday,
+          sunSign: logic.sunSign,
+          sunSignIcon: logic.sunSignIcon,
+          moonSign: logic.moonSign,
+          moonSignIcon: logic.moonSignIcon,
+          ascendantSign: logic.ascendantSign,
+          ascendantSignIcon: logic.ascendantSignIcon,
+          natalChartImage: logic.natalChartImage,
+          element: logic.element,
+          ruler: logic.ruler,
+          form: logic.form,
+        ),
+        // FreeUnlockingCard(),
+        if (isShow) PersonalityAnalysis(logic: logic),
+      ],
+    );
+  }
+
+  Widget buildContent2() {
     return Stack(
       alignment: AlignmentDirectional.topCenter,
       children: [
@@ -102,4 +117,13 @@ class HoroscopeContent extends StatelessWidget {
       ],
     );
   }
+
+  /* Widget bu() => Stack(
+    alignment: AlignmentDirectional.center,
+    children: [
+      if (logic.viewState == 0) buildContent(),
+      if (logic.viewState == 1) buildRefresh(logic),
+      if (logic.viewState == 2) buildLoading(),
+    ],
+  );*/
 }

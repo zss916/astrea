@@ -67,13 +67,11 @@ class FileManagementPage extends StatelessWidget {
                 start: 0,
                 end: 0,
                 child: BottomStackBtn(
-                  title: LanKey.determine.tr,
+                  title: LanKey.confirm.tr,
                   isClickable: logic.isClick,
                   margin: EdgeInsetsDirectional.only(bottom: 0.h),
                   padding: EdgeInsetsDirectional.only(bottom: 24.h, top: 0.h),
-                  onTap: () {
-                    logic.toDetermine();
-                  },
+                  onTap: () => logic.toDetermine(),
                 ),
               ),
             ],

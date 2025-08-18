@@ -60,7 +60,8 @@ class _FeedbackPageState extends State<FeedbackPage> {
                   maxLines: null,
                   style: TextStyle(
                     color: const Color(0xFF6A676C),
-                    fontSize: 18,
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w500,
                     fontFamily: AppFonts.textFontFamily,
                   ),
                   decoration: InputDecoration(
@@ -70,7 +71,8 @@ class _FeedbackPageState extends State<FeedbackPage> {
                     hintStyle: TextStyle(
                       color: Color(0xFF91929D),
                       fontFamily: AppFonts.textFontFamily,
-                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 18.sp,
                     ),
                     border: InputBorder.none,
                   ),

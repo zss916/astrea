@@ -1,4 +1,5 @@
 import 'package:astrea/components/common_btn.dart';
+import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/setting/global.dart';
 import 'package:astrea/core/storage/account_service.dart';
@@ -74,9 +75,9 @@ class _InputLoginState extends State<InputLogin> with AppValidatorMixin {
                       LanKey.emailTitle.tr,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: const Color(0xFF323133),
+                        color: AppColor.textTitleColor,
                         fontSize: 28.sp,
-                        fontFamily: AppFonts.textFontFamily,
+                        fontFamily: AppFonts.subTitleFontFamily,
                       ),
                     ),
                   ),

@@ -39,6 +39,7 @@ void showSelectTimeDialog({
                       color: const Color(0xFF323133),
                       fontFamily: AppFonts.textFontFamily,
                       fontSize: 22.sp,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
@@ -68,7 +69,8 @@ void showSelectTimeDialog({
                             style: TextStyle(
                               color: const Color(0xFF323133),
                               fontFamily: AppFonts.textFontFamily,
-                              fontSize: 18.sp,
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ),
@@ -97,7 +99,8 @@ void showSelectTimeDialog({
                             style: TextStyle(
                               color: Colors.white,
                               fontFamily: AppFonts.textFontFamily,
-                              fontSize: 18,
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ),

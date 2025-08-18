@@ -1,3 +1,4 @@
+import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
@@ -46,9 +47,9 @@ class NatalChart extends StatelessWidget {
           nickName,
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Colors.black,
-            fontSize: 20.sp,
-            fontFamily: AppFonts.textFontFamily,
+            color: AppColor.textTitleColor,
+            fontSize: 24.sp,
+            fontFamily: AppFonts.titleFontFamily,
           ),
         ),
         Container(
@@ -217,29 +218,6 @@ class NatalChart extends StatelessWidget {
                 placeholderBuilder: (_) => SizedBox(),
               ),
             ),
-
-            /*Container(
-              margin: EdgeInsetsDirectional.symmetric(horizontal: 10.w),
-              width: 130.w,
-              height: 130.w,
-              decoration: logic.natalChartImage.isEmpty
-                  ? BoxDecoration()
-                  : BoxDecoration(
-                      borderRadius: BorderRadiusDirectional.circular(200),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: CachedNetworkImageProvider(
-                          "https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg",
-                        ),
-                      ),
-                    ),
-              */
-            /*decoration: ShapeDecoration(
-                color: Colors.transparent,
-                shape: OvalBorder(side: BorderSide(width: 1)),
-              ),*/
-            /*
-            ),*/
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -334,13 +312,14 @@ class NatalChart extends StatelessWidget {
           padding: EdgeInsetsDirectional.all(10),
           margin: EdgeInsetsDirectional.only(
             top: 6.5,
-            bottom: isShow ? 13.5 : 0,
+            bottom: isShow ? 13.h : 0,
           ),
           child: Text(
             LanKey.natalChart.tr,
             style: TextStyle(
               color: const Color(0xFF585FC4),
-              fontSize: 18,
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w500,
               fontFamily: AppFonts.textFontFamily,
             ),
           ),

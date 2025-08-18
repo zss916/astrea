@@ -173,10 +173,54 @@ class StarReportPage extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
+                          /*AutoHyphenatingText(
+                            logic.analysis,
+                            hyphenationCharacter: "-",
+                            textAlign: TextAlign.start,
+                            // maxLines: 3,
+                            // overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 14.sp,
+                              height: 1.62.h,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: AppFonts.textFontFamily,
+                            ),
+                          ),*/
+
+                          /* Text(
+                            logic.analysis,
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 14.sp,
+                              height: 1.62.h,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: AppFonts.textFontFamily,
+                            ),
+                          ),*/
+
+                          /*ReadMore(
+                            'Your long text here...',
+                            style: TextStyle(fontSize: 16, color: Colors.black),
+                            minLines: 3,
+                            readMoreText: 'Read more',
+                            readLessText: 'Read less',
+                            readMoreStyle: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            readMoreIconVisible: true,
+                            readMoreIcon: Icons.keyboard_arrow_down,
+                            readLessIcon: Icons.keyboard_arrow_up,
+                            iconSize: 20,
+                            alignCenter: false,
+                          ),*/
                           Text(
                             logic.analysis,
+                            textAlign: TextAlign.start,
                             style: TextStyle(
-                              color: const Color(0xFF6A676C),
+                              color: Color(0xFF6A676C),
                               fontSize: 16.sp,
                               height: 1.62.h,
                               fontWeight: FontWeight.w400,

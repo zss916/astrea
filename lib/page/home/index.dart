@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:astrea/core/bus/app_event_bus.dart';
 import 'package:astrea/core/mixin/delayed_init_mixin.dart';
 import 'package:astrea/core/setting/app_color.dart';
+import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/account/index/account_view.dart';

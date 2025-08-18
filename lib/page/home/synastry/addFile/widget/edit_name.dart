@@ -1,3 +1,4 @@
+import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/core/validator/app_validator.dart';
@@ -67,8 +68,8 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
             child: Text(
               LanKey.name.tr,
               style: TextStyle(
-                color: const Color(0xFF6A676C),
-                fontSize: 14,
+                color: AppColor.contentTitleColor,
+                fontSize: 14.sp,
                 fontFamily: AppFonts.textFontFamily,
                 fontWeight: FontWeight.w400,
               ),
@@ -84,7 +85,7 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
                 FilteringTextInputFormatter.allow(RegExp(r'^[0-9+]+$')),
               ],*/
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 18.sp,
                 fontFamily: AppFonts.textFontFamily,
               ),
               decoration: InputDecoration(
@@ -94,7 +95,7 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
                 hintText: LanKey.editNameHint.tr,
                 hintStyle: TextStyle(
                   color: const Color(0xFF91929D),
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontFamily: AppFonts.textFontFamily,
                   fontWeight: FontWeight.w400,
                 ),

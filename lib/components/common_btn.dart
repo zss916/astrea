@@ -48,9 +48,9 @@ class CommonBtn extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontFamily: AppFonts.textFontFamily,
-            fontSize: 18.sp,
+            fontSize: 20.sp,
             color: textColor ?? Color(0xFFFFFFFF),
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),

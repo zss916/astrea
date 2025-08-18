@@ -68,7 +68,8 @@ class DeleteBtn extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               color: const Color(0xFF91929D),
-              fontSize: 18,
+              fontSize: 20.sp,
+              fontWeight: FontWeight.w500,
               fontFamily: AppFonts.textFontFamily,
             ),
           ),

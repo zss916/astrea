@@ -23,12 +23,17 @@ class Assets {
   static const String imageAnalysisScorpio =
       'assets/image/analysis_scorpio.png';
   static const String imageAnalysisTaurus = 'assets/image/analysis_taurus.png';
+  static const String imageAnalysisTitleIcon =
+      'assets/image/analysis_title_icon.png';
+  static const String imageAnalysisTitleIcon2 =
+      'assets/image/analysis_title_icon2.png';
   static const String imageAnalysisVirgo = 'assets/image/analysis_virgo.png';
   static const String imageApple = 'assets/image/apple.png';
   static const String imageAquarius = 'assets/image/aquarius.png';
   static const String imageAries = 'assets/image/aries.png';
   static const String imageArrowBottom = 'assets/image/arrow_bottom.png';
   static const String imageArrowEnd = 'assets/image/arrow_end.png';
+  static const String imageArrowMore = 'assets/image/arrow_more.png';
   static const String imageAuthIcon = 'assets/image/auth_icon.png';
   static const String imageAvoidLeft = 'assets/image/avoid_left.png';
   static const String imageBack = 'assets/image/back.png';
@@ -129,6 +134,10 @@ class Assets {
   static const String imageLogoDefaultIcon =
       'assets/image/logo_default_icon.webp';
   static const String imageLoveIcon = 'assets/image/love_icon.webp';
+  static const String imageLuckyColorIcon = 'assets/image/lucky_color_icon.png';
+  static const String imageLuckyGemIcon = 'assets/image/lucky_gem_icon.png';
+  static const String imageLuckyNumberIcon =
+      'assets/image/lucky_number_icon.png';
   static const String imageMale = 'assets/image/male.png';
   static const String imageMars = 'assets/image/mars.png';
   static const String imageMask = 'assets/image/mask.png';
@@ -155,6 +164,7 @@ class Assets {
   static const String imageReportBottomRight =
       'assets/image/report_bottom_right.png';
   static const String imageReportLine = 'assets/image/report_line.png';
+  static const String imageRisingIcon = 'assets/image/rising_icon.png';
   static const String imageSagittarius = 'assets/image/sagittarius.png';
   static const String imageSaturn = 'assets/image/saturn.png';
   static const String imageSave = 'assets/image/save.png';
@@ -175,6 +185,8 @@ class Assets {
   static const String imageStarIcon = 'assets/image/star_icon.png';
   static const String imageStarLight = 'assets/image/star_light.webp';
   static const String imageStarLine = 'assets/image/star_line.png';
+  static const String imageStarW = 'assets/image/star_w.png';
+  static const String imageStarburst = 'assets/image/starburst.png';
   static const String imageStartBg = 'assets/image/start_bg.png';
   static const String imageStartIcon = 'assets/image/start_icon.png';
   static const String imageSubscribeCenter =
@@ -212,10 +224,12 @@ class Assets {
   static const String imageTechnicianBg6 = 'assets/image/technician_bg6.png';
   static const String imageTechnicianBg7 = 'assets/image/technician_bg7.png';
   static const String imageTelephoneIcon = 'assets/image/telephone_icon.png';
+  static const String imageTitleSunS = 'assets/image/title_sun_s.png';
   static const String imageTodayImg = 'assets/image/today_img.png';
   static const String imageTwitter = 'assets/image/twitter.png';
   static const String imageUpload = 'assets/image/upload.png';
   static const String imageUranus = 'assets/image/uranus.png';
+  static const String imageVector = 'assets/image/vector.png';
   static const String imageVenus = 'assets/image/venus.png';
   static const String imageVirgo = 'assets/image/virgo.png';
   static const String imageVortex = 'assets/image/vortex.png';

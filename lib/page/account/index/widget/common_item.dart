@@ -42,7 +42,7 @@ class CommonItem extends StatelessWidget {
                       color: textColor ?? const Color(0xFF323133),
                       fontSize: 16.sp,
                       fontFamily: AppFonts.textFontFamily,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),

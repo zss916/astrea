@@ -1,6 +1,8 @@
+import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -127,8 +129,8 @@ class StarContent extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: const Color(0xFF323133),
-                    fontSize: 20.sp,
-                    fontFamily: AppFonts.textFontFamily,
+                    fontSize: 24.sp,
+                    fontFamily: AppFonts.titleFontFamily,
                   ),
                 ),
                 Container(
@@ -136,8 +138,8 @@ class StarContent extends StatelessWidget {
                   child: Image.asset(
                     icons[index],
                     matchTextDirection: true,
-                    width: 16.r,
-                    height: 16.r,
+                    width: 22.r,
+                    height: 22.r,
                     color: Colors.black,
                   ),
                 ),
@@ -159,51 +161,55 @@ class StarContent extends StatelessWidget {
             width: 160,
             height: 160,
           ),
-          Text(
-            LanKey.constellationChart.tr,
-            style: TextStyle(
-              color: const Color(0xFF323133),
-              fontSize: 18.sp,
-              fontFamily: AppFonts.textFontFamily,
-            ),
-          ),
-          Container(
-            margin: EdgeInsetsDirectional.only(top: 20.h),
-            width: double.maxFinite,
-            child: Text(
-              LanKey.introductionToConstellations.tr,
-              style: TextStyle(
-                color: const Color(0xFF323133),
-                fontSize: 18.sp,
-                fontFamily: AppFonts.textFontFamily,
+          Row(
+            children: [
+              Container(
+                margin: EdgeInsetsDirectional.only(end: 10.w),
+                child: Image.asset(
+                  Assets.imageAnalysisTitleIcon,
+                  matchTextDirection: true,
+                  width: 35,
+                  height: 24,
+                ),
               ),
-            ),
+              Expanded(
+                child: AutoSizeText(
+                  LanKey.constellationChart.tr,
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  maxFontSize: 24,
+                  minFontSize: 18,
+                  style: TextStyle(
+                    color: const Color(0xFF323133),
+                    fontSize: 24.sp,
+                    fontFamily: AppFonts.titleFontFamily,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsetsDirectional.only(start: 10.w),
+                child: Image.asset(
+                  Assets.imageAnalysisTitleIcon2,
+                  matchTextDirection: true,
+                  width: 35,
+                  height: 24,
+                ),
+              ),
+            ],
           ),
+
           Container(
-            margin: EdgeInsetsDirectional.only(top: 0.h),
+            margin: EdgeInsetsDirectional.only(top: 16.h),
             width: double.maxFinite,
             child: Text(
               contents[index],
               style: TextStyle(
-                color: const Color(0xFF6A676C),
-                fontSize: 16.sp,
-                height: 1.62.h,
+                color: AppColor.contentTitleColor,
+                fontSize: 14.sp,
                 fontFamily: AppFonts.textFontFamily,
               ),
             ),
           ),
-          /*Container(
-            margin: EdgeInsetsDirectional.only(top: 0.h),
-            width: double.maxFinite,
-            child: Text(
-              'Cancerians are like the ocean under the moonlight - their surface is calm and gentle, but beneath it there are surging emotions and acute perceptions.',
-              style: TextStyle(
-                color: const Color(0xFF6A676C),
-                fontSize: 16,
-                fontFamily: AppFonts.textFontFamily,
-              ),
-            ),
-          ),*/
         ],
       ),
     );

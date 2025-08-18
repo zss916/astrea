@@ -27,9 +27,10 @@ class DoNotKnow extends StatelessWidget {
             LanKey.doNotKnow.tr,
             textAlign: TextAlign.center,
             style: TextStyle(
+              fontWeight: FontWeight.w500,
               fontFamily: AppFonts.textFontFamily,
               color: const Color(0xFF323133),
-              fontSize: 18.sp,
+              fontSize: 20.sp,
             ),
           ),
         ),

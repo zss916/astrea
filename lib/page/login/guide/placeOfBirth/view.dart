@@ -42,9 +42,9 @@ class PlaceOfBirthPage extends StatelessWidget {
                     LanKey.selectBirthLocation.tr,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: const Color(0xFF323133),
+                      color: AppColor.textTitleColor,
                       fontSize: 28.sp,
-                      fontFamily: AppFonts.textFontFamily,
+                      fontFamily: AppFonts.subTitleFontFamily,
                     ),
                   ),
                 ),

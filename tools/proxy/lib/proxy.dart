@@ -7,16 +7,14 @@ import 'package:proxy/proxy_adapter.dart';
 
 ///抓包配置
 class ProxyTool {
+  ///代理init(在runApp() 之前)[给测试时候打开]
+  static init() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    HttpProxy httpProxy = await HttpProxy.createHttpProxy();
+    HttpOverrides.global = httpProxy;
+  }
 
-  ///代理init(在runApp() 之前)
-   static init() async {
-     WidgetsFlutterBinding.ensureInitialized();
-     HttpProxy httpProxy = await HttpProxy.createHttpProxy();
-     HttpOverrides.global = httpProxy;
-   }
-
-
-   ///抓包适配器
-   //_dio.httpClientAdapter = proxyAdapter;
-   static Http2Adapter getProxyAdapter() => proxyAdapter;
+  ///抓包适配器
+  //_dio.httpClientAdapter = proxyAdapter;
+  static Http2Adapter getProxyAdapter() => proxyAdapter;
 }

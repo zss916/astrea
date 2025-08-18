@@ -3,6 +3,7 @@ import 'package:astrea/core/storage/app_service.dart';
 import 'package:astrea/core/storage/astrology_service.dart';
 import 'package:astrea/core/storage/storage.dart';
 import 'package:astrea/core/toast/app_loading.dart';
+import 'package:auto_hyphenating_text/auto_hyphenating_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,6 +13,7 @@ class Global {
   static Future<void> init() async {
     WidgetsFlutterBinding.ensureInitialized();
     setSystemUi();
+    await initHyphenation();
     await Future.wait([
       Get.put<StorageService>(StorageService()).init(),
     ]).whenComplete(() async {
@@ -36,16 +38,12 @@ class Global {
   }
 }
 
-SystemUiOverlayStyle barStyle = lightBarStyle;
-
-///ios：使用statusBarBrightness, dark 黑色，light 白色
-///android: 使用 statusBarColor + statusBarIconBrightness
-
-SystemUiOverlayStyle lightBarStyle = const SystemUiOverlayStyle(
+SystemUiOverlayStyle barStyle = const SystemUiOverlayStyle(
   statusBarColor: Colors.transparent,
-
+  // iOS配置
   statusBarIconBrightness: Brightness.dark,
   systemNavigationBarDividerColor: Colors.transparent,
+  // Android配置
   statusBarBrightness: Brightness.light,
   systemNavigationBarColor: Colors.transparent,
   systemNavigationBarIconBrightness: Brightness.light,

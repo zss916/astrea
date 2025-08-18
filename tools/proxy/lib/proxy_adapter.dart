@@ -1,5 +1,6 @@
 import 'package:dio_http2_adapter/dio_http2_adapter.dart';
 
+///自己专门IP 适配器抓包
 Http2Adapter proxyAdapter = Http2Adapter(
   ConnectionManager(
     idleTimeout: Duration(seconds: 30),

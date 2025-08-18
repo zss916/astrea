@@ -2,6 +2,7 @@ import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class SelectInterests extends StatelessWidget {
@@ -21,7 +22,7 @@ class SelectInterests extends StatelessWidget {
               LanKey.selectInterestsTitle.tr,
               style: TextStyle(
                 color: const Color(0xFF6A676C),
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontFamily: AppFonts.textFontFamily,
                 fontWeight: FontWeight.w400,
               ),
@@ -36,9 +37,9 @@ class SelectInterests extends StatelessWidget {
                     color: interests == null
                         ? const Color(0xFF91929D)
                         : Color(0xFF323133),
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     fontFamily: AppFonts.textFontFamily,
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),

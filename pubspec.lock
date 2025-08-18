@@ -33,6 +33,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.13.0"
+  auto_hyphenating_text:
+    dependency: "direct main"
+    description:
+      name: auto_hyphenating_text
+      sha256: caf9ce470a1a7a631f46f208a2e4790682b0f20b2511d660855526ccad12fede
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.3.1"
   auto_size_text:
     dependency: "direct main"
     description:
@@ -215,6 +223,22 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.1"
+  dotted_dashed_line:
+    dependency: "direct main"
+    description:
+      name: dotted_dashed_line
+      sha256: da3678819f4522c982eb256d2bc80d032fd2a3e7b437841ea83987c67c00cda5
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.0.3"
+  dotted_decoration:
+    dependency: "direct main"
+    description:
+      name: dotted_decoration
+      sha256: a5c5771367690b4f64ebfa7911954ab472b9675f025c373f514e32ac4bb81d5e
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.0"
   email_validator:
     dependency: "direct main"
     description:
@@ -566,6 +590,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.3"
+  hyphenator_impure:
+    dependency: transitive
+    description:
+      name: hyphenator_impure
+      sha256: "702ee61d2669321fedc817a48c79c8ec080ea331c97864478a643b3142981078"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.4"
   image_picker:
     dependency: "direct main"
     description:
@@ -806,6 +838,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.3.0"
+  percent_indicator:
+    dependency: "direct main"
+    description:
+      name: percent_indicator
+      sha256: "157d29133bbc6ecb11f923d36e7960a96a3f28837549a20b65e5135729f0f9fd"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "4.2.5"
   permission_handler:
     dependency: "direct main"
     description:

@@ -25,7 +25,8 @@ class DateOfBirthPage extends StatelessWidget {
                   style: TextStyle(
                     color: const Color(0xFF323133),
                     fontSize: 28.sp,
-                    fontFamily: AppFonts.textFontFamily,
+                    fontWeight: FontWeight.w800,
+                    fontFamily: AppFonts.subTitleFontFamily,
                   ),
                 ),
               ),

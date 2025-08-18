@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:flutter/material.dart';
 
 class PlaceItem extends StatelessWidget {
   final int index;
@@ -50,12 +50,14 @@ class PlaceItem extends StatelessWidget {
             child: Container(
               padding: EdgeInsetsDirectional.symmetric(horizontal: 10),
               child: Text(
-                "${name}",
+                name,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color((isSelected == true) ? 0xFF6F4DFF : 0xFF323133),
-                  fontSize: 18,
-                  fontFamily: AppFonts.textFontFamily,
+                  fontSize: (isSelected == true) ? 24 : 18,
+                  fontFamily: (isSelected == true)
+                      ? AppFonts.titleFontFamily
+                      : AppFonts.textFontFamily,
                 ),
               ),
             ),

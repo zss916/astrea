@@ -1,8 +1,10 @@
+import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/account/person/personalData/sheet/select_place_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class EditPlaceOfBirth extends StatelessWidget {
@@ -37,8 +39,8 @@ class EditPlaceOfBirth extends StatelessWidget {
               child: Text(
                 LanKey.placeOfBirth.tr,
                 style: TextStyle(
-                  color: const Color(0xFF6A676C),
-                  fontSize: 14,
+                  color: AppColor.contentTitleColor,
+                  fontSize: 14.sp,
                   fontFamily: AppFonts.textFontFamily,
                   fontWeight: FontWeight.w400,
                 ),
@@ -54,8 +56,8 @@ class EditPlaceOfBirth extends StatelessWidget {
                     maxLines: 2,
                     style: TextStyle(
                       color: Color(showPlace == null ? 0xFF91929D : 0xFF323133),
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w500,
                       fontFamily: AppFonts.textFontFamily,
                     ),
                   ),

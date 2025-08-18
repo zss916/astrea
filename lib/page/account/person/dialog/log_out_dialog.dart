@@ -39,8 +39,8 @@ void showLogoutDialog({required Function onConfirm}) {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: const Color(0xFF6A676C),
-                    fontSize: 17.sp,
-                    fontWeight: FontWeight.w400,
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w500,
                     fontFamily: AppFonts.textFontFamily,
                   ),
                 ),
@@ -68,8 +68,8 @@ void showLogoutDialog({required Function onConfirm}) {
                               style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: AppFonts.textFontFamily,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 20.sp,
                               ),
                             ),
                           ),
@@ -96,8 +96,8 @@ void showLogoutDialog({required Function onConfirm}) {
                               style: TextStyle(
                                 color: Color(0xFF323133),
                                 fontFamily: AppFonts.textFontFamily,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 20.sp,
                               ),
                             ),
                           ),

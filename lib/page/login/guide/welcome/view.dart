@@ -23,9 +23,9 @@ class WelcomePage extends StatelessWidget {
                 LanKey.startTitle.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: const Color(0xFF323133),
+                  color: AppColor.textTitleColor,
                   fontSize: 28.sp,
-                  fontFamily: AppFonts.textFontFamily,
+                  fontFamily: AppFonts.subTitleFontFamily,
                 ),
               ),
             ),
@@ -42,7 +42,7 @@ class WelcomePage extends StatelessWidget {
                 style: TextStyle(
                   color: const Color(0xFF6A676C),
                   fontFamily: AppFonts.textFontFamily,
-                  fontSize: 18.sp,
+                  fontSize: 16.sp,
                 ),
               ),
             ),

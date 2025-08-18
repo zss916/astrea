@@ -26,8 +26,8 @@ class TimeOfBirthPage extends StatelessWidget {
                       LanKey.timeOfBirth.tr,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontFamily: AppFonts.textFontFamily,
-                        color: const Color(0xFF323133),
+                        fontFamily: AppFonts.titleFontFamily,
+                        color: AppColor.textTitleColor,
                         fontSize: 28.sp,
                       ),
                     ),
@@ -45,7 +45,7 @@ class TimeOfBirthPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: const Color(0xFF6A676C),
-                        fontSize: 17.sp,
+                        fontSize: 16.sp,
                         fontFamily: AppFonts.textFontFamily,
                       ),
                     ),

@@ -20,9 +20,9 @@ class InterestsPage extends StatelessWidget {
               LanKey.interestsTitle.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: const Color(0xFF323133),
+                color: AppColor.textTitleColor,
                 fontSize: 28.sp,
-                fontFamily: AppFonts.textFontFamily,
+                fontFamily: AppFonts.subTitleFontFamily,
               ),
             ),
           ),
@@ -38,7 +38,7 @@ class InterestsPage extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: const Color(0xFF6A676C),
-                fontSize: 18.sp,
+                fontSize: 16.sp,
                 fontFamily: AppFonts.textFontFamily,
               ),
             ),

@@ -293,6 +293,7 @@ class LanKey {
   static const friends = "friends";
   static const love = "love";
   static const wealth = "wealth";
+  static const holistic = "holistic";
   static const family = "family";
   static const lover = "lover";
   static const career = "career";
@@ -355,6 +356,7 @@ class LanKey {
 
 ///英语文案
 const en = {
+  "holistic": "Holistic",
   "colleagues": "Colleague",
   "customers": "Client",
   "partners": "Partner",
@@ -407,7 +409,7 @@ const en = {
   "gallery": "Album",
   "edit_file": "Edit Information",
   "relationship_title": "Please select a relationship",
-  "ok": "Ok",
+  "ok": "OK",
   "delete_people_tip":
       "Are you sure you want to delete this piece of information?",
   "save_tip":
@@ -440,7 +442,7 @@ const en = {
   "chatroom": "Chatroom",
   "next": "Next",
   "birth_chart_content":
-      'Before you took your first breath, the sky held a story — your story. We’ll help you rediscover it. Your birth chart is the key to ancient wisdom, waiting to guide you through love, purpose, and transformation',
+      'Before you took your first breath, the sky held a story — your story.We’ll help you rediscover it.Your birth chart is the key to ancient wisdom, waiting to guide you through love, purpose, and transformation',
   "birth_chart_title": 'Awaken Your Cosmic Self',
   "birth_chart": 'Birth Chart',
   "select_date_of_birth": 'Select Your Birth Date',
@@ -494,7 +496,7 @@ const en = {
   "add_friends": "Add Friends",
   "open_vip": "Open VIP to view all",
   "to_disclose": "Unlock Secrets",
-  "record": "File List",
+  "record": "Friends List",
   "add_file": "Add Information",
   "determine": "Determine",
   "name": "Name",
@@ -704,11 +706,11 @@ const en = {
   "delete_account_content2":
       "After deletion, your account, profile, and historical data will be permanently deleted and unrecoverable. You will no longer be able to log in with this account.The cooling-off period is 30 days. If you log in with this account within 30 days, the cancellation application will be automatically cancelled. After the cooling-off period ends, the system will automatically execute the final deletion.",
   "constellation_chart": "Constellation Chart",
-  "fortune_guide": "Fortune Guide",
+  "fortune_guide": "Fortune",
   "select_country_or_region": "Please Select Country/Region",
   "select_city": "Please Select City",
   "introduction_to_constellations": "Introduction to Constellations",
-  "horoscope_summary": "Personal Fortune \nInterpretation",
+  "horoscope_summary": "Personal Fortune",
   "sun_sign_title": "Sun sign: ",
   "sun_sign_title_icon": "☀️ ",
   "moon_sign_title": "Moon Sign: ",

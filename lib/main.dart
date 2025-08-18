@@ -19,7 +19,7 @@ Future<void> main() async {
   HttpOverrides.global = AppHttpOverrides();
 
   /// 抓包初始化
-  //ProxyTool.init();
+  // ProxyTool.init();
   runApp(const App());
 }
 
@@ -43,6 +43,7 @@ class App extends StatelessWidget {
           child: EasyLoading.init()(context, child),
         ),
         defaultTransition: Transition.cupertino,
+        //theme: CustomTheme.to.dark,
         theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -55,6 +56,7 @@ class App extends StatelessWidget {
           debugPrint("routing:${routing?.current}");
         },
         initialRoute: APages.splash,
+        // home: HomePage(),
       ),
     );
   }

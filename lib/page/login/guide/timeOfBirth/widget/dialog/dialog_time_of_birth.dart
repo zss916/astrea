@@ -42,6 +42,7 @@ class TimeOfBirthTip extends StatelessWidget {
                     fontFamily: AppFonts.textFontFamily,
                     color: const Color(0xFF323133),
                     fontSize: 22.sp,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 SizedBox(height: 12),

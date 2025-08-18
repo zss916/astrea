@@ -1,8 +1,9 @@
+import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
-import 'package:astrea/page/home/horoscope/detail/widget/astrologer_chat_btn.dart';
-import 'package:astrea/page/home/horoscope/detail/widget/blur_widget.dart';
+import 'package:astrea/page/home/horoscope/index/widget/tabview_top_widget/circular_percent_widget.dart';
+import 'package:astrea/page/home/horoscope/index/widget/tabview_top_widget/star_spacer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -61,33 +62,18 @@ class HoroscopeTabview extends StatelessWidget {
             ),
           ],
         ),
-        child: Stack(
-          alignment: AlignmentDirectional.topCenter,
+        child: Column(
           children: [
-            Column(
-              children: [
-                if (tabIndex == 1) buildTop(),
+            if (tabIndex == 1) buildTop(),
 
-                if (tabIndex == 1 || tabIndex == 2 || tabIndex == 3)
-                  buildGuide(),
+            if (tabIndex == 1 || tabIndex == 2 || tabIndex == 3) buildGuide(),
 
-                ///today
-                buildContent(
-                  loveContent: loveContent,
-                  careerContent: careerContent,
-                  wealthContent: wealthContent,
-                  summary: content,
-                ),
-              ],
-            ),
-            PositionedDirectional(
-              start: 16,
-              end: 16,
-              bottom: 0,
-              child: Image.asset(
-                Assets.imageBottomTexture2,
-                matchTextDirection: true,
-              ),
+            ///today
+            buildContent(
+              loveContent: loveContent,
+              careerContent: careerContent,
+              wealthContent: wealthContent,
+              summary: content,
             ),
           ],
         ),
@@ -106,29 +92,27 @@ class HoroscopeTabview extends StatelessWidget {
         start: 16.w,
         end: 16.w,
         top: 0,
-        bottom: 40.h,
+        bottom: 22.h,
       ),
       width: double.maxFinite,
       child: Column(
         children: [
           Row(
             children: [
-              Expanded(
-                child: Text(
-                  LanKey.horoscopeSummary.tr,
-                  style: TextStyle(
-                    fontSize: 22.sp,
-                    fontFamily: AppFonts.textFontFamily,
-                  ),
+              Text(
+                LanKey.horoscopeSummary.tr,
+                style: TextStyle(
+                  fontSize: 24.sp,
+                  fontFamily: AppFonts.titleFontFamily,
                 ),
               ),
               Container(
-                margin: EdgeInsetsDirectional.only(start: 5),
+                margin: EdgeInsetsDirectional.only(start: 2),
                 child: Image.asset(
-                  Assets.imageTodayImg,
+                  Assets.imageStarburst,
                   matchTextDirection: true,
-                  height: 72.r,
-                  width: 72.r,
+                  height: 26,
+                  width: 20,
                 ),
               ),
             ],
@@ -137,36 +121,29 @@ class HoroscopeTabview extends StatelessWidget {
             margin: EdgeInsetsDirectional.only(top: 20.h),
             width: double.maxFinite,
             child: Column(
-              spacing: 16.h,
+              spacing: 12.h,
               children: [
                 if ((loveContent ?? "").isNotEmpty)
                   buildPersonalTitle(
-                    title: "${LanKey.love.tr}: ",
+                    title: LanKey.love.tr,
                     content: loveContent ?? "",
                   ),
                 if ((careerContent ?? "").isNotEmpty)
                   buildPersonalTitle(
-                    title: "${LanKey.career.tr}: ",
+                    title: LanKey.career.tr,
                     content: careerContent ?? "",
                   ),
                 if ((wealthContent ?? "").isNotEmpty)
                   buildPersonalTitle(
-                    title: "${LanKey.wealth.tr}: ",
+                    title: LanKey.wealth.tr,
                     content: wealthContent ?? "",
                   ),
-                Container(
-                  margin: EdgeInsetsDirectional.only(top: 0),
-                  width: double.maxFinite,
-                  child: Text(
-                    content,
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      color: const Color(0xFF6A676C),
-                      fontSize: 16.sp,
-                      fontFamily: AppFonts.textFontFamily,
-                    ),
+
+                if ((content ?? "").isNotEmpty)
+                  buildPersonalTitle(
+                    title: LanKey.holistic.tr,
+                    content: content ?? "",
                   ),
-                ),
               ],
             ),
           ),
@@ -179,147 +156,40 @@ class HoroscopeTabview extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        ///love
         Container(
-          // color: Colors.cyan,
-          padding: EdgeInsetsDirectional.only(bottom: 12.h),
-          margin: EdgeInsetsDirectional.only(start: 16.w, end: 16.w, top: 12.h),
+          padding: EdgeInsetsDirectional.symmetric(horizontal: 8.w),
+          margin: EdgeInsetsDirectional.only(
+            start: 16.w,
+            end: 16.w,
+            top: 16.h,
+            bottom: 12.h,
+          ),
+          width: double.maxFinite,
           child: IntrinsicHeight(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        LanKey.love.tr,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: const Color(0xFF323133),
-                          fontSize: 18.sp,
-                          fontFamily: AppFonts.textFontFamily,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsetsDirectional.only(
-                          top: 8.h,
-                          bottom: 8.h,
-                        ),
-                        //width: 80,
-                        height: 6,
-                        child: LinearProgressIndicator(
-                          value: (love ?? 0) / 100,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          backgroundColor: Color(0xFFF0F1F5),
-                          valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
-                        ),
-                      ),
-                      Text(
-                        "${love ?? 0}",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: const Color(0xFF585FC4),
-                          fontSize: 18.sp,
-                          fontFamily: AppFonts.textFontFamily,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
+                CircularPercentWidget(title: LanKey.love.tr, value: love ?? 0),
+
+                Expanded(child: StarSpacer()),
+
+                CircularPercentWidget(
+                  title: LanKey.career.tr,
+                  value: career ?? 0,
                 ),
-                SizedBox(width: 26.w),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        LanKey.career.tr,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: const Color(0xFF323133),
-                          fontSize: 18.sp,
-                          fontFamily: AppFonts.textFontFamily,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsetsDirectional.only(
-                          top: 8.h,
-                          bottom: 8.h,
-                        ),
-                        //width: 80,
-                        height: 6,
-                        child: LinearProgressIndicator(
-                          value: (career ?? 0) / 100,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          backgroundColor: Color(0xFFF0F1F5),
-                          valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
-                        ),
-                      ),
-                      Text(
-                        "${career ?? 0}",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: const Color(0xFF585FC4),
-                          fontSize: 18.sp,
-                          fontFamily: AppFonts.textFontFamily,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 26.w),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        LanKey.wealth.tr,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: const Color(0xFF323133),
-                          fontSize: 18.sp,
-                          fontFamily: AppFonts.textFontFamily,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsetsDirectional.only(
-                          top: 8.h,
-                          bottom: 8.h,
-                        ),
-                        //width: 80,
-                        height: 6,
-                        child: LinearProgressIndicator(
-                          value: (wealth ?? 0) / 100,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          backgroundColor: Color(0xFFF0F1F5),
-                          valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
-                        ),
-                      ),
-                      Text(
-                        "${wealth ?? 0}",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: const Color(0xFF585FC4),
-                          fontSize: 18.sp,
-                          fontFamily: AppFonts.textFontFamily,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
+
+                Expanded(child: StarSpacer()),
+
+                CircularPercentWidget(
+                  title: LanKey.wealth.tr,
+                  value: wealth ?? 0,
                 ),
               ],
             ),
           ),
         ),
+
+        ///love
+        // TabviewTopWidget(love: love, career: career, wealth: wealth),
 
         ///should
         if ((should ?? "").isNotEmpty)
@@ -334,37 +204,42 @@ class HoroscopeTabview extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Image.asset(
-                  Assets.imageShouldRight,
-                  matchTextDirection: true,
-                  width: 84,
-                  height: 105,
-                ),
                 Expanded(
                   child: Container(
                     width: double.maxFinite,
-                    margin: EdgeInsetsDirectional.only(start: 25.w),
+                    margin: EdgeInsetsDirectional.only(end: 0.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           LanKey.should.tr,
                           style: TextStyle(
-                            color: const Color(0xFF323133),
-                            fontSize: 22.sp,
-                            fontFamily: AppFonts.textFontFamily,
+                            color: AppColor.textTitleColor,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w800,
+                            fontFamily: AppFonts.subTitleFontFamily,
                           ),
                         ),
                         Text(
                           should ?? "",
                           style: TextStyle(
-                            color: const Color(0xFF6A676C),
-                            fontSize: 16.sp,
+                            fontSize: 14.sp,
+                            color: AppColor.contentTitleColor,
                             fontFamily: AppFonts.textFontFamily,
                           ),
                         ),
                       ],
                     ),
+                  ),
+                ),
+                Container(
+                  //color: Colors.black,
+                  margin: EdgeInsetsDirectional.only(start: 10.w),
+                  child: Image.asset(
+                    Assets.imageShouldRight,
+                    width: 57,
+                    height: 57,
+                    matchTextDirection: true,
                   ),
                 ),
               ],
@@ -380,30 +255,31 @@ class HoroscopeTabview extends StatelessWidget {
               top: 12.h,
               start: 16.w,
               end: 16.w,
-              bottom: 16.h,
+              bottom: 12.h,
             ),
             child: Row(
               children: [
                 Expanded(
                   child: Container(
                     width: double.maxFinite,
-                    margin: EdgeInsetsDirectional.only(end: 25.w),
+                    margin: EdgeInsetsDirectional.only(end: 0.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           LanKey.avoid.tr,
                           style: TextStyle(
-                            color: const Color(0xFF323133),
-                            fontSize: 22.sp,
-                            fontFamily: AppFonts.textFontFamily,
+                            color: AppColor.textTitleColor,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w800,
+                            fontFamily: AppFonts.subTitleFontFamily,
                           ),
                         ),
                         Text(
                           avoid ?? "",
                           style: TextStyle(
-                            color: const Color(0xFF91929D),
-                            fontSize: 16.sp,
+                            color: AppColor.contentTitleColor,
+                            fontSize: 14.sp,
                             fontFamily: AppFonts.textFontFamily,
                           ),
                         ),
@@ -411,11 +287,15 @@ class HoroscopeTabview extends StatelessWidget {
                     ),
                   ),
                 ),
-                Image.asset(
-                  Assets.imageAvoidLeft,
-                  width: 84,
-                  height: 105,
-                  matchTextDirection: true,
+                Container(
+                  //color: Colors.black,
+                  margin: EdgeInsetsDirectional.only(start: 10.w),
+                  child: Image.asset(
+                    Assets.imageAvoidLeft,
+                    width: 57,
+                    height: 57,
+                    matchTextDirection: true,
+                  ),
                 ),
               ],
             ),
@@ -432,32 +312,11 @@ class HoroscopeTabview extends StatelessWidget {
                 margin: EdgeInsetsDirectional.only(
                   start: 16.w,
                   end: 16.w,
-                  top: 8.h,
-                ),
-                child: Image.asset(
-                  Assets.imageStarLine,
-                  matchTextDirection: true,
-                ),
-              ),
-              Container(
-                margin: EdgeInsetsDirectional.only(
-                  start: 16.w,
-                  end: 16.w,
                   top: 12.h,
                   bottom: 12.h,
                 ),
                 child: Row(
                   children: [
-                    Container(
-                      //color: Colors.black,
-                      margin: EdgeInsetsDirectional.only(end: 10.w),
-                      child: Image.asset(
-                        Assets.imageGuideIcon,
-                        width: 80,
-                        height: 100,
-                        matchTextDirection: true,
-                      ),
-                    ),
                     Expanded(
                       child: Column(
                         children: [
@@ -467,9 +326,10 @@ class HoroscopeTabview extends StatelessWidget {
                             child: Text(
                               LanKey.fortuneGuide.tr,
                               style: TextStyle(
-                                color: const Color(0xFF585FC4),
-                                fontSize: 22.sp,
-                                fontFamily: AppFonts.textFontFamily,
+                                color: AppColor.textTitleColor,
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w800,
+                                fontFamily: AppFonts.subTitleFontFamily,
                               ),
                             ),
                           ),
@@ -478,13 +338,23 @@ class HoroscopeTabview extends StatelessWidget {
                             child: Text(
                               guide ?? "",
                               style: TextStyle(
-                                color: const Color(0xFF585FC4),
-                                fontSize: 16.sp,
+                                color: AppColor.contentTitleColor,
+                                fontSize: 14.sp,
                                 fontFamily: AppFonts.textFontFamily,
                               ),
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                    Container(
+                      //color: Colors.black,
+                      margin: EdgeInsetsDirectional.only(start: 10.w),
+                      child: Image.asset(
+                        Assets.imageGuideIcon,
+                        width: 57,
+                        height: 57,
+                        matchTextDirection: true,
                       ),
                     ),
                   ],
@@ -521,16 +391,25 @@ class HoroscopeTabview extends StatelessWidget {
               TextSpan(
                 text: title,
                 style: TextStyle(
-                  color: const Color(0xFF585FC4),
-                  fontSize: 16.sp,
-                  fontFamily: AppFonts.textFontFamily,
+                  color: AppColor.textTitleColor,
+                  fontSize: 18.sp,
+                  fontFamily: AppFonts.subTitleFontFamily,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              TextSpan(
+                text: "\n",
+                style: TextStyle(
+                  color: AppColor.textTitleColor,
+                  fontSize: 18.sp,
+                  fontFamily: AppFonts.subTitleFontFamily,
                 ),
               ),
               TextSpan(
                 text: content,
                 style: TextStyle(
-                  color: const Color(0xFF6A676C),
-                  fontSize: 16.sp,
+                  color: AppColor.contentTitleColor,
+                  fontSize: 14.sp,
                   fontFamily: AppFonts.textFontFamily,
                 ),
               ),
@@ -538,458 +417,4 @@ class HoroscopeTabview extends StatelessWidget {
           ),
         ),
       );
-
-  @Deprecated("remove")
-  Widget old() => Stack(
-    alignment: AlignmentDirectional.topCenter,
-    children: [
-      Column(
-        children: [
-          ///should
-          Container(
-            margin: EdgeInsetsDirectional.only(bottom: 12),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsetsDirectional.only(start: 10.w, end: 10.w),
-                    child: Column(
-                      children: [
-                        Text(
-                          LanKey.should.tr,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: const Color(0xFF323133),
-                            fontSize: 22.sp,
-                            fontFamily: AppFonts.textFontFamily,
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsetsDirectional.only(top: 8),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFEDEDFE),
-                          ),
-                          child: Text(
-                            'Eat more rice',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: AppFonts.textFontFamily,
-                              color: const Color(0xFF585FC4),
-                              fontSize: 16.sp,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsetsDirectional.only(start: 0, end: 0),
-                  height: 42,
-                  width: 1,
-                  color: Color(0xFFD9D9D9),
-                ),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsetsDirectional.only(start: 10.w, end: 10.w),
-                    child: Column(
-                      children: [
-                        Text(
-                          LanKey.avoid.tr,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: const Color(0xFF323133),
-                            fontSize: 22.sp,
-                            fontFamily: AppFonts.textFontFamily,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsetsDirectional.only(top: 8),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFF0F1F5),
-                          ),
-                          child: Text(
-                            'Sing loudly',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: AppFonts.textFontFamily,
-                              color: const Color(0xFF91929D),
-                              fontSize: 16.sp,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          ///love
-          Container(
-            // color: Colors.cyan,
-            padding: EdgeInsetsDirectional.only(bottom: 12),
-            margin: EdgeInsetsDirectional.only(start: 16, end: 16, top: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Love',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: const Color(0xFF323133),
-                          fontSize: 18,
-                          fontFamily: AppFonts.textFontFamily,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsetsDirectional.only(top: 8),
-                        //width: 80,
-                        height: 6,
-                        child: LinearProgressIndicator(
-                          value: 0.4,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          backgroundColor: Color(0xFFF0F1F5),
-                          valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 26.w),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Career',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: const Color(0xFF323133),
-                          fontSize: 18,
-                          fontFamily: AppFonts.textFontFamily,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsetsDirectional.only(top: 8),
-                        //width: 80,
-                        height: 6,
-                        child: LinearProgressIndicator(
-                          value: 0.4,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          backgroundColor: Color(0xFFF0F1F5),
-                          valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 26.w),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Money',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: const Color(0xFF323133),
-                          fontSize: 18,
-                          fontFamily: AppFonts.textFontFamily,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsetsDirectional.only(top: 8),
-                        //width: 80,
-                        height: 6,
-                        child: LinearProgressIndicator(
-                          value: 0.4,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          backgroundColor: Color(0xFFF0F1F5),
-                          valueColor: AlwaysStoppedAnimation(Color(0xFF585FC4)),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          ///try
-          Container(
-            width: double.infinity,
-            margin: EdgeInsetsDirectional.only(
-              start: 16,
-              end: 16,
-              top: 12,
-              bottom: 0,
-            ),
-            child: Text(
-              'Try your first interpretation',
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                color: const Color(0xFF323133),
-                fontSize: 18,
-                fontFamily: AppFonts.textFontFamily,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-
-          ///chat
-          AstrologerChatBtn(margin: EdgeInsetsDirectional.all(16)),
-          /* Container(
-                  padding: EdgeInsetsDirectional.only(
-                      start: 16, end: 16, top: 14, bottom: 14),
-                  margin: EdgeInsetsDirectional.all(16),
-                  decoration: BoxDecoration(
-                      color: const Color(0xFFFAFAFA),
-                      borderRadius: BorderRadiusDirectional.circular(16)),
-                  width: double.maxFinite,
-                  child: Row(
-                    children: [
-                      Container(
-                        margin: EdgeInsetsDirectional.only(end: 8),
-                        width: 46,
-                        height: 46,
-                        decoration: ShapeDecoration(
-                          color: Colors.white,
-                          image: DecorationImage(
-                            image: NetworkImage("https://placehold.co/66x66"),
-                            fit: BoxFit.cover,
-                          ),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                        ),
-                      ),
-                      Expanded(
-                          child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                'Ethan',
-                                textAlign: TextAlign.left,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  color: const Color(0xFF323133),
-                                  fontSize: 18,
-                                  fontFamily: AppFonts.textFontFamily,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsetsDirectional.only(start: 5),
-                                child: StarLevel(level: "9.9"),
-                              )
-                            ],
-                          ),
-                          Text(
-                            '5 years of experience',
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              color: const Color(0xFF585FC4),
-                              fontSize: 14.sp,
-                              fontFamily: AppFonts.textFontFamily,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          )
-                        ],
-                      )),
-                      Container(
-                        width: 74,
-                        height: 30,
-                        margin: EdgeInsetsDirectional.only(start: 5),
-                        alignment: AlignmentDirectional.center,
-                        decoration: ShapeDecoration(
-                          color: const Color(0xFF585FC4),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                        ),
-                        child: Text(
-                          'Chat',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontFamily: AppFonts.textFontFamily,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),*/
-
-          ///today
-          Container(
-            width: double.infinity,
-            margin: EdgeInsetsDirectional.only(
-              start: 16,
-              end: 16,
-              top: 8,
-              bottom: 14,
-            ),
-            child: Text(
-              'Today\'s Horoscope Summary',
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                color: const Color(0xFF323133),
-                fontSize: 18,
-                fontFamily: AppFonts.textFontFamily,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-
-          ///text
-          BlurWidget(
-            isBlur: true,
-            child: Container(
-              width: double.infinity,
-              margin: EdgeInsetsDirectional.only(start: 16, end: 16),
-              child: Text(
-                'In love, singles might meet someone special, and those in relationships can deepen their bond.',
-                style: TextStyle(
-                  color: const Color(0xFF6A676C) /* Color2 */,
-                  fontSize: 16,
-                  fontFamily: AppFonts.textFontFamily,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-          ),
-
-          ///work
-          BlurWidget(
-            isBlur: true,
-            child: Container(
-              width: double.infinity,
-              margin: EdgeInsetsDirectional.only(start: 16, end: 16),
-              child: Text(
-                'At work, new chances await, thanks to your strong communication.',
-                style: TextStyle(
-                  color: const Color(0xFF6A676C),
-                  fontSize: 16,
-                  fontFamily: AppFonts.textFontFamily,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-          ),
-
-          ///card
-          Container(
-            padding: EdgeInsetsDirectional.only(
-              start: 16,
-              end: 16,
-              top: 14,
-              bottom: 14,
-            ),
-            margin: EdgeInsetsDirectional.only(
-              start: 16,
-              end: 16,
-              top: 14,
-              bottom: 14,
-            ),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                matchTextDirection: true,
-                image: AssetImage(Assets.imageReadInsightsBg),
-              ),
-              color: const Color(0xFFEDEDFE),
-              borderRadius: BorderRadiusDirectional.circular(16),
-            ),
-            width: double.maxFinite,
-            constraints: BoxConstraints(minHeight: 115),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  constraints: BoxConstraints(maxWidth: 200),
-                  child: Text(
-                    'Find an astrologer for more advice on fortune',
-                    style: TextStyle(
-                      color: const Color(0xFF323133),
-                      fontSize: 18,
-                      fontFamily: AppFonts.textFontFamily,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsetsDirectional.only(top: 8),
-                  padding: const EdgeInsets.all(10),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFF585FC4),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    spacing: 10,
-                    children: [
-                      Text(
-                        'Read insights',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontFamily: AppFonts.textFontFamily,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          ///Libra
-          BlurWidget(
-            isBlur: true,
-            child: Container(
-              width: double.infinity,
-              margin: EdgeInsetsDirectional.only(start: 16, end: 16),
-              child: Text(
-                'Libra, spanning from September 23 to October 23, symbolizes balance and harmony. Ruled by Venus, Libras are elegant, sociable, yet often indecisive, always seeking equilibrium.',
-                style: TextStyle(
-                  color: const Color(0xFF6A676C),
-                  fontSize: 16,
-                  fontFamily: AppFonts.textFontFamily,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-          ),
-
-          SizedBox(height: 20),
-        ],
-      ),
-      PositionedDirectional(
-        start: 16,
-        end: 16,
-        bottom: 0,
-        child: Image.asset(
-          Assets.imageBottomTexture2,
-          matchTextDirection: true,
-        ),
-      ),
-    ],
-  );
 }

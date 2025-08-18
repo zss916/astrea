@@ -82,9 +82,9 @@ class _NoticeState extends State<NoticeItem> {
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     color: const Color(0xFF323133),
-                    fontSize: 16.sp,
+                    fontSize: 18.sp,
                     fontFamily: AppFonts.textFontFamily,
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),

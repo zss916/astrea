@@ -95,6 +95,7 @@ class _HomePageState extends State<HomePage> with DelayedInitMixin {
                   LanKey.horoscope.tr,
                   style: TextStyle(
                     fontSize: 12,
+                    fontFamily: AppFonts.textFontFamily,
                     color: AppColor.textHintColor,
                     fontWeight: FontWeight.w500,
                   ),
@@ -103,6 +104,7 @@ class _HomePageState extends State<HomePage> with DelayedInitMixin {
                   LanKey.horoscope.tr,
                   style: TextStyle(
                     fontSize: 12,
+                    fontFamily: AppFonts.textFontFamily,
                     color: AppColor.textHintSelectColor,
                     fontWeight: FontWeight.w500,
                   ),
@@ -155,6 +157,7 @@ class _HomePageState extends State<HomePage> with DelayedInitMixin {
                   LanKey.synastry.tr,
                   style: TextStyle(
                     fontSize: 12,
+                    fontFamily: AppFonts.textFontFamily,
                     color: AppColor.textHintColor,
                     fontWeight: FontWeight.w500,
                   ),
@@ -163,6 +166,7 @@ class _HomePageState extends State<HomePage> with DelayedInitMixin {
                   LanKey.synastry.tr,
                   style: TextStyle(
                     fontSize: 12,
+                    fontFamily: AppFonts.textFontFamily,
                     color: AppColor.textHintSelectColor,
                     fontWeight: FontWeight.w500,
                   ),
@@ -215,6 +219,7 @@ class _HomePageState extends State<HomePage> with DelayedInitMixin {
                   LanKey.account.tr,
                   style: TextStyle(
                     fontSize: 12,
+                    fontFamily: AppFonts.textFontFamily,
                     color: AppColor.textHintColor,
                     fontWeight: FontWeight.w500,
                   ),
@@ -223,6 +228,7 @@ class _HomePageState extends State<HomePage> with DelayedInitMixin {
                   LanKey.account.tr,
                   style: TextStyle(
                     fontSize: 12,
+                    fontFamily: AppFonts.textFontFamily,
                     color: AppColor.textHintSelectColor,
                     fontWeight: FontWeight.w500,
                   ),

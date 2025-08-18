@@ -49,7 +49,7 @@ class AccountView extends StatelessWidget {
                           color: const Color(0xFF323133),
                           fontSize: 16.sp,
                           fontFamily: AppFonts.textFontFamily,
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w800,
                         ),
                       ),
                     ],
@@ -81,10 +81,10 @@ class AccountView extends StatelessWidget {
           child: Text(
             LanKey.personalDataTitle.tr,
             style: TextStyle(
-              color: const Color(0xFF6A676C),
+              color: AppColor.textTitleColor,
               fontSize: 18.sp,
               fontFamily: AppFonts.textFontFamily,
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
@@ -148,10 +148,10 @@ class AccountView extends StatelessWidget {
           child: Text(
             LanKey.aboutUs.tr,
             style: TextStyle(
-              color: const Color(0xFF6A676C),
+              color: AppColor.textTitleColor,
               fontSize: 18.sp,
               fontFamily: AppFonts.textFontFamily,
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),

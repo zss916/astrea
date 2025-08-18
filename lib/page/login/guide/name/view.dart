@@ -22,9 +22,9 @@ class EditNamePage extends StatelessWidget {
             child: Text(
               LanKey.yourName.tr,
               style: TextStyle(
-                color: const Color(0xFF323133),
+                color: AppColor.textTitleColor,
                 fontSize: 28.sp,
-                fontFamily: AppFonts.textFontFamily,
+                fontFamily: AppFonts.subTitleFontFamily,
               ),
             ),
           ),

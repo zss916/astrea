@@ -21,7 +21,7 @@ class Http {
     _dio.httpClientAdapter = httpAdapter;
 
     /// 代理抓包
-    // _dio.httpClientAdapter = ProxyTool.getProxyAdapter();
+    //_dio.httpClientAdapter = ProxyTool.getProxyAdapter();
 
     ///auth
     _dio.interceptors.add(AuthInterceptor());

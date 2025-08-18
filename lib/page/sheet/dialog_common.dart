@@ -59,7 +59,7 @@ void showCommonDialog({
                           TextStyle(
                             color: const Color(0xFF6A676C),
                             fontFamily: AppFonts.textFontFamily,
-                            fontSize: 17.sp,
+                            fontSize: 18.sp,
                           ),
                     ),
                   ),
@@ -87,7 +87,8 @@ void showCommonDialog({
                             style: TextStyle(
                               color: const Color(0xFF323133),
                               fontFamily: AppFonts.textFontFamily,
-                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 20.sp,
                             ),
                           ),
                         ),
@@ -116,7 +117,8 @@ void showCommonDialog({
                             style: TextStyle(
                               color: Colors.white,
                               fontFamily: AppFonts.textFontFamily,
-                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 20.sp,
                             ),
                           ),
                         ),

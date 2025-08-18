@@ -40,7 +40,7 @@ class _WebPageState extends State<WebPage> {
     webViewController = WebViewController()
       ..addJavaScriptChannel(javaScriptChannelName, onMessageReceived: (e) {})
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(Colors.white)
+      ..setBackgroundColor(AppColor.pageBackground)
       ..setNavigationDelegate(
         NavigationDelegate(
           onProgress: (int progress) {

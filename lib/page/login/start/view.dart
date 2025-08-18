@@ -84,9 +84,9 @@ class StartPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 28.sp,
-                        fontFamily: AppFonts.textFontFamily,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFF323133),
+                        fontFamily: AppFonts.subTitleFontFamily,
+                        //fontWeight: FontWeight.w800,
+                        color: AppColor.textTitleColor,
                       ),
                     ),
                   ),

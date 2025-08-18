@@ -24,9 +24,8 @@ class SynsdtryTitle extends StatelessWidget {
             LanKey.synastry.tr,
             style: TextStyle(
               color: AppColor.textTitleColor,
-              fontSize: 22.sp,
-              fontFamily: AppFonts.textFontFamily,
-              fontWeight: FontWeight.w400,
+              fontSize: 24.sp,
+              fontFamily: AppFonts.titleFontFamily,
             ),
           ),
           InkWell(

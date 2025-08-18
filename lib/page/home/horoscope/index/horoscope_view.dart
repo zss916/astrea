@@ -210,18 +210,4 @@ class _HoroscopeViewState extends State<HoroscopeView>
       },
     ),
   );
-
-  /*Widget buildContent({required HoroscopeLogic logic}) {
-    return SliverToBoxAdapter(
-      child: Stack(
-        alignment: AlignmentDirectional.center,
-        children: [
-          if (isShowOneself)
-            HoroscopeContent(logic: logic)
-          else
-            StarContent(index: selectedIndex),
-        ],
-      ),
-    );
-  }*/
 }

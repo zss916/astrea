@@ -1,11 +1,12 @@
+import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/core/utils/calculate.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/sheet/select_time_sheet.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:awesome_datetime_picker/awesome_datetime_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sprintf/sprintf.dart';
 
@@ -92,8 +93,8 @@ class _SelectBirthState extends State<SelectBirth> {
             child: Text(
               LanKey.dateOfBirth.tr,
               style: TextStyle(
-                color: const Color(0xFF6A676C),
-                fontSize: 14,
+                color: AppColor.contentTitleColor,
+                fontSize: 14.sp,
                 fontFamily: AppFonts.textFontFamily,
                 fontWeight: FontWeight.w400,
               ),
@@ -101,18 +102,16 @@ class _SelectBirthState extends State<SelectBirth> {
           ),
           Row(
             children: [
-              AutoSizeText(
+              Text(
                 birth.isNotEmpty ? birth : LanKey.selectBirthTime.tr,
                 textAlign: TextAlign.start,
-                maxFontSize: 18,
-                minFontSize: 18,
                 style: TextStyle(
                   color: (birth.isNotEmpty)
                       ? const Color(0xFF323133)
                       : const Color(0xFF91929D),
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontFamily: AppFonts.textFontFamily,
-                  fontWeight: FontWeight.w400,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
               Spacer(),

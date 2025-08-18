@@ -19,8 +19,8 @@ class HoroscopeTitle extends StatelessWidget {
         LanKey.horoscope.tr,
         style: TextStyle(
           color: AppColor.textTitleColor,
-          fontSize: 22.sp,
-          fontFamily: AppFonts.textFontFamily,
+          fontSize: 24.sp,
+          fontFamily: AppFonts.titleFontFamily,
         ),
       ),
     );

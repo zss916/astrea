@@ -1,9 +1,10 @@
+import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/setting/global.dart';
 import 'package:astrea/generated/assets.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 ///no title appBar
@@ -34,17 +35,15 @@ class ComAppBar extends AppBar {
          elevation: 0,
          title:
              titleWidget ??
-             AutoSizeText(
+             Text(
                title ?? '',
-               maxLines: 2,
-               maxFontSize: 22,
-               minFontSize: 22,
+               maxLines: 1,
                textAlign: TextAlign.center,
                style: TextStyle(
-                 color: isTextDark ? Colors.black : Colors.white,
-                 fontSize: 22,
+                 color: isTextDark ? AppColor.textTitleColor : Colors.white,
+                 fontSize: 22.sp,
                  fontFamily: AppFonts.textFontFamily,
-                 fontWeight: FontWeight.w400,
+                 fontWeight: FontWeight.w500,
                ),
              ),
          leading:
