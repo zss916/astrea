@@ -37,6 +37,12 @@ class AccountEntity {
   ///登录流程
   int? loginStep; //0 birth chart, 1 date of birth ...
 
+  ///当前路由
+  String? currentRouter;
+
+  ///通知
+  bool? switchNotification;
+
   ///新加出生时间
   @JSONField(name: 'birth_hour')
   int? birthHour;

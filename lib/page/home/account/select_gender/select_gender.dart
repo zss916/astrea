@@ -8,33 +8,33 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class SelectGender extends StatefulWidget {
-  final int sex;
+  int sex;
   final Function(int) onNext;
-  const SelectGender({super.key, required this.sex, required this.onNext});
+  SelectGender({super.key, required this.sex, required this.onNext});
 
   @override
   State<SelectGender> createState() => _SelectGenderState();
 }
 
 class _SelectGenderState extends State<SelectGender> {
-  int selectSex = 2;
+  // int selectSex = 2;
   // 0 - unknown, 1 - male, 2 - female, 3 - non-binary
 
   @override
   void initState() {
     super.initState();
-    setState(() {
+    /*setState(() {
       selectSex = widget.sex;
-    });
+    });*/
   }
 
-  @override
+  /*@override
   void didUpdateWidget(covariant SelectGender oldWidget) {
     super.didUpdateWidget(oldWidget);
     setState(() {
       selectSex = widget.sex;
     });
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +43,13 @@ class _SelectGenderState extends State<SelectGender> {
         GestureDetector(
           onTap: () {
             setState(() {
-              selectSex = 2;
-              widget.onNext.call(selectSex);
+              widget.sex = 2;
+              widget.onNext.call(widget.sex);
             });
           },
           child: CustomTag(
             margin: EdgeInsetsDirectional.zero,
-            isSelected: selectSex == 2,
+            isSelected: widget.sex == 2,
             padding: EdgeInsetsDirectional.symmetric(
               horizontal: 12,
               vertical: 0,
@@ -71,7 +71,7 @@ class _SelectGenderState extends State<SelectGender> {
                   style: TextStyle(
                     color: AppColor.textTitleColor,
                     fontSize: 16.sp,
-                    fontFamily: (selectSex == 2)
+                    fontFamily: (widget.sex == 2)
                         ? AppFonts.titleFontFamily
                         : AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,
@@ -85,13 +85,13 @@ class _SelectGenderState extends State<SelectGender> {
         GestureDetector(
           onTap: () {
             setState(() {
-              selectSex = 1;
-              widget.onNext.call(selectSex);
+              widget.sex = 1;
+              widget.onNext.call(widget.sex);
             });
           },
           child: CustomTag(
             margin: EdgeInsetsDirectional.zero,
-            isSelected: selectSex == 1,
+            isSelected: widget.sex == 1,
             padding: EdgeInsetsDirectional.symmetric(
               horizontal: 12,
               vertical: 0,
@@ -113,7 +113,7 @@ class _SelectGenderState extends State<SelectGender> {
                   style: TextStyle(
                     color: const Color(0xFF333333),
                     fontSize: 16.sp,
-                    fontFamily: (selectSex == 1)
+                    fontFamily: (widget.sex == 1)
                         ? AppFonts.titleFontFamily
                         : AppFonts.textFontFamily,
                     fontWeight: FontWeight.w400,

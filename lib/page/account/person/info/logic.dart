@@ -54,7 +54,7 @@ class AccountInfoLogic extends GetxController {
     if (isSuccessful) {
       AccountService.to.deleteAccount();
     } else {
-      AppLoading.toast("delete account error");
+      AppLoading.toast("Failed");
     }
   }
 
@@ -68,7 +68,7 @@ class AccountInfoLogic extends GetxController {
     if (isSuccessful) {
       AccountService.to.logout();
     } else {
-      AppLoading.toast("logout error");
+      AppLoading.toast("Failed");
     }
   }
 }

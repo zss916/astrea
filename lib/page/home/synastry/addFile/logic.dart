@@ -1,6 +1,6 @@
 part of 'index.dart';
 
-class AddFileLogic extends GetxController {
+class AddFileLogic extends GetxController with AppValidatorMixin {
   String nickName = "";
   int sex = 2;
   String birthday = "";
@@ -66,9 +66,9 @@ class AddFileLogic extends GetxController {
 
   @override
   void onClose() {
+    // AppLoading.dismiss();
     cancelToken.cancel();
     super.onClose();
-    AppLoading.dismiss();
   }
 
   void log() {
@@ -105,6 +105,10 @@ class AddFileLogic extends GetxController {
   ///添加朋友（最多10个）
   Future<void> addFriend() async {
     log();
+    if (!isMatchName(nickName)) {
+      AppLoading.toast(LanKey.nameMatchHint.tr);
+      return;
+    }
     AppLoading.show();
     int? id =
         await FriendAPI.addFriend(
@@ -123,9 +127,12 @@ class AddFileLogic extends GetxController {
           AppLoading.dismiss();
         });
     if (id != null) {
-      AppLoading.toast("Successful");
-      AppEventBus.eventBus.fire(RefreshFriendsEvent());
-      Get.back();
+      AppLoading.toast("Successful").whenComplete(() {
+        AppEventBus.eventBus.fire(RefreshFriendsEvent());
+        Get.back();
+      });
+    } else {
+      AppLoading.toast("Failed");
     }
   }
 
@@ -142,6 +149,10 @@ class AddFileLogic extends GetxController {
   Future<void> updateFriend() async {
     log();
     if (id == null) {
+      return;
+    }
+    if (!isMatchName(nickName)) {
+      AppLoading.toast(LanKey.nameMatchHint.tr);
       return;
     }
     AppLoading.show();
@@ -163,9 +174,12 @@ class AddFileLogic extends GetxController {
           AppLoading.dismiss();
         });
     if (isSuccessful) {
-      AppLoading.toast("Successful");
-      AppEventBus.eventBus.fire(RefreshFriendsEvent());
-      Get.back();
+      AppLoading.toast("Successful").whenComplete(() {
+        AppEventBus.eventBus.fire(RefreshFriendsEvent());
+        Get.back();
+      });
+    } else {
+      AppLoading.toast("Failed");
     }
   }
 

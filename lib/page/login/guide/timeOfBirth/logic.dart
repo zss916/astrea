@@ -1,8 +1,8 @@
 part of 'index.dart';
 
 class TimeOfBirthLogic extends GetxController {
-  int birthHour = DateTime.now().hour;
-  int birthMinute = DateTime.now().minute;
+  int birthHour = 12;
+  int birthMinute = 0;
 
   int loginType = LoginType.loginAndRegister.index;
 

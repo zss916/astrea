@@ -24,7 +24,7 @@ class NotifySelectWidget extends StatelessWidget {
           ),
           CustomItemPicker(
             items: items,
-            initialIndex: 1,
+            initialIndex: 2,
             maxIndex: 2,
             minIndex: 0,
             backgroundColor: Colors.transparent,

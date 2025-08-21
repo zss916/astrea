@@ -5,6 +5,7 @@ import 'package:astrea/core/gallery/sheet_gallery.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_setting.dart';
 import 'package:astrea/core/storage/account_service.dart';
+import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/net/api/account.dart';
 import 'package:astrea/net/bean/account_entity.dart';
@@ -36,6 +37,7 @@ class AccountLogic extends GetxController {
   @override
   void onClose() {
     super.onClose();
+    AppLoading.dismiss();
     refreshUserEvent.cancel();
   }
 
@@ -45,8 +47,11 @@ class AccountLogic extends GetxController {
   }
 
   Future<void> loadData() async {
-    account = await AccountAPI.getAccount();
-    update();
+    AppLoading.show();
+    account = await AccountAPI.getAccount().whenComplete(() {
+      AppLoading.dismiss();
+      update();
+    });
   }
 
   void toPersonalData() {

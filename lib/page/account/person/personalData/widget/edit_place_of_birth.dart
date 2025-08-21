@@ -10,12 +10,19 @@ import 'package:get/get.dart';
 class EditPlaceOfBirth extends StatelessWidget {
   final String? showPlace;
   final Function(String, String, String) onChange;
-  const EditPlaceOfBirth({super.key, this.showPlace, required this.onChange});
+  final Function() onUnfocus;
+  const EditPlaceOfBirth({
+    super.key,
+    this.showPlace,
+    required this.onChange,
+    required this.onUnfocus,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        onUnfocus.call();
         showSelectPlaceSheet(
           onSelect: (String place, String latitude, String longitude) {
             String showPlace = place

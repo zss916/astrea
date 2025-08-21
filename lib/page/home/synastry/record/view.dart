@@ -36,30 +36,8 @@ class FileManagementPage extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  AddFriends(logic: logic),
-                  Expanded(
-                    child: ListView.separated(
-                      itemCount: logic.list.length,
-                      padding: EdgeInsetsDirectional.only(
-                        top: 16.h,
-                        bottom: 160.h,
-                        start: 16.w,
-                        end: 16.w,
-                      ),
-                      itemBuilder: (_, i) => RecordItem(
-                        index: i,
-                        item: logic.list[i],
-                        onDelete: () {
-                          logic.showDeleteDialog(i);
-                        },
-                        onTap: () {
-                          logic.tapItem(i);
-                        },
-                      ),
-                      separatorBuilder: (_, i) =>
-                          Divider(color: Colors.transparent, height: 16.h),
-                    ),
-                  ),
+                  /*if (logic.list.length < 11)*/ AddFriends(logic: logic),
+                  Expanded(child: buildBody(logic.viewState, logic)),
                 ],
               ),
               PositionedDirectional(
@@ -80,4 +58,33 @@ class FileManagementPage extends StatelessWidget {
       ),
     );
   }
+
+  Widget buildBody(int viewState, FileManagementLogic logic) {
+    return switch (viewState) {
+      _ when viewState == Status.data.index => buildList(logic),
+      _ => LoadingWidget(),
+    };
+  }
+
+  Widget buildList(FileManagementLogic logic) => ListView.separated(
+    itemCount: logic.list.length,
+    padding: EdgeInsetsDirectional.only(
+      top: 16.h,
+      bottom: 160.h,
+      start: 16.w,
+      end: 16.w,
+    ),
+    itemBuilder: (_, i) => RecordItem(
+      index: i,
+      item: logic.list[i],
+      onDelete: () {
+        logic.showDeleteDialog(i);
+      },
+      onTap: () {
+        logic.tapItem(i);
+      },
+    ),
+    separatorBuilder: (_, i) =>
+        Divider(color: Colors.transparent, height: 16.h),
+  );
 }

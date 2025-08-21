@@ -3,11 +3,15 @@ part of 'index.dart';
 class FileManagementLogic extends GetxController {
   List<FriendEntity> list = [];
 
+  final collection = FixedSizeCollection<FriendEntity>();
+
   late StreamSubscription<RefreshFriendsEvent> refreshEvent;
 
   bool isClick = false;
 
   CancelToken cancelToken = CancelToken();
+
+  int viewState = Status.init.index;
 
   @override
   void onInit() {
@@ -16,7 +20,7 @@ class FileManagementLogic extends GetxController {
     refreshEvent = AppEventBus.eventBus.on<RefreshFriendsEvent>().listen((
       event,
     ) {
-      loadData(cancelToken: cancelToken);
+      refreshData(cancelToken: cancelToken);
     });
   }
 
@@ -35,26 +39,67 @@ class FileManagementLogic extends GetxController {
 
   @override
   void onClose() {
+    super.onClose();
     refreshEvent.cancel();
     cancelToken.cancel();
-    super.onClose();
     AppLoading.dismiss();
   }
 
   ///加载朋友列表
   Future<void> loadData({CancelToken? cancelToken}) async {
-    AppLoading.show();
+    viewState = Status.init.index;
+    update();
+    // AppLoading.show();
     (bool, List<FriendEntity>) value =
         await FriendAPI.getFriends(cancelToken: cancelToken).whenComplete(() {
           AppLoading.dismiss();
         });
     if (value.$1) {
       list.clear();
-      list.addAll(value.$2);
+      List<FriendEntity> data = value.$2
+          .map((e) => e.isMe ? (e..isSelected = true) : e)
+          .toList();
+      list.addAll(data);
       AccountService.to.updateFriendList(list);
+      checkMatch();
+      viewState = Status.data.index;
       update();
+      // AppLoading.toast("Successful");
     } else {
-      AppLoading.toast("net error");
+      viewState = Status.data.index;
+      AppLoading.dismiss();
+      AppLoading.toast("Failed");
+    }
+  }
+
+  ///刷新数据
+  Future<void> refreshData({CancelToken? cancelToken}) async {
+    // AppLoading.show();
+    viewState = Status.init.index;
+    update();
+    List<int?> ids = list
+        .where((e) => e.isSelected == true)
+        .map((e) => e.id)
+        .toList();
+    (bool, List<FriendEntity>) value =
+        await FriendAPI.getFriends(cancelToken: cancelToken).whenComplete(() {
+          AppLoading.dismiss();
+        });
+    if (value.$1) {
+      List<FriendEntity> data = value.$2
+          .map((e) => ids.contains(e.id) ? (e..isSelected = true) : e)
+          .toList();
+      list.clear();
+      list.addAll(data);
+      AccountService.to.updateFriendList(list);
+      checkMatch();
+      viewState = Status.data.index;
+      update();
+      // AppLoading.toast("Successful");
+    } else {
+      viewState = Status.data.index;
+      AppLoading.dismiss();
+      AppLoading.toast("Failed");
     }
   }
 
@@ -71,11 +116,12 @@ class FileManagementLogic extends GetxController {
         });
     if (value) {
       list.removeAt(index);
+      checkMatch();
       AccountService.to.updateFriendList(list);
       update();
       onFinish.call();
     } else {
-      AppLoading.toast("delete failed");
+      AppLoading.toast("Failed");
     }
   }
 
@@ -102,8 +148,44 @@ class FileManagementLogic extends GetxController {
     );
   }
 
-  /// 点击
   void tapItem(int index) {
+    if (list[index].isSelected == true) {
+      collection.add(list[index]);
+    }
+
+    List<FriendEntity> matchList = list
+        .where((e) => (e.isSelected == true))
+        .toList();
+
+    if (matchList.length > 2) {
+      List<FriendEntity> data = list
+          .map((e) => (e..isSelected = collection.items.contains(e)))
+          .toList();
+      list.clear();
+      list.addAll(data);
+    }
+
+    /*List<FriendEntity> matchSelect = list
+        .where((e) => (e.isSelected == true))
+        .toList();
+
+    bool isMatch = matchSelect.length == 2;
+    isClick = isMatch;*/
+    checkMatch();
+    update();
+  }
+
+  void checkMatch() {
+    List<FriendEntity> matchSelect = list
+        .where((e) => (e.isSelected == true))
+        .toList();
+
+    bool isMatch = matchSelect.length == 2;
+    isClick = isMatch;
+  }
+
+  /// 点击
+  /*  void tapItem2(int index) {
     for (int i = 0; i < list.length; i++) {
       if (!(list[i].isMe)) {
         list[i].isSelected = i == index;
@@ -116,19 +198,24 @@ class FileManagementLogic extends GetxController {
     bool isMatch = (matchList.length == 2) && (matchList.any((e) => e.isMe));
     isClick = isMatch;
     update();
-  }
+  }*/
 
   ///获取分析报告
   void toDetermine() {
+    checkMatch();
     if (isClick) {
       showRelationshipSheet((value) {
         //debugPrint("showRelationshipSheet $value");
-        FriendEntity first = list
+        /*FriendEntity first = list
             .where((e) => e.isMe && e.isSelected == true)
             .first;
         FriendEntity second = list
             .where((e) => e.isSelected == true && !(e.isMe))
-            .first;
+            .first;*/
+        List<FriendEntity> data = collection.items;
+        FriendEntity first = data.first;
+        FriendEntity second = data.last;
+
         if (first.id != null && second.id != null && value.isNotEmpty) {
           PageTools.toStarReport(
             firstId: first.id ?? 0,

@@ -10,6 +10,15 @@ class StarReportPage extends StatelessWidget {
       builder: (logic) {
         return PopScope(
           canPop: false,
+          onPopInvokedWithResult: (bool didPop, _) {
+            if (!didPop) {
+              if (logic.viewState == Status.data.index) {
+                logic.toBack();
+              } else {
+                Get.back(closeOverlays: true);
+              }
+            }
+          },
           child: Scaffold(
             appBar: ComAppBar(
               leading: Container(
@@ -75,6 +84,7 @@ class StarReportPage extends StatelessWidget {
           userAvatar: logic.userAvatar ?? "",
           otherName: logic.friendName ?? "",
           otherAvatar: logic.friendAvatar ?? "",
+          relationship: logic.relationship ?? "",
         ),
         Stack(
           alignment: AlignmentDirectional.topCenter,
@@ -89,44 +99,131 @@ class StarReportPage extends StatelessWidget {
               width: double.maxFinite,
               child: Column(
                 children: [
-                  Text(
-                    LanKey.starChartDisplay.tr,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: const Color(0xFF323133),
-                      fontSize: 20.sp,
-                      fontFamily: AppFonts.textFontFamily,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  Image.asset(
-                    Assets.imageReportLine,
-                    width: 200,
-                    matchTextDirection: true,
-                  ),
                   Container(
-                    // color: Colors.cyan,
                     margin: EdgeInsetsDirectional.only(
-                      top: 32.h,
-                      start: 4.w,
-                      end: 4.w,
+                      start: 0.w,
+                      end: 0.w,
+                      top: 16.h,
+                      bottom: 0.h,
                     ),
-                    child: ScoresWidget(
-                      title1: logic.title1 ?? "",
-                      title2: logic.title2 ?? "",
-                      title3: logic.title3 ?? "",
-                      value1: logic.value1 ?? 0,
-                      value2: logic.value2 ?? 0,
-                      value3: logic.value3 ?? 0,
+                    width: double.maxFinite,
+                    child: IntrinsicHeight(
+                      child: Row(
+                        children: [
+                          CircularPercentWidget(
+                            title: logic.title1 ?? "",
+                            value: (logic.value1 ?? 0).toInt(),
+                            style: TextStyle(
+                              color: const Color(0xFF323133),
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w800,
+                              fontFamily: AppFonts.subTitleFontFamily,
+                            ),
+                          ),
+
+                          Expanded(child: StarSpacer()),
+
+                          CircularPercentWidget(
+                            title: logic.title2 ?? "",
+                            value: (logic.value2 ?? 0).toInt(),
+                            style: TextStyle(
+                              color: const Color(0xFF323133),
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w800,
+                              fontFamily: AppFonts.subTitleFontFamily,
+                            ),
+                          ),
+
+                          Expanded(child: StarSpacer()),
+
+                          CircularPercentWidget(
+                            title: logic.title3 ?? "",
+                            value: (logic.value3 ?? 0).toInt(),
+                            style: TextStyle(
+                              color: const Color(0xFF323133),
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w800,
+                              fontFamily: AppFonts.subTitleFontFamily,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
+
                   if (logic.meanings.isNotEmpty)
                     ReportTableWidget(
                       oneself: logic.userName ?? '',
                       otherSide: logic.friendName ?? "",
                       data: logic.meanings,
                     ),
-                  BlurWidget(
+
+                  Container(
+                    margin: EdgeInsetsDirectional.only(top: 15.h),
+                    width: double.maxFinite,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            LanKey.holisticAnalysis.tr,
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              color: AppColor.textTitleColor,
+                              fontSize: 24.sp,
+                              fontFamily: AppFonts.titleFontFamily,
+                            ),
+                          ),
+                        ),
+
+                        Image.asset(
+                          Assets.imageHolisticAnalysisIcon,
+                          width: 72,
+                          height: 72,
+                          matchTextDirection: true,
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  ContentWidget(
+                    title: LanKey.keyContent.tr,
+                    content: logic.summary,
+                  ),
+
+                  ContentWidget(
+                    title: LanKey.threeMonthTrend.tr,
+                    content: logic.trend3Months,
+                  ),
+
+                  ContentWidget(
+                    title: LanKey.dailyAdvice.tr,
+                    content: logic.dailyAdvice,
+                  ),
+
+                  ContentWidget(
+                    title: LanKey.holisticAnalysis.tr,
+                    content: logic.analysis,
+                  ),
+
+                  /*ReadMore(
+                    'Your long text here...',
+                    style: TextStyle(fontSize: 16, color: Colors.black),
+                    minLines: 3,
+                    readMoreText: 'Read more',
+                    readLessText: 'Read less',
+                    readMoreStyle: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    readMoreIconVisible: true,
+                    readMoreIcon: Icons.keyboard_arrow_down,
+                    readLessIcon: Icons.keyboard_arrow_up,
+                    iconSize: 20,
+                    alignCenter: false,
+                  ),*/
+
+                  ///todo
+                  /*BlurWidget(
                     isBlur: false,
                     sigma: 6,
                     radius: 3,
@@ -160,8 +257,8 @@ class StarReportPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
-                  BlurWidget(
+                  ),*/
+                  /*BlurWidget(
                     isBlur: false,
                     sigma: 6,
                     radius: 3,
@@ -173,49 +270,6 @@ class StarReportPage extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          /*AutoHyphenatingText(
-                            logic.analysis,
-                            hyphenationCharacter: "-",
-                            textAlign: TextAlign.start,
-                            // maxLines: 3,
-                            // overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 14.sp,
-                              height: 1.62.h,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: AppFonts.textFontFamily,
-                            ),
-                          ),*/
-
-                          /* Text(
-                            logic.analysis,
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 14.sp,
-                              height: 1.62.h,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: AppFonts.textFontFamily,
-                            ),
-                          ),*/
-
-                          /*ReadMore(
-                            'Your long text here...',
-                            style: TextStyle(fontSize: 16, color: Colors.black),
-                            minLines: 3,
-                            readMoreText: 'Read more',
-                            readLessText: 'Read less',
-                            readMoreStyle: TextStyle(
-                              color: Colors.blue,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            readMoreIconVisible: true,
-                            readMoreIcon: Icons.keyboard_arrow_down,
-                            readLessIcon: Icons.keyboard_arrow_up,
-                            iconSize: 20,
-                            alignCenter: false,
-                          ),*/
                           Text(
                             logic.analysis,
                             textAlign: TextAlign.start,
@@ -254,7 +308,7 @@ class StarReportPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                  ),
+                  ),*/
                   Image.asset(
                     Assets.imageReportBottomLine,
                     matchTextDirection: true,
@@ -262,7 +316,7 @@ class StarReportPage extends StatelessWidget {
                 ],
               ),
             ),
-            PositionedDirectional(
+            /*     PositionedDirectional(
               end: 16,
               bottom: 100.h,
               child: Image.asset(
@@ -271,7 +325,7 @@ class StarReportPage extends StatelessWidget {
                 height: 46,
                 matchTextDirection: true,
               ),
-            ),
+            ),*/
           ],
         ),
         Divider(height: 120.h, color: Colors.transparent),

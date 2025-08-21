@@ -1,6 +1,7 @@
 import 'package:astrea/components/common_app_bar.dart';
 import 'package:astrea/components/step_indicator.dart';
 import 'package:astrea/core/enum/app_enum.dart';
+import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';

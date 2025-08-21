@@ -21,19 +21,19 @@ class AppLoading {
       ..maskType = EasyLoadingMaskType.custom;
   }
 
-  static void show(
-      {String? text, bool dismissOnTap = true, int milliseconds = 2000}) {
+  static void show({
+    String? text,
+    bool dismissOnTap = true,
+    int milliseconds = 2000,
+  }) {
     EasyLoading.instance.userInteractions = false;
     EasyLoading.instance.dismissOnTap = dismissOnTap;
     EasyLoading.instance.displayDuration = Duration(milliseconds: milliseconds);
     EasyLoading.show(status: text);
   }
 
-  static void toast(
-    String text, {
-    Duration? duration,
-  }) {
-    EasyLoading.showToast(text);
+  static Future<void> toast(String text, {Duration? duration}) {
+    return EasyLoading.showToast(text);
   }
 
   static void dismiss() {

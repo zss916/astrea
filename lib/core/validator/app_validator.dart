@@ -31,7 +31,7 @@ mixin AppValidatorMixin {
   bool isMatchName(String? value) {
     if (value == null || value.isEmpty) return false;
     final regex = RegExp(r'^[a-zA-Z0-9_]{1,16}$');
-    if (regex.hasMatch(value.trim())) return true;
+    if (regex.hasMatch(value)) return true;
     return false;
   }
 }

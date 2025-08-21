@@ -51,86 +51,91 @@ class _InputLoginState extends State<InputLogin> with AppValidatorMixin {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: Get.width,
-      height: double.maxFinite,
-      child: Stack(
-        alignment: AlignmentDirectional.topCenter,
-        children: [
-          SizedBox(
-            width: Get.width,
-            height: double.maxFinite,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    margin: EdgeInsetsDirectional.only(
-                      start: 20.w,
-                      end: 20.w,
-                      top: 80.h,
-                      bottom: 24.h,
-                    ),
-                    width: double.maxFinite,
-                    child: Text(
-                      LanKey.emailTitle.tr,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: AppColor.textTitleColor,
-                        fontSize: 28.sp,
-                        fontFamily: AppFonts.subTitleFontFamily,
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: SizedBox(
+        width: Get.width,
+        height: double.maxFinite,
+        child: Stack(
+          alignment: AlignmentDirectional.topCenter,
+          children: [
+            SizedBox(
+              width: Get.width,
+              height: double.maxFinite,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsetsDirectional.only(
+                        start: 20.w,
+                        end: 20.w,
+                        top: 80.h,
+                        bottom: 24.h,
+                      ),
+                      width: double.maxFinite,
+                      child: Text(
+                        LanKey.emailTitle.tr,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: AppColor.textTitleColor,
+                          fontSize: 28.sp,
+                          fontFamily: AppFonts.subTitleFontFamily,
+                        ),
                       ),
                     ),
-                  ),
-                  InputEmail(
-                    email: email,
-                    type: widget.logic.loginType,
-                    isShowError: widget.logic.isEmailError,
-                    onNext: (value) {
-                      setState(() {
-                        email = value;
-                        // isEditEmail = EmailValidator.validate(email);
-                        isEditEmail = value.trim().isNotEmpty;
-                      });
-                    },
-                  ),
-                  InputPassword(
-                    pwd: pwd,
-                    type: widget.logic.loginType,
-                    isShowError: widget.logic.isPsdError,
-                    onNext: (value) {
-                      setState(() {
-                        pwd = value;
-                        //isPsdEmail = isPwd(value);
-                        isPsdEmail = value.trim().isNotEmpty;
-                      });
-                    },
-                  ),
-                ],
+                    InputEmail(
+                      email: email,
+                      type: widget.logic.loginType,
+                      isShowError: widget.logic.isEmailError,
+                      onNext: (value) {
+                        setState(() {
+                          email = value;
+                          // isEditEmail = EmailValidator.validate(email);
+                          isEditEmail = value.trim().isNotEmpty;
+                        });
+                      },
+                    ),
+                    InputPassword(
+                      pwd: pwd,
+                      type: widget.logic.loginType,
+                      isShowError: widget.logic.isPsdError,
+                      onNext: (value) {
+                        setState(() {
+                          pwd = value;
+                          //isPsdEmail = isPwd(value);
+                          isPsdEmail = value.trim().isNotEmpty;
+                        });
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          PositionedDirectional(
-            bottom: 0,
-            start: 0,
-            end: 0,
-            child: CommonBtn(
-              isClickable: (isEditEmail && isPsdEmail),
-              margin: EdgeInsetsDirectional.only(
-                start: 20.w,
-                end: 20.w,
-                top: 10.h,
-                bottom: bottomPadding,
+            PositionedDirectional(
+              bottom: 0,
+              start: 0,
+              end: 0,
+              child: CommonBtn(
+                isClickable: (isEditEmail && isPsdEmail),
+                margin: EdgeInsetsDirectional.only(
+                  start: 20.w,
+                  end: 20.w,
+                  top: 10.h,
+                  bottom: bottomPadding,
+                ),
+                title: LanKey.submit.tr,
+                onTap: () {
+                  if (isEditEmail && isPsdEmail) {
+                    widget.logic.toAuthEmail(email: email, pwd: pwd);
+                    setState(() {});
+                  }
+                },
               ),
-              title: LanKey.submit.tr,
-              onTap: () {
-                if (isEditEmail && isPsdEmail) {
-                  widget.logic.toAuthEmail(email: email, pwd: pwd);
-                  setState(() {});
-                }
-              },
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

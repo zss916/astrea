@@ -112,10 +112,10 @@ abstract class SynastryAPI {
         } else {
           debugPrint("Analysis next");
           await Future.delayed(Duration(seconds: 2));
-          if (attempt >= maxRetries) {
+          /* if (attempt >= maxRetries) {
             debugPrint("Analysis maxRetries:$attempt");
             return (false, null); // 达到最大重试次数时返回false和最新报告
-          }
+          }*/
         }
       } while (isLoop);
       // 理论上不会执行到这里，因为所有路径都已返回

@@ -105,7 +105,7 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
                 focusedBorder: InputBorder.none,
               ),
               onChanged: (value) {
-                widget.onChange.call(value);
+                widget.onChange.call(value.trimRight());
               },
             ),
           ),

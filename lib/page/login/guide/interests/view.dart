@@ -49,9 +49,9 @@ class InterestsPage extends StatelessWidget {
               height: double.maxFinite,
               child: SelectInterestWidget(
                 onNext: (index) {
-                  AccountService.to.updateLoginStep(
+                  /*AccountService.to.updateLoginStep(
                     step: LoginStep.stepFinish.value,
-                  );
+                  );*/
 
                   int type = Get.arguments as int;
                   if (type == LoginType.loginAndRegister.index) {

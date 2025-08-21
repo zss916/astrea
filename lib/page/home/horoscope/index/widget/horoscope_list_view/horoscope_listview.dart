@@ -13,6 +13,7 @@ class HoroscopeListview extends StatelessWidget {
   final Function(int)? onSelect;
   final Function? onAdd;
   final Function? onOneself;
+  final Function(int index)? onFriends;
   final Function? onSynastry;
   final HoroscopeLogic logic;
   const HoroscopeListview({
@@ -22,6 +23,7 @@ class HoroscopeListview extends StatelessWidget {
     this.onAdd,
     this.onOneself,
     this.onSynastry,
+    this.onFriends,
   });
 
   List<String> get list => [
@@ -118,14 +120,7 @@ class HoroscopeListview extends StatelessWidget {
                       child: InkWell(
                         borderRadius: BorderRadius.circular(5),
                         onTap: () {
-                          int? reportId = logic.friends[i].id;
-                          if (reportId != null) {
-                            logic.changeReport(
-                              id: logic.friends[i].id.toString(),
-                              index: i,
-                              isOneself: false,
-                            );
-                          }
+                          onFriends?.call(i);
                         },
                         child: Container(
                           margin: EdgeInsetsDirectional.only(start: 0),

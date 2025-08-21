@@ -44,7 +44,7 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
 
   void _valid() {
     setState(() {
-      String text = textEditCtrl.text.trim();
+      String text = textEditCtrl.text.trimRight();
       isError = !isValidate(text);
     });
   }
@@ -132,13 +132,13 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
                     : null,
               ),
               onChanged: (value) {
-                if (value.trim().isEmpty) {
+                if (value.trimRight().isEmpty) {
                   setState(() {
                     isError = false;
                   });
                 } else {
                   setState(() {
-                    isError = !isValidate(value);
+                    isError = !isValidate(value.trimRight());
                   });
                 }
 
@@ -185,10 +185,10 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
             ),
             title: LanKey.next.tr,
             onTap: () {
-              if (isEdit && textEditCtrl.text.isNotEmpty) {
+              if (isEdit && textEditCtrl.text.trimRight().isNotEmpty) {
                 focusNode.unfocus();
-                if (isValidate(textEditCtrl.text)) {
-                  widget.onNext.call(textEditCtrl.text.trim());
+                if (isValidate(textEditCtrl.text.trimRight())) {
+                  widget.onNext.call(textEditCtrl.text.trimRight());
                 }
               }
             },

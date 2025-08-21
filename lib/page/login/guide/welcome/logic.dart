@@ -10,6 +10,10 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
     if (Get.arguments != null && Get.arguments is int) {
       loginType = Get.arguments as int;
     }
+
+    if (loginType == LoginType.loginAndRegister.index) {
+      AccountService.to.updateCurrentRoute(route: APages.welcome);
+    }
   }
 
   @override

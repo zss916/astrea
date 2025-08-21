@@ -68,6 +68,7 @@ class Assets {
   static const String imageConstellation = 'assets/image/constellation.png';
   static const String imageCopy = 'assets/image/copy.png';
   static const String imageDefaultAvatar = 'assets/image/default_avatar.png';
+  static const String imageDownArrow = 'assets/image/down_arrow.png';
   static const String imageEditIcon = 'assets/image/edit_icon.png';
   static const String imageEmail = 'assets/image/email.png';
   static const String imageEndArrow = 'assets/image/end_arrow.png';
@@ -90,6 +91,8 @@ class Assets {
   static const String imageGemini = 'assets/image/gemini.png';
   static const String imageGoogle = 'assets/image/google.png';
   static const String imageGuideIcon = 'assets/image/guide_icon.png';
+  static const String imageHolisticAnalysisIcon =
+      'assets/image/holistic_analysis_icon.png';
   static const String imageHomeAvatar = 'assets/image/home_avatar.png';
   static const String imageHomeLoading = 'assets/image/home_loading.png';
   static const String imageHomeTarotBg = 'assets/image/home_tarot_bg.png';

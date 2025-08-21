@@ -186,6 +186,19 @@ class _HoroscopeViewState extends State<HoroscopeView>
       });
       logic.changeReport(isOneself: true);
     },
+    onFriends: (i) {
+      setState(() {
+        isShowOneself = true;
+      });
+      int? reportId = logic.friends[i].id;
+      if (reportId != null) {
+        logic.changeReport(
+          id: logic.friends[i].id.toString(),
+          index: i,
+          isOneself: false,
+        );
+      }
+    },
     onSelect: (i) {
       setState(() {
         isShowOneself = false;

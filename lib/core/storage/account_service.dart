@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:astrea/core/enum/app_enum.dart';
+import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/storage/storage.dart';
 import 'package:astrea/core/utils/calculate.dart';
@@ -54,13 +54,25 @@ class AccountService extends GetxService {
   String get friendId => data?.friendId ?? "";
 
   ///获取登录渠道
-  int? get loginStep => data?.loginStep;
+  //int? get loginStep => data?.loginStep;
+
+  ///当前路由
+  String? get currentRouter => data?.currentRouter;
 
   ///是否新用户
   bool get isNewUser => (data?.isNewUser ?? 1) == 1;
 
   ///是否完成资料的录入
-  bool get isFinishRecord => (loginStep == LoginStep.stepFinish.value);
+  // bool get isFinishRecord => (loginStep == LoginStep.stepFinish.value);
+
+  ///通知
+  bool get switchNotification => data?.switchNotification ?? false;
+
+  ///设置通知
+  void setNotify(bool? switchNotification) {
+    data?.switchNotification = switchNotification;
+    save(data!);
+  }
 
   ///保存用户信息
   void updateLocalUserInfo({
@@ -103,9 +115,48 @@ class AccountService extends GetxService {
   /*bool getResult() => StorageService.to.getBool("horoscope_result");
 */
   ///保存用户登录步骤
-  void updateLoginStep({int? step}) {
+  /*  void updateLoginStep({int? step}) {
     if (step != null) {
       data?.loginStep = step;
+    }
+    save(data!);
+  }*/
+
+  void setCurrentRoute({String? route}) {
+    switch (route) {
+      case APages.guide:
+        updateCurrentRoute(route: route);
+        break;
+      case APages.dateOfBirth:
+        updateCurrentRoute(route: route);
+        break;
+      case APages.timeOfBirth:
+      case APages.timeOfBirthTipDialog:
+        updateCurrentRoute(route: APages.timeOfBirth);
+        break;
+      case APages.placeOfBirth:
+        updateCurrentRoute(route: route);
+        break;
+      case APages.gender:
+        updateCurrentRoute(route: route);
+        break;
+      case APages.editName:
+        updateCurrentRoute(route: route);
+        break;
+      case APages.interests:
+        updateCurrentRoute(route: route);
+        break;
+      case APages.welcome:
+        // updateCurrentRoute(route: APages.welcome);
+        break;
+    }
+  }
+
+  ///保存当前路由
+  void updateCurrentRoute({String? route}) {
+    debugPrint("updateCurrentRoute ==>$route");
+    if (route != null) {
+      data?.currentRouter = route;
     }
     save(data!);
   }
@@ -159,7 +210,8 @@ class AccountService extends GetxService {
       return (data?.birthHour ?? 0, data?.birthMinute ?? 0);
     } else {
       DateTime date = DateTime.now();
-      return (date.hour, date.minute);
+      //return (date.hour, date.minute);
+      return (12, 0);
     }
   }
 
@@ -338,6 +390,7 @@ class AccountService extends GetxService {
 
   ///注销
   Future<void> logout() async {
+    //updateCurrentRoute(route: null);
     clear();
     data = AccountEntity();
     PageTools.offAllNamedLogin();

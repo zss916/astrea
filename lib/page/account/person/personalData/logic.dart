@@ -42,9 +42,12 @@ class PersonalDataLogic extends GetxController with AppValidatorMixin {
   }
 
   Future<void> loadAccount() async {
-    account = await AccountAPI.getAccount();
-    initDateTime = account?.getAwesomeDateTime();
-    update();
+    AppLoading.show();
+    account = await AccountAPI.getAccount().whenComplete(() {
+      AppLoading.dismiss();
+      initDateTime = account?.getAwesomeDateTime();
+      update();
+    });
   }
 
   Future<void> updateData() async {

@@ -182,12 +182,12 @@ abstract class FriendAPI {
         map["interests"] = interests;
       }
 
-      await Http.instance.put(
+      var result = await Http.instance.put(
         ApiPath.putFriend,
         cancelToken: cancelToken,
         data: map,
       );
-      return true;
+      return result["code"] == 0;
     } catch (error) {
       return false;
     }

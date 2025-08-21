@@ -6,10 +6,12 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 class CircularPercentWidget extends StatelessWidget {
   final int value;
   final String title;
+  final TextStyle? style;
   const CircularPercentWidget({
     super.key,
     required this.value,
     required this.title,
+    this.style,
   });
 
   @override
@@ -38,11 +40,13 @@ class CircularPercentWidget extends StatelessWidget {
           child: Text(
             title,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              color: const Color(0xFF323133),
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w800,
-            ),
+            style:
+                style ??
+                TextStyle(
+                  color: const Color(0xFF323133),
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w800,
+                ),
           ),
         ),
       ],

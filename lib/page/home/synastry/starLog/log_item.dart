@@ -40,14 +40,19 @@ class LogItem extends StatelessWidget {
                 width: 58,
                 height: 58,
               ),
-              Text(
-                item.firstFriendInfo?.nickName ?? "",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: const Color(0xFF323133),
-                  fontSize: 16.sp,
-                  fontFamily: AppFonts.textFontFamily,
-                  fontWeight: FontWeight.w400,
+              SizedBox(
+                width: 60,
+                child: Text(
+                  item.firstFriendInfo?.nickName ?? "",
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: const Color(0xFF323133),
+                    fontSize: 16.sp,
+                    fontFamily: AppFonts.textFontFamily,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             ],
@@ -105,14 +110,19 @@ class LogItem extends StatelessWidget {
                 width: 58,
                 height: 58,
               ),
-              Text(
-                item.secondFriendInfo?.nickName ?? "",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: const Color(0xFF323133),
-                  fontSize: 16.sp,
-                  fontFamily: AppFonts.textFontFamily,
-                  fontWeight: FontWeight.w400,
+              SizedBox(
+                width: 60,
+                child: Text(
+                  item.secondFriendInfo?.nickName ?? "",
+                  maxLines: 1,
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: const Color(0xFF323133),
+                    fontSize: 16.sp,
+                    fontFamily: AppFonts.textFontFamily,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             ],

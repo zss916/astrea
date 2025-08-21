@@ -352,10 +352,18 @@ class LanKey {
   static const me = "me";
   static const delete = "delete";
   static const emailSubtitle = "emailSubtitle";
+  static const holisticAnalysis = "holistic_analysis";
+  static const keyContent = "keyContent";
+  static const threeMonthTrend = "threeMonthTrend";
+  static const dailyAdvice = "dailyAdvice";
 }
 
 ///英语文案
 const en = {
+  "dailyAdvice": "Daily Advice",
+  "threeMonthTrend": "Three-month Trend",
+  "keyContent": "Key Content",
+  "holistic_analysis": "Holistic Analysis",
   "holistic": "Holistic",
   "colleagues": "Colleague",
   "customers": "Client",
@@ -730,7 +738,7 @@ const en = {
   "accountAlreadyExistsTip":
       "This account already exists. Do you want to update your information and log in?",
   "doNotKnowTime":
-      "Don't know your birth time? We'll use 12:00 PM (noon) to calculate.",
+      "Don't know your birth time? We'll use 12:00 AM to calculate.",
   "doNotKnowTimeContent":
       "Note: Approximate times may affect rising sign and house interpretations. You can update this anytime in Settings → Profile with one click.",
   "natalChartInterpretation": "Natal Chart Interpretation",

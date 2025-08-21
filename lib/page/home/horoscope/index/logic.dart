@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:astrea/core/bus/app_event_bus.dart';
 import 'package:astrea/core/enum/view_state.dart';
 import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/net/bean/friend_entity.dart';
@@ -25,10 +26,21 @@ class HoroscopeLogic extends GetxController
   int viewState = HomeViewState.loading.index;
   bool isOneself = true;
 
+  late StreamSubscription<RefreshUserEvent> refreshUserEvent2;
+
   @override
   void onInit() {
     super.onInit();
     initLocal();
+    refreshUserEvent2 = AppEventBus.eventBus.on<RefreshUserEvent>().listen((_) {
+      changeReport(isOneself: true);
+    });
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    refreshUserEvent2.cancel();
   }
 
   @override

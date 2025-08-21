@@ -162,6 +162,7 @@ class _RecordItemState extends State<RecordItem> {
                       if (widget.item.isMe) {
                         PageTools.toPersonalData();
                       } else {
+                        // debugPrint("item ==> ${widget.item}");
                         PageTools.toAddFile(
                           isEditFile: true,
                           data: widget.item,

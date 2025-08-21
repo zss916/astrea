@@ -46,9 +46,16 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
   }
 
   /// 初始化数据
-  (int, int) initValue = ((DateTime.now().hour), (DateTime.now().minute));
+  (int, int) initValue = (12, 0);
+
+  bool isToday = false;
 
   initData() {
+    final (int y, int m, int d) = AccountService.to.getUserBirth();
+    isToday =
+        (y == DateTime.now().year) &&
+        (m == DateTime.now().month) &&
+        (d == DateTime.now().day);
     initValue = AccountService.to.getUserBirthHAndM();
   }
 
@@ -152,7 +159,7 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
                       RotationTransition(
                         turns: (_animation),
                         child: TransformRotateWidget(
-                          angle: (pi / 12) * 6,
+                          angle: (pi / 12) * 2,
                           child: Image.asset(
                             Assets.timeSmall132,
                             matchTextDirection: true,
@@ -181,7 +188,7 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
             ),
           ],
         ),
-        Container(
+         Container(
           margin: EdgeInsetsDirectional.only(top: 164),
           decoration: BoxDecoration(color: AppColor.pageBackground),
           width: double.maxFinite,
@@ -212,6 +219,12 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
                 timeFormat: AwesomeTimeFormat.Hm,
                 backgroundColor: Colors.transparent,
                 itemWidth: 100,
+                maxTime: isToday
+                    ? AwesomeTime(
+                        hour: DateTime.now().hour,
+                        minute: DateTime.now().minute,
+                      )
+                    : AwesomeTime(hour: 23, minute: 59),
                 initialTime: AwesomeTime(
                   hour: initValue.$1,
                   minute: initValue.$2,

@@ -71,6 +71,18 @@ AccountEntity $AccountEntityFromJson(Map<String, dynamic> json) {
   if (loginStep != null) {
     accountEntity.loginStep = loginStep;
   }
+  final String? currentRouter = jsonConvert.convert<String>(
+    json['currentRouter'],
+  );
+  if (currentRouter != null) {
+    accountEntity.currentRouter = currentRouter;
+  }
+  final bool? switchNotification = jsonConvert.convert<bool>(
+    json['switchNotification'],
+  );
+  if (switchNotification != null) {
+    accountEntity.switchNotification = switchNotification;
+  }
   final int? birthHour = jsonConvert.convert<int>(json['birth_hour']);
   if (birthHour != null) {
     accountEntity.birthHour = birthHour;
@@ -122,6 +134,8 @@ Map<String, dynamic> $AccountEntityToJson(AccountEntity entity) {
   data['loginChannel'] = entity.loginChannel;
   data['loginEmail'] = entity.loginEmail;
   data['loginStep'] = entity.loginStep;
+  data['currentRouter'] = entity.currentRouter;
+  data['switchNotification'] = entity.switchNotification;
   data['birth_hour'] = entity.birthHour;
   data['birth_minute'] = entity.birthMinute;
   data['locality'] = entity.locality;
@@ -150,6 +164,8 @@ extension AccountEntityExtension on AccountEntity {
     int? loginChannel,
     String? loginEmail,
     int? loginStep,
+    String? currentRouter,
+    bool? switchNotification,
     int? birthHour,
     int? birthMinute,
     String? locality,
@@ -175,6 +191,8 @@ extension AccountEntityExtension on AccountEntity {
       ..loginChannel = loginChannel ?? this.loginChannel
       ..loginEmail = loginEmail ?? this.loginEmail
       ..loginStep = loginStep ?? this.loginStep
+      ..currentRouter = currentRouter ?? this.currentRouter
+      ..switchNotification = switchNotification ?? this.switchNotification
       ..birthHour = birthHour ?? this.birthHour
       ..birthMinute = birthMinute ?? this.birthMinute
       ..locality = locality ?? this.locality

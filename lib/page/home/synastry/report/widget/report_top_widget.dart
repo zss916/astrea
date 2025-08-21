@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/page/home/synastry/report/widget/report_avatar.dart';
 import 'package:flutter/material.dart';
@@ -8,12 +10,14 @@ class ReportTopWidget extends StatelessWidget {
   final String otherName;
   final String userAvatar;
   final String otherAvatar;
+  final String relationship;
   const ReportTopWidget({
     super.key,
     required this.userName,
     required this.userAvatar,
     required this.otherName,
     required this.otherAvatar,
+    required this.relationship,
   });
 
   @override
@@ -22,46 +26,90 @@ class ReportTopWidget extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          margin: EdgeInsetsDirectional.only(
-            top: 30.h,
-            start: 10,
-            end: 10,
-            bottom: 8.h,
-          ),
-          width: 220,
-          height: 132,
-          child: Stack(
-            alignment: AlignmentDirectional.center,
-            children: [
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+              //color: Colors.blue,
+              padding: EdgeInsetsDirectional.only(top: 30.h),
+              margin: EdgeInsetsDirectional.only(
+                top: 0.h,
+                start: 10,
+                end: 10,
+                bottom: 8.h,
+              ),
+              width: 220 + 60,
+              height: 132 + 0,
+              child: Stack(
+                alignment: AlignmentDirectional.center,
+                children: [
+                  PositionedDirectional(
+                    start: 30,
+                    child: ReportAvatar(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(userAvatar),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  PositionedDirectional(
+                    end: 30,
+                    child: ReportAvatar(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(otherAvatar),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            if (relationship.isNotEmpty)
               PositionedDirectional(
-                start: 0,
-                child: ReportAvatar(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(userAvatar),
-                        fit: BoxFit.cover,
+                top: 12,
+                start: 110 + 67,
+                child: Transform.rotate(
+                  angle: -(pi / 14) * 1,
+                  child: UnconstrainedBox(
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: EdgeInsetsDirectional.symmetric(
+                        horizontal: 8.w,
+                        vertical: 3,
+                      ),
+                      decoration: ShapeDecoration(
+                        color: const Color(0xFF585FC4),
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                            width: 3,
+                            strokeAlign: BorderSide.strokeAlignCenter,
+                            color: const Color(0xFFF0F1F5),
+                          ),
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                      ),
+                      child: Text(
+                        relationship,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: const Color(0xFFF0F1F5),
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-              PositionedDirectional(
-                end: 0,
-                child: ReportAvatar(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(otherAvatar),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          ],
         ),
         Container(
           margin: EdgeInsetsDirectional.only(start: 16, end: 16, bottom: 20.h),

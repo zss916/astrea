@@ -14,9 +14,11 @@ class SelectBirth extends StatefulWidget {
   final String birth;
   final AwesomeDateTime? initialDateTime;
   final Function(String, int, int) onNext;
+  final Function() onUnfocus;
   const SelectBirth({
     super.key,
     this.initialDateTime,
+    required this.onUnfocus,
     required this.birth,
     required this.onNext,
   });
@@ -53,6 +55,7 @@ class _SelectBirthState extends State<SelectBirth> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        widget.onUnfocus.call();
         showDatePickerSheet(widget.initialDateTime, (
           value,
           dateBirth,
@@ -70,12 +73,12 @@ class _SelectBirthState extends State<SelectBirth> {
                 LocaleType.en,
               )[(DateTime.now().month - 1)];
               birth =
-                  "$m ${DateTime.now().day},${DateTime.now().year} ${DateTime.now().hour}:${DateTime.now().minute} ${AwesomeTimeUtils.getAmPm(DateTime.now().hour)}";
+                  "$m ${15},${DateTime.now().year - 25} ${DateTime.now().hour}:${DateTime.now().minute} ${AwesomeTimeUtils.getAmPm(DateTime.now().hour)}";
             });
             String dateBirth = sprintf("%s-%s-%s", [
-              DateTime.now().year,
+              DateTime.now().year - 25,
               DateTime.now().month.formatted,
-              DateTime.now().day.formatted,
+              15,
             ]);
             widget.onNext(
               dateBirth,

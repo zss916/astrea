@@ -1,4 +1,3 @@
-import 'package:astrea/core/enum/app_enum.dart';
 import 'package:astrea/core/enum/view_state.dart';
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/storage/account_service.dart';
@@ -18,11 +17,48 @@ class PageTools {
   );
 
   static toGuide({required int loginType}) {
-    AccountService.to.updateLoginStep(step: LoginStep.step0.value);
+    // AccountService.to.updateLoginStep(step: LoginStep.step0.value);
     Get.toNamed(APages.guide, arguments: loginType);
   }
 
   static toStep({required int loginType}) {
+    //debugPrint("currentRouter ==>${AccountService.to.data}");
+    String? currentRouter = AccountService.to.currentRouter;
+    debugPrint("currentRouter ==>$currentRouter");
+    if (currentRouter == null) {
+      toGuide(loginType: loginType);
+    } else {
+      switch (currentRouter) {
+        case APages.guide:
+          toGuide(loginType: loginType);
+          break;
+        case APages.dateOfBirth:
+          toDateOfBirth(loginType: loginType);
+          break;
+        case APages.timeOfBirth:
+        case APages.timeOfBirthTipDialog:
+          toTimeOfBirth(loginType: loginType);
+          break;
+        case APages.placeOfBirth:
+          toPlaceOfBirth(loginType: loginType);
+          break;
+        case APages.gender:
+          toGender(loginType: loginType);
+          break;
+        case APages.editName:
+          toEditUserName(loginType: loginType);
+          break;
+        case APages.interests:
+          toInterests(loginType: loginType);
+          break;
+        case APages.welcome:
+          toWelcome(loginType: loginType);
+          break;
+      }
+    }
+  }
+
+  /*static toStep2({required int loginType}) {
     if (AccountService.to.loginStep == null) {
       toGuide(loginType: loginType);
     } else {
@@ -55,35 +91,35 @@ class PageTools {
           break;
       }
     }
-  }
+  }*/
 
   static toDateOfBirth({required int loginType}) {
-    AccountService.to.updateLoginStep(step: LoginStep.step1.value);
+    // AccountService.to.updateLoginStep(step: LoginStep.step1.value);
     Get.toNamed(APages.dateOfBirth, arguments: loginType);
   }
 
   static toTimeOfBirth({required int loginType}) {
-    AccountService.to.updateLoginStep(step: LoginStep.step2.value);
+    // AccountService.to.updateLoginStep(step: LoginStep.step2.value);
     Get.toNamed(APages.timeOfBirth, arguments: loginType);
   }
 
   static toPlaceOfBirth({required int loginType}) {
-    AccountService.to.updateLoginStep(step: LoginStep.step3.value);
+    // AccountService.to.updateLoginStep(step: LoginStep.step3.value);
     Get.toNamed(APages.placeOfBirth, arguments: loginType);
   }
 
   static toGender({required int loginType}) {
-    AccountService.to.updateLoginStep(step: LoginStep.step4.value);
+    // AccountService.to.updateLoginStep(step: LoginStep.step4.value);
     Get.toNamed(APages.gender, arguments: loginType);
   }
 
   static toEditUserName({required int loginType}) {
-    AccountService.to.updateLoginStep(step: LoginStep.step5.value);
+    // AccountService.to.updateLoginStep(step: LoginStep.step5.value);
     Get.toNamed(APages.editName, arguments: loginType);
   }
 
   static toInterests({required int loginType}) {
-    AccountService.to.updateLoginStep(step: LoginStep.step6.value);
+    // AccountService.to.updateLoginStep(step: LoginStep.step6.value);
     Get.toNamed(APages.interests, arguments: loginType);
   }
 
@@ -280,7 +316,7 @@ class PageTools {
   }
 
   static offAndNamedGuide() {
-    AccountService.to.updateLoginStep(step: LoginStep.step0.value);
+    // AccountService.to.updateLoginStep(step: LoginStep.step0.value);
     Get.offAndToNamed(APages.guide);
   }
 

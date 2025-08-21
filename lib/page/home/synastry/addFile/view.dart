@@ -87,6 +87,9 @@ class AddFilePage extends StatelessWidget {
                             logic.updateButtonState();
                             _focusNode.unfocus();
                           },
+                          onUnfocus: () {
+                            _focusNode.unfocus();
+                          },
                         ),
                         Divider(height: 1, color: Color(0xFFD5D5D5)),
                         EditPlaceOfBirth(
@@ -98,10 +101,14 @@ class AddFilePage extends StatelessWidget {
                             logic.updateButtonState();
                             _focusNode.unfocus();
                           },
+                          onUnfocus: () {
+                            _focusNode.unfocus();
+                          },
                         ),
                         Divider(height: 1, color: Color(0xFFD5D5D5)),
                         InkWell(
                           onTap: () {
+                            _focusNode.unfocus();
                             showInterestsSheet(logic.interests ?? "", (value) {
                               logic.interests = value;
                               logic.updateButtonState();

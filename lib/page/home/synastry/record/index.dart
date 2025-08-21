@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:astrea/components/bottom_stack_btn.dart';
 import 'package:astrea/components/common_app_bar.dart';
+import 'package:astrea/components/loading_widget.dart';
 import 'package:astrea/core/bus/app_event_bus.dart';
+import 'package:astrea/core/enum/app_enum.dart';
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
@@ -14,6 +16,7 @@ import 'package:astrea/net/api/friend.dart';
 import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/page/home/synastry/addFile/widget/sheet/select_relationship_sheet.dart';
 import 'package:astrea/page/home/synastry/record/widget/add_friends.dart';
+import 'package:astrea/page/home/synastry/record/widget/fixed_size_collection.dart';
 import 'package:astrea/page/home/synastry/record/widget/record_item.dart';
 import 'package:astrea/page/sheet/dialog_common.dart';
 import 'package:dio/dio.dart';

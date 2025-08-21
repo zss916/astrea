@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/utils/index.dart';
+import 'package:flutter/material.dart';
 
 AppRouteObserver appRouteObserver = AppRouteObserver();
 
@@ -17,6 +18,9 @@ class AppRouteObserver extends RouteObserver<PageRoute> {
 
     Console.log("${previousRoute?.settings.name} <= ${route.settings.name}");
     Console.log(historyPage);
+    if (historyPage.isNotEmpty) {
+      AccountService.to.setCurrentRoute(route: historyPage.last);
+    }
   }
 
   @override
@@ -27,6 +31,9 @@ class AppRouteObserver extends RouteObserver<PageRoute> {
 
     Console.log("${previousRoute?.settings.name} => ${route.settings.name}");
     Console.log(historyPage);
+    if (historyPage.isNotEmpty) {
+      AccountService.to.setCurrentRoute(route: historyPage.last);
+    }
   }
 
   @override
@@ -39,6 +46,9 @@ class AppRouteObserver extends RouteObserver<PageRoute> {
       "${previousRoute?.settings.name} remove ${route.settings.name}",
     );
     Console.log(historyPage);
+    if (historyPage.isNotEmpty) {
+      AccountService.to.setCurrentRoute(route: historyPage.last);
+    }
   }
 
   @override
@@ -57,5 +67,9 @@ class AppRouteObserver extends RouteObserver<PageRoute> {
       "${oldRoute?.settings.name} replace ${newRoute?.settings.name}",
     );
     Console.log(historyPage);
+
+    if (historyPage.isNotEmpty) {
+      AccountService.to.setCurrentRoute(route: historyPage.last);
+    }
   }
 }

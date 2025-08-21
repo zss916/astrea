@@ -81,6 +81,9 @@ class PersonalDataPage extends StatelessWidget {
                           focusNode.unfocus();
                           //logic.update();
                         },
+                        onUnfocus: () {
+                          focusNode.unfocus();
+                        },
                       ),
                       Divider(height: 1, color: Color(0xFFD5D5D5)),
                       EditPlaceOfBirth(
@@ -92,10 +95,14 @@ class PersonalDataPage extends StatelessWidget {
                           logic.update();
                           focusNode.unfocus();
                         },
+                        onUnfocus: () {
+                          focusNode.unfocus();
+                        },
                       ),
                       Divider(height: 1, color: Color(0xFFD5D5D5)),
                       InkWell(
                         onTap: () {
+                          focusNode.unfocus();
                           showInterestsSheet(logic.interests ?? "", (value) {
                             logic.account?.interests = value;
                             logic.update();

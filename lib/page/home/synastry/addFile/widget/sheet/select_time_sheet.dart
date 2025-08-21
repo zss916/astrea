@@ -146,6 +146,8 @@ void showDatePickerSheet(
                     (hourBirth <= DateTime.now().hour) &&
                     (minuteBirth <= DateTime.now().minute);
                 // birth = "$m ${time.date.day},${time.date.year} ${DateTime.now().hour}:${DateTime.now().minute} ${AwesomeTimeUtils.getAmPm(DateTime.now().hour)}";
+              } else {
+                isShowBirth = true;
               }
 
               hourBirth = time.time.hour;
