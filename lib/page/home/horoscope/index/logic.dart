@@ -6,6 +6,7 @@ import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
 import 'package:astrea/page/home/horoscope/index/mixin_controller/mixin_report.dart';
+import 'package:astrea/page/home/horoscope/index/mixin_controller/mixin_stars.dart';
 import 'package:get/get.dart';
 
 import 'mixin_controller/mixin_account.dart';
@@ -15,7 +16,8 @@ class HoroscopeLogic extends GetxController
     with
         HoroscopeFriendLogicMixin,
         HoroscopeAccountLogicMixin,
-        HoroscopeReportLogicMixin {
+        HoroscopeReportLogicMixin,
+        HoroscopeStarsLogicMixin {
   String? reportId = "";
 
   ///显示姓名和生日
@@ -25,6 +27,7 @@ class HoroscopeLogic extends GetxController
   ///默认loading
   int viewState = HomeViewState.loading.index;
   bool isOneself = true;
+  bool isCheckUser = true;
 
   late StreamSubscription<RefreshUserEvent> refreshUserEvent2;
 
@@ -34,6 +37,12 @@ class HoroscopeLogic extends GetxController
     initLocal();
     refreshUserEvent2 = AppEventBus.eventBus.on<RefreshUserEvent>().listen((_) {
       changeReport(isOneself: true);
+    });
+
+    deleteEvent = AppEventBus.eventBus.on<DeleteFriendsEvent>().listen((event) {
+      isCheckUser = true;
+      changeReport(isOneself: true);
+      loadFriends(id: null);
     });
   }
 

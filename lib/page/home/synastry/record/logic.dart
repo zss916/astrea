@@ -115,6 +115,7 @@ class FileManagementLogic extends GetxController {
           AppLoading.dismiss();
         });
     if (value) {
+      AppEventBus.eventBus.fire(DeleteFriendsEvent(id: int.parse(id)));
       list.removeAt(index);
       checkMatch();
       AccountService.to.updateFriendList(list);

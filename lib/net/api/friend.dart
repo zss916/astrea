@@ -22,7 +22,14 @@ abstract class FriendAPI {
               jsonList.map((e) => FriendEntity.fromJson(e)).toList(),
           (result['data']['friends'] as List),
         );
-        return (true, value);
+        List<FriendEntity> me = value.where((e) => e.isMe).toList();
+        List<FriendEntity> friends = value
+            .where((e) => !e.isMe)
+            .toList()
+            .reversed
+            .toList();
+        me.addAll(friends);
+        return (true, me);
       } else {
         AppLoading.toast(result["msg"]);
         return (false, <FriendEntity>[]);

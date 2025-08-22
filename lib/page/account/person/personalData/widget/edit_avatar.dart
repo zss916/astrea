@@ -19,6 +19,16 @@ class EditAvatar extends StatelessWidget {
       onTap: () {
         logic.showPhotoSheet();
         onTap.call();
+
+        /* AppPermissionTools.checkCameraPermission(cancelPermission: () {}).then((
+          isGranted,
+        ) {
+          debugPrint("isGranted===>>>> $isGranted");
+          if (isGranted) {
+            logic.showPhotoSheet();
+            onTap.call();
+          }
+        });*/
       },
       child: Container(
         // color: Colors.red,

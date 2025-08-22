@@ -28,6 +28,9 @@ class FriendEntity {
   @JSONField(name: 'is_self')
   int? isSelf;
 
+  ///是否被选中
+  bool? isChecked;
+
   ///1 me
   bool get isMe => isSelf == 1;
 

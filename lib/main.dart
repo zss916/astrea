@@ -55,7 +55,7 @@ class App extends StatelessWidget {
           debugPrint("routing:${routing?.current}");
         },
         initialRoute: APages.splash,
-        // home: HomePage(),
+        //home: PersonalDataPage(),
       ),
     );
   }

@@ -55,6 +55,10 @@ FriendEntity $FriendEntityFromJson(Map<String, dynamic> json) {
   if (isSelf != null) {
     friendEntity.isSelf = isSelf;
   }
+  final bool? isChecked = jsonConvert.convert<bool>(json['isChecked']);
+  if (isChecked != null) {
+    friendEntity.isChecked = isChecked;
+  }
   final bool? isSelected = jsonConvert.convert<bool>(json['isSelected']);
   if (isSelected != null) {
     friendEntity.isSelected = isSelected;
@@ -77,6 +81,7 @@ Map<String, dynamic> $FriendEntityToJson(FriendEntity entity) {
   data['lon'] = entity.lon;
   data['lat'] = entity.lat;
   data['is_self'] = entity.isSelf;
+  data['isChecked'] = entity.isChecked;
   data['isSelected'] = entity.isSelected;
   return data;
 }
@@ -96,6 +101,7 @@ extension FriendEntityExtension on FriendEntity {
     num? lon,
     num? lat,
     int? isSelf,
+    bool? isChecked,
     bool? isSelected,
   }) {
     return FriendEntity()
@@ -112,6 +118,7 @@ extension FriendEntityExtension on FriendEntity {
       ..lon = lon ?? this.lon
       ..lat = lat ?? this.lat
       ..isSelf = isSelf ?? this.isSelf
+      ..isChecked = isChecked ?? this.isChecked
       ..isSelected = isSelected ?? this.isSelected;
   }
 }

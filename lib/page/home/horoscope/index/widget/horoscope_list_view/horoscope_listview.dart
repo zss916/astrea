@@ -97,12 +97,15 @@ class HoroscopeListview extends StatelessWidget {
                               onTap: () {
                                 onOneself?.call();
                               },
-                              child: buildOneself(logic.avatar, logic.nickName),
+                              child: buildOneself(
+                                logic.isCheckUser,
+                                logic.avatar,
+                                logic.nickName,
+                              ),
                             ),
                           ],
                         ),
                       ),
-
                       PositionedDirectional(
                         top: 0,
                         start: 0,
@@ -125,6 +128,7 @@ class HoroscopeListview extends StatelessWidget {
                         child: Container(
                           margin: EdgeInsetsDirectional.only(start: 0),
                           child: buildFriend(
+                            logic.friends[i].isChecked == true,
                             logic.friends[i].headImg ?? "",
                             logic.friends[i].nickName ?? "",
                           ),
@@ -146,6 +150,7 @@ class HoroscopeListview extends StatelessWidget {
                           onSelect?.call(i);
                         },
                         child: HoroscopeListItem(
+                          isSelected: logic.starList[i].isChecked == true,
                           icon: list[i],
                           title: listTitle[i],
                         ),
@@ -171,6 +176,7 @@ class HoroscopeListview extends StatelessWidget {
           Assets.imageAdd,
           width: 48,
           height: 48,
+          fit: BoxFit.cover,
           matchTextDirection: true,
         ),
         Spacer(),
@@ -187,7 +193,7 @@ class HoroscopeListview extends StatelessWidget {
     );
   }
 
-  Widget buildOneself(String avatar, String name) {
+  Widget buildOneself(bool isSelected, String avatar, String name) {
     return Column(
       children: [
         Stack(
@@ -197,7 +203,10 @@ class HoroscopeListview extends StatelessWidget {
               clipBehavior: Clip.hardEdge,
               padding: EdgeInsetsDirectional.all(1.6),
               decoration: BoxDecoration(
-                border: Border.all(width: 1, color: Color(0xFF9292CA)),
+                border: Border.all(
+                  width: 1.5,
+                  color: isSelected ? Color(0xFF9292CA) : Colors.transparent,
+                ),
                 // color: Color(0xFFEDEDFE),
                 borderRadius: BorderRadiusDirectional.circular(50),
               ),
@@ -205,26 +214,22 @@ class HoroscopeListview extends StatelessWidget {
               height: 48,
               child: Container(
                 clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadiusDirectional.circular(50),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: ExactAssetImage(Assets.imageHomeAvatar),
-                  ),
-                ),
-                child: Container(
-                  clipBehavior: Clip.hardEdge,
-                  decoration: avatar.isEmpty
-                      ? BoxDecoration()
-                      : BoxDecoration(
-                          color: Colors.transparent,
-                          image: DecorationImage(
-                            image: NetworkImage(avatar),
-                            fit: BoxFit.cover,
-                          ),
-                          borderRadius: BorderRadiusDirectional.circular(50),
+                decoration: avatar.isEmpty
+                    ? BoxDecoration(
+                        borderRadius: BorderRadiusDirectional.circular(50),
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: ExactAssetImage(Assets.imageHomeAvatar),
                         ),
-                ),
+                      )
+                    : BoxDecoration(
+                        color: Colors.transparent,
+                        image: DecorationImage(
+                          image: NetworkImage(avatar),
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadiusDirectional.circular(50),
+                      ),
               ),
             ),
             PositionedDirectional(
@@ -247,9 +252,12 @@ class HoroscopeListview extends StatelessWidget {
             textAlign: TextAlign.center,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              color: const Color(0xFF323133),
+              color: isSelected
+                  ? const Color(0xFF323133)
+                  : const Color(0xFF91929D),
               fontSize: 12.sp,
               fontFamily: AppFonts.textFontFamily,
+              fontWeight: isSelected ? FontWeight.w500 : FontWeight.w400,
             ),
           ),
         ),
@@ -257,7 +265,7 @@ class HoroscopeListview extends StatelessWidget {
     );
   }
 
-  Widget buildFriend(String avatar, String name) {
+  Widget buildFriend(bool isSelected, String avatar, String name) {
     return Column(
       children: [
         Container(
@@ -265,7 +273,10 @@ class HoroscopeListview extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           padding: EdgeInsetsDirectional.all(1.6),
           decoration: BoxDecoration(
-            border: Border.all(width: 1, color: Color(0xFF9292CA)),
+            border: Border.all(
+              width: 1.5,
+              color: isSelected ? Color(0xFF9292CA) : Colors.transparent,
+            ),
             // color: Color(0xFFEDEDFE),
             borderRadius: BorderRadiusDirectional.circular(50),
           ),
@@ -273,26 +284,22 @@ class HoroscopeListview extends StatelessWidget {
           height: 48,
           child: Container(
             clipBehavior: Clip.hardEdge,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadiusDirectional.circular(50),
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: ExactAssetImage(Assets.imageFriendDefaultIcon),
-              ),
-            ),
-            child: Container(
-              clipBehavior: Clip.hardEdge,
-              decoration: avatar.isEmpty
-                  ? BoxDecoration()
-                  : BoxDecoration(
-                      color: Colors.transparent,
-                      image: DecorationImage(
-                        image: NetworkImage(avatar),
-                        fit: BoxFit.cover,
-                      ),
-                      borderRadius: BorderRadiusDirectional.circular(50),
+            decoration: avatar.isEmpty
+                ? BoxDecoration(
+                    borderRadius: BorderRadiusDirectional.circular(50),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: ExactAssetImage(Assets.imageFriendDefaultIcon),
                     ),
-            ),
+                  )
+                : BoxDecoration(
+                    color: Colors.transparent,
+                    image: DecorationImage(
+                      image: NetworkImage(avatar),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadiusDirectional.circular(50),
+                  ),
           ),
         ),
         Spacer(),
@@ -303,9 +310,12 @@ class HoroscopeListview extends StatelessWidget {
             textAlign: TextAlign.center,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              color: const Color(0xFF323133),
+              color: isSelected
+                  ? const Color(0xFF323133)
+                  : const Color(0xFF91929D),
               fontSize: 12.sp,
               fontFamily: AppFonts.textFontFamily,
+              fontWeight: isSelected ? FontWeight.w500 : FontWeight.w400,
             ),
           ),
         ),

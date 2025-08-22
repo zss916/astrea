@@ -10,7 +10,13 @@ class TabEvent {
 }
 
 class RefreshFriendsEvent {
-  RefreshFriendsEvent();
+  int? id;
+  RefreshFriendsEvent({this.id});
+}
+
+class DeleteFriendsEvent {
+  int? id;
+  DeleteFriendsEvent({this.id});
 }
 
 class RefreshUserEvent {

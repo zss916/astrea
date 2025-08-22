@@ -23,6 +23,7 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
   bool isSave = false;
   bool isUser = false;
   int? id;
+  bool homeToAdd = false;
 
   CancelToken cancelToken = CancelToken();
 
@@ -35,6 +36,9 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
   }
 
   void initData() {
+    if (Get.arguments != null && Get.arguments["homeToAdd"] is bool) {
+      homeToAdd = Get.arguments["homeToAdd"] as bool;
+    }
     if (Get.arguments != null && Get.arguments["data"] is FriendEntity) {
       FriendEntity data = Get.arguments["data"] as FriendEntity;
       nickName = data.nickName ?? "";
@@ -128,8 +132,26 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
         });
     if (id != null) {
       AppLoading.toast("Successful").whenComplete(() {
-        AppEventBus.eventBus.fire(RefreshFriendsEvent());
-        Get.back();
+        if (homeToAdd) {
+          // AppEventBus.eventBus.fire(RefreshFriendsEvent(id: id));
+          FriendEntity value = FriendEntity()
+            ..isChecked = true
+            ..id = id
+            ..nickName = nickName
+            ..headImg = avatar
+            ..interests = interests
+            ..birthday = birthday
+            ..birthMinute = minuteBirth
+            ..birthHour = hourBirth
+            ..sex = sex
+            ..lat = num.parse(lat ?? "")
+            ..lon = num.parse(lon ?? "")
+            ..locality = locality;
+          Get.back<FriendEntity>(result: value);
+        } else {
+          AppEventBus.eventBus.fire(RefreshFriendsEvent());
+          Get.back();
+        }
       });
     } else {
       AppLoading.toast("Failed");

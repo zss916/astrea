@@ -156,11 +156,25 @@ class PageTools {
 
   static toRecord() => Get.toNamed(APages.record);
 
-  static toAddFile({bool isEditFile = false, FriendEntity? data}) {
+  static toAddFile({
+    bool isEditFile = false,
+    FriendEntity? data,
+    Function(FriendEntity)? onBack,
+    bool? homeToAdd,
+  }) {
     Get.toNamed(
       APages.addFile,
-      arguments: {"isEditFile": isEditFile, "data": data},
-    );
+      arguments: {
+        "isEditFile": isEditFile,
+        "data": data,
+        "homeToAdd": homeToAdd,
+      },
+    )?.then((value) {
+      if (value != null) {
+        FriendEntity entity = (value as FriendEntity);
+        onBack?.call(entity);
+      }
+    });
   }
 
   static toLogs() => Get.toNamed(APages.starLog);

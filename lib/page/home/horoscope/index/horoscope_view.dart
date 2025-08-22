@@ -13,6 +13,7 @@ import 'package:astrea/page/home/horoscope/index/widget/horoscope_list_view/horo
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_tabbar.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_tabview.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_title.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -178,17 +179,54 @@ class _HoroscopeViewState extends State<HoroscopeView>
   Widget buildTitle(HoroscopeLogic logic) => HoroscopeListview(
     logic: logic,
     onAdd: () {
-      PageTools.toAddFile();
+      PageTools.toAddFile(
+        homeToAdd: true,
+        onBack: (value) {
+          setState(() {
+            isShowOneself = true;
+            logic.isCheckUser = false;
+            logic.starList.forEachIndexed((index, element) {
+              element.isChecked = false;
+            });
+            logic.friends.insert(0, value);
+            logic.friends.forEachIndexed((index, element) {
+              element.isChecked = (element.id == value.id);
+            });
+          });
+
+          logic.changeReport(
+            id: value.id.toString(),
+            index: logic.friends.indexWhere(
+              (element) => element.id == value.id,
+            ),
+            isOneself: false,
+          );
+        },
+      );
     },
     onOneself: () {
       setState(() {
         isShowOneself = true;
+        logic.isCheckUser = true;
+        logic.starList.forEachIndexed((index, element) {
+          element.isChecked = false;
+        });
+        logic.friends.forEachIndexed((index, element) {
+          element.isChecked = false;
+        });
       });
       logic.changeReport(isOneself: true);
     },
     onFriends: (i) {
       setState(() {
         isShowOneself = true;
+        logic.isCheckUser = false;
+        logic.starList.forEachIndexed((index, element) {
+          element.isChecked = false;
+        });
+        logic.friends.forEachIndexed((index, element) {
+          element.isChecked = index == i;
+        });
       });
       int? reportId = logic.friends[i].id;
       if (reportId != null) {
@@ -203,6 +241,13 @@ class _HoroscopeViewState extends State<HoroscopeView>
       setState(() {
         isShowOneself = false;
         selectedStarIndex = i;
+        logic.isCheckUser = false;
+        logic.friends.forEachIndexed((index, element) {
+          element.isChecked = false;
+        });
+        logic.starList.forEachIndexed((index, element) {
+          element.isChecked = index == i;
+        });
       });
     },
   );

@@ -12,6 +12,7 @@ mixin HoroscopeFriendLogicMixin on GetxController {
   CancelToken friendCancelToken = CancelToken();
 
   late StreamSubscription<RefreshFriendsEvent> refreshEvent;
+  late StreamSubscription<DeleteFriendsEvent> deleteEvent;
 
   ///不包含用户自己
   List<FriendEntity> friends = [];
@@ -21,8 +22,10 @@ mixin HoroscopeFriendLogicMixin on GetxController {
   void onInit() {
     super.onInit();
     initLocalData();
-    refreshEvent = AppEventBus.eventBus.on<RefreshFriendsEvent>().listen((_) {
-      loadFriends();
+    refreshEvent = AppEventBus.eventBus.on<RefreshFriendsEvent>().listen((
+      event,
+    ) {
+      loadFriends(id: event.id);
     });
   }
 
@@ -37,16 +40,28 @@ mixin HoroscopeFriendLogicMixin on GetxController {
     friendCancelToken.cancel("friend Cancel");
     AppLoading.dismiss();
     refreshEvent.cancel();
+    deleteEvent.cancel();
   }
 
   ///获取用户列表
-  Future<void> loadFriends() async {
+  Future<void> loadFriends({int? id}) async {
     (bool, List<FriendEntity>) value = await FriendAPI.getFriends(
       cancelToken: friendCancelToken,
     );
     if (value.$1) {
-      AccountService.to.updateFriendList(value.$2);
-      friends = value.$2.where((e) => !e.isMe).toList();
+      if (id != null) {
+        List<FriendEntity> list = value.$2
+            .map(
+              (e) =>
+                  e.id == id ? (e..isChecked = true) : (e..isChecked = false),
+            )
+            .toList();
+        AccountService.to.updateFriendList(list);
+        friends = list.where((e) => !e.isMe).toList();
+      } else {
+        AccountService.to.updateFriendList(value.$2);
+        friends = value.$2.where((e) => !e.isMe).toList();
+      }
       isAddFriend = friends.isNotEmpty;
       update();
     }
