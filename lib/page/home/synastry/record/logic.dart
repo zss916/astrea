@@ -159,8 +159,9 @@ class FileManagementLogic extends GetxController {
         .toList();
 
     if (matchList.length > 2) {
+      List<int?> ids = collection.items.map((e) => e.id).toList();
       List<FriendEntity> data = list
-          .map((e) => (e..isSelected = collection.items.contains(e)))
+          .map((e) => (e..isSelected = ids.contains(e.id)))
           .toList();
       list.clear();
       list.addAll(data);

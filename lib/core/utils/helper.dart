@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:google_api_availability/google_api_availability.dart';
 
 class AvailabilityHelper {
@@ -15,4 +16,13 @@ class AvailabilityHelper {
       return false;
     }
   }
+}
+
+///安全find
+S? safeFind<S>() {
+  if (Get.isRegistered<S>() == true) {
+    final s = Get.find<S>();
+    return s;
+  }
+  return null;
 }

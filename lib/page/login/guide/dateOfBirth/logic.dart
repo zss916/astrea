@@ -1,8 +1,7 @@
 part of 'index.dart';
 
 class DateOfBirthLogic extends GetxController {
-  String birthday =
-      "${DateTime.now().year - 25}-${(DateTime.now().month).formatted}-15";
+  String? birthday;
 
   int loginType = LoginType.loginAndRegister.index;
 
@@ -15,8 +14,18 @@ class DateOfBirthLogic extends GetxController {
   }
 
   void toNext() {
-    AccountService.to.updateUserBirth(CalculateTools.formattedDate(birthday));
-    // debugPrint("getbirthday => ${AccountService.to.getAccount()?.birthday}");
+    if ((birthday ?? "").isEmpty) {
+      final (int year, int month, int day) = AccountService.to.getUserBirth();
+      AccountService.to.updateUserBirth(
+        CalculateTools.formattedDate(
+          "$year-${month.formatted}-${day.formatted}",
+        ),
+      );
+    } else {
+      AccountService.to.updateUserBirth(
+        CalculateTools.formattedDate(birthday ?? ""),
+      );
+    }
     PageTools.toTimeOfBirth(loginType: loginType);
   }
 }

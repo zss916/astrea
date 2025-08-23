@@ -149,7 +149,7 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
             ..locality = locality;
           Get.back<FriendEntity>(result: value);
         } else {
-          AppEventBus.eventBus.fire(RefreshFriendsEvent());
+          AppEventBus.eventBus.fire(RefreshFriendsEvent(id: id));
           Get.back();
         }
       });
@@ -197,7 +197,7 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
         });
     if (isSuccessful) {
       AppLoading.toast("Successful").whenComplete(() {
-        AppEventBus.eventBus.fire(RefreshFriendsEvent());
+        AppEventBus.eventBus.fire(RefreshFriendsEvent(id: id));
         Get.back();
       });
     } else {

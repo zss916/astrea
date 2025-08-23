@@ -52,11 +52,16 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
 
   initData() {
     final (int y, int m, int d) = AccountService.to.getUserBirth();
+    debugPrint("initData ===>> $y,$m,$d");
     isToday =
         (y == DateTime.now().year) &&
         (m == DateTime.now().month) &&
         (d == DateTime.now().day);
-    initValue = AccountService.to.getUserBirthHAndM();
+    if (isToday) {
+      initValue = (0, 0);
+    } else {
+      initValue = AccountService.to.getUserBirthHAndM();
+    }
   }
 
   @override
@@ -188,7 +193,7 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
             ),
           ],
         ),
-         Container(
+        Container(
           margin: EdgeInsetsDirectional.only(top: 164),
           decoration: BoxDecoration(color: AppColor.pageBackground),
           width: double.maxFinite,

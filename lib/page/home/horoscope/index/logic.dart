@@ -28,6 +28,8 @@ class HoroscopeLogic extends GetxController
   int viewState = HomeViewState.loading.index;
   bool isOneself = true;
   bool isCheckUser = true;
+  bool isShowOneself = true;
+  int selectedStarIndex = 0;
 
   late StreamSubscription<RefreshUserEvent> refreshUserEvent2;
 
@@ -40,9 +42,21 @@ class HoroscopeLogic extends GetxController
     });
 
     deleteEvent = AppEventBus.eventBus.on<DeleteFriendsEvent>().listen((event) {
-      isCheckUser = true;
-      changeReport(isOneself: true);
-      loadFriends(id: null);
+      if (isCheckUser) {
+        loadFriends(id: null);
+      } else {
+        bool isHas = friends
+            .where((e) => e.isChecked == true)
+            .toList()
+            .any((e) => e.id == event.id);
+        if (isHas) {
+          isCheckUser = true;
+          changeReport(isOneself: true);
+          loadFriends(id: null);
+        } else {
+          loadFriends(id: null);
+        }
+      }
     });
   }
 

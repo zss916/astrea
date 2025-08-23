@@ -29,8 +29,6 @@ class HoroscopeView extends StatefulWidget {
 class _HoroscopeViewState extends State<HoroscopeView>
     with SingleTickerProviderStateMixin {
   late final TabController tabCtrl;
-  bool isShowOneself = true;
-  int selectedStarIndex = 0;
 
   @override
   void initState() {
@@ -85,11 +83,13 @@ class _HoroscopeViewState extends State<HoroscopeView>
 
           ///content
           // if (isShowOneself && logic.viewState == 0) buildContent(logic: logic),
-          if (isShowOneself && logic.viewState == HomeViewState.data.index)
+          if (logic.isShowOneself &&
+              logic.viewState == HomeViewState.data.index)
             SliverToBoxAdapter(child: HoroscopeContent(logic: logic)),
 
           ///tabbar
-          if (isShowOneself && logic.viewState == HomeViewState.data.index)
+          if (logic.isShowOneself &&
+              logic.viewState == HomeViewState.data.index)
             buildTabBar(),
         ];
       },
@@ -97,7 +97,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
       body: Stack(
         alignment: AlignmentDirectional.topCenter,
         children: [
-          (isShowOneself)
+          (logic.isShowOneself)
               ? Stack(
                   alignment: AlignmentDirectional.topCenter,
                   children: [
@@ -112,7 +112,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
                       HomeRefresh(logic: logic),
                   ],
                 )
-              : buildStarWidget(index: selectedStarIndex),
+              : buildStarWidget(index: logic.selectedStarIndex),
         ],
       ),
     );
@@ -183,7 +183,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
         homeToAdd: true,
         onBack: (value) {
           setState(() {
-            isShowOneself = true;
+            logic.isShowOneself = true;
             logic.isCheckUser = false;
             logic.starList.forEachIndexed((index, element) {
               element.isChecked = false;
@@ -206,7 +206,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
     },
     onOneself: () {
       setState(() {
-        isShowOneself = true;
+        logic.isShowOneself = true;
         logic.isCheckUser = true;
         logic.starList.forEachIndexed((index, element) {
           element.isChecked = false;
@@ -219,7 +219,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
     },
     onFriends: (i) {
       setState(() {
-        isShowOneself = true;
+        logic.isShowOneself = true;
         logic.isCheckUser = false;
         logic.starList.forEachIndexed((index, element) {
           element.isChecked = false;
@@ -239,8 +239,8 @@ class _HoroscopeViewState extends State<HoroscopeView>
     },
     onSelect: (i) {
       setState(() {
-        isShowOneself = false;
-        selectedStarIndex = i;
+        logic.isShowOneself = false;
+        logic.selectedStarIndex = i;
         logic.isCheckUser = false;
         logic.friends.forEachIndexed((index, element) {
           element.isChecked = false;
