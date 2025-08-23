@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:astrea/core/gallery/image_utils.dart';
+import 'package:astrea/core/permission/app_permission_tools.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/core/translations/en.dart';
@@ -40,20 +41,26 @@ class OpenCamera extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               onTap: () async {
                 Get.back();
-                ImageUtils.chooseImage(camera: true).then((xFile) {
-                  ImageUtils.compressImageAndGetFile(
-                    File(xFile?.path ?? ""),
-                  ).then((path) {
-                    uploadFile(
-                      fileName: xFile?.name ?? "",
-                      filePath: path,
-                      // filePath: xFile?.path ?? "",
-                      onFinish: (url) {
-                        onFinish.call(url);
-                        // debugPrint("uploadFile url => $url");
-                      },
-                    );
-                  });
+                AppPermissionTools.checkCameraPermission(
+                  cancelPermission: () {},
+                ).then((isGranted) {
+                  if (isGranted) {
+                    ImageUtils.chooseImage(camera: true).then((xFile) {
+                      ImageUtils.compressImageAndGetFile(
+                        File(xFile?.path ?? ""),
+                      ).then((path) {
+                        uploadFile(
+                          fileName: xFile?.name ?? "",
+                          filePath: path,
+                          // filePath: xFile?.path ?? "",
+                          onFinish: (url) {
+                            onFinish.call(url);
+                            // debugPrint("uploadFile url => $url");
+                          },
+                        );
+                      });
+                    });
+                  }
                 });
               },
               child: Container(
@@ -83,15 +90,21 @@ class OpenCamera extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               onTap: () async {
                 Get.back();
-                ImageUtils.chooseImage(camera: false).then((xFile) {
-                  uploadFile(
-                    fileName: xFile?.name ?? "",
-                    filePath: xFile?.path ?? "",
-                    onFinish: (url) {
-                      onFinish.call(url);
-                      // debugPrint("uploadFile url => $url");
-                    },
-                  );
+                AppPermissionTools.checkPhotosPermission(
+                  cancelPermission: () {},
+                ).then((isGranted) {
+                  if (isGranted) {
+                    ImageUtils.chooseImage(camera: false).then((xFile) {
+                      uploadFile(
+                        fileName: xFile?.name ?? "",
+                        filePath: xFile?.path ?? "",
+                        onFinish: (url) {
+                          onFinish.call(url);
+                          // debugPrint("uploadFile url => $url");
+                        },
+                      );
+                    });
+                  }
                 });
               },
               child: Container(
