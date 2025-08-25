@@ -1,3 +1,4 @@
+import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:event_bus/event_bus.dart';
 
 class AppEventBus {
@@ -10,8 +11,8 @@ class TabEvent {
 }
 
 class RefreshFriendsEvent {
-  int? id;
-  RefreshFriendsEvent({this.id});
+  FriendEntity? item;
+  RefreshFriendsEvent({this.item});
 }
 
 class DeleteFriendsEvent {

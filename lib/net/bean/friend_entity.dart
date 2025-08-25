@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:astrea/core/utils/calculate.dart';
 import 'package:astrea/generated/json/base/json_field.dart';
 import 'package:astrea/generated/json/friend_entity.g.dart';
+import 'package:awesome_datetime_picker/awesome_datetime_picker.dart';
 
 export 'package:astrea/generated/json/friend_entity.g.dart';
 
@@ -28,6 +29,9 @@ class FriendEntity {
   @JSONField(name: 'is_self')
   int? isSelf;
 
+  String get showLon => (lon ?? 0).toString();
+  String get showLat => (lat ?? 0).toString();
+
   ///是否被选中
   bool? isChecked;
 
@@ -39,6 +43,34 @@ class FriendEntity {
       return "${CalculateTools.formattedTime("$birthday")}${(birthHour ?? 0).formatted}:${(birthMinute ?? 0).formatted} ${CalculateTools.formattedAmOrPm(birthHour ?? 0)}";
     } else {
       return "";
+    }
+  }
+
+  /*  String get showBirthDay2 {
+    if ((birthday ?? "").isNotEmpty) {
+      return "${CalculateTools.formattedTime2("$birthday")} ${(birthHour ?? 0).formatted}:${(birthMinute ?? 0).formatted} ${CalculateTools.formattedAmOrPm(birthHour ?? 0)}";
+    } else {
+      return "";
+    }
+  }*/
+
+  AwesomeDateTime? getAwesomeDateTime(String? birthday, int hour, int minute) {
+    if (birthday != null && birthday.contains("-")) {
+      List<String> value = (birthday ?? "").split("-");
+      if (value.isNotEmpty) {
+        return AwesomeDateTime(
+          date: AwesomeDate(
+            year: int.parse(value[0]),
+            month: int.parse(value[1]),
+            day: int.parse(value[2]),
+          ),
+          time: AwesomeTime(hour: hour, minute: minute),
+        );
+      } else {
+        return null;
+      }
+    } else {
+      return null;
     }
   }
 

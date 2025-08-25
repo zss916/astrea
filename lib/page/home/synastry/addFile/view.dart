@@ -53,7 +53,7 @@ class AddFilePage extends StatelessWidget {
                     child: Column(
                       children: [
                         EditAvatar(
-                          path: logic.avatar,
+                          path: logic.data.headImg ?? "",
                           logic: logic,
                           onTap: () {
                             _focusNode.unfocus();
@@ -61,17 +61,17 @@ class AddFilePage extends StatelessWidget {
                         ),
                         EditName(
                           focusNode: _focusNode,
-                          nickName: logic.nickName,
+                          nickName: logic.data.nickName ?? "",
                           onChange: (value) {
-                            logic.nickName = value;
+                            logic.data.nickName = value;
                             logic.updateButtonState();
                           },
                         ),
                         Divider(height: 1, color: Color(0xFFD5D5D5)),
                         SelectSex(
-                          sex: logic.sex,
+                          sex: (logic.data.sex ?? 2),
                           onNext: (sex) {
-                            logic.sex = sex;
+                            logic.data.sex = sex;
                             _focusNode.unfocus();
                             logic.updateButtonState();
                           },
@@ -79,11 +79,11 @@ class AddFilePage extends StatelessWidget {
                         Divider(height: 1, color: Color(0xFFD5D5D5)),
                         SelectBirth(
                           initialDateTime: logic.initDateTime,
-                          birth: logic.showBirthDay,
+                          birth: logic.data.showBirthDay,
                           onNext: (dateBirth, hourBirth, minuteBirth) {
-                            logic.birthday = dateBirth;
-                            logic.hourBirth = hourBirth;
-                            logic.minuteBirth = minuteBirth;
+                            logic.data.birthday = dateBirth;
+                            logic.data.birthHour = hourBirth;
+                            logic.data.birthMinute = minuteBirth;
                             logic.updateButtonState();
                             _focusNode.unfocus();
                           },
@@ -93,11 +93,11 @@ class AddFilePage extends StatelessWidget {
                         ),
                         Divider(height: 1, color: Color(0xFFD5D5D5)),
                         EditPlaceOfBirth(
-                          showPlace: logic.locality,
+                          showPlace: logic.data.locality ?? "",
                           onChange: (value, latitude, longitude) {
-                            logic.locality = value;
-                            logic.lat = latitude;
-                            logic.lon = longitude;
+                            logic.data.locality = value;
+                            logic.data.lat = num.parse(latitude);
+                            logic.data.lon = num.parse(longitude);
                             logic.updateButtonState();
                             _focusNode.unfocus();
                           },
@@ -109,13 +109,17 @@ class AddFilePage extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             _focusNode.unfocus();
-                            showInterestsSheet(logic.interests ?? "", (value) {
-                              logic.interests = value;
+                            showInterestsSheet(logic.data.interests ?? "", (
+                              value,
+                            ) {
+                              logic.data.interests = value;
                               logic.updateButtonState();
                               _focusNode.unfocus();
                             });
                           },
-                          child: SelectInterests(interests: logic.interests),
+                          child: SelectInterests(
+                            interests: logic.data.interests,
+                          ),
                         ),
                         Divider(height: 1, color: Color(0xFFD5D5D5)),
                         /*SelectTag()*/
@@ -133,7 +137,6 @@ class AddFilePage extends StatelessWidget {
                   isClickable: logic.isSave,
                   padding: EdgeInsetsDirectional.only(bottom: 24.h, top: 70.h),
                   onTap: () {
-                    logic.log();
                     if (logic.isSave) {
                       if (logic.id == null) {
                         logic.addFriend();

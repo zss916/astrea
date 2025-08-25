@@ -1,25 +1,6 @@
 part of 'index.dart';
 
 class AddFileLogic extends GetxController with AppValidatorMixin {
-  String nickName = "";
-  int sex = 2;
-  String birthday = "";
-  int? hourBirth;
-  int? minuteBirth;
-  String? lon;
-  String? lat;
-  String? locality;
-  String? avatar;
-  String? interests;
-
-  String get showBirthDay {
-    if ((birthday ?? "").isNotEmpty) {
-      return "${CalculateTools.formattedTime2(birthday)} ${(hourBirth ?? 0).formatted}:${(minuteBirth ?? 0).formatted} ${CalculateTools.formattedAmOrPm(hourBirth ?? 0)}";
-    } else {
-      return "";
-    }
-  }
-
   bool isSave = false;
   bool isUser = false;
   int? id;
@@ -28,6 +9,8 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
   CancelToken cancelToken = CancelToken();
 
   AwesomeDateTime? initDateTime;
+
+  FriendEntity data = FriendEntity();
 
   @override
   void onInit() {
@@ -40,24 +23,14 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
       homeToAdd = Get.arguments["homeToAdd"] as bool;
     }
     if (Get.arguments != null && Get.arguments["data"] is FriendEntity) {
-      FriendEntity data = Get.arguments["data"] as FriendEntity;
-      nickName = data.nickName ?? "";
-      sex = data.sex ?? 0;
-      birthday = data.birthday ?? "";
-      hourBirth = data.birthHour;
-      minuteBirth = data.birthMinute;
-      lon = (data.lon ?? 0).toString();
-      lat = (data.lat ?? 0).toString();
-      locality = data.locality ?? "";
-      avatar = data.headImg ?? "";
-      interests = data.interests ?? "";
-      isUser = data.isMe;
+      data = Get.arguments["data"] as FriendEntity;
+      isUser = data.isMe ?? false;
       id = data.id;
       //isSave = true;
-      initDateTime = getAwesomeDateTime(
-        birthday,
-        hourBirth ?? 0,
-        minuteBirth ?? 0,
+      initDateTime = data.getAwesomeDateTime(
+        data.birthday ?? "",
+        data.birthHour ?? 0,
+        data.birthMinute ?? 0,
       );
       update();
     }
@@ -70,62 +43,45 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
 
   @override
   void onClose() {
-    // AppLoading.dismiss();
+    AppLoading.dismiss();
     cancelToken.cancel();
     super.onClose();
   }
 
-  void log() {
-    debugPrint(
-      "id = $id, "
-      "nickName =$nickName, "
-      "avatar = $avatar, "
-      "birthday = $birthday, "
-      "birthHour = $hourBirth,"
-      " birthMinute = $minuteBirth,"
-      " sex = $sex, "
-      "lon = $lon, "
-      "lat = $lat, "
-      "locality = $locality, "
-      "interests = $interests",
-    );
-  }
-
   void updateButtonState() {
     isSave =
-        (nickName.isNotEmpty) &&
+        ((data.nickName ?? "").isNotEmpty) &&
         // ((avatar ?? "").isNotEmpty) &&
-        (sex != 0) &&
-        (birthday.isNotEmpty) &&
-        (hourBirth != null) &&
-        (minuteBirth != null) &&
-        (lon != null) &&
-        (lat != null) &&
-        (interests != null) &&
-        (locality != null);
+        ((data.sex ?? 2) != 0) &&
+        ((data.birthday ?? "").isNotEmpty) &&
+        ((data.birthHour) != null) &&
+        ((data.birthMinute) != null) &&
+        ((data.lon) != null) &&
+        ((data.lat) != null) &&
+        ((data.interests) != null) &&
+        ((data.locality) != null);
     update();
   }
 
   ///添加朋友（最多10个）
   Future<void> addFriend() async {
-    log();
-    if (!isMatchName(nickName)) {
+    if (!isMatchName(data.nickName ?? "")) {
       AppLoading.toast(LanKey.nameMatchHint.tr);
       return;
     }
     AppLoading.show();
     int? id =
         await FriendAPI.addFriend(
-          nickName: nickName,
-          avatar: avatar ?? "",
-          birthday: birthday,
-          birthHour: hourBirth,
-          birthMinute: minuteBirth,
-          sex: sex,
-          lon: lon,
-          lat: lat,
-          locality: locality,
-          interests: interests,
+          nickName: data.nickName,
+          avatar: data.headImg ?? "",
+          birthday: data.birthday,
+          birthHour: data.birthHour,
+          birthMinute: data.birthMinute,
+          sex: data.sex ?? 2,
+          lon: data.showLon,
+          lat: data.showLat,
+          locality: data.locality,
+          interests: data.interests,
           cancelToken: cancelToken,
         ).whenComplete(() {
           AppLoading.dismiss();
@@ -133,23 +89,15 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
     if (id != null) {
       AppLoading.toast("Successful").whenComplete(() {
         if (homeToAdd) {
-          // AppEventBus.eventBus.fire(RefreshFriendsEvent(id: id));
-          FriendEntity value = FriendEntity()
+          FriendEntity value = data
             ..isChecked = true
-            ..id = id
-            ..nickName = nickName
-            ..headImg = avatar
-            ..interests = interests
-            ..birthday = birthday
-            ..birthMinute = minuteBirth
-            ..birthHour = hourBirth
-            ..sex = sex
-            ..lat = num.parse(lat ?? "")
-            ..lon = num.parse(lon ?? "")
-            ..locality = locality;
+            ..id = id;
           Get.back<FriendEntity>(result: value);
         } else {
-          AppEventBus.eventBus.fire(RefreshFriendsEvent(id: id));
+          FriendEntity value = data
+            ..isSelected = false
+            ..id = id;
+          AppEventBus.eventBus.fire(RefreshFriendsEvent(item: value));
           Get.back();
         }
       });
@@ -161,7 +109,7 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
   void showSheet() {
     showCameraAndGallerySheet(
       onFinish: (url) {
-        avatar = url;
+        data.headImg = url;
         updateButtonState();
       },
     );
@@ -169,11 +117,10 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
 
   ///修改朋友
   Future<void> updateFriend() async {
-    log();
     if (id == null) {
       return;
     }
-    if (!isMatchName(nickName)) {
+    if (!isMatchName(data.nickName ?? "")) {
       AppLoading.toast(LanKey.nameMatchHint.tr);
       return;
     }
@@ -181,47 +128,28 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
     bool isSuccessful =
         await FriendAPI.updateFriend(
           id: id.toString(),
-          nickName: nickName,
-          avatar: avatar ?? "",
-          birthday: birthday,
-          birthHour: hourBirth,
-          birthMinute: minuteBirth,
-          sex: sex,
-          lon: lon,
-          lat: lat,
-          locality: locality,
-          interests: interests,
+          nickName: data.nickName,
+          avatar: data.headImg ?? "",
+          birthday: data.birthday,
+          birthHour: data.birthHour,
+          birthMinute: data.birthMinute,
+          sex: data.sex ?? 2,
+          lon: data.showLon,
+          lat: data.showLat,
+          locality: data.locality,
+          interests: data.interests,
           cancelToken: cancelToken,
         ).whenComplete(() {
           AppLoading.dismiss();
         });
     if (isSuccessful) {
       AppLoading.toast("Successful").whenComplete(() {
-        AppEventBus.eventBus.fire(RefreshFriendsEvent(id: id));
+        //  AccountService.to.updateFriend(data);
+        AppEventBus.eventBus.fire(RefreshFriendsEvent(item: data));
         Get.back();
       });
     } else {
       AppLoading.toast("Failed");
-    }
-  }
-
-  AwesomeDateTime? getAwesomeDateTime(String? birthday, int hour, int minute) {
-    if (birthday != null && birthday.contains("-")) {
-      List<String> value = (birthday ?? "").split("-");
-      if (value.isNotEmpty) {
-        return AwesomeDateTime(
-          date: AwesomeDate(
-            year: int.parse(value[0]),
-            month: int.parse(value[1]),
-            day: int.parse(value[2]),
-          ),
-          time: AwesomeTime(hour: hour, minute: minute),
-        );
-      } else {
-        return null;
-      }
-    } else {
-      return null;
     }
   }
 }

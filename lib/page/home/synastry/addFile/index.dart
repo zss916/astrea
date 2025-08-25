@@ -5,7 +5,6 @@ import 'package:astrea/core/gallery/sheet_gallery.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/core/translations/en.dart';
-import 'package:astrea/core/utils/calculate.dart';
 import 'package:astrea/core/validator/app_validator.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/net/api/friend.dart';

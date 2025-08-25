@@ -27,7 +27,7 @@ mixin HoroscopeFriendLogicMixin on GetxController {
     refreshEvent = AppEventBus.eventBus.on<RefreshFriendsEvent>().listen((
       event,
     ) {
-      loadFriends(id: event.id);
+      loadFriends(id: event.item?.id);
     });
   }
 
@@ -51,7 +51,6 @@ mixin HoroscopeFriendLogicMixin on GetxController {
       cancelToken: friendCancelToken,
     );
     if (value.$1) {
-      ///todo
       if (id != null) {
         bool isHas = friends
             .where((e) => e.isChecked == true)
@@ -75,8 +74,6 @@ mixin HoroscopeFriendLogicMixin on GetxController {
             index: friends.indexWhere((element) => element.id == id),
             isOneself: false,
           );
-
-          ///todo 要changeReport
         } else {
           ///添加
           List<int?> ids = friends

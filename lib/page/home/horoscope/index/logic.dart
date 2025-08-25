@@ -44,6 +44,10 @@ class HoroscopeLogic extends GetxController
     deleteEvent = AppEventBus.eventBus.on<DeleteFriendsEvent>().listen((event) {
       if (isCheckUser) {
         loadFriends(id: null);
+        //friends.removeWhere((friend) => friend.id == event.id);
+        //isAddFriend = friends.isNotEmpty;
+        // AccountService.to.updateFriendList(value.$2);
+        //update();
       } else {
         bool isHas = friends
             .where((e) => e.isChecked == true)
