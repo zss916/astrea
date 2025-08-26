@@ -86,11 +86,19 @@ class NatalChart extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Expanded(
-                            child: Text(
+                      FittedBox(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            if ((sunSignIcon ?? "").isNotEmpty)
+                              Image.asset(
+                                sunSignIcon ?? '',
+                                width: 14.r,
+                                height: 14.r,
+                                matchTextDirection: true,
+                              ),
+                            SizedBox(width: 3.w),
+                            Text(
                               sunSign,
                               textAlign: TextAlign.end,
                               style: TextStyle(
@@ -99,17 +107,9 @@ class NatalChart extends StatelessWidget {
                                 fontFamily: AppFonts.textFontFamily,
                               ),
                             ),
-                          ),
-                          SizedBox(width: 3.w),
-                          if ((sunSignIcon ?? "").isNotEmpty)
-                            Image.asset(
-                              sunSignIcon ?? '',
-                              width: 14.r,
-                              height: 14.r,
-                              matchTextDirection: true,
-                            ),
-                          // AppStarIcon.aries,
-                        ],
+                            // AppStarIcon.aries,
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -129,11 +129,19 @@ class NatalChart extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Expanded(
-                            child: Text(
+                      FittedBox(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            if ((moonSignIcon ?? "").isNotEmpty)
+                              Image.asset(
+                                moonSignIcon ?? '',
+                                width: 14.r,
+                                height: 14.r,
+                                matchTextDirection: true,
+                              ),
+                            SizedBox(width: 3.w),
+                            Text(
                               moonSign,
                               textAlign: TextAlign.end,
                               style: TextStyle(
@@ -142,16 +150,8 @@ class NatalChart extends StatelessWidget {
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                          ),
-                          SizedBox(width: 3.w),
-                          if ((moonSignIcon ?? "").isNotEmpty)
-                            Image.asset(
-                              moonSignIcon ?? '',
-                              width: 14.r,
-                              height: 14.r,
-                              matchTextDirection: true,
-                            ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -171,11 +171,19 @@ class NatalChart extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Expanded(
-                            child: Text(
+                      FittedBox(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            if ((ascendantSignIcon ?? "").isNotEmpty)
+                              Image.asset(
+                                ascendantSignIcon ?? '',
+                                width: 14.r,
+                                height: 14.r,
+                                matchTextDirection: true,
+                              ),
+                            SizedBox(width: 3.w),
+                            Text(
                               ascendantSign,
                               textAlign: TextAlign.end,
                               style: TextStyle(
@@ -184,16 +192,8 @@ class NatalChart extends StatelessWidget {
                                 fontFamily: AppFonts.textFontFamily,
                               ),
                             ),
-                          ),
-                          SizedBox(width: 3.w),
-                          if ((ascendantSignIcon ?? "").isNotEmpty)
-                            Image.asset(
-                              ascendantSignIcon ?? '',
-                              width: 14.r,
-                              height: 14.r,
-                              matchTextDirection: true,
-                            ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),

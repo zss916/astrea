@@ -68,23 +68,25 @@ class _SelectBirthState extends State<SelectBirth> {
             });
             widget.onNext(dateBirth, hourBirth, minuteBirth);
           } else {
-            setState(() {
-              String m = AwesomeDateUtils.getMonthNames(
-                LocaleType.en,
-              )[(DateTime.now().month - 1)];
-              birth =
-                  "$m ${15},${DateTime.now().year - 25} ${DateTime.now().hour}:${DateTime.now().minute} ${AwesomeTimeUtils.getAmPm(DateTime.now().hour)}";
-            });
-            String dateBirth = sprintf("%s-%s-%s", [
-              DateTime.now().year - 25,
-              DateTime.now().month.formatted,
-              15,
-            ]);
-            widget.onNext(
-              dateBirth,
-              DateTime.now().hour,
-              DateTime.now().minute,
-            );
+            if (widget.initialDateTime == null) {
+              setState(() {
+                String m = AwesomeDateUtils.getMonthNames(
+                  LocaleType.en,
+                )[(DateTime.now().month - 1)];
+                birth =
+                    "$m ${15},${DateTime.now().year - 25} ${DateTime.now().hour}:${DateTime.now().minute} ${AwesomeTimeUtils.getAmPm(DateTime.now().hour)}";
+              });
+              String dateBirth = sprintf("%s-%s-%s", [
+                DateTime.now().year - 25,
+                DateTime.now().month.formatted,
+                15,
+              ]);
+              widget.onNext(
+                dateBirth,
+                DateTime.now().hour,
+                DateTime.now().minute,
+              );
+            }
           }
         });
       },

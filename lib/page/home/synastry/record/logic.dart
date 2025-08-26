@@ -208,15 +208,18 @@ class FileManagementLogic extends GetxController {
     if (isClick) {
       showRelationshipSheet((value) {
         //debugPrint("showRelationshipSheet $value");
-        /*FriendEntity first = list
-            .where((e) => e.isMe && e.isSelected == true)
-            .first;
+        FriendEntity first = list
+            .where((e) => e.isSelected == true)
+            .toList()[0];
         FriendEntity second = list
+            .where((e) => e.isSelected == true)
+            .toList()[1];
+        /*FriendEntity second = list
             .where((e) => e.isSelected == true && !(e.isMe))
             .first;*/
-        List<FriendEntity> data = collection.items;
-        FriendEntity first = data.first;
-        FriendEntity second = data.last;
+        // List<FriendEntity> data = collection.items;
+        //FriendEntity first = data.first;
+        //FriendEntity second = data.last;
 
         if (first.id != null && second.id != null && value.isNotEmpty) {
           PageTools.toStarReport(

@@ -1,5 +1,6 @@
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/account/person/personalData/index.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class EditAvatar extends StatelessWidget {
@@ -25,12 +26,13 @@ class EditAvatar extends StatelessWidget {
         child: Stack(
           alignment: AlignmentDirectional.center,
           children: [
-            Image.asset(
-              Assets.imageCameraAvatar,
-              matchTextDirection: true,
-              width: 91,
-              height: 91,
-            ),
+            if ((path ?? "").isEmpty)
+              Image.asset(
+                Assets.imageCameraAvatar,
+                matchTextDirection: true,
+                width: 91,
+                height: 91,
+              ),
             if ((path ?? "").isNotEmpty)
               Stack(
                 alignment: AlignmentDirectional.center,
@@ -38,16 +40,66 @@ class EditAvatar extends StatelessWidget {
                   Container(
                     width: 85,
                     height: 85,
+                    clipBehavior: Clip.hardEdge,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadiusDirectional.circular(100),
+                    ),
+                    child: CachedNetworkImage(
+                      width: 85,
+                      height: 85,
+                      /*progressIndicatorBuilder: (context, url, progress) {
+                        double p = (progress.progress ?? 0) * 100;
+                        return Center(
+                          child: Text(
+                            "${p}%",
+                            style: const TextStyle(color: Colors.red),
+                          ),
+                        );
+                      },*/
+                      fit: BoxFit.cover,
+                      placeholder: (BuildContext context, String url) =>
+                          Container(
+                            color: Colors.transparent,
+                            alignment: Alignment.center,
+                            width: 85,
+                            height: 85,
+                            child: Center(
+                              child: CircularProgressIndicator(
+                                color: Color(0xFF766DF8),
+                              ),
+                            ),
+                          ),
+                      errorWidget:
+                          (BuildContext context, String url, dynamic error) =>
+                              Container(
+                                alignment: Alignment.center,
+                                width: 85,
+                                height: 85,
+                                color: Colors.transparent,
+                                child: Icon(
+                                  Icons.error,
+                                  size: 40,
+                                  color: Colors.black,
+                                ),
+                              ),
+                      imageUrl: path ?? "",
+                    ),
+                  ),
+
+                  /*Container(
+                    width: 85,
+                    height: 85,
                     margin: EdgeInsetsDirectional.only(end: 3),
                     decoration: BoxDecoration(
-                      color: Colors.black,
+                      // color: Colors.black,
+                      // NetworkImage(path ?? "")
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: NetworkImage(path ?? ""),
+                        image: CachedNetworkImageProvider(path ?? "",),
                       ),
                       borderRadius: BorderRadiusDirectional.circular(50),
                     ),
-                  ),
+                  ),*/
                   Image.asset(
                     Assets.imageFrameEditAvatar,
                     matchTextDirection: true,
@@ -56,6 +108,13 @@ class EditAvatar extends StatelessWidget {
                   ),
                 ],
               ),
+
+            /* Image.network(
+              'https://astrology-s3-test.s3.us-east-1.amazonaws.com/your-image.jpg',
+              errorBuilder: (context, error, stackTrace) {
+                return Icon(Icons.error); // 添加错误处理
+              },
+            ),*/
           ],
         ),
       ),

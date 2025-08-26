@@ -58,7 +58,7 @@ class TimeOfBirthTip extends StatelessWidget {
                 SizedBox(height: 24.h),
                 CommonBtn(
                   margin: EdgeInsetsDirectional.zero,
-                  title: LanKey.confirm.tr,
+                  title: LanKey.gotIt.tr,
                   onTap: () {
                     // AccountService.to.updateUserBirthHAndM(12, 0);
                     Get.back();

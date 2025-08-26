@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NotifySelectWidget extends StatelessWidget {
-  NotifySelectWidget({super.key});
+  final int? selectIndex;
+  final Function(int)? onNet;
+  NotifySelectWidget({super.key, this.selectIndex, this.onNet});
   final List<String> items = ["Noon", "Morning", "Evening"];
 
   @override
@@ -24,7 +26,7 @@ class NotifySelectWidget extends StatelessWidget {
           ),
           CustomItemPicker(
             items: items,
-            initialIndex: 2,
+            initialIndex: selectIndex ?? 2,
             maxIndex: 2,
             minIndex: 0,
             backgroundColor: Colors.transparent,
@@ -47,6 +49,7 @@ class NotifySelectWidget extends StatelessWidget {
             itemWidth: 200,
             onSelectedItemChanged: (index) {
               debugPrint("item:${items[index]}");
+              onNet?.call(index);
             },
           ),
         ],

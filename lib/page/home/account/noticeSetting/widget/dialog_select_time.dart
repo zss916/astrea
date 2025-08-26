@@ -1,4 +1,5 @@
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/page/home/account/noticeSetting/widget/notify_select_widget.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +11,11 @@ void showSelectTimeDialog({
   String? rightButtonText,
   Function? onLeftButtonCall,
   Function? onRightButtonCall,
+  int? selectIndex,
   required String routeName,
 }) {
+  int selectedIndex = 2;
+
   Get.dialog(
     Material(
       color: Colors.transparent,
@@ -43,7 +47,12 @@ void showSelectTimeDialog({
                     ),
                   ),
                 ),
-                NotifySelectWidget(),
+                NotifySelectWidget(
+                  selectIndex: selectIndex,
+                  onNet: (index) {
+                    selectedIndex = index;
+                  },
+                ),
                 SizedBox(height: 32.h),
                 Row(
                   children: [
@@ -80,6 +89,7 @@ void showSelectTimeDialog({
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
+                          AccountService.to.setNoticeSelectIndex(selectedIndex);
                           if (onRightButtonCall == null) {
                             Get.back();
                           } else {

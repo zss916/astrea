@@ -24,6 +24,7 @@ class LanKey {
   static const timeOfBirthSubTitle = "time_of_birth_sub_title";
   static const timeOfBirthContent = "time_of_birth_content";
   static const confirm = "confirm";
+  static const gotIt = "gotIt";
   static const save = "save";
   static const coins = "coins";
   static const youGender = "you_gender";
@@ -360,6 +361,7 @@ class LanKey {
 
 ///英语文案
 const en = {
+  "gotIt": "Got it",
   "dailyAdvice": "Daily Advice",
   "threeMonthTrend": "Three-month Trend",
   "keyContent": "Key Content",

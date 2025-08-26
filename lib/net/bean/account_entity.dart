@@ -114,6 +114,17 @@ class AccountEntity {
 
   ///新用户(没有更新用户信息)
 
+  String get showID =>
+      maskNumber((int.parse((userId ?? "0")) * 5 + 200000).toString());
+
+  String maskNumber(String input) {
+    if (input.isEmpty) return input;
+    final firstTwo = input.substring(0, 2);
+    final lastOne = input.substring(input.length - 1);
+    final masked = '$firstTwo${'*' * (input.length - 3)}$lastOne';
+    return masked;
+  }
+
   String get userIdStr {
     if (userId == null) {
       return '--';

@@ -20,9 +20,9 @@ class GuidePage extends StatelessWidget {
               LanKey.birthChart.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontFamily: AppFonts.subTitleFontFamily,
+                fontFamily: AppFonts.titleFontFamily,
                 color: AppColor.textTitleColor,
-                fontWeight: FontWeight.w800,
+                //fontWeight: FontWeight.w800,
                 fontSize: 28.sp,
               ),
             ),

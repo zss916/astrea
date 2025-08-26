@@ -17,7 +17,7 @@ class AccountService extends GetxService {
   static const String userData = "horoscope_save_user_info";
   static const String friendData = "horoscope_save_friends";
   static const String accountAndPwd = "horoscope_login_account_and_pwd";
-
+  static const String noticeSelectIndexKey = "noticeSelectIndexKey";
   AccountEntity? data;
 
   ///初始化
@@ -73,6 +73,14 @@ class AccountService extends GetxService {
     data?.switchNotification = switchNotification;
     save(data!);
   }
+
+  ///设置通知选择
+  void setNoticeSelectIndex(int index) =>
+      StorageService.to.setInt(noticeSelectIndexKey, index);
+
+  ///获取通知选择
+  int getNoticeSelectIndex() =>
+      StorageService.to.getInt(noticeSelectIndexKey) ?? 2;
 
   ///保存用户信息
   void updateLocalUserInfo({
@@ -393,7 +401,8 @@ class AccountService extends GetxService {
     //updateCurrentRoute(route: null);
     clear();
     data = AccountEntity();
-    PageTools.offAllNamedLogin();
+    //PageTools.offAllNamedLogin();
+    PageTools.offAllNamedSplash();
   }
 
   ///清除用户信息

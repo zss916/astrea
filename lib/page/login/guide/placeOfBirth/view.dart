@@ -44,7 +44,7 @@ class PlaceOfBirthPage extends StatelessWidget {
                     style: TextStyle(
                       color: AppColor.textTitleColor,
                       fontSize: 28.sp,
-                      fontFamily: AppFonts.subTitleFontFamily,
+                      fontFamily: AppFonts.titleFontFamily,
                     ),
                   ),
                 ),

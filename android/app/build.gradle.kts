@@ -30,10 +30,10 @@ android {
     ///todo 设置签名
     signingConfigs {
         create("release") {
-            storeFile = file("../keyStore")
-            storePassword = "123456"
-            keyAlias = "key0"
-            keyPassword = "123456"
+            storeFile = file("../astrea.jks")
+            storePassword = "astrea123456"
+            keyAlias = "astrea"
+            keyPassword = "astrea123456"
         }
     }
 
@@ -41,7 +41,7 @@ android {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-           // signingConfig = signingConfigs.getByName("release")
+            //signingConfig = signingConfigs.getByName("release")
             signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = true
             isShrinkResources = true

@@ -6,7 +6,7 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ComAppBar(leading: SizedBox.shrink()),
+      appBar: ComAppBar(),
       backgroundColor: AppColor.pageBackground,
       body: GetBuilder<WelcomeLogic>(
         init: WelcomeLogic(),

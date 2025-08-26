@@ -71,7 +71,7 @@ class StarReportLogic extends GetxController {
       "value1": soul,
       "key2": "Emotion\nSync",
       "value2": emotion,
-      "key3": "\nAttraction",
+      "key3": "Attraction\n",
       "value3": attraction,
     },
     "family": {

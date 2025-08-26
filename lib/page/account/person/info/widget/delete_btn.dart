@@ -23,36 +23,43 @@ class DeleteBtn extends StatelessWidget {
             title: LanKey.deleteAccountTitle.tr,
             content: LanKey.deleteAccountContent.tr,
             confirmText: LanKey.notNow.tr,
+            titleStyle: TextStyle(
+              fontFamily: AppFonts.textFontFamily,
+              color: const Color(0xFF323133),
+              fontSize: 22.sp,
+              fontWeight: FontWeight.w600,
+            ),
+            contentStyle: TextStyle(
+              fontFamily: AppFonts.textFontFamily,
+              color: const Color(0xFF6A676C),
+              fontSize: 16.sp,
+              height: 1.38,
+            ),
             nextWidget: GestureDetector(
               onTap: () {
                 onTap.call();
               },
               child: Container(
                 width: double.infinity,
-                height: 56.h,
                 margin: EdgeInsets.only(top: 6.h),
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 16,
+                ),
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24),
                   ),
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 8.h,
-                  children: [
-                    Text(
-                      LanKey.deleteAccount.tr,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: const Color(0xFF91929D) /* icon-h */,
-                        fontSize: 18.sp,
-                        fontFamily: AppFonts.textFontFamily,
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  LanKey.deleteAccount.tr,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: const Color(0xFF91929D),
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: AppFonts.textFontFamily,
+                  ),
                 ),
               ),
             ),
