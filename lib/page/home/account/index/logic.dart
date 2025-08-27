@@ -24,6 +24,13 @@ class AccountLogic extends GetxController {
     refreshUserEvent = AppEventBus.eventBus.on<RefreshUserEvent>().listen((
       event,
     ) {
+      if (event.avatar != null) {
+        account?.headimg = event.avatar;
+      }
+      if (event.nickName != null) {
+        account?.nickName = event.nickName;
+      }
+      update();
       loadData();
     });
   }

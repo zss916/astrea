@@ -220,22 +220,21 @@ class HoroscopeListview extends StatelessWidget {
               height: 48,
               child: Container(
                 clipBehavior: Clip.hardEdge,
-                decoration: avatar.isEmpty
-                    ? BoxDecoration(
-                        borderRadius: BorderRadiusDirectional.circular(50),
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: ExactAssetImage(Assets.imageHomeAvatar),
-                        ),
-                      )
-                    : BoxDecoration(
-                        color: Colors.transparent,
-                        image: DecorationImage(
-                          image: NetworkImage(avatar),
-                          fit: BoxFit.cover,
-                        ),
-                        borderRadius: BorderRadiusDirectional.circular(50),
-                      ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadiusDirectional.circular(50),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: ExactAssetImage(Assets.imageHomeAvatar),
+                  ),
+                ),
+                foregroundDecoration: BoxDecoration(
+                  color: Colors.transparent,
+                  image: DecorationImage(
+                    image: NetworkImage(avatar),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadiusDirectional.circular(50),
+                ),
               ),
             ),
             PositionedDirectional(
@@ -290,22 +289,21 @@ class HoroscopeListview extends StatelessWidget {
           height: 48,
           child: Container(
             clipBehavior: Clip.hardEdge,
-            decoration: avatar.isEmpty
-                ? BoxDecoration(
-                    borderRadius: BorderRadiusDirectional.circular(50),
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: ExactAssetImage(Assets.imageFriendDefaultIcon),
-                    ),
-                  )
-                : BoxDecoration(
-                    color: Colors.transparent,
-                    image: DecorationImage(
-                      image: NetworkImage(avatar),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadiusDirectional.circular(50),
-                  ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadiusDirectional.circular(50),
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: ExactAssetImage(Assets.imageFriendDefaultIcon),
+              ),
+            ),
+            foregroundDecoration: BoxDecoration(
+              color: Colors.transparent,
+              image: DecorationImage(
+                image: NetworkImage(avatar),
+                fit: BoxFit.cover,
+              ),
+              borderRadius: BorderRadiusDirectional.circular(50),
+            ),
           ),
         ),
         Spacer(),

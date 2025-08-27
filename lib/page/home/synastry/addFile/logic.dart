@@ -5,12 +5,15 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
   bool isUser = false;
   int? id;
   bool homeToAdd = false;
+  bool isEditFile = false;
 
   CancelToken cancelToken = CancelToken();
 
   AwesomeDateTime? initDateTime;
 
   FriendEntity data = FriendEntity();
+
+  FriendEntity originalData = FriendEntity();
 
   @override
   void onInit() {
@@ -19,11 +22,16 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
   }
 
   void initData() {
+    if (Get.arguments != null && Get.arguments["isEditFile"] is bool) {
+      isEditFile = Get.arguments["isEditFile"] as bool;
+      // debugPrint("===>> $isEditFile");
+    }
     if (Get.arguments != null && Get.arguments["homeToAdd"] is bool) {
       homeToAdd = Get.arguments["homeToAdd"] as bool;
     }
     if (Get.arguments != null && Get.arguments["data"] is FriendEntity) {
       data = Get.arguments["data"] as FriendEntity;
+      originalData = data;
       isUser = data.isMe ?? false;
       id = data.id;
       //isSave = true;
@@ -111,6 +119,11 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
       onFinish: (url) {
         data.headImg = url;
         updateButtonState();
+        if (isEditFile) {
+          updateFriendAvatar(url: url);
+        } else {
+          AppLoading.dismiss();
+        }
       },
     );
   }
@@ -118,6 +131,7 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
   ///修改朋友
   Future<void> updateFriend() async {
     if (id == null) {
+      AppLoading.dismiss();
       return;
     }
     if (!isMatchName(data.nickName ?? "")) {
@@ -150,6 +164,35 @@ class AddFileLogic extends GetxController with AppValidatorMixin {
       });
     } else {
       AppLoading.toast("Failed");
+    }
+  }
+
+  updateFriendAvatar({required String url}) async {
+    if (id == null) {
+      AppLoading.dismiss();
+      return;
+    }
+    bool isSuccessful =
+        await FriendAPI.updateFriend(
+          id: id.toString(),
+          avatar: url,
+          nickName: originalData.nickName,
+          birthday: originalData.birthday,
+          birthHour: originalData.birthHour,
+          birthMinute: originalData.birthMinute,
+          sex: originalData.sex ?? 2,
+          lon: originalData.showLon,
+          lat: originalData.showLat,
+          locality: originalData.locality,
+          interests: originalData.interests,
+          cancelToken: cancelToken,
+        ).whenComplete(() {
+          AppLoading.dismiss();
+        });
+    if (isSuccessful) {
+      AppLoading.toast("Successful").whenComplete(() {
+        AppEventBus.eventBus.fire(RefreshFriendsEvent(item: data));
+      });
     }
   }
 }

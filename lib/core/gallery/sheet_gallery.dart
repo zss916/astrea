@@ -182,12 +182,18 @@ class OpenCamera extends StatelessWidget {
               onFinish.call(url ?? "");
             }
           })
-          .whenComplete(() {
+          .onError((_, _) {
             AppLoading.dismiss();
+          })
+          .catchError((_) {
+            AppLoading.dismiss();
+          })
+          .whenComplete(() {
+            // AppLoading.dismiss();
           });
     } else {
       AppLoading.dismiss();
-      AppLoading.toast("file is not exist");
+      AppLoading.toast("File is not exist");
       debugPrint("file is not exist");
     }
   }

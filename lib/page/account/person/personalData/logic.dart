@@ -2,6 +2,7 @@ part of 'index.dart';
 
 class PersonalDataLogic extends GetxController with AppValidatorMixin {
   AccountEntity? account;
+  AccountEntity? originalAccount;
 
   String get avatar => account?.headimg ?? "";
   String get nickName => account?.nickName ?? "";
@@ -46,6 +47,7 @@ class PersonalDataLogic extends GetxController with AppValidatorMixin {
     account = await AccountAPI.getAccount().whenComplete(() {
       AppLoading.dismiss();
       initDateTime = account?.getAwesomeDateTime();
+      originalAccount = account;
       update();
     });
   }
@@ -76,7 +78,12 @@ class PersonalDataLogic extends GetxController with AppValidatorMixin {
         ).whenComplete(() {
           AppLoading.dismiss();
           AppEventBus.eventBus.fire(RefreshFriendsEvent());
-          AppEventBus.eventBus.fire(RefreshUserEvent());
+          AppEventBus.eventBus.fire(
+            RefreshUserEvent(
+              avatar: account?.headimg,
+              nickName: account?.nickName,
+            ),
+          );
         });
     if (isSuccessful) {
       if ((account?.headimg ?? "").isNotEmpty) {
@@ -120,7 +127,38 @@ class PersonalDataLogic extends GetxController with AppValidatorMixin {
         account?.headimg = url;
         debugPrint("upload image: ${account?.headimg}");
         update();
+        updateAvatar(url);
       },
     );
+  }
+
+  Future<void> updateAvatar(String url) async {
+    bool isSuccessful =
+        await AccountAPI.updateAccount(
+          birthday: originalAccount?.birthday,
+          nickName: originalAccount?.nickName,
+          birthMinute: originalAccount?.birthMinute,
+          birthHour: originalAccount?.birthHour,
+          interests: originalAccount?.interests,
+          lon: (originalAccount?.lon == null)
+              ? null
+              : num.parse(originalAccount?.lon ?? "0").toInt(),
+          lat: (originalAccount?.lat == null)
+              ? null
+              : num.parse(originalAccount?.lat ?? "0").toInt(),
+          locality: originalAccount?.locality,
+          sex: originalAccount?.sex,
+          avatar: url,
+        ).whenComplete(() {
+          AppLoading.dismiss();
+          AppEventBus.eventBus.fire(RefreshFriendsEvent());
+          AppEventBus.eventBus.fire(RefreshUserEvent(avatar: url));
+        });
+
+    if (isSuccessful) {
+      if ((account?.headimg ?? "").isNotEmpty) {
+        AccountService.to.updateUserAvatar(avatar);
+      }
+    }
   }
 }

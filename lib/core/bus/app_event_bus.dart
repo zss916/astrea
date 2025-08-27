@@ -21,7 +21,9 @@ class DeleteFriendsEvent {
 }
 
 class RefreshUserEvent {
-  RefreshUserEvent();
+  String? avatar;
+  String? nickName;
+  RefreshUserEvent({this.avatar, this.nickName});
 }
 
 class RefreshLogEvent {

@@ -108,13 +108,6 @@ class EditAvatar extends StatelessWidget {
                   ),
                 ],
               ),
-
-            /* Image.network(
-              'https://astrology-s3-test.s3.us-east-1.amazonaws.com/your-image.jpg',
-              errorBuilder: (context, error, stackTrace) {
-                return Icon(Icons.error); // 添加错误处理
-              },
-            ),*/
           ],
         ),
       ),

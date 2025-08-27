@@ -1,5 +1,6 @@
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/synastry/addFile/index.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class EditAvatar extends StatelessWidget {
@@ -25,12 +26,13 @@ class EditAvatar extends StatelessWidget {
         child: Stack(
           alignment: AlignmentDirectional.center,
           children: [
-            Image.asset(
-              Assets.imageCameraAvatar,
-              matchTextDirection: true,
-              width: 91,
-              height: 91,
-            ),
+            if ((path ?? "").isEmpty)
+              Image.asset(
+                Assets.imageCameraAvatar,
+                matchTextDirection: true,
+                width: 91,
+                height: 91,
+              ),
             if ((path ?? "").isNotEmpty)
               Stack(
                 alignment: AlignmentDirectional.center,
@@ -38,14 +40,40 @@ class EditAvatar extends StatelessWidget {
                   Container(
                     width: 85,
                     height: 85,
-                    margin: EdgeInsetsDirectional.only(end: 3),
+                    clipBehavior: Clip.hardEdge,
                     decoration: BoxDecoration(
-                      color: Colors.black,
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(path ?? ""),
-                      ),
-                      borderRadius: BorderRadiusDirectional.circular(50),
+                      borderRadius: BorderRadiusDirectional.circular(100),
+                    ),
+                    child: CachedNetworkImage(
+                      width: 85,
+                      height: 85,
+                      fit: BoxFit.cover,
+                      placeholder: (BuildContext context, String url) =>
+                          Container(
+                            color: Colors.transparent,
+                            alignment: Alignment.center,
+                            width: 85,
+                            height: 85,
+                            child: Center(
+                              child: CircularProgressIndicator(
+                                color: Color(0xFF766DF8),
+                              ),
+                            ),
+                          ),
+                      errorWidget:
+                          (BuildContext context, String url, dynamic error) =>
+                              Container(
+                                alignment: Alignment.center,
+                                width: 85,
+                                height: 85,
+                                color: Colors.transparent,
+                                child: Icon(
+                                  Icons.error,
+                                  size: 40,
+                                  color: Colors.black,
+                                ),
+                              ),
+                      imageUrl: path ?? "",
                     ),
                   ),
                   Image.asset(

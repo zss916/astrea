@@ -33,9 +33,6 @@ class AccountPage extends StatelessWidget {
       backgroundColor: AppColor.pageBackground,
       body: Column(
         children: [
-          /*EditAvatar(
-              path: null,
-            ),*/
           AccountTop(isUser: true),
           Expanded(
             child: SingleChildScrollView(

@@ -32,14 +32,18 @@ class EditAvatar extends StatelessWidget {
                 Container(
                   width: 85,
                   height: 85,
-                  margin: EdgeInsetsDirectional.only(end: 3),
+                  // margin: EdgeInsetsDirectional.only(end: 3),
                   decoration: BoxDecoration(
-                    color: Color(0x1A000000),
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: (path ?? "").isNotEmpty
-                          ? NetworkImage(path ?? "")
-                          : ExactAssetImage(Assets.imageDefaultAvatar),
+                      image: ExactAssetImage(Assets.imageDefaultAvatar),
+                    ),
+                    borderRadius: BorderRadiusDirectional.circular(50),
+                  ),
+                  foregroundDecoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(path ?? ""),
                     ),
                     borderRadius: BorderRadiusDirectional.circular(50),
                   ),

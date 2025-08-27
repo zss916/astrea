@@ -43,9 +43,15 @@ class SynastryAvatar extends StatelessWidget {
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     matchTextDirection: true,
-                    image: avatar.isNotEmpty
-                        ? NetworkImage(avatar)
-                        : ExactAssetImage(Assets.imageHomeAvatar),
+                    image: ExactAssetImage(Assets.imageHomeAvatar),
+                  ),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                foregroundDecoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    matchTextDirection: true,
+                    image: NetworkImage(avatar),
                   ),
                   borderRadius: BorderRadius.circular(50),
                 ),
