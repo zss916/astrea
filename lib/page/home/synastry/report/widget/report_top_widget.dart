@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/synastry/report/widget/report_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -49,6 +50,12 @@ class ReportTopWidget extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           image: DecorationImage(
+                            image: AssetImage(Assets.imageDefaultAvatar),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        foregroundDecoration: BoxDecoration(
+                          image: DecorationImage(
                             image: NetworkImage(userAvatar),
                             fit: BoxFit.cover,
                           ),
@@ -61,6 +68,12 @@ class ReportTopWidget extends StatelessWidget {
                     child: ReportAvatar(
                       child: Container(
                         decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(Assets.imageFriendDefaultIcon),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        foregroundDecoration: BoxDecoration(
                           image: DecorationImage(
                             image: NetworkImage(otherAvatar),
                             fit: BoxFit.cover,
