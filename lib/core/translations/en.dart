@@ -357,10 +357,12 @@ class LanKey {
   static const keyContent = "keyContent";
   static const threeMonthTrend = "threeMonthTrend";
   static const dailyAdvice = "dailyAdvice";
+  static const moreFriends = "moreFriends";
 }
 
 ///英语文案
 const en = {
+  "moreFriends": "Reached the limit, a maximum of 10 friends can be added.",
   "gotIt": "Got it",
   "dailyAdvice": "Daily Advice",
   "threeMonthTrend": "Three-month Trend",

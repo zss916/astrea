@@ -1,6 +1,7 @@
 import 'package:astrea/components/bottom_stack.dart';
 import 'package:astrea/components/common_app_bar.dart';
 import 'package:astrea/components/loading_widget.dart';
+import 'package:astrea/core/bus/app_event_bus.dart';
 import 'package:astrea/core/enum/app_enum.dart';
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/setting/app_color.dart';
@@ -12,7 +13,6 @@ import 'package:astrea/generated/assets.dart';
 import 'package:astrea/net/api/synastry.dart';
 import 'package:astrea/net/bean/analysis_article_entity.dart';
 import 'package:astrea/net/bean/analysis_identity_entity.dart';
-import 'package:astrea/page/home/horoscope/detail/widget/blur_widget.dart';
 import 'package:astrea/page/home/horoscope/index/widget/horoscope_content/content/free_unlocking_card.dart';
 import 'package:astrea/page/home/horoscope/index/widget/tabview_top_widget/circular_percent_widget.dart';
 import 'package:astrea/page/home/horoscope/index/widget/tabview_top_widget/star_spacer.dart';

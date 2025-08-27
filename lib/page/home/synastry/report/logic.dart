@@ -98,7 +98,7 @@ class StarReportLogic extends GetxController {
       "key3": "Comfort\nZone",
       "value3": comfortBoundary,
     },
-    "colleagues": {
+    "colleague": {
       "key1": "Flow\nChat",
       "value1": authoritativeStructure,
       "key2": "Long\nPartnership",
@@ -333,6 +333,7 @@ class StarReportLogic extends GetxController {
           AppLoading.dismiss();
         });
     if (isSuccessful) {
+      AppEventBus.eventBus.fire(RefreshLogEvent());
       isSave = false;
     }
     update();

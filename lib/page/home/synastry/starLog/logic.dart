@@ -5,6 +5,7 @@ class LogsLogic extends GetxController {
 
   int viewState = Status.init.index;
   CancelToken cancelToken = CancelToken();
+  late StreamSubscription<RefreshLogEvent> refreshEvent;
 
   ///0 loading, 1 data, 2 empty
 
@@ -12,6 +13,9 @@ class LogsLogic extends GetxController {
   void onInit() {
     super.onInit();
     initView();
+    refreshEvent = AppEventBus.eventBus.on<RefreshLogEvent>().listen((event) {
+      loadData(isRefresh: false);
+    });
   }
 
   void initView() {
@@ -29,12 +33,15 @@ class LogsLogic extends GetxController {
   void onClose() {
     cancelToken.cancel();
     super.onClose();
+    refreshEvent.cancel();
   }
 
   ///加载朋友列表
-  Future<void> loadData() async {
-    viewState = Status.init.index;
-    update();
+  Future<void> loadData({bool isRefresh = true}) async {
+    if (isRefresh) {
+      viewState = Status.init.index;
+      update();
+    }
     (bool, List<AnalysisEntity>) value = await SynastryAPI.getAnalysisList(
       cancelToken: cancelToken,
     );

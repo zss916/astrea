@@ -1,5 +1,6 @@
 import 'package:astrea/core/bus/app_event_bus.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/home/horoscope/index/logic.dart';
@@ -83,13 +84,18 @@ class HoroscopeListview extends StatelessWidget {
                         child: Row(
                           children: [
                             ///add
-                            InkWell(
-                              borderRadius: BorderRadius.circular(5),
-                              onTap: () {
-                                onAdd?.call();
-                              },
-                              child: buildAdd(),
-                            ),
+                            if (logic.friends.length < 10)
+                              InkWell(
+                                borderRadius: BorderRadius.circular(5),
+                                onTap: () {
+                                  if (logic.friends.length < 10) {
+                                    onAdd?.call();
+                                  } else {
+                                    AppLoading.toast(LanKey.moreFriends.tr);
+                                  }
+                                },
+                                child: buildAdd(),
+                              ),
 
                             /// oneself
                             InkWell(

@@ -130,7 +130,7 @@ class FileManagementLogic extends GetxController {
     if (list.length < 11) {
       PageTools.toAddFile();
     } else {
-      AppLoading.toast("add friend more 10");
+      AppLoading.toast(LanKey.moreFriends.tr);
     }
   }
 

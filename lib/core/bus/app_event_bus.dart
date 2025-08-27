@@ -23,3 +23,7 @@ class DeleteFriendsEvent {
 class RefreshUserEvent {
   RefreshUserEvent();
 }
+
+class RefreshLogEvent {
+  RefreshLogEvent();
+}

@@ -93,7 +93,7 @@ class AddFilePage extends StatelessWidget {
                         ),
                         Divider(height: 1, color: Color(0xFFD5D5D5)),
                         EditPlaceOfBirth(
-                          showPlace: logic.data.locality ?? "",
+                          showPlace: logic.data.locality,
                           onChange: (value, latitude, longitude) {
                             logic.data.locality = value;
                             logic.data.lat = num.parse(latitude);
