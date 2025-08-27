@@ -43,12 +43,12 @@ class Assets {
   static const String imageBottomTexture = 'assets/image/bottom_texture.png';
   static const String imageBottomTexture2 = 'assets/image/bottom_texture2.png';
   static const String imageBottomTexture3 = 'assets/image/bottom_texture3.png';
-  static const String imageBusinessIcon = 'assets/image/business_icon.webp';
+  static const String imageBusinessIcon = 'assets/image/business_icon.png';
   static const String imageCameraAvatar = 'assets/image/camera_avatar.png';
   static const String imageCameraIcon = 'assets/image/camera_icon.png';
   static const String imageCancer = 'assets/image/cancer.png';
   static const String imageCapricorn = 'assets/image/capricorn.png';
-  static const String imageCareerIcon = 'assets/image/career_icon.webp';
+  static const String imageCareerIcon = 'assets/image/career_icon.png';
   static const String imageChatIcon = 'assets/image/chat_icon.png';
   static const String imageChatSend = 'assets/image/chat_send.png';
   static const String imageChatroom = 'assets/image/chatroom.png';
@@ -76,7 +76,7 @@ class Assets {
   static const String imageEyeClose = 'assets/image/eye_close.png';
   static const String imageEyeOpen = 'assets/image/eye_open.png';
   static const String imageFacebook = 'assets/image/facebook.png';
-  static const String imageFamilyIcon = 'assets/image/family_icon.webp';
+  static const String imageFamilyIcon = 'assets/image/family_icon.png';
   static const String imageFemale = 'assets/image/female.png';
   static const String imageFileAdd = 'assets/image/file_add.png';
   static const String imageFinishIcon = 'assets/image/finish_icon.png';
@@ -87,7 +87,7 @@ class Assets {
   static const String imageFremale = 'assets/image/fremale.png';
   static const String imageFriendDefaultIcon =
       'assets/image/friend_default_icon.png';
-  static const String imageFriendsIcon = 'assets/image/friends_icon.webp';
+  static const String imageFriendsIcon = 'assets/image/friends_icon.png';
   static const String imageGemini = 'assets/image/gemini.png';
   static const String imageGoogle = 'assets/image/google.png';
   static const String imageGuideIcon = 'assets/image/guide_icon.png';
@@ -136,7 +136,7 @@ class Assets {
   static const String imageLogEmpty = 'assets/image/log_empty.png';
   static const String imageLogoDefaultIcon =
       'assets/image/logo_default_icon.webp';
-  static const String imageLoveIcon = 'assets/image/love_icon.webp';
+  static const String imageLoveIcon = 'assets/image/love_icon.png';
   static const String imageLuckyColorIcon = 'assets/image/lucky_color_icon.png';
   static const String imageLuckyGemIcon = 'assets/image/lucky_gem_icon.png';
   static const String imageLuckyNumberIcon =
@@ -145,7 +145,7 @@ class Assets {
   static const String imageMars = 'assets/image/mars.png';
   static const String imageMask = 'assets/image/mask.png';
   static const String imageMercury = 'assets/image/mercury.png';
-  static const String imageMoneyIcon = 'assets/image/money_icon.webp';
+  static const String imageMoneyIcon = 'assets/image/money_icon.png';
   static const String imageMoon = 'assets/image/moon.png';
   static const String imageMoonIcon = 'assets/image/moon_icon.png';
   static const String imageMore = 'assets/image/more.png';

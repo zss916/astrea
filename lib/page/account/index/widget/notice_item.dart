@@ -62,7 +62,7 @@ class _NoticeState extends State<NoticeItem> {
                   content: LanKey.noticeTip.tr,
                   leftButtonText: LanKey.yes.tr,
                   rightButtonText: LanKey.notNow.tr,
-                  onRightButtonCall: () {
+                  onLeftButtonCall: () {
                     Get.back();
                     openAppSettings();
                     /*setState(() {

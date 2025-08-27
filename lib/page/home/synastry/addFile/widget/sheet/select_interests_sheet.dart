@@ -48,6 +48,15 @@ class _SelectInterestWidgetState extends State<SelectInterestWidget> {
     Assets.imageCareerIcon,
   ];
 
+  List<String> names = [
+    LanKey.money.tr,
+    LanKey.business.tr,
+    LanKey.friends.tr,
+    LanKey.love.tr,
+    LanKey.family.tr,
+    LanKey.career.tr,
+  ];
+
   @override
   void initState() {
     super.initState();

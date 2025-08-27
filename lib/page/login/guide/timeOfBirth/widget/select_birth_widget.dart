@@ -52,7 +52,7 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
 
   initData() {
     final (int y, int m, int d) = AccountService.to.getUserBirth();
-    debugPrint("initData ===>> $y,$m,$d");
+    // debugPrint("initData ===>> $y,$m,$d");
     isToday =
         (y == DateTime.now().year) &&
         (m == DateTime.now().month) &&
@@ -98,7 +98,7 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
           children: [
             PositionedDirectional(
               start: 0,
-              top: 152,
+              top: 151,
               child: Text(
                 'AC',
                 textAlign: TextAlign.center,
@@ -111,7 +111,7 @@ class _SelectBirthWidgetState extends State<SelectBirthWidget>
             ),
             PositionedDirectional(
               end: 0,
-              top: 152,
+              top: 151,
               child: Text(
                 'DC',
                 textAlign: TextAlign.center,
