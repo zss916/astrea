@@ -51,7 +51,7 @@ class LogsLogic extends GetxController {
       return;
     } else {
       list.clear();
-      list.addAll(value.$2);
+      list.addAll(value.$2.reversed);
       viewState = list.isNotEmpty ? Status.data.index : Status.empty.index;
       update();
     }

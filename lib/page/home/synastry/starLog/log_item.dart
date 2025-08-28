@@ -28,12 +28,17 @@ class LogItem extends StatelessWidget {
               Container(
                 margin: EdgeInsetsDirectional.only(bottom: 8),
                 decoration: BoxDecoration(
-                  color: Color(0x0d000000),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: (item.firstFriendInfo?.headImg ?? "").isNotEmpty
-                        ? NetworkImage(item.firstFriendInfo?.headImg ?? "")
-                        : ExactAssetImage(Assets.imageFriendDefaultIcon),
+                    image: ExactAssetImage(Assets.imageFriendDefaultIcon),
+                  ),
+                  borderRadius: BorderRadiusDirectional.circular(100),
+                ),
+                foregroundDecoration: BoxDecoration(
+                  //color: Color(0x0d000000),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(item.firstFriendInfo?.headImg ?? ""),
                   ),
                   borderRadius: BorderRadiusDirectional.circular(100),
                 ),
@@ -101,9 +106,15 @@ class LogItem extends StatelessWidget {
                   color: Color(0x1A000000),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: (item.secondFriendInfo?.headImg ?? "").isNotEmpty
-                        ? NetworkImage(item.secondFriendInfo?.headImg ?? "")
-                        : ExactAssetImage(Assets.imageFriendDefaultIcon),
+                    image: ExactAssetImage(Assets.imageFriendDefaultIcon),
+                  ),
+                  borderRadius: BorderRadiusDirectional.circular(100),
+                ),
+                foregroundDecoration: BoxDecoration(
+                  color: Color(0x1A000000),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(item.secondFriendInfo?.headImg ?? ""),
                   ),
                   borderRadius: BorderRadiusDirectional.circular(100),
                 ),
