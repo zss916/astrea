@@ -24,6 +24,50 @@ class AppStarIcon {
         : "";
   }
 
+  static String? select(String name) {
+    return name.isNotEmpty
+        ? [
+            ///月亮
+            Assets.imageMoon,
+
+            ///太阳
+            Assets.imageSun,
+
+            ///水星
+            Assets.imageMercury,
+
+            ///金星
+            Assets.imageVenus,
+
+            ///冥王星
+            Assets.imagePluto,
+
+            ///木星
+            Assets.imageJupiter,
+
+            ///土星
+            Assets.imageSaturn,
+
+            ///天王星
+            Assets.imageUranus,
+
+            ///海王星
+            Assets.imageNeptune,
+
+            ///火星
+            Assets.imageMars,
+
+            ///金星
+            Assets.imageVenus,
+
+            ///水星
+            Assets.imageMercury,
+          ].firstWhereOrNull(
+            (element) => element.contains(name.trim().toLowerCase()),
+          )
+        : "";
+  }
+
   ///白羊座  3月21日 - 4月19日
   static Widget get aries => Image.asset(
     Assets.imageAries,

@@ -81,6 +81,7 @@ class _InputLoginState extends State<InputLogin> with AppValidatorMixin {
                         style: TextStyle(
                           color: AppColor.textTitleColor,
                           fontSize: 28.sp,
+                          fontWeight: FontWeight.w800,
                           fontFamily: AppFonts.subTitleFontFamily,
                         ),
                       ),

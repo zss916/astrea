@@ -116,7 +116,7 @@ class _SelectDateState extends State<SelectDateWidget>
                   month: DateTime.now().month,
                   day: DateTime.now().day,
                 ),
-                minDate: AwesomeDate(year: 1900, month: 1, day: 1),
+                minDate: AwesomeDate(year: 1910, month: 1, day: 1),
                 dateFormat: AwesomeDateFormat.mMdy,
                 backgroundColor: Colors.transparent,
                 fadeEffect: false,

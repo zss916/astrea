@@ -21,6 +21,7 @@ class NatalChart extends StatelessWidget {
   final String element;
   final String ruler;
   final String form;
+  final String? rulerSignIcon;
 
   const NatalChart({
     super.key,
@@ -33,6 +34,7 @@ class NatalChart extends StatelessWidget {
     this.sunSignIcon,
     this.moonSignIcon,
     this.ascendantSignIcon,
+    this.rulerSignIcon,
     required this.natalChartImage,
     required this.element,
     required this.ruler,
@@ -162,8 +164,8 @@ class NatalChart extends StatelessWidget {
                     children: [
                       FittedBox(
                         child: Text(
-                          LanKey.ascendant.tr,
-                          textAlign: TextAlign.center,
+                          LanKey.element.tr,
+                          textAlign: TextAlign.end,
                           style: TextStyle(
                             color: const Color(0xFF91929D),
                             fontSize: 12.sp,
@@ -171,28 +173,13 @@ class NatalChart extends StatelessWidget {
                           ),
                         ),
                       ),
-                      FittedBox(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            if ((ascendantSignIcon ?? "").isNotEmpty)
-                              Image.asset(
-                                ascendantSignIcon ?? '',
-                                width: 14.r,
-                                height: 14.r,
-                                matchTextDirection: true,
-                              ),
-                            SizedBox(width: 3.w),
-                            Text(
-                              ascendantSign,
-                              textAlign: TextAlign.end,
-                              style: TextStyle(
-                                color: const Color(0xFF323133),
-                                fontSize: 14.sp,
-                                fontFamily: AppFonts.textFontFamily,
-                              ),
-                            ),
-                          ],
+                      Text(
+                        element,
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                          color: const Color(0xFF323133),
+                          fontSize: 14.sp,
+                          fontFamily: AppFonts.textFontFamily,
                         ),
                       ),
                     ],
@@ -229,8 +216,8 @@ class NatalChart extends StatelessWidget {
                     children: [
                       FittedBox(
                         child: Text(
-                          LanKey.element.tr,
-                          textAlign: TextAlign.start,
+                          LanKey.ascendant.tr,
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             color: const Color(0xFF91929D),
                             fontSize: 12.sp,
@@ -238,17 +225,34 @@ class NatalChart extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Text(
-                        element,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: const Color(0xFF323133),
-                          fontSize: 14.sp,
-                          fontFamily: AppFonts.textFontFamily,
+                      FittedBox(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              ascendantSign,
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                color: const Color(0xFF323133),
+                                fontSize: 14.sp,
+                                fontFamily: AppFonts.textFontFamily,
+                              ),
+                            ),
+                            SizedBox(width: 3.w),
+
+                            if ((ascendantSignIcon ?? "").isNotEmpty)
+                              Image.asset(
+                                ascendantSignIcon ?? '',
+                                width: 14.r,
+                                height: 14.r,
+                                matchTextDirection: true,
+                              ),
+                          ],
                         ),
                       ),
                     ],
                   ),
+
                   Divider(color: Colors.transparent, height: 9),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -265,13 +269,29 @@ class NatalChart extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Text(
-                        ruler,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: const Color(0xFF323133),
-                          fontSize: 14.sp,
-                          fontFamily: AppFonts.textFontFamily,
+
+                      FittedBox(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              ruler,
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                color: const Color(0xFF323133),
+                                fontSize: 14.sp,
+                                fontFamily: AppFonts.textFontFamily,
+                              ),
+                            ),
+                            SizedBox(width: 3.w),
+                            if ((rulerSignIcon ?? "").isNotEmpty)
+                              Image.asset(
+                                rulerSignIcon ?? '',
+                                width: 14.r,
+                                height: 14.r,
+                                matchTextDirection: true,
+                              ),
+                          ],
                         ),
                       ),
                     ],

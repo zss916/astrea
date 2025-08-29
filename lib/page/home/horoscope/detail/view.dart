@@ -75,6 +75,7 @@ class AnalysisPage extends StatelessWidget {
                   element: logic.element,
                   ruler: logic.ruler,
                   form: logic.form,
+                  rulerSignIcon: logic.rulerIcon,
                 ),
                 //  FreeUnlockingCard(),
                 SizedBox(height: 25.h),

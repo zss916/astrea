@@ -62,7 +62,7 @@ class GuidePage extends StatelessWidget {
               style: TextStyle(
                 color: const Color(0xFF6A676C),
                 fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
+                //fontWeight: FontWeight.w500,
                 fontFamily: AppFonts.textFontFamily,
               ),
             ),

@@ -84,7 +84,7 @@ class StartPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 28.sp,
-                        fontFamily: AppFonts.subTitleFontFamily,
+                        fontFamily: AppFonts.titleFontFamily,
                         //fontWeight: FontWeight.w800,
                         color: AppColor.textTitleColor,
                       ),
@@ -141,7 +141,7 @@ class StartPage extends StatelessWidget {
                           bgColor: Colors.transparent,
                           textColor: Color(0xFF323133),
                           onTap: () {
-                            logic.toLogin();
+                            logic.toEmail();
                           },
                         ),
                       ],

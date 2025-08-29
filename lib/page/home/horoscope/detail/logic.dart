@@ -16,6 +16,8 @@ class AnalysisLogic extends GetxController {
   String? get moonSignIcon => AppStarIcon.selectSign(moonSign);
   String get ascendantSign => data?.natalChartResult?.ascendantSign ?? "";
   String? get ascendantSignIcon => AppStarIcon.selectSign(ascendantSign);
+  String? get rulerIcon => AppStarIcon.select(ruler);
+
   String get element => data?.natalChartResult?.element ?? "";
   String get form => data?.natalChartResult?.form ?? "";
   String get ruler => data?.natalChartResult?.ruler ?? "";

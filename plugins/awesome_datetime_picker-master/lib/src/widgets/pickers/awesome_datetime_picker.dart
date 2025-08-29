@@ -94,7 +94,7 @@ class _AwesomeDateTimePickerState extends State<AwesomeDateTimePicker> {
   void initState() {
     minDateTime = widget.minDateTime ??
         AwesomeDateTime(
-            date: AwesomeDate(year: 1900, month: 1, day: 1),
+            date: AwesomeDate(year: 1910, month: 1, day: 1),
             time: AwesomeTime(hour: 00, minute: 00));
 
     //AwesomeTime(hour: 23, minute: 59)

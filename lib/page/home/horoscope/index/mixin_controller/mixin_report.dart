@@ -21,6 +21,7 @@ mixin HoroscopeReportLogicMixin on GetxController {
   String get element => data?.natalChartResult?.element ?? "";
   String get form => data?.natalChartResult?.form ?? "";
   String get ruler => data?.natalChartResult?.ruler ?? "";
+  String? get rulerIcon => AppStarIcon.select(ruler);
 
   ///三大主行
   String get sunSignInterpretation =>

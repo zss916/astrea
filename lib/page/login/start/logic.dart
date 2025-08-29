@@ -27,6 +27,7 @@ class StartLogic extends GetxController with LoginChannelMixin {
       PageTools.toStep(loginType: LoginType.loginAndRegister.index);
 
   ///邮箱登录
+  void toEmail() => PageTools.toEmail(loginType: LoginType.onlyLogin.index);
   void toLogin() => PageTools.toWelcome(loginType: LoginType.onlyLogin.index);
 
   ///隐私
