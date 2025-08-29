@@ -9,7 +9,6 @@ class AnalysisLogic extends GetxController {
 
   ///星盘
   String get natalChartImage => data?.natalChartImg ?? "";
-  //String get natalChartImage => "https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg";
   String get sunSign => data?.natalChartResult?.sunSign ?? "";
   String? get sunSignIcon => AppStarIcon.selectSign(sunSign);
   String get moonSign => data?.natalChartResult?.moonSign ?? "";
@@ -21,9 +20,11 @@ class AnalysisLogic extends GetxController {
   String get element => data?.natalChartResult?.element ?? "";
   String get form => data?.natalChartResult?.form ?? "";
   String get ruler => data?.natalChartResult?.ruler ?? "";
-  String get luckyColor => data?.natalChartResult?.luckColor ?? "--";
+  String get luckyColor =>
+      GetUtils.capitalize(data?.natalChartResult?.luckColor ?? "--") ?? "--";
   String get luckyNumber => data?.natalChartResult?.luckNumber ?? "--";
-  String get luckyGem => data?.natalChartResult?.luckGemstone ?? "--";
+  String get luckyGem =>
+      GetUtils.capitalize(data?.natalChartResult?.luckGemstone ?? "--") ?? "--";
 
   ///三大主行
   String get sunSignInterpretation =>
