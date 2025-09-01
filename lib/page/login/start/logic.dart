@@ -69,10 +69,15 @@ class StartLogic extends GetxController with LoginChannelMixin {
           nickName: nickname,
           authToken: data.authToken ?? "",
         );
-        PageTools.loginToNext(
-          loginType: LoginType.onlyLogin.index,
-          friendId: data.friendId,
-        );
+        if (isRegistered) {
+          if (data.friendId != null) {
+            PageTools.offAllNamedHome(friendId: data.friendId);
+          } else {
+            PageTools.toResult();
+          }
+        } else {
+          PageTools.toStep(loginType: LoginType.loginAndRegister.index);
+        }
       } else {
         AppLoading.toast("login failed");
       }
@@ -107,10 +112,18 @@ class StartLogic extends GetxController with LoginChannelMixin {
           nickName: nickname,
           authToken: data.authToken ?? "",
         );
-        PageTools.loginToNext(
-          loginType: LoginType.onlyLogin.index,
-          friendId: data.friendId,
-        );
+
+        ///本地调试
+        FlutterDevToolkit.logger.log('data: ${data.toJson()}');
+        if (isRegistered) {
+          if (data.friendId != null) {
+            PageTools.offAllNamedHome(friendId: data.friendId);
+          } else {
+            PageTools.toResult();
+          }
+        } else {
+          PageTools.toStep(loginType: LoginType.loginAndRegister.index);
+        }
       } else {
         AppLoading.toast("Login Failed");
       }

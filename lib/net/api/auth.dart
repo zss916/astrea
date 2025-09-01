@@ -4,6 +4,7 @@ import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_dev_toolkit/flutter_dev_toolkit.dart';
 
 ///auth
 abstract class AuthAPI {
@@ -106,6 +107,8 @@ abstract class AuthAPI {
         return null;
       }
     } catch (error) {
+      ///本地调试
+      FlutterDevToolkit.logger.log("error:$error");
       return null;
     }
   }

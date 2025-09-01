@@ -4,6 +4,11 @@ import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/router/router_observer.dart';
 import 'package:astrea/core/setting/global.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dev_toolkit/core/default_logger.dart';
+import 'package:flutter_dev_toolkit/core/dev_toolkit_config.dart';
+import 'package:flutter_dev_toolkit/flutter_dev_toolkit.dart';
+import 'package:flutter_dev_toolkit/models/built_in_plugin_type.dart';
+import 'package:flutter_dev_toolkit/ui/log_overlay.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -16,6 +21,20 @@ Future<void> main() async {
 
   /// 抓包初始化
   ProxyTool.init();
+
+  ///本地调试工具
+  FlutterDevToolkit.init(
+    config: DevToolkitConfig(
+      logger: DefaultLogger(),
+      disableBuiltInPlugins: [
+        // BuiltInPluginType.logs,
+        BuiltInPluginType.network,
+        BuiltInPluginType.routes,
+        BuiltInPluginType.deviceInfo,
+      ],
+    ),
+  );
+
   runApp(const App());
 }
 
@@ -36,7 +55,17 @@ class App extends StatelessWidget {
         getPages: APages.routes,
         navigatorObservers: [appRouteObserver],
         builder: (context, child) => MediaQuery.withNoTextScaling(
-          child: EasyLoading.init()(context, child),
+          child: EasyLoading.init()(
+            context,
+            Stack(
+              children: [
+                child!,
+
+                ///本地调试工具
+                const DevOverlay(),
+              ],
+            ),
+          ),
         ),
         defaultTransition: Transition.cupertino,
         //theme: CustomTheme.to.dark,

@@ -1,3 +1,4 @@
+import 'package:flutter_dev_toolkit/flutter_dev_toolkit.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
@@ -44,8 +45,11 @@ mixin LoginChannelMixin {
       String? identityToken = credential.identityToken;
       String? userIdentifier = credential.userIdentifier;
 
-      // String text = 'name:$name,appleToken:$identityToken,userIdentifier:${credential.userIdentifier}';
-      // AppLoading.toast(text, duration: Duration(seconds: 20));
+      ///本地调试
+      FlutterDevToolkit.logger.log(
+        "authorizationCode:$authorizationCode\n identityToken:$identityToken \n userIdentifier:$userIdentifier",
+      );
+
       callBack.call(
         success: true,
         authorizationCode: authorizationCode,
