@@ -47,6 +47,8 @@ class AnalysisFirstFriendInfo {
   @JSONField(name: "is_self")
   double? isSelf;
 
+  bool get isMe => isSelf == 1;
+
   AnalysisFirstFriendInfo();
 
   factory AnalysisFirstFriendInfo.fromJson(Map<String, dynamic> json) =>
@@ -81,6 +83,8 @@ class AnalysisSecondFriendInfo {
   double? lat;
   @JSONField(name: "is_self")
   double? isSelf;
+
+  bool get isMe => isSelf == 1;
 
   AnalysisSecondFriendInfo();
 

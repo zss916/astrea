@@ -80,11 +80,13 @@ class StarReportPage extends StatelessWidget {
     child: Column(
       children: [
         ReportTopWidget(
-          userName: logic.userName ?? "",
-          userAvatar: logic.userAvatar ?? "",
-          otherName: logic.friendName ?? "",
-          otherAvatar: logic.friendAvatar ?? "",
+          userName: logic.firstFriendInfo?.nickName ?? "",
+          userAvatar: logic.firstFriendInfo?.headImg ?? "",
+          otherName: logic.secondFriendInfo?.nickName ?? "",
+          otherAvatar: logic.secondFriendInfo?.headImg ?? "",
           relationship: logic.relationship ?? "",
+          firstIsMe: logic.firstFriendInfo?.isMe ?? false,
+          secondIsMe: logic.secondFriendInfo?.isMe ?? false,
         ),
         Stack(
           alignment: AlignmentDirectional.topCenter,
@@ -153,8 +155,8 @@ class StarReportPage extends StatelessWidget {
 
                   if (logic.meanings.isNotEmpty)
                     ReportTableWidget(
-                      oneself: logic.userName ?? '',
-                      otherSide: logic.friendName ?? "",
+                      oneself: logic.firstFriendInfo?.nickName ?? '',
+                      otherSide: logic.secondFriendInfo?.nickName ?? "",
                       data: logic.meanings,
                     ),
 

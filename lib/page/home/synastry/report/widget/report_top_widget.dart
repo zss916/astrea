@@ -12,6 +12,9 @@ class ReportTopWidget extends StatelessWidget {
   final String userAvatar;
   final String otherAvatar;
   final String relationship;
+  final bool firstIsMe;
+  final bool secondIsMe;
+
   const ReportTopWidget({
     super.key,
     required this.userName,
@@ -19,6 +22,8 @@ class ReportTopWidget extends StatelessWidget {
     required this.otherName,
     required this.otherAvatar,
     required this.relationship,
+    required this.firstIsMe,
+    required this.secondIsMe,
   });
 
   @override
@@ -50,7 +55,11 @@ class ReportTopWidget extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(Assets.imageDefaultAvatar),
+                            image: AssetImage(
+                              firstIsMe
+                                  ? Assets.imageDefaultAvatar
+                                  : Assets.imageFriendDefaultIcon,
+                            ),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -69,7 +78,11 @@ class ReportTopWidget extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(Assets.imageFriendDefaultIcon),
+                            image: AssetImage(
+                              secondIsMe
+                                  ? Assets.imageDefaultAvatar
+                                  : Assets.imageFriendDefaultIcon,
+                            ),
                             fit: BoxFit.cover,
                           ),
                         ),

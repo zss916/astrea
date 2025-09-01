@@ -116,17 +116,14 @@ class StarReportLogic extends GetxController {
     },
   };
 
-  num? firstId;
-  num? secondId;
+  // num? firstId;
+  //num? secondId;
   String? relationship;
   bool? isSave;
+  AnalysisSecondFriendInfo? secondFriendInfo;
+  AnalysisFirstFriendInfo? firstFriendInfo;
 
   int viewState = Status.init.index;
-
-  String? userName;
-  String? userAvatar;
-  String? friendName;
-  String? friendAvatar;
 
   String? id;
 
@@ -167,20 +164,16 @@ class StarReportLogic extends GetxController {
   void _parseArguments() {
     if (Get.arguments is Map) {
       final map = Get.arguments as Map;
-      firstId = map["firstId"];
-      secondId = map["secondId"];
       relationship = map["relationship"];
       isSave = map["isSave"];
       id = map["id"];
+      firstFriendInfo = map["firstFriendInfo"] as AnalysisFirstFriendInfo;
+      secondFriendInfo = map["secondFriendInfo"] as AnalysisSecondFriendInfo;
     }
   }
 
   /// 解析路由参数
   void _parseParameters() {
-    userName = Get.parameters["userName"];
-    userAvatar = Get.parameters["userAvatar"];
-    friendName = Get.parameters["friendName"];
-    friendAvatar = Get.parameters["friendAvatar"];
     relationship = Get.parameters["relationship"];
   }
 
@@ -191,8 +184,8 @@ class StarReportLogic extends GetxController {
       getAnalysis(id: id ?? "");
     } else {
       loadAnalysis(
-        firstId: firstId ?? 0,
-        secondId: secondId ?? 0,
+        firstId: firstFriendInfo?.id ?? 0,
+        secondId: secondFriendInfo?.id ?? 0,
         relationship: relationship ?? "",
       );
     }

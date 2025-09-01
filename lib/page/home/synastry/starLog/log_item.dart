@@ -30,7 +30,11 @@ class LogItem extends StatelessWidget {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: ExactAssetImage(Assets.imageFriendDefaultIcon),
+                    image: ExactAssetImage(
+                      (item.firstFriendInfo?.isMe ?? false)
+                          ? Assets.imageDefaultAvatar
+                          : Assets.imageFriendDefaultIcon,
+                    ),
                   ),
                   borderRadius: BorderRadiusDirectional.circular(100),
                 ),
@@ -106,7 +110,11 @@ class LogItem extends StatelessWidget {
                   color: Color(0x1A000000),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: ExactAssetImage(Assets.imageFriendDefaultIcon),
+                    image: ExactAssetImage(
+                      (item.secondFriendInfo?.isMe ?? false)
+                          ? Assets.imageDefaultAvatar
+                          : Assets.imageFriendDefaultIcon,
+                    ),
                   ),
                   borderRadius: BorderRadiusDirectional.circular(100),
                 ),

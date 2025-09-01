@@ -1,6 +1,5 @@
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/storage/app_service.dart';
-import 'package:astrea/core/storage/astrology_service.dart';
 import 'package:astrea/core/storage/storage.dart';
 import 'package:astrea/core/toast/app_loading.dart';
 import 'package:auto_hyphenating_text/auto_hyphenating_text.dart';
@@ -19,7 +18,7 @@ class Global {
     ]).whenComplete(() async {
       await Get.putAsync<AccountService>(() => AccountService().init());
       Get.put<AppService>(AppService());
-      Get.put<AstrologyService>(AstrologyService());
+      // Get.put<AstrologyService>(AstrologyService());
       AppLoading();
     });
   }

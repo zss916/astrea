@@ -37,7 +37,7 @@ class Http {
   }
 
   void cancelRequests(CancelToken token) {
-    token.cancel("cancelled");
+    token.cancel("cancel request");
   }
 
   ///post

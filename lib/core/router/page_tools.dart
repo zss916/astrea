@@ -2,6 +2,7 @@ import 'package:astrea/core/enum/view_state.dart';
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/net/bean/account_entity.dart';
+import 'package:astrea/net/bean/analysis_entity.dart';
 import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
 import 'package:astrea/page/login/guide/email/enum/login_enum.dart';
@@ -209,21 +210,18 @@ class PageTools {
   /// 合盘分析
   static toStarReportPage({
     required String id,
-    required String userName,
-    required String friendName,
-    required String userAvatar,
-    required String friendAvatar,
     required String relationship,
+    required AnalysisSecondFriendInfo secondFriendInfo,
+    required AnalysisFirstFriendInfo firstFriendInfo,
   }) => Get.toNamed(
     APages.starReport,
-    arguments: {"id": id, "isSave": true},
-    parameters: {
-      "userName": userName,
-      "userAvatar": userAvatar,
-      "friendName": friendName,
-      "friendAvatar": friendAvatar,
-      "relationship": relationship,
+    arguments: {
+      "id": id,
+      "isSave": true,
+      "firstFriendInfo": firstFriendInfo,
+      "secondFriendInfo": secondFriendInfo,
     },
+    parameters: {"relationship": relationship},
   );
 
   static toAccount() => Get.toNamed(APages.account);
