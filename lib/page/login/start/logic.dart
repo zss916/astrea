@@ -83,14 +83,17 @@ class StartLogic extends GetxController with LoginChannelMixin {
   void toAppleAuth() async {
     appleLogin(({
       required bool success,
-      String? token,
       String? nickname,
+      String? authorizationCode,
+      String? identityToken,
+      String? userIdentifier,
     }) async {
       AppLoading.show();
       AuthEntity? data =
           await AuthAPI.appleLogin(
-            code: "1",
-            token: token ?? "",
+            code: authorizationCode ?? "",
+            token: identityToken ?? "",
+            thirdId: userIdentifier ?? "",
             cancelToken: cancelToken,
           ).whenComplete(() {
             AppLoading.dismiss();
@@ -109,7 +112,7 @@ class StartLogic extends GetxController with LoginChannelMixin {
           friendId: data.friendId,
         );
       } else {
-        AppLoading.toast("login failed");
+        AppLoading.toast("Login Failed");
       }
     });
   }

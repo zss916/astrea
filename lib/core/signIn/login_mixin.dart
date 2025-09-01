@@ -40,13 +40,19 @@ mixin LoginChannelMixin {
         ],
       );
       String name = (credential.givenName) ?? credential.familyName ?? "";
-      credential.authorizationCode;
-      String? appleToken = credential.identityToken;
-      credential.userIdentifier;
-      String text =
-          'name:$name,appleToken:$appleToken,userIdentifier:${credential.userIdentifier}';
+      String? authorizationCode = credential.authorizationCode;
+      String? identityToken = credential.identityToken;
+      String? userIdentifier = credential.userIdentifier;
+
+      // String text = 'name:$name,appleToken:$identityToken,userIdentifier:${credential.userIdentifier}';
       // AppLoading.toast(text, duration: Duration(seconds: 20));
-      callBack.call(success: true, token: appleToken, nickname: name);
+      callBack.call(
+        success: true,
+        authorizationCode: authorizationCode,
+        identityToken: identityToken,
+        userIdentifier: userIdentifier,
+        nickname: name,
+      );
     } catch (e) {
       callBack.call(success: false);
       /*callBack.call(
@@ -70,4 +76,10 @@ typedef GoogleCallBack =
     });
 
 typedef AppleCallBack =
-    void Function({required bool success, String? token, String? nickname});
+    void Function({
+      required bool success,
+      String? authorizationCode,
+      String? identityToken,
+      String? userIdentifier,
+      String? nickname,
+    });

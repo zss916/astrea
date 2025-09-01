@@ -65,14 +65,21 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
   void toAppleAuth() async {
     appleLogin(({
       required bool success,
-      String? token,
       String? nickname,
+      String? authorizationCode,
+      String? identityToken,
+      String? userIdentifier,
     }) async {
-      AuthEntity? data = await AuthAPI.appleLogin(
-        code: "1",
-        token: token ?? "",
-        cancelToken: cancelToken,
-      );
+      AppLoading.show();
+      AuthEntity? data =
+          await AuthAPI.appleLogin(
+            code: authorizationCode ?? "",
+            token: identityToken ?? "",
+            thirdId: userIdentifier ?? "",
+            cancelToken: cancelToken,
+          ).whenComplete(() {
+            AppLoading.dismiss();
+          });
       // debugPrint("data===> ${data.toJson()}");
       if (data != null) {
         AccountService.to.updateLocalUserInfo(
@@ -84,7 +91,7 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
         );
         PageTools.loginToNext(loginType: loginType, friendId: data.friendId);
       } else {
-        AppLoading.toast("login failed");
+        AppLoading.toast("Login Failed");
       }
     });
   }
