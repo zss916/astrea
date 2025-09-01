@@ -1,4 +1,3 @@
-import 'package:astrea/core/toast/app_loading.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
@@ -46,10 +45,16 @@ mixin LoginChannelMixin {
       credential.userIdentifier;
       String text =
           'name:$name,appleToken:$appleToken,userIdentifier:${credential.userIdentifier}';
-      AppLoading.toast(text, duration: Duration(seconds: 20));
-      //callBack.call(success: true, token: appleToken, nickname: name);
+      // AppLoading.toast(text, duration: Duration(seconds: 20));
+      callBack.call(success: true, token: appleToken, nickname: name);
     } catch (e) {
       callBack.call(success: false);
+      /*callBack.call(
+        success: true,
+        token:
+            "eyJrawQioiJVYUlJRlkyZlcoliwiywxnljoiUlMyNTYifQ.eyJpc3MiOiJodHRwczovL2FwcGxlawQuYxBwbGUuY29tliwiyxVkljoiY29tLmFzdHJlYs5maw5kbxlzbcvmliwizxhwljoxNZU2ODA0MzAyLCJpYXQiOjE3NTY3MTC5MDIsInN1YiI6IjAWMTK1NC44MWZmNDYyNZM4MTCOMzUzYjkyZWNiMTU2OGQ1NmY4My4wNjl4liwiY19oYxNoljoicvhkMXB2eE1LWTNrNWppS1VjSmlDZylslmVtYwlsljoic2Fiyw5hbGx5bmvodGUzQGdtYWlsLmNvbSlsImVtYWlsx3ZlcmlmawvkljpocnVILCJhdXRox3RpbWUiOjE3NTY3MTc5MDIsIm5vbmNIX3N1CHBvcnRlZCI6dHJ1ZX0.SR_GEV1pqkpb BjCq1JYJIPW3E6OUDIPNApc6-fF9UjDRExQdvTDTpg8vKIHcbwVYP7hZ2GLojr9A9tohkBdO1L90lyh opJiaFiVwDb1lxPlHbwPUafst9hthKicHLYGHJJa41r6w-1cJhQ5hnhaegAoonVbMNkkgtYnuLCPoDJ390Hh88Ps92TlejJ0F5t0iTcuqqQjnlqllmol5NZiQ6Y9abAvR-_kH5qnM7hCWpzBCtlvKxSmZn2vTzSdMggT5etGN8LSlhw6n23wA-QxPPuYuLvilgBHqBsfgfY16xom3NuffqjIWEGOHR OxYM6MeJx1WR2BCyVqVNW5_A",
+        nickname: "apple",
+      );*/
     }
   }
 }

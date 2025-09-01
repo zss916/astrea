@@ -69,7 +69,8 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
       String? nickname,
     }) async {
       AuthEntity? data = await AuthAPI.appleLogin(
-        code: token ?? "",
+        code: "1",
+        token: token ?? "",
         cancelToken: cancelToken,
       );
       // debugPrint("data===> ${data.toJson()}");

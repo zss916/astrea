@@ -89,7 +89,8 @@ class StartLogic extends GetxController with LoginChannelMixin {
       AppLoading.show();
       AuthEntity? data =
           await AuthAPI.appleLogin(
-            code: token ?? "",
+            code: "1",
+            token: token ?? "",
             cancelToken: cancelToken,
           ).whenComplete(() {
             AppLoading.dismiss();
