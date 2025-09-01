@@ -33,7 +33,7 @@ class AppLoading {
   }
 
   static Future<void> toast(String text, {Duration? duration}) {
-    return EasyLoading.showToast(text);
+    return EasyLoading.showToast(text, duration: duration);
   }
 
   static void dismiss() {
