@@ -2,7 +2,6 @@ import 'package:astrea/core/enum/view_state.dart';
 import 'package:astrea/core/router/app_pages.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/net/bean/account_entity.dart';
-import 'package:astrea/net/bean/analysis_entity.dart';
 import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
 import 'package:astrea/page/login/guide/email/enum/login_enum.dart';
@@ -23,9 +22,8 @@ class PageTools {
   }
 
   static toStep({required int loginType}) {
-    //debugPrint("currentRouter ==>${AccountService.to.data}");
     String? currentRouter = AccountService.to.currentRouter;
-    debugPrint("currentRouter ==>$currentRouter");
+    //debugPrint("currentRouter ==>$currentRouter");
     if (currentRouter == null) {
       toGuide(loginType: loginType);
     } else {
@@ -59,68 +57,27 @@ class PageTools {
     }
   }
 
-  /*static toStep2({required int loginType}) {
-    if (AccountService.to.loginStep == null) {
-      toGuide(loginType: loginType);
-    } else {
-      int step = (AccountService.to.loginStep ?? 0);
-      debugPrint("step===>$step");
-      switch (step) {
-        case 0:
-          toGuide(loginType: loginType);
-          break;
-        case 1:
-          toDateOfBirth(loginType: loginType);
-          break;
-        case 2:
-          toTimeOfBirth(loginType: loginType);
-          break;
-        case 3:
-          toPlaceOfBirth(loginType: loginType);
-          break;
-        case 4:
-          toGender(loginType: loginType);
-          break;
-        case 5:
-          toEditUserName(loginType: loginType);
-          break;
-        case 6:
-          toInterests(loginType: loginType);
-          break;
-        case 7:
-          toWelcome(loginType: loginType);
-          break;
-      }
-    }
-  }*/
-
   static toDateOfBirth({required int loginType}) {
-    // AccountService.to.updateLoginStep(step: LoginStep.step1.value);
     Get.toNamed(APages.dateOfBirth, arguments: loginType);
   }
 
   static toTimeOfBirth({required int loginType}) {
-    // AccountService.to.updateLoginStep(step: LoginStep.step2.value);
     Get.toNamed(APages.timeOfBirth, arguments: loginType);
   }
 
   static toPlaceOfBirth({required int loginType}) {
-    // AccountService.to.updateLoginStep(step: LoginStep.step3.value);
     Get.toNamed(APages.placeOfBirth, arguments: loginType);
   }
 
   static toGender({required int loginType}) {
-    // AccountService.to.updateLoginStep(step: LoginStep.step4.value);
     Get.toNamed(APages.gender, arguments: loginType);
   }
 
   static toEditUserName({required int loginType}) {
-    // AccountService.to.updateLoginStep(step: LoginStep.step5.value);
     Get.toNamed(APages.editName, arguments: loginType);
   }
 
   static toInterests({required int loginType}) {
-    // AccountService.to.updateLoginStep(step: LoginStep.step6.value);
     Get.toNamed(APages.interests, arguments: loginType);
   }
 
@@ -190,6 +147,8 @@ class PageTools {
     required String friendName,
     required String userAvatar,
     required String friendAvatar,
+    required bool firstIsMe,
+    required bool secondIsMe,
   }) => Get.toNamed(
     APages.starReport,
     arguments: {
@@ -197,6 +156,8 @@ class PageTools {
       "secondId": secondId,
       "relationship": relationship,
       "isSave": isSave,
+      "firstIsMe": firstIsMe,
+      "secondIsMe": secondIsMe,
     },
     parameters: {
       "userName": userName,
@@ -211,17 +172,27 @@ class PageTools {
   static toStarReportPage({
     required String id,
     required String relationship,
-    required AnalysisSecondFriendInfo secondFriendInfo,
-    required AnalysisFirstFriendInfo firstFriendInfo,
+    required String userName,
+    required String friendName,
+    required String userAvatar,
+    required String friendAvatar,
+    required bool firstIsMe,
+    required bool secondIsMe,
   }) => Get.toNamed(
     APages.starReport,
     arguments: {
       "id": id,
       "isSave": true,
-      "firstFriendInfo": firstFriendInfo,
-      "secondFriendInfo": secondFriendInfo,
+      "firstIsMe": firstIsMe,
+      "secondIsMe": secondIsMe,
     },
-    parameters: {"relationship": relationship},
+    parameters: {
+      "userName": userName,
+      "userAvatar": userAvatar,
+      "friendName": friendName,
+      "friendAvatar": friendAvatar,
+      "relationship": relationship,
+    },
   );
 
   static toAccount() => Get.toNamed(APages.account);

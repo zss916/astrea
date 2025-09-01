@@ -230,6 +230,8 @@ class FileManagementLogic extends GetxController {
             userAvatar: first.headImg ?? "",
             friendName: second.nickName ?? "",
             friendAvatar: second.headImg ?? "",
+            firstIsMe: first.isMe,
+            secondIsMe: second.isMe,
           );
         }
       });

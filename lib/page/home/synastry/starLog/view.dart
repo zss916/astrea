@@ -53,15 +53,16 @@ class LogsPage extends StatelessWidget {
     itemBuilder: (_, i) => GestureDetector(
       onTap: () {
         AnalysisEntity item = logic.list[i];
-        if ((item.id != null) &&
-            item.relationship != null &&
-            item.firstFriendInfo != null &&
-            item.secondFriendInfo != null) {
+        if ((item.id != null) && item.relationship != null) {
           PageTools.toStarReportPage(
             id: (item.id ?? 0).toString(),
-            secondFriendInfo: item.secondFriendInfo!,
-            firstFriendInfo: item.firstFriendInfo!,
+            userName: item.firstFriendInfo?.nickName ?? "",
+            userAvatar: item.firstFriendInfo?.headImg ?? "",
+            friendName: item.secondFriendInfo?.nickName ?? "",
+            friendAvatar: item.secondFriendInfo?.headImg ?? "",
             relationship: item.relationship ?? "",
+            firstIsMe: item.firstFriendInfo?.isMe ?? false,
+            secondIsMe: item.secondFriendInfo?.isMe ?? false,
           );
         }
       },
