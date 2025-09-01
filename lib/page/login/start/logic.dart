@@ -86,10 +86,14 @@ class StartLogic extends GetxController with LoginChannelMixin {
       String? token,
       String? nickname,
     }) async {
-      AuthEntity? data = await AuthAPI.appleLogin(
-        code: token ?? "",
-        cancelToken: cancelToken,
-      );
+      AppLoading.show();
+      AuthEntity? data =
+          await AuthAPI.appleLogin(
+            code: token ?? "",
+            cancelToken: cancelToken,
+          ).whenComplete(() {
+            AppLoading.dismiss();
+          });
       // debugPrint("data===> ${data.toJson()}");
       if (data != null) {
         AccountService.to.updateLocalUserInfo(

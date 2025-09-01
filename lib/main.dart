@@ -14,9 +14,6 @@ import 'core/translations/language.dart';
 Future<void> main() async {
   await Global.init();
 
-  ///解决证书验证问题
-  //HttpOverrides.global = AppHttpOverrides();
-
   /// 抓包初始化
   ProxyTool.init();
   runApp(const App());
