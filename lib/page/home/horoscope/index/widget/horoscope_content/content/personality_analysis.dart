@@ -147,9 +147,11 @@ class PersonalityAnalysis extends StatelessWidget {
                       Text(
                         LanKey.all.tr,
                         style: TextStyle(
-                          color: AppColor.contentTitleColor,
+                          color: Color(0xFF585FC4),
                           fontSize: 14.sp,
                           fontFamily: AppFonts.textFontFamily,
+                          decoration: TextDecoration.underline,
+                          decorationColor: Color(0xFF585FC4),
                         ),
                       ),
                       Container(
@@ -158,6 +160,7 @@ class PersonalityAnalysis extends StatelessWidget {
                           Assets.imageArrowMore,
                           width: 11,
                           height: 4,
+                          color: Color(0xFF585FC4),
                         ),
                       ),
                     ],

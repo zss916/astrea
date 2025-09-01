@@ -95,11 +95,13 @@ class SelectPlaceWidget extends StatelessWidget {
                           ),
                         ),
                       ),
+
                       Expanded(
                         child: IndexedStack(
                           index: logic.index,
                           children: [
-                            CountryListWidget(
+                            CountryWidget(
+                              az: logic.countryKeys,
                               logic: logic,
                               onSelect:
                                   (
@@ -115,7 +117,8 @@ class SelectPlaceWidget extends StatelessWidget {
                                     onSelect?.call(place, latitude, longitude);
                                   },
                             ),
-                            StateListWidget(
+                            StatesWidget(
+                              az: logic.stateKeys,
                               logic: logic,
                               onSelect:
                                   (
@@ -131,7 +134,8 @@ class SelectPlaceWidget extends StatelessWidget {
                                     onSelect?.call(place, latitude, longitude);
                                   },
                             ),
-                            CityListWidget(
+                            CitiesWidget(
+                              az: logic.cityKeys,
                               logic: logic,
                               onSelect:
                                   (
@@ -150,6 +154,64 @@ class SelectPlaceWidget extends StatelessWidget {
                           ],
                         ),
                       ),
+                      /*  Expanded(
+                        child: IndexedStack(
+                          index: logic.index,
+                          children: [
+                            CountryWidget(
+                              az: logic.countryKeys,
+                              logic: logic,
+                              onSelect:
+                                  (
+                                    String place,
+                                    String latitude,
+                                    String longitude,
+                                  ) {
+                                    AccountService.to.updatePlaceBirth(
+                                      place,
+                                      latitude,
+                                      longitude,
+                                    );
+                                    logic.toSex();
+                                  },
+                            ),
+                            StatesWidget(
+                              az: logic.stateKeys,
+                              logic: logic,
+                              onSelect:
+                                  (
+                                    String place,
+                                    String latitude,
+                                    String longitude,
+                                  ) {
+                                    AccountService.to.updatePlaceBirth(
+                                      place,
+                                      latitude,
+                                      longitude,
+                                    );
+                                    logic.toSex();
+                                  },
+                            ),
+                            CitiesWidget(
+                              az: logic.cityKeys,
+                              logic: logic,
+                              onSelect:
+                                  (
+                                    String place,
+                                    String latitude,
+                                    String longitude,
+                                  ) {
+                                    AccountService.to.updatePlaceBirth(
+                                      place,
+                                      latitude,
+                                      longitude,
+                                    );
+                                    logic.toSex();
+                                  },
+                            ),
+                          ],
+                        ),
+                      ),*/
                     ],
                   );
                 },

@@ -3,12 +3,14 @@ part of 'index.dart';
 class WelcomeLogic extends GetxController with LoginChannelMixin {
   CancelToken cancelToken = CancelToken();
   int loginType = LoginType.loginAndRegister.index;
+  // bool isRegistered = false;
 
   @override
   void onInit() {
     super.onInit();
-    if (Get.arguments != null && Get.arguments is int) {
-      loginType = Get.arguments as int;
+    if (Get.arguments != null && Get.arguments is Map) {
+      loginType = Get.arguments["loginType"] as int;
+      // isRegistered = Get.arguments["isRegistered"] as bool;
     }
 
     if (loginType == LoginType.loginAndRegister.index) {
@@ -41,6 +43,7 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
       AuthEntity? data =
           await AuthAPI.googleLogin(
             token: idToken ?? "",
+            loginType: loginType,
             cancelToken: cancelToken,
           ).whenComplete(() {
             AppLoading.dismiss();
@@ -54,7 +57,26 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
           nickName: nickname,
           authToken: data.authToken ?? "",
         );
-        PageTools.loginToNext(loginType: loginType, friendId: data.friendId);
+        if (loginType == LoginType.loginAndRegister.index) {
+          if (data.checkNewUser == false) {
+            showAccountExistsDialog(
+              onLoginAndUpdate: () {
+                ///更新
+                PageTools.toResult();
+              },
+              onOnlyLogin: () {
+                ///不更新
+                PageTools.offAllNamedHome(friendId: data.friendId);
+              },
+            );
+          } else {
+            PageTools.toResult();
+          }
+        } else {
+          PageTools.offAllNamedHome(friendId: data.friendId);
+        }
+
+        // PageTools.loginToNext(loginType: loginType, friendId: data.friendId);
       } else {
         AppLoading.toast("login failed");
       }
@@ -76,10 +98,13 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
             code: authorizationCode ?? "",
             token: identityToken ?? "",
             thirdId: userIdentifier ?? "",
+            loginType: loginType,
             cancelToken: cancelToken,
           ).whenComplete(() {
             AppLoading.dismiss();
           });
+
+      FlutterDevToolkit.logger.log('data: ${data?.toJson()}');
       // debugPrint("data===> ${data.toJson()}");
       if (data != null) {
         AccountService.to.updateLocalUserInfo(
@@ -89,7 +114,25 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
           nickName: nickname,
           authToken: data.authToken ?? "",
         );
-        PageTools.loginToNext(loginType: loginType, friendId: data.friendId);
+
+        if (loginType == LoginType.loginAndRegister.index) {
+          if (data.checkNewUser == false) {
+            showAccountExistsDialog(
+              onLoginAndUpdate: () {
+                ///更新
+                PageTools.toResult();
+              },
+              onOnlyLogin: () {
+                ///不更新
+                PageTools.offAllNamedHome(friendId: data.friendId);
+              },
+            );
+          } else {
+            PageTools.toResult();
+          }
+        } else {
+          PageTools.offAllNamedHome(friendId: data.friendId);
+        }
       } else {
         AppLoading.toast("Login Failed");
       }

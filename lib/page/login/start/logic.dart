@@ -56,6 +56,7 @@ class StartLogic extends GetxController with LoginChannelMixin {
       AuthEntity? data =
           await AuthAPI.googleLogin(
             token: idToken ?? "",
+            loginType: LoginType.onlyLogin.index,
             cancelToken: cancelToken,
           ).whenComplete(() {
             AppLoading.dismiss();
@@ -69,14 +70,11 @@ class StartLogic extends GetxController with LoginChannelMixin {
           nickName: nickname,
           authToken: data.authToken ?? "",
         );
-        if (isRegistered) {
-          if (data.friendId != null) {
-            PageTools.offAllNamedHome(friendId: data.friendId);
-          } else {
-            PageTools.toResult();
-          }
+
+        if (data.friendId != null) {
+          PageTools.offAllNamedHome(friendId: data.friendId);
         } else {
-          PageTools.toStep(loginType: LoginType.loginAndRegister.index);
+          PageTools.toGuide(loginType: LoginType.loginAndRegister.index);
         }
       } else {
         AppLoading.toast("login failed");
@@ -99,6 +97,7 @@ class StartLogic extends GetxController with LoginChannelMixin {
             code: authorizationCode ?? "",
             token: identityToken ?? "",
             thirdId: userIdentifier ?? "",
+            loginType: LoginType.onlyLogin.index,
             cancelToken: cancelToken,
           ).whenComplete(() {
             AppLoading.dismiss();
@@ -115,14 +114,10 @@ class StartLogic extends GetxController with LoginChannelMixin {
 
         ///本地调试
         FlutterDevToolkit.logger.log('data: ${data.toJson()}');
-        if (isRegistered) {
-          if (data.friendId != null) {
-            PageTools.offAllNamedHome(friendId: data.friendId);
-          } else {
-            PageTools.toResult();
-          }
+        if (data.friendId != null) {
+          PageTools.offAllNamedHome(friendId: data.friendId);
         } else {
-          PageTools.toStep(loginType: LoginType.loginAndRegister.index);
+          PageTools.toGuide(loginType: LoginType.loginAndRegister.index);
         }
       } else {
         AppLoading.toast("Login Failed");

@@ -57,6 +57,7 @@ class InterestsPage extends StatelessWidget {
                   if (type == LoginType.loginAndRegister.index) {
                     PageTools.toWelcome(
                       loginType: LoginType.loginAndRegister.index,
+                      //isRegistered: false,
                     );
                   } else {
                     PageTools.toResult();

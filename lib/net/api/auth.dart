@@ -4,7 +4,6 @@ import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_dev_toolkit/flutter_dev_toolkit.dart';
 
 ///auth
 abstract class AuthAPI {
@@ -53,13 +52,14 @@ abstract class AuthAPI {
   ///google登录
   static Future<AuthEntity?> googleLogin({
     required String token,
+    required int loginType,
     CancelToken? cancelToken,
   }) async {
     try {
       var result = await Http.instance.post(
         ApiPath.googleLogin,
         cancelToken: cancelToken,
-        data: {"id_token": token},
+        data: {"id_token": token, "loginType": loginType},
       );
       if (result["code"] == 0) {
         AuthEntity value = await compute(
@@ -68,7 +68,19 @@ abstract class AuthAPI {
         );
         return value;
       } else {
-        AppLoading.toast("${result["msg"]}");
+        switch (result["code"]) {
+          case 1005:
+            AppLoading.toast("Account does not exist or password is incorrect");
+            break;
+          case 1006:
+            AppLoading.toast("The password you entered is incorrect");
+            break;
+          case 1007:
+            debugPrint("Account already exists!");
+            break;
+          default:
+            AppLoading.toast("${result["msg"]}");
+        }
         return null;
       }
     } catch (error) {
@@ -79,6 +91,7 @@ abstract class AuthAPI {
   ///apple登录
   static Future<AuthEntity?> appleLogin({
     required String code,
+    required int loginType,
     String? token,
     String? thirdId,
     CancelToken? cancelToken,
@@ -91,6 +104,7 @@ abstract class AuthAPI {
       if (thirdId != null) {
         map["third_id"] = thirdId;
       }
+      map["loginType"] = loginType;
       var result = await Http.instance.post(
         ApiPath.appleLogin,
         cancelToken: cancelToken,
@@ -103,12 +117,22 @@ abstract class AuthAPI {
         );
         return value;
       } else {
-        AppLoading.toast("${result["msg"]}");
+        switch (result["code"]) {
+          case 1005:
+            AppLoading.toast("Account does not exist or password is incorrect");
+            break;
+          case 1006:
+            AppLoading.toast("The password you entered is incorrect");
+            break;
+          case 1007:
+            debugPrint("Account already exists!");
+            break;
+          default:
+            AppLoading.toast("${result["msg"]}");
+        }
         return null;
       }
     } catch (error) {
-      ///本地调试
-      FlutterDevToolkit.logger.log("error:$error");
       return null;
     }
   }

@@ -20,13 +20,13 @@ class AnalysisLogic extends GetxController {
   String get element => data?.natalChartResult?.element ?? "";
   String get form => data?.natalChartResult?.form ?? "";
   String get ruler => data?.natalChartResult?.ruler ?? "";
-  String get luckyColor2 =>
+  String get luckyColor =>
       GetUtils.capitalize(data?.natalChartResult?.luckColor ?? "--") ?? "--";
-  String get luckyColor => data?.natalChartResult?.luckColor ?? "--";
+  String get luckyColor2 => data?.natalChartResult?.luckColor ?? "--";
   String get luckyNumber => data?.natalChartResult?.luckNumber ?? "--";
-  String get luckyGem2 =>
+  String get luckyGem =>
       GetUtils.capitalize(data?.natalChartResult?.luckGemstone ?? "--") ?? "--";
-  String get luckyGem => data?.natalChartResult?.luckGemstone ?? "--";
+  String get luckyGem2 => data?.natalChartResult?.luckGemstone ?? "--";
 
   ///三大主行
   String get sunSignInterpretation =>

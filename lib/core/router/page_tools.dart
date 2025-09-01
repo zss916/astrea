@@ -81,8 +81,11 @@ class PageTools {
     Get.toNamed(APages.interests, arguments: loginType);
   }
 
-  static toWelcome({required int loginType}) {
-    Get.toNamed(APages.welcome, arguments: loginType);
+  static toWelcome({required int loginType, bool isRegistered = false}) {
+    Get.toNamed(
+      APages.welcome,
+      arguments: {"loginType": loginType, "isRegistered": isRegistered},
+    );
   }
 
   static toNotifySetting() => Get.toNamed(APages.notifySetting);
