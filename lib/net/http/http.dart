@@ -19,6 +19,8 @@ class Http {
     _dio = Dio(baseDioOptions);
     _dio.httpClientAdapter = httpAdapter;
 
+    //_dio.interceptors.add(NetWorkInterceptor());
+
     /// 代理抓包
     //_dio.httpClientAdapter = ProxyTool.getProxyAdapter();
 

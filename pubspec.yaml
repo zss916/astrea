@@ -67,6 +67,8 @@ dependencies:
   dotted_dashed_line: 0.0.3
   #虚线
   dotted_decoration: 2.0.0
+  connectivity_plus: ^6.1.5
+
   #通知
   #firebase_messaging: 16.0.0
   #notification_permissions: 0.6.1

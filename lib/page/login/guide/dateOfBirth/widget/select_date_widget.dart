@@ -7,6 +7,7 @@ import 'package:astrea/generated/assets.dart';
 import 'package:astrea/page/login/guide/dateOfBirth/widget/zodiac_wheel.dart';
 import 'package:awesome_datetime_picker/awesome_datetime_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sprintf/sprintf.dart';
 
 class SelectDateWidget extends StatefulWidget {
@@ -105,7 +106,7 @@ class _SelectDateState extends State<SelectDateWidget>
                 ),
               ),
               AwesomeDatePicker(
-                space: 70,
+                space: 60.w,
                 initialDate: AwesomeDate(
                   year: initValue.$1,
                   month: initValue.$2,

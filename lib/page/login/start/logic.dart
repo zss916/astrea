@@ -52,6 +52,10 @@ class StartLogic extends GetxController with LoginChannelMixin {
       String? nickname,
       String? cover,
     }) async {
+      if (!success) {
+        AppLoading.toast("Login failed, please try again");
+        return;
+      }
       AppLoading.show();
       AuthEntity? data =
           await AuthAPI.googleLogin(
@@ -89,6 +93,10 @@ class StartLogic extends GetxController with LoginChannelMixin {
       String? identityToken,
       String? userIdentifier,
     }) async {
+      if (!success) {
+        AppLoading.toast("Login failed, please try again");
+        return;
+      }
       AppLoading.show();
       AuthEntity? data =
           await AuthAPI.appleLogin(

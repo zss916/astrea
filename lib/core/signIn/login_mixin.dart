@@ -41,7 +41,7 @@ mixin LoginChannelMixin {
         ],
       );
       String name = (credential.givenName) ?? credential.familyName ?? "";
-      String? authorizationCode = credential.authorizationCode;
+      String authorizationCode = credential.authorizationCode;
       String? identityToken = credential.identityToken;
       String? userIdentifier = credential.userIdentifier;
 
@@ -49,13 +49,19 @@ mixin LoginChannelMixin {
         "name:$name \n authorizationCode:$authorizationCode \n identityToken:$identityToken \n userIdentifier:$userIdentifier",
       );
 
-      callBack.call(
-        success: true,
-        authorizationCode: authorizationCode,
-        identityToken: identityToken,
-        userIdentifier: userIdentifier,
-        nickname: name,
-      );
+      if (authorizationCode.isEmpty ||
+          identityToken == null ||
+          userIdentifier == null) {
+        callBack.call(success: false);
+      } else {
+        callBack.call(
+          success: true,
+          authorizationCode: authorizationCode,
+          identityToken: identityToken,
+          userIdentifier: userIdentifier,
+          nickname: name,
+        );
+      }
     } catch (e) {
       callBack.call(success: false);
     }

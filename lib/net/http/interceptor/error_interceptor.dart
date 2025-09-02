@@ -7,7 +7,7 @@ class ErrorInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     PrintTools.log("服务器错误: ${err.response?.statusCode}, ${err.message}");
-
+    super.onError(err, handler);
     switch (err.type) {
       case DioExceptionType.connectionTimeout:
         AppLoading.toast("Network Connection Timeout");
@@ -26,10 +26,10 @@ class ErrorInterceptor extends Interceptor {
       case DioExceptionType.cancel:
         break;
       case DioExceptionType.connectionError:
+        AppLoading.toast("Network connection failed");
         break;
       case DioExceptionType.unknown:
         break;
     }
-    super.onError(err, handler);
   }
 }
