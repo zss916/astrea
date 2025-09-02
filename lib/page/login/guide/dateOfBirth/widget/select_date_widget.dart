@@ -106,7 +106,7 @@ class _SelectDateState extends State<SelectDateWidget>
                 ),
               ),
               AwesomeDatePicker(
-                space: 60.w,
+                space: 50.w,
                 initialDate: AwesomeDate(
                   year: initValue.$1,
                   month: initValue.$2,

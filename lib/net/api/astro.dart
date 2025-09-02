@@ -108,7 +108,7 @@ abstract class AstrologyAPI {
           return (true, report); // 成功时返回true和报告
         } else {
           debugPrint("loopReport next");
-          await Future.delayed(Duration(seconds: 2));
+          await Future.delayed(Duration(seconds: 3));
           /*if (attempt >= maxRetries) {
             debugPrint("loopReport maxRetries:$attempt");
             return (false, report); // 达到最大重试次数时返回false和最新报告
