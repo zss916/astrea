@@ -22,9 +22,6 @@ class StartPage extends StatelessWidget {
                     } else {
                       logic.toLogin();
                     }
-                    PrintTools.log(
-                      "data=>fdsalkfksdajfkljsadkljfkljsadlkfjlskadjflkjsdalkfjlsakdjflkjasdklfjlksdajflksadfdsa",
-                    );
                   },
                   child: Container(
                     padding: EdgeInsetsDirectional.only(
