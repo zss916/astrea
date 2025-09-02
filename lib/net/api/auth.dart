@@ -136,6 +136,7 @@ abstract class AuthAPI {
         return null;
       }
     } catch (error) {
+      PrintTools.log("error =>${error.toString()}");
       return null;
     }
   }

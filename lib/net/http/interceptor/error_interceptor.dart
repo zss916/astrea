@@ -1,10 +1,13 @@
 import 'package:astrea/core/toast/app_loading.dart';
+import 'package:astrea/test/test.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class ErrorInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
+    PrintTools.log("服务器错误: ${err.response?.statusCode}, ${err.message}");
+
     switch (err.type) {
       case DioExceptionType.connectionTimeout:
         AppLoading.toast("Network Connection Timeout");
