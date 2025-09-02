@@ -2,6 +2,7 @@ import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
@@ -11,6 +12,7 @@ abstract class AstrologyAPI {
   static Future<(bool, NatalReportEntity)> getAstrologyReport({
     required String id,
     CancelToken? cancelToken,
+    Function()? onError,
   }) async {
     try {
       Map<String, dynamic> response = await Http.instance.get(
@@ -28,7 +30,11 @@ abstract class AstrologyAPI {
         // AstrologyService.to.update(value);
         return (true, value);
       } else {
-        AppLoading.toast(response["msg"]);
+        if (onError == null) {
+          AppLoading.toast(response["msg"]);
+        } else {
+          onError.call();
+        }
         return (false, NatalReportEntity());
       }
     } catch (error) {
@@ -86,6 +92,7 @@ abstract class AstrologyAPI {
     required String id,
     CancelToken? cancelToken,
     int maxRetries = 20,
+    Function? onError,
   }) async {
     _shouldStopPolling = false; // 重置轮询标志
     debugPrint("loopReport start");
@@ -95,8 +102,23 @@ abstract class AstrologyAPI {
       do {
         attempt++;
         debugPrint("loopReport attempt:$attempt");
-        final (bool success, NatalReportEntity report) =
-            await getAstrologyReport(id: id, cancelToken: cancelToken);
+
+        final connectivityResult = await Connectivity().checkConnectivity();
+        if (connectivityResult.contains(ConnectivityResult.none)) {
+          AppLoading.toast("Network connection failed");
+          //onError?.call();
+          return (false, NatalReportEntity());
+        }
+        final (
+          bool success,
+          NatalReportEntity report,
+        ) = await getAstrologyReport(
+          id: id,
+          cancelToken: cancelToken,
+          onError: () {
+            onError?.call();
+          },
+        );
         if (_shouldStopPolling) {
           debugPrint("Analysis _shouldStopPolling:$_shouldStopPolling");
           return (false, NatalReportEntity());

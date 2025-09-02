@@ -69,13 +69,13 @@ class _CustomItemPickerState extends State<CustomItemPicker> {
 
     const TextStyle defaultSelectedStyle = TextStyle(
       color: Colors.black,
-      fontSize: 20,
+      fontSize: 18,
       fontWeight: FontWeight.w500,
     );
 
     const TextStyle defaultUnselectedStyle = TextStyle(
       color: Colors.black54,
-      fontSize: 18,
+      fontSize: 16,
     );
 
     return Column(

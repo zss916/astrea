@@ -91,11 +91,15 @@ mixin HoroscopeReportLogicMixin on GetxController {
 
   Future<(bool, NatalReportEntity)> loadAstrologyReport({
     required String reportId,
+    Function? onError,
   }) async {
     final (bool isSuccessful, NatalReportEntity report) =
         await AstrologyAPI.loopAndReturnReport(
           id: reportId,
           cancelToken: reportCancelToken,
+          onError: () {
+            onError?.call();
+          },
         ).whenComplete(() {
           AppLoading.dismiss();
         });

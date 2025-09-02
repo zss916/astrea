@@ -3,10 +3,12 @@ import 'dart:async';
 import 'package:astrea/core/bus/app_event_bus.dart';
 import 'package:astrea/core/enum/view_state.dart';
 import 'package:astrea/core/toast/app_loading.dart';
+import 'package:astrea/net/api/astro.dart';
 import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
 import 'package:astrea/page/home/horoscope/index/mixin_controller/mixin_report.dart';
 import 'package:astrea/page/home/horoscope/index/mixin_controller/mixin_stars.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'mixin_controller/mixin_account.dart';
@@ -126,6 +128,11 @@ class HoroscopeLogic extends GetxController
     update();
     (bool, NatalReportEntity) value = await loadAstrologyReport(
       reportId: reportId,
+      onError: () {
+        AstrologyAPI.stopPolling();
+        viewState = HomeViewState.reload.index;
+        update();
+      },
     );
     if (value.$1) {
       viewState = HomeViewState.data.index;
@@ -158,9 +165,18 @@ class HoroscopeLogic extends GetxController
           update();
         }
       } else {
+        account = await loadAccount();
+        if (account?.friendId != null) {
+          reportId = account?.friendId;
+          loadReport(reportId: reportId ?? "");
+        } else {
+          viewState = HomeViewState.reload.index;
+          update();
+        }
         loadReport(reportId: reportId ?? "");
       }
     } else {
+      debugPrint("------>2");
       loadReport(reportId: reportId ?? "");
     }
   }

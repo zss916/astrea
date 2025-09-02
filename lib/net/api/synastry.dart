@@ -4,6 +4,7 @@ import 'package:astrea/net/bean/analysis_entity.dart';
 import 'package:astrea/net/bean/analysis_identity_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
@@ -81,6 +82,7 @@ abstract class SynastryAPI {
     required String relationship,
     CancelToken? cancelToken,
     int maxRetries = 100,
+    Function()? onError,
   }) async {
     _shouldStopPolling = false; // 重置轮询标志
     debugPrint("Analysis start");
@@ -90,6 +92,11 @@ abstract class SynastryAPI {
       do {
         attempt++;
         debugPrint("Analysis attempt:$attempt");
+        final connectivityResult = await Connectivity().checkConnectivity();
+        if (connectivityResult.contains(ConnectivityResult.none)) {
+          AppLoading.toast("Network connection failed");
+          return (false, null);
+        }
         final (
           bool success,
           AnalysisIdentityEntity? value,
@@ -111,7 +118,7 @@ abstract class SynastryAPI {
           return (true, value); // 成功时返回true和报告
         } else {
           debugPrint("Analysis next");
-          await Future.delayed(Duration(seconds: 3));
+          await Future.delayed(Duration(seconds: 2));
           /* if (attempt >= maxRetries) {
             debugPrint("Analysis maxRetries:$attempt");
             return (false, null); // 达到最大重试次数时返回false和最新报告
