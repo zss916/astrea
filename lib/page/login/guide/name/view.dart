@@ -32,6 +32,9 @@ class EditNamePage extends StatelessWidget {
             onNext: (name) {
               debugPrint("name:$name");
               AccountService.to.updateUserNickName(name);
+              PrintTools.log(
+                "nickName =>${AccountService.to.getAccount()?.nickName}",
+              );
               PageTools.toInterests(loginType: (Get.arguments as int));
             },
           ),

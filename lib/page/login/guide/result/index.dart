@@ -6,6 +6,7 @@ import 'package:astrea/net/bean/account_entity.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
 import 'package:astrea/page/login/guide/player/player_preloader.dart';
 import 'package:astrea/page/login/guide/player/player_view.dart';
+import 'package:astrea/test/test.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
