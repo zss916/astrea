@@ -189,8 +189,9 @@ class HoroscopeLogic extends GetxController
     String? id,
     int? index,
     required bool isMyOneself,
-    bool isShowLoading = false,
+    bool isShowLoading = true,
   }) async {
+    if (!isShowLoading) AppLoading.show();
     isOneself = isMyOneself;
     if (isOneself) {
       await loadAccount();
@@ -198,8 +199,7 @@ class HoroscopeLogic extends GetxController
       birthday = showBirthday;
       reportId = account?.friendId;
       update();
-      AppLoading.show();
-      await loadReport(reportId: reportId ?? "", isLoading: false);
+      await loadReport(reportId: reportId ?? "", isLoading: isShowLoading);
       AppLoading.dismiss();
     } else {
       FriendEntity account = friends[(index ?? 0)];
@@ -207,8 +207,7 @@ class HoroscopeLogic extends GetxController
       birthday = account.showBirthDay;
       update();
       reportId = id;
-      AppLoading.show();
-      await loadReport(reportId: reportId ?? "", isLoading: false);
+      await loadReport(reportId: reportId ?? "", isLoading: isShowLoading);
       AppLoading.dismiss();
     }
   }
