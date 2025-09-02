@@ -2,6 +2,7 @@ import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/net/bean/auth_entity.dart';
 import 'package:astrea/net/http/http.dart';
 import 'package:astrea/net/path.dart';
+import 'package:astrea/test/test.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
@@ -110,6 +111,8 @@ abstract class AuthAPI {
         cancelToken: cancelToken,
         data: map,
       );
+      PrintTools.log("code =>${result["code"]}");
+
       if (result["code"] == 0) {
         AuthEntity value = await compute(
           (dynamic jsonStr) => AuthEntity.fromJson(jsonStr),

@@ -93,6 +93,10 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
       String? userIdentifier,
     }) async {
       AppLoading.show();
+      PrintTools.log("loginType=>${loginType}");
+      PrintTools.log("userIdentifier=>${userIdentifier}");
+      PrintTools.log("identityToken=>${identityToken}");
+      PrintTools.log("authorizationCode=>${authorizationCode}");
       AuthEntity? data =
           await AuthAPI.appleLogin(
             code: authorizationCode ?? "",
@@ -105,6 +109,7 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
           });
 
       PrintTools.log("data=>${data?.toJson()}");
+      PrintTools.log("friendId=>${data?.friendId}");
 
       // debugPrint("data===> ${data.toJson()}");
       if (data != null) {
