@@ -52,10 +52,10 @@ class EmailLogic extends GetxController with AppValidatorMixin {
 
     if (data.$1) {
       AccountService.to.saveAccountAndPsd(email, pwd);
+      AccountService.to.setLoginChannel(LoginChannel.email.value);
       AccountService.to.updateLocalUserInfo(
         uid: data.$2?.userId,
         loginEmail: email,
-        loginChannel: LoginChannel.email.value,
         authToken: data.$2?.authToken ?? "",
         isNewUser: data.$2?.isNewUser,
       );

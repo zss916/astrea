@@ -18,6 +18,8 @@ class AccountService extends GetxService {
   static const String friendData = "horoscope_save_friends";
   static const String accountAndPwd = "horoscope_login_account_and_pwd";
   static const String noticeSelectIndexKey = "noticeSelectIndexKey";
+  static const String loginChannel = "loginChannel";
+
   AccountEntity? data;
 
   ///初始化
@@ -45,7 +47,7 @@ class AccountService extends GetxService {
   String get loginEmail => data?.loginEmail ?? "-";
 
   ///获取登录渠道
-  int get loginChannelIndex => data?.loginChannel ?? 0;
+  // int get loginChannelIndex => data?.loginChannel ?? 0;
 
   ///获取用户ID
   String get userID => data?.userId ?? "-";
@@ -82,10 +84,17 @@ class AccountService extends GetxService {
   int getNoticeSelectIndex() =>
       StorageService.to.getInt(noticeSelectIndexKey) ?? 2;
 
+  ///保存登录渠道
+  void setLoginChannel(int index) =>
+      StorageService.to.setInt(loginChannel, index);
+
+  ///获取登录渠道
+  int getLoginChannel() => StorageService.to.getInt(loginChannel) ?? 0;
+
   ///保存用户信息
   void updateLocalUserInfo({
     required String loginEmail,
-    required int loginChannel,
+    //required int loginChannel,
     required String authToken,
     required String? uid,
     String? friendId,
@@ -103,7 +112,7 @@ class AccountService extends GetxService {
       data?.friendId = friendId;
     }
     data?.loginEmail = loginEmail;
-    data?.loginChannel = loginChannel;
+    // data?.loginChannel = loginChannel;
     data?.authToken = authToken;
     if (nickName != null) {
       data?.nickName = nickName;
@@ -113,22 +122,6 @@ class AccountService extends GetxService {
     }
     save(data!);
   }
-
-  ///记录报告失败
-  /*void setResult({required bool isFinish}) {
-    StorageService.to.setBool("horoscope_result", isFinish);
-  }*/
-
-  ///记录报告失败
-  /*bool getResult() => StorageService.to.getBool("horoscope_result");
-*/
-  ///保存用户登录步骤
-  /*  void updateLoginStep({int? step}) {
-    if (step != null) {
-      data?.loginStep = step;
-    }
-    save(data!);
-  }*/
 
   void setCurrentRoute({String? route}) {
     switch (route) {

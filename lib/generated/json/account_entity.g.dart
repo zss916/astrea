@@ -59,10 +59,6 @@ AccountEntity $AccountEntityFromJson(Map<String, dynamic> json) {
   if (interestsIndex != null) {
     accountEntity.interestsIndex = interestsIndex;
   }
-  final int? loginChannel = jsonConvert.convert<int>(json['loginChannel']);
-  if (loginChannel != null) {
-    accountEntity.loginChannel = loginChannel;
-  }
   final String? loginEmail = jsonConvert.convert<String>(json['loginEmail']);
   if (loginEmail != null) {
     accountEntity.loginEmail = loginEmail;
@@ -131,7 +127,6 @@ Map<String, dynamic> $AccountEntityToJson(AccountEntity entity) {
   data['lon'] = entity.lon;
   data['lat'] = entity.lat;
   data['interestsIndex'] = entity.interestsIndex;
-  data['loginChannel'] = entity.loginChannel;
   data['loginEmail'] = entity.loginEmail;
   data['loginStep'] = entity.loginStep;
   data['currentRouter'] = entity.currentRouter;
@@ -161,7 +156,6 @@ extension AccountEntityExtension on AccountEntity {
     String? lon,
     String? lat,
     List<int>? interestsIndex,
-    int? loginChannel,
     String? loginEmail,
     int? loginStep,
     String? currentRouter,
@@ -188,7 +182,6 @@ extension AccountEntityExtension on AccountEntity {
       ..lon = lon ?? this.lon
       ..lat = lat ?? this.lat
       ..interestsIndex = interestsIndex ?? this.interestsIndex
-      ..loginChannel = loginChannel ?? this.loginChannel
       ..loginEmail = loginEmail ?? this.loginEmail
       ..loginStep = loginStep ?? this.loginStep
       ..currentRouter = currentRouter ?? this.currentRouter

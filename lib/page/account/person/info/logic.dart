@@ -5,7 +5,7 @@ class AccountInfoLogic extends GetxController {
 
   String email = AccountService.to.loginEmail ?? "-";
   String get loginChannel =>
-      LoginChannel.getSymbol((account?.loginChannel ?? 0));
+      LoginChannel.getSymbol(AccountService.to.getLoginChannel());
   String get userID =>
       (account?.userId == null) ? "-" : (account?.showID).toString();
 

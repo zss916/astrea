@@ -63,10 +63,10 @@ class StartLogic extends GetxController with LoginChannelMixin {
           });
       //debugPrint("data===> ${data.toJson()}");
       if (data != null) {
+        AccountService.to.setLoginChannel(LoginChannel.google.value);
         AccountService.to.updateLocalUserInfo(
           uid: data.userId,
           loginEmail: "-",
-          loginChannel: LoginChannel.google.value,
           nickName: nickname,
           authToken: data.authToken ?? "",
         );
@@ -102,10 +102,10 @@ class StartLogic extends GetxController with LoginChannelMixin {
           });
       // debugPrint("data===> ${data.toJson()}");
       if (data != null) {
+        AccountService.to.setLoginChannel(LoginChannel.apple.value);
         AccountService.to.updateLocalUserInfo(
           uid: data.userId,
           loginEmail: "-",
-          loginChannel: LoginChannel.apple.value,
           nickName: nickname,
           authToken: data.authToken ?? "",
         );

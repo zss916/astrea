@@ -208,9 +208,7 @@ class PageTools {
     if (account?.userId != null) {
       map["uid"] = account?.userId;
     }
-    if (account?.loginChannel != null) {
-      map["loginChannel"] = account?.loginChannel;
-    }
+    map["loginChannel"] = AccountService.to.getLoginChannel();
     Get.toNamed(APages.accountInformation, arguments: map);
   }
 

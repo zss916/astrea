@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:astrea/core/enum/app_enum.dart';
 import 'package:astrea/core/utils/calculate.dart';
 import 'package:astrea/generated/json/account_entity.g.dart';
 import 'package:astrea/generated/json/base/json_field.dart';
@@ -30,7 +29,7 @@ class AccountEntity {
   List<int>? interestsIndex;
 
   ///登录渠道
-  int? loginChannel; //0 - 邮箱，1 - google，2 -apple
+  // int? loginChannel; //0 - 邮箱，1 - google，2 -apple
   ///登录邮箱
   String? loginEmail;
 
@@ -133,13 +132,13 @@ class AccountEntity {
     }
   }
 
-  String get loginMethodStr {
+  /*String get loginMethodStr {
     if (loginChannel == null) {
       return "";
     } else {
       return LoginChannel.getSymbol(loginChannel!);
     }
-  }
+  }*/
 }
 
 @JsonSerializable()
