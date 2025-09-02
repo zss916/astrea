@@ -114,7 +114,7 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
           uid: data.userId,
           loginEmail: "-",
           loginChannel: LoginChannel.apple.value,
-          nickName: nickname,
+          nickName: null,
           authToken: data.authToken ?? "",
         );
 
