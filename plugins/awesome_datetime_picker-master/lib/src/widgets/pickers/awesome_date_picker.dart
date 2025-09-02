@@ -28,6 +28,7 @@ class AwesomeDatePicker extends StatefulWidget {
       this.itemHeight,
       this.itemWidth,
       this.space,
+      this.sideSpace,
       this.isYmd})
       : assert(
           ValidationUtils.isValidDateRange(minDate: minDate, maxDate: maxDate),
@@ -91,6 +92,7 @@ class AwesomeDatePicker extends StatefulWidget {
 
   ///间隔
   final double? space;
+  final bool? sideSpace;
 
   ///
   final bool? isYmd;
@@ -306,6 +308,10 @@ class _AwesomeDatePickerState extends State<AwesomeDatePicker> {
         : Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              if (widget.sideSpace == true)
+                SizedBox(
+                  width: widget.space ?? 0,
+                ),
               AwesomeMonthPicker(
                 key: ValueKey(selectedDate.year == minDate.year
                     ? "text_month_picker 1"
@@ -322,6 +328,11 @@ class _AwesomeDatePickerState extends State<AwesomeDatePicker> {
                 selectorColor: widget.selectorColor,
                 fadeEffect: widget.fadeEffect,
                 selectedTextStyle: widget.selectedTextStyle,
+                /*selectedTextStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                ),*/
                 unselectedTextStyle: widget.unselectedTextStyle,
                 visibleItemCount: widget.visibleItemCount,
                 itemHeight: widget.itemHeight,
@@ -350,9 +361,11 @@ class _AwesomeDatePickerState extends State<AwesomeDatePicker> {
                   widget.onChanged?.call(selectedDate);
                 },
               ),
-              SizedBox(
-                width: widget.space ?? 0,
-              ),
+              (widget.sideSpace == true)
+                  ? const Spacer()
+                  : SizedBox(
+                      width: widget.space ?? 0,
+                    ),
               AwesomeDayPicker(
                 key: ValueKey(selectedDate.year == minDate.year &&
                         selectedDate.month == minDate.month
@@ -431,7 +444,11 @@ class _AwesomeDatePickerState extends State<AwesomeDatePicker> {
 
                   widget.onChanged?.call(selectedDate);
                 },
-              )
+              ),
+              if (widget.sideSpace == true)
+                SizedBox(
+                  width: widget.space ?? 0,
+                ),
             ],
           );
 

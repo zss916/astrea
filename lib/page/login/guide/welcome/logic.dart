@@ -86,6 +86,7 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
 
   ///apple 登录
   void toAppleAuth() async {
+    AppLoading.show();
     appleLogin(({
       required bool success,
       String? nickname,
@@ -97,7 +98,7 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
         AppLoading.toast("Login failed, please try again");
         return;
       }
-      AppLoading.show();
+
       PrintTools.log("loginType=>${loginType}");
       PrintTools.log("userIdentifier=>${userIdentifier}");
       PrintTools.log("identityToken=>${identityToken}");

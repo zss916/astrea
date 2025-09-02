@@ -39,7 +39,7 @@ class HoroscopeLogic extends GetxController
     super.onInit();
     initLocal();
     refreshUserEvent2 = AppEventBus.eventBus.on<RefreshUserEvent>().listen((_) {
-      changeReport(isMyOneself: true);
+      changeReport(isMyOneself: true, isShowLoading: true);
     });
 
     deleteEvent = AppEventBus.eventBus.on<DeleteFriendsEvent>().listen((event) {
@@ -189,15 +189,16 @@ class HoroscopeLogic extends GetxController
     String? id,
     int? index,
     required bool isMyOneself,
+    bool isShowLoading = false,
   }) async {
     isOneself = isMyOneself;
-    AppLoading.show();
     if (isOneself) {
       await loadAccount();
       name = nickName;
       birthday = showBirthday;
       reportId = account?.friendId;
       update();
+      AppLoading.show();
       await loadReport(reportId: reportId ?? "", isLoading: false);
       AppLoading.dismiss();
     } else {
@@ -206,6 +207,7 @@ class HoroscopeLogic extends GetxController
       birthday = account.showBirthDay;
       update();
       reportId = id;
+      AppLoading.show();
       await loadReport(reportId: reportId ?? "", isLoading: false);
       AppLoading.dismiss();
     }
