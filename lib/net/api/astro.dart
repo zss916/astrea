@@ -85,7 +85,7 @@ abstract class AstrologyAPI {
   loopAndReturnReport({
     required String id,
     CancelToken? cancelToken,
-    int maxRetries = 10,
+    int maxRetries = 20,
   }) async {
     _shouldStopPolling = false; // 重置轮询标志
     debugPrint("loopReport start");
@@ -109,10 +109,10 @@ abstract class AstrologyAPI {
         } else {
           debugPrint("loopReport next");
           await Future.delayed(Duration(seconds: 2));
-          if (attempt >= maxRetries) {
+          /*if (attempt >= maxRetries) {
             debugPrint("loopReport maxRetries:$attempt");
             return (false, report); // 达到最大重试次数时返回false和最新报告
-          }
+          }*/
         }
       } while (isLoop);
       // 理论上不会执行到这里，因为所有路径都已返回
