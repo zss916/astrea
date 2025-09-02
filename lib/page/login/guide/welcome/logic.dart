@@ -75,10 +75,7 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
         } else {
           PageTools.offAllNamedHome(friendId: data.friendId);
         }
-
         // PageTools.loginToNext(loginType: loginType, friendId: data.friendId);
-      } else {
-        AppLoading.toast("login failed");
       }
     });
   }
@@ -139,8 +136,6 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
         } else {
           PageTools.offAllNamedHome(friendId: data.friendId);
         }
-      } else {
-        AppLoading.toast("Login Failed");
       }
     });
   }

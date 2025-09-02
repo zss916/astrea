@@ -76,8 +76,6 @@ class StartLogic extends GetxController with LoginChannelMixin {
         } else {
           PageTools.toGuide(loginType: LoginType.loginAndRegister.index);
         }
-      } else {
-        AppLoading.toast("login failed");
       }
     });
   }
@@ -117,8 +115,6 @@ class StartLogic extends GetxController with LoginChannelMixin {
         } else {
           PageTools.toGuide(loginType: LoginType.loginAndRegister.index);
         }
-      } else {
-        AppLoading.toast("Login Failed");
       }
     });
   }
