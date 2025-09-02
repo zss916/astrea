@@ -1,4 +1,3 @@
-import 'package:flutter_dev_toolkit/flutter_dev_toolkit.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
@@ -45,11 +44,6 @@ mixin LoginChannelMixin {
       String? identityToken = credential.identityToken;
       String? userIdentifier = credential.userIdentifier;
 
-      ///本地调试
-      FlutterDevToolkit.logger.log(
-        "authorizationCode:$authorizationCode\n identityToken:$identityToken \n userIdentifier:$userIdentifier",
-      );
-
       callBack.call(
         success: true,
         authorizationCode: authorizationCode,
@@ -59,12 +53,6 @@ mixin LoginChannelMixin {
       );
     } catch (e) {
       callBack.call(success: false);
-      /*callBack.call(
-        success: true,
-        token:
-            "eyJrawQioiJVYUlJRlkyZlcoliwiywxnljoiUlMyNTYifQ.eyJpc3MiOiJodHRwczovL2FwcGxlawQuYxBwbGUuY29tliwiyxVkljoiY29tLmFzdHJlYs5maw5kbxlzbcvmliwizxhwljoxNZU2ODA0MzAyLCJpYXQiOjE3NTY3MTC5MDIsInN1YiI6IjAWMTK1NC44MWZmNDYyNZM4MTCOMzUzYjkyZWNiMTU2OGQ1NmY4My4wNjl4liwiY19oYxNoljoicvhkMXB2eE1LWTNrNWppS1VjSmlDZylslmVtYwlsljoic2Fiyw5hbGx5bmvodGUzQGdtYWlsLmNvbSlsImVtYWlsx3ZlcmlmawvkljpocnVILCJhdXRox3RpbWUiOjE3NTY3MTc5MDIsIm5vbmNIX3N1CHBvcnRlZCI6dHJ1ZX0.SR_GEV1pqkpb BjCq1JYJIPW3E6OUDIPNApc6-fF9UjDRExQdvTDTpg8vKIHcbwVYP7hZ2GLojr9A9tohkBdO1L90lyh opJiaFiVwDb1lxPlHbwPUafst9hthKicHLYGHJJa41r6w-1cJhQ5hnhaegAoonVbMNkkgtYnuLCPoDJ390Hh88Ps92TlejJ0F5t0iTcuqqQjnlqllmol5NZiQ6Y9abAvR-_kH5qnM7hCWpzBCtlvKxSmZn2vTzSdMggT5etGN8LSlhw6n23wA-QxPPuYuLvilgBHqBsfgfY16xom3NuffqjIWEGOHR OxYM6MeJx1WR2BCyVqVNW5_A",
-        nickname: "apple",
-      );*/
     }
   }
 }

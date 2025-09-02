@@ -19,9 +19,9 @@ import 'package:astrea/page/login/guide/email/dialog/failed_dialog.dart';
 import 'package:astrea/page/login/guide/email/enum/login_enum.dart';
 import 'package:astrea/page/login/guide/welcome/widget/welcome_btn.dart';
 import 'package:astrea/page/login/start/widget/policy_widget.dart';
+import 'package:astrea/test/test.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dev_toolkit/flutter_dev_toolkit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 

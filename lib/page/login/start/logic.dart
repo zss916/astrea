@@ -112,8 +112,6 @@ class StartLogic extends GetxController with LoginChannelMixin {
           authToken: data.authToken ?? "",
         );
 
-        ///本地调试
-        FlutterDevToolkit.logger.log('data: ${data.toJson()}');
         if (data.friendId != null) {
           PageTools.offAllNamedHome(friendId: data.friendId);
         } else {

@@ -104,7 +104,8 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
             AppLoading.dismiss();
           });
 
-      FlutterDevToolkit.logger.log('data: ${data?.toJson()}');
+      PrintTools.log("data=>${data?.toJson()}");
+
       // debugPrint("data===> ${data.toJson()}");
       if (data != null) {
         AccountService.to.updateLocalUserInfo(
