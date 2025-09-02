@@ -72,7 +72,7 @@ mixin HoroscopeFriendLogicMixin on GetxController {
           safeFind<HoroscopeLogic>()?.changeReport(
             id: id.toString(),
             index: friends.indexWhere((element) => element.id == id),
-            isOneself: false,
+            isMyOneself: false,
           );
         } else {
           ///添加

@@ -8,7 +8,6 @@ import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
 import 'package:astrea/page/home/horoscope/index/mixin_controller/mixin_report.dart';
 import 'package:astrea/page/home/horoscope/index/mixin_controller/mixin_stars.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'mixin_controller/mixin_account.dart';
@@ -40,7 +39,7 @@ class HoroscopeLogic extends GetxController
     super.onInit();
     initLocal();
     refreshUserEvent2 = AppEventBus.eventBus.on<RefreshUserEvent>().listen((_) {
-      changeReport(isOneself: true);
+      changeReport(isMyOneself: true);
     });
 
     deleteEvent = AppEventBus.eventBus.on<DeleteFriendsEvent>().listen((event) {
@@ -57,7 +56,7 @@ class HoroscopeLogic extends GetxController
             .any((e) => e.id == event.id);
         if (isHas) {
           isCheckUser = true;
-          changeReport(isOneself: true);
+          changeReport(isMyOneself: true);
           loadFriends(id: null);
         } else {
           loadFriends(id: null);
@@ -176,7 +175,6 @@ class HoroscopeLogic extends GetxController
         loadReport(reportId: reportId ?? "");
       }
     } else {
-      debugPrint("------>2");
       loadReport(reportId: reportId ?? "");
     }
   }
@@ -190,9 +188,9 @@ class HoroscopeLogic extends GetxController
   Future<void> changeReport({
     String? id,
     int? index,
-    bool isOneself = true,
+    required bool isMyOneself,
   }) async {
-    isOneself = isOneself;
+    isOneself = isMyOneself;
     AppLoading.show();
     if (isOneself) {
       await loadAccount();

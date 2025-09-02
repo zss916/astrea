@@ -199,7 +199,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
             index: logic.friends.indexWhere(
               (element) => element.id == value.id,
             ),
-            isOneself: false,
+            isMyOneself: false,
           );
         },
       );
@@ -215,7 +215,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
           element.isChecked = false;
         });
       });
-      logic.changeReport(isOneself: true);
+      logic.changeReport(isMyOneself: true);
     },
     onFriends: (i) {
       setState(() {
@@ -233,7 +233,7 @@ class _HoroscopeViewState extends State<HoroscopeView>
         logic.changeReport(
           id: logic.friends[i].id.toString(),
           index: i,
-          isOneself: false,
+          isMyOneself: false,
         );
       }
     },
