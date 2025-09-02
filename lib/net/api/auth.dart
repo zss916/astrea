@@ -60,7 +60,7 @@ abstract class AuthAPI {
       var result = await Http.instance.post(
         ApiPath.googleLogin,
         cancelToken: cancelToken,
-        data: {"id_token": token, "loginType": loginType},
+        data: {"id_token": token, "login_type": loginType},
       );
       if (result["code"] == 0) {
         AuthEntity value = await compute(
@@ -105,7 +105,7 @@ abstract class AuthAPI {
       if (thirdId != null) {
         map["third_id"] = thirdId;
       }
-      map["loginType"] = loginType;
+      map["login_type"] = loginType;
       var result = await Http.instance.post(
         ApiPath.appleLogin,
         cancelToken: cancelToken,
