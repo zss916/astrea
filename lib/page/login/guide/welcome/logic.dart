@@ -118,6 +118,7 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
           authToken: data.authToken ?? "",
         );
 
+        PrintTools.log("save token=>${data.authToken ?? ""}");
         if (loginType == LoginType.loginAndRegister.index) {
           if (data.checkNewUser == false) {
             showAccountExistsDialog(
