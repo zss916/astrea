@@ -52,19 +52,13 @@ dependencies:
   azlistview_plus: 3.0.0
   scrollable_positioned_list: 0.3.8
   webview_flutter: 4.13.0
-  #ios 的设备号能拿到
   device_info_plus: 11.5.0
   android_id: 0.4.0
-  #package_info_plus: 8.3.0
   video_player: 2.10.0
-  #判断是否支持google服务
   google_api_availability: 5.0.1
-  #连字符
   auto_hyphenating_text: ^0.3.1
   percent_indicator: 4.2.5
-  #虚线
   dotted_dashed_line: 0.0.3
-  #虚线
   dotted_decoration: 2.0.0
   connectivity_plus: ^6.1.5
 
