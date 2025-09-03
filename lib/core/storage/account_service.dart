@@ -114,7 +114,7 @@ class AccountService extends GetxService {
     data?.loginEmail = loginEmail;
     // data?.loginChannel = loginChannel;
     data?.authToken = authToken;
-    if (nickName != null) {
+    if ((nickName ?? "").isNotEmpty) {
       data?.nickName = nickName;
     }
     if (isNewUser != null) {

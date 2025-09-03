@@ -22,8 +22,11 @@ class StartLogic extends GetxController with LoginChannelMixin {
     AppLoading.dismiss();
   }
 
-  ///跳转注册
   void toStep() =>
+      PageTools.toWelcome(loginType: LoginType.loginAndRegister.index);
+
+  ///跳转注册
+  void toStep2() =>
       PageTools.toStep(loginType: LoginType.loginAndRegister.index);
 
   ///邮箱登录
@@ -114,7 +117,7 @@ class StartLogic extends GetxController with LoginChannelMixin {
         AccountService.to.updateLocalUserInfo(
           uid: data.userId,
           loginEmail: "-",
-          //nickName: nickname,
+          nickName: nickname,
           authToken: data.authToken ?? "",
         );
 

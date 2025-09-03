@@ -21,38 +21,93 @@ class PageTools {
     Get.toNamed(APages.guide, arguments: loginType);
   }
 
+  static offAndToNamedGuide({required int loginType}) {
+    // AccountService.to.updateLoginStep(step: LoginStep.step0.value);
+    Get.offAndToNamed(APages.guide, arguments: loginType);
+  }
+
   static toStep({required int loginType}) {
     String? currentRouter = AccountService.to.currentRouter;
-    //debugPrint("currentRouter ==>$currentRouter");
-    if (currentRouter == null) {
-      toGuide(loginType: loginType);
+    debugPrint("currentRouter ==>$currentRouter");
+    if (LoginType.loginAndRestart.index == loginType) {
+      if (currentRouter == null) {
+        offAndToNamedGuide(loginType: loginType);
+      } else {
+        switch (currentRouter) {
+          case APages.guide:
+            offAndToNamedGuide(loginType: loginType);
+            break;
+          case APages.dateOfBirth:
+            offAndToNamedGuide(loginType: loginType);
+            toDateOfBirth(loginType: loginType);
+            break;
+          case APages.timeOfBirth:
+          case APages.timeOfBirthTipDialog:
+            offAndToNamedGuide(loginType: loginType);
+            toDateOfBirth(loginType: loginType);
+            toTimeOfBirth(loginType: loginType);
+            break;
+          case APages.placeOfBirth:
+            offAndToNamedGuide(loginType: loginType);
+            toDateOfBirth(loginType: loginType);
+            toTimeOfBirth(loginType: loginType);
+            toPlaceOfBirth(loginType: loginType);
+            break;
+          case APages.gender:
+            offAndToNamedGuide(loginType: loginType);
+            toDateOfBirth(loginType: loginType);
+            toTimeOfBirth(loginType: loginType);
+            toPlaceOfBirth(loginType: loginType);
+            toGender(loginType: loginType);
+            break;
+          case APages.editName:
+            offAndToNamedGuide(loginType: loginType);
+            toDateOfBirth(loginType: loginType);
+            toTimeOfBirth(loginType: loginType);
+            toPlaceOfBirth(loginType: loginType);
+            toGender(loginType: loginType);
+            toEditUserName(loginType: loginType);
+            break;
+          case APages.interests:
+            offAndToNamedGuide(loginType: loginType);
+            toDateOfBirth(loginType: loginType);
+            toTimeOfBirth(loginType: loginType);
+            toPlaceOfBirth(loginType: loginType);
+            toGender(loginType: loginType);
+            toEditUserName(loginType: loginType);
+            toInterests(loginType: loginType);
+            break;
+        }
+      }
     } else {
-      switch (currentRouter) {
-        case APages.guide:
-          toGuide(loginType: loginType);
-          break;
-        case APages.dateOfBirth:
-          toDateOfBirth(loginType: loginType);
-          break;
-        case APages.timeOfBirth:
-        case APages.timeOfBirthTipDialog:
-          toTimeOfBirth(loginType: loginType);
-          break;
-        case APages.placeOfBirth:
-          toPlaceOfBirth(loginType: loginType);
-          break;
-        case APages.gender:
-          toGender(loginType: loginType);
-          break;
-        case APages.editName:
-          toEditUserName(loginType: loginType);
-          break;
-        case APages.interests:
-          toInterests(loginType: loginType);
-          break;
-        case APages.welcome:
-          toWelcome(loginType: loginType);
-          break;
+      if (currentRouter == null) {
+        toGuide(loginType: loginType);
+      } else {
+        switch (currentRouter) {
+          case APages.guide:
+            toGuide(loginType: loginType);
+            break;
+          case APages.dateOfBirth:
+            toDateOfBirth(loginType: loginType);
+            break;
+          case APages.timeOfBirth:
+          case APages.timeOfBirthTipDialog:
+            toGuide(loginType: loginType);
+            toTimeOfBirth(loginType: loginType);
+            break;
+          case APages.placeOfBirth:
+            toPlaceOfBirth(loginType: loginType);
+            break;
+          case APages.gender:
+            toGender(loginType: loginType);
+            break;
+          case APages.editName:
+            toEditUserName(loginType: loginType);
+            break;
+          case APages.interests:
+            toInterests(loginType: loginType);
+            break;
+        }
       }
     }
   }

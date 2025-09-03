@@ -1,1 +1,1 @@
-enum LoginType { loginAndRegister, onlyLogin }
+enum LoginType { loginAndRegister, onlyLogin, loginAndRestart }

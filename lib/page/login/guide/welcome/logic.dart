@@ -12,10 +12,6 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
       loginType = Get.arguments["loginType"] as int;
       // isRegistered = Get.arguments["isRegistered"] as bool;
     }
-
-    if (loginType == LoginType.loginAndRegister.index) {
-      AccountService.to.updateCurrentRoute(route: APages.welcome);
-    }
   }
 
   @override
@@ -66,7 +62,8 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
             showAccountExistsDialog(
               onLoginAndUpdate: () {
                 ///更新
-                PageTools.toResult();
+                //PageTools.toResult();
+                PageTools.toStep(loginType: LoginType.loginAndRegister.index);
               },
               onOnlyLogin: () {
                 ///不更新
@@ -74,7 +71,8 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
               },
             );
           } else {
-            PageTools.toResult();
+            // PageTools.toResult();
+            PageTools.toStep(loginType: LoginType.loginAndRegister.index);
           }
         } else {
           PageTools.offAllNamedHome(friendId: data.friendId);
@@ -123,7 +121,7 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
         AccountService.to.updateLocalUserInfo(
           uid: data.userId,
           loginEmail: "-",
-          nickName: null,
+          nickName: nickname,
           authToken: data.authToken ?? "",
         );
 
@@ -133,7 +131,8 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
             showAccountExistsDialog(
               onLoginAndUpdate: () {
                 ///更新
-                PageTools.toResult();
+                // PageTools.toResult();
+                PageTools.toStep(loginType: LoginType.loginAndRegister.index);
               },
               onOnlyLogin: () {
                 ///不更新
@@ -141,7 +140,8 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
               },
             );
           } else {
-            PageTools.toResult();
+            // PageTools.toResult();
+            PageTools.toStep(loginType: LoginType.loginAndRegister.index);
           }
         } else {
           PageTools.offAllNamedHome(friendId: data.friendId);

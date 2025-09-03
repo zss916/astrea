@@ -14,21 +14,23 @@ class SplashLogic extends GetxController {
   }
 
   Future<void> fetchDevice({String? deviceId}) async {
-    // var result = await Http.instance.post(ApiPath.test);
-
     AccountAPI.fetchDevice(deviceId: deviceId).then((value) {
       if (value) {
-        if (AccountService.to.isLogin && !AccountService.to.isNewUser) {
-          ///已经更新用户信息,登录成功
-          if (AccountService.to.friendId.isEmpty) {
-            PageTools.toStart(isRegistered: true);
+        if (AccountService.to.isLogin) {
+          if (!AccountService.to.isNewUser) {
+            ///已经更新用户信息,登录成功
+            if (AccountService.to.friendId.isEmpty) {
+              PageTools.toStart(isRegistered: true);
+            } else {
+              PageTools.toHome(friendId: AccountService.to.friendId);
+            }
           } else {
-            PageTools.toHome(friendId: AccountService.to.friendId);
+            ///没有更新用户信息,已经登录
+            PageTools.toStep(loginType: LoginType.loginAndRestart.index);
           }
         } else {
-          ///没有更新用户信息，重新登录
+          ///重新登录
           PageTools.toStart(isRegistered: true);
-          // PageTools.toWelcome();
         }
       } else {
         PageTools.toStart(isRegistered: false);

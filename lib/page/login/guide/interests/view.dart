@@ -53,7 +53,7 @@ class InterestsPage extends StatelessWidget {
                     step: LoginStep.stepFinish.value,
                   );*/
 
-                  int type = Get.arguments as int;
+                  /* int type = Get.arguments as int;
                   if (type == LoginType.loginAndRegister.index) {
                     PageTools.toWelcome(
                       loginType: LoginType.loginAndRegister.index,
@@ -61,7 +61,9 @@ class InterestsPage extends StatelessWidget {
                     );
                   } else {
                     PageTools.toResult();
-                  }
+                  }*/
+
+                  PageTools.toResult();
                   AppPermissionTools.checkNotification();
                 },
               ),

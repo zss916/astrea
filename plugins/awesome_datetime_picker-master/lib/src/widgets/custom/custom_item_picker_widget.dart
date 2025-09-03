@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:awesome_datetime_picker/src/theme/item_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -85,7 +86,7 @@ class _CustomItemPickerState extends State<CustomItemPicker> {
           height: pickerHeight,
           width: widget.theme?.width ??
               widget.itemWidth ??
-              MediaQuery.of(context).size.width * 0.15,
+              MediaQuery.of(context).size.width * 0.20,
           margin: widget.theme?.margin,
           padding: widget.theme?.padding,
           decoration: BoxDecoration(
@@ -134,8 +135,11 @@ class _CustomItemPickerState extends State<CustomItemPicker> {
                     final isSelected = value == _selectedItem;
                     String value2 = (value == '0') ? '00' : value;
                     return Center(
-                      child: Text(
+                      child: AutoSizeText(
                         value2,
+                        maxFontSize: 18,
+                        minFontSize: 14,
+                        maxLines: 1,
                         style: isSelected
                             ? (widget.theme?.selectedTextStyle ??
                                 widget.selectedTextStyle ??

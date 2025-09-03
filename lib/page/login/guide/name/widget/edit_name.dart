@@ -1,5 +1,6 @@
 import 'package:astrea/components/common_btn.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
+import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/core/validator/app_validator.dart';
 import 'package:astrea/generated/assets.dart';
@@ -29,6 +30,13 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
     super.initState();
     focusNode.requestFocus();
     focusNode.addListener(_onFocusChange);
+    String nickName = AccountService.to.getAccount()?.nickName ?? "";
+    if (nickName.isNotEmpty) {
+      setState(() {
+        textEditCtrl.text = nickName;
+        isEdit = true;
+      });
+    }
   }
 
   @override

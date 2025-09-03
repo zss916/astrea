@@ -7,6 +7,7 @@ import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/setting/global.dart';
 import 'package:astrea/core/translations/en.dart';
 import 'package:astrea/generated/assets.dart';
+import 'package:astrea/page/login/guide/email/enum/login_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

@@ -64,7 +64,8 @@ class EmailLogic extends GetxController with AppValidatorMixin {
           showAccountExistsDialog(
             onLoginAndUpdate: () {
               ///更新
-              PageTools.toResult();
+              //PageTools.toResult();
+              PageTools.toStep(loginType: LoginType.loginAndRegister.index);
             },
             onOnlyLogin: () {
               ///不更新
@@ -72,7 +73,8 @@ class EmailLogic extends GetxController with AppValidatorMixin {
             },
           );
         } else {
-          PageTools.toResult();
+          PageTools.toStep(loginType: LoginType.loginAndRegister.index);
+          //PageTools.toResult();
         }
       } else {
         PageTools.offAllNamedHome(friendId: data.$2?.friendId);
