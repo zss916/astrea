@@ -1,4 +1,5 @@
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:print_tools/printtools.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 mixin LoginChannelMixin {
@@ -47,6 +48,9 @@ mixin LoginChannelMixin {
       /*PrintTools.log(
         "name:$name \n authorizationCode:$authorizationCode \n identityToken:$identityToken \n userIdentifier:$userIdentifier",
       );*/
+
+      PrintTools.logW("name:$name");
+      PrintTools.logW("credential: ${credential.toString()}");
 
       if (authorizationCode.isEmpty ||
           identityToken == null ||

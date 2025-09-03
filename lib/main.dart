@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:print_tools/printtools.dart';
 import 'package:proxy/proxy.dart';
 
 import 'core/translations/language.dart';
@@ -38,7 +39,10 @@ class App extends StatelessWidget {
         getPages: APages.routes,
         navigatorObservers: [appRouteObserver],
         builder: (context, child) => MediaQuery.withNoTextScaling(
-          child: EasyLoading.init()(context, child!),
+          child: EasyLoading.init()(
+            context,
+            PrintTools.buildLogOverlay(child!),
+          ),
         ),
         defaultTransition: Transition.cupertino,
         //theme: CustomTheme.to.dark,

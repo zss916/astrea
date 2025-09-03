@@ -3,7 +3,7 @@ import 'package:flutter_onscreen_logger/flutter_onscreen_logger.dart';
 
 class PrintTools {
   /// Add this to your widget tree
-  Widget buildLogOverlay(Widget child) {
+ static Widget buildLogOverlay(Widget child) {
     return Directionality(
       textDirection: TextDirection.ltr,
       child: Stack(children: [child, LoggerOverlayWidget()]),

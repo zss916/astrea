@@ -15,12 +15,12 @@ import 'package:astrea/net/bean/auth_entity.dart';
 import 'package:astrea/page/login/guide/email/enum/login_enum.dart';
 import 'package:astrea/page/login/guide/welcome/widget/welcome_btn.dart';
 import 'package:astrea/page/login/start/widget/policy_widget.dart';
-import 'package:astrea/test/test.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:print_tools/printtools.dart';
 
 part 'binding.dart';
 part 'logic.dart';

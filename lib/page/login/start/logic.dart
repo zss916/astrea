@@ -114,7 +114,7 @@ class StartLogic extends GetxController with LoginChannelMixin {
         AccountService.to.updateLocalUserInfo(
           uid: data.userId,
           loginEmail: "-",
-          nickName: nickname,
+          //nickName: nickname,
           authToken: data.authToken ?? "",
         );
 

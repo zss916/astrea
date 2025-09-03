@@ -679,7 +679,7 @@ const en = {
   "ascendant": "Rising",
   "element": "Element",
   "attribute": "Ruling",
-  "form": "Ruling",
+  "form": "Modality",
   "natal_chart": "Natal Chart",
   "ask": "Ask",
   "free_unlocking": "Free unlocking",
