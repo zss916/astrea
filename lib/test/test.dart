@@ -1,5 +1,4 @@
 import 'package:astrea/net/api/account.dart';
-import 'package:flutter_onscreen_logger/flutter_onscreen_logger.dart';
 
 class Test {
   static testGetAccount() async {
@@ -54,24 +53,3 @@ class Test {
   child: Row(children: []),
   ),*/
 }
-
-class PrintTools {
-  /*Widget buildLogger(Widget child) => Directionality(
-    textDirection: TextDirection.ltr,
-    child: Stack(
-      children: [
-        child,
-        LoggerOverlayWidget(),
-        // LoggerOverlayWidget(),
-      ],
-    ),
-  );*/
-
-
-
-  static log(dynamic data) {
-    OnScreenLog.e(title: 'Error', message: '$data');
-  }
-}
-
-

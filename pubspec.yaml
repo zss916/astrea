@@ -51,7 +51,6 @@ dependencies:
   dio_cache_interceptor: 4.0.3
   azlistview_plus: 3.0.0
   scrollable_positioned_list: 0.3.8
-  #scroll_to_position: ^0.0.2
   webview_flutter: 4.13.0
   #ios 的设备号能拿到
   device_info_plus: 11.5.0
@@ -75,15 +74,13 @@ dependencies:
   #flutter_local_notifications: 19.4.0
 
 
-
-
-  #本地logger
-  flutter_onscreen_logger: ^2.0.1
-
  #抓包工具
   proxy:
     path: tools/proxy
 
+  #手机日志工具
+  print_tools:
+    path: tools/print_tools
 
 
   awesome_datetime_picker:

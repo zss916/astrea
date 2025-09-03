@@ -25,9 +25,6 @@ class ResultLogic extends GetxController {
 
   Future<void> loadData() async {
     AccountEntity? account = AccountService.to.getAccount();
-    PrintTools.log("nickName2 =>${AccountService.to.getAccount()?.nickName}");
-    PrintTools.log("nickName3 =>${AccountService.to.data?.nickName}");
-
     bool isSuccessful = await AccountAPI.updateAccount(
       nickName: account?.nickName,
       birthday: account?.birthday,

@@ -421,7 +421,7 @@ packages:
     source: hosted
     version: "5.0.0"
   flutter_onscreen_logger:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: flutter_onscreen_logger
       sha256: ece068e4ce73b4cc012eeca9a0850d6ac2991f4ed3a9f26dde7bbc63217630cd
@@ -982,6 +982,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.4.0"
+  print_tools:
+    dependency: "direct main"
+    description:
+      path: "tools/print_tools"
+      relative: true
+    source: path
+    version: "0.0.1"
   proxy:
     dependency: "direct main"
     description:
@@ -1467,5 +1474,5 @@ packages:
     source: hosted
     version: "6.5.0"
 sdks:
-  dart: ">=3.8.1 <4.0.0"
+  dart: ">=3.9.0 <4.0.0"
   flutter: ">=3.29.0"

@@ -1,4 +1,3 @@
-import 'package:astrea/test/test.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
@@ -45,9 +44,9 @@ mixin LoginChannelMixin {
       String? identityToken = credential.identityToken;
       String? userIdentifier = credential.userIdentifier;
 
-      PrintTools.log(
+      /*PrintTools.log(
         "name:$name \n authorizationCode:$authorizationCode \n identityToken:$identityToken \n userIdentifier:$userIdentifier",
-      );
+      );*/
 
       if (authorizationCode.isEmpty ||
           identityToken == null ||

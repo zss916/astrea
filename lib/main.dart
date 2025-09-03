@@ -5,11 +5,12 @@ import 'package:astrea/core/router/router_observer.dart';
 import 'package:astrea/core/setting/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_onscreen_logger/flutter_onscreen_logger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proxy/proxy.dart';
+
 import 'core/translations/language.dart';
+import 'core/utils/env.dart';
 
 Future<void> main() async {
   await Global.init();
@@ -29,7 +30,7 @@ class App extends StatelessWidget {
       enableScaleText: () => false,
       designSize: Size(designWidth, designHeight),
       builder: (context, _) => GetMaterialApp(
-        title: "Astrea",
+        title: AppConstant.appName,
         debugShowCheckedModeBanner: false,
         locale: Get.deviceLocale,
         translations: AppTranslations(),
@@ -37,13 +38,7 @@ class App extends StatelessWidget {
         getPages: APages.routes,
         navigatorObservers: [appRouteObserver],
         builder: (context, child) => MediaQuery.withNoTextScaling(
-          child: EasyLoading.init()(
-            context,
-            Directionality(
-              textDirection: TextDirection.ltr,
-              child: Stack(children: [child!, LoggerOverlayWidget()]),
-            ),
-          ),
+          child: EasyLoading.init()(context, child!),
         ),
         defaultTransition: Transition.cupertino,
         //theme: CustomTheme.to.dark,
@@ -59,7 +54,6 @@ class App extends StatelessWidget {
           debugPrint("routing:${routing?.current}");
         },
         initialRoute: APages.splash,
-        //home: PersonalDataPage(),
       ),
     );
   }
