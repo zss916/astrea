@@ -6,9 +6,7 @@ class GuidePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Get.arguments == LoginType.loginAndRestart.index
-          ? ComAppBar(leading: SizedBox.shrink())
-          : ComAppBar(),
+      appBar: ComAppBar(leading: SizedBox.shrink()),
       backgroundColor: AppColor.pageBackground,
       body: Column(
         children: [
