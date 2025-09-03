@@ -72,14 +72,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.5.3"
-  bubble_tab_indicator:
-    dependency: "direct main"
-    description:
-      name: bubble_tab_indicator
-      sha256: "0aa37980a00e3374d917f9da8e83acd7f59ba872a3d05c306220063f28f945aa"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.1.6"
   cached_network_image:
     dependency: "direct main"
     description:
@@ -404,14 +396,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.28"
-  flutter_rating_bar:
-    dependency: "direct main"
-    description:
-      name: flutter_rating_bar
-      sha256: d2af03469eac832c591a1eba47c91ecc871fe5708e69967073c043b2d775ed93
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "4.0.1"
   flutter_screenutil:
     dependency: "direct main"
     description:
@@ -638,14 +622,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.20.1"
-  intl_country_data:
-    dependency: "direct main"
-    description:
-      name: intl_country_data
-      sha256: "6f67014fab815ecdd312113d68f90998d8e91f861bc6282f0e540cf1229248a3"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.2.9"
   keyboard_visibility_pro:
     dependency: "direct main"
     description:
@@ -902,14 +878,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "6.0.3"
-  pull_to_refresh:
-    dependency: "direct main"
-    description:
-      name: pull_to_refresh
-      sha256: bbadd5a931837b57739cf08736bea63167e284e71fb23b218c8c9a6e042aad12
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "2.0.0"
   rxdart:
     dependency: transitive
     description:
@@ -918,14 +886,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.28.0"
-  screen_protector:
-    dependency: "direct main"
-    description:
-      name: screen_protector
-      sha256: "305fd157f6f0b210afe216e790022bfe469c3b1d1f2e0d3dcc5906cc9c49c3e9"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.4.2+1"
   scrollable_positioned_list:
     dependency: "direct main"
     description:

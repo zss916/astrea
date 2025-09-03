@@ -17,7 +17,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart' hide RefreshIndicator;
+//import 'package:pull_to_refresh/pull_to_refresh.dart' hide RefreshIndicator;
 
 class HoroscopeView extends StatefulWidget {
   const HoroscopeView({super.key});
@@ -42,10 +42,10 @@ class _HoroscopeViewState extends State<HoroscopeView>
     super.dispose();
   }
 
-  final RefreshController refreshCtrl = RefreshController(
+  /*  final RefreshController refreshCtrl = RefreshController(
     initialRefresh: false,
     initialLoadStatus: LoadStatus.canLoading,
-  );
+  );*/
 
   @override
   Widget build(BuildContext context) {
