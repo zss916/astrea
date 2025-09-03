@@ -28,8 +28,6 @@ class AccountEntity {
   ///本地存储
   List<int>? interestsIndex;
 
-  ///登录渠道
-  // int? loginChannel; //0 - 邮箱，1 - google，2 -apple
   ///登录邮箱
   String? loginEmail;
 
@@ -131,14 +129,6 @@ class AccountEntity {
       return userId.toString();
     }
   }
-
-  /*String get loginMethodStr {
-    if (loginChannel == null) {
-      return "";
-    } else {
-      return LoginChannel.getSymbol(loginChannel!);
-    }
-  }*/
 }
 
 @JsonSerializable()

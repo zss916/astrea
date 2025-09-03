@@ -26,8 +26,6 @@ abstract class AstrologyAPI {
           (dynamic jsonStr) => NatalReportEntity.fromJson(jsonStr),
           response["data"],
         );
-        //NatalReportEntity value = NatalReportEntity.fromJson(response["data"]);
-        // AstrologyService.to.update(value);
         return (true, value);
       } else {
         if (onError == null) {
@@ -39,43 +37,6 @@ abstract class AstrologyAPI {
       }
     } catch (error) {
       return (false, NatalReportEntity());
-    }
-  }
-
-  ///轮询获取数据
-  static Future<void> loopReport({
-    required String id,
-    required Function(NatalReportEntity data) onFinish,
-    required Function() onError,
-    CancelToken? cancelToken,
-    int maxRetries = 100,
-  }) async {
-    debugPrint("loopReport start");
-    try {
-      bool isLoop = true;
-      int attempt = 0;
-      do {
-        attempt++;
-        debugPrint("loopReport attempt:$attempt");
-        final (bool success, NatalReportEntity report) =
-            await getAstrologyReport(id: id, cancelToken: cancelToken);
-        isLoop = (report.done != true);
-        debugPrint("loopReport isLoop:$isLoop");
-        if (!isLoop) {
-          debugPrint("loopReport successful");
-          onFinish.call(report);
-        } else {
-          debugPrint("loopReport next");
-          await Future.delayed(Duration(seconds: 2));
-          /*if (attempt >= maxRetries) {
-            debugPrint("loopReport maxRetries:$attempt");
-            onError.call();
-          }*/
-        }
-      } while (isLoop);
-    } catch (error) {
-      debugPrint("loopReport error");
-      onError.call();
     }
   }
 
@@ -137,11 +98,10 @@ abstract class AstrologyAPI {
           }*/
         }
       } while (isLoop);
-      // 理论上不会执行到这里，因为所有路径都已返回
       return (false, NatalReportEntity());
     } catch (e) {
       debugPrint("loopReport error: $e");
-      return (false, NatalReportEntity()); // 错误时返回false和空报告
+      return (false, NatalReportEntity());
     }
   }
 }

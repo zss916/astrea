@@ -25,7 +25,6 @@ abstract class AccountAPI {
           (jsonStr) => AccountEntity.fromJson(jsonStr),
           result["data"],
         );
-        // AccountEntity value = AccountEntity.fromJson(result["data"]);
         if (isCache) AccountService.to.update(value);
         return value;
       } else {

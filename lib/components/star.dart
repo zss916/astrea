@@ -171,7 +171,4 @@ class AppStarIcon {
     height: 44.8,
     matchTextDirection: true,
   );
-
-  //Assets.imageImgGemini,
-  //Assets.imageImgTaurus
 }

@@ -1,5 +1,6 @@
 import 'package:astrea/components/common_app_bar.dart';
 import 'package:astrea/core/setting/app_color.dart';
+import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -46,8 +47,12 @@ class _WebPageState extends State<WebPage> {
           onProgress: (int progress) {
             debugPrint("progress: $progress");
           },
-          onPageStarted: (String url) {},
-          onPageFinished: (String url) {},
+          onPageStarted: (String url) {
+            AppLoading.show();
+          },
+          onPageFinished: (String url) {
+            AppLoading.dismiss();
+          },
           onWebResourceError: (WebResourceError error) {},
           onNavigationRequest: (NavigationRequest request) async {
             if (!request.url.startsWith('http')) {

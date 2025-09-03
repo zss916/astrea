@@ -48,11 +48,6 @@ SystemUiOverlayStyle barStyle = const SystemUiOverlayStyle(
   systemNavigationBarIconBrightness: Brightness.light,
 );
 
-///当前设备的底部安全区域高度值
-//double  bottomPadding(BuildContext context)  => MediaQuery.of(context).padding.bottom;
-//double bottomPadding = MediaQuery.of(Get.context!).padding.bottom;
-//double bottomPadding = 34.h;
-
 double bottomPadding = Get.bottomBarHeight == 0 ? 34.h : Get.bottomBarHeight;
 
 const double designWidth = 402.0;

@@ -1,14 +1,14 @@
 import 'package:astrea/core/utils/index.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+//import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-PrettyDioLogger prettyDioLogger = PrettyDioLogger(
+/*PrettyDioLogger prettyDioLogger = PrettyDioLogger(
   requestHeader: true,
   requestBody: true,
   responseHeader: false,
   responseBody: true,
-);
+);*/
 
 class LoggerInterceptor extends Interceptor {
   @override
@@ -16,20 +16,12 @@ class LoggerInterceptor extends Interceptor {
     Console.log(
       '[Method]:${options.method}\n[Request]:${options.uri}\n[Body]:${options.data}',
     );
-    /*PrintTools.log(
-      '[Method]:${options.method}\n[Request]:${options.uri}\n[Body]:${options.data}',
-    );*/
     super.onRequest(options, handler);
   }
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     super.onResponse(response, handler);
-    /*PrintTools.log(
-      '[Method]:${response.requestOptions.method}\n'
-      '[Request]:${response.requestOptions.uri}\n'
-      '[Response]:${response.data}',
-    );*/
     Console.log(
       '[Method]:${response.requestOptions.method}\n'
       '[Request]:${response.requestOptions.uri}\n'

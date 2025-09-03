@@ -17,10 +17,6 @@ abstract class SynastryAPI {
     try {
       var result = await Http.instance.get(
         ApiPath.getAnalysisList,
-        /*options: Options(
-          sendTimeout: Duration(seconds: 50),
-          receiveTimeout: Duration(seconds: 50),
-        ),*/
         cancelToken: cancelToken,
       );
       if (result["code"] == 0) {

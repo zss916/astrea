@@ -48,13 +48,7 @@ class _HomePageState extends State<HomePage> with DelayedInitMixin {
           scrollBehavior: null,
           physics: const NeverScrollableScrollPhysics(),
           controller: pageCtrl,
-          children: [
-            HoroscopeView(),
-            // SpiritualView(),
-            SynastryView(),
-            // ChatroomView(),
-            AccountView(),
-          ],
+          children: [HoroscopeView(), SynastryView(), AccountView()],
         ),
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
@@ -110,36 +104,6 @@ class _HomePageState extends State<HomePage> with DelayedInitMixin {
                   ),
                 ),
               ),
-              /* CustomNavigationBarItem(
-                  icon: Image.asset(
-                    Assets.imageSpiritual,
-                    width: 29,
-                    height: 18,
-                    matchTextDirection: true,
-                  ),
-                  selectedIcon: Image.asset(
-                    Assets.imageSpiritualS,
-                    width: 29,
-                    height: 18,
-                    matchTextDirection: true,
-                  ),
-                  title: Text(
-                    LanKey.spiritual.tr,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: AppColor.textHintColor,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  selectedTitle: Text(
-                    LanKey.spiritual.tr,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: AppColor.textHintSelectColor,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),*/
               CustomNavigationBarItem(
                 icon: Image.asset(
                   Assets.imageSynastry,
@@ -172,36 +136,6 @@ class _HomePageState extends State<HomePage> with DelayedInitMixin {
                   ),
                 ),
               ),
-              /*CustomNavigationBarItem(
-                  icon: Image.asset(
-                    Assets.imageChatroom,
-                    width: 23,
-                    height: 23,
-                    matchTextDirection: true,
-                  ),
-                  selectedIcon: Image.asset(
-                    Assets.imageChatroomS,
-                    width: 23,
-                    height: 23,
-                    matchTextDirection: true,
-                  ),
-                  title: Text(
-                    LanKey.chatroom.tr,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: AppColor.textHintColor,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  selectedTitle: Text(
-                    LanKey.chatroom.tr,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: AppColor.textHintSelectColor,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),*/
               CustomNavigationBarItem(
                 icon: Image.asset(
                   Assets.imageAccount,

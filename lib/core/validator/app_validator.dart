@@ -27,7 +27,6 @@ mixin AppValidatorMixin {
     return false;
   }
 
-  ///限制为≤16字符，仅允许字母、数字及下划线，禁止空格和特殊符号
   bool isMatchName(String? value) {
     if (value == null || value.isEmpty) return false;
     final regex = RegExp(r'^[a-zA-Z0-9_]{1,16}$');

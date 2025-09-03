@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 class ErrorInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    // PrintTools.log("服务器错误: ${err.response?.statusCode}, ${err.message}");
     super.onError(err, handler);
     switch (err.type) {
       case DioExceptionType.connectionTimeout:
@@ -20,7 +19,9 @@ class ErrorInterceptor extends Interceptor {
       case DioExceptionType.badCertificate:
         break;
       case DioExceptionType.badResponse:
-        debugPrint("服务器错误: ${err.response?.statusCode}, ${err.message}");
+        debugPrint(
+          "server error=> ${err.response?.statusCode}, ${err.message}",
+        );
         break;
       case DioExceptionType.cancel:
         break;

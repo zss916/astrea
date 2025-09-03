@@ -40,14 +40,8 @@ class AccountService extends GetxService {
   ///是否登录
   bool get isLogin => (data != null) && (data?.authToken != null);
 
-  ///是否更新用户信息
-  // bool get isNotUpdateUserInfo => (data?.isNewUser ?? 1) == 1;
-
   ///获取登录邮箱
   String get loginEmail => data?.loginEmail ?? "-";
-
-  ///获取登录渠道
-  // int get loginChannelIndex => data?.loginChannel ?? 0;
 
   ///获取用户ID
   String get userID => data?.userId ?? "-";
@@ -55,17 +49,11 @@ class AccountService extends GetxService {
   ///请求星盘分析等需要
   String get friendId => data?.friendId ?? "";
 
-  ///获取登录渠道
-  //int? get loginStep => data?.loginStep;
-
   ///当前路由
   String? get currentRouter => data?.currentRouter;
 
   ///是否新用户
   bool get isNewUser => (data?.isNewUser ?? 1) == 1;
-
-  ///是否完成资料的录入
-  // bool get isFinishRecord => (loginStep == LoginStep.stepFinish.value);
 
   ///通知
   bool get switchNotification => data?.switchNotification ?? false;
@@ -199,7 +187,7 @@ class AccountService extends GetxService {
 
   ///更新用户生日时间
   void updateUserBirthHAndM(int birthHour, int birthMinute) {
-    debugPrint("birthHour => $birthHour，birthMinute => $birthMinute");
+    // debugPrint("birthHour => $birthHour，birthMinute => $birthMinute");
     data?.birthHour = birthHour;
     data?.birthMinute = birthMinute;
     save(data!);
@@ -259,11 +247,6 @@ class AccountService extends GetxService {
   ///获取用户兴趣索引
   List<int> getUserInterestIndex() => data?.interestsIndex ?? [];
 
-  ///获取兴趣str(接口需要)
-  /*String getInterest() {
-    return getUserInterestIndex().map((e) => interests[e]).toList().join(",");
-  }*/
-
   ///更新用户性别
   void updateUserSex(int sex) {
     data?.sex = sex;
@@ -272,18 +255,6 @@ class AccountService extends GetxService {
 
   ///获取用户性别
   int getUserSex() => data?.sex ?? 0;
-
-  ///更新用户年龄
-  /* void updateUserAge(int age) {
-    data?.age = age;
-    save(data!);
-  }*/
-
-  ///更新用户标签
-  /*void updateUserTags(List<String> tags) {
-    data?.tags = tags;
-    save(data!);
-  }*/
 
   ///更新用户头像
   void updateUserAvatar(String avatar) {
@@ -391,7 +362,6 @@ class AccountService extends GetxService {
 
   ///注销
   Future<void> logout() async {
-    //updateCurrentRoute(route: null);
     clear();
     data = AccountEntity();
     //PageTools.offAllNamedLogin();

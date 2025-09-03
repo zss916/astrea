@@ -143,37 +143,4 @@ class PersonalDataPage extends StatelessWidget {
       ),
     );
   }
-
-  Widget buildTelephone() => InkWell(
-    onTap: () {
-      PageTools.toTelephone();
-    },
-    child: SizedBox(
-      height: 72,
-      width: double.maxFinite,
-      child: Row(
-        children: [
-          Container(
-            margin: EdgeInsetsDirectional.only(end: 10),
-            child: Text(
-              LanKey.telephoneNumber.tr,
-              style: TextStyle(
-                color: const Color(0xFF6A676C),
-                fontSize: 18,
-                fontFamily: AppFonts.textFontFamily,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-          Spacer(),
-          Image.asset(
-            Assets.imageArrowEnd,
-            width: 24,
-            height: 24,
-            matchTextDirection: true,
-          ),
-        ],
-      ),
-    ),
-  );
 }

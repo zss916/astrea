@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 AppRouteObserver appRouteObserver = AppRouteObserver();
 
-///记录路由历史
 class AppRouteObserver extends RouteObserver<PageRoute> {
   List<Route<dynamic>> history = <Route<dynamic>>[];
 

@@ -46,14 +46,6 @@ class FriendEntity {
     }
   }
 
-  /*  String get showBirthDay2 {
-    if ((birthday ?? "").isNotEmpty) {
-      return "${CalculateTools.formattedTime2("$birthday")} ${(birthHour ?? 0).formatted}:${(birthMinute ?? 0).formatted} ${CalculateTools.formattedAmOrPm(birthHour ?? 0)}";
-    } else {
-      return "";
-    }
-  }*/
-
   AwesomeDateTime? getAwesomeDateTime(String? birthday, int hour, int minute) {
     if (birthday != null && birthday.contains("-")) {
       List<String> value = (birthday ?? "").split("-");

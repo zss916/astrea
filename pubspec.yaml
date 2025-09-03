@@ -10,7 +10,6 @@ environment:
 workspace:
   - package/upload
 
-
 dependencies:
   flutter:
     sdk: flutter
@@ -19,7 +18,7 @@ dependencies:
   intl: 0.20.1
   get: 4.7.2
   dio: 5.8.0+1
-  pretty_dio_logger: 1.4.0
+  #pretty_dio_logger: 1.4.0
   auto_size_text: 3.0.0
   shared_preferences: 2.5.3
   cached_network_image: 3.4.1
@@ -48,8 +47,8 @@ dependencies:
   sprintf: 7.0.0
   collection: 1.19.1
   lottie: 3.3.1
-  dio_cache_interceptor: 4.0.3
-  azlistview_plus: 3.0.0
+  #dio_cache_interceptor: 4.0.3
+  #azlistview_plus: 3.0.0
   scrollable_positioned_list: 0.3.8
   webview_flutter: 4.13.0
   device_info_plus: 11.5.0
@@ -61,20 +60,6 @@ dependencies:
   dotted_dashed_line: 0.0.3
   dotted_decoration: 2.0.0
   connectivity_plus: ^6.1.5
-
-  #通知
-  #firebase_messaging: 16.0.0
-  #notification_permissions: 0.6.1
-  #flutter_local_notifications: 19.4.0
-
-
- #抓包工具
-  proxy:
-    path: tools/proxy
-
-  #手机日志工具
-  print_tools:
-    path: tools/print_tools
 
 
   awesome_datetime_picker:
@@ -101,9 +86,8 @@ flutter:
     - assets/json/
     - assets/time/
     - assets/image/
-    - assets/images/
     - assets/data/
-    - assets/background/
+
 
   fonts:
     - family: AVENIR-BLACK

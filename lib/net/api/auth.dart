@@ -18,7 +18,6 @@ abstract class AuthAPI {
       var result = await Http.instance.post(
         ApiPath.emailLogin,
         cancelToken: cancelToken,
-        //data: {"email": email, "pwd": pwd, "login_type": loginType},
         data: {"email": email, "pwd": pwd, "login_type": loginType},
       );
 
@@ -110,8 +109,6 @@ abstract class AuthAPI {
         cancelToken: cancelToken,
         data: map,
       );
-      //  PrintTools.log("code =>${result["code"]}");
-
       if (result["code"] == 0) {
         AuthEntity value = await compute(
           (dynamic jsonStr) => AuthEntity.fromJson(jsonStr),
@@ -135,7 +132,6 @@ abstract class AuthAPI {
         return null;
       }
     } catch (error) {
-      // PrintTools.log("error =>${error.toString()}");
       return null;
     }
   }

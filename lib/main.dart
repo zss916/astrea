@@ -7,18 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:print_tools/printtools.dart';
-import 'package:proxy/proxy.dart';
 
 import 'core/translations/language.dart';
-import 'core/utils/env.dart';
 
 Future<void> main() async {
   await Global.init();
-
-  /// 抓包初始化
-  ProxyTool.init();
-
   runApp(const App());
 }
 
@@ -31,7 +24,7 @@ class App extends StatelessWidget {
       enableScaleText: () => false,
       designSize: Size(designWidth, designHeight),
       builder: (context, _) => GetMaterialApp(
-        title: AppConstant.appName,
+        title: "Astrea",
         debugShowCheckedModeBanner: false,
         locale: Get.deviceLocale,
         translations: AppTranslations(),
@@ -39,10 +32,7 @@ class App extends StatelessWidget {
         getPages: APages.routes,
         navigatorObservers: [appRouteObserver],
         builder: (context, child) => MediaQuery.withNoTextScaling(
-          child: EasyLoading.init()(
-            context,
-            PrintTools.buildLogOverlay(child!),
-          ),
+          child: EasyLoading.init()(context, child!),
         ),
         defaultTransition: Transition.cupertino,
         //theme: CustomTheme.to.dark,

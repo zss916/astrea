@@ -5,7 +5,6 @@ import 'package:dio/dio.dart';
 import 'base_options.dart';
 import 'http_adpter/httpClientAdapter.dart';
 import 'interceptor/auth_interceptor.dart';
-import 'interceptor/logger_interceptor.dart';
 
 class Http {
   static final Http _instance = Http._internal();
@@ -19,20 +18,12 @@ class Http {
     _dio = Dio(baseDioOptions);
     _dio.httpClientAdapter = httpAdapter;
 
-    //_dio.interceptors.add(NetWorkInterceptor());
-
-    /// 代理抓包
-    //_dio.httpClientAdapter = ProxyTool.getProxyAdapter();
-
     ///auth
     _dio.interceptors.add(AuthInterceptor());
 
-    /// 缓存
-    // _dio.interceptors.add(cacheInterceptor);
-
     /// 日志
-    _dio.interceptors.add(LoggerInterceptor());
-    _dio.interceptors.add(prettyDioLogger);
+    //_dio.interceptors.add(LoggerInterceptor());
+    //_dio.interceptors.add(prettyDioLogger);
 
     /// 错误拦截
     _dio.interceptors.add(ErrorInterceptor());

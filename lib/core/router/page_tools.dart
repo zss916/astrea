@@ -5,7 +5,6 @@ import 'package:astrea/net/bean/account_entity.dart';
 import 'package:astrea/net/bean/friend_entity.dart';
 import 'package:astrea/net/bean/natal_report_entity.dart';
 import 'package:astrea/page/login/guide/email/enum/login_enum.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PageTools {
@@ -17,18 +16,16 @@ class PageTools {
   );
 
   static toGuide({required int loginType}) {
-    // AccountService.to.updateLoginStep(step: LoginStep.step0.value);
     Get.toNamed(APages.guide, arguments: loginType);
   }
 
   static offAllNamedGuide({required int loginType}) {
-    // AccountService.to.updateLoginStep(step: LoginStep.step0.value);
     Get.offAllNamed(APages.guide, arguments: loginType);
   }
 
   static toStep({required int loginType}) {
     String? currentRouter = AccountService.to.currentRouter;
-    debugPrint("currentRouter ==>$currentRouter");
+    // debugPrint("currentRouter ==>$currentRouter");
     if (currentRouter == null) {
       offAllNamedGuide(loginType: loginType);
     } else {
@@ -162,12 +159,6 @@ class PageTools {
     }
   }
 
-  static toSpiritualList() => Get.toNamed(APages.spiritualList);
-
-  static toMyCollection() => Get.toNamed(APages.myCollection);
-
-  static toTechnician() => Get.toNamed(APages.technician);
-
   static toRecord() => Get.toNamed(APages.record);
 
   static toAddFile({
@@ -224,7 +215,6 @@ class PageTools {
     },
   );
 
-  /// 合盘分析
   static toStarReportPage({
     required String id,
     required String relationship,
@@ -271,53 +261,6 @@ class PageTools {
     });
   }
 
-  static toTelephone() => Get.toNamed(APages.telephone);
-
-  static toCertifiedDiviner() => Get.toNamed(APages.certifiedDiviner);
-
-  static toCertifiedName() async {
-    var result = await Get.toNamed(APages.certifiedName);
-  }
-
-  static toCertifiedGender() async {
-    var result = await Get.toNamed(APages.certifiedGender);
-    debugPrint("result:$result");
-  }
-
-  static toCertifiedPreference() => Get.toNamed(APages.certifiedPreference);
-
-  static toCertifiedIntroduction() => Get.toNamed(APages.certifiedIntroduction);
-
-  static toCertifiedLink() => Get.toNamed(APages.certifiedLink);
-
-  static toAstrologicalDirection() => Get.toNamed(APages.astrologicalDirection);
-
-  static toUploadVideo() => Get.toNamed(APages.uploadVideo);
-
-  static toRealName() => Get.toNamed(APages.realName);
-
-  static toPayment() => Get.toNamed(APages.payment);
-
-  static toBalance() => Get.toNamed(APages.balance);
-
-  static toIndividualPrice() => Get.toNamed(APages.individualPrice);
-
-  static toRewardDetails() => Get.toNamed(APages.rewardDetails);
-
-  static toRedeem() => Get.toNamed(APages.redeem);
-
-  static toSetPassword() => Get.toNamed(APages.setPassword);
-
-  static toChat() => Get.toNamed(APages.chat);
-
-  static toReport() => Get.toNamed(APages.report);
-
-  static toEvaluation() => Get.toNamed(APages.evaluation);
-
-  static toChooseBackground() => Get.toNamed(APages.chooseBackground);
-
-  static toSubscribe() => Get.toNamed(APages.subscribe);
-
   static toFeedback() => Get.toNamed(APages.feedback);
 
   static toNoticeSetting() => Get.toNamed(APages.noticeSetting);
@@ -353,7 +296,6 @@ class PageTools {
   }
 
   static offAndNamedGuide() {
-    // AccountService.to.updateLoginStep(step: LoginStep.step0.value);
     Get.offAndToNamed(APages.guide);
   }
 
