@@ -40,7 +40,7 @@ class EmailLogic extends GetxController with AppValidatorMixin {
     }
 
     AppLoading.show();
-    (bool isSuccess, AuthEntity? auth, int code) data =
+    final (bool isSuccess, AuthEntity? auth, int code) =
         await AuthAPI.emailLogin(
           email: email,
           pwd: pwd,
@@ -50,17 +50,17 @@ class EmailLogic extends GetxController with AppValidatorMixin {
           AppLoading.dismiss();
         });
 
-    if (data.$1) {
+    if (isSuccess) {
       AccountService.to.saveAccountAndPsd(email, pwd);
       AccountService.to.setLoginChannel(LoginChannel.email.value);
       AccountService.to.updateLocalUserInfo(
-        uid: data.$2?.userId,
+        uid: auth?.userId,
         loginEmail: email,
-        authToken: data.$2?.authToken ?? "",
-        isNewUser: data.$2?.isNewUser,
+        authToken: auth?.authToken ?? "",
+        isNewUser: auth?.isNewUser,
       );
       if (loginType == LoginType.loginAndRegister.index) {
-        if (data.$2?.checkNewUser == false) {
+        if (auth?.checkNewUser == false) {
           showAccountExistsDialog(
             onLoginAndUpdate: () {
               ///更新
@@ -69,7 +69,7 @@ class EmailLogic extends GetxController with AppValidatorMixin {
             },
             onOnlyLogin: () {
               ///不更新
-              PageTools.offAllNamedHome(friendId: data.$2?.friendId);
+              PageTools.offAllNamedHome(friendId: auth?.friendId);
             },
           );
         } else {
@@ -77,7 +77,11 @@ class EmailLogic extends GetxController with AppValidatorMixin {
           //PageTools.toResult();
         }
       } else {
-        PageTools.offAllNamedHome(friendId: data.$2?.friendId);
+        if ((auth?.isCompleteInfo ?? false)) {
+          PageTools.offAllNamedHome(friendId: auth?.friendId);
+        } else {
+          PageTools.toGuide(loginType: LoginType.loginAndRestart.index);
+        }
       }
     }
   }

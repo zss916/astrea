@@ -26,6 +26,8 @@ class AuthEntity {
 
   bool get checkNewUser => (isNewUser ?? 1) == 1;
 
+  bool get isCompleteInfo => (friendId != null) && (friendId != "0");
+
   AuthEntity();
 
   factory AuthEntity.fromJson(Map<String, dynamic> json) =>

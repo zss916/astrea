@@ -75,7 +75,11 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
             PageTools.toStep(loginType: LoginType.loginAndRegister.index);
           }
         } else {
-          PageTools.offAllNamedHome(friendId: data.friendId);
+          if (data.isCompleteInfo) {
+            PageTools.offAllNamedHome(friendId: data.friendId);
+          } else {
+            PageTools.toGuide(loginType: LoginType.loginAndRestart.index);
+          }
         }
         // PageTools.loginToNext(loginType: loginType, friendId: data.friendId);
       }
@@ -144,7 +148,11 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
             PageTools.toStep(loginType: LoginType.loginAndRegister.index);
           }
         } else {
-          PageTools.offAllNamedHome(friendId: data.friendId);
+          if (data.isCompleteInfo) {
+            PageTools.offAllNamedHome(friendId: data.friendId);
+          } else {
+            PageTools.toGuide(loginType: LoginType.loginAndRestart.index);
+          }
         }
       }
     });

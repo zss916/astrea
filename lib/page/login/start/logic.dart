@@ -78,7 +78,7 @@ class StartLogic extends GetxController with LoginChannelMixin {
           authToken: data.authToken ?? "",
         );
 
-        if (data.friendId != null) {
+        if (data.isCompleteInfo) {
           PageTools.offAllNamedHome(friendId: data.friendId);
         } else {
           PageTools.toGuide(loginType: LoginType.loginAndRegister.index);
@@ -121,7 +121,7 @@ class StartLogic extends GetxController with LoginChannelMixin {
           authToken: data.authToken ?? "",
         );
 
-        if (data.friendId != null) {
+        if (data.isCompleteInfo) {
           PageTools.offAllNamedHome(friendId: data.friendId);
         } else {
           PageTools.toGuide(loginType: LoginType.loginAndRegister.index);
