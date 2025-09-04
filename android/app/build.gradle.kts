@@ -4,6 +4,8 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+
+
 android {
     namespace = "com.astrea.findmyslef.astrea"
     compileSdk = 36
@@ -34,6 +36,10 @@ android {
             storePassword = "astrea123456"
             keyAlias = "astrea"
             keyPassword = "astrea123456"
+        /*    storeFile = file(project.property("RELEASE_STORE_FILE") as String)
+            storePassword = project.property("RELEASE_STORE_PASSWORD") as String
+            keyAlias = project.property("RELEASE_KEY_ALIAS") as String
+            keyPassword = project.property("RELEASE_KEY_PASSWORD") as String*/
         }
     }
 
@@ -45,6 +51,10 @@ android {
             signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = true
             isShrinkResources = true
+            /*proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )*/
             ndk {
                 abiFilters += listOf("armeabi-v7a", "arm64-v8a")
             }
