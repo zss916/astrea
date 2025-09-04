@@ -1,7 +1,9 @@
 class ApiPath {
-  static const String baseUrl = "https://$testHost.com";
+  static const String baseUrl = "https://$releaseHost.com";
 
   static const String testHost = "api-test.theappastro";
+
+  static const String releaseHost = "api.theappastro";
 
   ///获取国家列表 GET
   static const String getCountryList = "/v1/locations/countries";
