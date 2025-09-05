@@ -20,7 +20,7 @@ android {
 
     defaultConfig {
         //applicationId = "com.astrea.findmyslef.astrea"
-        applicationId = "com.xxxxx.xxxxxxx.astrea"
+        applicationId = "com.xxxxx.xxxxxxx.appteam"
         minSdk = 26
         targetSdk = 36
         versionCode = flutter.versionCode
@@ -30,10 +30,10 @@ android {
 
     signingConfigs {
         create("release") {
-            storeFile = file(project.property("storeFile") as String)
-            storePassword = project.property("storePassword") as String
-            keyAlias = project.property("keyAlias") as String
-            keyPassword = project.property("keyPassword") as String
+            //storeFile = file(project.property("storeFile") as String)
+            //storePassword = project.property("storePassword") as String
+            //keyAlias = project.property("keyAlias") as String
+            //keyPassword = project.property("keyPassword") as String
         }
     }
 

@@ -9,12 +9,22 @@ mixin LoginChannelMixin {
     try {
       final isSigned = await googleSign.isSignedIn();
       if (isSigned) {
+        PrintTools.logE("google signOut");
         await googleSign.signOut();
       }
       final result = await googleSign.signIn();
       final googleAuth = await result?.authentication;
+      PrintTools.logW("google photoUrl: ${result?.photoUrl}");
+      PrintTools.logW("google displayName: ${result?.displayName}");
+      PrintTools.logW("google email: ${result?.email}");
+      PrintTools.logW("google id: ${result?.id}");
+      PrintTools.logW(
+        "google googleAuth accessToken: ${googleAuth?.accessToken}",
+      );
+      PrintTools.logW("google googleAuth idToken: ${googleAuth?.idToken}");
 
       if (result?.id == null) {
+        PrintTools.logE("google id is null");
         callback.call(success: false);
       } else {
         callback.call(
@@ -27,6 +37,7 @@ mixin LoginChannelMixin {
         );
       }
     } catch (error) {
+      PrintTools.logE("google error:${error.toString()}");
       callback.call(success: false);
     }
   }
