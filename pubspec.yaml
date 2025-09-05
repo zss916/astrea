@@ -67,6 +67,9 @@ dependencies:
   #notification_permissions: 0.6.1
   #flutter_local_notifications: 19.4.0
 
+  #手机相册管理
+  #photo_manager: ^3.7.1
+
 
  #抓包工具
   proxy:

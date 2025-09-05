@@ -6,3 +6,5 @@
 
 #给连接的设备截图命令
 #flutter screenshot
+
+keytool -keystore /Users/hugo/Desktop/Astrea/android/app/astrea.jks -list -v
