@@ -59,6 +59,8 @@ class StartPage extends StatelessWidget {
                   child: Image.asset(
                     Assets.imageStartBg,
                     matchTextDirection: true,
+                    cacheWidth: 1080,
+                    cacheHeight: 173,
                   ),
                 ),
               ),
@@ -165,33 +167,6 @@ class StartPage extends StatelessWidget {
                   ),
                 ],
               ),
-              /* PositionedDirectional(
-                top: 45.h,
-                end: 20.w,
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(10),
-                  onTap: () {
-                    if (logic.isRegistered) {
-                      logic.toStep();
-                    } else {
-                      logic.toLogin();
-                    }
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      logic.isRegistered
-                          ? LanKey.signUp.tr
-                          : LanKey.startExistingUsers.tr,
-                      style: TextStyle(
-                        color: const Color(0xFF6A676C),
-                        fontSize: 18.sp,
-                        fontFamily: AppFonts.textFontFamily,
-                      ),
-                    ),
-                  ),
-                ),
-              ),*/
             ],
           ),
         );

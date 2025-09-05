@@ -1,5 +1,5 @@
 class ApiPath {
-  static const String baseUrl = "https://$releaseHost.com";
+  static const String baseUrl = "https://$testHost.com";
 
   static const String testHost = "api-test.theappastro";
 
