@@ -24,6 +24,20 @@ class AppPermissionTools {
     });
   }
 
+  /// 检查App Tracking Transparency权限
+  static void checkAppTrackingTransparency({
+    Function? onGranted,
+    Function? onToNext,
+  }) {
+    Permission.appTrackingTransparency.request().then((value) {
+      if (value == PermissionStatus.granted) {
+        onGranted?.call();
+      } else {
+        onToNext?.call();
+      }
+    });
+  }
+
   /// 检查相机权限
   static Future<bool> checkCameraPermission({
     Function? cancelPermission,
