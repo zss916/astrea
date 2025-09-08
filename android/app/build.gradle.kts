@@ -26,8 +26,8 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.astrea.findmyslef"
-        //applicationId = "com.xxxxx.xxxxxxx.appteam"
+        //applicationId = "com.astrea.findmyslef"
+        applicationId = "com.xxxxx.xxxxxxx.appteam"
         minSdk = 26
         targetSdk = 36
         versionCode = flutter.versionCode
@@ -49,8 +49,8 @@ android {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("release")
-           // signingConfig = signingConfigs.getByName("debug")
+           // signingConfig = signingConfigs.getByName("release")
+            signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = true
             isShrinkResources = true
             /*proguardFiles(
