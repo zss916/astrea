@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:print_tools/printtools.dart';
 import 'package:proxy/proxy.dart';
 
+import 'core/signIn/firebase.dart';
 import 'core/translations/language.dart';
 import 'core/utils/env.dart';
 
@@ -18,6 +19,9 @@ Future<void> main() async {
 
   /// 抓包初始化
   ProxyTool.init();
+
+  /// firebase 初始化
+  FireBaseTools.init();
 
   runApp(const App());
 }
