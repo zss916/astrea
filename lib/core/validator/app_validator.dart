@@ -30,7 +30,6 @@ mixin AppValidatorMixin {
   bool isMatchName(String? value) {
     if (value == null || value.isEmpty) return false;
     final regex = RegExp(r'^.{0,16}$');
-
     if (regex.hasMatch(value)) return true;
     return false;
   }
