@@ -36,6 +36,7 @@ class App extends StatelessWidget {
       designSize: Size(designWidth, designHeight),
       builder: (context, _) => GetMaterialApp(
         title: AppConstant.appName,
+
         debugShowCheckedModeBanner: false,
         locale: Get.deviceLocale,
         translations: AppTranslations(),
