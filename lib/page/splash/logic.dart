@@ -7,8 +7,8 @@ class SplashLogic extends GetxController {
     if (await AppTrackingTransparency.trackingAuthorizationStatus ==
         TrackingStatus.notDetermined) {
       // await showCustomTrackingDialog(Get.context!);
-      await Future.delayed(const Duration(milliseconds: 200));
-      await AppTrackingTransparency.requestTrackingAuthorization();
+      // await Future.delayed(const Duration(milliseconds: 200));
+      // await AppTrackingTransparency.requestTrackingAuthorization();
     }
   }
 

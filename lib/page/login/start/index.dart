@@ -1,3 +1,4 @@
+import 'package:apple_login/apple_login.dart';
 import 'package:astrea/components/common_app_bar.dart';
 import 'package:astrea/components/common_btn.dart';
 import 'package:astrea/core/enum/app_enum.dart';
@@ -5,7 +6,6 @@ import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_color.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/setting/app_setting.dart';
-import 'package:astrea/core/signIn/login_mixin.dart';
 import 'package:astrea/core/storage/account_service.dart';
 import 'package:astrea/core/toast/app_loading.dart';
 import 'package:astrea/core/translations/en.dart';
@@ -20,7 +20,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:print_tools/printtools.dart';
+import 'package:google_login/google_login.dart';
+import 'package:google_login/helper.dart';
 
 part 'binding.dart';
 part 'logic.dart';

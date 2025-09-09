@@ -9,7 +9,8 @@ environment:
 
 workspace:
   - package/upload
-
+  - package/apple_login
+  - package/google_login
 
 dependencies:
   flutter:
@@ -43,12 +44,13 @@ dependencies:
   image_picker: 1.2.0
   path_provider: 2.1.5
   ########
-  firebase_core: 4.1.0
-  firebase_auth: 6.0.2
+  #firebase_core: 4.1.0
+  #firebase_auth: 6.0.2
   #google_sign_in: 6.3.0
-  google_sign_in: 7.1.1
+  #google_sign_in: 7.1.
+  #google_api_availability: 5.0.1
   ###########
-  sign_in_with_apple: 7.0.1
+  #sign_in_with_apple: 7.0.1
   ###########
   email_validator: 3.0.0
   sprintf: 7.0.0
@@ -61,7 +63,6 @@ dependencies:
   device_info_plus: 11.5.0
   android_id: 0.4.0
   video_player: 2.10.0
-  google_api_availability: 5.0.1
   auto_hyphenating_text: ^0.3.1
   percent_indicator: 4.2.5
   dotted_dashed_line: 0.0.3
@@ -77,6 +78,17 @@ dependencies:
   #手机相册管理
   #photo_manager: ^3.7.1
 
+  #apple login
+  apple_login:
+    path: package/apple_login
+
+  #google login
+  google_login:
+    path: package/google_login
+
+ #上传
+  upload:
+    path: package/upload
 
  #抓包工具
   proxy:

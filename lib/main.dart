@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_login/firebase.dart';
 import 'package:print_tools/printtools.dart';
 import 'package:proxy/proxy.dart';
 
-import 'core/signIn/firebase.dart';
 import 'core/translations/language.dart';
 import 'core/utils/env.dart';
 

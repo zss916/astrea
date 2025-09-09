@@ -352,7 +352,7 @@ packages:
     source: hosted
     version: "0.9.3+4"
   firebase_auth:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: firebase_auth
       sha256: b843f8b6897654899bfc437e385f710f79fdf1fe872ce629cbdf6017772d5803
@@ -376,7 +376,7 @@ packages:
     source: hosted
     version: "6.0.2"
   firebase_core:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: firebase_core
       sha256: "967dae9a65f69377beb9f4ab292ea63ce5befa1ce24682cab1b69ca4b7a46927"
@@ -575,7 +575,7 @@ packages:
     source: hosted
     version: "4.7.2"
   google_api_availability:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: google_api_availability
       sha256: "2ffdc91e1e0cf4e7974fef6c2988a24cefa81f03526ff04b694df6dc0fcbca03"
@@ -607,7 +607,7 @@ packages:
     source: hosted
     version: "0.3.3+1"
   google_sign_in:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: google_sign_in
       sha256: "939a8b58f84c4053811b8c1bc9adbcb59449a15b37958264bbf60020698cca0e"
@@ -1165,7 +1165,7 @@ packages:
     source: hosted
     version: "2.4.1"
   sign_in_with_apple:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: sign_in_with_apple
       sha256: "8bd875c8e8748272749eb6d25b896f768e7e9d60988446d543fe85a37a2392b8"

@@ -1,6 +1,6 @@
 part of 'index.dart';
 
-class StartLogic extends GetxController with LoginChannelMixin {
+class StartLogic extends GetxController with GoogleLoginMixin, AppleLoginMixin {
   bool isRegistered = false;
 
   CancelToken cancelToken = CancelToken();
@@ -47,10 +47,14 @@ class StartLogic extends GetxController with LoginChannelMixin {
 
   ///google 登录
   void toGoogleAuth() async {
+    bool isSuccess = await AvailabilityHelper.checkGooglePlay();
+    if (!isSuccess) {
+      return;
+    }
+    AppLoading.show();
     googleSignIn(({
       required bool success,
       String? idToken,
-      String? token,
       String? id,
       String? nickname,
       String? cover,
@@ -59,7 +63,6 @@ class StartLogic extends GetxController with LoginChannelMixin {
         AppLoading.toast("Login failed, please try again");
         return;
       }
-      AppLoading.show();
       AuthEntity? data =
           await AuthAPI.googleLogin(
             token: idToken ?? "",
@@ -89,7 +92,7 @@ class StartLogic extends GetxController with LoginChannelMixin {
 
   ///apple 登录
   void toAppleAuth() async {
-    appleLogin(({
+    appleSignIn(({
       required bool success,
       String? nickname,
       String? authorizationCode,

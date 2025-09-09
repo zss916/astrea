@@ -1,6 +1,7 @@
 part of 'index.dart';
 
-class WelcomeLogic extends GetxController with LoginChannelMixin {
+class WelcomeLogic extends GetxController
+    with GoogleLoginMixin, AppleLoginMixin {
   CancelToken cancelToken = CancelToken();
   int loginType = LoginType.loginAndRegister.index;
   // bool isRegistered = false;
@@ -31,7 +32,6 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
     googleSignIn(({
       required bool success,
       String? idToken,
-      String? token,
       String? id,
       String? nickname,
       String? cover,
@@ -89,7 +89,7 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
   ///apple 登录
   void toAppleAuth() async {
     AppLoading.show();
-    appleLogin(({
+    appleSignIn(({
       required bool success,
       String? nickname,
       String? authorizationCode,
