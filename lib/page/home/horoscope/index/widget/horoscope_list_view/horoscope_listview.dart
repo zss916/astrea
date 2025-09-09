@@ -250,7 +250,8 @@ class HoroscopeListview extends StatelessWidget {
           ],
         ),
         Spacer(),
-        SizedBox(
+        Container(
+          padding: EdgeInsetsDirectional.symmetric(horizontal: 3),
           width: 65,
           child: Text(
             name,
