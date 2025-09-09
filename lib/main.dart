@@ -8,10 +8,12 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import 'core/signIn/firebase.dart';
 import 'core/translations/language.dart';
 
 Future<void> main() async {
   await Global.init();
+  await FireBaseTools.init();
   runApp(const App());
 }
 

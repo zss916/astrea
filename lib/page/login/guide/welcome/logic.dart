@@ -27,6 +27,7 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
     if (!isSuccess) {
       return;
     }
+    AppLoading.show();
     googleSignIn(({
       required bool success,
       String? idToken,
@@ -39,7 +40,6 @@ class WelcomeLogic extends GetxController with LoginChannelMixin {
         AppLoading.toast("Login failed, please try again");
         return;
       }
-      AppLoading.show();
       AuthEntity? data =
           await AuthAPI.googleLogin(
             token: idToken ?? "",

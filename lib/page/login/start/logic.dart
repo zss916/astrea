@@ -47,6 +47,11 @@ class StartLogic extends GetxController with LoginChannelMixin {
 
   ///google 登录
   void toGoogleAuth() async {
+    bool isSuccess = await AvailabilityHelper.checkGooglePlay();
+    if (!isSuccess) {
+      return;
+    }
+    AppLoading.show();
     googleSignIn(({
       required bool success,
       String? idToken,
@@ -59,7 +64,6 @@ class StartLogic extends GetxController with LoginChannelMixin {
         AppLoading.toast("Login failed, please try again");
         return;
       }
-      AppLoading.show();
       AuthEntity? data =
           await AuthAPI.googleLogin(
             token: idToken ?? "",

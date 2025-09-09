@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "886631111083",
+    "project_id": "astrea-cae4f",
+    "storage_bucket": "astrea-cae4f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886631111083:android:55e89339d8f72c9dcf9aee",
+        "android_client_info": {
+          "package_name": "com.astrea.findmyslef"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886631111083-ia2en3jgah2q8tmcbmgp5qfb2uniruen.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.astrea.findmyslef",
+            "certificate_hash": "7bc1424130e788d3952e7d66ecec96b8ce6ab9aa"
+          }
+        },
+        {
+          "client_id": "886631111083-fl3624qg9op4pdreqgm0039lhc16jh8p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8xDEgCCeP-HRw7AcZ3wkityZqKoNVH80"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886631111083-fl3624qg9op4pdreqgm0039lhc16jh8p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
