@@ -1,4 +1,4 @@
-import 'package:app_tracking_transparency/app_tracking_transparency.dart';
+import 'package:apple_login/tracking_transparency.dart';
 import 'package:astrea/core/router/page_tools.dart';
 import 'package:astrea/core/setting/app_fonts.dart';
 import 'package:astrea/core/storage/account_service.dart';
