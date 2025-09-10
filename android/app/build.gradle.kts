@@ -3,12 +3,12 @@ plugins {
     id("kotlin-android")
     id("dev.flutter.flutter-gradle-plugin")
     // The Google services Gradle plugin
-    id("com.google.gms.google-services")
+   // id("com.google.gms.google-services")
 }
 
 dependencies {
     // Import the Firebase BoM
-    implementation(platform("com.google.firebase:firebase-bom:34.2.0"))
+   // implementation(platform("com.google.firebase:firebase-bom:34.2.0"))
 }
 
 android {

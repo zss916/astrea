@@ -81,6 +81,9 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
               focusNode: widget.focusNode,
               controller: textEditCtrl,
               textAlign: TextAlign.start,
+              onTapOutside: (_) {
+                // FocusManager.instance.primaryFocus?.unfocus();
+              },
               /* inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp(r'^[0-9+]+$')),
               ],*/

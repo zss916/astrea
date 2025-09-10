@@ -95,6 +95,9 @@ class _EditNameState extends State<InputEmail> {
               keyboardType: TextInputType.emailAddress,
               controller: textEditCtrl,
               focusNode: focusNode,
+              onTapOutside: (_) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 16.sp,

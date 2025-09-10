@@ -97,6 +97,9 @@ class _EditNameState extends State<InputPassword> with AppValidatorMixin {
               controller: textEditCtrl,
               focusNode: focusNode,
               obscureText: obscureText,
+              onTapOutside: (_) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 16.sp,

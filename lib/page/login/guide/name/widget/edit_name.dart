@@ -87,6 +87,9 @@ class _EditNameState extends State<EditName> with AppValidatorMixin {
             child: TextField(
               controller: textEditCtrl,
               focusNode: focusNode,
+              onTapOutside: (_) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
               style: TextStyle(
                 fontSize: 16.sp,
                 fontFamily: AppFonts.textFontFamily,

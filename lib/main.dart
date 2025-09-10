@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_login/firebase.dart';
 import 'package:print_tools/printtools.dart';
 import 'package:proxy/proxy.dart';
 
@@ -21,7 +20,7 @@ Future<void> main() async {
   ProxyTool.init();
 
   /// firebase 初始化
-  FireBaseTools.init();
+  // FireBaseTools.init();
 
   runApp(const App());
 }
@@ -36,7 +35,6 @@ class App extends StatelessWidget {
       designSize: Size(designWidth, designHeight),
       builder: (context, _) => GetMaterialApp(
         title: AppConstant.appName,
-
         debugShowCheckedModeBanner: false,
         locale: Get.deviceLocale,
         translations: AppTranslations(),
