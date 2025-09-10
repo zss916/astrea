@@ -38,24 +38,15 @@ dependencies:
   intl_country_data: 1.2.9
   bubble_tab_indicator: 0.1.6
   event_bus: ^2.0.1
-  logger: 2.6.0
+  logger: 2.6.1
   flutter_svg: 2.2.1
   url_launcher: 6.3.2
   image_picker: 1.2.0
   path_provider: 2.1.5
-  ########
-  #firebase_core: 4.1.0
-  #firebase_auth: 6.0.2
-  #google_sign_in: 6.3.0
-  #google_sign_in: 7.1.
-  #google_api_availability: 5.0.1
-  ###########
-  #sign_in_with_apple: 7.0.1
-  ###########
   email_validator: 3.0.0
   sprintf: 7.0.0
   collection: 1.19.1
-  lottie: 3.3.1
+  lottie: 3.3.2
   dio_cache_interceptor: 4.0.3
   azlistview_plus: 3.0.0
   scrollable_positioned_list: 0.3.8
