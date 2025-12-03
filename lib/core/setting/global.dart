@@ -53,6 +53,8 @@ SystemUiOverlayStyle barStyle = const SystemUiOverlayStyle(
 //double bottomPadding = MediaQuery.of(Get.context!).padding.bottom;
 //double bottomPadding = 34.h;
 
+
+
 double bottomPadding = Get.bottomBarHeight == 0 ? 34.h : Get.bottomBarHeight;
 
 const double designWidth = 402.0;

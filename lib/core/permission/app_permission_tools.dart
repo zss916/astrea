@@ -22,6 +22,8 @@ class AppPermissionTools {
         onToNext?.call();
       }
     });
+
+    //Permission.notification.status;
   }
 
   /// 检查App Tracking Transparency权限

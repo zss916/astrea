@@ -14,6 +14,8 @@ class SplashLogic extends GetxController {
         fetchDevice(deviceId: service.deviceIdentifier);
       }
     });
+
+    // AccountAPI.config();
   }
 
   Future<void> fetchDevice({String? deviceId}) async {

@@ -8,6 +8,12 @@ import 'package:path_provider/path_provider.dart';
 class ImageUtils {
   ///选择单张图片
   static Future<XFile?> chooseImage({bool camera = true}) async {
+
+    //ImagePicker().pickMedia();
+    //ImagePicker().pickVideo();
+
+    //ImagePicker().pickMultipleMedia();
+
     return ImagePicker().pickImage(
       source: camera ? ImageSource.camera : ImageSource.gallery,
       maxWidth: 1080,

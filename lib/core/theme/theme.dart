@@ -60,6 +60,7 @@ class CustomTheme {
       dividerTheme: DividerThemeData(color: scheme.outline, space: 0.5),
       appBarTheme: AppBarTheme(
         elevation: 0,
+        ///解决 listview 上滑动,bar 的背景颜色会变
         scrolledUnderElevation: 0,
         backgroundColor: scheme.surface,
         toolbarHeight: 48,

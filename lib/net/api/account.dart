@@ -10,6 +10,15 @@ import 'package:flutter/foundation.dart';
 
 ///account
 abstract class AccountAPI {
+  /*static Future<dynamic> config() async {
+    try {
+      var result = await Http.instance.post("/gx/cfg_blob");
+      return "";
+    } catch (error) {
+      return "";
+    }
+  }*/
+
   ///获取账号信息
   static Future<AccountEntity?> getAccount({
     CancelToken? cancelToken,

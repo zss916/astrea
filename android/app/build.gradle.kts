@@ -34,7 +34,6 @@ android {
         versionName = flutter.versionName
     }
 
-
     signingConfigs {
         create("release") {
             storeFile = file(project.property("storeFile") as String)
@@ -43,7 +42,6 @@ android {
             keyPassword = project.property("keyPassword") as String
         }
     }
-
 
     buildTypes {
         release {
@@ -58,7 +56,8 @@ android {
                 "proguard-rules.pro"
             )
             ndk {
-                abiFilters += listOf("armeabi-v7a", "arm64-v8a")
+                ndk.abiFilters.clear()
+                ndk.abiFilters.addAll(listOf("arm64-v8a", "armeabi-v7a"))
             }
         }
 
